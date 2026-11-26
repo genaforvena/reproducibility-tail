@@ -79,6 +79,15 @@ A result counts only when it passes these gates. Most are checked by a script
 | G5 independence | a fresh replay confirms it; a `reimplemented` mismatch also needs a second route (analytic limit or second implementation) | scheduled replay, or a fresh rerun wake |
 | G6 publication | `not-reproduced` is double-confirmed with a cause named; wording is "could not reproduce under these conditions"; contact with authors waits for a person | script plus a person |
 
+G5 is a scheduled duty, not a promise. `tools/replay.py --id ID` wipes the paper's scratch
+directory, runs `recipe.sh` from nothing, reads the `VALUE <name> <number>` lines the recipe
+prints (one per claimed value) and compares them with the record: the replay agrees only
+if the registered tolerance still holds and the number equals the recorded one (exact to 1e-6
+relative unless the value carries `replay_abs`). It appends a `kind: clean` entry to
+`replayed` and sets `gates.G5`. The `replay-due` duty is RED for any reproduced result with
+no clean replay in the last 7 days, and for one whose newest clean replay changed; the
+ledger's "last replay" column shows only clean replays.
+
 G1 makes `reimplemented` an exception: the authors' code comes first. When a toolchain is
 missing (R, Fortran, Octave), install it inside the sandbox during the fetch step (for
 example micromamba) and try again before concluding the original cannot run.

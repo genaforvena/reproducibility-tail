@@ -80,10 +80,10 @@ def gate_cell(r: dict) -> str:
 
 
 def replay_cell(r: dict) -> str:
-    rep = r.get("replayed") or []
+    rep = [e for e in (r.get("replayed") or []) if e.get("kind") == "clean"]
     if not rep:
-        return "never"
-    last = rep[-1]
+        return "never clean"
+    last = max(rep, key=lambda e: e.get("utc", ""))
     return f"{last.get('utc', '?')[:10]} {'ok' if last.get('ok') else 'CHANGED'}"
 
 

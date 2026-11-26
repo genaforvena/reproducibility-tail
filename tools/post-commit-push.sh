@@ -35,6 +35,13 @@ if [ -z "${MISHE_PUSH_DETACHED:-}" ] && command -v systemd-run >/dev/null 2>&1; 
 	echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) detach-fallback systemd-run failed; pushing in-process" >> "$log"
 fi
 
+# A stale ledger is fixed by this hook, not by waking a mind: regenerate and commit it. That commit runs
+# this hook again (a new detached unit), so the superseded-HEAD guard below makes this run skip its
+# push and the newest run publishes.
+if [ -n "${MISHE_PUSH_DETACHED:-}" ] && [ -x "$root/tools/regen-ledger.sh" ]; then
+	"$root/tools/regen-ledger.sh" "$root" >/dev/null 2>&1 || true
+fi
+
 publish() {
 	stamp=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 	# Settle first: an amend within the window (a trailer fix, say) must not publish the superseded

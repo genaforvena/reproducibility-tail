@@ -1,0 +1,35 @@
+{
+  "paper": {
+    "title": "Extended Beta Regression in R: Shaken, Stirred, Mixed, and Partitioned",
+    "authors": ["Bettina Grün", "Ioannis Kosmidis", "Achim Zeileis"],
+    "year": 2012,
+    "venue": "Journal of Statistical Software 48(11), 2012",
+    "doi": "10.18637/jss.v048.i11",
+    "url": "https://www.jstatsoft.org/article/view/v048i11/v48i11.pdf"
+  },
+  "code": {
+    "url": "https://cran.r-project.org/src/contrib/Archive/betareg/betareg_3.0-0.tar.gz",
+    "commit": "CRAN archive tarball betareg_3.0-0.tar.gz, DESCRIPTION Version 3.0-0, Date 2012-05-09",
+    "archive": "sha256 8e021999a8647ee5d7b23cf1e6be3f60a68a2b72102d0f7852c23a3568831df3 (downloaded by scout 2026-11-26 from the CRAN archive; GPL-2). The paper cites betareg 2.4-0 onward for BC/BR; 3.0-0 is the closest archived release to the 2012 paper, and the rerun should record the release it uses.",
+    "note": "The GasolineYield data set ships inside the archived package (data/GasolineYield.rda), so no external download is needed. The paper's R listing (p. 23) is the code to implement: data(\"GasolineYield\", package = \"betareg\"); gy <- lapply(c(\"ML\", \"BC\", \"BR\"), function(x) betareg(yield ~ batch + temp, data = GasolineYield, type = x)); sapply(gy, logLik)."
+  },
+  "field": "statistics (beta regression, bias-corrected maximum likelihood)",
+  "stack": "R (current release), with the archived betareg 3.0-0 and its dependencies (Formula, flexmix, lmtest, modeltools, sandwich)",
+  "claim": {
+    "location": "Section on the gasoline yield example, JSS p. 23 (the text 'the log-likelihood does not change much' followed by the R listing sapply(gy, logLik)), printed output '[1] 84.79756 82.94707 82.94499'.",
+    "paper_value": "log-likelihood of the ML fit, betareg(yield ~ batch + temp, data = GasolineYield, type = \"ML\"): 84.79756",
+    "value_check": "Read by scout from the JSS PDF (pdftotext -layout of v48i11.pdf) on 2026-11-26: the printed line '[1] 84.79756 82.94707 82.94499' is on page 23, and the same ML value 84.79756 is repeated in the second R listing (sapply(gy2, logLik), with the '| 1' precision formula, giving 84.79756 for ML) on page 24's Table 2 companion code.",
+    "metric": "log-likelihood (logLik) of the type = \"ML\" betareg fit, the first element of sapply(gy, logLik) for the gasoline yield data",
+    "tolerance": {
+      "logLik_abs": 0.001,
+      "basis": "Fixed before any run: the printed value has five decimals, and an ML optimum on the same data should agree to optimizer precision across platforms. Pass if |logLik - 84.79756| <= 0.001. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: three betareg fits on 32 observations.",
+    "data_size": "Small: GasolineYield (32 rows) inside the betareg package.",
+    "data_licence": "No external data. betareg is GPL-2."
+  },
+  "why": "A deterministic (no seed) maximum-likelihood value printed to five decimals in an R JSS paper, reproducible in seconds from the archived package and its bundled data.",
+  "registered": "2026-11-26T13:14:40Z"
+}

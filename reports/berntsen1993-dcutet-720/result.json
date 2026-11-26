@@ -40,7 +40,7 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -62,7 +62,19 @@
     "reports/berntsen1993-dcutet-720/evidence/manifest.mid",
     "reports/berntsen1993-dcutet-720/evidence/manifest.post"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-26T22:42:10Z",
+      "kind": "clean",
+      "values": {
+        "DTEST1 RESULT (integral of exp(x^2+y^2+z^2) over the reference tetrahedron)": 0.2277999969898576
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/berntsen1993-dcutet-720/evidence/replay-2026-11-26T224210Z.log",
+      "seconds": 103
+    }
+  ],
   "patch": {
     "kind": "build-only",
     "archive_sha256": "dc7f045565f861b4561f76b55cc49596e435349847cebdc0e6e5de5230025deb",

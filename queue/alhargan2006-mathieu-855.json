@@ -1,0 +1,50 @@
+{
+ "paper": {
+  "title": "Subroutines for the Computation of Mathieu Characteristic Numbers and their General Orders (title as in the TOMS/CALGO index; not verified against the paper)",
+  "authors": [
+   "Fayez A. Alhargan"
+  ],
+  "year": 2006,
+  "venue": "ACM Transactions on Mathematical Software 32(3), 472-484 (TOMS 855)",
+  "doi": null,
+  "url": "https://www.netlib.org/toms/855.zip"
+ },
+ "code": {
+  "url": "https://www.netlib.org/toms/855.zip",
+  "commit": "netlib TOMS archive 855.zip, sha256 3ed63d4389cec03acf2822a43e87caa9c1d829477e32f83b064eb1ef82ae1154 (fetched 2026-11-26 20:41Z). Contents: 855/CPP/Dp/Src/mcnf.cpp, mcnr.cpp; 855/CPP/Dp/Drivers/driver.cpp, Res; 855/Doc/Makefile; 855/855.head.",
+  "note": "Driver and sources are C++ (Builder-era headers in driver.cpp: <cstdio>, <iostream>, <complex>; it defines inline acosh and asinh, which may clash with the C++ standard library; rerun must adapt the build, not the algorithm). The Makefile builds driver and runs `driver > res`; the shipped Res file is that output without the build. Recipe: compile mcnf.cpp, mcnr.cpp, driver.cpp with g++ and run the driver; the Table 2 rows are printed by the driver in the order of the loop in driver.cpp lines 158-195."
+ },
+ "field": "numerics (special functions: Mathieu characteristic numbers)",
+ "stack": "C/C++",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Shipped reference file CPP/Dp/Drivers/Res, Table 2 (nu = 10.5000), row t = 1.50: the c column (middle of cl, c, cu) = 130.971685.",
+  "reference": {
+   "file": "855/CPP/Dp/Drivers/Res (Table 2 row 1.50)",
+   "sha256": "3ed63d4389cec03acf2822a43e87caa9c1d829477e32f83b064eb1ef82ae1154 (855.zip; the file is inside it)",
+   "archive": "netlib.org/toms/855.zip"
+  },
+  "metric": "Mathieu characteristic number c computed by Compute_c(nu=10.5, mu=0, h=t*nu) at t=1.50 (h=15.75), printed %1.6lf in Table 2 of the driver output. The cl and cu columns are the driver's analytic bounds and are not the claim.",
+  "paper_value": "Not used: the paper (ACM DL) was not read; the claim rests on the archive's reference output, as artifact-reference.",
+  "values": [
+   {
+    "name": "Table 2, nu=10.5, t=1.50, c",
+    "paper": 130.971685,
+    "tol_abs": 1e-06
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1e-06,
+   "basis": "Fixed before any run. The shipped value is printed with %1.6lf, so 1e-6 is one unit in the sixth decimal, the same basis as the 616 claim. A larger difference is a finding to diagnose (compiler, the iterative Compute_c accuracy parameter acc, precision), not a licence to loosen it."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute for the Table 2 loop (a few hundred root solves of small order); the full driver is a few minutes at most.",
+  "data_size": "None: the driver generates all inputs.",
+  "data_licence": "Netlib CALGO (ACM) code under the ACM licence; rerun should record the licence text from the archive."
+ },
+ "why": "The c value needs Compute_c to solve for the characteristic number at a non-trivial h, not a closed form; the same table prints analytic bounds cl and cu, so a wrong c would show as falling outside them.",
+ "registered": "2026-11-26T20:42Z"
+}

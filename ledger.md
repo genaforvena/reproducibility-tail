@@ -20,7 +20,7 @@ By field: astronomy 1, biology 1, ecology 1, numerics 10, other 1, statistics 3
 By stack: C/C++ 2, Fortran 7, MATLAB/Octave 2, R 5, not-stated 1
 By decade: 1970 1, 1990 6, 2000 4, 2010 6
 
-Data as of 2026-11-26T18:46Z (the newest replay or funnel entry).
+Data as of 2026-11-26T19:12Z (the newest replay or funnel entry).
 
 ## The funnel
 
@@ -39,10 +39,10 @@ Every candidate is drawn from a named frame in a seeded order and none is skippe
 
 | why a candidate was not attempted | candidates |
 |---|---|
-| paywalled | 14 |
+| paywalled | 25 |
 | figure-only | 10 |
 | no-numeric-claim | 39 |
-| claim-not-located | 60 |
+| claim-not-located | 49 |
 | no-method-description | 0 |
 | stochastic-no-seed | 15 |
 | no-code | 3 |

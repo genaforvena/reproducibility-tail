@@ -1,0 +1,7 @@
+ Termination status:           0
+ Convergence tolerance for gradient satisfied
+ absolute largest component of gradient: 0.8944D-08
+ function value:  -653.07867273306204     
+ cg iterations:          32
+ function evaluations:          55
+ gradient evaluations:          45

@@ -1,0 +1,70 @@
+{
+  "paper": {
+    "short": "hager2006-cg-descent-851",
+    "title": "Algorithm 851: CG_DESCENT, a conjugate gradient method with guaranteed descent",
+    "year": 2006,
+    "doi": null
+  },
+  "field": "numerics (unconstrained optimization, nonlinear conjugate gradient)",
+  "stack": "Fortran 77 (TOMS 851 archive: Fortran/Dp/Src/src.f; Fortran/Dp/Drivers/driver1.f, data1, res1)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "driver1 (User's Guide example: n = 100, x = 1, grad_tol 1e-8, default cg.parm) prints cg iterations 32, function evaluations 55, gradient evaluations 45, as in the shipped res1; exact match (tolerance 0).",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/hager2006-cg-descent-851/evidence/reference/res1",
+      "sha256": "da57b1de4c37ec140a1e15f5b92db09bb497710bf2212722eff8b3bd60d38297",
+      "archive": "netlib.org/toms/851.zip sha256 0ac7f494b814e7c7cb5eb13d8b5b2d569ed7c9d575486614a6f6dc7b681f4e95"
+    },
+    "values": [
+      {
+        "name": "driver1 cg iterations",
+        "paper": 32,
+        "tol_abs": 0,
+        "ours": 32
+      },
+      {
+        "name": "driver1 function evaluations",
+        "paper": 55,
+        "tol_abs": 0,
+        "ours": 55
+      },
+      {
+        "name": "driver1 gradient evaluations",
+        "paper": 45,
+        "tol_abs": 0,
+        "ours": 45
+      }
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "The authors' driver1.f compiled as its header documents (gfortran -O0 driver1.f src.f; cp data1 cg.parm; driver1 < data1) builds and runs with no change. The three integer counters match the shipped res1 exactly (32, 55, 45), in both passes (-O0 and -O2, separate trees). Not claimed and not matched exactly: the printed final gradient (0.8944D-08 here, 0.8963D-08 in res1) and the function value's print format (-653.07867273306204 here, -6.5307867273306158E+02 in res1; the same number to about 1e-12 relative). Both are below the 1e-8 stop tolerance or are formatting, and the claim excludes them by design.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "builds and runs as documented in driver1.f with gfortran 13 (conda-forge latest at fetch time); no source or flag change",
+    "log": "reports/hager2006-cg-descent-851/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/hager2006-cg-descent-851/recipe.sh",
+  "queue_commit": "5291b06a1220aa934909117d7531a319c335f783",
+  "evidence": [
+    "reports/hager2006-cg-descent-851/evidence/original-attempt.log",
+    "reports/hager2006-cg-descent-851/evidence/pass1-output.txt",
+    "reports/hager2006-cg-descent-851/evidence/pass2-run.log",
+    "reports/hager2006-cg-descent-851/evidence/pass2-output.txt",
+    "reports/hager2006-cg-descent-851/evidence/recipe-run.log",
+    "reports/hager2006-cg-descent-851/evidence/reference/res1"
+  ],
+  "replayed": []
+}

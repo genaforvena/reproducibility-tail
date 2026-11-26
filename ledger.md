@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-30 papers attempted.
+31 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
-| A | authors' code, run clean | 10 |
+| A | authors' code, run clean | 11 |
 | B | authors' code with build fixes | 11 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 7 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 21, other 1, statistics 5
-By stack: C/C++ 6, Fortran 16, MATLAB/Octave 2, R 5, not-stated 1
-By decade: 1960 1, 1970 1, 1980 3, 1990 8, 2000 11, 2010 6
+By field: astronomy 1, biology 1, ecology 1, numerics 22, other 1, statistics 5
+By stack: C/C++ 6, Fortran 17, MATLAB/Octave 2, R 5, not-stated 1
+By decade: 1960 1, 1970 1, 1980 3, 1990 8, 2000 12, 2010 6
 
 Data as of 2026-11-26T21:17:52Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-26T21:17:52Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-30 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+31 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **225 candidates considered from 4 of 4 frames: 27 attempted (12%), 0 unreachable, 198 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 16 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 10 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 16 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 11 (ran as documented).
 
 ## Results
 
@@ -110,6 +110,9 @@ Authors' original artifact, among all attempted papers: failed 16 (did not run),
 | [gil2004-besselia-831](reports/gil2004-besselia-831/result.md) | numerics · 2004 · Fortran | WKTEST Wronskian check, IFAC=2 (scaled functions), maximum over the driver's grid, as printed in the shipped Drivers/Res: 6.814548925149211E-13, absolute tolerance 1e-13 (WKTEST Wronskian maximum, IFAC=2 (shipped Res)) | 6.81455e-13 ± 1e-13 | 6.81566e-13 | 1.11022e-16 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [greenberg1997-sleuth-775](reports/greenberg1997-sleuth-775/result.md) | numerics · 1997 · Fortran | ELAM value from the queue entry, tol 1e-3 absolute; provisional local reimplementation gives 4871.3813065256945 in both passes (not yet a verdict) (ELAM) | 4871.38 ± 0.001 | – | – | – | - | · · · · | - | blocked | never clean |
 | [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics · 2012 · R | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [hager2006-cg-descent-851](reports/hager2006-cg-descent-851/result.md) | numerics · 2006 · Fortran | driver1 (User's Guide example: n = 100, x = 1, grad_tol 1e-8, default cg.parm) prints cg iterations 32, function evaluations 55, gradient evaluations 45, as in the shipped res1; exact match (tolerance 0). (driver1 cg iterations) [shipped reference output] | 32 ± 0 | 32 | 0 | exact | original | ✓ · ✓ · | A | reproduced | never clean |
+| [hager2006-cg-descent-851](reports/hager2006-cg-descent-851/result.md) | numerics · 2006 · Fortran | driver1 (User's Guide example: n = 100, x = 1, grad_tol 1e-8, default cg.parm) prints cg iterations 32, function evaluations 55, gradient evaluations 45, as in the shipped res1; exact match (tolerance 0). (driver1 function evaluations) [shipped reference output] | 55 ± 0 | 55 | 0 | exact | original | ✓ · ✓ · | A | reproduced | never clean |
+| [hager2006-cg-descent-851](reports/hager2006-cg-descent-851/result.md) | numerics · 2006 · Fortran | driver1 (User's Guide example: n = 100, x = 1, grad_tol 1e-8, default cg.parm) prints cg iterations 32, function evaluations 55, gradient evaluations 45, as in the shipped res1; exact match (tolerance 0). (driver1 gradient evaluations) [shipped reference output] | 45 ± 0 | 45 | 0 | exact | original | ✓ · ✓ · | A | reproduced | never clean |
 | [kraft1994-tomp-733](reports/kraft1994-tomp-733/result.md) | numerics · 1994 · not-stated | Value 1.7952392, tol 1e-5 absolute; provisional local run gives 1.79523920 in both passes (not yet a verdict) (value) | 1.79524 ± 1e-05 | – | – | – | - | · · · · | - | blocked | never clean |
 | [leis1988-odessa-658](reports/leis1988-odessa-658/result.md) | numerics · 1988 · Fortran | Y(1) at T = 4.0 of the demo's first output block (METH 1, MITER 0) is 0.905516, as printed in the source comments. Absolute tolerance 1e-5. (chemical kinetics demo, Y(1) at T=4.0, METH 1 MITER 0) [shipped reference output] | 0.905516 ± 1e-05 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [levine1969-student-t-344](reports/levine1969-student-t-344/result.md) | statistics · 1969 · Fortran | The computed CDF printed by TOMS344_PRB for DF=1, X=0.3250 (row 1, computed column) is 0.7999537587165833, as in the shipped reference output res. Absolute tolerance 1e-6. (TTEST, DF=1, X=0.3250, two-tailed CDF transform (computed column)) [shipped reference output] | 0.799954 ± 1e-06 | 0.799954 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |

@@ -32,9 +32,8 @@ Fortran 2018 deleted arithmetic IF, one array-bounds warning at line 154, which 
 output of each pass, fort.3), `evidence/p1-compile.txt`, `evidence/p2-compile.txt`, `evidence/p1-value.txt`,
 `evidence/p2-value.txt`, `evidence/reference/printed-output.txt` (shipped lines 366-441, unedited).
 
-**Not done yet:** a full numeric compare of all 54 printed lines against the shipped output (my first awk compare was
-broken and was discarded; only the claimed line is compared). That compare is the first thing to add if the scout
-raises the cut.
+**Full-output compare (done):** all 64 printed rows (both passes) compared with the shipped lines 366-441 by N, repetition and sort/HLQEST type: every row matches to better than 1e-6 (pass 1 and pass 2 identical).
+
 
 **What would change the verdict:** the scout's G2 reading says the cut is not an algorithm change, then the verdict
 becomes `reproduced` with basis `patched` and G2 `pass`. If the full output differs past 1e-6 on any line, that is a

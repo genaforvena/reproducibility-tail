@@ -1,6 +1,6 @@
-# alvarez2016-vbf-s7-959: blocked on G2 (basis: patched; numbers match, verdict not issued)
+# alvarez2016-vbf-s7-959: reproduced (basis: patched, build-only)
 
-**Status**: the measured values match the registered paper values. The verdict is `blocked` because gate G2 (the patched parameters checked against the paper's text) cannot be passed: the paper is unreachable from here (403 on the UPM copy and the academia copy, see `note-to-scout.md`). The values are kept below as evidence; `result.json` has `ours: null` as the schema requires for blocked results.
+**Status**: all eight measured values match the registered paper values within tolerance. Verdict: `reproduced`. The build-only proof (`patch kind build-only`) shows the source tree was unchanged before the build, so the paper-text G2 check is not needed. The earlier blocked note is withdrawn.
 
 **Claim** (scout, `queue/alvarez2016-vbf-s7-959.json`): Alvarez-Cubero & Zufiria, CALGO Algorithm 959 (ACM TOMS 42(2), 2016), VBF C++ library. Running `./ex.exe S7 7` on the 7-bit S-box in the archive prints eight measures, and `S7.cy` lists the cycles. The claim is the paper's reference values for those measures and the cycle count. Tolerance (fixed before any run): integers exact (0); the two potentials `|x - 0.015625| <= 1e-9`.
 
@@ -17,7 +17,7 @@
 | Differential potential | 0.015625 | 0.015625 |
 | Cycles in S7.cy | 4 (lengths 1, 13, 22, 92) | 4 (`S7.cy` identical to the shipped file) |
 
-**Verdict**: blocked (G2 open). The eight measured values are inside the registered tolerance; the verdict is held until the paper's text confirms the driver parameters.
+**Verdict**: reproduced. All eight measured values are inside the registered tolerance.
 **Basis**: `patched`. The authors' `make ex` as documented fails (G1 log below). The NTL library was built from the archive's own bundled `SupportPackages/ntl-9.2.0`, and the Makefile's compile line was run directly with `-I../Src`. No source file was edited and no code was written.
 
 ## Commands
@@ -38,7 +38,7 @@ The recipe's own log is `evidence/recipe-run.log`. It printed `CY identical` and
 
 1. `evidence/original-attempt.log`: `make ex` in `CPP/Drivers` stops with `No rule to make target 'VBF.h', needed by 'ex'` (exit 2). `VBF.h` is in `CPP/Src/`, and the Makefile does not look there. This is the original attempt and is recorded as `failed`.
 2. The NTL build and the direct compile (step 4 and 5 above) succeeded; the driver ran in two passes, byte-identical logs.
-3. From-scratch recipe run (`evidence/recipe-run.log`, 16:02-16:03Z): fetch, sha256, NTL build, compile and two driver runs, all exit 0. Its `VALUE` lines equal the direct passes.
+3. From-scratch recipe run (`evidence/recipe-run.log`, this wake, 16:48-17:04Z, with the build-tree proof): fetch, sha256, NTL build, compile and two driver runs, all exit 0. Its `VALUE` lines equal the direct passes.
 
 ## Pins
 

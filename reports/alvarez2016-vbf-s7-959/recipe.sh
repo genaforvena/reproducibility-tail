@@ -6,7 +6,11 @@
 # Original attempt (G1): `make ex` in CPP/Drivers as documented. It stops because the Makefile's prerequisite
 # VBF.h is not in Drivers/ (it lives in CPP/Src/) and NTL is not in /usr/local. Log kept, never overwritten.
 # Patch (the basis): NTL is built from the bundled support package into a scratch prefix, and the Makefile's
-# compile line is run directly with the NTL prefix and -I../Src (the Makefile's rule cannot find VBF.h). No source is changed.
+# compile line is run directly with the NTL prefix and -I../Src (the Makefile's rule cannot find VBF.h).
+# Build-only proof (G2): the unpacked archive is copied to a BUILD TREE (/work/build) before any build command.
+# Manifest pre is over the original unpacked tree (the authors' bytes); manifest mid is over the build tree right
+# before the build commands; the build (NTL configure/make/install and the g++ line) runs in the build tree only;
+# manifest post is over the build tree after the build. The authors' tree is never written by a build command.
 # Claim: the eight measures printed by ./ex.exe S7 7 plus the cycle count in S7.cy, compared with the
 # shipped reference (CPP/Drivers/Res/S7/S7.out and S7.cy). Integers must match exactly.
 set -uo pipefail
@@ -22,12 +26,19 @@ LOG="${LOG:-$root/reports/$ID/evidence/recipe-run.log}"
 mkdir -p "$root/reports/$ID/evidence/reference"
 cd "$root"
 exec > >(tee "$LOG") 2>&1
-D=/work/src/959/CPP/Drivers
+D0=/work/src/959/CPP/Drivers
+B=/work/build
+D=$B/CPP/Drivers
 
 echo "== fetch: 959.zip"
 tools/sandbox.sh --fetch "$ID" -- sh -c "curl -fsSL -o /work/959.zip '$URL'" || { echo "FETCH-FAILED"; exit 1; }
 tools/sandbox.sh "$ID" -- sh -c "echo '$SHA  /work/959.zip' | sha256sum -c -" || { echo "SHA-FAILED"; exit 1; }
-tools/sandbox.sh "$ID" -- sh -c "mkdir -p /work/src && python3 -I -m zipfile -e /work/959.zip /work/src" || { echo "UNZIP-FAILED"; exit 1; }
+tools/sandbox.sh "$ID" -- sh -c "rm -rf /work/src /work/ntl /work/build && mkdir -p /work/src && python3 -I -m zipfile -e /work/959.zip /work/src" || { echo "UNZIP-FAILED"; exit 1; }
+# G2 build-only proof, manifest 1 of 3: the authors' bytes, over the original unpacked tree, before any copy, patch or build.
+python3 -I tools/verify_sources.py manifest "$W/src/959" > "$W/manifest.pre" || { echo "MANIFEST-PRE-FAILED"; exit 1; }
+echo "manifest.pre: $(wc -l < "$W/manifest.pre") source files"
+# The build tree: a full copy of the unpacked archive (same relative layout). Every build command runs here.
+tools/sandbox.sh "$ID" -- sh -c "cp -a /work/src/959 $B" || { echo "COPY-FAILED"; exit 1; }
 
 echo "== shipped reference (the oracle), copied into the report and hash-checked"
 tools/sandbox.sh "$ID" -- cat /work/src/959/CPP/Drivers/Res/S7/S7.out > "$root/reports/$ID/evidence/reference/S7.out" || { echo "REF-FAILED"; exit 1; }
@@ -39,12 +50,14 @@ echo "$REFCY_SHA  reports/$ID/evidence/reference/S7.cy" | sha256sum -c - || { ec
 ORIG="$root/reports/$ID/evidence/original-attempt.log"
 if [ ! -s "$ORIG" ]; then
   echo "== G1 original attempt (make ex as documented, no NTL prefix, no -I../Src)"
-  tools/sandbox.sh "$ID" -- sh -c "cd $D && make ex 2>&1; echo exit=\$?" > "$ORIG" 2>&1
+  tools/sandbox.sh "$ID" -- sh -c "cd $D0 && make ex 2>&1; echo exit=\$?" > "$ORIG" 2>&1
   tail -4 "$ORIG"
 fi
 
-echo "== NTL 9.2.0 from the archive's SupportPackages into the scratch prefix"
-tools/sandbox.sh "$ID" -- sh -c "cd /work/src/959/SupportPackages/ntl-9.2.0/src && ./configure PREFIX=/work/ntl && make -j2 && make install; echo exit=\$?" > "$root/reports/$ID/evidence/ntl-build.log" 2>&1
+# G2 build-only proof, manifest 2 of 3: the BUILD TREE, immediately before the build commands.
+python3 -I tools/verify_sources.py manifest "$W/build" > "$W/manifest.mid" || { echo "MANIFEST-MID-FAILED"; exit 1; }
+echo "== NTL 9.2.0 from the build tree's SupportPackages into the scratch prefix"
+tools/sandbox.sh "$ID" -- sh -c "cd $B/SupportPackages/ntl-9.2.0/src && sh ./configure PREFIX=/work/ntl && make -j2 && make install; echo exit=\$?" > "$root/reports/$ID/evidence/ntl-build.log" 2>&1
 tail -2 "$root/reports/$ID/evidence/ntl-build.log"
 
 echo "== build ex.exe with the NTL prefix and the source directory on the include path (patched build flags)"
@@ -52,7 +65,14 @@ echo "== build ex.exe with the NTL prefix and the source directory on the includ
 # see the G1 log). The same command line as the Makefile's rule is run directly, with -I../Src added.
 tools/sandbox.sh "$ID" -- sh -c "cd $D && g++ -I/work/ntl/include -I../Src -L/work/ntl/lib -Wall ex.cpp -o ex.exe -lntl && ls -l ex.exe" || { echo "BUILD-FAILED"; exit 1; }
 
-# Patched run, twice (G3): the authors' driver with its own inputs; outputs go to the scratch Drivers dir.
+# G2 build-only proof, manifest 3 of 3: the build tree after the build; the record is written by the tool, never by hand.
+python3 -I tools/verify_sources.py manifest "$W/build" > "$W/manifest.post" || { echo "MANIFEST-POST-FAILED"; exit 1; }
+python3 -I tools/verify_sources.py record --repo "$root" --id "$ID" --pre "$W/manifest.pre" --mid "$W/manifest.mid" --post "$W/manifest.post" \
+  --command "sh ./configure PREFIX=/work/ntl && make -j2 && make install" \
+  --command "g++ -I/work/ntl/include -I../Src -L/work/ntl/lib -Wall ex.cpp -o ex.exe -lntl" \
+  && echo "BUILD-ONLY: exit 0" || echo "NOT BUILD-ONLY: G2 hold stays (see the record's kind and the added/modified lists)"
+
+# Patched run, twice (G3): the authors' driver with its own inputs; outputs go to the scratch build Drivers dir.
 for i in 1 2; do
   echo "== driver run $i"
   tools/sandbox.sh "$ID" -- sh -c "cd $D && timeout 900 ./ex.exe S7 7 > /work/run$i.log 2>&1; echo exit=\$?; cp S7.cy /work/run$i-S7.cy"

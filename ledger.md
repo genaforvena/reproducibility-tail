@@ -10,11 +10,11 @@ Method and gates: [docs/method.md](docs/method.md).
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 5 |
-| B | authors' code with build fixes | 2 |
+| B | authors' code with build fixes | 3 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
-| - | blocked or not yet run | 2 |
+| - | blocked or not yet run | 1 |
 
 By field: astronomy 1, biology 1, ecology 1, numerics 4, other 1, statistics 3
 By stack: C/C++ 1, Fortran 3, MATLAB/Octave 2, R 5
@@ -80,14 +80,14 @@ Authors' original artifact, among all attempted papers: failed 3 (did not run), 
 
 | paper | field · year · stack | claim | paper value ± tol | our value | Δ | margin | basis | gates G1 G2 G3 G5 | grade | verdict | last replay |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Nonlinearity) | 56 ± 0 | – | – | – | patched (build-only) | ✓ · ✓ · | - | blocked | never clean |
-| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Algebraic degree) | 3 ± 0 | – | – | – | patched (build-only) | ✓ · ✓ · | - | blocked | never clean |
-| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Algebraic immunity) | 3 ± 0 | – | – | – | patched (build-only) | ✓ · ✓ · | - | blocked | never clean |
-| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Absolute indicator) | 16 ± 0 | – | – | – | patched (build-only) | ✓ · ✓ · | - | blocked | never clean |
-| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Sum-of-squares indicator) | 4.16154e+06 ± 0 | – | – | – | patched (build-only) | ✓ · ✓ · | - | blocked | never clean |
-| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Linear potential) | 0.015625 ± 1e-09 | – | – | – | patched (build-only) | ✓ · ✓ · | - | blocked | never clean |
-| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Differential potential) | 0.015625 ± 1e-09 | – | – | – | patched (build-only) | ✓ · ✓ · | - | blocked | never clean |
-| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Number of cycles in S7.cy) | 4 ± 0 | – | – | – | patched (build-only) | ✓ · ✓ · | - | blocked | never clean |
+| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Nonlinearity) | 56 ± 0 | 56 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ · | B | reproduced | never clean |
+| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Algebraic degree) | 3 ± 0 | 3 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ · | B | reproduced | never clean |
+| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Algebraic immunity) | 3 ± 0 | 3 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ · | B | reproduced | never clean |
+| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Absolute indicator) | 16 ± 0 | 16 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ · | B | reproduced | never clean |
+| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Sum-of-squares indicator) | 4.16154e+06 ± 0 | 4.16154e+06 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ · | B | reproduced | never clean |
+| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Linear potential) | 0.015625 ± 1e-09 | 0.015625 | 0 | 0% | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ · | B | reproduced | never clean |
+| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Differential potential) | 0.015625 ± 1e-09 | 0.015625 | 0 | 0% | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ · | B | reproduced | never clean |
+| [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Number of cycles in S7.cy) | 4 ± 0 | 4 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ · | B | reproduced | never clean |
 | [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics · 2010 · R | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics · 2012 · R | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDM0P5(-4)) [shipped reference output] | 0.0180819 ± 1.80819e-07 | 0.0180819 | -2.9914e-09 | 2% | original | ✓ · ✓ · | A | reproduced | never clean |

@@ -1,0 +1,80 @@
+{
+  "paper": {
+    "short": "renka2003-dnsplin1-828",
+    "title": "Algorithm 828: DNSPLIN1: Discrete nonlinear spline interpolation",
+    "year": 2003,
+    "doi": null
+  },
+  "field": "numerics (spline interpolation)",
+  "stack": "Fortran 77 (TOMS 828, shipped Fortran77/Dp/Drivers, Makefile target Res1: ./driver < data1)",
+  "claim": {
+    "text": "driver on data1 (Res1), the second value after the count 241 in the output, shipped as 0.565126291685656D-01 in Fortran77/Dp/Drivers/res1 (row 3 of the file), absolute tolerance 1e-12",
+    "values": [
+      {
+        "name": "driver on data1, row 2 of res1",
+        "paper": 0.0565126291685656,
+        "tol_abs": 1e-12,
+        "ours": 0.0565126294872521
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "not-reproduced",
+  "cause": "numerical-discrepancy",
+  "attempt": "Not reproduced under these conditions. Original attempt: the authors' Makefile as documented (make Res1) cannot run because the archive has no makefile.inc (the Makefile includes it and it names the compiler and the BLAS/LAPACK objects); the log is kept. Build-only patch: a makefile.inc written from the Makefile's own variable names with gfortran (conda-forge), -O2 -std=legacy, the bundled lapack.f and dblas.f compiled as objects, and one prerequisite line for driver. No source file was edited; verify_sources records build-only (compared 6 archive source files, none modified). Pass 1 (recorded -O2 build, make Res1) and pass 2 (clean directory, same binary) both give 0.565126294872521D-01. Pass 2 in a different environment (a separate tree compiled at -O0, same sources; the only environment change is the optimisation level, so this confirmation is weak) gives the same value. |ours - shipped| = 3.2e-10 against the registered tolerance 1e-12. Across the whole output (724 numbers) 712 differ by more than 1e-12, the largest by 6.4e-8, so this is a systematic difference in the spline values, not a print-rounding effect. Compiler optimisation level is ruled out as the cause (-O0 and -O2 identical). The cause is not localised. The untested hypothesis is that the authors' build used an external LAPACK/BLAS (the Makefile's LAPACK and BLAS variables suggest it) rather than the bundled lapack.f and dblas.f; the next experiment is to link against a conda-forge BLAS/LAPACK and see whether the values move toward the shipped ones. Until then this is a not-reproduced verdict under these conditions, not a claim about the paper's method.",
+  "queue_commit": "07a737ea4de2c6da140e0b0e5b4c3b89d6ef9edc",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make Res1: Makefile:11: makefile.inc: No such file or directory (the archive ships no makefile.inc)",
+    "log": "reports/renka2003-dnsplin1-828/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "pass",
+    "cross_check": "na"
+  },
+  "recipe": "reports/renka2003-dnsplin1-828/recipe.sh",
+  "evidence": [
+    "reports/renka2003-dnsplin1-828/evidence/original-attempt.log",
+    "reports/renka2003-dnsplin1-828/evidence/recipe-run.log",
+    "reports/renka2003-dnsplin1-828/evidence/build.log",
+    "reports/renka2003-dnsplin1-828/evidence/reference/res1",
+    "reports/renka2003-dnsplin1-828/evidence/run1-Res1_1.txt",
+    "reports/renka2003-dnsplin1-828/evidence/run2-Res1_1.txt",
+    "reports/renka2003-dnsplin1-828/evidence/run1-value.txt",
+    "reports/renka2003-dnsplin1-828/evidence/run2-value.txt",
+    "reports/renka2003-dnsplin1-828/evidence/env2-O0-build.log",
+    "reports/renka2003-dnsplin1-828/evidence/env2-Res1_1.txt",
+    "reports/renka2003-dnsplin1-828/evidence/env2-value.txt"
+  ],
+  "replayed": [],
+  "stack_class": "Fortran",
+  "field_class": "numerics",
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "86c0c495cda5ec8c8f49d394c78e53d8df4c765b0398135556b7762e78f3d7fd",
+    "compared": 6,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "make Res1"
+    ],
+    "manifests": {
+      "pre": "reports/renka2003-dnsplin1-828/evidence/manifest.pre",
+      "mid": "reports/renka2003-dnsplin1-828/evidence/manifest.mid",
+      "post": "reports/renka2003-dnsplin1-828/evidence/manifest.post"
+    }
+  }
+}

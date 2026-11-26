@@ -5,7 +5,7 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-22 papers attempted.
+23 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
@@ -13,12 +13,12 @@ Method and gates: [docs/method.md](docs/method.md).
 | B | authors' code with build fixes | 5 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
-| X | not reproduced, cause diagnosed | 1 |
+| X | not reproduced, cause diagnosed | 2 |
 | - | blocked or not yet run | 5 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 15, other 1, statistics 3
-By stack: C/C++ 4, Fortran 10, MATLAB/Octave 2, R 5, not-stated 1
-By decade: 1970 1, 1980 1, 1990 6, 2000 8, 2010 6
+By field: astronomy 1, biology 1, ecology 1, numerics 16, other 1, statistics 3
+By stack: C/C++ 4, Fortran 11, MATLAB/Octave 2, R 5, not-stated 1
+By decade: 1970 1, 1980 1, 1990 6, 2000 9, 2010 6
 
 Data as of 2026-11-26T20:05:51Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-26T20:05:51Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-22 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+23 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **197 candidates considered from 4 of 4 frames: 19 attempted (10%), 0 unreachable, 178 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 8 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 10 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 9 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 10 (ran as documented).
 
 ## Results
 
@@ -130,6 +130,7 @@ Authors' original artifact, among all attempted papers: failed 8 (did not run), 
 | [purcell2011-fig5-hopf](reports/purcell2011-fig5-hopf/result.md) | biology · 2011 · MATLAB/Octave | Input concentration I (nM) of the Hopf bifurcation of equilibrium c1, Figure 5 caption (~7 nM) (Hopf input I (nM)) | 7 ± 0.5 | 7.1875 | 0.1875 | 38% | reimplemented | ✓ ✓ ✓ ✓ | C | reproduced | 2026-11-26 ok |
 | [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | astronomy · 2008 · Fortran | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_A) | 1317 ± 132 | – | – | – | - | · · · · | - | blocked | never clean |
 | [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | astronomy · 2008 · Fortran | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_C) | 52 ± 5 | – | – | – | - | · · · · | - | blocked | never clean |
+| [renka2003-dnsplin1-828](reports/renka2003-dnsplin1-828/result.md) | numerics · 2003 · Fortran | driver on data1 (Res1), the second value after the count 241 in the output, shipped as 0.565126291685656D-01 in Fortran77/Dp/Drivers/res1 (row 3 of the file), absolute tolerance 1e-12 (driver on data1, row 2 of res1) | 0.0565126 ± 1e-12 | 0.0565126 | 3.18687e-10 | 31869% ⚠ | patched (build-only) | ✓ ✓ ✓ · | X | not-reproduced | never clean |
 | [van-deun2006-besselint-858](reports/van-deun2006-besselint-858/result.md) | numerics · 2006 · MATLAB/Octave | besselint(sqrt([2 3 5 7 11]), 0, 1) returns I = 6.106434990872165e-02 (Example 5.1 of the shipped driver, experiments.m; printed in the shipped experiments.out) (I_Ex5_1) [shipped reference output] | 0.0610643 ± 1e-10 | 0.0610643 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [varadhan2009-bb-hdp-multistart](reports/varadhan2009-bb-hdp-multistart/result.md) | numerics · 2009 · R | sum(ans$conv) for multiStart(par = p0, fn = hdp, action = "solve"), 300 starts, seed 1234, JSS p. 11 (converged runs) | 284 ± 3 | 287 | 3 | 100% ⚠ | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [wang2011-species-butterfly-ace](reports/wang2011-species-butterfly-ace/result.md) | ecology · 2011 · R | ChaoLee1992(butterfly, t = 10, method = "all") $Nhat[1], ACE estimate of species richness (JSS p. 8) (ACE) | 712 ± 0.5 | 712 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
@@ -146,7 +147,7 @@ Cause of every attempted paper that is `not-reproduced` or `blocked` (the funnel
 | missing-code | 2 |
 | missing-data | 0 |
 | unstated-parameter | 1 |
-| numerical-discrepancy | 1 |
+| numerical-discrepancy | 2 |
 | nondeterminism | 0 |
 | platform | 0 |
 | other | 1 |

@@ -1,0 +1,86 @@
+{
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "ac71fab09b7dd3715c0b1bb79bc77d3d95bcfd46141935a2cd9e2df1837718ff",
+    "compared": 4,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "/work/fortran/bin/x86_64-conda-linux-gnu-gfortran -O0 -o cs2tst /work/build/Drivers/Sp/driver1.f /work/build/Drivers/Sp/src_792.f /work/build/Src/Sp/src.f"
+    ],
+    "manifests": {
+      "pre": "reports/renka1999-cshep2d-790/evidence/manifest.pre",
+      "mid": "reports/renka1999-cshep2d-790/evidence/manifest.mid",
+      "post": "reports/renka1999-cshep2d-790/evidence/manifest.post"
+    }
+  },
+  "paper": {
+    "short": "renka1999-cshep2d-790",
+    "title": "Algorithm 790: CSHEP2D: Cubic Shepard method for bivariate interpolation of scattered data",
+    "year": 1999,
+    "doi": null
+  },
+  "field": "numerics (scattered data interpolation, CSHEP2D)",
+  "stack": "Fortran 77 (TOMS 790 shar: Fortran77/Drivers/Sp/driver1.f, src_792.f, data1, res1_2; Fortran77/Src/Sp/src.f)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "The Max Error for interpolation function 1, node set 1 (N=100, NI=33, NC=17, NW=30, NR=6), printed by CS2TST to res1_2, is 0.0451, as in the shipped reference output. Absolute tolerance 5e-5 (half of the last printed unit).",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/renka1999-cshep2d-790/evidence/reference/res1_2",
+      "sha256": "2b2fb1ee4f8d6e40606c3cc0f74aebbc4fffb367952ed8101a9c4df397a48164",
+      "archive": "netlib.org/toms/790.gz sha256 ac71fab09b7dd3715c0b1bb79bc77d3d95bcfd46141935a2cd9e2df1837718ff"
+    },
+    "values": [
+      {
+        "name": "CS2TST node set 1, function 1, Max Error (4 decimal print)",
+        "paper": 0.0451,
+        "tol_abs": 5e-05,
+        "ours": 0.0451
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced with a build-only patch. The archive ships no build command. The as-shipped driver1.f compiled alone fails to link (the external routines testdt and tstfn1 are in src_792.f, not in driver1.f; original attempt logged). The authors' driver1.f, src_792.f and src.f are compiled together, out of tree, with gfortran -O0 (no source edited; three manifests prove it: verify_sources record build-only, nothing modified, removed or added between pre and mid). The driver is fed the first six lines of data1 (node set 1: KS=1, functions 1 to 10, NC=17, NW=30, NR=6). Two clean passes both print Max Error 0.0451 for function 1, identical to the shipped res1_2 at the printed precision. The driver's full table is kept as evidence. Toolchain: gfortran from conda-forge in the sandbox scratch. Replay (G5) not yet run.",
+  "queue_commit": "9e13a2cfa2978f8b857d37ba2874690fc42d51be",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "driver1.f alone does not link: the routines it calls are in the other archive files (ld error); the archive has no build command",
+    "log": "reports/renka1999-cshep2d-790/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/renka1999-cshep2d-790/recipe.sh",
+  "evidence": [
+    "reports/renka1999-cshep2d-790/evidence/original-attempt.log",
+    "reports/renka1999-cshep2d-790/evidence/build.log",
+    "reports/renka1999-cshep2d-790/evidence/recipe-run.log",
+    "reports/renka1999-cshep2d-790/evidence/reference/res1_2",
+    "reports/renka1999-cshep2d-790/evidence/run1-res1_2",
+    "reports/renka1999-cshep2d-790/evidence/run2-res1_2",
+    "reports/renka1999-cshep2d-790/evidence/run1-value.txt",
+    "reports/renka1999-cshep2d-790/evidence/run2-value.txt",
+    "reports/renka1999-cshep2d-790/evidence/manifest.pre",
+    "reports/renka1999-cshep2d-790/evidence/manifest.mid",
+    "reports/renka1999-cshep2d-790/evidence/manifest.post"
+  ],
+  "replayed": []
+}

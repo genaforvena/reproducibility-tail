@@ -22,7 +22,7 @@ cd "$root"
 G=/work/fortran/bin/x86_64-conda-linux-gnu-gfortran
 
 echo "== fetch: 616.gz (sha256 checked), gunzipped in the sandbox scratch; gfortran (conda-forge) if missing"
-tools/sandbox.sh --fetch "$ID" -- sh -c "set -e; cd /work; curl -fsSL -o 616.gz '$URL'; echo '$SHA  616.gz' | sha256sum -c -; gunzip -kf 616.gz; \
+tools/sandbox.sh --fetch "$ID" -- sh -c "set -e; cd /work; curl -fsSL -o 616.gz '$URL'; echo '$SHA  616.gz' | sha256sum -c -; gunzip -c 616.gz > 616.txt; \
   test -x $G || { curl -fsSL -o /work/mm.tar.bz2 https://micro.mamba.pm/api/micromamba/linux-64/latest; mkdir -p /work/bin; tar -xjf /work/mm.tar.bz2 -C /work/bin --strip-components=1 bin/micromamba; MAMBA_ROOT_PREFIX=/work/mamba /work/bin/micromamba create -y -q -p /work/fortran -c conda-forge gfortran_linux-64; }" || { echo "FETCH-FAILED"; exit 1; }
 
 echo "== shipped reference: the printed run output, lines 366-441 of the archive, copied unedited"

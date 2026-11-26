@@ -32,7 +32,7 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -47,7 +47,28 @@
     "reports/monahan1984-hodges-lehmann-616/evidence/p1-value.txt",
     "reports/monahan1984-hodges-lehmann-616/evidence/p2-value.txt"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-26T21:03:10Z",
+      "kind": "clean",
+      "values": {},
+      "ok": false,
+      "why": "recipe exited 1",
+      "log": "reports/monahan1984-hodges-lehmann-616/evidence/replay-2026-11-26T210310Z.log",
+      "seconds": 64
+    },
+    {
+      "utc": "2026-11-26T21:04:24Z",
+      "kind": "clean",
+      "values": {
+        "H-L estimator via HLQEST, N=9 rep 3, first test (random input)": 0.545388
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/monahan1984-hodges-lehmann-616/evidence/replay-2026-11-26T210424Z.log",
+      "seconds": 70
+    }
+  ],
   "stack_class": "Fortran",
   "field_class": "statistics"
 }

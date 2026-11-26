@@ -1,0 +1,58 @@
+{
+  "paper": {
+    "short": "preusser1990-c1c2-684",
+    "title": "Algorithm 684: C1 and C2 interpolation on triangles with quintic and nonic bivariate polynomials",
+    "year": 1990,
+    "doi": null
+  },
+  "field": "numerics (scattered-data interpolation on triangles)",
+  "stack": "Fortran (TOMS 684 archive: single file 684.gz, algorithm subroutines plus PROGRAM DFC1C2 driver)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "PROGRAM DFC1C2 (default REAL build) prints COMPUTED VALUE for Z(44,3) on the example's rectangular grid that agrees with the author's expected constant 3.035646151154, tolerance 1e-3 absolute, fixed in the queue entry.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/preusser1990-c1c2-684/evidence/reference/684.f",
+      "sha256": "3ffde5d579ccd98d4bab0378a2d5a1a2b9420da0e874b55a4c53ad26658295a9",
+      "archive": "netlib.org/toms/684.gz sha256 d7370718ce36c41ae718fe3061cad733f664427cf78736abb5a0e20e3171dbe3 (684.f is its gunzipped member; PROGRAM DFC1C2 holds the expected constant)"
+    },
+    "values": [
+      {
+        "name": "Z(44,3) of DFC1C2 (default REAL build)",
+        "paper": 3.035646151154,
+        "tol_abs": 0.001,
+        "ours": 3.035507202148
+      }
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "The archive is a single Fortran file, 684.f (gunzipped from 684.gz, sha256 checked). It ships no Makefile or build line. The file was compiled as shipped with gfortran (conda-forge gcc 16.2.0) and default flags: gfortran -o dfc1c2 684.f, then ./dfc1c2, with no edit. It builds and runs (build_exit=0, run_exit=0); the build only prints Fortran 2018 warnings about old-style DO labels. The first COMPUTED VALUE line is 3.035507202148 against the expected 3.035646151154, a difference of 1.39e-4, inside tol_abs 1e-3. Pass 2 at -O2 in a clean directory gives the same printed value. The driver's second WRITE prints the C2-minus-C1 difference after Z is overwritten; it is not the claimed quantity and is not claimed.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "builds and runs with default gfortran flags and no source change; the archive gives no build line, so the plain compile is the only route",
+    "log": "reports/preusser1990-c1c2-684/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/preusser1990-c1c2-684/recipe.sh",
+  "queue_commit": "2235ef085e6717eb17a7513a2d62c3ca932e363c",
+  "evidence": [
+    "reports/preusser1990-c1c2-684/evidence/reference/684.f",
+    "reports/preusser1990-c1c2-684/evidence/original-attempt.log",
+    "reports/preusser1990-c1c2-684/evidence/pass1-output.txt",
+    "reports/preusser1990-c1c2-684/evidence/pass2-run.log",
+    "reports/preusser1990-c1c2-684/evidence/pass2-output.txt",
+    "reports/preusser1990-c1c2-684/evidence/recipe-run.log"
+  ],
+  "replayed": []
+}

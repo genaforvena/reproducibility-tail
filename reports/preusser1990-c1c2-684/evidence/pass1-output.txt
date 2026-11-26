@@ -1,0 +1,126 @@
+684.f:63:72:
+
+   63 |    10   XX(I)= (I-1)*DX
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 10 at (1)
+684.f:65:72:
+
+   65 |    20   YY(I)= (I-1)*DY
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 20 at (1)
+684.f:69:72:
+
+   69 |    30   ZD(I)= 5 + MOD(I,2)*10
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 30 at (1)
+684.f:80:72:
+
+   80 |         DO 40 I=1,NXI
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Shared DO termination label 40 at (1)
+684.f:525:72:
+
+  525 |         DO 140 I=1,ND
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Shared DO termination label 140 at (1)
+684.f:526:72:
+
+  526 |   140     WK(I,J)= 0.
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 140 at (1)
+684.f:1694:72:
+
+ 1694 |         DO 60 I=1,ND
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Shared DO termination label 60 at (1)
+684.f:1695:72:
+
+ 1695 |    60     WK(I,J)= 0.
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 60 at (1)
+684.f:2104:72:
+
+ 2104 |   100   Z12(K)= AB*PDL(3,K) + ADBC*PDL(4,K) + CD*PDL(5,K)
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 100 at (1)
+684.f:3024:72:
+
+ 3024 |     1   IEND(I) = IEND(I) + 2
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 1 at (1)
+684.f:3037:72:
+
+ 3037 |     2   IEND(I) = IEND(I) + 1
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 2 at (1)
+684.f:3156:72:
+
+ 3156 |     2   NFT(I) = INDX + 1
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 2 at (1)
+684.f:3189:72:
+
+ 3189 |     6   IEND(I) = IEND(I) + 3
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 6 at (1)
+684.f:3198:72:
+
+ 3198 |     7   IEND(I) = IEND(I) + 2
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 7 at (1)
+684.f:3207:72:
+
+ 3207 |     8   IEND(I) = IEND(I) + 1
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 8 at (1)
+684.f:3215:72:
+
+ 3215 |     9   IADJ(INDX) = N(I)
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 9 at (1)
+684.f:3313:72:
+
+ 3313 |     3     IEND(I) = IEND(I) + 1
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 3 at (1)
+684.f:3326:72:
+
+ 3326 |     5     IEND(I) = IEND(I) - 1
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 5 at (1)
+684.f:3344:72:
+
+ 3344 |     9   IEND(I) = IEND(I) - 1
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 9 at (1)
+684.f:3355:72:
+
+ 3355 |    10   IEND(I) = IEND(I) - 2
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 10 at (1)
+684.f:3366:72:
+
+ 3366 |    11   IEND(I) = IEND(I) - 1
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 11 at (1)
+684.f:3378:72:
+
+ 3378 |    13   IEND(I) = IEND(I) + 1
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 13 at (1)
+684.f:3389:72:
+
+ 3389 |    14   IEND(I) = IEND(I) + 2
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 14 at (1)
+684.f:3400:72:
+
+ 3400 |    15   IEND(I) = IEND(I) + 1
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 15 at (1)
+build_exit=0
+ EXPECTED VALUE      3.035646151154
+ COMPUTED VALUE      3.035507202148
+ EXPECTED VALUE      3.035646151154
+ COMPUTED VALUE      3.035630226135
+run_exit=0

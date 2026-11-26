@@ -1,0 +1,98 @@
+{
+ "paper": {
+  "short": "alvarez2016-vbf-s7-959",
+  "title": "Algorithm 959: VBF: A Library of C++ Classes for Vector Boolean Functions in Cryptography",
+  "year": 2016,
+  "doi": null
+ },
+ "field": "cryptography (S-box analysis, vector Boolean functions; computational numerics over GF(2))",
+ "stack": "C++ (authors' code, g++ 13.3.0 in the sandbox; NTL 9.2.0 built from the archive's SupportPackages)",
+ "claim": {
+  "text": "./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7",
+  "values": [
+   {
+    "name": "Nonlinearity",
+    "paper": 56.0,
+    "tol_abs": 0,
+    "ours": null
+   },
+   {
+    "name": "Algebraic degree",
+    "paper": 3.0,
+    "tol_abs": 0,
+    "ours": null
+   },
+   {
+    "name": "Algebraic immunity",
+    "paper": 3.0,
+    "tol_abs": 0,
+    "ours": null
+   },
+   {
+    "name": "Absolute indicator",
+    "paper": 16.0,
+    "tol_abs": 0,
+    "ours": null
+   },
+   {
+    "name": "Sum-of-squares indicator",
+    "paper": 4161536.0,
+    "tol_abs": 0,
+    "ours": null
+   },
+   {
+    "name": "Linear potential",
+    "paper": 0.015625,
+    "tol_abs": 1e-09,
+    "ours": null
+   },
+   {
+    "name": "Differential potential",
+    "paper": 0.015625,
+    "tol_abs": 1e-09,
+    "ours": null
+   },
+   {
+    "name": "Number of cycles in S7.cy",
+    "paper": 4.0,
+    "tol_abs": 0,
+    "ours": null
+   }
+  ]
+ },
+ "basis": "patched",
+ "verdict": "blocked",
+ "cause": null,
+ "attempt": "authors' make ex does not run (VBF.h prerequisite not found); NTL 9.2.0 built from the bundled SupportPackages; the Makefile's compile line run directly with -I../Src; no source edits; two driver passes plus a from-scratch recipe run agree on all 8 values (measured values in result.md). Verdict blocked: gate G2 (paper-text check of the patched parameters) cannot be passed because the paper is unreachable (403)",
+ "queue_commit": "826c062f5d18bc4f6431d30e664714e0997eaac9",
+ "original_attempt": {
+  "tried": true,
+  "outcome": "failed",
+  "reason": "make ex stops: No rule to make target 'VBF.h', needed by 'ex' (VBF.h is in CPP/Src/, not beside ex.cpp; exit 2)",
+  "log": "reports/alvarez2016-vbf-s7-959/evidence/original-attempt.log"
+ },
+ "gates": {
+  "G1": "pass",
+  "G2": "na",
+  "G3": "pass",
+  "G5": "na",
+  "G6": "na",
+  "cross_check": "na"
+ },
+ "recipe": "reports/alvarez2016-vbf-s7-959/recipe.sh",
+ "evidence": [
+  "reports/alvarez2016-vbf-s7-959/evidence/original-attempt.log",
+  "reports/alvarez2016-vbf-s7-959/evidence/ntl-build.log",
+  "reports/alvarez2016-vbf-s7-959/evidence/run1.log.gz",
+  "reports/alvarez2016-vbf-s7-959/evidence/run2.log.gz",
+  "reports/alvarez2016-vbf-s7-959/evidence/run2-S7.cy",
+  "reports/alvarez2016-vbf-s7-959/evidence/recipe-run.log",
+  "reports/alvarez2016-vbf-s7-959/evidence/reference/S7.out",
+  "reports/alvarez2016-vbf-s7-959/evidence/reference/S7.cy",
+  "reports/alvarez2016-vbf-s7-959/result.md",
+  "reports/alvarez2016-vbf-s7-959/note-to-scout.md"
+ ],
+ "replayed": [],
+ "stack_class": "C/C++",
+ "field_class": "other"
+}

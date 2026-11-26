@@ -20,7 +20,7 @@ By field: astronomy 1, biology 1, ecology 1, numerics 27, other 1, statistics 5
 By stack: C/C++ 7, Fortran 20, MATLAB/Octave 3, R 5, not-stated 1
 By decade: 1960 1, 1970 1, 1980 3, 1990 10, 2000 15, 2010 6
 
-Data as of 2026-11-26T22:52Z (the newest replay or funnel entry).
+Data as of 2026-11-26T23:03:54Z (the newest replay or funnel entry).
 
 ## The funnel
 
@@ -149,7 +149,7 @@ Authors' original artifact, among all attempted papers: failed 19 (did not run),
 | [renka2003-dnsplin1-828](reports/renka2003-dnsplin1-828/result.md) | numerics · 2003 · Fortran | driver on data1 (Res1), the second value after the count 241 in the output, shipped as 0.565126291685656D-01 in Fortran77/Dp/Drivers/res1 (row 3 of the file), absolute tolerance 1e-12 (driver on data1, row 2 of res1) | 0.0565126 ± 1e-12 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
 | [van-deun2006-besselint-858](reports/van-deun2006-besselint-858/result.md) | numerics · 2006 · MATLAB/Octave | besselint(sqrt([2 3 5 7 11]), 0, 1) returns I = 6.106434990872165e-02 (Example 5.1 of the shipped driver, experiments.m; printed in the shipped experiments.out) (I_Ex5_1) [shipped reference output] | 0.0610643 ± 1e-10 | 0.0610643 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [varadhan2009-bb-hdp-multistart](reports/varadhan2009-bb-hdp-multistart/result.md) | numerics · 2009 · R | sum(ans$conv) for multiStart(par = p0, fn = hdp, action = "solve"), 300 starts, seed 1234, JSS p. 11 (converged runs) | 284 ± 3 | 287 | 3 | 100% ⚠ | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
-| [wang2008-bacolr-874](reports/wang2008-bacolr-874/result.md) | numerics · 2008 · Fortran | driver1 (single PDE, KCOL = 2, NINT = 42 at TOUT = 1.0) prints UOUT = 0.6602 at XOUT = 0.91, as in the shipped reference output res1; tolerance 1e-3 absolute, fixed in the queue entry. (UOUT(XOUT=0.91) at TOUT=1.0, KCOL=2, NINT=42) [shipped reference output] | 0.6602 ± 0.001 | 0.6602 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [wang2008-bacolr-874](reports/wang2008-bacolr-874/result.md) | numerics · 2008 · Fortran | driver1 (single PDE, KCOL = 2, NINT = 42 at TOUT = 1.0) prints UOUT = 0.6602 at XOUT = 0.91, as in the shipped reference output res1; tolerance 1e-3 absolute, fixed in the queue entry. (UOUT(XOUT=0.91) at TOUT=1.0, KCOL=2, NINT=42) [shipped reference output] | 0.6602 ± 0.001 | 0.6602 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [wang2011-species-butterfly-ace](reports/wang2011-species-butterfly-ace/result.md) | ecology · 2011 · R | ChaoLee1992(butterfly, t = 10, method = "all") $Nhat[1], ACE estimate of species richness (JSS p. 8) (ACE) | 712 ± 0.5 | 712 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [wise2000-polsys-plp-801](reports/wise2000-polsys-plp-801/result.md) | numerics · 2000 · Fortran | TWO QUADRICS real finite solution (first INPUT.DAT problem, TRACKTOL 1e-4, FINALTOL 1e-14, seed 32749): Re X(2) = -0.788344824094120 as printed in the shipped OUTPUT.DAT, absolute tolerance 1e-6. (TWO QUADRICS real finite solution, Re X(2)) [shipped reference output] | -0.788345 ± 1e-06 | -0.788345 | -1.89848e-14 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 

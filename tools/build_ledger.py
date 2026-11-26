@@ -62,6 +62,17 @@ def fmt(x) -> str:
     return "–" if x is None else (f"{x:.6g}" if isinstance(x, (int, float)) else str(x))
 
 
+EDGE = 0.8   # a result using this share of its tolerance or more is flagged
+
+
+def margin_cell(ours, paper, tol) -> str:
+    """|difference| as a share of the registered tolerance; flagged near the edge."""
+    if ours is None or paper is None or not tol:
+        return "–"
+    share = abs(ours - paper) / tol
+    return f"{share:.0%}" + (" ⚠" if share >= EDGE else "")
+
+
 def gate_cell(r: dict) -> str:
     g = r.get("gates", {})
     mark = {"pass": "✓", "fail": "✗", "na": "·"}
@@ -92,8 +103,8 @@ def build(repo: Path) -> str:
             c[(r.get("paper", {}).get("year", 0) // 10 * 10 if key is None else r.get(key, "?"))] += 1
         out.append(f"By {title}: " + (", ".join(f"{k} {v}" for k, v in sorted(c.items(), key=lambda x: str(x[0]))) or "none"))
     out += ["", "## Results", "",
-            "| paper | field · year · stack | claim | paper value ± tol | our value | Δ | basis | gates G1 G2 G3 G5 | grade | verdict | last replay |",
-            "|---|---|---|---|---|---|---|---|---|---|---|"]
+            "| paper | field · year · stack | claim | paper value ± tol | our value | Δ | margin | basis | gates G1 G2 G3 G5 | grade | verdict | last replay |",
+            "|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in rows:
         p, c = r.get("paper", {}), r.get("claim", {})
         for v in c.get("values", [{}]):
@@ -104,9 +115,10 @@ def build(repo: Path) -> str:
                 f"{r.get('field', '?')} · {p.get('year', '?')} · {r.get('stack', '?')}",
                 f"{c.get('text', '?')}" + (f" ({v['name']})" if v.get("name") else ""),
                 f"{fmt(v.get('paper'))} ± {fmt(v.get('tol_abs'))}",
-                fmt(ours), fmt(delta), r.get("basis", "?"), gate_cell(r), grade(r),
+                fmt(ours), fmt(delta), margin_cell(ours, v.get("paper"), v.get("tol_abs")), r.get("basis", "?"), gate_cell(r), grade(r),
                 judge(c.get("values", [])), replay_cell(r)]) + " |")
-    out += ["", "## Why papers stopped reproducing", "",
+    out += ["", f"Margin is |our value − paper value| as a share of the tolerance registered before the run; ⚠ marks {EDGE:.0%} or more, a result that a different environment could flip.", "",
+            "## Why papers stopped reproducing", "",
             "Cause of every `not-reproduced` or `blocked` result.", "", "| cause | papers |", "|---|---|"]
     causes = collections.Counter(r.get("cause") for r in rows if judge(r.get("claim", {}).get("values", [])) != "reproduced")
     for k in CAUSES:

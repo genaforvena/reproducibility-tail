@@ -104,3 +104,19 @@ def test_ledger_roundtrip_and_check(tmp_path):
     assert build_ledger.main(["--repo", str(repo), "--check"]) == 0
     (repo / "ledger.md").write_text("hand edited")
     assert build_ledger.main(["--repo", str(repo), "--check"]) == 2
+
+
+@pytest.mark.parametrize("ours,cell", [(7.05, "10%"), (7.4, "80% ⚠"), (7.5, "100% ⚠"), (None, "–")])
+def test_margin_cell(ours, cell):
+    assert build_ledger.margin_cell(ours, 7.0, 0.5) == cell
+
+
+def test_margin_cell_without_tolerance_is_not_a_number():
+    assert build_ledger.margin_cell(7.0, 7.0, 0) == "–"
+
+
+def test_ledger_shows_margin_column(tmp_path):
+    repo = make(tmp_path)
+    build_ledger.main(["--repo", str(repo)])
+    text = (repo / "ledger.md").read_text()
+    assert "| margin |" in text and "10%" in text

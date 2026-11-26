@@ -1,0 +1,48 @@
+{
+  "paper": {
+    "short": "fay2010-interval-npmle-example1",
+    "title": "Exact and Asymptotic Weighted Logrank Tests for Interval Censored Data: The interval R Package",
+    "year": 2010,
+    "doi": "10.18637/jss.v036.i02"
+  },
+  "field": "statistics (interval-censored data, nonparametric maximum likelihood)",
+  "stack": "R 4.5.3 (sandbox, conda-forge and bioconda), archived interval 0.9-9.6, Icens 1.82.0 (bioconda), MLEcens 0.1.7.1 (CRAN), perm 1.0-0.4, survival 3.8-12",
+  "claim": {
+    "text": "summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29",
+    "values": [
+      {"name": "P((2,3])", "paper": 0.2857142857142857, "tol_abs": 0.000001, "ours": 0.285714285714}
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "authors' archived interval 0.9-9.6 built with R CMD INSTALL in the sandbox; the paper's listing run as written; no edits",
+  "queue_commit": "161a8cdff68ea633a3a70c5035d037ef2e2c9e7a",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "authors' package built and ran clean with R and the dependencies installed in the sandbox during --fetch",
+    "log": "reports/fay2010-interval-npmle-example1/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "pass"
+  },
+  "recipe": "reports/fay2010-interval-npmle-example1/recipe.sh",
+  "evidence": [
+    "reports/fay2010-interval-npmle-example1/evidence/original-attempt.log",
+    "reports/fay2010-interval-npmle-example1/evidence/attempt1-conda-solve-failed.log",
+    "reports/fay2010-interval-npmle-example1/evidence/attempt2-mlecens-lib-missing.log",
+    "reports/fay2010-interval-npmle-example1/impl/run_original.R",
+    "reports/fay2010-interval-npmle-example1/note-to-scout.md",
+    "reports/fay2010-interval-npmle-example1/result.md"
+  ],
+  "replayed": [
+    {"utc": "2026-11-26T13:45:51Z", "value": 0.285714285714, "ok": true},
+    {"utc": "2026-11-26T13:45:51Z", "value": 0.285714285714, "ok": true}
+  ]
+}

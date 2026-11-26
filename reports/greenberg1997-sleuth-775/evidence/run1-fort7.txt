@@ -7,7 +7,7 @@
  Eigenvalue approximation:   4871.3813065256945     
  Error estimate:   4.0786404485212795E-004
  Number of extrapolations:           4
- CPU Time:   4.30499995E-03
+ CPU Time:   4.08199988E-03
  Number of meshpoints:         448
  Matchpoint:         224
  Multiplicity was           1
@@ -18,7 +18,7 @@
  Eigenvalue approximation:   4976.9512356069408     
  Error estimate:   1.5225886702561790E-003
  Number of extrapolations:           3
- CPU Time:   2.10200017E-03
+ CPU Time:   2.13300018E-03
  Number of meshpoints:         240
  Matchpoint:         120
  Multiplicity was           1
@@ -29,7 +29,7 @@
  Eigenvalue approximation:   5098.7101581805600     
  Error estimate:   4.4701753591652963E-003
  Number of extrapolations:           3
- CPU Time:   1.98199973E-03
+ CPU Time:   2.00700015E-03
  Number of meshpoints:         232
  Matchpoint:         116
  Multiplicity was           1
@@ -40,7 +40,7 @@
  Eigenvalue approximation:   53668.639570230553     
  Error estimate:   2.6738114407635293E-003
  Number of extrapolations:           3
- CPU Time:   4.41300031E-03
+ CPU Time:   4.43399977E-03
  Number of meshpoints:         480
  Matchpoint:         240
  Multiplicity was           1
@@ -51,7 +51,7 @@
  Eigenvalue approximation:   53668.639470209760     
  Error estimate:   1.6922125927521848E-003
  Number of extrapolations:           3
- CPU Time:   1.20529989E-02
+ CPU Time:   1.20360004E-02
  Number of meshpoints:        1104
  Matchpoint:         552
  Multiplicity was           1
@@ -62,7 +62,7 @@
  Eigenvalue approximation:   53668.639470209760     
  Error estimate:   1.6922125927521848E-003
  Number of extrapolations:           3
- CPU Time:   1.21770017E-02
+ CPU Time:   1.15009993E-02
  Number of meshpoints:        1104
  Matchpoint:         552
  Multiplicity was           1
@@ -76,7 +76,7 @@
  Eigenvalue approximation:  0.53638794294388359     
  Error estimate:   7.9753310838389282E-007
  Number of extrapolations:           4
- CPU Time:   3.28399986E-03
+ CPU Time:   3.33799794E-03
  Number of meshpoints:         320
  Matchpoint:         156
  Multiplicity was           1
@@ -87,7 +87,7 @@
  Eigenvalue approximation:   8148.6631335556758     
  Error estimate:   2.0179511782771444E-003
  Number of extrapolations:           3
- CPU Time:   1.57500058E-03
+ CPU Time:   1.60299987E-03
  Number of meshpoints:         164
  Matchpoint:          39
  Multiplicity was           1
@@ -98,7 +98,7 @@
  Eigenvalue approximation:   98014951.925962508     
  Error estimate:   4.1564778685569763     
  Number of extrapolations:           2
- CPU Time:   3.75400111E-03
+ CPU Time:   5.07599860E-03
  Number of meshpoints:         580
  Matchpoint:          91
  Multiplicity was           1
@@ -112,7 +112,7 @@
  Eigenvalue approximation:   1.9386425121932154     
  Error estimate:   4.9828086046884341E-007
  Number of extrapolations:           5
- CPU Time:   6.00399822E-03
+ CPU Time:   9.87599790E-03
  Number of meshpoints:         640
  Matchpoint:         320
  Multiplicity was           1
@@ -123,7 +123,7 @@
  Eigenvalue approximation:   2205.7121315413938     
  Error estimate:   2.8409194628693514E-004
  Number of extrapolations:           4
- CPU Time:   5.32599911E-03
+ CPU Time:   8.29299912E-03
  Number of meshpoints:         736
  Matchpoint:         368
  Multiplicity was           1
@@ -134,7 +134,7 @@
  Eigenvalue approximation:   1044329.6743992473     
  Error estimate:  0.96398493445788824     
  Number of extrapolations:           2
- CPU Time:  0.124738000    
+ CPU Time:  0.127767995    
  Number of meshpoints:       13980
  Matchpoint:        6990
  Multiplicity was           1
@@ -148,7 +148,7 @@
  Eigenvalue approximation:   3.4104592849924324E-006
  Error estimate:   1.8244003496349058E-007
  Number of extrapolations:           4
- CPU Time:   7.24099576E-03
+ CPU Time:   1.35429949E-02
  Number of meshpoints:         320
  Matchpoint:           1
  Multiplicity was           1
@@ -159,7 +159,7 @@
  Eigenvalue approximation:   1296.0000190370613     
  Error estimate:   9.8948475169891026E-005
  Number of extrapolations:           4
- CPU Time:   7.15400279E-03
+ CPU Time:   8.41799378E-03
  Number of meshpoints:         520
  Matchpoint:           1
  Multiplicity was           1
@@ -170,7 +170,7 @@
  Eigenvalue approximation:   5775.9998223002440     
  Error estimate:   1.8575669204553365E-004
  Number of extrapolations:           4
- CPU Time:   7.95000792E-03
+ CPU Time:   7.14300573E-03
  Number of meshpoints:         872
  Matchpoint:           1
  Multiplicity was           1
@@ -184,7 +184,7 @@
  Eigenvalue approximation:   5.2796655936057983E-013
  Error estimate:   2.4253099528701360E-013
  Number of extrapolations:           2
- CPU Time:   1.21900439E-03
+ CPU Time:   1.19501352E-03
  Number of meshpoints:          80
  Matchpoint:          40
  Multiplicity was           1
@@ -195,7 +195,7 @@
  Eigenvalue approximation:   4.0000240771484306     
  Error estimate:   5.0768443985068261E-007
  Number of extrapolations:           3
- CPU Time:   6.84098899E-03
+ CPU Time:   6.68500364E-03
  Number of meshpoints:         576
  Matchpoint:         288
  Multiplicity was           1
@@ -206,7 +206,7 @@
  Eigenvalue approximation:   36.000360211977579     
  Error estimate:   5.6530067861141713E-006
  Number of extrapolations:           3
- CPU Time:   7.40799308E-03
+ CPU Time:   1.08519942E-02
  Number of meshpoints:         736
  Matchpoint:         368
  Multiplicity was           1
@@ -217,7 +217,7 @@
  Eigenvalue approximation:   144.00202319264284     
  Error estimate:   3.5720198803801394E-005
  Number of extrapolations:           4
- CPU Time:   1.39150023E-02
+ CPU Time:   1.90849900E-02
  Number of meshpoints:        1552
  Matchpoint:         776
  Multiplicity was           1
@@ -228,7 +228,7 @@
  Eigenvalue approximation:   8100.3076334159232     
  Error estimate:   1.3412095205543059E-003
  Number of extrapolations:           3
- CPU Time:   1.40350014E-02
+ CPU Time:   1.37989819E-02
  Number of meshpoints:        1376
  Matchpoint:         688
  Multiplicity was           1
@@ -242,7 +242,7 @@
  Eigenvalue approximation:   695.62040641668250     
  Error estimate:   9.0380134906808962E-005
  Number of extrapolations:           4
- CPU Time:   6.48498535E-03
+ CPU Time:   1.11950040E-02
  Number of meshpoints:         440
  Matchpoint:         439
  Multiplicity was           1
@@ -253,7 +253,7 @@
  Eigenvalue approximation:   5019.7261160256166     
  Error estimate:   1.9928932171145181E-003
  Number of extrapolations:           4
- CPU Time:   4.08700109E-03
+ CPU Time:   5.57500124E-03
  Number of meshpoints:         432
  Matchpoint:         431
  Multiplicity was           1
@@ -264,7 +264,7 @@
  Eigenvalue approximation:   18230.611326712431     
  Error estimate:   7.3631073437960973E-003
  Number of extrapolations:           3
- CPU Time:   2.45597959E-03
+ CPU Time:   2.38099694E-03
  Number of meshpoints:         252
  Matchpoint:         251
  Multiplicity was           1
@@ -275,7 +275,7 @@
  Eigenvalue approximation:   47926.085527085590     
  Error estimate:   9.0276538947364308E-003
  Number of extrapolations:           3
- CPU Time:   3.16700339E-03
+ CPU Time:   2.86599994E-03
  Number of meshpoints:         320
  Matchpoint:         319
  Multiplicity was           1
@@ -286,7 +286,7 @@
  Eigenvalue approximation:   1292322.6251746872     
  Error estimate:   4.5404140682270130E-003
  Number of extrapolations:           3
- CPU Time:   1.38380229E-02
+ CPU Time:   9.31599736E-03
  Number of meshpoints:         916
  Matchpoint:         915
  Multiplicity was           1
@@ -300,7 +300,7 @@
  Eigenvalue approximation:   5.2796655936057983E-013
  Error estimate:   2.4253099528701360E-013
  Number of extrapolations:           2
- CPU Time:   1.59600377E-03
+ CPU Time:   1.03297830E-03
  Number of meshpoints:          80
  Matchpoint:          40
  Multiplicity was           1
@@ -311,7 +311,7 @@
  Eigenvalue approximation:   8.0000060292855437     
  Error estimate:   2.2802854632667883E-007
  Number of extrapolations:           3
- CPU Time:   5.60000539E-03
+ CPU Time:   3.79398465E-03
  Number of meshpoints:         392
  Matchpoint:         196
  Multiplicity was           1
@@ -322,7 +322,7 @@
  Eigenvalue approximation:   48.000102314350627     
  Error estimate:   4.1239443064000621E-006
  Number of extrapolations:           3
- CPU Time:   7.57098198E-03
+ CPU Time:   5.05399704E-03
  Number of meshpoints:         544
  Matchpoint:         272
  Multiplicity was           1
@@ -333,7 +333,7 @@
  Eigenvalue approximation:   168.00056021244347     
  Error estimate:   2.5523738016393813E-005
  Number of extrapolations:           4
- CPU Time:   1.40359998E-02
+ CPU Time:   9.51299071E-03
  Number of meshpoints:        1104
  Matchpoint:         552
  Multiplicity was           1
@@ -344,7 +344,7 @@
  Eigenvalue approximation:   8280.0785836723717     
  Error estimate:   6.2927939143264663E-005
  Number of extrapolations:           3
- CPU Time:   1.99120045E-02
+ CPU Time:   2.83159912E-02
  Number of meshpoints:        1744
  Matchpoint:         872
  Multiplicity was           1
@@ -358,7 +358,7 @@
  Eigenvalue approximation:  -8.2106327329671082E-009
  Error estimate:   1.0266376202864674E-009
  Number of extrapolations:           2
- CPU Time:   1.03801489E-03
+ CPU Time:   1.01599097E-03
  Number of meshpoints:          80
  Matchpoint:          79
  Multiplicity was           1
@@ -369,7 +369,7 @@
  Eigenvalue approximation:   5.4160182391694107     
  Error estimate:   3.6438898288291542E-008
  Number of extrapolations:           5
- CPU Time:   7.92300701E-03
+ CPU Time:   8.03998113E-03
  Number of meshpoints:         800
  Matchpoint:           1
  Multiplicity was           1
@@ -380,7 +380,7 @@
  Eigenvalue approximation:   12.475719184759550     
  Error estimate:   1.1498949043560931E-005
  Number of extrapolations:           4
- CPU Time:   1.42320096E-02
+ CPU Time:   1.39269829E-02
  Number of meshpoints:        1040
  Matchpoint:           1
  Multiplicity was           1
@@ -391,7 +391,7 @@
  Eigenvalue approximation:   21.498734275660848     
  Error estimate:   1.7401896151625350E-006
  Number of extrapolations:           5
- CPU Time:   3.62180173E-02
+ CPU Time:   3.48249972E-02
  Number of meshpoints:        2112
  Matchpoint:           1
  Multiplicity was           1
@@ -402,7 +402,7 @@
  Eigenvalue approximation:   137.48224610685139     
  Error estimate:   2.6258504537205832E-005
  Number of extrapolations:           5
- CPU Time:   3.38500142E-02
+ CPU Time:   4.36669886E-02
  Number of meshpoints:        1824
  Matchpoint:           1
  Multiplicity was           1
@@ -416,7 +416,7 @@
  Eigenvalue approximation:   5.2796655936057983E-013
  Error estimate:   2.4253099528701360E-013
  Number of extrapolations:           2
- CPU Time:   1.11800432E-03
+ CPU Time:   1.10101700E-03
  Number of meshpoints:          92
  Matchpoint:          91
  Multiplicity was           1
@@ -427,7 +427,7 @@
  Eigenvalue approximation:   18.000033251555454     
  Error estimate:   8.6295632129917980E-006
  Number of extrapolations:           3
- CPU Time:   3.78099084E-03
+ CPU Time:   3.59597802E-03
  Number of meshpoints:         364
  Matchpoint:           1
  Multiplicity was           1
@@ -438,7 +438,7 @@
  Eigenvalue approximation:   88.000305378280700     
  Error estimate:   4.9664015627589227E-005
  Number of extrapolations:           3
- CPU Time:   3.17400694E-03
+ CPU Time:   3.14101577E-03
  Number of meshpoints:         348
  Matchpoint:           1
  Multiplicity was           1
@@ -449,7 +449,7 @@
  Eigenvalue approximation:   270.00099182772414     
  Error estimate:   1.6792699897223430E-004
  Number of extrapolations:           4
- CPU Time:   6.27797842E-03
+ CPU Time:   6.24701381E-03
  Number of meshpoints:         768
  Matchpoint:           1
  Multiplicity was           1
@@ -460,7 +460,7 @@
  Eigenvalue approximation:   10098.100982097229     
  Error estimate:   3.0177825562229069E-004
  Number of extrapolations:           3
- CPU Time:   1.98110044E-02
+ CPU Time:   1.98059678E-02
  Number of meshpoints:        1776
  Matchpoint:           1
  Multiplicity was           1
@@ -474,7 +474,7 @@
  Eigenvalue approximation:   24.000032394993564     
  Error estimate:   2.0734966425569232E-005
  Number of extrapolations:           3
- CPU Time:   1.68001652E-03
+ CPU Time:   1.63996220E-03
  Number of meshpoints:         160
  Matchpoint:          80
  Multiplicity was           1
@@ -485,7 +485,7 @@
  Eigenvalue approximation:   120.00039174866703     
  Error estimate:   2.2744877134073251E-005
  Number of extrapolations:           5
- CPU Time:   5.70997596E-03
+ CPU Time:   5.72305918E-03
  Number of meshpoints:         640
  Matchpoint:         320
  Multiplicity was           1
@@ -496,7 +496,7 @@
  Eigenvalue approximation:   360.00160864304814     
  Error estimate:   4.3425882783291554E-005
  Number of extrapolations:           5
- CPU Time:   5.77199459E-03
+ CPU Time:   5.69397211E-03
  Number of meshpoints:         672
  Matchpoint:         336
  Multiplicity was           1
@@ -507,7 +507,7 @@
  Eigenvalue approximation:   840.00461042322922     
  Error estimate:   1.1590265713342281E-004
  Number of extrapolations:           5
- CPU Time:   6.48301840E-03
+ CPU Time:   6.38198853E-03
  Number of meshpoints:         736
  Matchpoint:         368
  Multiplicity was           1
@@ -518,7 +518,7 @@
  Eigenvalue approximation:   17160.196908796803     
  Error estimate:   3.4883738973197371E-003
  Number of extrapolations:           3
- CPU Time:   4.35501337E-03
+ CPU Time:   4.29397821E-03
  Number of meshpoints:         496
  Matchpoint:         248
  Multiplicity was           1

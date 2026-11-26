@@ -1,0 +1,54 @@
+{
+  "paper": {
+    "title": "Algorithm 801: POLSYS_PLP: A partitioned linear product homotopy code for solving polynomial systems of equations",
+    "authors": [
+      "Stephen M. Wise",
+      "Andrew J. Sommese",
+      "Layne T. Watson"
+    ],
+    "year": 2000,
+    "venue": "ACM Transactions on Mathematical Software 26(1), 176 (TOMS 801, Mar 2000)",
+    "doi": null,
+    "url": "https://netlib.org/toms/801.gz"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/801.gz",
+    "archive": "sha256 ea179f8d264d8130755145cfe02f51a2d789ae7d6d3fde55bddbd725d9ff78ad (netlib.org/toms/801.gz as fetched 2026-11-26, HTTP 200)",
+    "commit": "netlib TOMS archive 801.gz (fetched 2026-11-26)",
+    "note": "Fortran 90 shell archive (Fortran90/Dp/). Remove the header above the shar body and run it with sh to create Fortran90/ with polsys_plp.f90, lapack_plp.f, and the Drivers/ directory (main_template.f90, test_install.f90, INPUT.DAT, OUTPUT.DAT). Note: the archive's own OUTPUT.DAT is the reference used here. The claim does not use a fresh run of the shell archive's test_install."
+  },
+  "field": "numerics (polynomial systems, homotopy continuation)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "stochastic",
+    "seed": 32749,
+    "location": "The shipped reference output Fortran90/Drivers/OUTPUT.DAT (member of 801.gz), first problem 'TWO QUADRICS, NO SOLUTIONS AT INFINITY, TWO REAL SOLUTIONS', the path whose output is 'REAL, FINITE SOLUTION' with X( 1) = ( 2.34233851959121E+03, -2.71046941433355E-11) and X( 2) = ( -7.88344824094120E-01, 9.12116375191414E-15).",
+    "reference": {
+      "file": "Fortran90/Drivers/OUTPUT.DAT (member of 801.gz), real finite solution with X(1) real part 2.34233851959121E+03",
+      "sha256": null,
+      "archive": "netlib.org/toms/801.gz sha256 ea179f8d264d8130755145cfe02f51a2d789ae7d6d3fde55bddbd725d9ff78ad"
+    },
+    "metric": "Real part of X(2) at the real finite solution of the first INPUT.DAT problem (TWO QUADRICS, real solution with X(1) near 2342.3385), compared with -0.788344824094120 from OUTPUT.DAT, absolute difference. The run must use the archive's INPUT.DAT and main_template.f90 with the default TRACKTOL 1e-4 and FINALTOL 1e-14 values from the input file.",
+    "paper_value": "Not used: the paper is paywalled and was not read.",
+    "values": [
+      {
+        "name": "TWO QUADRICS real finite solution, Re X(2)",
+        "paper": -0.788344824094120,
+        "tol_abs": 1e-06
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 1e-06,
+      "basis": "Fixed before any run. The reference X(2) has magnitude 0.79 and FINALTOL is 1e-14, so the solver's own root accuracy is far below 1e-6. The tolerance absorbs (a) the start system drawn with RANDOM_NUMBER after RANDOM_SEED=32749, whose generator is compiler-specific, and (b) floating-point differences across compilers. The root set is unique, so a different path order is allowed. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 5 minutes: compile lapack_plp.f and polsys_plp.f90 with gfortran, then one run of the first INPUT.DAT problem.",
+    "data_size": "None beyond the archive (about 470 KB uncompressed).",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "The shipped OUTPUT.DAT of a standard homotopy solver lists the roots of a small polynomial system, so one real root is a checkable number that the method must compute from the input coefficients.",
+  "registered": "2026-11-26T21:00Z"
+}

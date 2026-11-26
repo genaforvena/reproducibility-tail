@@ -1,0 +1,62 @@
+{
+  "paper": {
+    "title": "Algorithm 851: CG_DESCENT, a conjugate gradient method with guaranteed descent",
+    "authors": [
+      "William W. Hager",
+      "Hongchao Zhang"
+    ],
+    "year": 2006,
+    "venue": "ACM Transactions on Mathematical Software 32(1), 113-137 (TOMS 851, 2006)",
+    "doi": null,
+    "url": "https://netlib.org/toms/851.zip"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/851.zip",
+    "archive": "sha256 0ac7f494b814e7c7cb5eb13d8b5b2d569ed7c9d575486614a6f6dc7b681f4e95 (netlib.org/toms/851.zip as fetched 2026-11-26, HTTP 200, 30 members)",
+    "commit": "netlib TOMS archive 851.zip (fetched 2026-11-26)",
+    "note": "Fortran 77 package. Fortran/Dp/Src/src.f holds cg_descent and its routines; Fortran/Dp/Drivers/driver1.f is the User's Guide example (n = 100, starting point x = 1, grad_tol 1.d-8, default cg.parm). Compile src.f with driver1.f with gfortran and run it. The shipped Fortran/Dp/Drivers/res1 holds the printed result of that run."
+  },
+  "field": "numerics (unconstrained optimization, nonlinear conjugate gradient)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped reference output Fortran/Dp/Drivers/res1 (member of 851.zip), the printed run of driver1.f: 'cg iterations: 32', 'function evaluations: 55', 'gradient evaluations: 45' for the 100-variable separable problem started at x = 1 with grad_tol 1.d-8.",
+    "reference": {
+      "file": "Fortran/Dp/Drivers/res1 (member of 851.zip)",
+      "sha256": null,
+      "archive": "netlib.org/toms/851.zip sha256 0ac7f494b814e7c7cb5eb13d8b5b2d569ed7c9d575486614a6f6dc7b681f4e95"
+    },
+    "metric": "The three integer counters the driver prints (CG iterations, function evaluations, gradient evaluations) for driver1.f, compared exactly with 32, 55 and 45 from res1.",
+    "paper_value": "Not used: the paper was not read in this wake.",
+    "values": [
+      {
+        "name": "driver1 cg iterations",
+        "paper": 32,
+        "tol_abs": 0
+      },
+      {
+        "name": "driver1 function evaluations",
+        "paper": 55,
+        "tol_abs": 0
+      },
+      {
+        "name": "driver1 gradient evaluations",
+        "paper": 45,
+        "tol_abs": 0
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 0,
+      "basis": "Fixed before any run. The three values are integer counts from a deterministic algorithm, so the claim is an exact match. The function value (-653.0786727) is not claimed, because the separable minimum is available in closed form and would test nothing. A mismatch in a count is a finding to record and explain, not a reason to widen the tolerance."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: one gfortran compile and one run of a 100-variable problem.",
+    "data_size": "None beyond the archive.",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "The shipped res1 is a printed run of a nonlinear conjugate gradient code, and its iteration and evaluation counts depend on the line search, which is the method itself and is not a closed form.",
+  "registered": "2026-11-26T21:01Z"
+}

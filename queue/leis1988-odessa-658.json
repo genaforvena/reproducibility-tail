@@ -1,0 +1,52 @@
+{
+  "paper": {
+    "title": "Algorithm 658: ODESSA, an ordinary differential equation solver with explicit simultaneous sensitivity analysis",
+    "authors": [
+      "J. R. Leis",
+      "M. A. Kramer"
+    ],
+    "year": 1988,
+    "venue": "ACM Transactions on Mathematical Software 14(1), 61-67 (TOMS 658, 1988)",
+    "doi": null,
+    "url": "https://netlib.org/toms/658.gz"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/658.gz",
+    "archive": "sha256 7a49de7ea689790c1f36fc6c9397344618b37c9d22d694d6c18b4b5951f40494 (netlib.org/toms/658.gz as fetched 2026-11-26, HTTP 200)",
+    "commit": "netlib TOMS archive 658.gz (fetched 2026-11-26)",
+    "note": "Fortran 77 source (double precision, IMPLICIT DOUBLE PRECISION) with the ODESSA package and its demonstration program PROGRAM MAIN (the card comment calls it LSDEM). The demonstration solves a second-order chemical kinetics problem (NEQ 3, NPAR 3) and prints sensitivities for METH 1-2 and MITER 0-5. The printed reference output is written as comments in the source, after the subroutine listings (about line 539 of the unpacked file). The rerun must run the demonstration program itself, not copy the comments."
+  },
+  "field": "numerics (ODE integration with sensitivity analysis)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The demonstration output printed in the source comments of 658.gz (first output block, after the 'THE OUTPUT OF THIS PROGRAM' note): the line 'AT T = .4000E+01   Y = .905516E+00 .224044E-04 .944615E-01', that is the value of Y(1) at T = 4.0 for the first method/MITER variant.",
+    "reference": {
+      "file": "The comment block after the source of the ODESSA package in 658.gz (member of the archive, first printed output block)",
+      "sha256": null,
+      "archive": "netlib.org/toms/658.gz sha256 7a49de7ea689790c1f36fc6c9397344618b37c9d22d694d6c18b4b5951f40494"
+    },
+    "metric": "Y(1) at T = 4.0 from the demonstration program's first output block (METH 1, MITER 0), compared with 0.905516 printed there, absolute difference.",
+    "paper_value": "Not used: the paper was not read in this wake.",
+    "values": [
+      {
+        "name": "chemical kinetics demo, Y(1) at T=4.0, METH 1 MITER 0",
+        "paper": 0.905516,
+        "tol_abs": 1e-05
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 1e-05,
+      "basis": "Fixed before any run. The reference is printed to 6 significant digits (rounding 5e-7). The integrator is run at ITOL 2 with ATOL 1e-6 (Y) and 1e-5 (sensitivities), so the solution error is of that order. The archive's own second printed block for the same point differs from this one by 1e-6 in other components, so 1e-5 absolute allows the integrator's error and compiler differences while still resolving the 5th decimal. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: compile the ODESSA source and run the demonstration program once (all METH and MITER variants take well under a second).",
+    "data_size": "None beyond the archive.",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "The demonstration's printed output is a deterministic ODE solution at a fixed time, so one value at T = 4.0 is a checkable number that requires the integrator and sensitivity method to compute.",
+  "registered": "2026-11-26T21:00Z"
+}

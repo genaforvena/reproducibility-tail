@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-6 papers attempted.
+7 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
-| A | authors' code, run clean | 4 |
+| A | authors' code, run clean | 5 |
 | B | authors' code with build fixes | 0 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 0 |
 | - | blocked or not yet run | 1 |
 
-By field: computational biology (synthetic gene networks, bifurcation analysis) 1, computational mathematics / statistics (nonlinear equation solving, multiple roots) 1, cosmology (PDS cluster counts, Table 1) 1, ecology (species richness estimation from incidence/abundance samples) 1, statistics (beta regression, maximum likelihood) 1, statistics (interval-censored data, nonparametric maximum likelihood) 1
-By stack: Python 3 (sandbox /usr/bin/python3), numpy 2.5.5; replication repo baioc/re-multif at 3ab84df (Octave artifact not run; no Hopf computation in it) 1, R 4.5.3 (sandbox, conda-forge and bioconda), archived interval 0.9-9.6, Icens 1.82.0 (bioconda), MLEcens 0.1.7.1 (CRAN), perm 1.0-0.4, survival 3.8-12 1, R 4.5.3 (sandbox, conda-forge), archived BB 2009.9-1, setRNG and numDeriv (current conda-forge) 1, R 4.5.3 (sandbox, conda-forge), archived betareg 3.0-0 1, R 4.6.2 (sandbox, conda-forge), archived SPECIES 1.0 1, circles (build 0.3.2.1) with a build-only pgplot stub (patched, not run) 1
-By decade: 2000 2, 2010 4
+By field: computational biology (synthetic gene networks, bifurcation analysis) 1, computational mathematics / statistics (nonlinear equation solving, multiple roots) 1, cosmology (PDS cluster counts, Table 1) 1, ecology (species richness estimation from incidence/abundance samples) 1, statistics (beta regression, maximum likelihood) 1, statistics (interval-censored data, nonparametric maximum likelihood) 1, statistics (model-based clustering, robust mixtures) 1
+By stack: Python 3 (sandbox /usr/bin/python3), numpy 2.5.5; replication repo baioc/re-multif at 3ab84df (Octave artifact not run; no Hopf computation in it) 1, R 4.5.3 (sandbox, conda-forge and bioconda), archived interval 0.9-9.6, Icens 1.82.0 (bioconda), MLEcens 0.1.7.1 (CRAN), perm 1.0-0.4, survival 3.8-12 1, R 4.5.3 (sandbox, conda-forge), archived BB 2009.9-1, setRNG and numDeriv (current conda-forge) 1, R 4.5.3 (sandbox, conda-forge), archived betareg 3.0-0 1, R 4.6.2 (sandbox, conda-forge), ContaminatedMixt 1.0 (CRAN archive), mixture 2.2.1, mnormt 2.1.2, mclust 6.1.4 (current CRAN at fetch time) 1, R 4.6.2 (sandbox, conda-forge), archived SPECIES 1.0 1, circles (build 0.3.2.1) with a build-only pgplot stub (patched, not run) 1
+By decade: 2000 2, 2010 5
 
 ## The funnel
 
@@ -39,6 +39,8 @@ Not yet framed: 0 candidates in the legacy rejection log and 5 attempted papers 
 | no-numeric-claim | 8 |
 | claim-not-located | 6 |
 | no-method-description | 0 |
+| stochastic-no-seed | 0 |
+| no-code | 0 |
 | runtime | 0 |
 | machine-dependent | 2 |
 | restricted-data | 0 |
@@ -46,6 +48,8 @@ Not yet framed: 0 candidates in the legacy rejection log and 5 attempted papers 
 | other | 14 |
 | unreachable-code | 0 |
 | unreachable-data | 0 |
+
+Note: 14 of 39 non-attempts are filed as `other`, more than 15%; a reason that common needs its own code.
 
 Survivorship: the share of each stack among all candidates considered, and among those attempted.
 
@@ -63,7 +67,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact among attempted papers: not-possible 2, succeeded 4.
+Authors' original artifact among attempted papers: not-possible 2, partial 1, succeeded 4.
 
 ## Results
 
@@ -71,6 +75,8 @@ Authors' original artifact among attempted papers: not-possible 2, succeeded 4.
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics (interval-censored data, nonparametric maximum likelihood) · 2010 · R 4.5.3 (sandbox, conda-forge and bioconda), archived interval 0.9-9.6, Icens 1.82.0 (bioconda), MLEcens 0.1.7.1 (CRAN), perm 1.0-0.4, survival 3.8-12 | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics (beta regression, maximum likelihood) · 2012 · R 4.5.3 (sandbox, conda-forge), archived betareg 3.0-0 | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [punzo2016-wine-cnm-bic](reports/punzo2016-wine-cnm-bic/result.md) | statistics (model-based clustering, robust mixtures) · 2016 · R 4.6.2 (sandbox, conda-forge), ContaminatedMixt 1.0 (CRAN archive), mixture 2.2.1, mnormt 2.1.2, mclust 6.1.4 (current CRAN at fetch time) | Section 7.3 (wine data), Table 11, CNMs row: BIC-selected (G, parsimonious structure) over G in {1,2,3,4} and the 14 structures, labels ignored, seed 1 (selected_G) | 3 ± 0 | 3 | 0 | – | original | ✓ · ✓ · | A | reproduced | never clean |
+| [punzo2016-wine-cnm-bic](reports/punzo2016-wine-cnm-bic/result.md) | statistics (model-based clustering, robust mixtures) · 2016 · R 4.6.2 (sandbox, conda-forge), ContaminatedMixt 1.0 (CRAN archive), mixture 2.2.1, mnormt 2.1.2, mclust 6.1.4 (current CRAN at fetch time) | Section 7.3 (wine data), Table 11, CNMs row: BIC-selected (G, parsimonious structure) over G in {1,2,3,4} and the 14 structures, labels ignored, seed 1 (selected_structure_index) | 7 ± 0 | 7 | 0 | – | original | ✓ · ✓ · | A | reproduced | never clean |
 | [purcell2011-fig5-hopf](reports/purcell2011-fig5-hopf/result.md) | computational biology (synthetic gene networks, bifurcation analysis) · 2011 · Python 3 (sandbox /usr/bin/python3), numpy 2.5.5; replication repo baioc/re-multif at 3ab84df (Octave artifact not run; no Hopf computation in it) | Input concentration I (nM) of the Hopf bifurcation of equilibrium c1, Figure 5 caption (~7 nM) (Hopf input I (nM)) | 7 ± 0.5 | 7.1875 | 0.1875 | 38% | reimplemented | ✓ ✓ ✓ ✓ | C | reproduced | 2026-11-26 ok |
 | [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | cosmology (PDS cluster counts, Table 1) · 2008 · circles (build 0.3.2.1) with a build-only pgplot stub (patched, not run) | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_A) | 1317 ± 132 | – | – | – | - | · · · · | - | blocked | never clean |
 | [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | cosmology (PDS cluster counts, Table 1) · 2008 · circles (build 0.3.2.1) with a build-only pgplot stub (patched, not run) | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_C) | 52 ± 5 | – | – | – | - | · · · · | - | blocked | never clean |

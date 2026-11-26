@@ -8,7 +8,7 @@
    "every": 60,
    "timeout": 30,
    "max_age": 300,
-   "resolver": "rerun",
+   "resolver": "operator",
    "replaces": [],
    "covers": "a wake left open (started/unknown) longer than 30 minutes"
   },
@@ -80,7 +80,7 @@
    "unknown_codes": [
     3
    ],
-   "resolver": "rerun",
+   "resolver": "operator",
    "replaces": [],
    "covers": "local main reaches GitHub within a quarter hour (checks/push-lag.py): RED when the oldest unpushed commit is older, or main has diverged; UNKNOWN when the remote cannot be read. The post-commit hook (tools/post-commit-push.sh) pushes after a 30 s settle; the 17-commit backlog of 2026-11-26 had no hook"
   },

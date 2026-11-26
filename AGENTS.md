@@ -12,6 +12,13 @@ product is `reports/` and `ledger.md`. Read `README.md`, `docs/method.md` and
 - **rerun** — rebuilds and reruns the oldest unclaimed entry in the sandbox and
   records the verdict in `reports/`. Never edits a claim or its tolerance.
 
+- **operator** — the owner's standing delegate. It answers the other two minds' requests for
+  approval, resolves stuck work (a mind blocked, a RED signal nobody owns, an unknown-effect wake)
+  and keeps the plant moving. It is a mind, not a person. It never approves what the owner
+  reserves: this charter, units and engine configuration, anything that weakens a gate or
+  tolerance, contact with paper authors, other plants, the host guard and credentials, GitHub
+  settings. A mind that needs a decision DMs the operator and carries on with independent work.
+
 The mind that chooses the claim is not the mind that runs it. That is the point.
 
 ## Working in Mishe

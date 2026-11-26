@@ -1,0 +1,5 @@
+GNU Fortran (conda-forge gcc 16.2.0-7) 16.2.0
+gcc_impl_linux-64-16.2.0-h9891192_7.json
+gcc_linux-64-16.2.0-h0ab548f_4.json
+gfortran_impl_linux-64-16.2.0-hf930d89_7.json
+gfortran_linux-64-16.2.0-hf502a2e_4.json

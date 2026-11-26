@@ -22,7 +22,7 @@ echo "== fetch: 775.gz (sha256 checked), unshar with sh, micromamba gfortran (co
 tools/sandbox.sh --fetch "$ID" -- sh -c "set -e; cd /work; curl -fsSL -o 775.gz '$URL'; echo '$SHA  775.gz' | sha256sum -c -; gunzip -kf 775.gz; \
   rm -rf /work/pre; mkdir -p /work/pre && cd /work/pre && n=\$(grep -n '^#! /bin/sh' /work/775 | head -1 | cut -d: -f1); tail -n +\$n /work/775 > /work/775.sh && sh /work/775.sh; \
   cd /work; mkdir -p bin; curl -fsSL -o mm.tar.bz2 https://micro.mamba.pm/api/micromamba/linux-64/latest; tar -xjf mm.tar.bz2 -C bin --strip-components=1 bin/micromamba; \
-  MAMBA_ROOT_PREFIX=/work/mamba ./bin/micromamba create -y -q -p /work/fortran -c conda-forge gfortran_linux-64" || { echo "FETCH-FAILED"; exit 1; }
+  MAMBA_ROOT_PREFIX=/work/mamba ./bin/micromamba create -y -q -p /work/fortran -c conda-forge 'gfortran_linux-64=16.2.0'" || { echo "FETCH-FAILED"; exit 1; }
 tools/sandbox.sh "$ID" -- test -f /work/pre/Src/Dp/src.f || { echo "UNPACK-FAILED"; exit 1; }
 
 echo "== shipped sources (registered archive and member hashes)"

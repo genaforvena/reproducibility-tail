@@ -89,7 +89,9 @@ def basis_cell(r: dict) -> str:
     basis = r.get("basis", "?")
     patch = r.get("patch") or {}
     if basis == "patched" and patch.get("kind") == "build-only":
-        return "patched (build-only)"
+        tool = patch.get("tool") or {}
+        n = len(tool.get("modified", [])) + len(tool.get("added", [])) + len(tool.get("removed", []))
+        return "patched (build-only" + (f"; the build tool rewrote {n} files)" if n else ")")
     return basis
 
 

@@ -132,19 +132,29 @@ example micromamba) and try again before concluding the original cannot run.
 
 ## Build-only patches
 
-Old archives often fail only at the build: a Makefile that cannot find a header, a missing compiler
-alias, a library path. Fixing that changes no number, so it has nothing to check against the paper.
-But "I only touched the build" cannot be taken on trust, so it is proved from bytes. The recipe takes a
-manifest of the authors' source files (`tools/verify_sources.py manifest DIR`) right after it unpacks
-the archive (before any patch) and another after the build, then runs
-`tools/verify_sources.py record --repo . --id ID --pre PRE --post POST` (with
-`--generated GLOB=REASON` for files the authors' own build writes, such as configure output). The
-patch is `build-only` when no source file the authors wrote was modified or removed, at least one was
-compared, and every added source file is a declared generated file with a stated reason. The report keeps both
-manifests; `checks/gates.py` recomputes the comparison from them, requires it to equal the record, and
-requires the archive hash to be the one registered in the queue entry. Only then is gate G2 satisfied
-without a paper check, and the ledger shows `patched (build-only)`. Any other patch (a modified file, an added stub or
-rewrite) keeps the full G2 check. A `reimplemented` result can never be build-only.
+Old archives often fail only at the build: a Makefile that cannot find a header, a missing compiler alias,
+a library path. Fixing that changes no number, so it has nothing to check against the paper. But "I only
+touched the build" cannot be taken on trust, so it is proved from bytes. The recipe takes three manifests of
+the authors' source files with `tools/verify_sources.py manifest DIR`: **pre** right after it unpacks the
+archive, **mid** after our own patch step and immediately before the build commands, **post** after the
+build. Then `tools/verify_sources.py record --repo . --id ID --pre PRE --mid MID --post POST --command CMD`
+(one `--command` per build command, exactly as the recipe runs it) copies the manifests into the report and
+writes result.json `patch`.
+
+The patch is `build-only` when pre and mid are identical (at least one file compared): nothing we did
+changed a source file before the authors' build ran. What the authors' own build tool rewrites between mid
+and post is recorded as `tool` changes and shown in the ledger ("patched (build-only; the build tool rewrote
+N files)"), but does not disqualify: NTL's configure rewrites `config.h` in place by design.
+
+That leaves one way to cheat, an edit hidden inside the build step, so `checks/gates.py` also requires
+`recipe.sh` to call the manifest tool exactly three times, the recorded build commands to appear between
+the second and third call, and that whole region to contain no in-place editing (`sed -i`, `patch`,
+`git apply`, redirection or `tee`/`cp`/`mv` into a source file, scripted writes). That scan is a heuristic,
+not a proof: an edit hidden in a script the build calls is not seen, which is why the label shows what the
+build tool rewrote. The gate recomputes everything from the manifests in the report and requires the archive
+hash to equal the one registered in the queue entry. Only then is gate G2 satisfied without a paper check.
+Any other patch (a modified or removed file, an added stub, a rewrite) keeps the full G2 check, and a
+`reimplemented` result can never be build-only.
 
 ## Where a claim's value may come from
 
@@ -176,7 +186,7 @@ Each report ends with `reports/<id>/result.json`, written by `rerun`:
   `failed` (it did not run) or `not-possible` (no code exists). The basis must fit it: `original` needs
   `succeeded`; `patched` needs `partial` or `failed`; `reimplemented` needs `failed` or `not-possible`. So a
   per-fit driver around a call that halts is `patched`, never `original`
-- `patch` (for a patched basis): `{kind, archive_sha256, compared, modified, removed, added, generated, manifest_pre, manifest_post}`, written by `tools/verify_sources.py record`
+- `patch` (for a patched basis): `{kind, archive_sha256, compared, ours, tool, build_commands, manifests}`, written by `tools/verify_sources.py record`
 - `gates`: `G1`, `G2`, `G3`, `G5`, `G6` each `pass`, `fail` or `na`, and `cross_check`
 - `recipe` and `evidence` (paths), `replayed`: a list of `{utc, value, ok}`
 

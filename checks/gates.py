@@ -12,8 +12,9 @@ Checked mechanically, per reports/ID/result.json:
       (succeeded), patched needs partial or failed, reimplemented needs failed or not-possible;
       the attempt carries a reason and, unless not-possible, an existing log
   G2  a reimplemented or patched reproduced result needs gates.G2 == pass, except a patched one whose
-      `patch` is build-only: the authors' source files byte-identical before and after (re-derived here
-      from the two manifests in the report, archive hash equal to the queue entry's)
+      `patch` is build-only: the authors' source files byte-identical between unpacking and the start of the
+      build (three manifests kept in the report and re-derived here; the build commands from recipe.sh with no
+      in-place edits; archive hash equal to the queue entry's). What the authors' own build tool rewrites is shown, not judged.
   G3  recipe exists; a reproduced result needs a replay (gates.G3 == pass)
   G4  the stated verdict equals the verdict computed from the recorded values
   G0b an artifact-reference claim keeps the shipped reference output in the report, hash-checked
@@ -45,10 +46,13 @@ def last_commit(repo: Path, rel: str) -> str:
 def build_only_problems(repo: Path, rid: str, r: dict, qrel) -> list[str]:
     """Problems with a `patch` record that claims kind build-only; [] when it holds (or claims nothing).
 
-    The claim is re-derived, never trusted: the two manifests kept in the report are compared again,
-    the recorded lists must equal the recomputed ones, no authors' source file may be modified or
-    removed, each added file must be a declared generated file with a reason, and the archive hash must
-    be the one registered in the queue entry.
+    Nothing in the record is trusted. The three manifests kept in the report are compared again: pre
+    (after unpacking) and mid (after our patch step, before the build) must be identical, so we changed
+    no source file; the recorded lists must equal the recomputed ones; what the authors' own build tool
+    rewrote between mid and post is recomputed too (and shown in the ledger, not judged). recipe.sh must
+    call the manifest tool three times, the recorded build commands must appear between the second and
+    third call, and that region must not contain in-place editing. The archive hash must be the one the
+    queue entry registered.
     """
     p = r.get("patch")
     if not isinstance(p, dict) or p.get("kind") != "build-only":
@@ -56,24 +60,40 @@ def build_only_problems(repo: Path, rid: str, r: dict, qrel) -> list[str]:
     bad: list[str] = []
     if r.get("basis") != "patched":
         bad.append(f"{rid}: a build-only patch belongs to basis patched, not {r.get('basis')!r}")
-    pre, post = repo / "reports" / rid / "evidence" / "manifest.pre", repo / "reports" / rid / "evidence" / "manifest.post"
-    if not (pre.is_file() and post.is_file()):
-        return bad + [f"{rid}: build-only patch needs reports/{rid}/evidence/manifest.pre and manifest.post"]
-    diff = verify_sources.compare(verify_sources.parse(pre.read_text(encoding="utf-8")),
-                                  verify_sources.parse(post.read_text(encoding="utf-8")))
-    for key in ("compared", "modified", "removed", "added"):
-        if p.get(key) != diff[key]:
-            bad.append(f"{rid}: patch.{key} does not match the manifests ({p.get(key)!r} recorded, {diff[key]!r} recomputed)")
-    if verify_sources.classify(diff, p.get("generated") or []) != "build-only":
-        bad.append(f"{rid}: the manifests do not show a build-only patch (modified {diff['modified'][:3]}, removed "
-                   f"{diff['removed'][:3]}, added without a declared reason {diff['added'][:3]}, compared {diff['compared']})")
+    ev = repo / "reports" / rid / "evidence"
+    texts = {}
+    for n in ("pre", "mid", "post"):
+        f = ev / f"manifest.{n}"
+        if not f.is_file():
+            return bad + [f"{rid}: build-only patch needs reports/{rid}/evidence/manifest.{n} (three manifests: pre, mid, post)"]
+        texts[n] = verify_sources.parse(f.read_text(encoding="utf-8"))
+    ours = verify_sources.compare(texts["pre"], texts["mid"])
+    if p.get("compared") != ours["compared"] or p.get("ours") != {k: ours[k] for k in ("modified", "removed", "added")}:
+        bad.append(f"{rid}: patch.ours does not match the pre and mid manifests (recomputed {ours})")
+    if not verify_sources.unchanged(ours):
+        bad.append(f"{rid}: our patch step changed source files before the build (modified {ours['modified'][:3]}, removed "
+                   f"{ours['removed'][:3]}, added {ours['added'][:3]}, compared {ours['compared']}): not build-only")
+    if p.get("tool") != verify_sources.tool_changes(texts["mid"], texts["post"]):
+        bad.append(f"{rid}: patch.tool does not match the mid and post manifests")
+    commands = p.get("build_commands")
+    recipe = repo / "reports" / rid / "recipe.sh"
+    region = verify_sources.build_region(recipe.read_text(encoding="utf-8")) if recipe.is_file() else None
+    if not isinstance(commands, list) or not commands or not all(isinstance(c, str) and c.strip() for c in commands):
+        bad.append(f"{rid}: patch.build_commands must list the build commands exactly as recipe.sh runs them")
+    elif region is None:
+        bad.append(f"{rid}: recipe.sh must call 'verify_sources.py manifest' exactly three times (pre, mid, post) with the build commands between the second and third")
+    else:
+        missing = [c for c in commands if verify_sources.norm(c) not in verify_sources.norm(region)]
+        if missing:
+            bad.append(f"{rid}: build command not found between the second and third manifest calls of recipe.sh: {missing[0][:80]!r}")
+        for hit in verify_sources.suspicious(region):
+            bad.append(f"{rid}: the build step of recipe.sh edits files in place ({hit}): not build-only")
     want = ""
     if qrel is not None:
         want = verify_sources.archive_sha(json.loads((repo / qrel).read_text(encoding="utf-8")))
     if not want or p.get("archive_sha256") != want:
         bad.append(f"{rid}: patch.archive_sha256 must equal the sha256 registered in the queue entry's code.archive")
     return bad
-
 
 def violations(repo: Path) -> list[str]:
     bad: list[str] = []

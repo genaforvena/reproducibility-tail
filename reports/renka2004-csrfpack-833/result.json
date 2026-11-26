@@ -1,0 +1,91 @@
+{
+  "paper": {
+    "short": "renka2004-csrfpack-833",
+    "title": "Algorithm 833: CSRFPACK: interpolation of scattered data with a C1 convexity-preserving surface",
+    "year": 2004,
+    "doi": null
+  },
+  "field": "numerics (scattered-data interpolation, convexity-preserving surfaces)",
+  "stack": "Fortran 77 (TOMS 833 archive 833.gz: a shell archive with Fortran77/Src/src.f and Fortran77/Drivers/driver.f, data and res)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "CSRFTEST (author's driver) on the shipped 8-node data file writes a 40 x 40 grid of surface values; the grid node (X,Y) = (-0.948717948717949, -1.0) has F = 0.189783809135176 in the registered queue entry. Absolute tolerance 1e-9. The shipped output Fortran77/Drivers/res prints this node as 0.189783809135176E+01 (= 1.89783809135176); see result.md for the exponent discrepancy.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/renka2004-csrfpack-833/evidence/reference/shipped-res.txt",
+      "sha256": "0d2de7c0db55797472d6bc249ae6dd1676aa246ca9d5871eedbc63b4ec3aa14d",
+      "archive": "netlib.org/toms/833.gz sha256 e40e3df805baca94da32f5b9bd460abb8f03049675da6573bf1b7439819a7720"
+    },
+    "values": [
+      {
+        "name": "F(X=-0.948717948717949, Y=-1.0) from CSRFTEST with the shipped data file",
+        "paper": 0.189783809135176,
+        "tol_abs": 1e-09,
+        "ours": null
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "blocked",
+  "cause": null,
+  "attempt": "Blocked on the registered claim, not on the code. The authors' code builds and reproduces its shipped output exactly (all 4642 cells of res, max difference 0.0, pass 1 and pass 2 agree). The registered paper value 0.189783809135176 is the shipped mantissa without its exponent E+01: the shipped value at that node is 1.89783809135176, a factor of ten away. The claim cannot be edited here (method.md), so no verdict is computed from it. Build: the Makefile needs makefile.inc, which the archive does not ship, so the Makefile's three rules (src.f, driver.f, link) are run as written with the compiler and flags on the command line; no source or build file is edited or added (build-only).",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make in Fortran77/Drivers stops at Makefile line 1 (include makefile.inc): the archive does not ship makefile.inc, so nothing compiles as shipped.",
+    "log": "reports/renka2004-csrfpack-833/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/renka2004-csrfpack-833/recipe.sh",
+  "queue_commit": "2235ef085e6717eb17a7513a2d62c3ca932e363c",
+  "evidence": [
+    "reports/renka2004-csrfpack-833/evidence/original-attempt.log",
+    "reports/renka2004-csrfpack-833/evidence/unpack.log",
+    "reports/renka2004-csrfpack-833/evidence/pass1-build.log",
+    "reports/renka2004-csrfpack-833/evidence/pass1-run.log",
+    "reports/renka2004-csrfpack-833/evidence/pass2-run.log",
+    "reports/renka2004-csrfpack-833/evidence/pass1-Res.txt",
+    "reports/renka2004-csrfpack-833/evidence/pass2-Res.txt",
+    "reports/renka2004-csrfpack-833/evidence/values.txt",
+    "reports/renka2004-csrfpack-833/evidence/vs-shipped-res.txt",
+    "reports/renka2004-csrfpack-833/evidence/reference/shipped-res.txt",
+    "reports/renka2004-csrfpack-833/evidence/recipe-run.log",
+    "reports/renka2004-csrfpack-833/evidence/manifest.pre",
+    "reports/renka2004-csrfpack-833/evidence/manifest.mid",
+    "reports/renka2004-csrfpack-833/evidence/manifest.post"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "e40e3df805baca94da32f5b9bd460abb8f03049675da6573bf1b7439819a7720",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "/work/fortran/bin/x86_64-conda-linux-gnu-gfortran -O -c ../Src/src.f",
+      "/work/fortran/bin/x86_64-conda-linux-gnu-gfortran -O -c driver.f",
+      "/work/fortran/bin/x86_64-conda-linux-gnu-gfortran -O -o driver1 driver.o src.o"
+    ],
+    "manifests": {
+      "pre": "reports/renka2004-csrfpack-833/evidence/manifest.pre",
+      "mid": "reports/renka2004-csrfpack-833/evidence/manifest.mid",
+      "post": "reports/renka2004-csrfpack-833/evidence/manifest.post"
+    }
+  }
+}

@@ -19,7 +19,7 @@
 
 ## Gates
 - G1 pass (original succeeded). G3 pass (two builds, same value). G2 not applicable (original basis).
-- G5: replay pending at time of writing. See the commit message and the ledger for the result.
+- G5 pass: clean replay at 2026-11-26T18:26Z agrees with the record (`evidence/replay-2026-11-26T182618Z.log`).
 
 ## Command and pins
 - `bash reports/alefeld1995-enclofx-748/recipe.sh`

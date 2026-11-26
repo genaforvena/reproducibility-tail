@@ -9,8 +9,8 @@ Method and gates: [docs/method.md](docs/method.md).
 
 | grade | meaning | papers |
 |---|---|---|
-| A | authors' code, run clean | 5 |
-| B | authors' code with build fixes | 0 |
+| A | authors' code, run clean | 4 |
+| B | authors' code with build fixes | 1 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 0 |
@@ -77,8 +77,8 @@ Authors' original artifact, among all attempted papers: not-possible 2 (no code 
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics · 2010 · R | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics · 2012 · R | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
-| [punzo2016-wine-cnm-bic](reports/punzo2016-wine-cnm-bic/result.md) | statistics · 2016 · R | Section 7.3 (wine data), Table 11, CNMs row: BIC-selected (G, parsimonious structure) over G in {1,2,3,4} and the 14 structures, labels ignored, seed 1 (selected_G) | 3 ± 0 | 3 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
-| [punzo2016-wine-cnm-bic](reports/punzo2016-wine-cnm-bic/result.md) | statistics · 2016 · R | Section 7.3 (wine data), Table 11, CNMs row: BIC-selected (G, parsimonious structure) over G in {1,2,3,4} and the 14 structures, labels ignored, seed 1 (selected_structure_index) | 7 ± 0 | 7 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [punzo2016-wine-cnm-bic](reports/punzo2016-wine-cnm-bic/result.md) | statistics · 2016 · R | Section 7.3 (wine data), Table 11, CNMs row: BIC-selected (G, parsimonious structure) over G in {1,2,3,4} and the 14 structures, labels ignored, seed 1 (selected_G) | 3 ± 0 | 3 | 0 | exact | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
+| [punzo2016-wine-cnm-bic](reports/punzo2016-wine-cnm-bic/result.md) | statistics · 2016 · R | Section 7.3 (wine data), Table 11, CNMs row: BIC-selected (G, parsimonious structure) over G in {1,2,3,4} and the 14 structures, labels ignored, seed 1 (selected_structure_index) | 7 ± 0 | 7 | 0 | exact | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [purcell2011-fig5-hopf](reports/purcell2011-fig5-hopf/result.md) | biology · 2011 · MATLAB/Octave | Input concentration I (nM) of the Hopf bifurcation of equilibrium c1, Figure 5 caption (~7 nM) (Hopf input I (nM)) | 7 ± 0.5 | 7.1875 | 0.1875 | 38% | reimplemented | ✓ ✓ ✓ ✓ | C | reproduced | 2026-11-26 ok |
 | [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | astronomy · 2008 · Fortran | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_A) | 1317 ± 132 | – | – | – | - | · · · · | - | blocked | never clean |
 | [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | astronomy · 2008 · Fortran | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_C) | 52 ± 5 | – | – | – | - | · · · · | - | blocked | never clean |

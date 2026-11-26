@@ -1,4 +1,7 @@
-# Driver for punzo2016-wine-cnm-bic (basis: original).
+# Driver for punzo2016-wine-cnm-bic (basis: patched; comment-only edit on 2026-11-26 to
+# record the paper citations for G2, no executable line changed).
+# Paper: Punzo & McNicholas 2016 (arXiv:1305.4669v5), Section 7.3 (G in {1,2,3,4}, labels
+# ignored, n=178, p=13), Table 11 (CNMs row), Section 2.2 and Table 1 (the 14 structures).
 # Calls the authors' CNmixt() from the unmodified ContaminatedMixt 1.0 package on the
 # wine data bundled with it, over G in {1,2,3,4} and all 14 parsimonious structures,
 # seed 1 (registered by the scout). Labels (column Type) are dropped: 178 x 13.

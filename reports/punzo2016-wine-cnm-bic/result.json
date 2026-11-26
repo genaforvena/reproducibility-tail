@@ -25,7 +25,7 @@
       }
     ]
   },
-  "basis": "original",
+  "basis": "patched",
   "verdict": "reproduced",
   "cause": null,
   "attempt": "authors' ContaminatedMixt 1.0 built with R CMD INSTALL, no source edits; CNmixt called once per (G, structure) under tryCatch, seed 1, BIC via the package's whichBest",
@@ -38,7 +38,7 @@
   },
   "gates": {
     "G1": "pass",
-    "G2": "na",
+    "G2": "pass",
     "G3": "pass",
     "G5": "pass",
     "G6": "na",

@@ -1,6 +1,6 @@
 # punzo2016-wine-cnm-bic: result
 
-**Verdict: reproduced** (basis: `original`)
+**Verdict: reproduced** (basis: `patched`)
 
 - Paper: Punzo and McNicholas 2016, "Parsimonious mixtures of multivariate contaminated normal distributions" (arXiv:1305.4669v5).
 
@@ -31,7 +31,20 @@ The replay contract prints numbers only, so the recipe prints two VALUE lines:
   - `invalid subscript type 'list'` for EEV, VEV, EVV and VVV at G = 2, 3 and 4.
   - `no models estimated` for VVI and EVE at G = 4.
   - The paper says some fits fail numerically; these failures are the ones the rerun records.
-- The basis is `original` because the package source is unchanged. Whether a per-fit driver counts as `patched` is a judgement call for the scout to revisit.
+- The basis is `patched`. The package source is unchanged, but the authors' single call halts, so the run only completes through a per-fit driver. `docs/method.md` (Gates, `original_attempt`) says a per-fit driver around a call that halts is `patched`, never `original`. The earlier draft of this report called it `original`; that was corrected on 2026-11-26 after the gates duty flagged it (outcome `partial`).
+
+## Parameter fidelity check (G2, against the paper's text)
+
+Read from the arXiv HTML of 1305.4669v5 (fetched 2026-11-26, text in the scratch directory, not kept in the repo):
+
+- Section 7.3: "The competing families of parsimonious models are fitted for G ∈ {1,2,3,4}." Matches the driver's loop over `1:4`.
+- Section 7.3: "We treat this as a clustering analysis by ignoring the labels." n = 178, p = 13. Matches `wine[, -1]`, 178 x 13.
+- Section 5.8 and 7.3: selection by BIC over the fourteen models and G values; "the best model, in terms of BIC, is reported in Table 11". Matches `whichBest()`.
+- Table 1 and Section 2.2: fourteen structures. The driver's list is the same set. Table 1 orders VEE, EVE, EEV differently from the driver's list; the BIC argmax does not depend on loop order, and EEE is position 7 in both orders, so the encoded value 7 is unchanged.
+- Table 11, CNMs row: "CNMs 3 EEE". Matches the claim (G = 3, EEE).
+- Not stated in the paper: a random seed. The seed 1 is the scout's registration (see queue entry), not a paper parameter, and is not tuned.
+
+Result: G2 pass for the parameters the driver uses. The seed is a registered choice, not a paper value, and it is recorded as such.
 
 ## Limits
 

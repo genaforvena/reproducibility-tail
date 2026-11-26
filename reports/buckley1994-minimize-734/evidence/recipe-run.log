@@ -4,23 +4,7 @@ manifest.pre: 2 source files
 == patch step (in the build copy): src.f90 by line range, driver2 line 1 fixed, i1mach supplied
 == build: gfortran -O2, authors' module order (src.f90, i1mach, driver2)
 build_exit=0
-Traceback (most recent call last):
-  File "/home/mesh-home/reproducibility-tail/tools/verify_sources.py", line 177, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/home/mesh-home/reproducibility-tail/tools/verify_sources.py", line 168, in main
-    patch = record(a.repo, a.id, a.pre, a.mid, a.post, a.command)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/mesh-home/reproducibility-tail/tools/verify_sources.py", line 145, in record
-    result = json.loads(rp.read_text(encoding="utf-8"))
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/pathlib.py", line 1029, in read_text
-    with self.open(mode='r', encoding=encoding, errors=errors) as f:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
-    return io.open(self, mode, buffering, encoding, errors, newline)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: '/home/mesh-home/reproducibility-tail/reports/buckley1994-minimize-734/result.json'
+buckley1994-minimize-734: patch kind source: compared 2; ours modified 1, removed 0, added 2; build tool modified 0, added 0, removed 0
 NOT BUILD-ONLY: the source edits are a patch, the full G2 check applies (see the record)
 == run1: clean directory, ./drv
 run1_exit=0

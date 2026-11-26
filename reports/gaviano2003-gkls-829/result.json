@@ -14,45 +14,70 @@
         "name": "D-type function 1, dim 2, global minimizer x1",
         "paper": -0.136,
         "tol_abs": 0.001,
-        "ours": null
+        "ours": -0.136
       },
       {
         "name": "D-type function 1, dim 2, global minimizer x2",
         "paper": 0.824,
         "tol_abs": 0.001,
-        "ours": null
+        "ours": 0.824
       }
     ]
   },
-  "basis": "-",
-  "verdict": "blocked",
-  "cause": "other",
-  "attempt": "Reproduced locally, provisional, not yet a verdict. Both passes give x1 = -0.136, x2 = 0.824 and the regenerated test001.txt matches the shipped reference. The authors' Makefile fails at link on this host (--as-needed drops libm); the build runs the authors' Makefile with CFLAGS=-Wl,--no-as-needed, so the basis would be patched (build-only). Blocked on G2: the gate requires patch.archive_sha256 to equal the sha256 registered in queue/gaviano2003-gkls-829.json code.archive, and that entry has no hash. Scout declined to edit the frozen claim (DM answer). The netlib 829.gz sha256 is e4bd1b05f73b9a697c69998ba190226b38133b68d83f0b3da2cd8d9f99a5f5f6. Resolver: operator, to decide whether a new commit may add the hash to the entry; scout is the registrant.",
-  "queue_commit": "2f2d2298e3ae4b00b016b9431b83d076507646d9",
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced. Two clean-directory passes (recipe.sh) give minimizer x1 = -0.136 and x2 = 0.824 for D-type function 1, dimension 2, and the regenerated test001.txt is byte-identical to the shipped reference. Tolerance 1e-3 absolute: met. Basis patched, build-only: the Makefile needs -Wl,--no-as-needed on this host; the six source files are byte-identical across manifest.pre, manifest.mid and manifest.post (verify_sources record: exit 0). Archive sha256 matches the queue entry (e4bd1b05...). Replay (G5) not yet run.",
+  "queue_commit": "476ff036e6653bbe34441fc99882fbe7e1c4280e",
   "original_attempt": {
     "tried": true,
     "outcome": "failed",
-    "reason": "authors' Makefile does not link on this host: -lm precedes the objects and --as-needed drops libm (undefined reference to sin)",
+    "reason": "The authors' Makefile fails at link on this host: gkls.o calls sin and the --as-needed default drops libm (undefined reference to sin). The build runs the same Makefile with CFLAGS=-Wl,--no-as-needed; the sources are unchanged (build-only).",
     "log": "reports/gaviano2003-gkls-829/evidence/original-attempt.log"
   },
   "gates": {
     "G1": "pass",
-    "G2": "na",
-    "G3": "na",
+    "G2": "pass",
+    "G3": "pass",
     "G5": "na",
     "G6": "na",
     "cross_check": "na"
   },
-  "recipe": "-",
+  "recipe": "reports/gaviano2003-gkls-829/recipe.sh",
   "evidence": [
-    "reports/gaviano2003-gkls-829/evidence/original-attempt.log",
     "reports/gaviano2003-gkls-829/evidence/build.log",
-    "reports/gaviano2003-gkls-829/evidence/recipe-run.log",
-    "reports/gaviano2003-gkls-829/evidence/manifest.pre",
     "reports/gaviano2003-gkls-829/evidence/manifest.mid",
-    "reports/gaviano2003-gkls-829/evidence/manifest.post"
+    "reports/gaviano2003-gkls-829/evidence/manifest.post",
+    "reports/gaviano2003-gkls-829/evidence/manifest.pre",
+    "reports/gaviano2003-gkls-829/evidence/original-attempt.log",
+    "reports/gaviano2003-gkls-829/evidence/recipe-run.log",
+    "reports/gaviano2003-gkls-829/evidence/run1-test001.txt",
+    "reports/gaviano2003-gkls-829/evidence/run2-test001.txt"
   ],
   "replayed": [],
   "stack_class": "C/C++",
-  "field_class": "numerics"
+  "field_class": "numerics",
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "e4bd1b05f73b9a697c69998ba190226b38133b68d83f0b3da2cd8d9f99a5f5f6",
+    "compared": 6,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "make CC=gcc CFLAGS=-Wl,--no-as-needed"
+    ],
+    "manifests": {
+      "pre": "reports/gaviano2003-gkls-829/evidence/manifest.pre",
+      "mid": "reports/gaviano2003-gkls-829/evidence/manifest.mid",
+      "post": "reports/gaviano2003-gkls-829/evidence/manifest.post"
+    }
+  }
 }

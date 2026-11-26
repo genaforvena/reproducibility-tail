@@ -34,7 +34,7 @@
   "verdict": "blocked",
   "cause": "other",
   "attempt": "Measured locally, not yet a verdict. Two clean-directory runs of the same binary (gfortran -O2, recipe.sh) give 59 evaluations, 36 iterations and least function value 0.20053597E-08, identical to res2 on the three printed lines (values in evidence/run1-stdout.txt and run2-stdout.txt). A -O0 build in scratch gives the same three lines. The basis is patched, not build-only: src.f90 had to be extracted by line range from the shar (its unshar fails under sh and bash), driver2.f90 line 1 is a fixed-form ID line changed to '!', and i1mach(2) (PORT, not in the archive) is supplied by impl/i1mach.f90 (returns 6). Blocked on G2: the paper check for these pieces has not been done (the paper was not read), and the queue entry has no code.archive sha256 to match the archive hash (e4 netlib 734.gz is bf1682045031a42610373d26367ccab037dcc2aada64e3f9ab033311a7d794b0). Resolver: scout (registers the archive hash and states whether the PORT i1mach stub is outside the claim); the operator decides whether a new commit may add the hash to the entry.",
-  "queue_commit": "6548fd0825fe6fc0bab515273a1a9ab3c3508740",
+  "queue_commit": "476ff036e6653bbe34441fc99882fbe7e1c4280e",
   "original_attempt": {
     "tried": true,
     "outcome": "failed",
@@ -67,7 +67,7 @@
   "field_class": "numerics",
   "patch": {
     "kind": "source",
-    "archive_sha256": "",
+    "archive_sha256": "bf1682045031a42610373d26367ccab037dcc2aada64e3f9ab033311a7d794b0",
     "compared": 2,
     "ours": {
       "modified": [

@@ -19,24 +19,8 @@ gcc -I. -Wl,--no-as-needed -c ../Src/gkls.c
 gcc -I. -Wl,--no-as-needed -c ../Src/rnd_gen.c
 gcc -Wl,--no-as-needed -lm example.o gkls.o rnd_gen.o -o gkls
 make_exit=0
-Traceback (most recent call last):
-  File "/home/mesh-home/reproducibility-tail/tools/verify_sources.py", line 177, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/home/mesh-home/reproducibility-tail/tools/verify_sources.py", line 168, in main
-    patch = record(a.repo, a.id, a.pre, a.mid, a.post, a.command)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/mesh-home/reproducibility-tail/tools/verify_sources.py", line 145, in record
-    result = json.loads(rp.read_text(encoding="utf-8"))
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/pathlib.py", line 1029, in read_text
-    with self.open(mode='r', encoding=encoding, errors=errors) as f:
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
-    return io.open(self, mode, buffering, encoding, errors, newline)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: '/home/mesh-home/reproducibility-tail/reports/gaviano2003-gkls-829/result.json'
-NOT BUILD-ONLY: G2 hold stays (see the record's kind and the added/modified lists)
+gaviano2003-gkls-829: patch kind build-only: compared 6; ours modified 0, removed 0, added 0; build tool modified 0, added 0, removed 0
+BUILD-ONLY: exit 0
 == run1: clean directory, ./gkls (writes test001.txt in its directory)
 run1_exit=0
 

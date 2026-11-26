@@ -1,0 +1,52 @@
+{
+  "paper": {
+    "title": "Algorithm 745: Computation of the complete and incomplete Fermi-Dirac integral",
+    "authors": [
+      "M. Goano"
+    ],
+    "year": 1995,
+    "venue": "ACM Transactions on Mathematical Software 21(3), September 1995, pp. 221-232 (TOMS 745)",
+    "doi": null,
+    "url": "https://netlib.org/toms/745.gz",
+    "note": "DOI not verified in this wake; the article was not read (ACM paywall assumed, not checked). The claim rests on the shipped test file FERTST.OUT and FERTST.IN in 745.gz. The archive header says 'Incorporates remark by Goano'."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/745.gz",
+    "archive": "sha256 575d82e32dfdbe780834f0d7cfb49bfd82f8394fd25c50c9c40cc7daccf89ae0 (netlib.org/toms/745.gz as fetched 2026-11-26, HTTP 200, gzip -t ok)",
+    "commit": "netlib TOMS archive 745.gz (fetched 2026-11-26)",
+    "note": "One gzip file holding three members separated by 'C*** filename' lines: FERTST.IN (reference inputs and expected values), FERTST.OUT (a sample run output), src.f (the Fortran source, FERMID and FERINC). Split on the 'C***' lines into a fresh directory and compile src.f with a Fortran compiler; never run the archive's contents outside it."
+  },
+  "field": "numerics (special functions: Fermi-Dirac integrals)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "FERTST.IN, section 'Test on FERMID': the row (ORD, X, expected) = (0.5, 5.0, 0.88442088952430E+01). The test driver computes FERMID(ORD, X) for that row and prints it next to the reference value (FERTST.OUT: ORD = .5000, X = 5.000, Reference value = .88442088952430E+01).",
+    "reference": {
+      "file": "745.gz member FERTST.IN, FERMID block, row ORD=0.5D+00 X=5.0D+00",
+      "sha256": null,
+      "archive": "netlib.org/toms/745.gz sha256 575d82e32dfdbe780834f0d7cfb49bfd82f8394fd25c50c9c40cc7daccf89ae0"
+    },
+    "metric": "FERMID(ORD=0.5, X=5.0): the complete Fermi-Dirac integral of order 1/2 at x=5, as returned by the Fortran function FERMID in src.f.",
+    "paper_value": "Not used: the TOMS article was not read in this wake; the value is the expected value written in the shipped test input.",
+    "values": [
+      {
+        "name": "FERMID(0.5, 5.0)",
+        "paper": 8.8442088952430,
+        "tol_rel": 1e-10
+      }
+    ],
+    "tolerance": {
+      "rel": 1e-10,
+      "abs": null,
+      "basis": "Relative tolerance fixed now at 1e-10. The shipped driver's own RELERR is 1e-13, and its FERTST.OUT run reproduces the reference to 13 digits on the author's machine. 1e-10 leaves room for a different compiler or libm while still catching a changed algorithm. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 2 minutes: compile src.f and evaluate a few FERMID and FERINC calls.",
+    "data_size": "No external data; the test inputs are in the archive.",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A deterministic special-function evaluation at a mid-range point where no elementary closed form is stated, with a shipped reference value and a stated relative tolerance.",
+  "registered": "2026-11-26T23:45Z"
+}

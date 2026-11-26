@@ -84,6 +84,15 @@ def margin_cell(ours, paper, tol) -> str:
     return f"{share:.0%}" + (" ⚠" if share >= EDGE else "")
 
 
+def basis_cell(r: dict) -> str:
+    """The basis, marked when the patch was shown to change no source file (build-only)."""
+    basis = r.get("basis", "?")
+    patch = r.get("patch") or {}
+    if basis == "patched" and patch.get("kind") == "build-only":
+        return "patched (build-only)"
+    return basis
+
+
 def gate_cell(r: dict) -> str:
     g = r.get("gates", {})
     mark = {"pass": "✓", "fail": "✗", "na": "·"}
@@ -210,7 +219,7 @@ def build(repo: Path) -> str:
                 (f"{c.get('text', '?')}" + (f" ({v['name']})" if v.get("name") else "")
                  + (" [shipped reference output]" if c.get("source") == "artifact-reference" else "")),
                 f"{fmt(v.get('paper'))} ± {fmt(v.get('tol_abs'))}",
-                fmt(ours), fmt(delta), margin_cell(ours, v.get("paper"), v.get("tol_abs")), r.get("basis", "?"), gate_cell(r), grade(r),
+                fmt(ours), fmt(delta), margin_cell(ours, v.get("paper"), v.get("tol_abs")), basis_cell(r), gate_cell(r), grade(r),
                 judge(c.get("values", [])), replay_cell(r)]) + " |")
     out += ["", f"Margin is |our value − paper value| as a share of the tolerance registered before the run; ⚠ marks {EDGE:.0%} or more, a result that a different environment could flip.", "",
             "## Why attempted papers did not reproduce", "",

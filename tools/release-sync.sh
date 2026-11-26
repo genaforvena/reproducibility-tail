@@ -9,7 +9,7 @@ site=$repo/.mishe-tauftauf
 rel=$site/runtime/current
 cp "$repo/duties.json" "$rel/duties.json"
 cp "$repo"/checks/*.py "$rel/checks/"
-cp "$repo/tools/build_ledger.py" "$repo/tools/frame_sample.py" "$rel/tools/"
+cp "$repo/tools/build_ledger.py" "$repo/tools/frame_sample.py" "$repo/tools/verify_sources.py" "$rel/tools/"
 env -u MISHE_TAUFTAUF_HOME MISHE_SEED_HOME="$site" MISHE_REPO="$repo" PYTHONPATH="$rel/src" \
   /home/mesh-home/mishe-tauftauf/.venv/bin/python -m mishe_tauftauf --home "$site" \
   sync --repo "$repo" --pythonpath "$rel/src" --prefix rtail --unit-dir "$HOME/.config/systemd/user"

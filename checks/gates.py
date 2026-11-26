@@ -11,7 +11,9 @@ Checked mechanically, per reports/ID/result.json:
   G1  basis follows how the authors' artifact behaved: original needs it to have run as documented
       (succeeded), patched needs partial or failed, reimplemented needs failed or not-possible;
       the attempt carries a reason and, unless not-possible, an existing log
-  G2  a reimplemented or patched reproduced result needs gates.G2 == pass
+  G2  a reimplemented or patched reproduced result needs gates.G2 == pass, except a patched one whose
+      `patch` is build-only: the authors' source files byte-identical before and after (re-derived here
+      from the two manifests in the report, archive hash equal to the queue entry's)
   G3  recipe exists; a reproduced result needs a replay (gates.G3 == pass)
   G4  the stated verdict equals the verdict computed from the recorded values
   G0b an artifact-reference claim keeps the shipped reference output in the report, hash-checked
@@ -29,6 +31,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "tools"))
 from build_ledger import CAUSES, FIELDS, ORIGINAL_OUTCOMES, STACKS, judge  # noqa: E402
+import verify_sources  # noqa: E402
 
 BASES = ("original", "patched", "reimplemented")
 
@@ -37,6 +40,39 @@ def last_commit(repo: Path, rel: str) -> str:
     done = subprocess.run(["git", "-C", str(repo), "log", "-1", "--format=%H", "--", rel],
                           capture_output=True, text=True, timeout=30)
     return done.stdout.strip() if done.returncode == 0 else ""
+
+
+def build_only_problems(repo: Path, rid: str, r: dict, qrel) -> list[str]:
+    """Problems with a `patch` record that claims kind build-only; [] when it holds (or claims nothing).
+
+    The claim is re-derived, never trusted: the two manifests kept in the report are compared again,
+    the recorded lists must equal the recomputed ones, no authors' source file may be modified or
+    removed, each added file must be a declared generated file with a reason, and the archive hash must
+    be the one registered in the queue entry.
+    """
+    p = r.get("patch")
+    if not isinstance(p, dict) or p.get("kind") != "build-only":
+        return []
+    bad: list[str] = []
+    if r.get("basis") != "patched":
+        bad.append(f"{rid}: a build-only patch belongs to basis patched, not {r.get('basis')!r}")
+    pre, post = repo / "reports" / rid / "evidence" / "manifest.pre", repo / "reports" / rid / "evidence" / "manifest.post"
+    if not (pre.is_file() and post.is_file()):
+        return bad + [f"{rid}: build-only patch needs reports/{rid}/evidence/manifest.pre and manifest.post"]
+    diff = verify_sources.compare(verify_sources.parse(pre.read_text(encoding="utf-8")),
+                                  verify_sources.parse(post.read_text(encoding="utf-8")))
+    for key in ("compared", "modified", "removed", "added"):
+        if p.get(key) != diff[key]:
+            bad.append(f"{rid}: patch.{key} does not match the manifests ({p.get(key)!r} recorded, {diff[key]!r} recomputed)")
+    if verify_sources.classify(diff, p.get("generated") or []) != "build-only":
+        bad.append(f"{rid}: the manifests do not show a build-only patch (modified {diff['modified'][:3]}, removed "
+                   f"{diff['removed'][:3]}, added without a declared reason {diff['added'][:3]}, compared {diff['compared']})")
+    want = ""
+    if qrel is not None:
+        want = verify_sources.archive_sha(json.loads((repo / qrel).read_text(encoding="utf-8")))
+    if not want or p.get("archive_sha256") != want:
+        bad.append(f"{rid}: patch.archive_sha256 must equal the sha256 registered in the queue entry's code.archive")
+    return bad
 
 
 def violations(repo: Path) -> list[str]:
@@ -110,7 +146,10 @@ def violations(repo: Path) -> list[str]:
                 if o["outcome"] not in allowed:
                     bad.append(f"{rid}: G1 basis {basis} does not fit original attempt outcome {o['outcome']!r} "
                                f"(original needs succeeded; patched partial or failed; reimplemented failed or not-possible)")
-        if basis in ("patched", "reimplemented") and verdict == "reproduced" and gates.get("G2") != "pass":
+        patch_bad = build_only_problems(repo, rid, r, qrel)
+        bad.extend(patch_bad)
+        build_only = isinstance(r.get("patch"), dict) and r["patch"].get("kind") == "build-only" and not patch_bad
+        if basis in ("patched", "reimplemented") and verdict == "reproduced" and gates.get("G2") != "pass" and not build_only:
             bad.append(f"{rid}: G2 fidelity not passed for a {basis} result")
         if verdict == "reproduced" and gates.get("G3") != "pass":
             bad.append(f"{rid}: G3 replay not passed")

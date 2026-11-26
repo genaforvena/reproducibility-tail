@@ -111,7 +111,7 @@ A result counts only when it passes these gates. Most are checked by a script
 |---|---|---|
 | G0 admission | the value is located in readable text, the tolerance and its reason are fixed, the claim cannot be met without running the method, and it is labelled deterministic or stochastic with a seed. The queue entry is not edited after a run. | scout; script checks the entry is unchanged since the run |
 | G1 original first | the authors' own artifact was tried in the sandbox before anything was patched or rewritten. A failed attempt has a log; "not possible" (no code exists) has a reason. | script |
-| G2 fidelity | for `patched` or `reimplemented`: each new piece cites the paper's section or equation, and parameters were checked against the paper itself, not only against a replication | rerun, recorded in the report |
+| G2 fidelity | for `patched` or `reimplemented`: each new piece cites the paper's section or equation, and parameters were checked against the paper itself, not only against a replication. A `patched` result whose patch is shown to be build-only (below) needs no paper check | rerun; script for build-only, recorded in the report |
 | G3 replay | `recipe.sh` from a clean directory gives the same value twice, or within a stated Monte Carlo error | script |
 | G4 verdict | the verdict is computed from the recorded values and the registered tolerance | script (`tools/build_ledger.py`) |
 | G5 independence | a fresh replay confirms it; a `reimplemented` mismatch also needs a second route (analytic limit or second implementation) | scheduled replay, or a fresh rerun wake |
@@ -129,6 +129,22 @@ ledger's "last replay" column shows only clean replays.
 G1 makes `reimplemented` an exception: the authors' code comes first. When a toolchain is
 missing (R, Fortran, Octave), install it inside the sandbox during the fetch step (for
 example micromamba) and try again before concluding the original cannot run.
+
+## Build-only patches
+
+Old archives often fail only at the build: a Makefile that cannot find a header, a missing compiler
+alias, a library path. Fixing that changes no number, so it has nothing to check against the paper.
+But "I only touched the build" cannot be taken on trust, so it is proved from bytes. The recipe takes a
+manifest of the authors' source files (`tools/verify_sources.py manifest DIR`) right after it unpacks
+the archive (before any patch) and another after the build, then runs
+`tools/verify_sources.py record --repo . --id ID --pre PRE --post POST` (with
+`--generated GLOB=REASON` for files the authors' own build writes, such as configure output). The
+patch is `build-only` when no source file the authors wrote was modified or removed, at least one was
+compared, and every added source file is a declared generated file with a stated reason. The report keeps both
+manifests; `checks/gates.py` recomputes the comparison from them, requires it to equal the record, and
+requires the archive hash to be the one registered in the queue entry. Only then is gate G2 satisfied
+without a paper check, and the ledger shows `patched (build-only)`. Any other patch (a modified file, an added stub or
+rewrite) keeps the full G2 check. A `reimplemented` result can never be build-only.
 
 ## Where a claim's value may come from
 
@@ -160,6 +176,7 @@ Each report ends with `reports/<id>/result.json`, written by `rerun`:
   `failed` (it did not run) or `not-possible` (no code exists). The basis must fit it: `original` needs
   `succeeded`; `patched` needs `partial` or `failed`; `reimplemented` needs `failed` or `not-possible`. So a
   per-fit driver around a call that halts is `patched`, never `original`
+- `patch` (for a patched basis): `{kind, archive_sha256, compared, modified, removed, added, generated, manifest_pre, manifest_post}`, written by `tools/verify_sources.py record`
 - `gates`: `G1`, `G2`, `G3`, `G5`, `G6` each `pass`, `fail` or `na`, and `cross_check`
 - `recipe` and `evidence` (paths), `replayed`: a list of `{utc, value, ok}`
 

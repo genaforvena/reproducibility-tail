@@ -5,7 +5,7 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-23 papers attempted.
+24 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
@@ -14,11 +14,11 @@ Method and gates: [docs/method.md](docs/method.md).
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
-| - | blocked or not yet run | 6 |
+| - | blocked or not yet run | 7 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 16, other 1, statistics 3
-By stack: C/C++ 4, Fortran 11, MATLAB/Octave 2, R 5, not-stated 1
-By decade: 1970 1, 1980 1, 1990 6, 2000 9, 2010 6
+By field: astronomy 1, biology 1, ecology 1, numerics 16, other 1, statistics 4
+By stack: C/C++ 4, Fortran 12, MATLAB/Octave 2, R 5, not-stated 1
+By decade: 1970 1, 1980 2, 1990 6, 2000 9, 2010 6
 
 Data as of 2026-11-26T20:21:49Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-26T20:21:49Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-23 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+24 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **206 candidates considered from 4 of 4 frames: 21 attempted (10%), 0 unreachable, 185 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 9 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 10 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 10 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 10 (ran as documented).
 
 ## Results
 
@@ -119,6 +119,7 @@ Authors' original artifact, among all attempted papers: failed 9 (did not run), 
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDP1P5(3)) [shipped reference output] | 7.78861 ± 7.78861e-05 | 7.78861 | 2.29704e-07 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDP2P5(-4)) [shipped reference output] | 0.0182861 ± 1.82861e-07 | 0.0182861 | 1.58672e-09 | 1% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDP2P5(3)) [shipped reference output] | 11.1129 ± 0.000111129 | 11.1129 | 4.77288e-07 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [monahan1984-hodges-lehmann-616](reports/monahan1984-hodges-lehmann-616/result.md) | statistics · 1984 · Fortran | The Hodges-Lehmann estimate printed for N=9, repetition 3, first test of HLQEST (random input, RANG seed 434977), shipped as 0.545388 in the archive's printed run output, absolute tolerance 1e-6 (H-L estimator via HLQEST, N=9 rep 3, first test (random input)) | 0.545388 ± 1e-06 | – | – | – | patched | ✓ ? ✓ · | - | blocked | never clean |
 | [montefusco1989-interp-677](reports/montefusco1989-interp-677/result.md) | numerics · 1989 · Fortran | Self-check PROGRAM MAIN of TOMS 677 (first test program): the maximum and mean absolute errors ERMAX and ERMEAN that MMERR computes for the 10x10 reconstruction (IEX=1, TP=10) against the analytic Gaussian surface, compared with the built-in ANS2 = 0.6059994 and ANS1 = 0.06695094. Registered tolerance: relative 1e-5 on each value. The paper's own values were not read; the claim is the archive's built-in reference. (maximum absolute error (ERMAX)) | 0.605999 ± 6.05999e-06 | – | – | – | patched | ✓ ? ✓ · | - | blocked | never clean |
 | [montefusco1989-interp-677](reports/montefusco1989-interp-677/result.md) | numerics · 1989 · Fortran | Self-check PROGRAM MAIN of TOMS 677 (first test program): the maximum and mean absolute errors ERMAX and ERMEAN that MMERR computes for the 10x10 reconstruction (IEX=1, TP=10) against the analytic Gaussian surface, compared with the built-in ANS2 = 0.6059994 and ANS1 = 0.06695094. Registered tolerance: relative 1e-5 on each value. The paper's own values were not read; the claim is the archive's built-in reference. (mean absolute error (ERMEAN)) | 0.0669509 ± 6.69509e-07 | – | – | – | patched | ✓ ? ✓ · | - | blocked | never clean |
 | [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f07 on [0, 1]) [shipped reference output] | 0.777505 ± 0.000777505 | 0.777505 | 3.659e-07 | 0% | patched | ✓ · ✓ · | X | partial | never clean |
@@ -150,4 +151,4 @@ Cause of every attempted paper that is `not-reproduced` or `blocked` (the funnel
 | numerical-discrepancy | 1 |
 | nondeterminism | 0 |
 | platform | 0 |
-| other | 2 |
+| other | 3 |

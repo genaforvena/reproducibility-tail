@@ -1,0 +1,35 @@
+main.f:10:67:
+
+   10 | 99997 FORMAT (3H N=, I3, 4H REP, I3, 28H   H-L ESTIMATOR BY SORTING=,   MAN   70
+      |                                                                   1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+main.f:12:67:
+
+   12 | 99996 FORMAT (3H N=, I3, 4H REP, I3, 28H   H-L ESTIMATOR VIA HLQEST=,   MAN   90
+      |                                                                   1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+main.f:14:21:
+
+   14 | 99995 FORMAT (41H  FIRST TEST OF HLQEST USING RANDOM INPUT)             MAN  110
+      |                     1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+main.f:15:21:
+
+   15 | 99994 FORMAT (42H  SECOND TEST OF HLQEST USING LOTS OF TIES)            MAN  120
+      |                     1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+main.f:257:72:
+
+  257 |       IF (SQ-K1) 140, 180, 120
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+main.f:326:72:
+
+  326 |       IF (J-R) 50, 60, 70
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+main.f:154:23:
+
+  154 |       HLQEST = (X(1)+X(2))/2.
+      |                       1
+Warning: Array reference at (1) is out of bounds (2 > 1) in dimension 1

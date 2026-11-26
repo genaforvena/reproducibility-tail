@@ -1,0 +1,54 @@
+{
+  "paper": {
+    "short": "monahan1984-hodges-lehmann-616",
+    "title": "Algorithm 616: Hodges-Lehmann location estimator (title as in the Netlib/CALGO index; not verified against the paper)",
+    "year": 1984,
+    "doi": null
+  },
+  "field": "nonparametric statistics (location estimation)",
+  "stack": "Fortran (TOMS 616, single file 616.gz: source lines 1-354, stdin lines 355-365, printed output lines 366-441)",
+  "claim": {
+    "text": "The Hodges-Lehmann estimate printed for N=9, repetition 3, first test of HLQEST (random input, RANG seed 434977), shipped as 0.545388 in the archive's printed run output, absolute tolerance 1e-6",
+    "values": [
+      {
+        "name": "H-L estimator via HLQEST, N=9 rep 3, first test (random input)",
+        "paper": 0.545388,
+        "tol_abs": 1e-06,
+        "ours": null
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "blocked",
+  "cause": "other",
+  "attempt": "Blocked on the G2 gate (fidelity), not on the value. Original attempt: the whole archive file compiled with gfortran as shipped and failed (compile_exit=1), because lines 355-441 are stdin data and printed output, not Fortran. Patch: the source is archive lines 1-354 (unedited), and the stdin is lines 355-365, supplied as unit 1 (fort.1). Two passes (each a fresh compile and run, gfortran -O0, in separate clean directories) print 0.545388 for N=9 rep 3 via HLQEST, the same value the shipped output gives (0.545388 to the sixth decimal, the tolerance is 1e-6). The G2 gate for a patched reproduced result needs a fidelity pass: the patch is a line-range cut that removes non-source data, and the value matches; the scout has to confirm that the cut does not alter the algorithm before this can be recorded as reproduced. The verdict stays blocked until the scout reports.",
+  "queue_commit": "9a1aff7",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "gfortran on the whole archive file: Error: Invalid character in name (lines 355-441 are data and printed output, not Fortran); compile_exit=1",
+    "log": "reports/monahan1984-hodges-lehmann-616/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "hold",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/monahan1984-hodges-lehmann-616/recipe.sh",
+  "evidence": [
+    "reports/monahan1984-hodges-lehmann-616/evidence/original-attempt.log",
+    "reports/monahan1984-hodges-lehmann-616/evidence/p1-output.txt",
+    "reports/monahan1984-hodges-lehmann-616/evidence/p2-output.txt",
+    "reports/monahan1984-hodges-lehmann-616/evidence/p1-compile.txt",
+    "reports/monahan1984-hodges-lehmann-616/evidence/p2-compile.txt",
+    "reports/monahan1984-hodges-lehmann-616/evidence/reference/printed-output.txt",
+    "reports/monahan1984-hodges-lehmann-616/evidence/p1-value.txt",
+    "reports/monahan1984-hodges-lehmann-616/evidence/p2-value.txt"
+  ],
+  "replayed": [],
+  "stack_class": "Fortran",
+  "field_class": "statistics"
+}

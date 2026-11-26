@@ -1,0 +1,41 @@
+# monahan1984-hodges-lehmann-616: result (blocked, G2 hold)
+
+**Claim (registered 2026-11-26T19:36Z, artifact-reference):** the Hodges-Lehmann estimate that TOMS 616's driver prints
+for N=9, repetition 3, first test of HLQEST (random input, RANG seed 434977), shipped as `0.545388` in the archive's
+printed run output (616.gz lines 366-441). Absolute tolerance 1e-6, fixed before any run. The claim and tolerance were not edited.
+
+**Measured (ours):** `0.545388` in both passes (fresh compile and run, gfortran -O0, separate clean directories).
+Difference from shipped: below 1e-6 (the shipped value has six decimals). Measured value is kept here, not in
+`result.json` (`claim.values[0].ours` is null, as for renka2003-dnsplin1-828).
+
+**Verdict:** `blocked`, cause `other`: the gate G2 (fidelity) is on hold for a patched reproduced result. The
+value matches; the verdict stays blocked until the scout confirms the line-range cut below does not change the
+algorithm. Recorded as blocked, not reproduced.
+
+**Basis:** `patched`.
+
+**Original attempt (G1, failed, kept):** `gfortran` on the whole archive file as shipped. `compile_exit=1`:
+lines 355-441 are stdin data and printed output, not Fortran. Log: `evidence/original-attempt.log`.
+
+**Patch (basis patched):** the source is archive lines 1-354, unedited (`sed -n 1,354p`). The stdin is lines
+355-365 (N=6..7 tie data and the N=0 stop), supplied as unit 1 (`fort.1`, the file gfortran opens for TAPE1=INPUT).
+No line of the source was edited; the only change is removing the non-Fortran tail of the file.
+
+**Exact command:** `bash reports/monahan1984-hodges-lehmann-616/recipe.sh` (the recipe fetches the archive with
+sha256 check and gfortran from conda-forge into the sandbox scratch, then runs each step through `tools/sandbox.sh`).
+
+**Environment pins:** netlib TOMS 616.gz sha256 `d81e3935449161431649327e1fa3c729db01af4475ebf1c7e9f3e881d1649c99`;
+gfortran from conda-forge (`gfortran_linux-64`, micromamba latest) in the sandbox scratch; gfortran -O0 (warnings only:
+Fortran 2018 deleted arithmetic IF, one array-bounds warning at line 154, which is the authors' own code).
+
+**Evidence:** `evidence/original-attempt.log`, `evidence/p1-output.txt`, `evidence/p2-output.txt` (full printed
+output of each pass, fort.3), `evidence/p1-compile.txt`, `evidence/p2-compile.txt`, `evidence/p1-value.txt`,
+`evidence/p2-value.txt`, `evidence/reference/printed-output.txt` (shipped lines 366-441, unedited).
+
+**Not done yet:** a full numeric compare of all 54 printed lines against the shipped output (my first awk compare was
+broken and was discarded; only the claimed line is compared). That compare is the first thing to add if the scout
+raises the cut.
+
+**What would change the verdict:** the scout's G2 reading says the cut is not an algorithm change, then the verdict
+becomes `reproduced` with basis `patched` and G2 `pass`. If the full output differs past 1e-6 on any line, that is a
+finding to diagnose, not a pass.

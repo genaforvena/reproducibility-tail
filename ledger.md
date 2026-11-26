@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-11 papers attempted.
+12 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
-| A | authors' code, run clean | 5 |
+| A | authors' code, run clean | 6 |
 | B | authors' code with build fixes | 3 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 1 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 4, other 1, statistics 3
-By stack: C/C++ 1, Fortran 3, MATLAB/Octave 2, R 5
-By decade: 1970 1, 1990 1, 2000 3, 2010 6
+By field: astronomy 1, biology 1, ecology 1, numerics 5, other 1, statistics 3
+By stack: C/C++ 1, Fortran 4, MATLAB/Octave 2, R 5
+By decade: 1970 1, 1990 2, 2000 3, 2010 6
 
 Data as of 2026-11-26T17:07:33Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-26T17:07:33Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-11 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+12 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **127 candidates considered from 3 of 4 frames: 10 attempted (8%), 0 unreachable, 117 rejected.**
 
@@ -74,12 +74,18 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 3 (did not run), not-possible 2 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 5 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 3 (did not run), not-possible 2 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 6 (ran as documented).
 
 ## Results
 
 | paper | field · year · stack | claim | paper value ± tol | our value | Δ | margin | basis | gates G1 G2 G3 G5 | grade | verdict | last replay |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| [akima1996-sdbi3p-761](reports/akima1996-sdbi3p-761/result.md) | numerics · 1996 · Fortran | ZI1(XI,YI) printed by the authors' driver for six registered grid points of the 'Calculation by points' table in the shipped result file res (SDBI3P, 30 data points), against the values printed in the same file (ZI1(XI=5, YI=5)) [shipped reference output] | 39.37 ± 0.011 | 39.37 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [akima1996-sdbi3p-761](reports/akima1996-sdbi3p-761/result.md) | numerics · 1996 · Fortran | ZI1(XI,YI) printed by the authors' driver for six registered grid points of the 'Calculation by points' table in the shipped result file res (SDBI3P, 30 data points), against the values printed in the same file (ZI1(XI=10, YI=10)) [shipped reference output] | 16.36 ± 0.011 | 16.36 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [akima1996-sdbi3p-761](reports/akima1996-sdbi3p-761/result.md) | numerics · 1996 · Fortran | ZI1(XI,YI) printed by the authors' driver for six registered grid points of the 'Calculation by points' table in the shipped result file res (SDBI3P, 30 data points), against the values printed in the same file (ZI1(XI=15, YI=10)) [shipped reference output] | 12.98 ± 0.011 | 12.98 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [akima1996-sdbi3p-761](reports/akima1996-sdbi3p-761/result.md) | numerics · 1996 · Fortran | ZI1(XI,YI) printed by the authors' driver for six registered grid points of the 'Calculation by points' table in the shipped result file res (SDBI3P, 30 data points), against the values printed in the same file (ZI1(XI=20, YI=15)) [shipped reference output] | 6.95 ± 0.011 | 6.95 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [akima1996-sdbi3p-761](reports/akima1996-sdbi3p-761/result.md) | numerics · 1996 · Fortran | ZI1(XI,YI) printed by the authors' driver for six registered grid points of the 'Calculation by points' table in the shipped result file res (SDBI3P, 30 data points), against the values printed in the same file (ZI1(XI=10, YI=15)) [shipped reference output] | 22.34 ± 0.011 | 22.34 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [akima1996-sdbi3p-761](reports/akima1996-sdbi3p-761/result.md) | numerics · 1996 · Fortran | ZI1(XI,YI) printed by the authors' driver for six registered grid points of the 'Calculation by points' table in the shipped result file res (SDBI3P, 30 data points), against the values printed in the same file (ZI1(XI=15, YI=5)) [shipped reference output] | 20.17 ± 0.011 | 20.17 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Nonlinearity) | 56 ± 0 | 56 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ · | B | reproduced | never clean |
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Algebraic degree) | 3 ± 0 | 3 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ · | B | reproduced | never clean |
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Algebraic immunity) | 3 ± 0 | 3 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ · | B | reproduced | never clean |

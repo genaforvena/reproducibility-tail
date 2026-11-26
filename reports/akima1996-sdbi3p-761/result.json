@@ -1,0 +1,93 @@
+{
+  "paper": {
+    "short": "akima1996-sdbi3p-761",
+    "title": "Algorithm 761: Scattered-data surface fitting that has the accuracy of a cubic polynomial",
+    "year": 1996,
+    "doi": null
+  },
+  "field": "numerics (scattered-data interpolation, bivariate)",
+  "stack": "Fortran 77, single precision",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "ZI1(XI,YI) printed by the authors' driver for six registered grid points of the 'Calculation by points' table in the shipped result file res (SDBI3P, 30 data points), against the values printed in the same file",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/akima1996-sdbi3p-761/evidence/reference/res",
+      "sha256": "ceb003ed2ce4a6659e016d8879ad34e6528c6bbec93577e4c6633371664ca8df",
+      "archive": "netlib.org/toms/761.gz sha256 373f95242dde88c78e9fb708287e4520e413094fdff9127e1b317b3960c2497f (member res, shipped in Drivers/Sp/)"
+    },
+    "values": [
+      {
+        "name": "ZI1(XI=5, YI=5)",
+        "paper": 39.37,
+        "tol_abs": 0.011,
+        "ours": 39.37
+      },
+      {
+        "name": "ZI1(XI=10, YI=10)",
+        "paper": 16.36,
+        "tol_abs": 0.011,
+        "ours": 16.36
+      },
+      {
+        "name": "ZI1(XI=15, YI=10)",
+        "paper": 12.98,
+        "tol_abs": 0.011,
+        "ours": 12.98
+      },
+      {
+        "name": "ZI1(XI=20, YI=15)",
+        "paper": 6.95,
+        "tol_abs": 0.011,
+        "ours": 6.95
+      },
+      {
+        "name": "ZI1(XI=10, YI=15)",
+        "paper": 22.34,
+        "tol_abs": 0.011,
+        "ours": 22.34
+      },
+      {
+        "name": "ZI1(XI=15, YI=5)",
+        "paper": 20.17,
+        "tol_abs": 0.011,
+        "ours": 20.17
+      }
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "The shipped sources (Drivers/Sp/driver.f, Src/Sp/src.f, Src/Sp/tripack.f) compile with conda-forge gfortran (installed in the sandbox fetch step) and run without any change: gfortran -O2 for pass 1, -O0 for pass 2, no -std flag. The whole shipped res output (all 60 ZI1, DZI1, ZI2, DZI2, ZI3, DZI3, ZI4, DZI4 values) is byte-identical to the shipped reference except for the first byte of the two page-title lines, the Fortran carriage-control character (the shipped file holds 0x80, our gfortran run writes a form feed 0x0C). Every number matches the authors' shipped output. Pass 1 and pass 2 values are identical. Caveat: four of the six registered values (16.36, 22.34, 12.98, 20.17) also equal the driver's own expected table ZIE to two decimals; the other two differ from ZIE (39.37 vs 39.32, 6.95 vs 7.52). ZI1 is computed by SDBI3P from the 30 data points, not copied from the input, and the two differing points show it, so the claim is not an echo. Still, the shipped res itself shows non-zero DZI1 differences (up to 0.57) against the driver's comment that they should be zero. Those differences are reproduced too; they are noted, not part of the claim.",
+  "queue_commit": "826c062f5d18bc4f6431d30e664714e0997eaac9",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "The shipped driver and sources compiled and ran with gfortran as shipped and no source change, on the second attempt (the first attempt used a wrong compiler path and failed with 'not found'; that log is kept as evidence/attempt0-wrong-compiler-path.log). The only addition is the compiler itself, installed in the sandbox during the fetch step.",
+    "log": "reports/akima1996-sdbi3p-761/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "pass",
+    "cross_check": "na"
+  },
+  "recipe": "reports/akima1996-sdbi3p-761/recipe.sh",
+  "evidence": [
+    "reports/akima1996-sdbi3p-761/evidence/original-attempt.log",
+    "reports/akima1996-sdbi3p-761/evidence/attempt0-wrong-compiler-path.log",
+    "reports/akima1996-sdbi3p-761/evidence/recipe-run.log",
+    "reports/akima1996-sdbi3p-761/evidence/run1-res.txt",
+    "reports/akima1996-sdbi3p-761/evidence/run2-res.txt",
+    "reports/akima1996-sdbi3p-761/evidence/values-run1.txt",
+    "reports/akima1996-sdbi3p-761/evidence/values-run2.txt",
+    "reports/akima1996-sdbi3p-761/evidence/reference/res",
+    "reports/akima1996-sdbi3p-761/impl/extract_values.py",
+    "reports/akima1996-sdbi3p-761/result.md",
+    "reports/akima1996-sdbi3p-761/evidence/gfortran-version.txt"
+  ],
+  "replayed": []
+}

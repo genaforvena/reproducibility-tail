@@ -1,0 +1,57 @@
+{
+  "paper": {
+    "title": "JMarkov: An Integrated Framework for Markov Chain Modeling",
+    "authors": [
+      "Juan F. Pérez",
+      "Daniel F. Silva",
+      "Julio C. Gómez",
+      "Andrés Sarmiento",
+      "Andrés Sarmiento-Romero",
+      "Raha Akhavan-Tabatabaei",
+      "Germán Riaño"
+    ],
+    "year": 2017,
+    "venue": "ACM Transactions on Mathematical Software 43(3), Article 29 (2017), TOMS 972",
+    "doi": null,
+    "url": "https://netlib.org/toms/972.zip",
+    "note": "DOI not verified in this wake; the article was not read (ACM paywall assumed, not checked). The claim rests on the shipped JUnit test KanbanTest.java in the 972.zip archive."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/972.zip",
+    "commit": "netlib TOMS archive 972.zip (fetched 2026-11-26, sha256 2287337098bfa3d4086ad1363a9b39ac53983d98d788cc950f1cbdb5c2bf1df7)",
+    "note": "Java sources (jMarkov/src), JUnit tests (jMarkov/test/jmarkov), jMarkov/lib/jMarkov.jar, build.xml not in the archive root (check the Java/INSTALL.txt). Extract with unzip into a fresh directory; never run the archive's contents outside it."
+  },
+  "field": "applied probability (Markov chain and queueing model analysis)",
+  "stack": "Java",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "Java/jMarkov/test/jmarkov/KanbanTest.java, method testGetMOPsAvg: expMops[0] = 0.7003166576899312 is the average MOPS (first measure) of the Kanban model returned by kaby.getMOPsAvg(), with the default parameters of the Kanban class.",
+    "reference": {
+      "file": "Java/jMarkov/test/jmarkov/KanbanTest.java (member of 972.zip)",
+      "sha256": null,
+      "archive": "netlib.org/toms/972.zip sha256 2287337098bfa3d4086ad1363a9b39ac53983d98d788cc950f1cbdb5c2bf1df7"
+    },
+    "metric": "First entry of the average measures-of-performance vector of the Kanban model (a steady-state Markov chain solve), as returned by getMOPsAvg().",
+    "paper_value": "Not used: the article was not read. The value is the one written in the shipped test.",
+    "values": [
+      {
+        "name": "Kanban MOPs avg [0]",
+        "paper": 0.7003166576899312,
+        "tol_abs": 0.0001
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 0.0001,
+      "basis": "Fixed here from the shipped assertion assertArrayEquals(..., 1e-4). A steady-state linear solve reproduces doubles to far better than 1e-4, so 1e-4 is loose enough for a different JVM or solver order and tight enough to catch a changed model. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 5 minutes: compile the jMarkov sources and run one Kanban model solve.",
+    "data_size": "No external data; the Kanban model is built in code.",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A deterministic Markov chain steady-state solve whose shipped expected value is a computed number (no closed form for this Kanban model is stated), with a stated absolute tolerance.",
+  "registered": "2026-11-26T23:23Z"
+}

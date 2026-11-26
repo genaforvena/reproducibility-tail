@@ -1,0 +1,43 @@
+{
+  "paper": {
+    "title": "Computing Infinite Range Integrals of an Arbitrary Product of Bessel Functions",
+    "authors": [
+      "Joris Van Deun",
+      "Ronald Cools"
+    ],
+    "year": 2006,
+    "venue": "ACM Transactions on Mathematical Software 32(4), 580-596 (CALGO Algorithm 858)",
+    "doi": null,
+    "url": "https://dl.acm.org (article page returned 403 to automated fetch; DOI not verified by scout)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/858.zip",
+    "commit": "netlib TOMS archive 858.zip (contains Matlab/Dp/Src/besselint.m, igamma.m, gettGJ.m and Matlab/Dp/Drivers/experiments.m, experiments.out; README in Doc/ says software revision date November 6, 2006)",
+    "archive": "sha256 63ed546d228e687e54ceed3dfeeb5d0bd82497477ddf545db6c7a8458af57431 (downloaded by scout 2026-11-26 from netlib.org/toms/858.zip, 16361 bytes)",
+    "note": "Run the driver experiments.m with besselint.m and igamma.m from the same archive, under GNU Octave (no MATLAB toolbox is needed per Doc/README). The reference is the shipped experiments.out. Octave is not installed on this host at the time of registration."
+  },
+  "field": "numerics (special functions, infinite-range integrals of Bessel products)",
+  "stack": "MATLAB/Octave (Matlab m-files, shipped by the authors)",
+  "claim": {
+    "source": "artifact-reference",
+    "location": "Shipped reference output 858/Matlab/Dp/Drivers/experiments.out, block 'Ex. 5.1' (lines 133-138): 'I = 6.106434990872165e-02' printed after the driver line besselint(sqrt([2 3 5 7 11]),0,1) (experiments.m, Example 5.1). The Exact answer line in the same block is 6.106434990872167e-02; that closed value is in the driver as a literature value, and the check is against the code's own printed output, not against the exact answer.",
+    "reference": {
+      "file": "858/Matlab/Dp/Drivers/experiments.out",
+      "sha256": "0d7e39866c8d4c2b3fac3013fb30da94fb583762743cd292710e24ff82e2b4f0",
+      "archive": "netlib.org/toms/858.zip, sha256 63ed546d228e687e54ceed3dfeeb5d0bd82497477ddf545db6c7a8458af57431"
+    },
+    "paper_value": "I = 6.106434990872165e-02 (Ex. 5.1, shipped experiments.out; the code computes this integral with a = sqrt([2 3 5 7 11]), nu = 0, m = 1)",
+    "metric": "value of besselint(sqrt([2 3 5 7 11]), 0, 1) returned as I (first output)",
+    "tolerance": {
+      "abs": 1e-10,
+      "basis": "Fixed before any run. The shipped value agrees with the authors' closed value 6.106434990872167e-02 to about 2e-17, so the printed output is accurate to 1e-15 relative. A tolerance of 1e-10 absolute (about 2e-9 relative) allows for Octave against the authors' Matlab and for library differences in gamma and ellipke, and is far tighter than the 1e-2 relative precision the driver's own Example 7.4 requests. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: one besselint call with five factors.",
+    "data_size": "None: the driver generates its own inputs.",
+    "data_licence": "No data. Code licence is not stated in the archive README; the rerun should record it."
+  },
+  "why": "The authors' own shipped driver prints a computed infinite-range integral to 16 digits; the integral needs the full besselint algorithm to evaluate, so the value tests the old code on a modern interpreter, not a closed form.",
+  "registered": "2026-11-26T15:05:31Z"
+}

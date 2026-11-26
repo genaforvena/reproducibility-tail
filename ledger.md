@@ -20,7 +20,7 @@ By field: astronomy 1, biology 1, ecology 1, numerics 1, statistics 3
 By stack: Fortran 1, MATLAB/Octave 1, R 5
 By decade: 2000 2, 2010 5
 
-Data as of 2026-11-26T15:05:30Z (the newest replay or funnel entry).
+Data as of 2026-11-26T15:06:30Z (the newest replay or funnel entry).
 
 ## The funnel
 
@@ -28,20 +28,20 @@ Every candidate is drawn from a named frame in a seeded order and none is skippe
 
 7 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
-**100 candidates considered from 3 of 3 frames: 1 attempted (1%), 0 unreachable, 99 rejected.**
+**100 candidates considered from 3 of 3 frames: 2 attempted (2%), 0 unreachable, 98 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
 | netlib-liblist | 160 | 40 | 40 | 100% | 0 | 0 | 40 |
 | stat-co-2010-2015 | 1872 | 80 | 50 | 62% | 1 | 0 | 49 |
-| toms-calgo-index | 570 | 40 | 10 | 25% | 0 | 0 | 10 |
+| toms-calgo-index | 570 | 40 | 10 | 25% | 1 | 0 | 9 |
 
 | why a candidate was not attempted | candidates |
 |---|---|
-| paywalled | 15 |
+| paywalled | 14 |
 | figure-only | 9 |
-| no-numeric-claim | 19 |
-| claim-not-located | 22 |
+| no-numeric-claim | 20 |
+| claim-not-located | 21 |
 | no-method-description | 0 |
 | stochastic-no-seed | 15 |
 | no-code | 3 |
@@ -59,8 +59,8 @@ Survivorship: each stack's count (and share) among all candidates considered, an
 |---|---|---|
 | C/C++ | 12 (12%) | 0 (0%) |
 | Fortran | 27 (27%) | 0 (0%) |
-| MATLAB/Octave | 9 (9%) | 0 (0%) |
-| R | 7 (7%) | 1 (100%) |
+| MATLAB/Octave | 9 (9%) | 1 (50%) |
+| R | 7 (7%) | 1 (50%) |
 | not-stated | 42 (42%) | 0 (0%) |
 | other | 3 (3%) | 0 (0%) |
 

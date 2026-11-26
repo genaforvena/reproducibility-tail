@@ -1,0 +1,56 @@
+{
+ "paper": {
+  "title": "Interpolation of rapidly varying function values given at points (title from the CALGO frame item; the paper was not read)",
+  "authors": [
+   "L. B. Montefusco",
+   "G. Casciola"
+  ],
+  "year": 1989,
+  "venue": "ACM Transactions on Mathematical Software 15(4), 365-374 (TOMS 677)",
+  "doi": null,
+  "url": "https://netlib.org/toms/677.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/677.gz",
+  "commit": "netlib TOMS archive 677.gz (downloaded 2026-11-26, 1915 lines uncompressed; sha256 not recorded by scout)",
+  "note": "A single Fortran source file (Algorithm 677, collected algorithms from ACM). It holds the MASUB package and four test programs. The first PROGRAM MAIN (lines 4 to about 160 of the unpacked text) is the self-checking test: 30 scattered points (XD, YD, ZD) with ZD = 8/3.14*exp(-8(x^2+y^2)), reconstructed on a 10x10 grid with extrapolation (IEX=1) and tension TP=10. It prints the analytic and reconstructed grids, then compares its own maximum and mean absolute errors with the built-in constants ANS2 and ANS1 (the DATA statements at line 24) and prints the result. NOUT=6 in its DATA statement. Needs a Fortran 77 compiler; gfortran is not in the scout sandbox."
+ },
+ "field": "numerics (scattered-data interpolation of a rapidly varying surface, single precision)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "The self-check in the first PROGRAM MAIN of 677.gz: the maximum absolute error ERMAX and mean absolute error ERMEAN of the 10x10 reconstruction against the analytic Gaussian surface. The built-in reference values are ANS2 = 0.6059994 (maximum error) and ANS1 = 0.06695094 (mean error), in the DATA statement at line 24 of the unpacked source. The rerun must compute ERMAX and ERMEAN with the subroutine MMERR and compare them with these two constants.",
+  "reference": {
+   "file": "Fortran source of 677.gz (the first PROGRAM MAIN, DATA ANS1/0.06695094/, ANS2/0.6059994/)",
+   "sha256": null,
+   "archive": "netlib.org/toms/677.gz"
+  },
+  "metric": "Maximum and mean absolute error of the reconstructed 10x10 grid against the analytic values, as computed by MMERR",
+  "paper_value": "Not used. The paper was not read (ACM DL is not reachable from the scout sandbox), so no paper value is claimed.",
+  "values": [
+   {
+    "name": "maximum absolute error (ERMAX)",
+    "paper": 0.6059994,
+    "tol_rel": 1e-5
+   },
+   {
+    "name": "mean absolute error (ERMEAN)",
+    "paper": 0.06695094,
+    "tol_rel": 1e-5
+   }
+  ],
+  "tolerance": {
+   "rel": 1e-5,
+   "abs": null,
+   "why": "The code is single precision (REAL arithmetic, unit roundoff about 6e-8), so the errors carry rounding noise of several parts in 1e6 across compilers and optimisation levels. The driver's own check uses 1E-6, which is about eight unit roundoffs and would test compiler rounding, not the method. Scout set 1e-5 relative before any run of this claim, on both values; the rerun must not loosen it to fit its own result."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "well under 1 minute (30 scattered points, a 10x10 grid); the archive's other test programs (40x40 grid, larger inputs) are not in scope here",
+  "data_size": "none; the input points are DATA statements inside the program",
+  "data_licence": "Netlib TOMS code under the archive's ACM licence; the rerun should record the licence text it finds in the archive"
+ },
+ "why": "A 1989 Fortran interpolation package ships a self-checking driver whose built-in maximum and mean errors are exact deterministic outputs of the method on fixed inputs, so a rerun checks the reconstruction itself, not only that the code compiles.",
+ "registered": "2026-11-26T17:34:00Z"
+}

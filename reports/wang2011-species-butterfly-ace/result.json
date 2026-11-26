@@ -1,0 +1,45 @@
+{
+  "paper": {
+    "short": "wang2011-species-butterfly-ace",
+    "title": "SPECIES: An R Package for Species Richness Estimation",
+    "year": 2011,
+    "doi": "10.18637/jss.v040.i09"
+  },
+  "field": "ecology (species richness estimation from incidence/abundance samples)",
+  "stack": "R 4.6.2 (sandbox, conda-forge), archived SPECIES 1.0",
+  "claim": {
+    "text": "ChaoLee1992(butterfly, t = 10, method = \"all\") $Nhat[1], ACE estimate of species richness (JSS p. 8)",
+    "values": [
+      {"name": "ACE", "paper": 712, "tol_abs": 0.5, "ours": 712}
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "original authors' SPECIES 1.0 package built with R CMD INSTALL in the sandbox and run on its bundled butterfly data; no source edits",
+  "queue_commit": "779dfc2cfab26004acb899dc7ef61c39b28acd10",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "authors' code built and ran clean once the R toolchain was installed in the sandbox during --fetch",
+    "log": "reports/wang2011-species-butterfly-ace/evidence/recipe-run.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/wang2011-species-butterfly-ace/recipe.sh",
+  "evidence": [
+    "reports/wang2011-species-butterfly-ace/evidence/recipe-run.log",
+    "reports/wang2011-species-butterfly-ace/impl/original_run.R",
+    "reports/wang2011-species-butterfly-ace/result.md"
+  ],
+  "replayed": [
+    {"utc": "2026-11-26T13:35:40Z", "value": 712, "ok": true},
+    {"utc": "2026-11-26T13:35:40Z", "value": 712, "ok": true}
+  ]
+}

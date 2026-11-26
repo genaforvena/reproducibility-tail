@@ -1,0 +1,92 @@
+{
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "ea179f8d264d8130755145cfe02f51a2d789ae7d6d3fde55bddbd725d9ff78ad",
+    "compared": 4,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "/work/gf9/bin/x86_64-conda-linux-gnu-gfortran -O0 -c -ffree-form polsys_plp.f90",
+      "/work/gf9/bin/x86_64-conda-linux-gnu-gfortran -O0 -c -ffixed-form -ffixed-line-length-none lapack_plp.f",
+      "/work/gf9/bin/x86_64-conda-linux-gnu-gfortran -O0 -I/work/build/Src -c main_template.f90",
+      "/work/gf9/bin/x86_64-conda-linux-gnu-gfortran -O0 -o main_template main_template.o ../Src/polsys_plp.o ../Src/lapack_plp.o"
+    ],
+    "manifests": {
+      "pre": "reports/wise2000-polsys-plp-801/evidence/manifest.pre",
+      "mid": "reports/wise2000-polsys-plp-801/evidence/manifest.mid",
+      "post": "reports/wise2000-polsys-plp-801/evidence/manifest.post"
+    }
+  },
+  "paper": {
+    "short": "wise2000-polsys-plp-801",
+    "title": "Algorithm 801: POLSYS_PLP: A partitioned linear product homotopy code for solving polynomial systems of equations",
+    "year": 2000,
+    "doi": null
+  },
+  "field": "numerics (polynomial systems, homotopy continuation)",
+  "stack": "Fortran 90 (TOMS 801 archive: Fortran90/Dp/Src/polsys_plp.f90, lapack_plp.f; Fortran90/Dp/Drivers/main_template.f90, INPUT.DAT, OUTPUT.DAT)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "TWO QUADRICS real finite solution (first INPUT.DAT problem, TRACKTOL 1e-4, FINALTOL 1e-14, seed 32749): Re X(2) = -0.788344824094120 as printed in the shipped OUTPUT.DAT, absolute tolerance 1e-6.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/wise2000-polsys-plp-801/evidence/reference/OUTPUT.DAT",
+      "sha256": "01e620f1c7181d3313a81b28440c437ce57086ad7c757cd39f998247caad8562",
+      "archive": "netlib.org/toms/801.gz sha256 ea179f8d264d8130755145cfe02f51a2d789ae7d6d3fde55bddbd725d9ff78ad"
+    },
+    "values": [
+      {
+        "name": "TWO QUADRICS real finite solution, Re X(2)",
+        "paper": -0.78834482409412,
+        "tol_abs": 1e-06,
+        "ours": -0.788344824094139
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced with a build-only toolchain change. The authors' README build with the latest gfortran (13) fails: polsys_plp.f90 is rejected (\"Index variable 'iter' redefined\"), so the original attempt failed; -std=legacy does not lift it. The same unedited sources, built out of tree with gfortran 9.5 (-O0, README flags, no source or flag change to the code), compile and link. Three manifests prove no source file was touched (verify_sources record: build-only, nothing modified/removed/added). The archive's INPUT.DAT runs through main_template: the first real finite solution (X(1) = 2.34233851959128E+03) has X(2) real part -7.88344824094139E-01 in pass 1 (-O0), identical in pass 2 (-O2, separate tree). Difference from the shipped value is 1.9e-15, far inside 1e-6.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "gfortran 13: polsys_plp.f90 fails with \"Index variable 'iter' redefined at (1) in procedure 'root_plp' called from within DO loop at (2)\" (ITER is modified inside ROOT_PLP while a caller DO loop uses it); lapack_plp.f compiles with warnings only. -std=legacy does not lift the error.",
+    "log": "reports/wise2000-polsys-plp-801/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/wise2000-polsys-plp-801/recipe.sh",
+  "queue_commit": "5291b06a1220aa934909117d7531a319c335f783",
+  "evidence": [
+    "reports/wise2000-polsys-plp-801/evidence/original-attempt.log",
+    "reports/wise2000-polsys-plp-801/evidence/legacy-attempt.log",
+    "reports/wise2000-polsys-plp-801/evidence/build.log",
+    "reports/wise2000-polsys-plp-801/evidence/recipe-run.log",
+    "reports/wise2000-polsys-plp-801/evidence/pass1-run.log",
+    "reports/wise2000-polsys-plp-801/evidence/pass2-run.log",
+    "reports/wise2000-polsys-plp-801/evidence/pass1-OUTPUT.DAT",
+    "reports/wise2000-polsys-plp-801/evidence/pass2-OUTPUT.DAT",
+    "reports/wise2000-polsys-plp-801/evidence/value-pass1.txt",
+    "reports/wise2000-polsys-plp-801/evidence/value-pass2.txt",
+    "reports/wise2000-polsys-plp-801/evidence/reference/OUTPUT.DAT",
+    "reports/wise2000-polsys-plp-801/evidence/manifest.pre",
+    "reports/wise2000-polsys-plp-801/evidence/manifest.mid",
+    "reports/wise2000-polsys-plp-801/evidence/manifest.post"
+  ],
+  "replayed": []
+}

@@ -1,0 +1,89 @@
+{
+  "paper": {
+    "short": "berntsen1993-dcutet-720",
+    "title": "Algorithm 720: an adaptive cubature over a collection of 3-dimensional simplices (DCUTET)",
+    "year": 1993,
+    "doi": null
+  },
+  "field": "numerics (multidimensional adaptive integration over tetrahedra)",
+  "stack": "Fortran 77 (TOMS 720 archive 720.gz: one Fortran file 720.shar holding DCUTET and the DTEST1 sample program)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "DTEST1 sample program: RESULT, the integral of exp(x*x+y*y+z*z) over the reference tetrahedron (0,0,0),(1,0,0),(0,1,0),(0,0,1), EPSREL 1e-5, EPSABS 0, MAXPTS 1000. Shipped sample output 'Output produced on a SUN 3/50': RESULT = 0.22779999698986. Absolute tolerance 1e-5.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/berntsen1993-dcutet-720/evidence/reference/sun3-50-output.txt",
+      "sha256": "ef9ebd763f2b5fe12f3a2acb51c81f6dc7bf6bf621ddc25860566448f2b77220",
+      "archive": "netlib.org/toms/720.gz sha256 dc7f045565f861b4561f76b55cc49596e435349847cebdc0e6e5de5230025deb"
+    },
+    "values": [
+      {
+        "name": "DTEST1 RESULT (integral of exp(x^2+y^2+z^2) over the reference tetrahedron)",
+        "paper": 0.22779999698986,
+        "tol_abs": 1e-05,
+        "ours": 0.2277999969898576
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced with a build-only change of unpacking. The shipped 720.shar is one Fortran file whose first 71 lines are a comment block and then an unprefixed Makefile fragment (non-Fortran), so the authors' archive does not compile as shipped. The Fortran lines were split by line ranges into dcutet.f (from D1MACH, line 72, through the double-precision code) and dtest1.f (DTEST1 and F, lines 1867-1907) without editing a line; the 71 header lines are left out. The unit is compiled with gfortran 13 (conda-forge gfortran_linux-64, -O0; pass 2 -O2) and linked with DTEST1. DTEST1 prints RESULT = 0.22779999698985759 (ERROR 1.975e-6, NEVAL 43, IFAIL 0), against the shipped 0.22779999698986: difference 4e-15, far inside 1e-5. Judgment call recorded: the header removal is treated as unpacking, not as a patch; if a reviewer reads it as a patch, the G2 paper check is needed.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "gfortran 13 on the shipped 720.f (the archive as one file): compile fails at the Makefile fragment in the header (\"Non-numeric character in statement label\", 25 errors); the link of a single unit would also fail on the four PROGRAM units.",
+    "log": "reports/berntsen1993-dcutet-720/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/berntsen1993-dcutet-720/recipe.sh",
+  "queue_commit": "6b9dfb1088abb4ade62d277514397aea161a1c5c",
+  "evidence": [
+    "reports/berntsen1993-dcutet-720/evidence/original-attempt.log",
+    "reports/berntsen1993-dcutet-720/evidence/unpack.log",
+    "reports/berntsen1993-dcutet-720/evidence/pass1-build.log",
+    "reports/berntsen1993-dcutet-720/evidence/pass1-run.log",
+    "reports/berntsen1993-dcutet-720/evidence/pass2-run.log",
+    "reports/berntsen1993-dcutet-720/evidence/pass1-output.txt",
+    "reports/berntsen1993-dcutet-720/evidence/pass2-output.txt",
+    "reports/berntsen1993-dcutet-720/evidence/pass1-result.txt",
+    "reports/berntsen1993-dcutet-720/evidence/pass2-result.txt",
+    "reports/berntsen1993-dcutet-720/evidence/reference/sun3-50-output.txt",
+    "reports/berntsen1993-dcutet-720/evidence/recipe-run.log",
+    "reports/berntsen1993-dcutet-720/evidence/manifest.pre",
+    "reports/berntsen1993-dcutet-720/evidence/manifest.mid",
+    "reports/berntsen1993-dcutet-720/evidence/manifest.post"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "dc7f045565f861b4561f76b55cc49596e435349847cebdc0e6e5de5230025deb",
+    "compared": 2,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "cd /work/build && /work/fortran/bin/x86_64-conda-linux-gnu-gfortran -O0 -o dtest1 dtest1.f dcutet.f"
+    ],
+    "manifests": {
+      "pre": "reports/berntsen1993-dcutet-720/evidence/manifest.pre",
+      "mid": "reports/berntsen1993-dcutet-720/evidence/manifest.mid",
+      "post": "reports/berntsen1993-dcutet-720/evidence/manifest.post"
+    }
+  }
+}

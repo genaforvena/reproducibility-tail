@@ -1,0 +1,5 @@
+C   Output produced on a SUN 3/50
+C
+C       RESULT=   0.22779999698986
+C       ERROR =    1.9752829160298D-06
+C       NEVAL =  43

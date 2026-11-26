@@ -1,0 +1,5 @@
+11:C              Sample output from a SUN 3/50 is included.
+1317:C   Output produced on a SUN 3/50
+2:      DOUBLE PRECISION VER(3,4,50),EPSABS,EPSREL,RESULT(1),ABSERR(1),
+29:     +            EPSREL,LENVER,NW,RESTAR,RESULT,ABSERR,NEVAL,
+31:      WRITE(*,*)'RESULT=',RESULT(1)

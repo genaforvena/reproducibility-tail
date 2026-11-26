@@ -1,0 +1,400 @@
+ /bin/bash ../libtool --mode=install /usr/bin/install -c  'libgslcblas.la' '/work/local/lib/libgslcblas.la'
+/usr/bin/install -c .libs/libgslcblas.so.0.0.0 /work/local/lib/libgslcblas.so.0.0.0
+(cd /work/local/lib && { ln -s -f libgslcblas.so.0.0.0 libgslcblas.so.0 || { rm -f libgslcblas.so.0 && ln -s libgslcblas.so.0.0.0 libgslcblas.so.0; }; })
+(cd /work/local/lib && { ln -s -f libgslcblas.so.0.0.0 libgslcblas.so || { rm -f libgslcblas.so && ln -s libgslcblas.so.0.0.0 libgslcblas.so; }; })
+/usr/bin/install -c .libs/libgslcblas.lai /work/local/lib/libgslcblas.la
+/usr/bin/install -c .libs/libgslcblas.a /work/local/lib/libgslcblas.a
+chmod 644 /work/local/lib/libgslcblas.a
+ranlib /work/local/lib/libgslcblas.a
+PATH="$PATH:/sbin" ldconfig -n /work/local/lib
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /work/local/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the `-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the `LD_RUN_PATH' environment variable
+     during linking
+   - use the `-Wl,--rpath -Wl,LIBDIR' linker flag
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_cblas.h' '/work/local/include/gsl/gsl_cblas.h'
+make[2]: Leaving directory '/work/gsl-1.10/cblas'
+make[1]: Leaving directory '/work/gsl-1.10/cblas'
+Making install in blas
+make[1]: Entering directory '/work/gsl-1.10/blas'
+make[2]: Entering directory '/work/gsl-1.10/blas'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_blas.h' '/work/local/include/gsl/gsl_blas.h'
+ /usr/bin/install -c -m 644 'gsl_blas_types.h' '/work/local/include/gsl/gsl_blas_types.h'
+make[2]: Leaving directory '/work/gsl-1.10/blas'
+make[1]: Leaving directory '/work/gsl-1.10/blas'
+Making install in linalg
+make[1]: Entering directory '/work/gsl-1.10/linalg'
+make[2]: Entering directory '/work/gsl-1.10/linalg'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_linalg.h' '/work/local/include/gsl/gsl_linalg.h'
+make[2]: Leaving directory '/work/gsl-1.10/linalg'
+make[1]: Leaving directory '/work/gsl-1.10/linalg'
+Making install in eigen
+make[1]: Entering directory '/work/gsl-1.10/eigen'
+make[2]: Entering directory '/work/gsl-1.10/eigen'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_eigen.h' '/work/local/include/gsl/gsl_eigen.h'
+make[2]: Leaving directory '/work/gsl-1.10/eigen'
+make[1]: Leaving directory '/work/gsl-1.10/eigen'
+Making install in specfunc
+make[1]: Entering directory '/work/gsl-1.10/specfunc'
+make[2]: Entering directory '/work/gsl-1.10/specfunc'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_sf.h' '/work/local/include/gsl/gsl_sf.h'
+ /usr/bin/install -c -m 644 'gsl_sf_airy.h' '/work/local/include/gsl/gsl_sf_airy.h'
+ /usr/bin/install -c -m 644 'gsl_sf_bessel.h' '/work/local/include/gsl/gsl_sf_bessel.h'
+ /usr/bin/install -c -m 644 'gsl_sf_clausen.h' '/work/local/include/gsl/gsl_sf_clausen.h'
+ /usr/bin/install -c -m 644 'gsl_sf_coulomb.h' '/work/local/include/gsl/gsl_sf_coulomb.h'
+ /usr/bin/install -c -m 644 'gsl_sf_coupling.h' '/work/local/include/gsl/gsl_sf_coupling.h'
+ /usr/bin/install -c -m 644 'gsl_sf_dawson.h' '/work/local/include/gsl/gsl_sf_dawson.h'
+ /usr/bin/install -c -m 644 'gsl_sf_debye.h' '/work/local/include/gsl/gsl_sf_debye.h'
+ /usr/bin/install -c -m 644 'gsl_sf_dilog.h' '/work/local/include/gsl/gsl_sf_dilog.h'
+ /usr/bin/install -c -m 644 'gsl_sf_elementary.h' '/work/local/include/gsl/gsl_sf_elementary.h'
+ /usr/bin/install -c -m 644 'gsl_sf_ellint.h' '/work/local/include/gsl/gsl_sf_ellint.h'
+ /usr/bin/install -c -m 644 'gsl_sf_elljac.h' '/work/local/include/gsl/gsl_sf_elljac.h'
+ /usr/bin/install -c -m 644 'gsl_sf_erf.h' '/work/local/include/gsl/gsl_sf_erf.h'
+ /usr/bin/install -c -m 644 'gsl_sf_exp.h' '/work/local/include/gsl/gsl_sf_exp.h'
+ /usr/bin/install -c -m 644 'gsl_sf_expint.h' '/work/local/include/gsl/gsl_sf_expint.h'
+ /usr/bin/install -c -m 644 'gsl_sf_fermi_dirac.h' '/work/local/include/gsl/gsl_sf_fermi_dirac.h'
+ /usr/bin/install -c -m 644 'gsl_sf_gamma.h' '/work/local/include/gsl/gsl_sf_gamma.h'
+ /usr/bin/install -c -m 644 'gsl_sf_gegenbauer.h' '/work/local/include/gsl/gsl_sf_gegenbauer.h'
+ /usr/bin/install -c -m 644 'gsl_sf_hyperg.h' '/work/local/include/gsl/gsl_sf_hyperg.h'
+ /usr/bin/install -c -m 644 'gsl_sf_laguerre.h' '/work/local/include/gsl/gsl_sf_laguerre.h'
+ /usr/bin/install -c -m 644 'gsl_sf_lambert.h' '/work/local/include/gsl/gsl_sf_lambert.h'
+ /usr/bin/install -c -m 644 'gsl_sf_legendre.h' '/work/local/include/gsl/gsl_sf_legendre.h'
+ /usr/bin/install -c -m 644 'gsl_sf_log.h' '/work/local/include/gsl/gsl_sf_log.h'
+ /usr/bin/install -c -m 644 'gsl_sf_mathieu.h' '/work/local/include/gsl/gsl_sf_mathieu.h'
+ /usr/bin/install -c -m 644 'gsl_sf_pow_int.h' '/work/local/include/gsl/gsl_sf_pow_int.h'
+ /usr/bin/install -c -m 644 'gsl_sf_psi.h' '/work/local/include/gsl/gsl_sf_psi.h'
+ /usr/bin/install -c -m 644 'gsl_sf_result.h' '/work/local/include/gsl/gsl_sf_result.h'
+ /usr/bin/install -c -m 644 'gsl_sf_synchrotron.h' '/work/local/include/gsl/gsl_sf_synchrotron.h'
+ /usr/bin/install -c -m 644 'gsl_sf_transport.h' '/work/local/include/gsl/gsl_sf_transport.h'
+ /usr/bin/install -c -m 644 'gsl_sf_trig.h' '/work/local/include/gsl/gsl_sf_trig.h'
+ /usr/bin/install -c -m 644 'gsl_sf_zeta.h' '/work/local/include/gsl/gsl_sf_zeta.h'
+ /usr/bin/install -c -m 644 'gsl_specfunc.h' '/work/local/include/gsl/gsl_specfunc.h'
+make[2]: Leaving directory '/work/gsl-1.10/specfunc'
+make[1]: Leaving directory '/work/gsl-1.10/specfunc'
+Making install in dht
+make[1]: Entering directory '/work/gsl-1.10/dht'
+make[2]: Entering directory '/work/gsl-1.10/dht'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_dht.h' '/work/local/include/gsl/gsl_dht.h'
+make[2]: Leaving directory '/work/gsl-1.10/dht'
+make[1]: Leaving directory '/work/gsl-1.10/dht'
+Making install in qrng
+make[1]: Entering directory '/work/gsl-1.10/qrng'
+make[2]: Entering directory '/work/gsl-1.10/qrng'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_qrng.h' '/work/local/include/gsl/gsl_qrng.h'
+make[2]: Leaving directory '/work/gsl-1.10/qrng'
+make[1]: Leaving directory '/work/gsl-1.10/qrng'
+Making install in rng
+make[1]: Entering directory '/work/gsl-1.10/rng'
+make[2]: Entering directory '/work/gsl-1.10/rng'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_rng.h' '/work/local/include/gsl/gsl_rng.h'
+make[2]: Leaving directory '/work/gsl-1.10/rng'
+make[1]: Leaving directory '/work/gsl-1.10/rng'
+Making install in randist
+make[1]: Entering directory '/work/gsl-1.10/randist'
+make[2]: Entering directory '/work/gsl-1.10/randist'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_randist.h' '/work/local/include/gsl/gsl_randist.h'
+make[2]: Leaving directory '/work/gsl-1.10/randist'
+make[1]: Leaving directory '/work/gsl-1.10/randist'
+Making install in fft
+make[1]: Entering directory '/work/gsl-1.10/fft'
+make[2]: Entering directory '/work/gsl-1.10/fft'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_fft.h' '/work/local/include/gsl/gsl_fft.h'
+ /usr/bin/install -c -m 644 'gsl_fft_complex.h' '/work/local/include/gsl/gsl_fft_complex.h'
+ /usr/bin/install -c -m 644 'gsl_fft_halfcomplex.h' '/work/local/include/gsl/gsl_fft_halfcomplex.h'
+ /usr/bin/install -c -m 644 'gsl_fft_real.h' '/work/local/include/gsl/gsl_fft_real.h'
+ /usr/bin/install -c -m 644 'gsl_dft_complex.h' '/work/local/include/gsl/gsl_dft_complex.h'
+ /usr/bin/install -c -m 644 'gsl_dft_complex_float.h' '/work/local/include/gsl/gsl_dft_complex_float.h'
+ /usr/bin/install -c -m 644 'gsl_fft_complex_float.h' '/work/local/include/gsl/gsl_fft_complex_float.h'
+ /usr/bin/install -c -m 644 'gsl_fft_halfcomplex_float.h' '/work/local/include/gsl/gsl_fft_halfcomplex_float.h'
+ /usr/bin/install -c -m 644 'gsl_fft_real_float.h' '/work/local/include/gsl/gsl_fft_real_float.h'
+make[2]: Leaving directory '/work/gsl-1.10/fft'
+make[1]: Leaving directory '/work/gsl-1.10/fft'
+Making install in poly
+make[1]: Entering directory '/work/gsl-1.10/poly'
+make[2]: Entering directory '/work/gsl-1.10/poly'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_poly.h' '/work/local/include/gsl/gsl_poly.h'
+make[2]: Leaving directory '/work/gsl-1.10/poly'
+make[1]: Leaving directory '/work/gsl-1.10/poly'
+Making install in fit
+make[1]: Entering directory '/work/gsl-1.10/fit'
+make[2]: Entering directory '/work/gsl-1.10/fit'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_fit.h' '/work/local/include/gsl/gsl_fit.h'
+make[2]: Leaving directory '/work/gsl-1.10/fit'
+make[1]: Leaving directory '/work/gsl-1.10/fit'
+Making install in multifit
+make[1]: Entering directory '/work/gsl-1.10/multifit'
+make[2]: Entering directory '/work/gsl-1.10/multifit'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_multifit.h' '/work/local/include/gsl/gsl_multifit.h'
+ /usr/bin/install -c -m 644 'gsl_multifit_nlin.h' '/work/local/include/gsl/gsl_multifit_nlin.h'
+make[2]: Leaving directory '/work/gsl-1.10/multifit'
+make[1]: Leaving directory '/work/gsl-1.10/multifit'
+Making install in statistics
+make[1]: Entering directory '/work/gsl-1.10/statistics'
+make[2]: Entering directory '/work/gsl-1.10/statistics'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_statistics.h' '/work/local/include/gsl/gsl_statistics.h'
+ /usr/bin/install -c -m 644 'gsl_statistics_char.h' '/work/local/include/gsl/gsl_statistics_char.h'
+ /usr/bin/install -c -m 644 'gsl_statistics_double.h' '/work/local/include/gsl/gsl_statistics_double.h'
+ /usr/bin/install -c -m 644 'gsl_statistics_float.h' '/work/local/include/gsl/gsl_statistics_float.h'
+ /usr/bin/install -c -m 644 'gsl_statistics_int.h' '/work/local/include/gsl/gsl_statistics_int.h'
+ /usr/bin/install -c -m 644 'gsl_statistics_long.h' '/work/local/include/gsl/gsl_statistics_long.h'
+ /usr/bin/install -c -m 644 'gsl_statistics_long_double.h' '/work/local/include/gsl/gsl_statistics_long_double.h'
+ /usr/bin/install -c -m 644 'gsl_statistics_short.h' '/work/local/include/gsl/gsl_statistics_short.h'
+ /usr/bin/install -c -m 644 'gsl_statistics_uchar.h' '/work/local/include/gsl/gsl_statistics_uchar.h'
+ /usr/bin/install -c -m 644 'gsl_statistics_uint.h' '/work/local/include/gsl/gsl_statistics_uint.h'
+ /usr/bin/install -c -m 644 'gsl_statistics_ulong.h' '/work/local/include/gsl/gsl_statistics_ulong.h'
+ /usr/bin/install -c -m 644 'gsl_statistics_ushort.h' '/work/local/include/gsl/gsl_statistics_ushort.h'
+make[2]: Leaving directory '/work/gsl-1.10/statistics'
+make[1]: Leaving directory '/work/gsl-1.10/statistics'
+Making install in siman
+make[1]: Entering directory '/work/gsl-1.10/siman'
+make[2]: Entering directory '/work/gsl-1.10/siman'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_siman.h' '/work/local/include/gsl/gsl_siman.h'
+make[2]: Leaving directory '/work/gsl-1.10/siman'
+make[1]: Leaving directory '/work/gsl-1.10/siman'
+Making install in sum
+make[1]: Entering directory '/work/gsl-1.10/sum'
+make[2]: Entering directory '/work/gsl-1.10/sum'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_sum.h' '/work/local/include/gsl/gsl_sum.h'
+make[2]: Leaving directory '/work/gsl-1.10/sum'
+make[1]: Leaving directory '/work/gsl-1.10/sum'
+Making install in integration
+make[1]: Entering directory '/work/gsl-1.10/integration'
+make[2]: Entering directory '/work/gsl-1.10/integration'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_integration.h' '/work/local/include/gsl/gsl_integration.h'
+make[2]: Leaving directory '/work/gsl-1.10/integration'
+make[1]: Leaving directory '/work/gsl-1.10/integration'
+Making install in interpolation
+make[1]: Entering directory '/work/gsl-1.10/interpolation'
+make[2]: Entering directory '/work/gsl-1.10/interpolation'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_interp.h' '/work/local/include/gsl/gsl_interp.h'
+ /usr/bin/install -c -m 644 'gsl_spline.h' '/work/local/include/gsl/gsl_spline.h'
+make[2]: Leaving directory '/work/gsl-1.10/interpolation'
+make[1]: Leaving directory '/work/gsl-1.10/interpolation'
+Making install in histogram
+make[1]: Entering directory '/work/gsl-1.10/histogram'
+make[2]: Entering directory '/work/gsl-1.10/histogram'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_histogram.h' '/work/local/include/gsl/gsl_histogram.h'
+ /usr/bin/install -c -m 644 'gsl_histogram2d.h' '/work/local/include/gsl/gsl_histogram2d.h'
+make[2]: Leaving directory '/work/gsl-1.10/histogram'
+make[1]: Leaving directory '/work/gsl-1.10/histogram'
+Making install in ode-initval
+make[1]: Entering directory '/work/gsl-1.10/ode-initval'
+make[2]: Entering directory '/work/gsl-1.10/ode-initval'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_odeiv.h' '/work/local/include/gsl/gsl_odeiv.h'
+make[2]: Leaving directory '/work/gsl-1.10/ode-initval'
+make[1]: Leaving directory '/work/gsl-1.10/ode-initval'
+Making install in roots
+make[1]: Entering directory '/work/gsl-1.10/roots'
+make[2]: Entering directory '/work/gsl-1.10/roots'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_roots.h' '/work/local/include/gsl/gsl_roots.h'
+make[2]: Leaving directory '/work/gsl-1.10/roots'
+make[1]: Leaving directory '/work/gsl-1.10/roots'
+Making install in multiroots
+make[1]: Entering directory '/work/gsl-1.10/multiroots'
+make[2]: Entering directory '/work/gsl-1.10/multiroots'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_multiroots.h' '/work/local/include/gsl/gsl_multiroots.h'
+make[2]: Leaving directory '/work/gsl-1.10/multiroots'
+make[1]: Leaving directory '/work/gsl-1.10/multiroots'
+Making install in min
+make[1]: Entering directory '/work/gsl-1.10/min'
+make[2]: Entering directory '/work/gsl-1.10/min'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_min.h' '/work/local/include/gsl/gsl_min.h'
+make[2]: Leaving directory '/work/gsl-1.10/min'
+make[1]: Leaving directory '/work/gsl-1.10/min'
+Making install in multimin
+make[1]: Entering directory '/work/gsl-1.10/multimin'
+make[2]: Entering directory '/work/gsl-1.10/multimin'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_multimin.h' '/work/local/include/gsl/gsl_multimin.h'
+make[2]: Leaving directory '/work/gsl-1.10/multimin'
+make[1]: Leaving directory '/work/gsl-1.10/multimin'
+Making install in monte
+make[1]: Entering directory '/work/gsl-1.10/monte'
+make[2]: Entering directory '/work/gsl-1.10/monte'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_monte.h' '/work/local/include/gsl/gsl_monte.h'
+ /usr/bin/install -c -m 644 'gsl_monte_vegas.h' '/work/local/include/gsl/gsl_monte_vegas.h'
+ /usr/bin/install -c -m 644 'gsl_monte_miser.h' '/work/local/include/gsl/gsl_monte_miser.h'
+ /usr/bin/install -c -m 644 'gsl_monte_plain.h' '/work/local/include/gsl/gsl_monte_plain.h'
+make[2]: Leaving directory '/work/gsl-1.10/monte'
+make[1]: Leaving directory '/work/gsl-1.10/monte'
+Making install in ntuple
+make[1]: Entering directory '/work/gsl-1.10/ntuple'
+make[2]: Entering directory '/work/gsl-1.10/ntuple'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_ntuple.h' '/work/local/include/gsl/gsl_ntuple.h'
+make[2]: Leaving directory '/work/gsl-1.10/ntuple'
+make[1]: Leaving directory '/work/gsl-1.10/ntuple'
+Making install in diff
+make[1]: Entering directory '/work/gsl-1.10/diff'
+make[2]: Entering directory '/work/gsl-1.10/diff'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_diff.h' '/work/local/include/gsl/gsl_diff.h'
+make[2]: Leaving directory '/work/gsl-1.10/diff'
+make[1]: Leaving directory '/work/gsl-1.10/diff'
+Making install in deriv
+make[1]: Entering directory '/work/gsl-1.10/deriv'
+make[2]: Entering directory '/work/gsl-1.10/deriv'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_deriv.h' '/work/local/include/gsl/gsl_deriv.h'
+make[2]: Leaving directory '/work/gsl-1.10/deriv'
+make[1]: Leaving directory '/work/gsl-1.10/deriv'
+Making install in cdf
+make[1]: Entering directory '/work/gsl-1.10/cdf'
+make[2]: Entering directory '/work/gsl-1.10/cdf'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_cdf.h' '/work/local/include/gsl/gsl_cdf.h'
+make[2]: Leaving directory '/work/gsl-1.10/cdf'
+make[1]: Leaving directory '/work/gsl-1.10/cdf'
+Making install in wavelet
+make[1]: Entering directory '/work/gsl-1.10/wavelet'
+make[2]: Entering directory '/work/gsl-1.10/wavelet'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_wavelet.h' '/work/local/include/gsl/gsl_wavelet.h'
+ /usr/bin/install -c -m 644 'gsl_wavelet2d.h' '/work/local/include/gsl/gsl_wavelet2d.h'
+make[2]: Leaving directory '/work/gsl-1.10/wavelet'
+make[1]: Leaving directory '/work/gsl-1.10/wavelet'
+Making install in bspline
+make[1]: Entering directory '/work/gsl-1.10/bspline'
+make[2]: Entering directory '/work/gsl-1.10/bspline'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_bspline.h' '/work/local/include/gsl/gsl_bspline.h'
+make[2]: Leaving directory '/work/gsl-1.10/bspline'
+make[1]: Leaving directory '/work/gsl-1.10/bspline'
+Making install in doc
+make[1]: Entering directory '/work/gsl-1.10/doc'
+make[2]: Entering directory '/work/gsl-1.10/doc'
+make[2]: Nothing to be done for 'install-exec-am'.
+test -z "/work/local/share/info" || /usr/bin/mkdir -p "/work/local/share/info"
+ /usr/bin/install -c -m 644 './gsl-ref.info' '/work/local/share/info/gsl-ref.info'
+ /usr/bin/install -c -m 644 './gsl-ref.info-1' '/work/local/share/info/gsl-ref.info-1'
+ /usr/bin/install -c -m 644 './gsl-ref.info-2' '/work/local/share/info/gsl-ref.info-2'
+ /usr/bin/install -c -m 644 './gsl-ref.info-3' '/work/local/share/info/gsl-ref.info-3'
+ /usr/bin/install -c -m 644 './gsl-ref.info-4' '/work/local/share/info/gsl-ref.info-4'
+ /usr/bin/install -c -m 644 './gsl-ref.info-5' '/work/local/share/info/gsl-ref.info-5'
+ /usr/bin/install -c -m 644 './gsl-ref.info-6' '/work/local/share/info/gsl-ref.info-6'
+ install-info --info-dir='/work/local/share/info' '/work/local/share/info/gsl-ref.info'
+test -z "/work/local/share/man/man1" || /usr/bin/mkdir -p "/work/local/share/man/man1"
+ /usr/bin/install -c -m 644 './gsl-config.1' '/work/local/share/man/man1/gsl-config.1'
+ /usr/bin/install -c -m 644 './gsl-randist.1' '/work/local/share/man/man1/gsl-randist.1'
+ /usr/bin/install -c -m 644 './gsl-histogram.1' '/work/local/share/man/man1/gsl-histogram.1'
+test -z "/work/local/share/man/man3" || /usr/bin/mkdir -p "/work/local/share/man/man3"
+ /usr/bin/install -c -m 644 './gsl.3' '/work/local/share/man/man3/gsl.3'
+make[2]: Leaving directory '/work/gsl-1.10/doc'
+make[1]: Leaving directory '/work/gsl-1.10/doc'
+make[1]: Entering directory '/work/gsl-1.10'
+make[2]: Entering directory '/work/gsl-1.10'
+test -z "/work/local/lib" || /usr/bin/mkdir -p "/work/local/lib"
+ /bin/bash ./libtool --mode=install /usr/bin/install -c  'libgsl.la' '/work/local/lib/libgsl.la'
+/usr/bin/install -c .libs/libgsl.so.0.10.0 /work/local/lib/libgsl.so.0.10.0
+(cd /work/local/lib && { ln -s -f libgsl.so.0.10.0 libgsl.so.0 || { rm -f libgsl.so.0 && ln -s libgsl.so.0.10.0 libgsl.so.0; }; })
+(cd /work/local/lib && { ln -s -f libgsl.so.0.10.0 libgsl.so || { rm -f libgsl.so && ln -s libgsl.so.0.10.0 libgsl.so; }; })
+/usr/bin/install -c .libs/libgsl.lai /work/local/lib/libgsl.la
+/usr/bin/install -c .libs/libgsl.a /work/local/lib/libgsl.a
+chmod 644 /work/local/lib/libgsl.a
+ranlib /work/local/lib/libgsl.a
+PATH="$PATH:/sbin" ldconfig -n /work/local/lib
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /work/local/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the `-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the `LD_RUN_PATH' environment variable
+     during linking
+   - use the `-Wl,--rpath -Wl,LIBDIR' linker flag
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+test -z "/work/local/bin" || /usr/bin/mkdir -p "/work/local/bin"
+  /bin/bash ./libtool --mode=install /usr/bin/install -c 'gsl-randist' '/work/local/bin/gsl-randist'
+/usr/bin/install -c .libs/gsl-randist /work/local/bin/gsl-randist
+  /bin/bash ./libtool --mode=install /usr/bin/install -c 'gsl-histogram' '/work/local/bin/gsl-histogram'
+/usr/bin/install -c .libs/gsl-histogram /work/local/bin/gsl-histogram
+test -z "/work/local/bin" || /usr/bin/mkdir -p "/work/local/bin"
+ /usr/bin/install -c 'gsl-config' '/work/local/bin/gsl-config'
+test -z "/work/local/share/aclocal" || /usr/bin/mkdir -p "/work/local/share/aclocal"
+ /usr/bin/install -c -m 644 'gsl.m4' '/work/local/share/aclocal/gsl.m4'
+test -z "/work/local/lib/pkgconfig" || /usr/bin/mkdir -p "/work/local/lib/pkgconfig"
+ /usr/bin/install -c -m 644 'gsl.pc' '/work/local/lib/pkgconfig/gsl.pc'
+test -z "/work/local/include/gsl" || /usr/bin/mkdir -p "/work/local/include/gsl"
+ /usr/bin/install -c -m 644 'gsl_math.h' '/work/local/include/gsl/gsl_math.h'
+ /usr/bin/install -c -m 644 'gsl_pow_int.h' '/work/local/include/gsl/gsl_pow_int.h'
+ /usr/bin/install -c -m 644 'gsl_nan.h' '/work/local/include/gsl/gsl_nan.h'
+ /usr/bin/install -c -m 644 'gsl_machine.h' '/work/local/include/gsl/gsl_machine.h'
+ /usr/bin/install -c -m 644 'gsl_mode.h' '/work/local/include/gsl/gsl_mode.h'
+ /usr/bin/install -c -m 644 'gsl_precision.h' '/work/local/include/gsl/gsl_precision.h'
+ /usr/bin/install -c -m 644 'gsl_types.h' '/work/local/include/gsl/gsl_types.h'
+ /usr/bin/install -c -m 644 'gsl_version.h' '/work/local/include/gsl/gsl_version.h'
+make[2]: Leaving directory '/work/gsl-1.10'
+make[1]: Leaving directory '/work/gsl-1.10'

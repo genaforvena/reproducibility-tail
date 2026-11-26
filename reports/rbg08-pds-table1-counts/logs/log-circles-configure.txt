@@ -1,0 +1,400 @@
+Try `/work/src/circles-0.3.2.1/missing --help' for more information
+configure: WARNING: 'missing' script is too old or missing
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking whether gcc understands -c and -o together... yes
+checking for style of include used by make... GNU
+checking dependency style of gcc... gcc3
+checking whether we are using the GNU Fortran 77 compiler... yes
+checking whether gfortran accepts -g... yes
+checking how to get verbose linking output from gfortran... -v
+checking for Fortran 77 libraries of gfortran...  -L/work/tc/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/lib/x86_64-linux-gnu -L/work/local/lib -L/work/tc/usr/libexec/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../.. -lgfortran -lm -lquadmath
+checking for dummy main to link with Fortran 77 libraries... none
+checking for Fortran 77 name-mangling scheme... lower case, underscore, no extra underscore
+checking how to get verbose linking output from gfortran... (cached) -v
+checking for Fortran 77 libraries of gfortran... (cached)  -L/work/tc/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/lib/x86_64-linux-gnu -L/work/local/lib -L/work/tc/usr/libexec/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../.. -lgfortran -lm -lquadmath
+checking whether we are using the GNU Fortran 77 compiler... (cached) yes
+checking whether gfortran accepts -g... (cached) yes
+checking for cos in -lm... yes
+checking for pl_openpl in -lplot... no
+configure: WARNING: Could not find plot. Hint (1)  find /usr -name "*libplot*" -print   Hint (2)  install plotutils  e.g. from http://www.gnu.org/software/plotutils/plotutils.html put it in /usr/local/lib or use --libdir=DIR
+checking for XChangeProperty in -lX11... yes
+checking for XawDeclareAction in -lXaw... no
+checking for libXaw.a in /usr/X11R6/lib... checking for libXaw.so in /usr/X11R6/lib... configure: WARNING: Could not find Xaw library. Hint (1)  find /usr -name "*libXaw*" -print   Hint (2)  install libXaw-dev  e.g. from http://www.debian.org or http://freedesktop.org/Software/xlibs and put it in /usr/local/lib or use --libdir=DIR
+checking for main in -lgcc... yes
+checking for sgemm_... no
+checking for ATL_xerbla in -latlas... no
+checking for sgemm_ in -lblas... yes
+checking for dgemm_ in -ldgemm... no
+checking for sgemm_ in -lcxml... no
+checking for sgemm_ in -ldxml... no
+checking for sgemm_ in -lscs... no
+checking for sgemm_ in -lcomplib.sgimath... no
+checking for sgemm_ in -lblas... (cached) yes
+checking for sgemm_ in -lessl... no
+checking for sgemm_ in -lblas... (cached) yes
+blas found
+checking for cheev_... no
+checking for cheev_ in -llapack... yes
+lapack found
+checking for main in -lm... yes
+checking for main in -lgslcblas... yes
+checking for main in -lgsl... yes
+checking for main in -lcosmdist... yes
+checking for main in -lisolat... no
+configure: WARNING: Could not find isolat - I will install a copy for you - However you might wish to install a more recent version of  libisolat.a  yourself e.g. from  http://cosmo.torun.pl/GPLdownload/dodec/ and put it in /usr/local/lib/ or set environment variable LDFLAGS to be -L/my/directory/lib/ with the library.
+checking for main in -lastromisc... no
+configure: WARNING: Could not find astromisc - I will install a copy for you - However you might wish to install a more recent version of  libastromisc.a  yourself e.g. from  http://cosmo.torun.pl/GPLdownload/dodec/ and put it in /usr/local/lib/ or set environment variable LDFLAGS to be -L/my/directory/lib/ with the library.
+checking for main in -lcfitsio... yes
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for unistd.h... (cached) yes
+checking sys/param.h usability... yes
+checking sys/param.h presence... yes
+checking for sys/param.h... yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking time.h usability... yes
+checking time.h presence... yes
+checking for time.h... yes
+checking sys/mkdev.h usability... no
+checking sys/mkdev.h presence... no
+checking for sys/mkdev.h... no
+checking sys/sysmacros.h usability... yes
+checking sys/sysmacros.h presence... yes
+checking for sys/sysmacros.h... yes
+checking for string.h... (cached) yes
+checking for memory.h... (cached) yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking dirent.h usability... yes
+checking dirent.h presence... yes
+checking for dirent.h... yes
+checking sys/ndir.h usability... no
+checking sys/ndir.h presence... no
+checking for sys/ndir.h... no
+checking ndir.h usability... no
+checking ndir.h presence... no
+checking for ndir.h... no
+checking alloca.h usability... yes
+checking alloca.h presence... yes
+checking for alloca.h... yes
+checking locale.h usability... yes
+checking locale.h presence... yes
+checking for locale.h... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking utime.h usability... yes
+checking utime.h presence... yes
+checking for utime.h... yes
+checking for struct utimbuf... yes
+checking whether sys/types.h defines makedev... no
+checking for sys/mkdev.h... (cached) no
+checking for sys/sysmacros.h... (cached) yes
+checking for size_t... yes
+checking for working alloca.h... yes
+checking for alloca... yes
+checking whether struct tm is in sys/time.h or time.h... time.h
+checking for struct stat.st_blocks... yes
+checking for dirent.h that defines DIR... yes
+checking for library containing opendir... none required
+checking whether closedir returns void... no
+checking for mkfifo... yes
+checking for mknod... yes
+checking argp.h usability... yes
+checking argp.h presence... yes
+checking for argp.h... yes
+checking getopt.h usability... yes
+checking getopt.h presence... yes
+checking for getopt.h... yes
+checking for stdlib.h... (cached) yes
+checking whether make sets $(MAKE)... (cached) yes
+checking for ranlib... ranlib
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating lib/Makefile
+config.status: creating Makefile
+config.status: creating circles.lsm
+config.status: creating circles.spec
+config.status: creating config.h
+config.status: config.h is unchanged
+config.status: executing depfiles commands
+=== configuring in isolat (/work/src/circles-0.3.2.1/isolat)
+configure: running /bin/bash ./configure --disable-option-checking '--prefix=/usr/local'  'LDFLAGS=-L/work/local/lib' 'CFLAGS=-I/work/local/include' 'FFLAGS=-fcheck=bounds -Wall' 'F77=gfortran' --cache-file=/dev/null --srcdir=.
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+/work/src/circles-0.3.2.1/isolat/missing: Unknown `--is-lightweight' option
+Try `/work/src/circles-0.3.2.1/isolat/missing --help' for more information
+configure: WARNING: 'missing' script is too old or missing
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking whether gcc understands -c and -o together... yes
+checking for style of include used by make... GNU
+checking dependency style of gcc... gcc3
+checking whether we are using the GNU Fortran 77 compiler... yes
+checking whether gfortran accepts -g... yes
+checking how to get verbose linking output from gfortran... -v
+checking for Fortran 77 libraries of gfortran...  -L/work/tc/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/lib/x86_64-linux-gnu -L/work/local/lib -L/work/tc/usr/libexec/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../.. -lgfortran -lm -lquadmath
+checking for dummy main to link with Fortran 77 libraries... none
+checking for Fortran 77 name-mangling scheme... lower case, underscore, no extra underscore
+checking how to get verbose linking output from gfortran... (cached) -v
+checking for Fortran 77 libraries of gfortran... (cached)  -L/work/tc/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/lib/x86_64-linux-gnu -L/work/local/lib -L/work/tc/usr/libexec/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../.. -lgfortran -lm -lquadmath
+checking whether we are using the GNU Fortran 77 compiler... (cached) yes
+checking whether gfortran accepts -g... (cached) yes
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for unistd.h... (cached) yes
+checking sys/param.h usability... yes
+checking sys/param.h presence... yes
+checking for sys/param.h... yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking time.h usability... yes
+checking time.h presence... yes
+checking for time.h... yes
+checking sys/mkdev.h usability... no
+checking sys/mkdev.h presence... no
+checking for sys/mkdev.h... no
+checking sys/sysmacros.h usability... yes
+checking sys/sysmacros.h presence... yes
+checking for sys/sysmacros.h... yes
+checking for string.h... (cached) yes
+checking for memory.h... (cached) yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking dirent.h usability... yes
+checking dirent.h presence... yes
+checking for dirent.h... yes
+checking sys/ndir.h usability... no
+checking sys/ndir.h presence... no
+checking for sys/ndir.h... no
+checking ndir.h usability... no
+checking ndir.h presence... no
+checking for ndir.h... no
+checking alloca.h usability... yes
+checking alloca.h presence... yes
+checking for alloca.h... yes
+checking locale.h usability... yes
+checking locale.h presence... yes
+checking for locale.h... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking utime.h usability... yes
+checking utime.h presence... yes
+checking for utime.h... yes
+checking for struct utimbuf... yes
+checking whether sys/types.h defines makedev... no
+checking for sys/mkdev.h... (cached) no
+checking for sys/sysmacros.h... (cached) yes
+checking for size_t... yes
+checking for working alloca.h... yes
+checking for alloca... yes
+checking whether struct tm is in sys/time.h or time.h... time.h
+checking for struct stat.st_blocks... yes
+checking for dirent.h that defines DIR... yes
+checking for library containing opendir... none required
+checking whether closedir returns void... no
+checking for mkfifo... yes
+checking for mknod... yes
+checking argp.h usability... yes
+checking argp.h presence... yes
+checking for argp.h... yes
+checking getopt.h usability... yes
+checking getopt.h presence... yes
+checking for getopt.h... yes
+checking for __cos in -lm... no
+checking for pl_openpl in -lplot... no
+configure: WARNING: Could not find plot. Hint (1)  find /usr -name "*libplot*" -print   Hint (2)  install plotutils  e.g. from http://www.gnu.org/software/plotutils/plotutils.html put it in /usr/local/lib or use --libdir=DIR
+checking for XChangeProperty in -lX11... yes
+checking for XawDeclareAction in -lXaw... no
+checking for libXaw.a in /usr/X11R6/lib... checking for libXaw.so in /usr/X11R6/lib... configure: WARNING: Could not find Xaw library. Hint (1)  find /usr -name "*libXaw*" -print   Hint (2)  install libXaw-dev  e.g. from http://www.debian.org or http://freedesktop.org/Software/xlibs and put it in /usr/local/lib or use --libdir=DIR
+checking for wcspih in -lwcs... no
+configure: WARNING: Could not find wcslib. Hint: install wcslib-4.1 or later from ftp://ftp.atnf.csiro.au/pub/software/wcslib/wcslib.tar.gz and put   libwcs.a   in /usr/local/lib or use --libdir=DIR
+checking for wcspih in -lwcs... (cached) no
+checking whether make sets $(MAKE)... (cached) yes
+checking for ranlib... ranlib
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating isolat.lsm
+config.status: creating isolat.spec
+config.status: creating lib/Makefile
+config.status: creating config.h
+config.status: config.h is unchanged
+config.status: executing depfiles commands
+=== configuring in astromisc (/work/src/circles-0.3.2.1/astromisc)
+configure: running /bin/bash ./configure --disable-option-checking '--prefix=/usr/local'  'LDFLAGS=-L/work/local/lib' 'CFLAGS=-I/work/local/include' 'FFLAGS=-fcheck=bounds -Wall' 'F77=gfortran' --cache-file=/dev/null --srcdir=.
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+/work/src/circles-0.3.2.1/astromisc/missing: Unknown `--is-lightweight' option
+Try `/work/src/circles-0.3.2.1/astromisc/missing --help' for more information
+configure: WARNING: 'missing' script is too old or missing
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking whether gcc understands -c and -o together... yes
+checking for style of include used by make... GNU
+checking dependency style of gcc... gcc3
+checking whether we are using the GNU Fortran 77 compiler... yes
+checking whether gfortran accepts -g... yes
+checking how to get verbose linking output from gfortran... -v
+checking for Fortran 77 libraries of gfortran...  -L/work/tc/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/lib/x86_64-linux-gnu -L/work/local/lib -L/work/tc/usr/libexec/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../.. -lgfortran -lm -lquadmath
+checking for dummy main to link with Fortran 77 libraries... none
+checking for Fortran 77 name-mangling scheme... lower case, underscore, no extra underscore
+checking how to get verbose linking output from gfortran... (cached) -v
+checking for Fortran 77 libraries of gfortran... (cached)  -L/work/tc/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/lib/x86_64-linux-gnu -L/work/local/lib -L/work/tc/usr/libexec/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../.. -lgfortran -lm -lquadmath
+checking whether we are using the GNU Fortran 77 compiler... (cached) yes
+checking whether gfortran accepts -g... (cached) yes
+checking for main in -lm... yes
+checking for main in -lgslcblas... yes
+checking for main in -lgsl... yes
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for unistd.h... (cached) yes
+checking sys/param.h usability... yes
+checking sys/param.h presence... yes
+checking for sys/param.h... yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking time.h usability... yes
+checking time.h presence... yes
+checking for time.h... yes
+checking sys/mkdev.h usability... no
+checking sys/mkdev.h presence... no
+checking for sys/mkdev.h... no
+checking sys/sysmacros.h usability... yes
+checking sys/sysmacros.h presence... yes
+checking for sys/sysmacros.h... yes
+checking for string.h... (cached) yes
+checking for memory.h... (cached) yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking dirent.h usability... yes
+checking dirent.h presence... yes
+checking for dirent.h... yes
+checking sys/ndir.h usability... no
+checking sys/ndir.h presence... no
+checking for sys/ndir.h... no
+checking ndir.h usability... no
+checking ndir.h presence... no
+checking for ndir.h... no
+checking alloca.h usability... yes
+checking alloca.h presence... yes
+checking for alloca.h... yes
+checking locale.h usability... yes
+checking locale.h presence... yes
+checking for locale.h... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking utime.h usability... yes
+checking utime.h presence... yes
+checking for utime.h... yes
+checking for struct utimbuf... yes
+checking whether sys/types.h defines makedev... no
+checking for sys/mkdev.h... (cached) no
+checking for sys/sysmacros.h... (cached) yes
+checking for size_t... yes
+checking for working alloca.h... yes
+checking for alloca... yes
+checking whether struct tm is in sys/time.h or time.h... time.h
+checking for struct stat.st_blocks... yes
+checking for dirent.h that defines DIR... yes
+checking for library containing opendir... none required
+checking whether closedir returns void... no
+checking for mkfifo... yes
+checking for mknod... yes
+checking argp.h usability... yes
+checking argp.h presence... yes
+checking for argp.h... yes
+checking getopt.h usability... yes
+checking getopt.h presence... yes
+checking for getopt.h... yes
+checking whether make sets $(MAKE)... (cached) yes
+checking for ranlib... ranlib
+checking that generated files are newer than configure... done
+find: '/opt': No such file or directory
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating astromisc.lsm
+config.status: creating astromisc.spec
+config.status: creating lib/Makefile
+config.status: creating config.h
+config.status: config.h is unchanged
+config.status: executing depfiles commands

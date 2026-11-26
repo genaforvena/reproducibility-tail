@@ -1,0 +1,118 @@
+make  all-recursive
+make[1]: Entering directory '/work/broukema-cosmdist-d17caed98cc6'
+Making all in lib
+make[2]: Entering directory '/work/broukema-cosmdist-d17caed98cc6/lib'
+gcc -DHAVE_CONFIG_H -I. -I..     -g -O2 -fcommon -I/work/local/include -L/work/local/lib -MT cosmdist_init.o -MD -MP -MF .deps/cosmdist_init.Tpo -c -o cosmdist_init.o cosmdist_init.c
+mv -f .deps/cosmdist_init.Tpo .deps/cosmdist_init.Po
+gcc -DHAVE_CONFIG_H -I. -I..     -g -O2 -fcommon -I/work/local/include -L/work/local/lib -MT get_params_index.o -MD -MP -MF .deps/get_params_index.Tpo -c -o get_params_index.o get_params_index.c
+mv -f .deps/get_params_index.Tpo .deps/get_params_index.Po
+gcc -DHAVE_CONFIG_H -I. -I..     -g -O2 -fcommon -I/work/local/include -L/work/local/lib -MT get_dist.o -MD -MP -MF .deps/get_dist.Tpo -c -o get_dist.o get_dist.c
+mv -f .deps/get_dist.Tpo .deps/get_dist.Po
+gcc -DHAVE_CONFIG_H -I. -I..     -g -O2 -fcommon -I/work/local/include -L/work/local/lib -MT get_pm_dist.o -MD -MP -MF .deps/get_pm_dist.Tpo -c -o get_pm_dist.o get_pm_dist.c
+mv -f .deps/get_pm_dist.Tpo .deps/get_pm_dist.Po
+gcc -DHAVE_CONFIG_H -I. -I..     -g -O2 -fcommon -I/work/local/include -L/work/local/lib -MT curv_evolution.o -MD -MP -MF .deps/curv_evolution.Tpo -c -o curv_evolution.o curv_evolution.c
+mv -f .deps/curv_evolution.Tpo .deps/curv_evolution.Po
+gcc -DHAVE_CONFIG_H -I. -I..     -g -O2 -fcommon -I/work/local/include -L/work/local/lib -MT get_zmin_from_alpha.o -MD -MP -MF .deps/get_zmin_from_alpha.Tpo -c -o get_zmin_from_alpha.o get_zmin_from_alpha.c
+mv -f .deps/get_zmin_from_alpha.Tpo .deps/get_zmin_from_alpha.Po
+rm -f libcosmdist.a
+ar cru libcosmdist.a cosmdist_init.o get_params_index.o get_dist.o get_pm_dist.o curv_evolution.o get_zmin_from_alpha.o 
+ar: `u' modifier ignored since `D' is the default (see `U')
+ranlib libcosmdist.a
+make[2]: Leaving directory '/work/broukema-cosmdist-d17caed98cc6/lib'
+make[2]: Entering directory '/work/broukema-cosmdist-d17caed98cc6'
+restore=: && backupdir=".am$$" && \
+am__cwd=`pwd` && CDPATH="${ZSH_VERSION+.}:" && cd . && \
+rm -rf $backupdir && mkdir $backupdir && \
+if (true --version) >/dev/null 2>&1; then \
+  for f in cosmdist.info cosmdist.info-[0-9] cosmdist.info-[0-9][0-9] cosmdist.i[0-9] cosmdist.i[0-9][0-9]; do \
+    if test -f $f; then mv $f $backupdir; restore=mv; else :; fi; \
+  done; \
+else :; fi && \
+cd "$am__cwd"; \
+if true   -I . \
+ -o cosmdist.info cosmdist.texinfo; \
+then \
+  rc=0; \
+  CDPATH="${ZSH_VERSION+.}:" && cd .; \
+else \
+  rc=$?; \
+  CDPATH="${ZSH_VERSION+.}:" && cd . && \
+  $restore $backupdir/* `echo "./cosmdist.info" | sed 's|[^/]*$||'`; \
+fi; \
+rm -rf $backupdir; exit $rc
+gcc -DHAVE_CONFIG_H -I.     -g -O2 -fcommon -I/work/local/include -L/work/local/lib -MT cosmdist.o -MD -MP -MF .deps/cosmdist.Tpo -c -o cosmdist.o cosmdist.c
+mv -f .deps/cosmdist.Tpo .deps/cosmdist.Po
+gcc -DHAVE_CONFIG_H -I.     -g -O2 -fcommon -I/work/local/include -L/work/local/lib -MT xmalloc.o -MD -MP -MF .deps/xmalloc.Tpo -c -o xmalloc.o xmalloc.c
+mv -f .deps/xmalloc.Tpo .deps/xmalloc.Po
+gfortran  -g -O2 -fcommon -c -o cosm_f90.o cosm_f90.f90
+gfortran  -g -O2 -fcommon  -L/work/local/lib -o cosmdist cosmdist.o xmalloc.o cosm_f90.o lib/libcosmdist.a -lgsl -lgslcblas -lm -lm 
+gcc -DHAVE_CONFIG_H -I.     -g -O2 -fcommon -I/work/local/include -L/work/local/lib -MT zmin_alpha.o -MD -MP -MF .deps/zmin_alpha.Tpo -c -o zmin_alpha.o zmin_alpha.c
+zmin_alpha.c: In function ‘main’:
+zmin_alpha.c:181:3: warning: ignoring return value of ‘scanf’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  181 |   scanf("%40s", interactive_input_string);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mv -f .deps/zmin_alpha.Tpo .deps/zmin_alpha.Po
+gcc  -g -O2 -fcommon -I/work/local/include -L/work/local/lib  -L/work/local/lib -o zmin_alpha zmin_alpha.o xmalloc.o lib/libcosmdist.a -lgsl -lgslcblas -lm -lm 
+make[2]: Leaving directory '/work/broukema-cosmdist-d17caed98cc6'
+make[1]: Leaving directory '/work/broukema-cosmdist-d17caed98cc6'
+Making install in lib
+make[1]: Entering directory '/work/broukema-cosmdist-d17caed98cc6/lib'
+make[2]: Entering directory '/work/broukema-cosmdist-d17caed98cc6/lib'
+ /usr/bin/mkdir -p '/work/local/lib'
+ /usr/bin/install -c -m 644  libcosmdist.a '/work/local/lib'
+ ( cd '/work/local/lib' && ranlib libcosmdist.a )
+ /usr/bin/mkdir -p '/work/local/include'
+ /usr/bin/install -c -m 644  cosmdist.h '/work/local/include/.'
+make[2]: Leaving directory '/work/broukema-cosmdist-d17caed98cc6/lib'
+make[1]: Leaving directory '/work/broukema-cosmdist-d17caed98cc6/lib'
+make[1]: Entering directory '/work/broukema-cosmdist-d17caed98cc6'
+restore=: && backupdir=".am$$" && \
+am__cwd=`pwd` && CDPATH="${ZSH_VERSION+.}:" && cd . && \
+rm -rf $backupdir && mkdir $backupdir && \
+if (true --version) >/dev/null 2>&1; then \
+  for f in cosmdist.info cosmdist.info-[0-9] cosmdist.info-[0-9][0-9] cosmdist.i[0-9] cosmdist.i[0-9][0-9]; do \
+    if test -f $f; then mv $f $backupdir; restore=mv; else :; fi; \
+  done; \
+else :; fi && \
+cd "$am__cwd"; \
+if true   -I . \
+ -o cosmdist.info cosmdist.texinfo; \
+then \
+  rc=0; \
+  CDPATH="${ZSH_VERSION+.}:" && cd .; \
+else \
+  rc=$?; \
+  CDPATH="${ZSH_VERSION+.}:" && cd . && \
+  $restore $backupdir/* `echo "./cosmdist.info" | sed 's|[^/]*$||'`; \
+fi; \
+rm -rf $backupdir; exit $rc
+make[2]: Entering directory '/work/broukema-cosmdist-d17caed98cc6'
+ /usr/bin/mkdir -p '/work/local/bin'
+  /usr/bin/install -c cosmdist zmin_alpha '/work/local/bin'
+restore=: && backupdir=".am$$" && \
+am__cwd=`pwd` && CDPATH="${ZSH_VERSION+.}:" && cd . && \
+rm -rf $backupdir && mkdir $backupdir && \
+if (true --version) >/dev/null 2>&1; then \
+  for f in cosmdist.info cosmdist.info-[0-9] cosmdist.info-[0-9][0-9] cosmdist.i[0-9] cosmdist.i[0-9][0-9]; do \
+    if test -f $f; then mv $f $backupdir; restore=mv; else :; fi; \
+  done; \
+else :; fi && \
+cd "$am__cwd"; \
+if true   -I . \
+ -o cosmdist.info cosmdist.texinfo; \
+then \
+  rc=0; \
+  CDPATH="${ZSH_VERSION+.}:" && cd .; \
+else \
+  rc=$?; \
+  CDPATH="${ZSH_VERSION+.}:" && cd . && \
+  $restore $backupdir/* `echo "./cosmdist.info" | sed 's|[^/]*$||'`; \
+fi; \
+rm -rf $backupdir; exit $rc
+ /usr/bin/mkdir -p '/work/local/share/info'
+ install-info --info-dir='/work/local/share/info' '/work/local/share/info/cosmdist.info'
+install-info: No such file or directory for /work/local/share/info/cosmdist.info
+ /usr/bin/mkdir -p '/work/local/share/man/man1'
+ /usr/bin/install -c -m 644 cosmdist.1 '/work/local/share/man/man1'
+make[2]: Leaving directory '/work/broukema-cosmdist-d17caed98cc6'
+make[1]: Leaving directory '/work/broukema-cosmdist-d17caed98cc6'

@@ -1,0 +1,400 @@
+matrix4_8.f:31:30:
+
+   31 |         real*8   det1_8,cof1_8
+      |                              1
+Warning: Unused variable ‘cof1_8’ declared at (1) [-Wunused-variable]
+matrix4_8.f:30:30:
+
+   30 |         real*8   det2_8,cof2_8
+      |                              1
+Warning: Unused variable ‘cof2_8’ declared at (1) [-Wunused-variable]
+matrix4_8.f:29:30:
+
+   29 |         real*8   det3_8,cof3_8
+      |                              1
+Warning: Unused variable ‘cof3_8’ declared at (1) [-Wunused-variable]
+matrix4_8.f:28:30:
+
+   28 |         real*8   det4_8,cof4_8
+      |                              1
+Warning: Unused variable ‘cof4_8’ declared at (1) [-Wunused-variable]
+matrix4_8.f:31:23:
+
+   31 |         real*8   det1_8,cof1_8
+      |                       1
+Warning: Unused variable ‘det1_8’ declared at (1) [-Wunused-variable]
+matrix4_8.f:30:23:
+
+   30 |         real*8   det2_8,cof2_8
+      |                       1
+Warning: Unused variable ‘det2_8’ declared at (1) [-Wunused-variable]
+matrix4_8.f:29:23:
+
+   29 |         real*8   det3_8,cof3_8
+      |                       1
+Warning: Unused variable ‘det3_8’ declared at (1) [-Wunused-variable]
+matrix4_8.f:125:26:
+
+  125 |         real*8      cof1_8
+      |                          1
+Warning: Unused variable ‘cof1_8’ declared at (1) [-Wunused-variable]
+matrix4_8.f:284:29:
+
+  284 |       subroutine tran_8(mat,n,tran)
+      |                             1
+Warning: Unused dummy argument ‘n’ at (1) [-Wunused-dummy-argument]
+gfortran  -fcheck=bounds -Wall -fcommon -c -o matrix_8.o matrix_8.f
+matrix_8.f:28:28:
+
+   28 |         real*8   det_8,cof_8
+      |                            1
+Warning: Unused variable ‘cof_8’ declared at (1) [-Wunused-variable]
+matrix_8.f:28:22:
+
+   28 |         real*8   det_8,cof_8
+      |                      1
+Warning: Unused variable ‘det_8’ declared at (1) [-Wunused-variable]
+matrix_8.f:78:72:
+
+   78 |         lev=lev+1
+      |                                                                        ^
+Warning: ‘lev’ is used uninitialized [-Wuninitialized]
+matrix_8.f:78:11:
+
+   78 |         lev=lev+1
+      |           ^
+note: ‘lev’ was declared here
+gfortran  -fcheck=bounds -Wall -fcommon -c -o matrix.o matrix.f
+matrix.f:76:72:
+
+   76 |         lev=lev+1
+      |                                                                        ^
+Warning: ‘lev’ is used uninitialized [-Wuninitialized]
+matrix.f:76:11:
+
+   76 |         lev=lev+1
+      |           ^
+note: ‘lev’ was declared here
+gfortran  -fcheck=bounds -Wall -fcommon -c -o bins.o bins.f
+gfortran  -fcheck=bounds -Wall -fcommon -c -o prob.o prob.f
+prob.f:197:30:
+
+  197 |       real*4 function rnd(seed)
+      |                              1
+Warning: Unused dummy argument ‘seed’ at (1) [-Wunused-dummy-argument]
+gfortran  -fcheck=bounds -Wall -fcommon -c -o findopt.o findopt.f
+findopt.f:110:37:
+
+  110 |       real*4      ysmoo(maxn),x(maxn)
+      |                                     1
+Warning: Unused variable ‘x’ declared at (1) [-Wunused-variable]
+gcc -DHAVE_CONFIG_H -I. -I..     -g -O2 -fcommon -I/work/local/include -MT prob_c.o -MD -MP -MF .deps/prob_c.Tpo -c -o prob_c.o prob_c.c
+mv -f .deps/prob_c.Tpo .deps/prob_c.Po
+gfortran  -fcheck=bounds -Wall -fcommon -c -o chksort.o chksort.f
+gcc -DHAVE_CONFIG_H -I. -I..     -g -O2 -fcommon -I/work/local/include -MT r4sort.o -MD -MP -MF .deps/r4sort.Tpo -c -o r4sort.o r4sort.c
+mv -f .deps/r4sort.Tpo .deps/r4sort.Po
+gcc -DHAVE_CONFIG_H -I. -I..     -g -O2 -fcommon -I/work/local/include -MT hunt_g.o -MD -MP -MF .deps/hunt_g.Tpo -c -o hunt_g.o hunt_g.c
+hunt_g.c: In function ‘hunt_g_’:
+hunt_g.c:62:52: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘size_t *’ {aka ‘long unsigned int *’} [-Wformat=]
+   62 |       printf(" nmemb, *nmemb, x_input, *x_input = %d %d %d %f \n",nmemb, *nmemb, x_input, *x_input);
+      |                                                   ~^              ~~~~~
+      |                                                    |              |
+      |                                                    int            size_t * {aka long unsigned int *}
+      |                                                   %ln
+hunt_g.c:62:55: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘size_t’ {aka ‘long unsigned int’} [-Wformat=]
+   62 |       printf(" nmemb, *nmemb, x_input, *x_input = %d %d %d %f \n",nmemb, *nmemb, x_input, *x_input);
+      |                                                      ~^                  ~~~~~~
+      |                                                       |                  |
+      |                                                       int                size_t {aka long unsigned int}
+      |                                                      %ld
+hunt_g.c:62:58: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘double *’ [-Wformat=]
+   62 |       printf(" nmemb, *nmemb, x_input, *x_input = %d %d %d %f \n",nmemb, *nmemb, x_input, *x_input);
+      |                                                         ~^                       ~~~~~~~
+      |                                                          |                       |
+      |                                                          int                     double *
+hunt_g.c:83:51: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘size_t’ {aka ‘long unsigned int’} [-Wformat=]
+   83 |       printf("hunt_g: *nmemb, *x_input, *indexf= %d %f %d\n", *nmemb, *x_input, *indexf);
+      |                                                  ~^           ~~~~~~
+      |                                                   |           |
+      |                                                   int         size_t {aka long unsigned int}
+      |                                                  %ld
+hunt_g.c:83:57: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘size_t’ {aka ‘long unsigned int’} [-Wformat=]
+   83 |       printf("hunt_g: *nmemb, *x_input, *indexf= %d %f %d\n", *nmemb, *x_input, *indexf);
+      |                                                        ~^                       ~~~~~~~
+      |                                                         |                       |
+      |                                                         int                     size_t {aka long unsigned int}
+      |                                                        %ld
+mv -f .deps/hunt_g.Tpo .deps/hunt_g.Po
+gfortran  -fcheck=bounds -Wall -fcommon -c -o chkhunt_g.o chkhunt_g.f
+rm -f libastromisc.a
+ar cru libastromisc.a coco.o gendodec.o nprotcart.o xyz_rda.o angle.o angle4D.o headerfn.o rdwrtfits.o matrix4_8.o matrix_8.o matrix.o bins.o prob.o findopt.o prob_c.o chksort.o r4sort.o hunt_g.o chkhunt_g.o 
+ar: `u' modifier ignored since `D' is the default (see `U')
+ranlib libastromisc.a
+make[4]: Leaving directory '/work/src/circles-0.3.2.1/astromisc/lib'
+make[4]: Entering directory '/work/src/circles-0.3.2.1/astromisc'
+restore=: && backupdir=".am$$" && \
+am__cwd=`pwd` && CDPATH="${ZSH_VERSION+.}:" && cd . && \
+rm -rf $backupdir && mkdir $backupdir && \
+if (true --version) >/dev/null 2>&1; then \
+  for f in astromisc.info astromisc.info-[0-9] astromisc.info-[0-9][0-9] astromisc.i[0-9] astromisc.i[0-9][0-9]; do \
+    if test -f $f; then mv $f $backupdir; restore=mv; else :; fi; \
+  done; \
+else :; fi && \
+cd "$am__cwd"; \
+if true   -I . \
+ -o astromisc.info astromisc.texinfo; \
+then \
+  rc=0; \
+  CDPATH="${ZSH_VERSION+.}:" && cd .; \
+else \
+  rc=$?; \
+  CDPATH="${ZSH_VERSION+.}:" && cd . && \
+  $restore $backupdir/* `echo "./astromisc.info" | sed 's|[^/]*$||'`; \
+fi; \
+rm -rf $backupdir; exit $rc
+gcc -DHAVE_CONFIG_H -I.     -g -O2 -fcommon -I/work/local/include -MT astromisc.o -MD -MP -MF .deps/astromisc.Tpo -c -o astromisc.o astromisc.c
+mv -f .deps/astromisc.Tpo .deps/astromisc.Po
+gcc -DHAVE_CONFIG_H -I.     -g -O2 -fcommon -I/work/local/include -MT xmalloc.o -MD -MP -MF .deps/xmalloc.Tpo -c -o xmalloc.o xmalloc.c
+mv -f .deps/xmalloc.Tpo .deps/xmalloc.Po
+gfortran  -fcheck=bounds -Wall -fcommon -c -o testgendodec.o testgendodec.f
+gfortran  -fcheck=bounds -Wall -fcommon  -L/work/local/lib -o astromisc astromisc.o xmalloc.o testgendodec.o lib/libastromisc.a -lm -lgsl -lgslcblas -lm 
+make[4]: Leaving directory '/work/src/circles-0.3.2.1/astromisc'
+make[3]: Leaving directory '/work/src/circles-0.3.2.1/astromisc'
+make[2]: Leaving directory '/work/src/circles-0.3.2.1/astromisc'
+make[2]: Entering directory '/work/src/circles-0.3.2.1'
+restore=: && backupdir=".am$$" && \
+am__cwd=`pwd` && CDPATH="${ZSH_VERSION+.}:" && cd . && \
+rm -rf $backupdir && mkdir $backupdir && \
+if (true --version) >/dev/null 2>&1; then \
+  for f in circles.info circles.info-[0-9] circles.info-[0-9][0-9] circles.i[0-9] circles.i[0-9][0-9]; do \
+    if test -f $f; then mv $f $backupdir; restore=mv; else :; fi; \
+  done; \
+else :; fi && \
+cd "$am__cwd"; \
+if true   -I . \
+ -o circles.info circles.texinfo; \
+then \
+  rc=0; \
+  CDPATH="${ZSH_VERSION+.}:" && cd .; \
+else \
+  rc=$?; \
+  CDPATH="${ZSH_VERSION+.}:" && cd . && \
+  $restore $backupdir/* `echo "./circles.info" | sed 's|[^/]*$||'`; \
+fi; \
+rm -rf $backupdir; exit $rc
+gcc -DHAVE_CONFIG_H -I.     -g -O2 -fcommon -I/work/local/include -MT circles.o -MD -MP -MF .deps/circles.Tpo -c -o circles.o circles.c
+circles.c: In function ‘main’:
+circles.c:500:23: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘float *’ [-Wformat=]
+  500 |       printf("temp = %x , *temp = %x , *temp = %f\n",temp,*temp,*temp);
+      |                      ~^                              ~~~~
+      |                       |                              |
+      |                       unsigned int                   float *
+circles.c:500:36: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘double’ [-Wformat=]
+  500 |       printf("temp = %x , *temp = %x , *temp = %f\n",temp,*temp,*temp);
+      |                                   ~^                      ~~~~~
+      |                                    |                      |
+      |                                    unsigned int           double
+      |                                   %f
+circles.c:501:23: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘float *’ [-Wformat=]
+  501 |       printf("temp = %x , *temp = %x , *temp = %f\n",temp,*temp,*temp);
+      |                      ~^                              ~~~~
+      |                       |                              |
+      |                       unsigned int                   float *
+circles.c:501:36: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘double’ [-Wformat=]
+  501 |       printf("temp = %x , *temp = %x , *temp = %f\n",temp,*temp,*temp);
+      |                                   ~^                      ~~~~~
+      |                                    |                      |
+      |                                    unsigned int           double
+      |                                   %f
+circles.c:505:23: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘float *’ [-Wformat=]
+  505 |       printf("temp = %x , *temp = %x, %f\n",temp,*temp,*temp);
+      |                      ~^                     ~~~~
+      |                       |                     |
+      |                       unsigned int          float *
+circles.c:505:36: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘double’ [-Wformat=]
+  505 |       printf("temp = %x , *temp = %x, %f\n",temp,*temp,*temp);
+      |                                   ~^             ~~~~~
+      |                                    |             |
+      |                                    unsigned int  double
+      |                                   %f
+circles.c:506:23: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘float *’ [-Wformat=]
+  506 |       printf("temp = %x , *temp = %f\n",temp,*temp);
+      |                      ~^                 ~~~~
+      |                       |                 |
+      |                       unsigned int      float *
+mv -f .deps/circles.Tpo .deps/circles.Po
+gcc -DHAVE_CONFIG_H -I.     -g -O2 -fcommon -I/work/local/include -MT xmalloc.o -MD -MP -MF .deps/xmalloc.Tpo -c -o xmalloc.o xmalloc.c
+mv -f .deps/xmalloc.Tpo .deps/xmalloc.Po
+gfortran  -fcheck=bounds -Wall -fcommon -c -o circles_f77.o circles_f77.f
+circles_f77.f:232:31:
+
+  232 |       logical*4 accepted(mxpar)
+      |                               1
+Warning: Array ‘accepted’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:227:29:
+
+  227 |       real*4    angpar(mxpar) ! ang radius of circle
+      |                             1
+Warning: Array ‘angpar’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:255:22:
+
+  255 |       logical*4 antiGC          ! function - in anti GCentre region
+      |                      1
+Warning: Unused variable ‘antigc’ declared at (1) [-Wunused-variable]
+circles_f77.f:206:36:
+
+  206 |       real*4    cdopp(mxpar,maxcurv)
+      |                                    1
+Warning: Array ‘cdopp’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:303:49:
+
+  303 |       real*4    co_iv(mxpar,-iimax:iimax,0:jjmax)
+      |                                                 1
+Warning: Array ‘co_iv’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:300:52:
+
+  300 |       real*4    cor_iv(mxtheta,-iimax:iimax,0:jjmax)
+      |                                                    1
+Warning: Array ‘cor_iv’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:205:35:
+
+  205 |       real*4    corr(mxpar,maxcurv),cwght(mxpar,maxcurv)
+      |                                   1
+Warning: Array ‘corr’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:301:52:
+
+  301 |       real*4    cwg_iv(mxtheta,-iimax:iimax,0:jjmax)
+      |                                                    1
+Warning: Array ‘cwg_iv’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:205:56:
+
+  205 |       real*4    corr(mxpar,maxcurv),cwght(mxpar,maxcurv)
+      |                                                        1
+Warning: Array ‘cwght’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:236:46:
+
+  236 |       real*4    dlist(maxpair,mxdlist,maxcurv)
+      |                                              1
+Warning: Array ‘dlist’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:203:36:
+
+  203 |       real*4    dmean(mxpar,maxcurv)
+      |                                    1
+Warning: Array ‘dmean’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:202:63:
+
+  202 |       real*4    sigma(mxpar,maxcurv),drsigma(mxpar),drs2(mxpar)
+      |                                                               1
+Warning: Unused variable ‘drs2’ declared at (1) [-Wunused-variable]
+circles_f77.f:202:51:
+
+  202 |       real*4    sigma(mxpar,maxcurv),drsigma(mxpar),drs2(mxpar)
+      |                                                   1
+Warning: Unused variable ‘drsigma’ declared at (1) [-Wunused-variable]
+circles_f77.f:250:28:
+
+  250 |       real*4    factcutnoise    ! factor mult. Ssigma above which pix ignored
+      |                            1
+Warning: Unused variable ‘factcutnoise’ declared at (1) [-Wunused-variable]
+circles_f77.f:225:28:
+
+  225 |       real*4    gbpar(mxpar) ! g lat
+      |                            1
+Warning: Array ‘gbpar’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:293:54:
+
+  293 |       real*4    gbpix1(maxtheta, -iimax:iimax,0:jjmax)
+      |                                                      1
+Warning: Array ‘gbpix1’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:295:54:
+
+  295 |       real*4    gbpix2(maxtheta, -iimax:iimax,0:jjmax)
+      |                                                      1
+Warning: Array ‘gbpix2’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:224:28:
+
+  224 |       real*4    glpar(mxpar) ! g long
+      |                            1
+Warning: Array ‘glpar’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:292:54:
+
+  292 |       real*4    glpix1(maxtheta, -iimax:iimax,0:jjmax)
+      |                                                      1
+Warning: Array ‘glpix1’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:294:54:
+
+  294 |       real*4    glpix2(maxtheta, -iimax:iimax,0:jjmax)
+      |                                                      1
+Warning: Array ‘glpix2’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:231:38:
+
+  231 |       logical*4 isco_,iscontrol(mxpar) ! 0.1.35: is it in the control sample?
+      |                                      1
+Warning: Array ‘iscontrol’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:254:22:
+
+  254 |       logical*4 isMage          ! function
+      |                      1
+Warning: Unused variable ‘ismage’ declared at (1) [-Wunused-variable]
+circles_f77.f:247:22:
+
+  247 |       integer   iwgalc          ! integer version of galcut
+      |                      1
+Warning: Unused variable ‘iwgalc’ declared at (1) [-Wunused-variable]
+circles_f77.f:237:36:
+
+  237 |       integer*4 npair(mxpar,maxcurv)
+      |                                    1
+Warning: Array ‘npair’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:288:51:
+
+  288 |       real*4    s1c(maxtheta, -iimax:iimax,0:jjmax)
+      |                                                   1
+Warning: Array ‘s1c’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:289:51:
+
+  289 |       real*4    s2c(maxtheta, -iimax:iimax,0:jjmax)
+      |                                                   1
+Warning: Array ‘s2c’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:299:52:
+
+  299 |       real*4    sfr_iv(mxtheta,-iimax:iimax,0:jjmax)
+      |                                                    1
+Warning: Array ‘sfr_iv’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:204:36:
+
+  204 |       real*4    sfreq(mxpar,maxcurv)
+      |                                    1
+Warning: Array ‘sfreq’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:256:21:
+
+  256 |       logical*4 SGcut           ! function - arbitrary South hemi cut
+      |                     1
+Warning: Unused variable ‘sgcut’ declared at (1) [-Wunused-variable]
+circles_f77.f:202:36:
+
+  202 |       real*4    sigma(mxpar,maxcurv),drsigma(mxpar),drs2(mxpar)
+      |                                    1
+Warning: Array ‘sigma’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:226:28:
+
+  226 |       real*4    thpar(mxpar) ! theta of dodecahedron rotation
+      |                            1
+Warning: Array ‘thpar’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:286:52:
+
+  286 |       real*4    tt1c(maxtheta, -iimax:iimax,0:jjmax)
+      |                                                    1
+Warning: Array ‘tt1c’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+circles_f77.f:287:52:
+
+  287 |       real*4    tt2c(maxtheta, -iimax:iimax,0:jjmax)
+      |                                                    1
+Warning: Array ‘tt2c’ at (1) is larger than limit set by ‘-fmax-stack-var-size=’, moved from stack to static storage. This makes the procedure unsafe when called recursively, or concurrently from multiple threads. Consider increasing the ‘-fmax-stack-var-size=’ limit (or use ‘-frecursive’, which implies unlimited ‘-fmax-stack-var-size’) - or change the code to use an ALLOCATABLE array. If the variable is never accessed concurrently, this warning can be ignored, and the variable could also be declared with the SAVE attribute. [-Wsurprising]
+gfortran  -fcheck=bounds -Wall -fcommon  -L/work/local/lib -Lisolat/lib -Lastromisc/lib -o circles circles.o xmalloc.o circles_f77.o lib/libcircles.a -lcosmdist -lisolat -lastromisc -L/usr/local/pgplot -lpgplot -lpng -L/usr/X11R6/lib -lX11 -lm -llapack -lblas -L/work/tc/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/lib/x86_64-linux-gnu -L/work/local/lib -L/work/tc/usr/libexec/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../.. -lgfortran -lm -lquadmath -L/work/tc/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/lib/x86_64-linux-gnu -L/work/local/lib -L/work/tc/usr/libexec/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../.. -lgfortran -lm -lquadmath -lcfitsio -lcosmdist -lgsl -lgslcblas -lm -lgcc -lX11 -lm 
+ld: cannot find -lpgplot: No such file or directory
+make[2]: *** [Makefile:567: circles] Error 1
+make[2]: Leaving directory '/work/src/circles-0.3.2.1'
+make[1]: *** [Makefile:809: all-recursive] Error 1
+make[1]: Leaving directory '/work/src/circles-0.3.2.1'
+make: *** [Makefile:465: all] Error 2

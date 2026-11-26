@@ -1,0 +1,120 @@
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+/work/broukema-cosmdist-d17caed98cc6/missing: Unknown `--run' option
+Try `/work/broukema-cosmdist-d17caed98cc6/missing --help' for more information
+configure: WARNING: `missing' script is too old or missing
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for style of include used by make... GNU
+checking dependency style of gcc... gcc3
+checking whether we are using the GNU Fortran compiler... yes
+checking whether gfortran accepts -g... yes
+checking how to get verbose linking output from gfortran... -v
+checking for Fortran libraries of gfortran...  -L/work/tc/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/lib/x86_64-linux-gnu -L/work/local/lib -L/work/tc/usr/libexec/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../.. -lgfortran -lm -lquadmath
+checking for dummy main to link with Fortran libraries... none
+checking for Fortran name-mangling scheme... lower case, underscore, no extra underscore
+checking how to get verbose linking output from gfortran... (cached) -v
+checking for Fortran libraries of gfortran... (cached)  -L/work/tc/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/lib/x86_64-linux-gnu -L/work/local/lib -L/work/tc/usr/libexec/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/work/tc/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../.. -lgfortran -lm -lquadmath
+checking whether we are using the GNU Fortran compiler... (cached) yes
+checking whether gfortran accepts -g... (cached) yes
+checking for cos in -lm... yes
+checking for cos in -lm... (cached) yes
+checking for cblas_dgemv in -lgslcblas... yes
+checking for gsl_spline_init in -lgsl... yes
+checking for argp_usage in -largp... no
+configure: WARNING: argp library not found - please install glibc - http://directory.fsf.org/libs/c/glibc.html
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for unistd.h... (cached) yes
+checking sys/param.h usability... yes
+checking sys/param.h presence... yes
+checking for sys/param.h... yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking time.h usability... yes
+checking time.h presence... yes
+checking for time.h... yes
+checking sys/mkdev.h usability... no
+checking sys/mkdev.h presence... no
+checking for sys/mkdev.h... no
+checking sys/sysmacros.h usability... yes
+checking sys/sysmacros.h presence... yes
+checking for sys/sysmacros.h... yes
+checking for string.h... (cached) yes
+checking for memory.h... (cached) yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking dirent.h usability... yes
+checking dirent.h presence... yes
+checking for dirent.h... yes
+checking sys/ndir.h usability... no
+checking sys/ndir.h presence... no
+checking for sys/ndir.h... no
+checking ndir.h usability... no
+checking ndir.h presence... no
+checking for ndir.h... no
+checking alloca.h usability... yes
+checking alloca.h presence... yes
+checking for alloca.h... yes
+checking locale.h usability... yes
+checking locale.h presence... yes
+checking for locale.h... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking utime.h usability... yes
+checking utime.h presence... yes
+checking for utime.h... yes
+checking for struct utimbuf... yes
+checking whether sys/types.h defines makedev... no
+checking for sys/mkdev.h... (cached) no
+checking for sys/sysmacros.h... (cached) yes
+checking for size_t... yes
+checking for working alloca.h... yes
+checking for alloca... yes
+checking whether struct tm is in sys/time.h or time.h... time.h
+checking for struct stat.st_blocks... yes
+checking for dirent.h that defines DIR... yes
+checking for library containing opendir... none required
+checking whether closedir returns void... no
+checking for mkfifo... yes
+checking for mknod... yes
+checking argp.h usability... yes
+checking argp.h presence... yes
+checking for argp.h... yes
+checking getopt.h usability... yes
+checking getopt.h presence... yes
+checking for getopt.h... yes
+checking whether make sets $(MAKE)... (cached) yes
+checking for ranlib... ranlib
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating cosmdist.lsm
+config.status: creating cosmdist.spec
+config.status: creating lib/Makefile
+config.status: creating config.h
+config.status: executing depfiles commands

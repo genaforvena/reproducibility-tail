@@ -21,7 +21,7 @@
   "basis": "original",
   "verdict": "reproduced",
   "cause": null,
-  "attempt": "Reproduced. The authors' Fortran 77 sources compile as shipped with gfortran -O2 (Drivers/wktest.f with Src/src.f, Src/airy.f, Src/d1mach.f; no edits, no flags beyond -O2; original attempt succeeded). The driver writes its report to TESTF.DAT (its OPEN on unit 1). Two passes (original binary in its build directory; the same binary in a clean directory) give the same TESTF.DAT byte-for-byte and the same maximum, 6.8156591481738360E-13. |ours - paper| = 1.1e-16, inside the registered absolute tolerance 1e-13. The maximum is below 1e-12, the paper's 'close to 1e-12' scale for this grid. Note on the rest of the output: the shipped Drivers/Res and our TESTF.DAT differ in several entries of the earlier per-point error table (for example X=50, A=550, first error column: 0.399680289D-14 shipped vs 0.152100554D-12 ours; X=50, A=60, second column: 0.122124533D-14 vs 0.144328993D-14). These are not the registered claim; they are recorded, not judged, and the table is not compared further here. Replay (G5) not yet run.",
+  "attempt": "Reproduced. The authors' Fortran 77 sources compile as shipped with gfortran -O2 (Drivers/wktest.f with Src/src.f, Src/airy.f, Src/d1mach.f; no edits, no flags beyond -O2; original attempt succeeded). The driver writes its report to TESTF.DAT (its OPEN on unit 1). Two passes (original binary in its build directory; the same binary in a clean directory) give the same TESTF.DAT byte-for-byte and the same maximum, 6.8156591481738360E-13. |ours - paper| = 1.1e-16, inside the registered absolute tolerance 1e-13. The maximum is below 1e-12, the paper's 'close to 1e-12' scale for this grid. Note on the rest of the output: the shipped Drivers/Res and our TESTF.DAT differ in several entries of the earlier per-point error table (for example X=50, A=550, first error column: 0.399680289D-14 shipped vs 0.152100554D-12 ours; X=50, A=60, second column: 0.122124533D-14 vs 0.144328993D-14). These are not the registered claim; they are recorded, not judged, and the table is not compared further here. Replay (G5) at 2026-11-26T19:39Z failed on a recipe defect, not a value change: the original-attempt guard skipped the build on a rerun, so the sandbox had no binary (the same defect as amestoy). The recipe now rebuilds every run; a rerun reproduces the value 6.8156591481738360E-013 with evidence unchanged. The next replay is due in a later wake.",
   "queue_commit": "f2a0059fc3791af238000afc3023f186c1a91df5",
   "original_attempt": {
     "tried": true,
@@ -33,7 +33,7 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "fail",
     "G6": "na",
     "cross_check": "na"
   },
@@ -47,7 +47,17 @@
     "reports/gil2004-besselia-831/evidence/run1-value.txt",
     "reports/gil2004-besselia-831/evidence/run2-value.txt"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-26T19:39:17Z",
+      "kind": "clean",
+      "values": {},
+      "ok": false,
+      "why": "recipe printed no VALUE line for ['WKTEST Wronskian maximum, IFAC=2 (shipped Res)']",
+      "log": "reports/gil2004-besselia-831/evidence/replay-2026-11-26T193917Z.log",
+      "seconds": 63
+    }
+  ],
   "stack_class": "Fortran",
   "field_class": "numerics"
 }

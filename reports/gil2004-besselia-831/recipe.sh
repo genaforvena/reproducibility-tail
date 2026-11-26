@@ -33,11 +33,11 @@ echo "== shipped reference: Drivers/Res, copied unedited"
 tools/sandbox.sh "$ID" -- cat /work/pre/Fortran77/Drivers/Res > "$E/reference/Res" || { echo "REF-FAILED"; exit 1; }
 tail -1 "$E/reference/Res"
 
-# G1 original attempt: the authors' sources, as shipped. The log is kept once and never overwritten.
+# G1 original attempt: the authors' sources, as shipped. The first log is kept and never overwritten; the build is
+# always redone, because the sandbox scratch (/work/g1, the binary the runs need) does not persist between recipe runs.
 ORIG="$E/original-attempt.log"
-if [ ! -s "$ORIG" ]; then
-  tools/sandbox.sh "$ID" -- sh -c "rm -rf /work/g1 && cp -r /work/pre/Fortran77 /work/g1 && mkdir /work/g1/run && cd /work/g1 && $G -O2 -o run/wktest Drivers/wktest.f Src/src.f Src/airy.f Src/d1mach.f 2>&1; echo compile_exit=\$?" > "$ORIG" 2>&1
-fi
+[ -s "$ORIG" ] && ORIG="$E/original-attempt-rebuild.log"
+tools/sandbox.sh "$ID" -- sh -c "rm -rf /work/g1 && cp -r /work/pre/Fortran77 /work/g1 && mkdir /work/g1/run && cd /work/g1 && $G -O2 -o run/wktest Drivers/wktest.f Src/src.f Src/airy.f Src/d1mach.f 2>&1; echo compile_exit=\$?" > "$ORIG" 2>&1
 tail -3 "$ORIG"
 
 # Runs, twice (G3): run 1 executes the original binary in its build directory; run 2 copies it to a clean directory.

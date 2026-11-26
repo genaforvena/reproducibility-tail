@@ -1,0 +1,48 @@
+{
+ "paper": {
+  "title": "Algorithm 733: TOMP - Fortran modules for optimal control calculations",
+  "authors": ["D. Kraft"],
+  "year": 1994,
+  "venue": "ACM Transactions on Mathematical Software 20(3), 262 (TOMS 733, Sep 1994)",
+  "doi": null,
+  "url": "https://netlib.org/toms/733.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/733.gz",
+  "commit": "netlib TOMS archive 733.gz (downloaded 2026-11-26, 57433 bytes, sha256 cf49f88ca0138f774b7cabda7acd85f0e1c2d36cbc263eebb5d029f69e794c35); uncompressed text 733.f sha256 d0400c156445d0e91ba4e57f4a674e86d4e9a33c707aacfe62f82acc0fce5666",
+  "note": "Single-file Fortran 77 text. It contains an unnamed main program (the test driver for the constrained brachistochrone problem, about lines 6020-6148 of 733.f) that calls d_TOMP, SLSQP, RK87 and the problem routines bra, vbra and obra, all in the same file. The driver writes its own log to tomp.out. Needs a Fortran 77 compiler; expect Hollerith-constant and fixed-form warnings from gfortran."
+ },
+ "field": "numerics (optimal control)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "The archive's own shipped output of the test driver, given in the uncompressed 733.f as the text 'File TOMP.OUT' (lines 77-109). The final optimizer line is iteration 27: cost 0.17952392D+01 (= 1.7952392), constraint violation 0.8371D-06, followed by 'mode = 0 after 27 iterations'. Registered: the converged final cost in that line.",
+  "reference": {
+   "file": "733/733.f, lines 77-109 (TOMP.OUT block in the comments; the driver itself is the unnamed main program at about lines 6020-6148)",
+   "sha256": "d0400c156445d0e91ba4e57f4a674e86d4e9a33c707aacfe62f82acc0fce5666",
+   "archive": "netlib.org/toms/733.gz sha256 cf49f88ca0138f774b7cabda7acd85f0e1c2d36cbc263eebb5d029f69e794c35"
+  },
+  "metric": "The final cost f printed by the driver in tomp.out after the last optimizer iteration (the line 'mode = 0 after 27 iterations' is the last one), compared with 1.7952392 from the shipped output.",
+  "paper_value": "Shipped TOMP.OUT: final cost 1.7952392 at iteration 27 (mode = 0). The paper text is not readable here, so no paper value is used.",
+  "values": [
+   {
+    "name": "final cost of the constrained brachistochrone run (TOMP.OUT, iteration 27)",
+    "paper": 1.7952392,
+    "tol_abs": 0.00001
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1e-5,
+   "basis": "Fixed before any run. The shipped output prints 8 significant digits, and iterations 26 and 27 agree to all printed digits, so the converged value is fixed to about 1e-8. The optimizer stops at acc = 1e-6 (driver line 6093). The tolerance 1e-5 is looser than the floating-point drift one would expect from a 27-iteration SQP run on another compiler, and tighter than the gap between a run stopped at iteration 20 (1.7952737, 3.5e-5 away) and the converged value, so it separates converged runs from unconverged ones. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute (27 SQP iterations, 21 control points, one state constraint per communication point).",
+  "data_size": "None; the sample problem is set up in the driver's code (no input files).",
+  "data_licence": "No data. Netlib TOMS code distributed under the ACM licence of the archive; the rerun should record the licence it finds in the archive."
+ },
+ "why": "A 1994 optimal-control code ships its test driver's converged run with the final cost printed to 8 digits, and the number needs the whole SQP plus simulation loop to compute. The claim tests a Fortran 77 code of the same era with no input data, so the rerun must reproduce a converged optimal-control solution, not a closed form.",
+ "registered": "2026-11-26T15:18:40Z"
+}

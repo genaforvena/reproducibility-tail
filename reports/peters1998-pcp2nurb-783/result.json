@@ -1,0 +1,100 @@
+{
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "11691adb9b362f2232d25883a1a74b809698f158a27e9a26f910d56d04e2dd87",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "cc -g -c /work/build/Drivers/Sp/driver1.c -o driver1.o",
+      "cc -g -c /work/build/Src/Sp/src.c -o src.o",
+      "cc -g -o nurb_iv1 driver1.o src.o -lm"
+    ],
+    "manifests": {
+      "pre": "reports/peters1998-pcp2nurb-783/evidence/manifest.pre",
+      "mid": "reports/peters1998-pcp2nurb-783/evidence/manifest.mid",
+      "post": "reports/peters1998-pcp2nurb-783/evidence/manifest.post"
+    }
+  },
+  "paper": {
+    "short": "peters1998-pcp2nurb-783",
+    "title": "Algorithm 783: Pcp2Nurb -- Smooth free-form surfacing with linearly trimmed bicubic B-splines",
+    "year": 1998,
+    "doi": null
+  },
+  "field": "numerics (surface modelling, NURBS)",
+  "stack": "C (TOMS 783 shar: C/Drivers/Sp/driver1.c, C/Src/Sp/src.c, RES1 reference)",
+  "field_class": "numerics",
+  "stack_class": "C/C++",
+  "claim": {
+    "text": "The first control point of the first NurbsSurface printed by driver1 with blend ratio 0.5 is (0.493056, 1.868056, 0.972222), as in the shipped reference output RES1 (first Coordinate3 block, point 1). Absolute tolerance 1e-5 per component.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "driver1 0.5, first patch control point 1 x",
+        "paper": 0.493056,
+        "tol_abs": 1e-05,
+        "ours": 0.493056
+      },
+      {
+        "name": "driver1 0.5, first patch control point 1 y",
+        "paper": 1.868056,
+        "tol_abs": 1e-05,
+        "ours": 1.868056
+      },
+      {
+        "name": "driver1 0.5, first patch control point 1 z",
+        "paper": 0.972222,
+        "tol_abs": 1e-05,
+        "ours": 0.972222
+      }
+    ],
+    "reference": {
+      "file": "reports/peters1998-pcp2nurb-783/evidence/reference/RES1",
+      "sha256": "5eb0cc476de17b3bc0ba60b833f2e9df6d579e4a62e57b5e2f91192522b97d91",
+      "archive": "netlib.org/toms/783.gz sha256 11691adb9b362f2232d25883a1a74b809698f158a27e9a26f910d56d04e2dd87"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced with a build-only patch. The header's documented compile line names files (nurb_iv1.c, pcp2nurb.c) that the shar does not ship (driver1.c, src.c), so the documented commands fail as written (original attempt logged). The same sources are compiled under their shipped names, out of tree, with the plain cc flags from the header. No source file is edited; three manifests prove it (verify_sources record: build-only, no modified/removed/added). Driver run with 0.5 in two clean directories gives the first point 0.493056 1.868056 0.972222 both times, identical to RES1 at the printed precision. The claim was recorded as three scalar values (x, y, z) with the queue's paper value and tolerance unchanged; the queue entry itself is not edited. Replay (G5) not yet run.",
+  "queue_commit": "4c493d550014c561bf7412b34a8b038073210391",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "documented compile names nurb_iv1.c and pcp2nurb.c are absent from the archive (cc: pcp2nurb.c: No such file or directory)",
+    "log": "reports/peters1998-pcp2nurb-783/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/peters1998-pcp2nurb-783/recipe.sh",
+  "evidence": [
+    "reports/peters1998-pcp2nurb-783/evidence/original-attempt.log",
+    "reports/peters1998-pcp2nurb-783/evidence/build.log",
+    "reports/peters1998-pcp2nurb-783/evidence/recipe-run.log",
+    "reports/peters1998-pcp2nurb-783/evidence/reference/RES1",
+    "reports/peters1998-pcp2nurb-783/evidence/run1-out.iv",
+    "reports/peters1998-pcp2nurb-783/evidence/run2-out.iv",
+    "reports/peters1998-pcp2nurb-783/evidence/run1-point1.txt",
+    "reports/peters1998-pcp2nurb-783/evidence/run2-point1.txt",
+    "reports/peters1998-pcp2nurb-783/evidence/manifest.pre",
+    "reports/peters1998-pcp2nurb-783/evidence/manifest.mid",
+    "reports/peters1998-pcp2nurb-783/evidence/manifest.post"
+  ],
+  "replayed": []
+}

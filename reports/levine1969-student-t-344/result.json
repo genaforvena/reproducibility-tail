@@ -1,0 +1,88 @@
+{
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "053ed92f6d08c5d8d2f7f92dcba8698d2bede20c29293e0564cfc62da8c66866",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "/work/fortran/bin/x86_64-conda-linux-gnu-gfortran -O0 -c /work/build/Drivers/driver.f -o driver.o",
+      "/work/fortran/bin/x86_64-conda-linux-gnu-gfortran -O0 -c /work/build/Src/src.f -o src.o",
+      "/work/fortran/bin/x86_64-conda-linux-gnu-gfortran -O0 -o driver driver.o src.o"
+    ],
+    "manifests": {
+      "pre": "reports/levine1969-student-t-344/evidence/manifest.pre",
+      "mid": "reports/levine1969-student-t-344/evidence/manifest.mid",
+      "post": "reports/levine1969-student-t-344/evidence/manifest.post"
+    }
+  },
+  "paper": {
+    "short": "levine1969-student-t-344",
+    "title": "Algorithm 344: Student's t distribution (TTEST)",
+    "year": 1969,
+    "doi": null
+  },
+  "field": "statistics (Student's t distribution)",
+  "stack": "Fortran (TOMS 344 shar: Fortran/Sp/Drivers/driver.f, Makefile, res; Fortran/Sp/Src/src.f)",
+  "field_class": "statistics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "The computed CDF printed by TOMS344_PRB for DF=1, X=0.3250 (row 1, computed column) is 0.7999537587165833, as in the shipped reference output res. Absolute tolerance 1e-6.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/levine1969-student-t-344/evidence/reference/res",
+      "sha256": "9b6bc669d67b874c5678eb41b221bb754aeebda56fd35b5f4fa8d1cb01d83298",
+      "archive": "netlib.org/toms/344.gz sha256 053ed92f6d08c5d8d2f7f92dcba8698d2bede20c29293e0564cfc62da8c66866"
+    },
+    "values": [
+      {
+        "name": "TTEST, DF=1, X=0.3250, two-tailed CDF transform (computed column)",
+        "paper": 0.7999537587165833,
+        "tol_abs": 1e-06,
+        "ours": 0.7999537587165833
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced with a build-only patch. The shipped Drivers/Makefile does not build as documented: its src.o rule names src.f with no path, but src.f ships in Src/, so make stops (original attempt logged). VPATH does not help, because the compile command still names src.f bare. The same three compiles are therefore run out of tree with the makefile's own flags (gfortran -O0): driver.f, ../Src/src.f, link. No source file is edited; three manifests prove it (verify_sources record: build-only, nothing modified, removed or added). Two clean passes print 0.7999537587165833 for DF=1, X=0.3250, identical to res at the printed precision (difference 0). Toolchain: gfortran from conda-forge, installed in the sandbox scratch during fetch. Replay (G5) not yet run.",
+  "queue_commit": "9e13a2cfa2978f8b857d37ba2874690fc42d51be",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "the shipped Drivers/Makefile names src.f without a path; src.f ships in Src/, so make reports 'No rule to make target src.f' and stops",
+    "log": "reports/levine1969-student-t-344/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/levine1969-student-t-344/recipe.sh",
+  "evidence": [
+    "reports/levine1969-student-t-344/evidence/original-attempt.log",
+    "reports/levine1969-student-t-344/evidence/build.log",
+    "reports/levine1969-student-t-344/evidence/recipe-run.log",
+    "reports/levine1969-student-t-344/evidence/reference/res",
+    "reports/levine1969-student-t-344/evidence/run1-out.txt",
+    "reports/levine1969-student-t-344/evidence/run2-out.txt",
+    "reports/levine1969-student-t-344/evidence/run1-value.txt",
+    "reports/levine1969-student-t-344/evidence/run2-value.txt",
+    "reports/levine1969-student-t-344/evidence/manifest.pre",
+    "reports/levine1969-student-t-344/evidence/manifest.mid",
+    "reports/levine1969-student-t-344/evidence/manifest.post"
+  ],
+  "replayed": []
+}

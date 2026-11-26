@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-25 papers attempted.
+26 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 10 |
-| B | authors' code with build fixes | 7 |
+| B | authors' code with build fixes | 8 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 6 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 17, other 1, statistics 4
-By stack: C/C++ 5, Fortran 12, MATLAB/Octave 2, R 5, not-stated 1
-By decade: 1970 1, 1980 2, 1990 7, 2000 9, 2010 6
+By field: astronomy 1, biology 1, ecology 1, numerics 17, other 1, statistics 5
+By stack: C/C++ 5, Fortran 13, MATLAB/Octave 2, R 5, not-stated 1
+By decade: 1960 1, 1970 1, 1980 2, 1990 7, 2000 9, 2010 6
 
 Data as of 2026-11-26T20:42Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-26T20:42Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-25 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+26 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **207 candidates considered from 4 of 4 frames: 22 attempted (11%), 0 unreachable, 185 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 11 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 10 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 12 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 10 (ran as documented).
 
 ## Results
 
@@ -110,6 +110,7 @@ Authors' original artifact, among all attempted papers: failed 11 (did not run),
 | [greenberg1997-sleuth-775](reports/greenberg1997-sleuth-775/result.md) | numerics · 1997 · Fortran | ELAM value from the queue entry, tol 1e-3 absolute; provisional local reimplementation gives 4871.3813065256945 in both passes (not yet a verdict) (ELAM) | 4871.38 ± 0.001 | – | – | – | - | · · · · | - | blocked | never clean |
 | [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics · 2012 · R | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [kraft1994-tomp-733](reports/kraft1994-tomp-733/result.md) | numerics · 1994 · not-stated | Value 1.7952392, tol 1e-5 absolute; provisional local run gives 1.79523920 in both passes (not yet a verdict) (value) | 1.79524 ± 1e-05 | – | – | – | - | · · · · | - | blocked | never clean |
+| [levine1969-student-t-344](reports/levine1969-student-t-344/result.md) | statistics · 1969 · Fortran | The computed CDF printed by TOMS344_PRB for DF=1, X=0.3250 (row 1, computed column) is 0.7999537587165833, as in the shipped reference output res. Absolute tolerance 1e-6. (TTEST, DF=1, X=0.3250, two-tailed CDF transform (computed column)) [shipped reference output] | 0.799954 ± 1e-06 | 0.799954 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ · | B | reproduced | never clean |
 | [linhart2008-lnnorm-885](reports/linhart2008-lnnorm-885/result.md) | numerics · 2008 · C/C++ | -lnnorm(-5.0) computed by the authors' C/lnnorm.c, against the Sheppard (1939) Table IV row x = 5.0 in the shipped C/sheppard.txt: 15.0649983939887257, absolute tolerance 1.5e-8 (-lnnorm(-5.0) against Sheppard Table IV row 5.0) | 15.065 ± 1.5e-08 | 15.065 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDM0P5(-4)) [shipped reference output] | 0.0180819 ± 1.80819e-07 | 0.0180819 | -2.9914e-09 | 2% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDM0P5(3)) [shipped reference output] | 1.85349 ± 1.85349e-05 | 1.85349 | -8.86015e-08 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |

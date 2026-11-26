@@ -30,6 +30,8 @@ fi
 mkdir -p "$W/impl"
 cp "$here"/impl/*.py "$W/impl/"
 
+# Log: evidence/recipe-run.log by default (replay: LOG=...). The earlier evidence/sandbox-run.log is kept, never overwritten.
+LOG="${LOG:-$root/reports/$ID/evidence/recipe-run.log}"
 S="$root/tools/sandbox.sh $ID -- /usr/bin/env PYTHONPATH=/work/pylib /usr/bin/python3 /work/impl"
 # Table 1 of the paper (PLOS ONE, doi:10.1371/journal.pone.0016140.t001) gives the exact activator and
 # repressor constants as (1E-10)^(1/1.3) and (1E-12)^(1/1.3) M; network.mat stores them rounded (2e-8, 6e-10).
@@ -51,5 +53,9 @@ sed -e "/name: k_a/{n;s/.*/$KA/}" -e "/name: k_r/{n;s/.*/$KR/}" "$W/network.mat"
   $S/continue_branch.py /work/network.mat full 0 1.5 0.002 1
   echo "## time-domain check, full model: 6.5 and 7.5 nM, 1.5e6 s"
   $S/check_time_domain.py /work/network.mat 6.5 7.5 1.5e6
-} 2>&1 | grep -v Warn | tee "$W/sandbox-run.log"
-echo "log: $W/sandbox-run.log"
+} 2>&1 | grep -v Warn | tee "$LOG"
+echo "log: $LOG"
+# G5 contract: Hopf I is the midpoint of the PRIMARY bracket (the first HOPF crossing in the log),
+# printed to 4 decimals, the precision of the recorded value (7.1875). The bracket is 5 decimals.
+read -r HA HB < <(grep -m1 '^HOPF crossing between I=' "$LOG" | sed -n 's/^HOPF crossing between I=\([-0-9.e]*\) and \([-0-9.e]*\) nM.*/\1 \2/p')
+echo "VALUE Hopf input I (nM) $(python3 -c "print(f'{($HA+$HB)/2:.4f}')")"

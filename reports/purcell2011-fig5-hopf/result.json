@@ -33,7 +33,7 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "pass"
   },
@@ -57,6 +57,17 @@
       "utc": "2026-11-26T13:48:55Z",
       "value": 7.1875,
       "ok": true
+    },
+    {
+      "utc": "2026-11-26T14:13:26Z",
+      "kind": "clean",
+      "values": {
+        "Hopf input I (nM)": 7.1875
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/purcell2011-fig5-hopf/evidence/replay-2026-11-26T141326Z.log",
+      "seconds": 77
     }
   ]
 }

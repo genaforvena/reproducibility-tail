@@ -1,0 +1,37 @@
+{
+  "paper": {
+    "title": "SPECIES: An R Package for Species Richness Estimation",
+    "authors": [
+      "Ji-Ping Wang"
+    ],
+    "year": 2011,
+    "venue": "Journal of Statistical Software 40(9), April 2011",
+    "doi": "10.18637/jss.v040.i09",
+    "url": "https://www.jstatsoft.org/article/view/v040i09/v40i09.pdf"
+  },
+  "code": {
+    "url": "https://cran.r-project.org/src/contrib/Archive/SPECIES/SPECIES_1.0.tar.gz",
+    "commit": "CRAN archive tarball SPECIES_1.0.tar.gz, DESCRIPTION Version 1.0, Date 2010-01-24",
+    "archive": "sha256 c0c90cfeeb73c991411cd40b52ddf83f4dab9ca4eb928cd731244b2e1ca5855c (downloaded by scout 2026-11-26 from the CRAN archive). The closest archived release before the paper's April 2011 publication. The package ships the butterfly data set (data/butterfly.rda), so no external download is needed.",
+    "note": "The paper's listing (p. 8) is the code to implement: data(\"butterfly\"); ChaoLee1992(butterfly, t = 10, method = \"all\"). The printed $Nhat is [1] 712 737 (ACE and ACE-1). Scout registers the ACE estimate only. The rerun records the release it used."
+  },
+  "field": "ecology (species richness estimation from incidence/abundance samples)",
+  "stack": "R (current release), with the archived SPECIES 1.0 package",
+  "claim": {
+    "location": "Section 'Illustrating the functions' (JSS p. 8), the R listing 'ChaoLee1992(butterfly, t = 10, method = \"all\")' and its printed output '$Nhat [1] 712 737'.",
+    "paper_value": "Chao-Lee (1992) richness estimate N-hat for the ACE method on the butterfly data with t = 10: 712",
+    "value_check": "Read by scout from the JSS PDF (pdftotext -layout of v40i09.pdf) on 2026-11-26: the call and the printed '$Nhat [1] 712 737' with the CI table 'ACE 680 748' sit on page 8. The ACE value 712 is the first element of $Nhat.",
+    "metric": "$Nhat[1] (ACE estimate) of ChaoLee1992(butterfly, t = 10, method = \"all\")",
+    "tolerance": {
+      "Nhat_abs": 0.5,
+      "basis": "Fixed before any run: the estimator is deterministic (no seed) and the printed value is an integer, so the pass rule is an exact integer match, 712, with 0.5 as the rounding allowance. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: one ChaoLee1992 call on a 10-sample butterfly data set.",
+    "data_size": "None beyond the butterfly data inside the package (small).",
+    "data_licence": "No external data. SPECIES is GPL (CRAN)."
+  },
+  "why": "A deterministic species-richness estimate printed as an integer in a 2011 JSS R package paper, with its data bundled in the archived release and runnable in seconds on CPU.",
+  "registered": "2026-11-26T13:15:40Z"
+}

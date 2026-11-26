@@ -37,6 +37,17 @@
    "covers": "an entry in queue/ with no live claim and no result: rerun is owed a wake; a claim older than six hours without a result counts as unclaimed again"
   },
   {
+   "name": "push-lag",
+   "command": ["{python}", "{repo}/checks/push-lag.py", "--repo", "{repo}"],
+   "every": 600,
+   "timeout": 90,
+   "max_age": 900,
+   "unknown_codes": [3],
+   "resolver": "rerun",
+   "replaces": [],
+   "covers": "local main reaches GitHub within a quarter hour (checks/push-lag.py): RED when the oldest unpushed commit is older, or main has diverged; UNKNOWN when the remote cannot be read. The post-commit hook (tools/post-commit-push.sh) pushes after a 30 s settle; the 17-commit backlog of 2026-11-26 had no hook"
+  },
+  {
    "name": "disk-floor",
    "command": ["{python}", "{repo}/checks/disk-floor.py"],
    "every": 600,

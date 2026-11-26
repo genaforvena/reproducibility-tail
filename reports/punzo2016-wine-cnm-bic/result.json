@@ -1,0 +1,54 @@
+{
+  "paper": {
+    "short": "punzo2016-wine-cnm-bic",
+    "title": "Parsimonious mixtures of multivariate contaminated normal distributions",
+    "year": 2016,
+    "arxiv": "1305.4669v5"
+  },
+  "field": "statistics (model-based clustering, robust mixtures)",
+  "stack": "R 4.6.2 (sandbox, conda-forge), ContaminatedMixt 1.0 (CRAN archive), mixture 2.2.1, mnormt 2.1.2, mclust 6.1.4 (current CRAN at fetch time)",
+  "claim": {
+    "text": "Section 7.3 (wine data), Table 11, CNMs row: BIC-selected (G, parsimonious structure) over G in {1,2,3,4} and the 14 structures, labels ignored, seed 1",
+    "values": [
+      {
+        "name": "selected_G",
+        "paper": 3,
+        "tol_abs": 0,
+        "ours": 3
+      },
+      {
+        "name": "selected_structure_index",
+        "paper": 7,
+        "tol_abs": 0,
+        "ours": 7,
+        "note": "index of EEE in the package's structure order (EII, VII, EEI, VEI, EVI, VVI, EEE, ...); categorical label encoded as a number for the VALUE contract"
+      }
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "authors' ContaminatedMixt 1.0 built with R CMD INSTALL, no source edits; CNmixt called once per (G, structure) under tryCatch, seed 1, BIC via the package's whichBest",
+  "queue_commit": "7a3ec0963579a6e86798575a50ac4d44fec0592f",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "partial",
+    "reason": "a single CNmixt(X, G=1:4) call halted at (G=4, EVE) inside mixture::gpcm ('no models estimated'), which escapes the package's per-job handling; 'invalid subscript type list' failures for EEV, VEV, EVV, VVV at G=2..4 and 'no models estimated' for G=4 VVI and EVE were recorded in the per-fit rerun. Driver-level tryCatch per fit; the package source is unchanged",
+    "log": "reports/punzo2016-wine-cnm-bic/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/punzo2016-wine-cnm-bic/recipe.sh",
+  "evidence": [
+    "reports/punzo2016-wine-cnm-bic/evidence/original-attempt.log",
+    "reports/punzo2016-wine-cnm-bic/evidence/recipe-run.log",
+    "reports/punzo2016-wine-cnm-bic/impl/original_run.R",
+    "reports/punzo2016-wine-cnm-bic/result.md"
+  ]
+}

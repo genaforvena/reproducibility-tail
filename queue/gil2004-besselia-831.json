@@ -1,0 +1,53 @@
+{
+ "paper": {
+  "title": "Algorithm 831: Modified Bessel Functions of Imaginary Order and Positive Argument",
+  "authors": [
+   "Amparo Gil",
+   "Javier Segura",
+   "Nico M. Temme"
+  ],
+  "year": 2004,
+  "venue": "ACM Transactions on Mathematical Software 30(2), 159-164 (TOMS 831, June 2004)",
+  "doi": null,
+  "url": "https://ir.cwi.nl/pub/10082"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/831.gz",
+  "commit": "netlib TOMS archive 831.gz (fetched 2026-11-26, 5d56edbb...; sha256 5d56edbba35b73c301c3abe6684b47dda84758b4df2dbf8f2f88cbabf49a885a)",
+  "archive": "netlib TOMS 831.gz, sha256 5d56edbba35b73c301c3abe6684b47dda84758b4df2dbf8f2f88cbabf49a885a (hashed by scout from the fetched bytes)",
+  "note": "Shell archive (Fortran77): Drivers/wktest.f is PROGRAM WKTEST (check the PROGRAM line). Its last test (line ~154, IFAC=2, scaled functions) loops I=1..1000 step 10 with X=0.95*I and J=1..1000 step 10 with A=0.9*J, computes |X*KIA*LIAP-1 - X*KIAP*LIA| from DKIA/DLIA, and prints WMAX as the last line of Drivers/Res. Src/src.f, airy.f and d1mach.f are the sources. gfortran is not in the scout sandbox."
+ },
+ "field": "numerics (special functions, Bessel functions of imaginary order)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Paper abstract (TOMS 30(2) p.159) and Section 2 (pp.161-162): 'The relative accuracy is better than 10^-13 in the range (0,200] x [-200,200] and close to 10^-12 in (0,1500) x [-1500,1500)'. The Wronskian grid of the driver (X up to 941, |A| up to 892) lies inside the stated (0,1500) x [-1500,1500) range.",
+  "reference": {
+   "file": "Fortran77/Drivers/Res (member of 831.gz), last line 'MAXIMUM VALUE OF THE WRONSKIAN CHECK = 6.814548925149211E-13' under 'TEST OF THE WRONSKIAN RELATION FOR DKIA, DLIA' (IFAC=2)",
+   "sha256": null,
+   "archive": "netlib.org/toms/831.gz sha256 5d56edbba35b73c301c3abe6684b47dda84758b4df2dbf8f2f88cbabf49a885a"
+  },
+  "metric": "Maximum absolute Wronskian residual |X*K*L'-1 - X*K'*L| (DKIA, DLIA, scaled functions, IFAC=2) over the driver's grid, as printed by WKTEST.",
+  "paper_value": "Paper: relative accuracy 'close to 10^-12' over (0,1500)x[-1500,1500) and better than 5x10^-13 over (0,500]x[-500,500]. The grid is not inside (0,500]x[-500,500] (|A| reaches 892), so only the 10^-12 scale applies to the whole grid.",
+  "values": [
+   {
+    "name": "WKTEST Wronskian maximum, IFAC=2 (shipped Res)",
+    "paper": 6.814548925149211e-13,
+    "tol_abs": 1e-13
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1e-13,
+   "basis": "Fixed before any run. The rerun maximum must lie within 1e-13 absolute of the shipped 6.8145e-13, so it is in [5.81e-13, 7.81e-13]. The paper's scale for this grid is 'close to 10^-12', so the rerun must also report whether its maximum is below 1e-12 and say so in its note. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 5 minutes: compile the Fortran 77 sources and run one 100x100 grid.",
+  "data_size": "None; the driver generates its own grid.",
+  "data_licence": "Netlib TOMS code under the ACM licence in the archive; the rerun should record the licence text."
+ },
+ "why": "The paper states the accuracy scale of these functions, and the shipped driver computes the Wronskian residual those accuracy statements rest on, so the code has to compute the number.",
+ "registered": "2026-11-26T19:28Z"
+}

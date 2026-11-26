@@ -26,23 +26,24 @@ Every candidate is drawn from a named frame in a seeded order and none is skippe
 
 Not yet framed: 0 candidates in the legacy rejection log and 5 attempted papers (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace) were chosen before frames existed, so they are excluded from the numbers below.
 
-**40 candidates considered from 1 frames: 1 attempted (2%), 0 unreachable, 39 rejected.**
+**50 candidates considered from 2 frames: 1 attempted (2%), 0 unreachable, 49 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
-| stat-co-2010-2015 | 1872 | 80 | 40 | 50% | 1 | 0 | 39 |
+| stat-co-2010-2015 | 1872 | 80 | 50 | 62% | 1 | 0 | 49 |
+| toms-calgo-index | 570 | 40 | 0 | 0% | 0 | 0 | 0 |
 
 | why a candidate was not attempted | candidates |
 |---|---|
 | paywalled | 0 |
 | figure-only | 8 |
-| no-numeric-claim | 8 |
-| claim-not-located | 6 |
+| no-numeric-claim | 9 |
+| claim-not-located | 9 |
 | no-method-description | 0 |
-| stochastic-no-seed | 12 |
-| no-code | 1 |
+| stochastic-no-seed | 15 |
+| no-code | 3 |
 | runtime | 0 |
-| machine-dependent | 2 |
+| machine-dependent | 3 |
 | restricted-data | 0 |
 | gpu | 1 |
 | other | 1 |
@@ -53,9 +54,10 @@ Survivorship: the share of each stack among all candidates considered, and among
 
 | stack | considered | attempted |
 |---|---|---|
-| MATLAB/Octave | 5 | 0 |
-| R | 6 | 1 |
-| not-stated | 29 | 0 |
+| C/C++ | 2 | 0 |
+| MATLAB/Octave | 8 | 0 |
+| R | 7 | 1 |
+| not-stated | 33 | 0 |
 
 ### Unreachable
 

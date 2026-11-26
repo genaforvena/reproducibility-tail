@@ -161,6 +161,6 @@ Mean absolute error:     4.528e-15
 Mean relative error:    1.3096e-16 
 
 1000000 iterations 
-Time for lnnorm  =         0.1059670000
-Time for lnanorm =         0.0538100000
-Time for lnenorm =         0.0506070000
+Time for lnnorm  =         0.1048500000
+Time for lnanorm =         0.0572280000
+Time for lnenorm =         0.0539680000

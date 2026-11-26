@@ -33,7 +33,7 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -48,7 +48,19 @@
     "reports/linhart2008-lnnorm-885/evidence/run1-driver-stdout.txt",
     "reports/linhart2008-lnnorm-885/evidence/run2-driver-stdout.txt"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-26T19:50:14Z",
+      "kind": "clean",
+      "values": {
+        "-lnnorm(-5.0) against Sheppard Table IV row 5.0": 15.064998393988725
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/linhart2008-lnnorm-885/evidence/replay-2026-11-26T195014Z.log",
+      "seconds": 3
+    }
+  ],
   "stack_class": "C/C++",
   "field_class": "numerics",
   "patch": {

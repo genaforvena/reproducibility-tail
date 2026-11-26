@@ -20,7 +20,7 @@ By field: astronomy 1, biology 1, ecology 1, numerics 14, other 1, statistics 3
 By stack: C/C++ 4, Fortran 9, MATLAB/Octave 2, R 5, not-stated 1
 By decade: 1970 1, 1980 1, 1990 6, 2000 7, 2010 6
 
-Data as of 2026-11-26T19:44Z (the newest replay or funnel entry).
+Data as of 2026-11-26T19:50:14Z (the newest replay or funnel entry).
 
 ## The funnel
 
@@ -106,7 +106,7 @@ Authors' original artifact, among all attempted papers: failed 8 (did not run), 
 | [greenberg1997-sleuth-775](reports/greenberg1997-sleuth-775/result.md) | numerics · 1997 · Fortran | ELAM value from the queue entry, tol 1e-3 absolute; provisional local reimplementation gives 4871.3813065256945 in both passes (not yet a verdict) (ELAM) | 4871.38 ± 0.001 | – | – | – | - | · · · · | - | blocked | never clean |
 | [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics · 2012 · R | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [kraft1994-tomp-733](reports/kraft1994-tomp-733/result.md) | numerics · 1994 · not-stated | Value 1.7952392, tol 1e-5 absolute; provisional local run gives 1.79523920 in both passes (not yet a verdict) (value) | 1.79524 ± 1e-05 | – | – | – | - | · · · · | - | blocked | never clean |
-| [linhart2008-lnnorm-885](reports/linhart2008-lnnorm-885/result.md) | numerics · 2008 · C/C++ | -lnnorm(-5.0) computed by the authors' C/lnnorm.c, against the Sheppard (1939) Table IV row x = 5.0 in the shipped C/sheppard.txt: 15.0649983939887257, absolute tolerance 1.5e-8 (-lnnorm(-5.0) against Sheppard Table IV row 5.0) | 15.065 ± 1.5e-08 | 15.065 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ · | B | reproduced | never clean |
+| [linhart2008-lnnorm-885](reports/linhart2008-lnnorm-885/result.md) | numerics · 2008 · C/C++ | -lnnorm(-5.0) computed by the authors' C/lnnorm.c, against the Sheppard (1939) Table IV row x = 5.0 in the shipped C/sheppard.txt: 15.0649983939887257, absolute tolerance 1.5e-8 (-lnnorm(-5.0) against Sheppard Table IV row 5.0) | 15.065 ± 1.5e-08 | 15.065 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDM0P5(-4)) [shipped reference output] | 0.0180819 ± 1.80819e-07 | 0.0180819 | -2.9914e-09 | 2% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDM0P5(3)) [shipped reference output] | 1.85349 ± 1.85349e-05 | 1.85349 | -8.86015e-08 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDP0P5(-4)) [shipped reference output] | 0.0181982 ± 1.81982e-07 | 0.0181982 | -3.50837e-09 | 2% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |

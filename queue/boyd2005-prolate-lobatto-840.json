@@ -1,0 +1,57 @@
+{
+  "paper": {
+    "title": "Algorithm 840: Computation of grid points, quadrature weights and derivatives for spectral element methods using prolate spheroidal wave functions, prolate elements",
+    "authors": [
+      "J. P. Boyd"
+    ],
+    "year": 2005,
+    "venue": "ACM Transactions on Mathematical Software 31(1) (TOMS 840, March 2005), 149-165",
+    "doi": null,
+    "url": "https://netlib.org/toms/840.gz",
+    "note": "DOI not verified in this wake; the article was not read (ACM Digital Library), so the claim rests on the shipped reference output."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/840.gz",
+    "archive": "sha256 b213f74e8eadba736256700f462906138d71615c29fefdbb871b5a3ba5703aff (netlib.org/toms/840.gz as fetched 2026-11-26, HTTP 200, 829 lines, one shell archive created 2005-05-12)",
+    "commit": "netlib TOMS archive 840.gz (fetched 2026-11-26)",
+    "note": "MATLAB. Extract with /bin/sh after stripping the lines above '#! /bin/sh' (the archive header says so). Members: Matlab/Dp/Drivers/Res (reference output), TP_Lobptsts_MAIN.m (driver: prompts for N and c with input(), so feed N=6 and c=5 on stdin), TP_LobptswtsPERT.m, and Src/ (PN_Legendre_vectN.m, PNx_, PNxx_, TP_LobattoQuad.m, TP_Lobattoresid.m, TP_NewtonJAC.m, TP_eigprolODE.m)."
+  },
+  "field": "numerics (spectral element grids and quadrature with prolate spheroidal functions)",
+  "stack": "MATLAB/Octave",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped reference output Matlab/Dp/Drivers/Res, header 'Reference solution: N=6, c=5': xprol(2) = -0.7456 and wprol(3) = 0.5305 (the first vector printed, xprol = -1.0000 -0.7456 -0.2705 0.2705 0.7456 1.0000 and wprol = 0.0756 0.3939 0.5305 0.5305 0.3939 0.0756). The driver's own run, with N=6 and c=5, is what the file records.",
+    "reference": {
+      "file": "Matlab/Dp/Drivers/Res (member of 840.gz)",
+      "sha256": null,
+      "archive": "netlib.org/toms/840.gz sha256 b213f74e8eadba736256700f462906138d71615c29fefdbb871b5a3ba5703aff"
+    },
+    "metric": "Grid point xprol(2) and quadrature weight wprol(3) for N=6, c=5 printed by the reference run, compared as absolute differences.",
+    "paper_value": "Not used: the TOMS article was not read in this wake; the values are taken from the shipped reference output.",
+    "values": [
+      {
+        "name": "xprol(2), N=6, c=5",
+        "paper": -0.7456,
+        "tol_abs": 0.0002
+      },
+      {
+        "name": "wprol(3), N=6, c=5",
+        "paper": 0.5305,
+        "tol_abs": 0.0002
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 0.0002,
+      "basis": "Fixed before any run. The shipped output prints four decimals, so its own rounding is up to 5e-5. 2e-4 is four times that rounding and far below the grid spacing (about 0.27 between xprol(2) and xprol(3)), so a wrong grid or weight would fail it. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 2 minutes: one Octave or MATLAB run with N=6, c=5.",
+    "data_size": "None (the parameters are typed in).",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A deterministic spectral-element quadrature code, whose shipped reference run prints grid points and weights for a small case; reproducing them exercises the prolate eigenproblem and Newton solve, in the MATLAB stack that most of the queue lacks.",
+  "registered": "2026-11-26T21:23Z"
+}

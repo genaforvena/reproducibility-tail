@@ -20,7 +20,7 @@ By field: astronomy 1, biology 1, ecology 1, numerics 22, other 1, statistics 5
 By stack: C/C++ 6, Fortran 17, MATLAB/Octave 2, R 5, not-stated 1
 By decade: 1960 1, 1970 1, 1980 3, 1990 8, 2000 12, 2010 6
 
-Data as of 2026-11-26T21:17:52Z (the newest replay or funnel entry).
+Data as of 2026-11-26T21:23Z (the newest replay or funnel entry).
 
 ## The funnel
 
@@ -28,18 +28,18 @@ Every candidate is drawn from a named frame in a seeded order and none is skippe
 
 31 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
-**225 candidates considered from 4 of 4 frames: 27 attempted (12%), 0 unreachable, 198 rejected.**
+**230 candidates considered from 4 of 4 frames: 29 attempted (13%), 0 unreachable, 201 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
 | cpc-library | 2767 | 40 | 20 | 50% | 0 | 0 | 20 |
 | netlib-liblist | 160 | 40 | 40 | 100% | 0 | 0 | 40 |
 | stat-co-2010-2015 | 1872 | 80 | 50 | 62% | 1 | 0 | 49 |
-| toms-calgo-index | 570 | 120 | 115 | 96% | 26 | 0 | 89 |
+| toms-calgo-index | 570 | 120 | 120 | 100% | 28 | 0 | 92 |
 
 | why a candidate was not attempted | candidates |
 |---|---|
-| paywalled | 31 |
+| paywalled | 34 |
 | figure-only | 13 |
 | no-numeric-claim | 48 |
 | claim-not-located | 58 |
@@ -58,12 +58,12 @@ Survivorship: each stack's count (and share) among all candidates considered, an
 
 | stack | considered | attempted |
 |---|---|---|
-| C/C++ | 29 (13%) | 7 (26%) |
-| Fortran | 125 (56%) | 18 (67%) |
+| C/C++ | 29 (13%) | 7 (24%) |
+| Fortran | 129 (56%) | 19 (66%) |
 | Java | 1 (0%) | 0 (0%) |
-| MATLAB/Octave | 15 (7%) | 1 (4%) |
-| R | 7 (3%) | 1 (4%) |
-| not-stated | 42 (19%) | 0 (0%) |
+| MATLAB/Octave | 16 (7%) | 2 (7%) |
+| R | 7 (3%) | 1 (3%) |
+| not-stated | 42 (18%) | 0 (0%) |
 | other | 6 (3%) | 0 (0%) |
 
 ### Unreachable

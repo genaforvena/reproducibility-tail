@@ -1,0 +1,54 @@
+{
+  "paper": {
+    "title": "Algorithm 874: BACOLR, spatial and temporal error control software for PDEs based on high order adaptive collocation",
+    "authors": [
+      "R. Wang",
+      "P. Keast",
+      "P. H. Muir"
+    ],
+    "year": 2008,
+    "venue": "ACM Transactions on Mathematical Software 34(3) (TOMS 874, May 2008), Article 15",
+    "doi": null,
+    "url": "https://netlib.org/toms/874.zip",
+    "note": "DOI not verified in this wake; the article itself was not read (ACM Digital Library), so the claim rests on the shipped reference output."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/874.zip",
+    "archive": "sha256 92131b07424008c41ecac9dd667412c84dd604e79cf8d58841df03db26acc58b (netlib.org/toms/874.zip as fetched 2026-11-26, HTTP 200; members include Fortran/Dp/Drivers/res1, driver1.f, res2, driver2.f, Src/src.f, Src/blas.f)",
+    "commit": "netlib TOMS archive 874.zip (fetched 2026-11-26)",
+    "note": "Fortran 77 under Fortran/Dp. driver1.f is a driver for the single-PDE problem (NPDE=1, KCOL=2, NINTMX=2000). Its printed output is shipped as Drivers/res1 (five output blocks, TOUT = 0.2 to 1.0 in steps of 0.2 with varying NINT, plus EXACTU columns). Unzip with python3 -I zipfile, then compile Src/src.f, Src/blas.f and driver1.f together."
+  },
+  "field": "numerics (method of lines, adaptive collocation for time-dependent PDEs)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped reference output of driver1.f, file Fortran/Dp/Drivers/res1 in 874.zip, the output block for TOUT = 1.0E+00 (KCOL = 2, NINT = 42; res1 line 854 is its header, line 1046 the value): at XOUT = 0.9100E+00 the printed UOUT is 0.6602E+00 (EXACTU column in the same line is also 0.6602E+00).",
+    "reference": {
+      "file": "Fortran/Dp/Drivers/res1 (member of 874.zip)",
+      "sha256": null,
+      "archive": "netlib.org/toms/874.zip sha256 92131b07424008c41ecac9dd667412c84dd604e79cf8d58841df03db26acc58b"
+    },
+    "metric": "UOUT(1) at XOUT = 0.91 printed by driver1.f at TOUT = 1.0, the numerical solution of the single PDE (the printed value is the solver output, not the closed form).",
+    "paper_value": "Not used: the TOMS article was not read in this wake; the value is taken from the shipped driver output.",
+    "values": [
+      {
+        "name": "UOUT(XOUT=0.91) at TOUT=1.0, KCOL=2, NINT=42",
+        "paper": 0.6602,
+        "tol_abs": 0.001
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 0.001,
+      "basis": "Fixed before any run. The shipped output prints four significant digits (E18.4), so its own rounding is up to 5e-5. The driver requests ATOL = RTOL = 1e-6, so the solver's error target is far below the printed digits. 1e-3 absorbs print rounding and compiler and BLAS differences while staying well below the solution's variation near the front (about 0.5 per 0.01 in x at this point). Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 5 minutes: one Fortran compile of src.f (about 300 kB), blas.f and driver1.f, and one run of the driver.",
+    "data_size": "None (the problem and exact solution are in driver1.f).",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A deterministic PDE code whose shipped driver prints a solution value at a point on a steep front at a late output time; reproducing it exercises the adaptive collocation error control, not just a closed form.",
+  "registered": "2026-11-26T21:23Z"
+}

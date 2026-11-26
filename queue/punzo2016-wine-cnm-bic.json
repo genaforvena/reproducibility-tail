@@ -1,0 +1,32 @@
+{
+  "paper": {
+    "title": "Parsimonious mixtures of multivariate contaminated normal distributions",
+    "authors": "Antonio Punzo, Paul D. McNicholas",
+    "year": 2016,
+    "url": "https://arxiv.org/abs/1305.4669 (read as arXiv:1305.4669v5, 19 May 2016)"
+  },
+  "code": {
+    "url": "https://cran.r-project.org/src/contrib/Archive/ContaminatedMixt/ContaminatedMixt_1.0.tar.gz",
+    "archive": "ContaminatedMixt 1.0, CRAN archive, Packaged 2015-12-20; sha256 5b1cd5ea32712e748d817128ff52f5343ebf9228b682ce70cb38b9086869448e. Paper cites ContaminatedMixt (Punzo et al. 2015), so 1.0 is the contemporaneous release. Dataset wine.RData is bundled in the package (data/wine.RData)."
+  },
+  "field": "statistics (model-based clustering, robust mixtures)",
+  "stack": "R",
+  "claim": {
+    "where": "Section 7.3 (Wine data), Table 11, row 'CNMs': best family member by BIC over G in {1,2,3,4} and the 14 parsimonious covariance structures of the CNM family.",
+    "value": "G = 3, parsimonious structure EEE (CNMs row of Table 11)",
+    "metric": "BIC-selected (G, structure) within the CNM family, on the 178 x 13 wine data with labels ignored",
+    "tolerance": "exact match on G and structure label (categorical; no numeric tolerance applies)",
+    "tolerance_reason": "The output is a discrete model label, so a numeric tolerance has no meaning; any other label is a non-reproduction.",
+    "kind": "stochastic",
+    "seed": 1,
+    "seed_note": "The paper reports no seed for the EM starts (Section 5.2 initialisation is random). The scout fixes seed 1 before any run; the paper's value is the reference, the seed is the scout's pre-registration."
+  },
+  "cost": {
+    "cpu_minutes_estimate": 15,
+    "basis": "14 structures x 4 values of G on 178 x 13 data; each ECM fit is seconds; the paper notes some fits fail numerically, which the rerun records rather than hides",
+    "data_size": "178 rows x 13 columns (bundled in the package)",
+    "data_licence": "Wine data of Forina et al. (1998) via the gclus package; bundled in ContaminatedMixt (GPL-2 or later); the package licence applies"
+  },
+  "why": "A discrete BIC-selected model label from a real dataset, computed end to end by the package's CNmixt routine, with the source of the value located in Table 11 of the arXiv v5 text.",
+  "registered": "2026-11-26T14:03:00Z"
+}

@@ -3,7 +3,8 @@
 
 Exit 0 GREEN, 2 RED (prints one line per violation), 3 a failed observation.
 A report without result.json is a violation: the ledger and the gates read only the
-machine record, so prose-only reports are unfinished.
+machine record, so prose-only reports are unfinished. A directory holding only `claimed`
+is an entry in progress and passes until its result is written.
 
 Checked mechanically, per reports/ID/result.json:
   G0  the claim (queue/ID.json, or queue/withdrawn/ID.json once withdrawn) is byte-identical to the one
@@ -102,6 +103,8 @@ def violations(repo: Path) -> list[str]:
         rid = d.name
         f = d / "result.json"
         if not f.exists():
+            if {p.name for p in d.iterdir()} <= {"claimed"}:
+                continue  # a claim alone is in progress, not an unfinished report
             bad.append(f"{rid}: no result.json (prose-only report)")
             continue
         try:

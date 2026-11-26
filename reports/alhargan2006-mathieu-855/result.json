@@ -1,0 +1,90 @@
+{
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "3ed63d4389cec03acf2822a43e87caa9c1d829477e32f83b064eb1ef82ae1154",
+    "compared": 4,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "g++ -O0 -c /work/build/CPP/Dp/Drivers/driver.cpp",
+      "g++ -O0 -c /work/build/CPP/Dp/Src/mcnr.cpp",
+      "g++ -O0 -c /work/build/CPP/Dp/Src/mcnf.cpp",
+      "g++ -O0 -o driver driver.o mcnr.o mcnf.o"
+    ],
+    "manifests": {
+      "pre": "reports/alhargan2006-mathieu-855/evidence/manifest.pre",
+      "mid": "reports/alhargan2006-mathieu-855/evidence/manifest.mid",
+      "post": "reports/alhargan2006-mathieu-855/evidence/manifest.post"
+    }
+  },
+  "paper": {
+    "short": "alhargan2006-mathieu-855",
+    "title": "Subroutines for the Computation of Mathieu Characteristic Numbers and their General Orders (TOMS 855)",
+    "year": 2006,
+    "doi": null
+  },
+  "field": "numerics (special functions: Mathieu characteristic numbers)",
+  "stack": "C/C++ (TOMS 855 archive: 855/CPP/Dp/Src/mcnf.cpp, mcnr.cpp; 855/CPP/Dp/Drivers/driver.cpp, Res; 855/Doc/Makefile)",
+  "field_class": "numerics",
+  "stack_class": "C/C++",
+  "claim": {
+    "text": "Table 2 (nu = 10.5), row t = 1.50, column c = Compute_c(10.5, 0, h = 15.75), printed as 130.971685 in the shipped reference output, absolute tolerance 1e-6.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/alhargan2006-mathieu-855/evidence/reference/Res",
+      "sha256": "ab837c7e0bf3c54c5c864e3d8badb00898d33928d8bc4b0dcc20c774c7c1cd0c",
+      "archive": "netlib.org/toms/855.zip sha256 3ed63d4389cec03acf2822a43e87caa9c1d829477e32f83b064eb1ef82ae1154"
+    },
+    "values": [
+      {
+        "name": "Table 2, nu=10.5, t=1.50, c",
+        "paper": 130.971685,
+        "tol_abs": 1e-06,
+        "ours": 130.971685
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced with a build-only patch. The archive ships no compiler settings: the authors' Doc/Makefile includes makefile.inc, which is not in the archive, so make stops (original attempt logged). The authors' driver.cpp, mcnr.cpp and mcnf.cpp are compiled with g++ -O0 out of tree (no source edited; three manifests prove it: verify_sources record build-only, nothing modified, removed or added). The driver writes data.txt; the Table 2 row for t = 1.50 gives c = 130.971685 in pass 1 (-O0) and pass 2 (-O2, separate directory), identical to the shipped Res line at the printed precision. The driver's full table is kept as evidence.",
+  "queue_commit": "5fd665a06786b0290ff4e1de091a9572e317f78b",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "the authors' Doc/Makefile stops with \"No rule to make target 'makefile.inc'\": the archive contains no makefile.inc, so the documented make route does not run",
+    "log": "reports/alhargan2006-mathieu-855/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/alhargan2006-mathieu-855/recipe.sh",
+  "evidence": [
+    "reports/alhargan2006-mathieu-855/evidence/fetch.log",
+    "reports/alhargan2006-mathieu-855/evidence/original-attempt.log",
+    "reports/alhargan2006-mathieu-855/evidence/build.log",
+    "reports/alhargan2006-mathieu-855/evidence/recipe-run.log",
+    "reports/alhargan2006-mathieu-855/evidence/pass-1.log",
+    "reports/alhargan2006-mathieu-855/evidence/pass-2.log",
+    "reports/alhargan2006-mathieu-855/evidence/value-pass-1.txt",
+    "reports/alhargan2006-mathieu-855/evidence/value-pass-2.txt",
+    "reports/alhargan2006-mathieu-855/evidence/reference/Res",
+    "reports/alhargan2006-mathieu-855/evidence/manifest.pre",
+    "reports/alhargan2006-mathieu-855/evidence/manifest.mid",
+    "reports/alhargan2006-mathieu-855/evidence/manifest.post"
+  ],
+  "replayed": []
+}

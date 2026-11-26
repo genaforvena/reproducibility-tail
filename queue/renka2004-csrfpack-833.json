@@ -1,0 +1,52 @@
+{
+  "paper": {
+    "title": "Algorithm 833: CSRFPACK: interpolation of scattered data with a C1 convexity-preserving surface",
+    "authors": [
+      "R. J. Renka"
+    ],
+    "year": 2004,
+    "venue": "ACM Transactions on Mathematical Software 30(2) (TOMS 833, June 2004), 200",
+    "doi": null,
+    "url": "https://netlib.org/toms/833.gz",
+    "note": "DOI not verified in this wake; the article itself was not read, so the claim rests on the shipped driver output (Fortran77/Drivers/res)."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/833.gz",
+    "archive": "sha256 e40e3df805baca94da32f5b9bd460abb8f03049675da6573bf1b7439819a7720 (netlib.org/toms/833.gz as fetched 2026-11-26, HTTP 200; a shell archive created 2004-08-25 with Fortran77/Src/src.f, Fortran77/Drivers/driver.f, data and res)",
+    "commit": "netlib TOMS archive 833.gz (fetched 2026-11-26)",
+    "note": "Fortran 77. Extract with /bin/sh after removing the lines above '#! /bin/sh'. The driver is CSRFTEST (author's test driver, dated 06/25/02). It reads the data file (8 nodes) and writes a 40 x 40 grid of interpolated values to csrftest.out, and it writes the printed parameters to csrftest.prt."
+  },
+  "field": "numerics (scattered-data interpolation, convexity-preserving surfaces)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped driver output Fortran77/Drivers/res, the grid block that begins with the count 1600 (line 1668 of the shell archive). Its second row, X = -0.948717948717949, Y = -1.000000000000000, gives the interpolated value 0.189783809135176E+01. The first row (X=-1, Y=-1) gives 2.0, the data value at that node.",
+    "reference": {
+      "file": "Fortran77/Drivers/res (member of 833.gz)",
+      "sha256": null,
+      "archive": "netlib.org/toms/833.gz sha256 e40e3df805baca94da32f5b9bd460abb8f03049675da6573bf1b7439819a7720"
+    },
+    "metric": "Interpolated surface value F at grid node (X,Y) = (-0.948717948717949, -1.0) printed by the author's driver with the data file.",
+    "paper_value": "Not used: the TOMS article was not read in this wake; the value is taken from the shipped driver output.",
+    "values": [
+      {
+        "name": "F(X=-0.948717948717949, Y=-1.0) from CSRFTEST with the shipped data file",
+        "paper": 0.189783809135176,
+        "tol_abs": 1e-09
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 1e-09,
+      "basis": "Fixed before any run. The shipped output prints 15 significant digits in double precision (D exponents), so its own rounding is about 1e-15. 1e-9 absorbs compiler and libm differences in a convex-surface computation that uses only arithmetic, while a wrong convexity or interpolation step moves this node by far more. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 5 minutes: one Fortran compile of src.f and driver.f and one run on 8 nodes.",
+    "data_size": "8 data points, in the shipped data file.",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A deterministic double-precision interpolation code whose author's driver prints a full grid of surface values, so the claim tests the convex C1 construction at a node that is not a data point.",
+  "registered": "2026-11-26T21:41Z"
+}

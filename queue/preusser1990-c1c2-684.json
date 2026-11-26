@@ -1,0 +1,52 @@
+{
+  "paper": {
+    "title": "Algorithm 684: C1 and C2 interpolation on triangles with quintic and nonic bivariate polynomials",
+    "authors": [
+      "A. Preusser"
+    ],
+    "year": 1990,
+    "venue": "ACM Transactions on Mathematical Software 16 (1990) 253-257 (TOMS 684)",
+    "doi": null,
+    "url": "https://netlib.org/toms/684.gz",
+    "note": "DOI not verified in this wake; the article itself was not read, so the claim rests on the value the shipped program prints as its expected value."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/684.gz",
+    "archive": "sha256 d7370718ce36c41ae718fe3061cad733f664427cf78736abb5a0e20e3171dbe3 (netlib.org/toms/684.gz as fetched 2026-11-26, HTTP 200)",
+    "commit": "netlib TOMS archive 684.gz (fetched 2026-11-26)",
+    "note": "A single Fortran file: the algorithm subroutines plus PROGRAM DFC1C2, an example driver written by the author (A. Preusser, 1989). Compile the whole file with a Fortran 77 compiler and run the program."
+  },
+  "field": "numerics (scattered-data interpolation on triangles)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The driver PROGRAM DFC1C2 in 684.gz (source lines 105-106 and again 144-145): WRITE (*,999) 3.035646151154D0, Z(44,03) prints 'EXPECTED VALUE' 3.035646151154 next to the COMPUTED VALUE of Z(44,3) on the rectangular grid built from the example's scattered data. The author's own comment says the default single-precision build can lose up to three digits.",
+    "reference": {
+      "file": "684.gz member: PROGRAM DFC1C2, the expected value constant in the WRITE statement",
+      "sha256": null,
+      "archive": "netlib.org/toms/684.gz sha256 d7370718ce36c41ae718fe3061cad733f664427cf78736abb5a0e20e3171dbe3"
+    },
+    "metric": "Z(44,3) computed by the example driver, compared with the author's expected constant 3.035646151154.",
+    "paper_value": "Not used: the TOMS article was not read in this wake; the value is the expected constant written into the shipped driver.",
+    "values": [
+      {
+        "name": "Z(44,3) of DFC1C2 (default REAL build)",
+        "paper": 3.035646151154,
+        "tol_abs": 0.001
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 0.001,
+      "basis": "Fixed before any run. The shipped comment states that up to three digits can be lost in the default single-precision computation, and the expected constant is printed to 12 decimals. A tolerance of 1e-3 absolute accepts that known single-precision loss and still rejects a wrong interpolant. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 2 minutes: one Fortran compile and one run of the example.",
+    "data_size": "None (the scattered data are inside the driver).",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A deterministic interpolation code whose author ships an expected value for one computed grid value, so the claim tests whether the C1/C2 polynomial construction still reproduces it.",
+  "registered": "2026-11-26T21:41Z"
+}

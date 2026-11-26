@@ -66,7 +66,7 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -84,5 +84,17 @@
     "reports/levine1969-student-t-344/evidence/manifest.mid",
     "reports/levine1969-student-t-344/evidence/manifest.post"
   ],
-  "replayed": []
+  "replayed": [
+    {
+      "utc": "2026-11-26T21:17:52Z",
+      "kind": "clean",
+      "values": {
+        "TTEST, DF=1, X=0.3250, two-tailed CDF transform (computed column)": 0.7999537587165833
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/levine1969-student-t-344/evidence/replay-2026-11-26T211752Z.log",
+      "seconds": 82
+    }
+  ]
 }

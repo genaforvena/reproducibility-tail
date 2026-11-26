@@ -2,3 +2,6 @@
 
 One line per rejected paper, with the reason. Written by `scout`.
 
+- holidayflu (Ewing et al. 2016, bansallab/holidayflu, Python): rejected, README says one model output file needs about 2 GB; simulation scale unknown and likely large compute (scout, 2026-11-26).
+- arXiv:0807.4260 (RBG08) Table 3 MCMC values (alpha, phi): rejected as a rerun target. The MCMC is 16 chains of 12,000 steps and each step is a cross-correlation over about 10,000 points; the paper's own Table 1 shows 5 to 369 s per single calculation on a 3 GHz processor, so the full chain is well over one CPU hour. Registered the cheap Table 1 counts claim instead.
+- arXiv:0801.0006 (RBSG08, Roukema, Buliński, Szaniewska & Gaudin 2008, A&A 486, 55): rejected. The paper states a 12,000-step chain takes about 3 to 4 days per chain (Sect. 3, read from a model summary, not verbatim), so the MCMC is far beyond one CPU hour. Its claims also come from the same circles code, so it adds no new stack coverage.

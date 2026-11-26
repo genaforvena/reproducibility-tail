@@ -1,0 +1,51 @@
+{
+  "paper": {
+    "title": "Algorithm 344: Student's t-distribution",
+    "authors": [
+      "D. A. Levine"
+    ],
+    "year": 1969,
+    "venue": "Communications/ACM TOMS 12(1), 37 (TOMS 344, Jan 1969)",
+    "doi": null,
+    "url": "https://netlib.org/toms/344.gz"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/344.gz",
+    "archive": "sha256 053ed92f6d08c5d8d2f7f92dcba8698d2bede20c29293e0564cfc62da8c66866 (netlib.org/toms/344.gz as fetched 2026-11-26, HTTP 200, 409 lines once decompressed)",
+    "commit": "netlib TOMS archive 344.gz (fetched 2026-11-26)",
+    "note": "Fortran shar archive. Remove everything above the #! /bin/sh line (or extract its shar members with sh), giving Drivers/driver.f (program TOMS344_PRB calling test01), Src/src.f (subroutine TTEST), Sp/ and a Makefile, plus the shipped output file res. Build driver.f with src.f and run it; the claim is on the printed table, row 1."
+  },
+  "field": "numerics (statistics, distribution functions)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped reference output res (member of 344.gz). Row 1 of the table after the header 'DF X CDF computed' is DF=1, X=0.3250, computed CDF 0.7999537587165833. The exact column in the same row is 0.7999538183212280.",
+    "reference": {
+      "file": "res (member of 344.gz), row DF=1 X=0.3250, computed column",
+      "sha256": null,
+      "archive": "netlib.org/toms/344.gz sha256 053ed92f6d08c5d8d2f7f92dcba8698d2bede20c29293e0564cfc62da8c66866"
+    },
+    "metric": "The CDF value printed by TOMS344_PRB for DF=1, X=0.3250 (the TTEST result, the 'CDF computed' column), compared with 0.7999537587165833 from res.",
+    "paper_value": "Not used: the paper is paywalled and was not read.",
+    "values": [
+      {
+        "name": "TTEST, DF=1, X=0.3250, two-tailed CDF transform (computed column)",
+        "paper": 0.7999537587165833,
+        "tol_abs": 1e-06
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 1e-06,
+      "basis": "Fixed before any run. The shipped computed value differs from the exact Mathematica value in the same row by 6e-8, and single-precision REAL arithmetic in the code gives errors of that order. 1e-6 absolute is about 16 times that row's shipped deviation from exact and leaves room for compiler and libm differences in the last digits. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: one Fortran compile and a run over 14 table rows.",
+    "data_size": "None beyond the archive.",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "TTEST is a short Fortran evaluation of the Student t CDF with a shipped table of computed values, so the claim is a checkable number the code must compute.",
+  "registered": "2026-11-26T20:14Z"
+}

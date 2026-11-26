@@ -134,11 +134,18 @@ example micromamba) and try again before concluding the original cannot run.
 
 Each report ends with `reports/<id>/result.json`, written by `rerun`:
 
-- `paper` (`short`, `title`, `year`, `doi`), `field`, `stack`
+- `paper` (`short`, `title`, `year`, `doi`), `field` and `stack` (free text, for the report), and `field_class`
+  (`biology`, `epidemiology`, `ecology`, `physics`, `astronomy`, `chemistry`, `statistics`, `numerics`,
+  `other`) and `stack_class` (`Fortran`, `C/C++`, `R`, `Python`, `MATLAB/Octave`, `Julia`, `Java`, `other`,
+  `not-stated`; the language of the paper's own code, not of the rerun) that the ledger counts by
 - `claim`: `text` and `values`, a list of `{name, paper, tol_abs, ours}`; `ours` is null when blocked
 - `basis` (`original`, `patched`, `reimplemented`), `verdict`, `cause` (see below), `attempt`
 - `queue_commit`: the commit of `queue/<id>.json` the run was made against
-- `original_attempt`: `{tried, outcome, reason, log}`
+- `original_attempt`: `{tried, outcome, reason, log}`. `outcome` is how the authors' artifact behaved when run
+  as documented: `succeeded` (it ran), `partial` (it ran only through a workaround, or for part of the claim),
+  `failed` (it did not run) or `not-possible` (no code exists). The basis must fit it: `original` needs
+  `succeeded`; `patched` needs `partial` or `failed`; `reimplemented` needs `failed` or `not-possible`. So a
+  per-fit driver around a call that halts is `patched`, never `original`
 - `gates`: `G1`, `G2`, `G3`, `G5`, `G6` each `pass`, `fail` or `na`, and `cross_check`
 - `recipe` and `evidence` (paths), `replayed`: a list of `{utc, value, ok}`
 

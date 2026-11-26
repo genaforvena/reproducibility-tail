@@ -49,5 +49,7 @@
     "reports/rbg08-pds-table1-counts/attempt-1-result.md",
     "reports/rbg08-pds-table1-counts/note-to-scout.md"
   ],
-  "replayed": []
+  "replayed": [],
+  "stack_class": "Fortran",
+  "field_class": "astronomy"
 }

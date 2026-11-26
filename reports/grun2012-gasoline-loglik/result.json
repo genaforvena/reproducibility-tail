@@ -78,5 +78,7 @@
       "log": "reports/grun2012-gasoline-loglik/evidence/replay-2026-11-26T142821Z.log",
       "seconds": 86
     }
-  ]
+  ],
+  "stack_class": "R",
+  "field_class": "statistics"
 }

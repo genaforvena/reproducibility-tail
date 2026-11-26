@@ -8,8 +8,9 @@ machine record, so prose-only reports are unfinished.
 Checked mechanically, per reports/ID/result.json:
   G0  the claim (queue/ID.json, or queue/withdrawn/ID.json once withdrawn) is byte-identical to the one
       at the commit the run recorded (no moving goalposts); a withdrawn claim is moved, never deleted
-  G1  basis patched/reimplemented needs original_attempt with tried, an outcome
-      (failed or not-possible), a reason and, for failed, an existing log
+  G1  basis follows how the authors' artifact behaved: original needs it to have run as documented
+      (succeeded), patched needs partial or failed, reimplemented needs failed or not-possible;
+      the attempt carries a reason and, unless not-possible, an existing log
   G2  a reimplemented or patched reproduced result needs gates.G2 == pass
   G3  recipe exists; a reproduced result needs a replay (gates.G3 == pass)
   G4  the stated verdict equals the verdict computed from the recorded values
@@ -25,7 +26,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "tools"))
-from build_ledger import CAUSES, judge  # noqa: E402
+from build_ledger import CAUSES, FIELDS, ORIGINAL_OUTCOMES, STACKS, judge  # noqa: E402
 
 BASES = ("original", "patched", "reimplemented")
 
@@ -78,14 +79,25 @@ def violations(repo: Path) -> list[str]:
                 bad.append(f"{rid}: basis must be one of {BASES}")
             if not (repo / str(r.get("recipe", "-"))).is_file():
                 bad.append(f"{rid}: G3 recipe missing")
-        if basis in ("patched", "reimplemented"):
-            o = r.get("original_attempt") or {}
-            if not (o.get("tried") and o.get("outcome") in ("failed", "not-possible") and str(o.get("reason", "")).strip()):
-                bad.append(f"{rid}: G1 {basis} needs original_attempt (tried, outcome failed|not-possible, reason)")
-            elif o["outcome"] == "failed" and not (repo / str(o.get("log", "-"))).is_file():
-                bad.append(f"{rid}: G1 failed original attempt has no log file")
-            if verdict == "reproduced" and gates.get("G2") != "pass":
-                bad.append(f"{rid}: G2 fidelity not passed for a {basis} result")
+        o = r.get("original_attempt") or {}
+        if verdict != "blocked" or basis:
+            if r.get("stack_class") not in STACKS:
+                bad.append(f"{rid}: stack_class must be one of {STACKS} (the paper's own stack)")
+            if r.get("field_class") not in FIELDS:
+                bad.append(f"{rid}: field_class must be one of {FIELDS}")
+        if basis in BASES:
+            if o.get("outcome") not in ORIGINAL_OUTCOMES or not o.get("tried") or not str(o.get("reason", "")).strip():
+                bad.append(f"{rid}: G1 needs original_attempt with tried, outcome in {list(ORIGINAL_OUTCOMES)} and a reason")
+            elif o["outcome"] != "not-possible" and not (repo / str(o.get("log", "-"))).is_file():
+                bad.append(f"{rid}: G1 the original attempt has no log file")
+            else:
+                allowed = {"original": ("succeeded",), "patched": ("partial", "failed"),
+                           "reimplemented": ("failed", "not-possible")}[basis]
+                if o["outcome"] not in allowed:
+                    bad.append(f"{rid}: G1 basis {basis} does not fit original attempt outcome {o['outcome']!r} "
+                               f"(original needs succeeded; patched partial or failed; reimplemented failed or not-possible)")
+        if basis in ("patched", "reimplemented") and verdict == "reproduced" and gates.get("G2") != "pass":
+            bad.append(f"{rid}: G2 fidelity not passed for a {basis} result")
         if verdict == "reproduced" and gates.get("G3") != "pass":
             bad.append(f"{rid}: G3 replay not passed")
         if verdict in ("not-reproduced", "partial"):

@@ -64,5 +64,7 @@
       "log": "reports/punzo2016-wine-cnm-bic/evidence/replay-2026-11-26T143339Z.log",
       "seconds": 259
     }
-  ]
+  ],
+  "stack_class": "R",
+  "field_class": "statistics"
 }

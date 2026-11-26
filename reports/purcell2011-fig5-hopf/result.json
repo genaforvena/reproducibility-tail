@@ -69,5 +69,7 @@
       "log": "reports/purcell2011-fig5-hopf/evidence/replay-2026-11-26T141326Z.log",
       "seconds": 77
     }
-  ]
+  ],
+  "stack_class": "MATLAB/Octave",
+  "field_class": "biology"
 }

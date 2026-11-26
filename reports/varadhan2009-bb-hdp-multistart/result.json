@@ -77,5 +77,7 @@
       "log": "reports/varadhan2009-bb-hdp-multistart/evidence/replay-2026-11-26T142952Z.log",
       "seconds": 76
     }
-  ]
+  ],
+  "stack_class": "R",
+  "field_class": "numerics"
 }

@@ -65,5 +65,7 @@
       "log": "reports/wang2011-species-butterfly-ace/evidence/replay-2026-11-26T141134Z.log",
       "seconds": 77
     }
-  ]
+  ],
+  "stack_class": "R",
+  "field_class": "ecology"
 }

@@ -105,7 +105,7 @@ def test_ledger_funnel_section_counts_and_lists_unreachable(tmp_path):
                checked=["software-heritage", "wayback"], evidence="x", paper="Smith 1998"),
           line(o[2]))
     text = build_ledger.build(repo)
-    assert "3 candidates considered from 1 frames: 1 attempted (33%), 1 unreachable, 1 rejected" in text
+    assert "3 candidates considered from 1 of 1 frames: 1 attempted (33%), 1 unreachable, 1 rejected" in text
     assert "Smith 1998" in text and "| runtime | 1 |" in text
     assert "| cpc | 5 | 4 | 3 | 75% |" in text
 

@@ -31,7 +31,7 @@ def make(tmp_path, **over):
     (repo / "reports" / "p1" / "recipe.sh").write_text("#!/bin/sh\n")
     (repo / "reports" / "p1" / "logs" / "orig.log").write_text("failed to build\n")
     r = {"claim": {"text": "t", "values": [{"name": "v", "paper": 7.0, "tol_abs": 0.5, "ours": 7.05}]},
-         "paper": {"short": "P", "year": 2011}, "field": "bio", "stack": "R",
+         "paper": {"short": "P", "year": 2011}, "field": "bio", "stack": "R", "field_class": "biology", "stack_class": "R",
          "basis": "reimplemented", "verdict": "reproduced", "queue_commit": qc,
          "recipe": "reports/p1/recipe.sh",
          "original_attempt": {"tried": True, "outcome": "failed", "reason": "no R", "log": "reports/p1/logs/orig.log"},
@@ -111,8 +111,8 @@ def test_margin_cell(ours, cell):
     assert build_ledger.margin_cell(ours, 7.0, 0.5) == cell
 
 
-def test_margin_cell_without_tolerance_is_not_a_number():
-    assert build_ledger.margin_cell(7.0, 7.0, 0) == "–"
+def test_margin_cell_for_a_value_that_was_not_produced_is_a_dash():
+    assert build_ledger.margin_cell(None, 7.0, 0) == "–" and build_ledger.margin_cell(7.0, None, 0.5) == "–"
 
 
 def test_ledger_shows_margin_column(tmp_path):
@@ -145,3 +145,42 @@ def test_deleting_the_claim_is_caught(tmp_path):
     repo = make(tmp_path)
     (repo / "queue" / "p1.json").unlink()
     assert any("no queue/p1.json" in v for v in gates.violations(repo))
+
+
+def test_original_basis_needs_the_original_to_have_run_as_documented(tmp_path):
+    bad = gates.violations(make(tmp_path, basis="original",
+                                original_attempt={"tried": True, "outcome": "partial", "reason": "halts at G=4",
+                                                  "log": "reports/p1/logs/orig.log"}))
+    assert any("does not fit" in v for v in bad)
+
+
+def test_patched_basis_fits_a_partial_original(tmp_path):
+    assert gates.violations(make(tmp_path, basis="patched",
+                                 original_attempt={"tried": True, "outcome": "partial", "reason": "workaround",
+                                                   "log": "reports/p1/logs/orig.log"})) == []
+
+
+def test_reimplemented_basis_does_not_fit_a_succeeded_original(tmp_path):
+    bad = gates.violations(make(tmp_path, original_attempt={"tried": True, "outcome": "succeeded", "reason": "ran",
+                                                            "log": "reports/p1/logs/orig.log"}))
+    assert any("does not fit" in v for v in bad)
+
+
+def test_unknown_original_outcome_is_caught(tmp_path):
+    bad = gates.violations(make(tmp_path, original_attempt={"tried": True, "outcome": "sort-of", "reason": "x"}))
+    assert any("G1 needs original_attempt" in v for v in bad)
+
+
+def test_stack_and_field_classes_are_required(tmp_path):
+    bad = gates.violations(make(tmp_path, stack_class="R 4.5.3 in a sandbox", field_class="statistical thing"))
+    assert any("stack_class" in v for v in bad) and any("field_class" in v for v in bad)
+
+
+def test_exact_claims_show_exact_not_a_dash():
+    assert build_ledger.margin_cell(3, 3, 0) == "exact" and build_ledger.margin_cell(3, 4, 0) == "off"
+
+
+def test_ledger_uses_classes_not_free_text(tmp_path):
+    repo = make(tmp_path)
+    text = build_ledger.build(repo)
+    assert "By stack: R 1" in text and "By field: biology 1" in text

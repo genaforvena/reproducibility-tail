@@ -68,5 +68,7 @@
       "log": "reports/fay2010-interval-npmle-example1/evidence/replay-2026-11-26T141457Z.log",
       "seconds": 85
     }
-  ]
+  ],
+  "stack_class": "R",
+  "field_class": "statistics"
 }

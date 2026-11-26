@@ -16,17 +16,19 @@ Method and gates: [docs/method.md](docs/method.md).
 | X | not reproduced, cause diagnosed | 0 |
 | - | blocked or not yet run | 1 |
 
-By field: computational biology (synthetic gene networks, bifurcation analysis) 1, computational mathematics / statistics (nonlinear equation solving, multiple roots) 1, cosmology (PDS cluster counts, Table 1) 1, ecology (species richness estimation from incidence/abundance samples) 1, statistics (beta regression, maximum likelihood) 1, statistics (interval-censored data, nonparametric maximum likelihood) 1, statistics (model-based clustering, robust mixtures) 1
-By stack: Python 3 (sandbox /usr/bin/python3), numpy 2.5.5; replication repo baioc/re-multif at 3ab84df (Octave artifact not run; no Hopf computation in it) 1, R 4.5.3 (sandbox, conda-forge and bioconda), archived interval 0.9-9.6, Icens 1.82.0 (bioconda), MLEcens 0.1.7.1 (CRAN), perm 1.0-0.4, survival 3.8-12 1, R 4.5.3 (sandbox, conda-forge), archived BB 2009.9-1, setRNG and numDeriv (current conda-forge) 1, R 4.5.3 (sandbox, conda-forge), archived betareg 3.0-0 1, R 4.6.2 (sandbox, conda-forge), ContaminatedMixt 1.0 (CRAN archive), mixture 2.2.1, mnormt 2.1.2, mclust 6.1.4 (current CRAN at fetch time) 1, R 4.6.2 (sandbox, conda-forge), archived SPECIES 1.0 1, circles (build 0.3.2.1) with a build-only pgplot stub (patched, not run) 1
+By field: astronomy 1, biology 1, ecology 1, numerics 1, statistics 3
+By stack: Fortran 1, MATLAB/Octave 1, R 5
 By decade: 2000 2, 2010 5
+
+Data as of 2026-11-26T14:48:19Z (the newest replay or funnel entry).
 
 ## The funnel
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-Not yet framed: 0 candidates in the legacy rejection log and 5 attempted papers (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace) were chosen before frames existed, so they are excluded from the numbers below.
+7 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
-**50 candidates considered from 2 frames: 1 attempted (2%), 0 unreachable, 49 rejected.**
+**50 candidates considered from 1 of 2 frames: 1 attempted (2%), 0 unreachable, 49 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
@@ -50,14 +52,14 @@ Not yet framed: 0 candidates in the legacy rejection log and 5 attempted papers 
 | unreachable-code | 0 |
 | unreachable-data | 0 |
 
-Survivorship: the share of each stack among all candidates considered, and among those attempted.
+Survivorship: each stack's count (and share) among all candidates considered, and among those attempted.
 
 | stack | considered | attempted |
 |---|---|---|
-| C/C++ | 2 | 0 |
-| MATLAB/Octave | 8 | 0 |
-| R | 7 | 1 |
-| not-stated | 33 | 0 |
+| C/C++ | 2 (4%) | 0 (0%) |
+| MATLAB/Octave | 8 (16%) | 0 (0%) |
+| R | 7 (14%) | 1 (100%) |
+| not-stated | 33 (66%) | 0 (0%) |
 
 ### Unreachable
 
@@ -67,27 +69,27 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact among attempted papers: not-possible 2, partial 1, succeeded 4.
+Authors' original artifact, among all attempted papers: not-possible 2 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 4 (ran as documented).
 
 ## Results
 
 | paper | field · year · stack | claim | paper value ± tol | our value | Δ | margin | basis | gates G1 G2 G3 G5 | grade | verdict | last replay |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics (interval-censored data, nonparametric maximum likelihood) · 2010 · R 4.5.3 (sandbox, conda-forge and bioconda), archived interval 0.9-9.6, Icens 1.82.0 (bioconda), MLEcens 0.1.7.1 (CRAN), perm 1.0-0.4, survival 3.8-12 | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
-| [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics (beta regression, maximum likelihood) · 2012 · R 4.5.3 (sandbox, conda-forge), archived betareg 3.0-0 | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
-| [punzo2016-wine-cnm-bic](reports/punzo2016-wine-cnm-bic/result.md) | statistics (model-based clustering, robust mixtures) · 2016 · R 4.6.2 (sandbox, conda-forge), ContaminatedMixt 1.0 (CRAN archive), mixture 2.2.1, mnormt 2.1.2, mclust 6.1.4 (current CRAN at fetch time) | Section 7.3 (wine data), Table 11, CNMs row: BIC-selected (G, parsimonious structure) over G in {1,2,3,4} and the 14 structures, labels ignored, seed 1 (selected_G) | 3 ± 0 | 3 | 0 | – | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
-| [punzo2016-wine-cnm-bic](reports/punzo2016-wine-cnm-bic/result.md) | statistics (model-based clustering, robust mixtures) · 2016 · R 4.6.2 (sandbox, conda-forge), ContaminatedMixt 1.0 (CRAN archive), mixture 2.2.1, mnormt 2.1.2, mclust 6.1.4 (current CRAN at fetch time) | Section 7.3 (wine data), Table 11, CNMs row: BIC-selected (G, parsimonious structure) over G in {1,2,3,4} and the 14 structures, labels ignored, seed 1 (selected_structure_index) | 7 ± 0 | 7 | 0 | – | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
-| [purcell2011-fig5-hopf](reports/purcell2011-fig5-hopf/result.md) | computational biology (synthetic gene networks, bifurcation analysis) · 2011 · Python 3 (sandbox /usr/bin/python3), numpy 2.5.5; replication repo baioc/re-multif at 3ab84df (Octave artifact not run; no Hopf computation in it) | Input concentration I (nM) of the Hopf bifurcation of equilibrium c1, Figure 5 caption (~7 nM) (Hopf input I (nM)) | 7 ± 0.5 | 7.1875 | 0.1875 | 38% | reimplemented | ✓ ✓ ✓ ✓ | C | reproduced | 2026-11-26 ok |
-| [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | cosmology (PDS cluster counts, Table 1) · 2008 · circles (build 0.3.2.1) with a build-only pgplot stub (patched, not run) | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_A) | 1317 ± 132 | – | – | – | - | · · · · | - | blocked | never clean |
-| [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | cosmology (PDS cluster counts, Table 1) · 2008 · circles (build 0.3.2.1) with a build-only pgplot stub (patched, not run) | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_C) | 52 ± 5 | – | – | – | - | · · · · | - | blocked | never clean |
-| [varadhan2009-bb-hdp-multistart](reports/varadhan2009-bb-hdp-multistart/result.md) | computational mathematics / statistics (nonlinear equation solving, multiple roots) · 2009 · R 4.5.3 (sandbox, conda-forge), archived BB 2009.9-1, setRNG and numDeriv (current conda-forge) | sum(ans$conv) for multiStart(par = p0, fn = hdp, action = "solve"), 300 starts, seed 1234, JSS p. 11 (converged runs) | 284 ± 3 | 287 | 3 | 100% ⚠ | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
-| [wang2011-species-butterfly-ace](reports/wang2011-species-butterfly-ace/result.md) | ecology (species richness estimation from incidence/abundance samples) · 2011 · R 4.6.2 (sandbox, conda-forge), archived SPECIES 1.0 | ChaoLee1992(butterfly, t = 10, method = "all") $Nhat[1], ACE estimate of species richness (JSS p. 8) (ACE) | 712 ± 0.5 | 712 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics · 2010 · R | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics · 2012 · R | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [punzo2016-wine-cnm-bic](reports/punzo2016-wine-cnm-bic/result.md) | statistics · 2016 · R | Section 7.3 (wine data), Table 11, CNMs row: BIC-selected (G, parsimonious structure) over G in {1,2,3,4} and the 14 structures, labels ignored, seed 1 (selected_G) | 3 ± 0 | 3 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [punzo2016-wine-cnm-bic](reports/punzo2016-wine-cnm-bic/result.md) | statistics · 2016 · R | Section 7.3 (wine data), Table 11, CNMs row: BIC-selected (G, parsimonious structure) over G in {1,2,3,4} and the 14 structures, labels ignored, seed 1 (selected_structure_index) | 7 ± 0 | 7 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [purcell2011-fig5-hopf](reports/purcell2011-fig5-hopf/result.md) | biology · 2011 · MATLAB/Octave | Input concentration I (nM) of the Hopf bifurcation of equilibrium c1, Figure 5 caption (~7 nM) (Hopf input I (nM)) | 7 ± 0.5 | 7.1875 | 0.1875 | 38% | reimplemented | ✓ ✓ ✓ ✓ | C | reproduced | 2026-11-26 ok |
+| [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | astronomy · 2008 · Fortran | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_A) | 1317 ± 132 | – | – | – | - | · · · · | - | blocked | never clean |
+| [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | astronomy · 2008 · Fortran | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_C) | 52 ± 5 | – | – | – | - | · · · · | - | blocked | never clean |
+| [varadhan2009-bb-hdp-multistart](reports/varadhan2009-bb-hdp-multistart/result.md) | numerics · 2009 · R | sum(ans$conv) for multiStart(par = p0, fn = hdp, action = "solve"), 300 starts, seed 1234, JSS p. 11 (converged runs) | 284 ± 3 | 287 | 3 | 100% ⚠ | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [wang2011-species-butterfly-ace](reports/wang2011-species-butterfly-ace/result.md) | ecology · 2011 · R | ChaoLee1992(butterfly, t = 10, method = "all") $Nhat[1], ACE estimate of species richness (JSS p. 8) (ACE) | 712 ± 0.5 | 712 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 
 Margin is |our value − paper value| as a share of the tolerance registered before the run; ⚠ marks 80% or more, a result that a different environment could flip.
 
-## Why papers stopped reproducing
+## Why attempted papers did not reproduce
 
-Cause of every `not-reproduced` or `blocked` result.
+Cause of every attempted paper that is `not-reproduced` or `blocked` (the funnel above counts why candidates were never attempted).
 
 | cause | papers |
 |---|---|

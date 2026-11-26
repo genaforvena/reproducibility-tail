@@ -20,6 +20,9 @@ CAUSES = ["dependency-rot", "missing-code", "missing-data", "unstated-parameter"
 REJECT_REASONS = ["paywalled", "figure-only", "no-numeric-claim", "claim-not-located", "no-method-description",
                   "stochastic-no-seed", "no-code", "runtime", "machine-dependent", "restricted-data", "gpu", "other"]
 STACKS = ["Fortran", "C/C++", "R", "Python", "MATLAB/Octave", "Julia", "Java", "other", "not-stated"]
+FIELDS = ["biology", "epidemiology", "ecology", "physics", "astronomy", "chemistry", "statistics", "numerics", "other"]
+ORIGINAL_OUTCOMES = {"succeeded": "ran as documented", "partial": "ran only through a workaround or for part of the claim",
+                     "failed": "did not run", "not-possible": "no code exists to run"}
 UNREACHABLE_REASONS = ["unreachable-code", "unreachable-data"]
 FALLBACKS = ["software-heritage", "wayback", "zenodo", "author-page", "publisher-supplement", "contact"]
 OUTCOMES = ["registered", "rejected", "unreachable"]
@@ -73,8 +76,10 @@ EDGE = 0.8   # a result using this share of its tolerance or more is flagged
 
 def margin_cell(ours, paper, tol) -> str:
     """|difference| as a share of the registered tolerance; flagged near the edge."""
-    if ours is None or paper is None or not tol:
+    if ours is None or paper is None:
         return "–"
+    if not tol:
+        return "exact" if ours == paper else "off"
     share = abs(ours - paper) / tol
     return f"{share:.0%}" + (" ⚠" if share >= EDGE else "")
 
@@ -120,17 +125,18 @@ def funnel_section(repo: Path, rows: list[dict]) -> list[str]:
     old = sum(1 for x in legacy.read_text(encoding="utf-8").splitlines() if x.startswith("- ")) if legacy.exists() else 0
     queued = {p.stem for p in (repo / "queue").glob("*.json")}
     framed_ids = {x.get("id") for x in lines if x.get("outcome") == "registered"}
-    unframed = sorted(queued - framed_ids)
+    unframed = sorted({r["_dir"] for r in rows} - framed_ids)
     by = collections.Counter(x["outcome"] for x in lines)
     out = ["## The funnel", "",
            "Every candidate is drawn from a named frame in a seeded order and none is skipped, so the "
            "denominator is the frame, not what looked tractable (docs/method.md).", ""]
     if old or unframed:
-        out += [f"Not yet framed: {old} candidates in the legacy rejection log and {len(unframed)} attempted "
-                f"papers ({', '.join(unframed) or 'none'}) were chosen before frames existed, so they are "
-                "excluded from the numbers below.", ""]
+        out += [f"{len(rows)} papers have been attempted in total. {len(unframed)} of them were chosen before frames "
+                f"existed ({', '.join(unframed) or 'none'}), so they are not in the numbers below, which count only "
+                f"frame-drawn candidates." + (f" {old} legacy rejections are also outside the frames." if old else ""), ""]
     n = len(lines)
-    out += [f"**{n} candidates considered from {len(frames)} frames: {by.get('registered', 0)} attempted "
+    started = len({x.get("frame") for x in lines})
+    out += [f"**{n} candidates considered from {started} of {len(frames)} frames: {by.get('registered', 0)} attempted "
             f"({pct(by.get('registered', 0), n)}), {by.get('unreachable', 0)} unreachable, "
             f"{by.get('rejected', 0)} rejected.**", ""]
     out += ["| frame | size | drawn | considered | coverage | attempted | unreachable | rejected |", "|---|---|---|---|---|---|---|---|"]
@@ -147,12 +153,13 @@ def funnel_section(repo: Path, rows: list[dict]) -> list[str]:
     if lines and other / max(1, sum(why.values())) > 0.15:
         out += ["", f"Note: {other} of {sum(why.values())} non-attempts are filed as `other`, more than 15%; "
                     "a reason that common needs its own code."]
-    out += ["", "Survivorship: the share of each stack among all candidates considered, and among those attempted.", "",
+    out += ["", "Survivorship: each stack's count (and share) among all candidates considered, and among those attempted.", "",
             "| stack | considered | attempted |", "|---|---|---|"]
     stacks = sorted({x.get("stack", "?") for x in lines})
     for s in stacks:
-        out.append(f"| {s} | {sum(1 for x in lines if x.get('stack', '?') == s)} "
-                   f"| {sum(1 for x in lines if x.get('stack', '?') == s and x['outcome'] == 'registered')} |")
+        cons = sum(1 for x in lines if x.get('stack', '?') == s)
+        att = sum(1 for x in lines if x.get('stack', '?') == s and x['outcome'] == 'registered')
+        out.append(f"| {s} | {cons} ({pct(cons, n)}) | {att} ({pct(att, by.get('registered', 0))}) |")
     gone = [x for x in lines if x["outcome"] == "unreachable"]
     out += ["", "### Unreachable", "",
             "The artifact cannot be obtained, and the method is not described well enough to rebuild it. "
@@ -164,8 +171,8 @@ def funnel_section(repo: Path, rows: list[dict]) -> list[str]:
     if not gone:
         out.append("| none yet | | | | |")
     state = collections.Counter((r.get("original_attempt") or {}).get("outcome", "none") for r in rows)
-    out += ["", "Authors' original artifact among attempted papers: "
-            + ", ".join(f"{k} {v}" for k, v in sorted(state.items())) + ".", ""]
+    out += ["", "Authors' original artifact, among all attempted papers: "
+            + ", ".join(f"{k} {v} ({ORIGINAL_OUTCOMES.get(k, 'not recorded')})" for k, v in sorted(state.items())) + ".", ""]
     return out
 
 
@@ -179,11 +186,15 @@ def build(repo: Path) -> str:
     for k in ("A", "B", "C", "D", "X", "-"):
         out.append(f"| {k} | {GRADE_TEXT[k]} | {grades.get(k, 0)} |")
     out.append("")
-    for title, key in (("field", "field"), ("stack", "stack"), ("decade", None)):
+    for title, key in (("field", "field_class"), ("stack", "stack_class"), ("decade", None)):
         c = collections.Counter()
         for r in rows:
-            c[(r.get("paper", {}).get("year", 0) // 10 * 10 if key is None else r.get(key, "?"))] += 1
+            c[(r.get("paper", {}).get("year", 0) // 10 * 10 if key is None else r.get(key, "unclassified"))] += 1
         out.append(f"By {title}: " + (", ".join(f"{k} {v}" for k, v in sorted(c.items(), key=lambda x: str(x[0]))) or "none"))
+    when = sorted([e["utc"] for r in rows for e in (r.get("replayed") or []) if e.get("utc")]
+                  + [x["utc"] for x in load_funnel(repo)[1] if x.get("utc")])
+    if when:
+        out += ["", f"Data as of {when[-1]} (the newest replay or funnel entry)."]
     out += [""] + funnel_section(repo, rows)
     out += ["## Results", "",
             "| paper | field · year · stack | claim | paper value ± tol | our value | Δ | margin | basis | gates G1 G2 G3 G5 | grade | verdict | last replay |",
@@ -195,14 +206,15 @@ def build(repo: Path) -> str:
             delta = None if ours is None or "paper" not in v else ours - v["paper"]
             out.append("| " + " | ".join([
                 f"[{p.get('short', r['_dir'])}](reports/{r['_dir']}/result.md)",
-                f"{r.get('field', '?')} · {p.get('year', '?')} · {r.get('stack', '?')}",
+                f"{r.get('field_class', '?')} · {p.get('year', '?')} · {r.get('stack_class', '?')}",
                 f"{c.get('text', '?')}" + (f" ({v['name']})" if v.get("name") else ""),
                 f"{fmt(v.get('paper'))} ± {fmt(v.get('tol_abs'))}",
                 fmt(ours), fmt(delta), margin_cell(ours, v.get("paper"), v.get("tol_abs")), r.get("basis", "?"), gate_cell(r), grade(r),
                 judge(c.get("values", [])), replay_cell(r)]) + " |")
     out += ["", f"Margin is |our value − paper value| as a share of the tolerance registered before the run; ⚠ marks {EDGE:.0%} or more, a result that a different environment could flip.", "",
-            "## Why papers stopped reproducing", "",
-            "Cause of every `not-reproduced` or `blocked` result.", "", "| cause | papers |", "|---|---|"]
+            "## Why attempted papers did not reproduce", "",
+            "Cause of every attempted paper that is `not-reproduced` or `blocked` (the funnel above counts "
+            "why candidates were never attempted).", "", "| cause | papers |", "|---|---|"]
     causes = collections.Counter(r.get("cause") for r in rows if judge(r.get("claim", {}).get("values", [])) != "reproduced")
     for k in CAUSES:
         out.append(f"| {k} | {causes.get(k, 0)} |")

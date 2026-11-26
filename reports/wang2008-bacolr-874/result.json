@@ -1,0 +1,58 @@
+{
+  "paper": {
+    "short": "wang2008-bacolr-874",
+    "title": "Algorithm 874: BACOLR, spatial and temporal error control software for PDEs based on high order adaptive collocation",
+    "year": 2008,
+    "doi": null
+  },
+  "field": "numerics (method of lines, adaptive collocation for time-dependent PDEs)",
+  "stack": "Fortran 77 (TOMS 874 archive: Fortran/Dp/Src/src.f, blas.f; Fortran/Dp/Drivers/driver1.f, res1)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "driver1 (single PDE, KCOL = 2, NINT = 42 at TOUT = 1.0) prints UOUT = 0.6602 at XOUT = 0.91, as in the shipped reference output res1; tolerance 1e-3 absolute, fixed in the queue entry.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/wang2008-bacolr-874/evidence/reference/res1",
+      "sha256": "b4b1edb5af482ef115a810ead6f94246cc0a596c2e4d67b2b0cc382684dacc2c",
+      "archive": "netlib.org/toms/874.zip sha256 92131b07424008c41ecac9dd667412c84dd604e79cf8d58841df03db26acc58b"
+    },
+    "values": [
+      {
+        "name": "UOUT(XOUT=0.91) at TOUT=1.0, KCOL=2, NINT=42",
+        "paper": 0.6602,
+        "tol_abs": 0.001,
+        "ours": 0.6602
+      }
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "The archive ships no Makefile or build line. The authors' sources were compiled as shipped with gfortran (conda-forge gcc 16.2.0, pinned by the recipe's micromamba install) and default flags: gfortran -o driver1 driver1.f ../Src/src.f ../Src/blas.f, then ./driver1, with no edit to any file. It builds and runs (build_exit=0, run_exit=0). The whole printed output is byte-identical to the shipped res1 (cmp), so the claimed value 0.6602 at XOUT=0.91 in the TOUT=1.0 block matches, as do all other printed values. Pass 2 at -O2 in a clean tree is also byte-identical to res1. The claim is the shipped reference, so this is the artifact-match level, not a paper-text number.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "builds and runs with default gfortran flags and no source change; the archive has no build instructions, so the compile line is the plain one above",
+    "log": "reports/wang2008-bacolr-874/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/wang2008-bacolr-874/recipe.sh",
+  "queue_commit": "9223029b6cf2261e3cd09dfbf4c7054c7215c724",
+  "evidence": [
+    "reports/wang2008-bacolr-874/evidence/original-attempt.log",
+    "reports/wang2008-bacolr-874/evidence/pass1-output.txt",
+    "reports/wang2008-bacolr-874/evidence/pass2-run.log",
+    "reports/wang2008-bacolr-874/evidence/pass2-output.txt",
+    "reports/wang2008-bacolr-874/evidence/recipe-run.log",
+    "reports/wang2008-bacolr-874/evidence/reference/res1"
+  ],
+  "replayed": []
+}

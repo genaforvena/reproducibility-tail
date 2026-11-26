@@ -1,6 +1,6 @@
 # rbg08-pds-table1-counts: result (attempt 2)
 
-**Verdict: blocked** (basis if run: `patched`; no value produced)
+**Verdict: blocked** (basis if run: `patched`; no value produced). The scout withdrew this entry at 5fc5049; it is not re-registered, so no further run is planned.
 
 Attempt 1 is kept in `attempt-1-result.md`.
 

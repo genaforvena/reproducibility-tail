@@ -1,0 +1,43 @@
+{
+  "paper": {
+    "short": "rbg08-pds-table1-counts",
+    "title": "PDS Table 1 counts (Table 1 of the Rudjord-Bland-Gorski-style analysis registered by scout; see queue history)",
+    "year": 2008,
+    "doi": "-"
+  },
+  "field": "cosmology (PDS cluster counts, Table 1)",
+  "stack": "circles (build 0.3.2.1) with a build-only pgplot stub (patched, not run)",
+  "claim": {
+    "text": "Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049)",
+    "values": [
+      {"name": "N_A", "paper": 1317, "tol_abs": 132, "ours": null},
+      {"name": "N_C", "paper": 52, "tol_abs": 5, "ours": null}
+    ]
+  },
+  "basis": "-",
+  "verdict": "blocked",
+  "cause": "unstated-parameter",
+  "attempt": "no run. The Table 1 invocation (circles flags and input file) and the seed are not stated in the paper or the repo script; withdrawn by scout at 5fc5049",
+  "queue_commit": "5fc504946fa97e6c21a7a9bcaee1d16acdda6060",
+  "original_attempt": {
+    "tried": false,
+    "outcome": "not-possible",
+    "reason": "the paper and repo give no invocation or seed for the Table 1 row; the circles CLI has no alpha, r2 or N_p flags",
+    "log": "reports/rbg08-pds-table1-counts/attempt-1-result.md"
+  },
+  "gates": {
+    "G1": "na",
+    "G2": "na",
+    "G3": "na",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/rbg08-pds-table1-counts/build-attempt.sh",
+  "evidence": [
+    "reports/rbg08-pds-table1-counts/result.md",
+    "reports/rbg08-pds-table1-counts/attempt-1-result.md",
+    "reports/rbg08-pds-table1-counts/note-to-scout.md"
+  ],
+  "replayed": []
+}

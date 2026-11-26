@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-4 papers attempted.
+6 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 4 |
 | B | authors' code with build fixes | 0 |
-| C | reimplemented, with an independent cross-check | 0 |
+| C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 0 |
-| - | blocked or not yet run | 0 |
+| - | blocked or not yet run | 1 |
 
-By field: computational mathematics / statistics (nonlinear equation solving, multiple roots) 1, ecology (species richness estimation from incidence/abundance samples) 1, statistics (beta regression, maximum likelihood) 1, statistics (interval-censored data, nonparametric maximum likelihood) 1
-By stack: R 4.5.3 (sandbox, conda-forge and bioconda), archived interval 0.9-9.6, Icens 1.82.0 (bioconda), MLEcens 0.1.7.1 (CRAN), perm 1.0-0.4, survival 3.8-12 1, R 4.5.3 (sandbox, conda-forge), archived BB 2009.9-1, setRNG and numDeriv (current conda-forge) 1, R 4.5.3 (sandbox, conda-forge), archived betareg 3.0-0 1, R 4.6.2 (sandbox, conda-forge), archived SPECIES 1.0 1
-By decade: 2000 1, 2010 3
+By field: computational biology (synthetic gene networks, bifurcation analysis) 1, computational mathematics / statistics (nonlinear equation solving, multiple roots) 1, cosmology (PDS cluster counts, Table 1) 1, ecology (species richness estimation from incidence/abundance samples) 1, statistics (beta regression, maximum likelihood) 1, statistics (interval-censored data, nonparametric maximum likelihood) 1
+By stack: Python 3 (sandbox /usr/bin/python3), numpy 2.5.5; replication repo baioc/re-multif at 3ab84df (Octave artifact not run; no Hopf computation in it) 1, R 4.5.3 (sandbox, conda-forge and bioconda), archived interval 0.9-9.6, Icens 1.82.0 (bioconda), MLEcens 0.1.7.1 (CRAN), perm 1.0-0.4, survival 3.8-12 1, R 4.5.3 (sandbox, conda-forge), archived BB 2009.9-1, setRNG and numDeriv (current conda-forge) 1, R 4.5.3 (sandbox, conda-forge), archived betareg 3.0-0 1, R 4.6.2 (sandbox, conda-forge), archived SPECIES 1.0 1, circles (build 0.3.2.1) with a build-only pgplot stub (patched, not run) 1
+By decade: 2000 2, 2010 4
 
 ## Results
 
@@ -26,6 +26,9 @@ By decade: 2000 1, 2010 3
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics (interval-censored data, nonparametric maximum likelihood) · 2010 · R 4.5.3 (sandbox, conda-forge and bioconda), archived interval 0.9-9.6, Icens 1.82.0 (bioconda), MLEcens 0.1.7.1 (CRAN), perm 1.0-0.4, survival 3.8-12 | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ · | A | reproduced | 2026-11-26 ok |
 | [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics (beta regression, maximum likelihood) · 2012 · R 4.5.3 (sandbox, conda-forge), archived betareg 3.0-0 | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ · | A | reproduced | 2026-11-26 ok |
+| [purcell2011-fig5-hopf](reports/purcell2011-fig5-hopf/result.md) | computational biology (synthetic gene networks, bifurcation analysis) · 2011 · Python 3 (sandbox /usr/bin/python3), numpy 2.5.5; replication repo baioc/re-multif at 3ab84df (Octave artifact not run; no Hopf computation in it) | Input concentration I (nM) of the Hopf bifurcation of equilibrium c1, Figure 5 caption (~7 nM) (Hopf input I (nM)) | 7 ± 0.5 | 7.1875 | 0.1875 | 38% | reimplemented | ✓ ✓ ✓ · | C | reproduced | 2026-11-26 ok |
+| [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | cosmology (PDS cluster counts, Table 1) · 2008 · circles (build 0.3.2.1) with a build-only pgplot stub (patched, not run) | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_A) | 1317 ± 132 | – | – | – | - | · · · · | - | blocked | never |
+| [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | cosmology (PDS cluster counts, Table 1) · 2008 · circles (build 0.3.2.1) with a build-only pgplot stub (patched, not run) | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_C) | 52 ± 5 | – | – | – | - | · · · · | - | blocked | never |
 | [varadhan2009-bb-hdp-multistart](reports/varadhan2009-bb-hdp-multistart/result.md) | computational mathematics / statistics (nonlinear equation solving, multiple roots) · 2009 · R 4.5.3 (sandbox, conda-forge), archived BB 2009.9-1, setRNG and numDeriv (current conda-forge) | sum(ans$conv) for multiStart(par = p0, fn = hdp, action = "solve"), 300 starts, seed 1234, JSS p. 11 (converged runs) | 284 ± 3 | 287 | 3 | 100% ⚠ | original | ✓ · ✓ · | A | reproduced | 2026-11-26 ok |
 | [wang2011-species-butterfly-ace](reports/wang2011-species-butterfly-ace/result.md) | ecology (species richness estimation from incidence/abundance samples) · 2011 · R 4.6.2 (sandbox, conda-forge), archived SPECIES 1.0 | ChaoLee1992(butterfly, t = 10, method = "all") $Nhat[1], ACE estimate of species richness (JSS p. 8) (ACE) | 712 ± 0.5 | 712 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | 2026-11-26 ok |
 
@@ -40,7 +43,7 @@ Cause of every `not-reproduced` or `blocked` result.
 | dependency-rot | 0 |
 | missing-code | 0 |
 | missing-data | 0 |
-| unstated-parameter | 0 |
+| unstated-parameter | 1 |
 | numerical-discrepancy | 0 |
 | nondeterminism | 0 |
 | platform | 0 |

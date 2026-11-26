@@ -184,3 +184,31 @@ def test_ledger_uses_classes_not_free_text(tmp_path):
     repo = make(tmp_path)
     text = build_ledger.build(repo)
     assert "By stack: R 1" in text and "By field: biology 1" in text
+
+
+def test_artifact_reference_claim_needs_a_hash_checked_reference_file(tmp_path):
+    import hashlib
+    repo = make(tmp_path)
+    ref = repo / "reports" / "p1" / "evidence" / "ref.out"
+    ref.parent.mkdir()
+    ref.write_text("7.05\n")
+    r = json.loads((repo / "reports" / "p1" / "result.json").read_text())
+    r["claim"]["source"] = "artifact-reference"
+    r["claim"]["reference"] = {"file": "reports/p1/evidence/ref.out", "archive": "netlib 1.gz sha256 abc",
+                               "sha256": hashlib.sha256(b"7.05\n").hexdigest()}
+    (repo / "reports" / "p1" / "result.json").write_text(json.dumps(r))
+    assert gates.violations(repo) == []
+    r["claim"]["reference"]["sha256"] = "0" * 64
+    (repo / "reports" / "p1" / "result.json").write_text(json.dumps(r))
+    assert any("sha256 does not match" in v for v in gates.violations(repo))
+    del r["claim"]["reference"]
+    (repo / "reports" / "p1" / "result.json").write_text(json.dumps(r))
+    assert any("needs claim.reference.file" in v for v in gates.violations(repo))
+
+
+def test_ledger_marks_shipped_reference_claims(tmp_path):
+    repo = make(tmp_path)
+    r = json.loads((repo / "reports" / "p1" / "result.json").read_text())
+    r["claim"]["source"] = "artifact-reference"
+    (repo / "reports" / "p1" / "result.json").write_text(json.dumps(r))
+    assert "[shipped reference output]" in build_ledger.build(repo)

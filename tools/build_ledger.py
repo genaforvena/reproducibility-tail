@@ -207,7 +207,8 @@ def build(repo: Path) -> str:
             out.append("| " + " | ".join([
                 f"[{p.get('short', r['_dir'])}](reports/{r['_dir']}/result.md)",
                 f"{r.get('field_class', '?')} · {p.get('year', '?')} · {r.get('stack_class', '?')}",
-                f"{c.get('text', '?')}" + (f" ({v['name']})" if v.get("name") else ""),
+                (f"{c.get('text', '?')}" + (f" ({v['name']})" if v.get("name") else "")
+                 + (" [shipped reference output]" if c.get("source") == "artifact-reference" else "")),
                 f"{fmt(v.get('paper'))} ± {fmt(v.get('tol_abs'))}",
                 fmt(ours), fmt(delta), margin_cell(ours, v.get("paper"), v.get("tol_abs")), r.get("basis", "?"), gate_cell(r), grade(r),
                 judge(c.get("values", [])), replay_cell(r)]) + " |")

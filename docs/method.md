@@ -130,6 +130,20 @@ G1 makes `reimplemented` an exception: the authors' code comes first. When a too
 missing (R, Fortran, Octave), install it inside the sandbox during the fetch step (for
 example micromamba) and try again before concluding the original cannot run.
 
+## Where a claim's value may come from
+
+Normally the value is printed in the paper (`claim.source` = `paper-text`). A paywalled paper does
+not end a candidate whose code is reachable: many numerical packages (ACM CALGO and TOMS, the
+Netlib libraries) ship a test driver and its expected output with the code, written by the
+authors. That shipped reference is the oracle (`claim.source` = `artifact-reference`, the
+"artifact match" level above). It tests the bit-rot question directly: does the old code still
+build and reproduce its own published output on a modern compiler. Rules: the shipped reference
+must be one the code has to compute (not an echo of its input); the report keeps a copy as
+`claim.reference.file`, with its `sha256` and `archive` (where and under which hash it was shipped);
+the tolerance is fixed before the run, in the queue entry, as for any claim; the ledger marks the
+row "[shipped reference output]" because it is weaker than a number the authors printed in a
+paper (it shows the code still does what its authors saw, not that the paper's claim holds).
+
 ## Result record and grades
 
 Each report ends with `reports/<id>/result.json`, written by `rerun`:

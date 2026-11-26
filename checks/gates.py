@@ -14,11 +14,13 @@ Checked mechanically, per reports/ID/result.json:
   G2  a reimplemented or patched reproduced result needs gates.G2 == pass
   G3  recipe exists; a reproduced result needs a replay (gates.G3 == pass)
   G4  the stated verdict equals the verdict computed from the recorded values
+  G0b an artifact-reference claim keeps the shipped reference output in the report, hash-checked
   G6  not-reproduced needs a confirmed second pass (gates.G6 == pass) and a cause
 """
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import subprocess
 import sys
@@ -59,6 +61,18 @@ def violations(repo: Path) -> list[str]:
             if not isinstance(v.get("paper"), (int, float)) or not isinstance(v.get("tol_abs"), (int, float)):
                 bad.append(f"{rid}: every claim value needs numeric paper and tol_abs")
                 break
+        claim = r.get("claim", {})
+        if claim.get("source", "paper-text") not in ("paper-text", "artifact-reference"):
+            bad.append(f"{rid}: claim.source must be paper-text or artifact-reference")
+        if claim.get("source") == "artifact-reference":
+            ref = claim.get("reference") or {}
+            fpath = repo / str(ref.get("file", "-"))
+            if not fpath.is_file():
+                bad.append(f"{rid}: artifact-reference claim needs claim.reference.file (the shipped reference output, kept in the report)")
+            elif hashlib.sha256(fpath.read_bytes()).hexdigest() != ref.get("sha256"):
+                bad.append(f"{rid}: claim.reference.sha256 does not match {ref.get('file')}")
+            elif not str(ref.get("archive", "")).strip():
+                bad.append(f"{rid}: claim.reference.archive (where the reference was shipped, with its own hash) is missing")
         verdict = judge(values)
         if r.get("verdict") != verdict:
             bad.append(f"{rid}: G4 stated verdict {r.get('verdict')!r}, recorded values give {verdict!r}")

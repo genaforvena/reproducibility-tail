@@ -11,6 +11,7 @@
  },
  "code": {
   "url": "https://www.netlib.org/toms/855.zip",
+  "archive": "sha256 3ed63d4389cec03acf2822a43e87caa9c1d829477e32f83b064eb1ef82ae1154 (netlib.org/toms/855.zip; the same digest as code.commit below, added so the G2 gate can read the archive digest; claim and tolerance unchanged)",
   "commit": "netlib TOMS archive 855.zip, sha256 3ed63d4389cec03acf2822a43e87caa9c1d829477e32f83b064eb1ef82ae1154 (fetched 2026-11-26 20:41Z). Contents: 855/CPP/Dp/Src/mcnf.cpp, mcnr.cpp; 855/CPP/Dp/Drivers/driver.cpp, Res; 855/Doc/Makefile; 855/855.head.",
   "note": "Driver and sources are C++ (Builder-era headers in driver.cpp: <cstdio>, <iostream>, <complex>; it defines inline acosh and asinh, which may clash with the C++ standard library; rerun must adapt the build, not the algorithm). The Makefile builds driver and runs `driver > res`; the shipped Res file is that output without the build. Recipe: compile mcnf.cpp, mcnr.cpp, driver.cpp with g++ and run the driver; the Table 2 rows are printed by the driver in the order of the loop in driver.cpp lines 158-195."
  },

@@ -5,7 +5,7 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-16 papers attempted.
+17 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
@@ -14,11 +14,11 @@ Method and gates: [docs/method.md](docs/method.md).
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
-| - | blocked or not yet run | 4 |
+| - | blocked or not yet run | 5 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 9, other 1, statistics 3
-By stack: C/C++ 2, Fortran 6, MATLAB/Octave 2, R 5, not-stated 1
-By decade: 1970 1, 1990 5, 2000 4, 2010 6
+By field: astronomy 1, biology 1, ecology 1, numerics 10, other 1, statistics 3
+By stack: C/C++ 2, Fortran 7, MATLAB/Octave 2, R 5, not-stated 1
+By decade: 1970 1, 1990 6, 2000 4, 2010 6
 
 Data as of 2026-11-26T18:46Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-26T18:46Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-16 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+17 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **181 candidates considered from 4 of 4 frames: 14 attempted (8%), 0 unreachable, 167 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 5 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 7 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 6 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 7 (ran as documented).
 
 ## Results
 
@@ -95,6 +95,9 @@ Authors' original artifact, among all attempted papers: failed 5 (did not run), 
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Linear potential) | 0.015625 ± 1e-09 | 0.015625 | 0 | 0% | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Differential potential) | 0.015625 ± 1e-09 | 0.015625 | 0 | 0% | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Number of cycles in S7.cy) | 4 ± 0 | 4 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ ✓ | B | reproduced | 2026-11-26 ok |
+| [buckley1994-minimize-734](reports/buckley1994-minimize-734/result.md) | numerics · 1994 · Fortran | Shipped reference run Drivers/Sp/res2 of driver2.f90 (Rosenbrock, from (-1.2, 1), acc 0.001): least function value 0.20053597E-08, 59 function evaluations, 36 iterations (function evaluation count (FEvals)) | 59 ± 0 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
+| [buckley1994-minimize-734](reports/buckley1994-minimize-734/result.md) | numerics · 1994 · Fortran | Shipped reference run Drivers/Sp/res2 of driver2.f90 (Rosenbrock, from (-1.2, 1), acc 0.001): least function value 0.20053597E-08, 59 function evaluations, 36 iterations (iteration count (it)) | 36 ± 0 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
+| [buckley1994-minimize-734](reports/buckley1994-minimize-734/result.md) | numerics · 1994 · Fortran | Shipped reference run Drivers/Sp/res2 of driver2.f90 (Rosenbrock, from (-1.2, 1), acc 0.001): least function value 0.20053597E-08, 59 function evaluations, 36 iterations (least function value) | 2.00536e-09 ± 1e-08 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics · 2010 · R | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [gaviano2003-gkls-829](reports/gaviano2003-gkls-829/result.md) | numerics · 2003 · C/C++ | Shipped reference test001.txt: global minimizer of D-type function number 1, dimension 2, f = -1, at (-0.136, 0.824), tol 1e-3 absolute (D-type function 1, dim 2, global minimizer x1) | -0.136 ± 0.001 | – | – | – | - | ✓ · · · | - | blocked | never clean |
 | [gaviano2003-gkls-829](reports/gaviano2003-gkls-829/result.md) | numerics · 2003 · C/C++ | Shipped reference test001.txt: global minimizer of D-type function number 1, dimension 2, f = -1, at (-0.136, 0.824), tol 1e-3 absolute (D-type function 1, dim 2, global minimizer x2) | 0.824 ± 0.001 | – | – | – | - | ✓ · · · | - | blocked | never clean |
@@ -137,4 +140,4 @@ Cause of every attempted paper that is `not-reproduced` or `blocked` (the funnel
 | numerical-discrepancy | 1 |
 | nondeterminism | 0 |
 | platform | 0 |
-| other | 1 |
+| other | 2 |

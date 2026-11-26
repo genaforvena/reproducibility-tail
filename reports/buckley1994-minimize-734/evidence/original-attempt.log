@@ -1,0 +1,13 @@
+== compile src.f90 (authors, extracted)
+compile_src_exit=0
+== compile driver2.f90
+compile_driver_exit=1
+    1 | C--**--CH2470--734--P:RW--22:9:1999
+      | 1
+Error: Unclassifiable statement at (1)
+== link (authors sources only)
+link_exit=1
+/work/fortran/bin/x86_64-conda-linux-gnu-ld: cannot find driver2.o: No such file or directory
+collect2: error: ld returned 1 exit status
+== note: driver2.f90 line 1 is the archive's ACM identification line 'C--**--CH2470--...', a fixed-form comment; gfortran's free-form default reads it as an unclassifiable statement (compile_driver_exit=1 above). The link line above is therefore not a valid test of i1mach.
+== note: the archive's own unshar fails before src.f90 is written: under sh (dash) it is a syntax error at EOF in a backquote; under bash, line 2131 of 734 ('cat << SHAR_EOF > src.f90') gives 'bad substitution' from a backtick in the unquoted heredoc, so src.f90 is absent after unshar (bash -x trace). Extracted by sed -n 2132,10106p of the 734 file (not run in this log).

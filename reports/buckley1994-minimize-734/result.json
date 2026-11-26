@@ -1,0 +1,99 @@
+{
+  "paper": {
+    "short": "buckley1994-minimize-734",
+    "title": "Algorithm 734 (TOMS, Buckley 1994, single-precision unconstrained minimisation)",
+    "year": 1994,
+    "doi": "-"
+  },
+  "field": "numerics (unconstrained minimisation, quasi-Newton and conjugate gradient in single precision)",
+  "stack": "Fortran 90 (TOMS 734, Sp)",
+  "claim": {
+    "text": "Shipped reference run Drivers/Sp/res2 of driver2.f90 (Rosenbrock, from (-1.2, 1), acc 0.001): least function value 0.20053597E-08, 59 function evaluations, 36 iterations",
+    "values": [
+      {
+        "name": "function evaluation count (FEvals)",
+        "paper": 59,
+        "tol_abs": 0,
+        "ours": null
+      },
+      {
+        "name": "iteration count (it)",
+        "paper": 36,
+        "tol_abs": 0,
+        "ours": null
+      },
+      {
+        "name": "least function value",
+        "paper": 2.0053597e-09,
+        "tol_abs": 1e-08,
+        "ours": null
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "blocked",
+  "cause": "other",
+  "attempt": "Measured locally, not yet a verdict. Two clean-directory runs of the same binary (gfortran -O2, recipe.sh) give 59 evaluations, 36 iterations and least function value 0.20053597E-08, identical to res2 on the three printed lines (values in evidence/run1-stdout.txt and run2-stdout.txt). A -O0 build in scratch gives the same three lines. The basis is patched, not build-only: src.f90 had to be extracted by line range from the shar (its unshar fails under sh and bash), driver2.f90 line 1 is a fixed-form ID line changed to '!', and i1mach(2) (PORT, not in the archive) is supplied by impl/i1mach.f90 (returns 6). Blocked on G2: the paper check for these pieces has not been done (the paper was not read), and the queue entry has no code.archive sha256 to match the archive hash (e4 netlib 734.gz is bf1682045031a42610373d26367ccab037dcc2aada64e3f9ab033311a7d794b0). Resolver: scout (registers the archive hash and states whether the PORT i1mach stub is outside the claim); the operator decides whether a new commit may add the hash to the entry.",
+  "queue_commit": "6548fd0825fe6fc0bab515273a1a9ab3c3508740",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "the archive does not unpack as documented: its shar fails under sh and under bash (heredoc for src.f90 is not written); driver2.f90 line 1 (fixed-form ID line) is rejected by gfortran free-form; driver2 calls i1mach(2) from PORT, which is not in the archive",
+    "log": "reports/buckley1994-minimize-734/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "na",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/buckley1994-minimize-734/recipe.sh",
+  "evidence": [
+    "reports/buckley1994-minimize-734/evidence/original-attempt.log",
+    "reports/buckley1994-minimize-734/evidence/recipe-run.log",
+    "reports/buckley1994-minimize-734/evidence/build.log",
+    "reports/buckley1994-minimize-734/evidence/run1-stdout.txt",
+    "reports/buckley1994-minimize-734/evidence/run2-stdout.txt",
+    "reports/buckley1994-minimize-734/evidence/reference/res2",
+    "reports/buckley1994-minimize-734/evidence/manifest.pre",
+    "reports/buckley1994-minimize-734/evidence/manifest.mid",
+    "reports/buckley1994-minimize-734/evidence/manifest.post",
+    "reports/buckley1994-minimize-734/impl/i1mach.f90"
+  ],
+  "replayed": [],
+  "stack_class": "Fortran",
+  "field_class": "numerics",
+  "patch": {
+    "kind": "source",
+    "archive_sha256": "",
+    "compared": 2,
+    "ours": {
+      "modified": [
+        "Drivers/Sp/driver2.f90"
+      ],
+      "removed": [],
+      "added": [
+        "Src/Sp/i1mach.f90",
+        "Src/Sp/src.f90"
+      ]
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "cd Src/Sp && /work/fortran/bin/x86_64-conda-linux-gnu-gfortran -O2 -c src.f90 -o src.o",
+      "cd Src/Sp && /work/fortran/bin/x86_64-conda-linux-gnu-gfortran -O2 -c i1mach.f90 -o i1mach.o",
+      "cd Src/Sp && /work/fortran/bin/x86_64-conda-linux-gnu-gfortran -O2 -I. -c ../../Drivers/Sp/driver2.f90 -o driver2.o",
+      "cd Src/Sp && /work/fortran/bin/x86_64-conda-linux-gnu-gfortran -O2 -o drv src.o i1mach.o driver2.o"
+    ],
+    "manifests": {
+      "pre": "reports/buckley1994-minimize-734/evidence/manifest.pre",
+      "mid": "reports/buckley1994-minimize-734/evidence/manifest.mid",
+      "post": "reports/buckley1994-minimize-734/evidence/manifest.post"
+    }
+  }
+}

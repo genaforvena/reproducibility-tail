@@ -25,9 +25,41 @@ it notes that back to the scout, who revises it in a new commit.
 
 GPU or very large compute, restricted or non-redistributable data, and anything
 needing a downloaded dataset above the per-run disk cap. Every rejection is logged
-with its reason in `queue/rejected.md` so the filter can be audited. One in four
-queue entries must come from failure-prone older work (Python 2, R, Fortran, MATLAB)
-so the scoreboard reflects the real long tail and not only easy cases.
+with its reason in the funnel (next section) so the filter can be audited.
+
+## Sampling frames and the funnel
+
+A scoreboard built from whatever the scout found tractable measures the reachable tail,
+the most reproducible corner of it, not the tail. A quota of "older work" only asks the
+scout to try harder inside a pool it picked. The remedy is to take the choice away:
+
+1. **Frame.** The scout names a sampling frame and lists every item in it in
+   `queue/frames/NAME.json` (a library index such as the Computer Physics Communications
+   program library, a Netlib or TOMS index, one journal's volumes, a full arXiv listing for a
+   category and years). The frame, with its description and source, is the denominator.
+2. **Draw.** `tools/frame_sample.py` draws a seeded random order of N items. A frame is
+   sampled once; the draw cannot be redone to taste.
+3. **Account.** Candidates are considered in that order, none skipped, and each is one line
+   of `queue/funnel.jsonl`: `registered` (becomes a queue entry), `rejected` with a reason
+   from a fixed list, or `unreachable`. `checks/funnel.py` fails on a skipped or repeated
+   item, a reason outside the list or a missing detail.
+4. **Report.** The ledger leads with the funnel: candidates considered per frame, attempted,
+   unreachable, rejected by reason, and each stack's share among those considered against
+   those attempted, so the survivorship is visible, not assumed away.
+
+`unreachable` is a recorded outcome, not a filter event. It means the code or data is gone
+(`unreachable-code`, `unreachable-data`) and the paper does not describe the method well enough
+to rebuild it. It must cite at least two fallbacks actually tried (Software Heritage, the
+Wayback Machine, Zenodo, an author page, the publisher's supplement, contact with an
+author) and the evidence. A paper whose code is gone but whose method is described is not
+unreachable: it is attempted as `reimplemented`, with the lost original recorded as
+`original_attempt` `not-possible`, and counted as such in the ledger.
+
+Reasons for `rejected`: `paywalled`, `figure-only`, `no-numeric-claim`, `claim-not-located`,
+`no-method-description`, `runtime` (over the cost cap), `machine-dependent`, `restricted-data`,
+`gpu`, `other`. Frames should cover the older and stranger stacks deliberately (Fortran
+or C numerical libraries, Python 2, MATLAB) next to the easy ones; the funnel then shows how
+reachable each is, which is itself a finding.
 
 ## Verdicts
 

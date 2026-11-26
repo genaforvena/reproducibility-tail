@@ -17,6 +17,11 @@ from pathlib import Path
 
 CAUSES = ["dependency-rot", "missing-code", "missing-data", "unstated-parameter",
           "numerical-discrepancy", "nondeterminism", "platform", "other"]
+REJECT_REASONS = ["paywalled", "figure-only", "no-numeric-claim", "claim-not-located", "no-method-description",
+                  "runtime", "machine-dependent", "restricted-data", "gpu", "other"]
+UNREACHABLE_REASONS = ["unreachable-code", "unreachable-data"]
+FALLBACKS = ["software-heritage", "wayback", "zenodo", "author-page", "publisher-supplement", "contact"]
+OUTCOMES = ["registered", "rejected", "unreachable"]
 GRADE_TEXT = {
     "A": "authors' code, run clean",
     "B": "authors' code with build fixes",
@@ -87,6 +92,78 @@ def replay_cell(r: dict) -> str:
     return f"{last.get('utc', '?')[:10]} {'ok' if last.get('ok') else 'CHANGED'}"
 
 
+def load_funnel(repo: Path) -> tuple[dict, list[dict]]:
+    """Frames (name -> frame plus its sample order) and the considered-candidate lines."""
+    frames = {}
+    for f in sorted((repo / "queue" / "frames").glob("*.json")):
+        if f.name.endswith(".sample.json"):
+            continue
+        fr = json.loads(f.read_text(encoding="utf-8"))
+        s = f.with_name(f.stem + ".sample.json")
+        fr["order"] = json.loads(s.read_text(encoding="utf-8"))["order"] if s.exists() else []
+        frames[fr["name"]] = fr
+    lines = []
+    p = repo / "queue" / "funnel.jsonl"
+    if p.exists():
+        lines = [json.loads(x) for x in p.read_text(encoding="utf-8").splitlines() if x.strip()]
+    return frames, lines
+
+
+def pct(a: int, b: int) -> str:
+    return f"{a / b:.0%}" if b else "–"
+
+
+def funnel_section(repo: Path, rows: list[dict]) -> list[str]:
+    frames, lines = load_funnel(repo)
+    legacy = repo / "queue" / "rejected.md"
+    old = sum(1 for x in legacy.read_text(encoding="utf-8").splitlines() if x.startswith("- ")) if legacy.exists() else 0
+    queued = {p.stem for p in (repo / "queue").glob("*.json")}
+    framed_ids = {x.get("id") for x in lines if x.get("outcome") == "registered"}
+    unframed = sorted(queued - framed_ids)
+    by = collections.Counter(x["outcome"] for x in lines)
+    out = ["## The funnel", "",
+           "Every candidate is drawn from a named frame in a seeded order and none is skipped, so the "
+           "denominator is the frame, not what looked tractable (docs/method.md).", ""]
+    if old or unframed:
+        out += [f"Not yet framed: {old} candidates in the legacy rejection log and {len(unframed)} attempted "
+                f"papers ({', '.join(unframed) or 'none'}) were chosen before frames existed, so they are "
+                "excluded from the numbers below.", ""]
+    n = len(lines)
+    out += [f"**{n} candidates considered from {len(frames)} frames: {by.get('registered', 0)} attempted "
+            f"({pct(by.get('registered', 0), n)}), {by.get('unreachable', 0)} unreachable, "
+            f"{by.get('rejected', 0)} rejected.**", ""]
+    out += ["| frame | size | drawn | considered | coverage | attempted | unreachable | rejected |", "|---|---|---|---|---|---|---|---|"]
+    for name, fr in sorted(frames.items()):
+        mine = [x for x in lines if x.get("frame") == name]
+        c = collections.Counter(x["outcome"] for x in mine)
+        out.append(f"| {name} | {len(fr['items'])} | {len(fr['order'])} | {len(mine)} | {pct(len(mine), len(fr['order']))} "
+                   f"| {c.get('registered', 0)} | {c.get('unreachable', 0)} | {c.get('rejected', 0)} |")
+    out += ["", "| why a candidate was not attempted | candidates |", "|---|---|"]
+    why = collections.Counter(x.get("reason") for x in lines if x["outcome"] != "registered")
+    for k in REJECT_REASONS + UNREACHABLE_REASONS:
+        out.append(f"| {k} | {why.get(k, 0)} |")
+    out += ["", "Survivorship: the share of each stack among all candidates considered, and among those attempted.", "",
+            "| stack | considered | attempted |", "|---|---|---|"]
+    stacks = sorted({x.get("stack", "?") for x in lines})
+    for s in stacks:
+        out.append(f"| {s} | {sum(1 for x in lines if x.get('stack', '?') == s)} "
+                   f"| {sum(1 for x in lines if x.get('stack', '?') == s and x['outcome'] == 'registered')} |")
+    gone = [x for x in lines if x["outcome"] == "unreachable"]
+    out += ["", "### Unreachable", "",
+            "The artifact cannot be obtained, and the method is not described well enough to rebuild it. "
+            "This is a finding about the tail, not a filtered-out candidate.", "",
+            "| paper | year · stack | what is gone | fallbacks tried | checked |", "|---|---|---|---|---|"]
+    for x in gone:
+        out.append(f"| {x.get('paper', x.get('item', '?'))} | {x.get('year', '?')} · {x.get('stack', '?')} "
+                   f"| {x.get('reason')}: {x.get('detail', '')} | {', '.join(x.get('checked', []))} | {x.get('utc', '?')[:10]} |")
+    if not gone:
+        out.append("| none yet | | | | |")
+    state = collections.Counter((r.get("original_attempt") or {}).get("outcome", "none") for r in rows)
+    out += ["", "Authors' original artifact among attempted papers: "
+            + ", ".join(f"{k} {v}" for k, v in sorted(state.items())) + ".", ""]
+    return out
+
+
 def build(repo: Path) -> str:
     rows = load(repo)
     out = ["# Ledger", "",
@@ -102,7 +179,8 @@ def build(repo: Path) -> str:
         for r in rows:
             c[(r.get("paper", {}).get("year", 0) // 10 * 10 if key is None else r.get(key, "?"))] += 1
         out.append(f"By {title}: " + (", ".join(f"{k} {v}" for k, v in sorted(c.items(), key=lambda x: str(x[0]))) or "none"))
-    out += ["", "## Results", "",
+    out += [""] + funnel_section(repo, rows)
+    out += ["## Results", "",
             "| paper | field · year · stack | claim | paper value ± tol | our value | Δ | margin | basis | gates G1 G2 G3 G5 | grade | verdict | last replay |",
             "|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in rows:

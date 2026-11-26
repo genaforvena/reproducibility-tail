@@ -20,6 +20,47 @@ By field: computational biology (synthetic gene networks, bifurcation analysis) 
 By stack: Python 3 (sandbox /usr/bin/python3), numpy 2.5.5; replication repo baioc/re-multif at 3ab84df (Octave artifact not run; no Hopf computation in it) 1, R 4.5.3 (sandbox, conda-forge and bioconda), archived interval 0.9-9.6, Icens 1.82.0 (bioconda), MLEcens 0.1.7.1 (CRAN), perm 1.0-0.4, survival 3.8-12 1, R 4.5.3 (sandbox, conda-forge), archived BB 2009.9-1, setRNG and numDeriv (current conda-forge) 1, R 4.5.3 (sandbox, conda-forge), archived betareg 3.0-0 1, R 4.6.2 (sandbox, conda-forge), archived SPECIES 1.0 1, circles (build 0.3.2.1) with a build-only pgplot stub (patched, not run) 1
 By decade: 2000 2, 2010 4
 
+## The funnel
+
+Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
+
+Not yet framed: 26 candidates in the legacy rejection log and 5 attempted papers (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace) were chosen before frames existed, so they are excluded from the numbers below.
+
+**0 candidates considered from 0 frames: 0 attempted (–), 0 unreachable, 0 rejected.**
+
+| frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
+|---|---|---|---|---|---|---|---|
+
+| why a candidate was not attempted | candidates |
+|---|---|
+| paywalled | 0 |
+| figure-only | 0 |
+| no-numeric-claim | 0 |
+| claim-not-located | 0 |
+| no-method-description | 0 |
+| runtime | 0 |
+| machine-dependent | 0 |
+| restricted-data | 0 |
+| gpu | 0 |
+| other | 0 |
+| unreachable-code | 0 |
+| unreachable-data | 0 |
+
+Survivorship: the share of each stack among all candidates considered, and among those attempted.
+
+| stack | considered | attempted |
+|---|---|---|
+
+### Unreachable
+
+The artifact cannot be obtained, and the method is not described well enough to rebuild it. This is a finding about the tail, not a filtered-out candidate.
+
+| paper | year · stack | what is gone | fallbacks tried | checked |
+|---|---|---|---|---|
+| none yet | | | | |
+
+Authors' original artifact among attempted papers: not-possible 2, succeeded 4.
+
 ## Results
 
 | paper | field · year · stack | claim | paper value ± tol | our value | Δ | margin | basis | gates G1 G2 G3 G5 | grade | verdict | last replay |

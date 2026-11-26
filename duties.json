@@ -60,6 +60,18 @@
    "covers": "every report obeys the reproduction gates (docs/method.md, checks/gates.py): result.json present, claim unchanged since the run, verdict equal to the verdict computed from the recorded values, a logged original attempt before any patched or reimplemented basis, fidelity and replay passed, not-reproduced double-confirmed with a cause. RED lists each violation and wakes rerun to repair the report; UNKNOWN when a record cannot be read"
   },
   {
+   "name": "funnel",
+   "command": ["{python}", "{repo}/checks/funnel.py", "--repo", "{repo}"],
+   "every": 900,
+   "timeout": 60,
+   "max_age": 2700,
+   "unknown_codes": [3],
+   "resolver": "scout",
+   "signal": {"max_age": 2700, "subscribers": ["scout"], "wake_on": "state"},
+   "replaces": [],
+   "covers": "the candidate funnel is complete, ordered and evidenced (checks/funnel.py): every candidate is a line of queue/funnel.jsonl drawn from a named frame in the seeded order with none skipped, rejections carry a reason from the fixed list, unreachable cites two tried fallbacks and evidence, and the legacy unstructured queue/rejected.md has been migrated. RED lists each violation and wakes scout; UNKNOWN when a record cannot be read"
+  },
+  {
    "name": "replay-due",
    "command": ["{python}", "{repo}/checks/replay-due.py", "--repo", "{repo}"],
    "every": 3600,

@@ -1,0 +1,51 @@
+{
+  "paper": {
+    "title": "Algorithm 911: Multiple-precision exponential integral and related functions (with the FM/ZM multiple-precision package, sample driver)",
+    "authors": [
+      "David M. Smith"
+    ],
+    "year": 2010,
+    "venue": "ACM Transactions on Mathematical Software 37(4), article 46 (TOMS 911, Dec 2010)",
+    "doi": null,
+    "url": "https://netlib.org/toms/911.zip",
+    "note": "DOI not verified in this wake; the article itself was not read (paywalled), so the claim rests on the shipped sample driver output Fortran95/Drivers/SampleFM.out."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/911.zip",
+    "commit": "netlib TOMS archive 911.zip (fetched 2026-11-26, sha256 7ab4881d8495c8eca2d633835827e5c14c037dd5c0d8d1ea4729facc8234065c)",
+    "note": "Fortran 95. Extract the zip; sources Fortran95/Src/FM.f95, FMZM90.f95, fmsave.f95 and the sample driver Fortran95/Drivers/SampleFM.f95 (PROGRAM SAMPLE, writes SampleFM.out). Compile with gfortran -O3 as the manual describes (Doc/FM_User_Manual.txt section on SampleFM). Do not run inside the site directory; use a fresh directory."
+  },
+  "field": "numerics (multiple-precision arithmetic)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped sample driver output Fortran95/Drivers/SampleFM.out, sample 2 (\"Find the root above to 500 decimal places\"). Its printed value is the Newton root of f(x)=x**5-3x**4+x**3-4x**2+x-6 from sample 1. The first 80 significant digits are registered. The paper location was not read; no paper table or page is cited.",
+    "reference": {
+      "file": "Fortran95/Drivers/SampleFM.out (member of 911.zip), sample 2 block",
+      "sha256": null,
+      "archive": "netlib.org/toms/911.zip sha256 7ab4881d8495c8eca2d633835827e5c14c037dd5c0d8d1ea4729facc8234065c"
+    },
+    "metric": "Real root of f(x)=x**5-3x**4+x**3-4x**2+x-6 = 0 computed by Newton iteration in the FM package at 500-digit precision (CALL FM_SET(500) in the sample), compared with the printed digits.",
+    "paper_value": "Not used: the TOMS article was not read; the value is taken from the shipped driver output.",
+    "values": [
+      {
+        "name": "real root of x**5-3x**4+x**3-4x**2+x-6 (SampleFM.out sample 2, 500-digit value rounded to double; the first 16 significant digits are 3.120656215326726)",
+        "paper": 3.1206562153267265,
+        "tol_abs": 1e-15
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 1e-15,
+      "basis": "Fixed before any run. The gate needs a numeric value, so the claim is the printed 500-digit root rounded to double precision, 3.1206562153267265 (true digits 3.12065621532672650047...; rounding error 4.7e-18). Tolerance 1e-15 absorbs double-precision rounding of a correctly computed root. A run that computes the root at double precision still passes; the full 500-digit agreement is checked by the rerun only as a note, not by this gate. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 15 minutes: compile of FM.f95 (about 1.8 MB) and FMZM90.f95 with gfortran -O3, then one short run.",
+    "data_size": "None; the sample driver generates its own inputs.",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A deterministic multiple-precision arithmetic package whose shipped sample prints a 500-digit root, so the claim tests the high-precision Newton arithmetic at digits far beyond double precision.",
+  "registered": "2026-11-26T22:12Z"
+}

@@ -1,0 +1,51 @@
+{
+ "paper": {
+  "title": "The code SLEUTH for solving fourth-order Sturm-Liouville problems",
+  "authors": [
+   "L. Greenberg",
+   "M. Marletta"
+  ],
+  "year": 1997,
+  "venue": "ACM Transactions on Mathematical Software 23(4), 453-493 (TOMS 775, Dec 1997)",
+  "doi": null,
+  "url": "https://netlib.org/toms/775.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/775.gz",
+  "commit": "netlib TOMS archive 775.gz (downloaded 2026-11-26, 43203 bytes; sha256 193a6050951da6a0619b5299c9f5ebb56f72b0b763369dcebc1fe071d74c8c0c); uncompressed text 775.f sha256 da93266717880a77f24833aec6fe7d35cbcfca9de19a0058cc6316442f26f49f",
+  "note": "Single shar file. Its member driver.f (PROGRAM MAIN, from about line 29 of 775.f) runs the ten hardwired test problems and writes each result to unit 6 (screen) and unit 7 (an output file). The shipped reference output is the member RES (about lines 694-760 of 775.f; the shar places it under the Driver/ directory). The RES text has the same format as the unit-7 writes in driver.f (lines 268-301). Source members: Src/src.f, Dp/ and Info/. Needs a Fortran 77 compiler with DTIME. Only gcc and python3 are on the scout host; no gfortran."
+ },
+ "field": "numerics (Sturm-Liouville eigenvalue problems)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "The shipped RES reference output of the test driver. For Problem 1, eigenvalue index 2, the first 'Eigenvalue approximation' line in RES after the 'Problem Number: 1' header reads 4871.3813012287, with 'Error estimate: 4.0841833106242D-04'. Driver order (driver.f lines 214-222) runs problem 1 with BETA=10 first (FSTPAS), then BETA=30. The claim is the BETA=10 pass; the rerun must confirm that by the pass order. The paper's own table has not been read.",
+  "reference": {
+   "file": "775/775.f, the RES member (about lines 694-760; under Driver/ in the shar)",
+   "sha256": "da93266717880a77f24833aec6fe7d35cbcfca9de19a0058cc6316442f26f49f",
+   "archive": "netlib.org/toms/775.gz sha256 193a6050951da6a0619b5299c9f5ebb56f72b0b763369dcebc1fe071d74c8c0c"
+  },
+  "metric": "The eigenvalue approximation ELAM printed by the driver (unit 7, 'Eigenvalue approximation:') for problem 1, eigenvalue index 2, first pass (BETA=10), compared with 4871.3813012287 from RES.",
+  "paper_value": "Shipped RES: 4871.3813012287. The paper text is not read, so no paper value is used.",
+  "values": [
+   {
+    "name": "problem 1 (BETA=10), eigenvalue index 2, ELAM",
+    "paper": 4871.3813012287,
+    "tol_abs": 0.001
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 0.001,
+   "basis": "Fixed before any run. The shipped run reports an error estimate of 4.08e-4 for this eigenvalue, so 1e-3 is about 2.5 times the code's own stated accuracy. A converged run on another compiler should agree within that estimate. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute per the shipped CPU Time (about 1.9 s for this pass); the full driver runs all ten problems with two BETA passes for problem 1 and takes longer.",
+  "data_size": "None; all input is hardwired in driver.f.",
+  "data_licence": "No data. Netlib TOMS code under the archive's ACM licence; the rerun should record the licence text it finds in the archive."
+ },
+ "why": "A 1997 Fortran code for fourth-order Sturm-Liouville eigenvalues ships a deterministic run of its test driver with eigenvalues printed to 13 digits and error estimates. The claimed eigenvalue has no closed form and needs the full SLEUTH matching and extrapolation to compute.",
+ "registered": "2026-11-26T16:07:33Z"
+}

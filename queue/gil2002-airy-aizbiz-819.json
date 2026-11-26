@@ -1,0 +1,68 @@
+{
+ "paper": {
+  "title": "Algorithm 819: AIZ, BIZ: Two Fortran 77 Routines for the Computation of Complex Airy Functions",
+  "authors": [
+   "Amparo Gil",
+   "Javier Segura",
+   "Nico M. Temme"
+  ],
+  "year": 2002,
+  "venue": "ACM Transactions on Mathematical Software 28(3), 325-336 (TOMS 819, Sep 2002)",
+  "doi": null,
+  "url": "https://ir.cwi.nl/pub/10740/"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/819.gz",
+  "commit": "netlib TOMS archive 819.gz (fetched 2026-11-26, 279745 bytes; sha256 26af2205d9c0d935ca5612d0ec4696d0045e5e6b09429b1d553b898ca0d3cb92)",
+  "archive": "netlib TOMS 819.gz, sha256 26af2205d9c0d935ca5612d0ec4696d0045e5e6b09429b1d553b898ca0d3cb92 (hashed by scout 2026-11-26 from the fetched bytes)",
+  "note": "Shell archive (Fortran77/Dp): Drivers/driver.f is PROGRAM WRTEST, which checks the Wronskian relations A&S 10.4.10-12 and the BIZ relation for scaled functions (IFAC=2, driver.f line ~96) over a grid of z = R exp(i phi), 0<=R<=100, 0<=phi<=pi. It writes res1..res4 and prints the maximum residual as the last line of each file. Src/src.f holds AIF/BIF (AIZ, BIZ). Src/port.f computes machine constants with Fortran 90 intrinsics (the shipped readme says it needs replacing on Fortran 77 compilers). gfortran is not in the scout sandbox. The paper's Section 4.1 (pp. 331-332) states the scaled Wronskian checks are 'consistent with a relative accuracy better than 10^-13' (read from the CWI PDF by scout)."
+ },
+ "field": "numerics (special functions, complex Airy functions)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Paper Section 4.1 'Wronskian Checks' (TOMS 28(3), pp. 331-332): 'All the Wronskian checks for scaled Airy functions Ai and Bi are consistent with a relative accuracy better than 10^-13.' The shipped reference is the maximum-residual line that the driver prints at the end of each results file in the archive.",
+  "reference": {
+   "file": "Fortran77/Dp/Drivers/res1..res4 (members of 819.gz; the final 'MAXIMUM VALUE OF THE WRONSKIAN CHECK' line of each)",
+   "sha256": null,
+   "archive": "netlib.org/toms/819.gz sha256 26af2205d9c0d935ca5612d0ec4696d0045e5e6b09429b1d553b898ca0d3cb92"
+  },
+  "metric": "The four maxima the driver WRTEST prints for scaled functions (IFAC=2): CHECK1 (A&S 10.4.10, res1), CHECK2 (10.4.11, res2), CHECK3 (10.4.12, res3), CHECK4 (BIZ Wronskian, res4). Each is the maximum absolute magnitude of the Wronskian residual over the driver's grid.",
+  "paper_value": "Paper: relative accuracy better than 1e-13 for all scaled Wronskian checks (no per-check value printed in the paper).",
+  "values": [
+   {
+    "name": "res1 CHECK1 maximum (shipped)",
+    "paper": 9.43689571e-15,
+    "tol_abs": 1e-13
+   },
+   {
+    "name": "res2 CHECK2 maximum (shipped)",
+    "paper": 5.23650405e-15,
+    "tol_abs": 1e-13
+   },
+   {
+    "name": "res3 CHECK3 maximum (shipped)",
+    "paper": 5.19100205e-15,
+    "tol_abs": 1e-13
+   },
+   {
+    "name": "res4 CHECK4 maximum (shipped)",
+    "paper": 9.37486625e-15,
+    "tol_abs": 1e-13
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1e-13,
+   "basis": "Fixed before any run. Each rerun maximum is compared with the shipped maximum on the same grid, |rerun - shipped| <= 1e-13 absolute; the margin is the paper's own stated accuracy bound (Section 4.1, 'better than 10^-13'). Because every shipped maximum is at least 5e-15, the comparison also admits rerun maxima up to about 1.1e-13, so the rerun must additionally report whether each maximum is strictly below 1e-13, the paper's bound, and say so in its note. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 5 minutes: compile about 23,000 lines of Fortran 77/90 and run the Wronskian grid once.",
+  "data_size": "None; the driver generates its own grid.",
+  "data_licence": "Netlib TOMS code under the ACM licence in the archive; the rerun should record the licence text."
+ },
+ "why": "The paper states a numeric accuracy bound for the scaled Wronskian checks, and the shipped driver computes those checks and prints their maxima, so the code has to compute the claim.",
+ "registered": "2026-11-26T19:22Z"
+}

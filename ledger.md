@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-10 papers attempted.
+11 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
-| A | authors' code, run clean | 4 |
+| A | authors' code, run clean | 5 |
 | B | authors' code with build fixes | 2 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 2 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 3, other 1, statistics 3
-By stack: C/C++ 1, Fortran 2, MATLAB/Octave 2, R 5
-By decade: 1970 1, 2000 3, 2010 6
+By field: astronomy 1, biology 1, ecology 1, numerics 4, other 1, statistics 3
+By stack: C/C++ 1, Fortran 3, MATLAB/Octave 2, R 5
+By decade: 1970 1, 1990 1, 2000 3, 2010 6
 
 Data as of 2026-11-26T16:14:00Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-26T16:14:00Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-10 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+11 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **119 candidates considered from 3 of 3 frames: 8 attempted (7%), 0 unreachable, 111 rejected.**
 
@@ -73,7 +73,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 3 (did not run), not-possible 2 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 4 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 3 (did not run), not-possible 2 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 5 (ran as documented).
 
 ## Results
 
@@ -89,6 +89,14 @@ Authors' original artifact, among all attempted papers: failed 3 (did not run), 
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Number of cycles in S7.cy) | 4 ± 0 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
 | [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics · 2010 · R | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics · 2012 · R | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDM0P5(-4)) [shipped reference output] | 0.0180819 ± 1.80819e-07 | 0.0180819 | -2.9914e-09 | 2% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDM0P5(3)) [shipped reference output] | 1.85349 ± 1.85349e-05 | 1.85349 | -8.86015e-08 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDP0P5(-4)) [shipped reference output] | 0.0181982 ± 1.81982e-07 | 0.0181982 | -3.50837e-09 | 2% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDP0P5(3)) [shipped reference output] | 4.48755 ± 4.48755e-05 | 4.48755 | -4.21352e-07 | 1% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDP1P5(-4)) [shipped reference output] | 0.0182567 ± 1.82567e-07 | 0.0182567 | 2.41489e-09 | 1% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDP1P5(3)) [shipped reference output] | 7.78861 ± 7.78861e-05 | 7.78861 | 2.29704e-07 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDP2P5(-4)) [shipped reference output] | 0.0182861 ± 1.82861e-07 | 0.0182861 | 1.58672e-09 | 1% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDP2P5(3)) [shipped reference output] | 11.1129 ± 0.000111129 | 11.1129 | 4.77288e-07 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
 | [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f07 on [0, 1]) [shipped reference output] | 0.777505 ± 0.000777505 | 0.777505 | 3.659e-07 | 0% | patched | ✓ · ✓ · | X | partial | never clean |
 | [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f08 on [0.1, 1]) [shipped reference output] | 0.00909865 ± 9.09865e-06 | 0.00909898 | 3.34744e-07 | 4% | patched | ✓ · ✓ · | X | partial | never clean |
 | [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f12 on [0, 1]) [shipped reference output] | -0.634665 ± 0.000634665 | -0.63467 | -4.8175e-06 | 1% | patched | ✓ · ✓ · | X | partial | never clean |

@@ -66,6 +66,17 @@
       "why": "agrees with the record",
       "log": "reports/grun2012-gasoline-loglik/evidence/replay-2026-11-26T140712Z.log",
       "seconds": 93
+    },
+    {
+      "utc": "2026-11-26T14:28:21Z",
+      "kind": "clean",
+      "values": {
+        "logLik ML": 84.79755796
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/grun2012-gasoline-loglik/evidence/replay-2026-11-26T142821Z.log",
+      "seconds": 86
     }
   ]
 }

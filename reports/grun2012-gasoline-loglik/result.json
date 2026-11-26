@@ -1,0 +1,47 @@
+{
+  "paper": {
+    "short": "grun2012-gasoline-loglik",
+    "title": "Extended Beta Regression in R: Shaken, Stirred, Mixed, and Partitioned",
+    "year": 2012,
+    "doi": "10.18637/jss.v048.i11"
+  },
+  "field": "statistics (beta regression, maximum likelihood)",
+  "stack": "R 4.5.3 (sandbox, conda-forge), archived betareg 3.0-0",
+  "claim": {
+    "text": "betareg(yield ~ batch + temp, data = GasolineYield, type = \"ML\") logLik, JSS p. 23",
+    "values": [
+      {"name": "logLik ML", "paper": 84.79756, "tol_abs": 0.001, "ours": 84.79755796}
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "authors' archived betareg 3.0-0 built with R CMD INSTALL in the sandbox (R 4.5.3 from conda-forge, installed in the fetch step); driver is 3 lines of R; no source edits",
+  "queue_commit": "58a8ff595f84305e7189adfbfe6fd0bef1c94135",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "authors' code built and ran clean with the R toolchain installed in the sandbox during --fetch",
+    "log": "reports/grun2012-gasoline-loglik/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "pass"
+  },
+  "recipe": "reports/grun2012-gasoline-loglik/recipe.sh",
+  "evidence": [
+    "reports/grun2012-gasoline-loglik/evidence/original-attempt.log",
+    "reports/grun2012-gasoline-loglik/evidence/replay.log",
+    "reports/grun2012-gasoline-loglik/impl/ml_original.R",
+    "reports/grun2012-gasoline-loglik/impl/betareg_ml.py",
+    "reports/grun2012-gasoline-loglik/result.md"
+  ],
+  "replayed": [
+    {"utc": "2026-11-26T13:40:40Z", "value": 84.79755796, "ok": true},
+    {"utc": "2026-11-26T13:40:40Z", "value": 84.79755796, "ok": true}
+  ]
+}

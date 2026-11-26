@@ -1,101 +1,120 @@
 {
- "paper": {
-  "short": "macleod1998-fermi-dirac-779",
-  "title": "Algorithm 779: Fermi-Dirac Functions of Order -1/2, 1/2, 3/2, 5/2",
-  "year": 1998,
-  "doi": null
- },
- "field": "numerics (special functions, Fermi-Dirac integrals)",
- "stack": "Fortran 77, double precision",
- "field_class": "numerics",
- "stack_class": "Fortran",
- "claim": {
-  "text": "COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver",
-  "source": "artifact-reference",
-  "reference": {
-   "file": "reports/macleod1998-fermi-dirac-779/evidence/reference/RES",
-   "sha256": "f39caf7d3c27325deb4a5a041cd57efd206635e9cb0f5b59f0aefcf8aa6bcb22",
-   "archive": "netlib.org/toms/779.gz sha256 da2c0d3ea7b69028124524bcc886e8335bf288c2f20107c556a05d19b491da0e (member Drivers/Dp/RES)"
+  "paper": {
+    "short": "macleod1998-fermi-dirac-779",
+    "title": "Algorithm 779: Fermi-Dirac Functions of Order -1/2, 1/2, 3/2, 5/2",
+    "year": 1998,
+    "doi": null
   },
-  "values": [
-   {
-    "name": "FDM0P5(-4)",
-    "paper": 0.01808192299139939,
-    "tol_abs": 1.808192299139939e-07,
-    "ours": 0.01808192
-   },
-   {
-    "name": "FDM0P5(3)",
-    "paper": 1.8534850886015182,
-    "tol_abs": 1.8534850886015183e-05,
-    "ours": 1.853485
-   },
-   {
-    "name": "FDP0P5(-4)",
-    "paper": 0.018198203508367112,
-    "tol_abs": 1.8198203508367112e-07,
-    "ours": 0.0181982
-   },
-   {
-    "name": "FDP0P5(3)",
-    "paper": 4.487547421351709,
-    "tol_abs": 4.4875474213517094e-05,
-    "ours": 4.487547
-   },
-   {
-    "name": "FDP1P5(-4)",
-    "paper": 0.01825672758510827,
-    "tol_abs": 1.8256727585108273e-07,
-    "ours": 0.01825673
-   },
-   {
-    "name": "FDP1P5(3)",
-    "paper": 7.7886107702959695,
-    "tol_abs": 7.78861077029597e-05,
-    "ours": 7.788611
-   },
-   {
-    "name": "FDP2P5(-4)",
-    "paper": 0.01828611841328075,
-    "tol_abs": 1.8286118413280753e-07,
-    "ours": 0.01828612
-   },
-   {
-    "name": "FDP2P5(3)",
-    "paper": 11.11289952271169,
-    "tol_abs": 0.0001111289952271169,
-    "ours": 11.1129
-   }
+  "field": "numerics (special functions, Fermi-Dirac integrals)",
+  "stack": "Fortran 77, double precision",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/macleod1998-fermi-dirac-779/evidence/reference/RES",
+      "sha256": "f39caf7d3c27325deb4a5a041cd57efd206635e9cb0f5b59f0aefcf8aa6bcb22",
+      "archive": "netlib.org/toms/779.gz sha256 da2c0d3ea7b69028124524bcc886e8335bf288c2f20107c556a05d19b491da0e (member Drivers/Dp/RES)"
+    },
+    "values": [
+      {
+        "name": "FDM0P5(-4)",
+        "paper": 0.01808192299139939,
+        "tol_abs": 1.808192299139939e-07,
+        "ours": 0.01808192
+      },
+      {
+        "name": "FDM0P5(3)",
+        "paper": 1.8534850886015182,
+        "tol_abs": 1.8534850886015183e-05,
+        "ours": 1.853485
+      },
+      {
+        "name": "FDP0P5(-4)",
+        "paper": 0.018198203508367112,
+        "tol_abs": 1.8198203508367112e-07,
+        "ours": 0.0181982
+      },
+      {
+        "name": "FDP0P5(3)",
+        "paper": 4.487547421351709,
+        "tol_abs": 4.4875474213517094e-05,
+        "ours": 4.487547
+      },
+      {
+        "name": "FDP1P5(-4)",
+        "paper": 0.01825672758510827,
+        "tol_abs": 1.8256727585108273e-07,
+        "ours": 0.01825673
+      },
+      {
+        "name": "FDP1P5(3)",
+        "paper": 7.7886107702959695,
+        "tol_abs": 7.78861077029597e-05,
+        "ours": 7.788611
+      },
+      {
+        "name": "FDP2P5(-4)",
+        "paper": 0.01828611841328075,
+        "tol_abs": 1.8286118413280753e-07,
+        "ours": 0.01828612
+      },
+      {
+        "name": "FDP2P5(3)",
+        "paper": 11.11289952271169,
+        "tol_abs": 0.0001111289952271169,
+        "ours": 11.1129
+      }
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "The shipped sources (Drivers/Dp/fdtestdp.f, Src/Dp/src.f, already double precision) compile with plain gfortran (conda-forge gfortran, installed in the sandbox fetch step) and run without any change. The archive has no Makefile or build command; the flags used (-O2 for pass 1, -O0 for pass 2) are our choice and are recorded. All 8 registered values agree with the paper's values to within tol_abs. Columns 1-3 of both passes are identical to the shipped RES; column 4 (REL. ERROR) differs in the last digits (about 1e-15), which is floating-point noise between builds and does not touch any registered value.",
+  "queue_commit": "826c062f5d18bc4f6431d30e664714e0997eaac9",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "Shipped sources compiled and ran with plain gfortran -O2 and no source change (see evidence/original-attempt.log). The only addition is the compiler itself, installed in the sandbox during the fetch step.",
+    "log": "reports/macleod1998-fermi-dirac-779/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "pass",
+    "cross_check": "na"
+  },
+  "recipe": "reports/macleod1998-fermi-dirac-779/recipe.sh",
+  "evidence": [
+    "reports/macleod1998-fermi-dirac-779/evidence/original-attempt.log",
+    "reports/macleod1998-fermi-dirac-779/evidence/recipe-run.log",
+    "reports/macleod1998-fermi-dirac-779/evidence/run1-output.txt",
+    "reports/macleod1998-fermi-dirac-779/evidence/run2-output.txt",
+    "reports/macleod1998-fermi-dirac-779/evidence/values.txt",
+    "reports/macleod1998-fermi-dirac-779/evidence/reference/RES",
+    "reports/macleod1998-fermi-dirac-779/result.md"
+  ],
+  "replayed": [
+    {
+      "utc": "2026-11-26T17:07:33Z",
+      "kind": "clean",
+      "values": {
+        "FDM0P5(-4)": 0.01808192,
+        "FDM0P5(3)": 1.853485,
+        "FDP0P5(-4)": 0.0181982,
+        "FDP0P5(3)": 4.487547,
+        "FDP1P5(-4)": 0.01825673,
+        "FDP1P5(3)": 7.788611,
+        "FDP2P5(-4)": 0.01828612,
+        "FDP2P5(3)": 11.1129
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/macleod1998-fermi-dirac-779/evidence/replay-2026-11-26T170733Z.log",
+      "seconds": 74
+    }
   ]
- },
- "basis": "original",
- "verdict": "reproduced",
- "cause": null,
- "attempt": "The shipped sources (Drivers/Dp/fdtestdp.f, Src/Dp/src.f, already double precision) compile with plain gfortran (conda-forge gfortran, installed in the sandbox fetch step) and run without any change. The archive has no Makefile or build command; the flags used (-O2 for pass 1, -O0 for pass 2) are our choice and are recorded. All 8 registered values agree with the paper's values to within tol_abs. Columns 1-3 of both passes are identical to the shipped RES; column 4 (REL. ERROR) differs in the last digits (about 1e-15), which is floating-point noise between builds and does not touch any registered value.",
- "queue_commit": "826c062f5d18bc4f6431d30e664714e0997eaac9",
- "original_attempt": {
-  "tried": true,
-  "outcome": "succeeded",
-  "reason": "Shipped sources compiled and ran with plain gfortran -O2 and no source change (see evidence/original-attempt.log). The only addition is the compiler itself, installed in the sandbox during the fetch step.",
-  "log": "reports/macleod1998-fermi-dirac-779/evidence/original-attempt.log"
- },
- "gates": {
-  "G1": "pass",
-  "G2": "na",
-  "G3": "pass",
-  "G5": "na",
-  "G6": "pass",
-  "cross_check": "na"
- },
- "recipe": "reports/macleod1998-fermi-dirac-779/recipe.sh",
- "evidence": [
-  "reports/macleod1998-fermi-dirac-779/evidence/original-attempt.log",
-  "reports/macleod1998-fermi-dirac-779/evidence/recipe-run.log",
-  "reports/macleod1998-fermi-dirac-779/evidence/run1-output.txt",
-  "reports/macleod1998-fermi-dirac-779/evidence/run2-output.txt",
-  "reports/macleod1998-fermi-dirac-779/evidence/values.txt",
-  "reports/macleod1998-fermi-dirac-779/evidence/reference/RES",
-  "reports/macleod1998-fermi-dirac-779/result.md"
- ],
- "replayed": []
 }

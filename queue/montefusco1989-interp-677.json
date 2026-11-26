@@ -13,7 +13,8 @@
  "code": {
   "url": "https://netlib.org/toms/677.gz",
   "commit": "netlib TOMS archive 677.gz (downloaded 2026-11-26, 1915 lines uncompressed; sha256 not recorded by scout)",
-  "note": "A single Fortran source file (Algorithm 677, collected algorithms from ACM). It holds the MASUB package and four test programs. The first PROGRAM MAIN (lines 4 to about 160 of the unpacked text) is the self-checking test: 30 scattered points (XD, YD, ZD) with ZD = 8/3.14*exp(-8(x^2+y^2)), reconstructed on a 10x10 grid with extrapolation (IEX=1) and tension TP=10. It prints the analytic and reconstructed grids, then compares its own maximum and mean absolute errors with the built-in constants ANS2 and ANS1 (the DATA statements at line 24) and prints the result. NOUT=6 in its DATA statement. Needs a Fortran 77 compiler; gfortran is not in the scout sandbox."
+  "note": "A single Fortran source file (Algorithm 677, collected algorithms from ACM). It holds the MASUB package and four test programs. The first PROGRAM MAIN (lines 4 to about 160 of the unpacked text) is the self-checking test: 30 scattered points (XD, YD, ZD) with ZD = 8/3.14*exp(-8(x^2+y^2)), reconstructed on a 10x10 grid with extrapolation (IEX=1) and tension TP=10. It prints the analytic and reconstructed grids, then compares its own maximum and mean absolute errors with the built-in constants ANS2 and ANS1 (the DATA statements at line 24) and prints the result. NOUT=6 in its DATA statement. Needs a Fortran 77 compiler; gfortran is not in the scout sandbox.",
+  "archive": "netlib TOMS 677.gz, sha256 d4d94e7a7ca6cf1980e3c05af74731cea35d00d62358ace806b134e4a8a4e64b (hashed by scout 2026-11-26 from the fetched bytes)"
  },
  "field": "numerics (scattered-data interpolation of a rapidly varying surface, single precision)",
  "stack": "Fortran",
@@ -32,16 +33,16 @@
    {
     "name": "maximum absolute error (ERMAX)",
     "paper": 0.6059994,
-    "tol_rel": 1e-5
+    "tol_rel": 1e-05
    },
    {
     "name": "mean absolute error (ERMEAN)",
     "paper": 0.06695094,
-    "tol_rel": 1e-5
+    "tol_rel": 1e-05
    }
   ],
   "tolerance": {
-   "rel": 1e-5,
+   "rel": 1e-05,
    "abs": null,
    "why": "The code is single precision (REAL arithmetic, unit roundoff about 6e-8), so the errors carry rounding noise of several parts in 1e6 across compilers and optimisation levels. The driver's own check uses 1E-6, which is about eight unit roundoffs and would test compiler rounding, not the method. Scout set 1e-5 relative before any run of this claim, on both values; the rerun must not loosen it to fit its own result."
   }

@@ -64,7 +64,7 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -82,5 +82,17 @@
     "reports/renka1999-cshep2d-790/evidence/manifest.mid",
     "reports/renka1999-cshep2d-790/evidence/manifest.post"
   ],
-  "replayed": []
+  "replayed": [
+    {
+      "utc": "2026-11-26T21:33:05Z",
+      "kind": "clean",
+      "values": {
+        "CS2TST node set 1, function 1, Max Error (4 decimal print)": 0.0451
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/renka1999-cshep2d-790/evidence/replay-2026-11-26T213305Z.log",
+      "seconds": 157
+    }
+  ]
 }

@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-37 papers attempted.
+38 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 13 |
-| B | authors' code with build fixes | 13 |
+| B | authors' code with build fixes | 14 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 9 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 28, other 1, statistics 5
-By stack: C/C++ 7, Fortran 21, MATLAB/Octave 3, R 5, not-stated 1
-By decade: 1960 1, 1970 1, 1980 3, 1990 10, 2000 16, 2010 6
+By field: astronomy 1, biology 1, ecology 1, numerics 29, other 1, statistics 5
+By stack: C/C++ 7, Fortran 22, MATLAB/Octave 3, R 5, not-stated 1
+By decade: 1960 1, 1970 1, 1980 3, 1990 10, 2000 16, 2010 7
 
 Data as of 2026-11-26T23:35:11Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-26T23:35:11Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-37 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+38 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **268 candidates considered from 4 of 4 frames: 35 attempted (13%), 0 unreachable, 233 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 20 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 13 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 21 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 13 (ran as documented).
 
 ## Results
 
@@ -148,6 +148,7 @@ Authors' original artifact, among all attempted papers: failed 20 (did not run),
 | [renka1999-cshep2d-790](reports/renka1999-cshep2d-790/result.md) | numerics · 1999 · Fortran | The Max Error for interpolation function 1, node set 1 (N=100, NI=33, NC=17, NW=30, NR=6), printed by CS2TST to res1_2, is 0.0451, as in the shipped reference output. Absolute tolerance 5e-5 (half of the last printed unit). (CS2TST node set 1, function 1, Max Error (4 decimal print)) [shipped reference output] | 0.0451 ± 5e-05 | 0.0451 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [renka2003-dnsplin1-828](reports/renka2003-dnsplin1-828/result.md) | numerics · 2003 · Fortran | driver on data1 (Res1), the second value after the count 241 in the output, shipped as 0.565126291685656D-01 in Fortran77/Dp/Drivers/res1 (row 3 of the file), absolute tolerance 1e-12 (driver on data1, row 2 of res1) | 0.0565126 ± 1e-12 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
 | [renka2004-csrfpack-833](reports/renka2004-csrfpack-833/result.md) | numerics · 2004 · Fortran | CSRFTEST (author's driver) on the shipped 8-node data file writes a 40 x 40 grid of surface values; the grid node (X,Y) = (-0.948717948717949, -1.0) has F = 0.189783809135176 in the registered queue entry. Absolute tolerance 1e-9. The shipped output Fortran77/Drivers/res prints this node as 0.189783809135176E+01 (= 1.89783809135176); see result.md for the exponent discrepancy. (F(X=-0.948717948717949, Y=-1.0) from CSRFTEST with the shipped data file) [shipped reference output] | 0.189784 ± 1e-09 | – | – | – | patched (build-only) | ✓ ✓ ✓ · | - | blocked | never clean |
+| [smith2010-fm-911](reports/smith2010-fm-911/result.md) | numerics · 2010 · Fortran | SampleFM (author's sample driver) sample 2 prints the real root of x**5-3x**4+x**3-4x**2+x-6 to 500 decimal places; its double rounding 3.1206562153267265 agrees with the registered value to 1e-15 absolute. (real root of x**5-3x**4+x**3-4x**2+x-6 (SampleFM.out sample 2, 500-digit value rounded to double; the first 16 significant digits are 3.120656215326726)) [shipped reference output] | 3.12066 ± 1e-15 | 3.12066 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ · | B | reproduced | never clean |
 | [van-deun2006-besselint-858](reports/van-deun2006-besselint-858/result.md) | numerics · 2006 · MATLAB/Octave | besselint(sqrt([2 3 5 7 11]), 0, 1) returns I = 6.106434990872165e-02 (Example 5.1 of the shipped driver, experiments.m; printed in the shipped experiments.out) (I_Ex5_1) [shipped reference output] | 0.0610643 ± 1e-10 | 0.0610643 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [varadhan2009-bb-hdp-multistart](reports/varadhan2009-bb-hdp-multistart/result.md) | numerics · 2009 · R | sum(ans$conv) for multiStart(par = p0, fn = hdp, action = "solve"), 300 starts, seed 1234, JSS p. 11 (converged runs) | 284 ± 3 | 287 | 3 | 100% ⚠ | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [wang2008-bacolr-874](reports/wang2008-bacolr-874/result.md) | numerics · 2008 · Fortran | driver1 (single PDE, KCOL = 2, NINT = 42 at TOUT = 1.0) prints UOUT = 0.6602 at XOUT = 0.91, as in the shipped reference output res1; tolerance 1e-3 absolute, fixed in the queue entry. (UOUT(XOUT=0.91) at TOUT=1.0, KCOL=2, NINT=42) [shipped reference output] | 0.6602 ± 0.001 | 0.6602 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |

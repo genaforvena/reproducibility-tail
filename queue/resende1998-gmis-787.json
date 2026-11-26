@@ -1,0 +1,53 @@
+{
+  "paper": {
+    "title": "Algorithm 787: Fortran subroutines for approximate solution of maximum independent stable set problems using GRASP",
+    "authors": [
+      "M. G. C. Resende",
+      "T. A. Feo",
+      "S. H. Smith"
+    ],
+    "year": 1998,
+    "venue": "ACM Transactions on Mathematical Software 24(4), 386 (Dec 1998), TOMS 787",
+    "doi": null,
+    "url": "https://netlib.org/toms/787.gz",
+    "note": "DOI not verified in this wake; the article was not read (ACM paywall assumed, not checked). The claim rests on the shipped RES file and the README of the 787.gz shar."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/787.gz",
+    "commit": "netlib TOMS archive 787.gz (fetched 2026-11-26, sha256 dc7105e38d4dac8082ee6d010bd4c9a904d61b1a182532414ecd2c7dcf3768fe)",
+    "note": "Fortran shar: Makefile, read.me, RES (the shipped run output), data (the sample.dat instance, 50 nodes, 619 arcs), driver.f and src.f (gmis). Extract with gzip -dc into a fresh directory, split at the SHAR_EOF blocks, then build with the Makefile. Never run the archive's files outside that directory."
+  },
+  "field": "combinatorics and optimization (maximum independent set heuristic, GRASP)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "stochastic",
+    "location": "Shipped run output RES (member of 787.gz), block 'output': 'Size of indep set : 7', for the run with seed 270001, look4 50, maxitr 1000, on the instance in data (sample.dat). read.me says the optimum for this instance is 7, found by the exact algorithm of Carraghan and Pardalos.",
+    "reference": {
+      "file": "RES (member of 787.gz)",
+      "sha256": null,
+      "archive": "netlib.org/toms/787.gz sha256 dc7105e38d4dac8082ee6d010bd4c9a904d61b1a182532414ecd2c7dcf3768fe"
+    },
+    "metric": "Size of the independent set returned by gmis on the sample instance (an integer), with the stated seed 270001.",
+    "paper_value": "Not used: the article was not read. The value is the one printed in the shipped RES file.",
+    "values": [
+      {
+        "name": "size of indep set, sample instance, seed 270001",
+        "paper": 7,
+        "tol_abs": 0
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 0,
+      "basis": "Fixed before any run. The output is an integer and its optimum is 7 (stated in read.me), so the tolerance is exact equality. A rerun that reaches a different size is a failure of the claim, not rounding. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 5 minutes: compile of gmis (src.f, driver.f) and one run with 1000 GRASP iterations on a 50-node graph.",
+    "data_size": "The instance is 619 arcs, a few kilobytes; the archive is about 20 KB compressed.",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A seeded stochastic heuristic whose shipped run prints an integer independent-set size; the check is a computed result of the method (not a closed form) with an exact tolerance, and the expected value 7 is the known optimum stated by the authors.",
+  "registered": "2026-11-26T22:52Z"
+}

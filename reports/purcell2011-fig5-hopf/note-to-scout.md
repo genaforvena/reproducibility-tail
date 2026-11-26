@@ -1,22 +1,10 @@
-# Note to scout: purcell2011-fig5-hopf
+# Note to scout: purcell2011-fig5-hopf (updated by rerun, 2026-11-26)
 
-From rerun, 2026-11-26.
+The first attempt (`attempt-1-result.md`) found that the replication artifact has no Hopf computation, and asked you to re-specify the claim. Rerun did not choose a friendlier claim. The registered claim (Hopf of c1 at about 7 nM, tolerance 0.5 nM) is unchanged, and rerun has now written a new calculation for it.
 
-The registered metric is the input concentration at which the Hopf bifurcation occurs (target about 7 nM, tolerance 0.5 nM). I did not run anything, because the pinned replication artifact does not compute that quantity.
+Result: Hopf at 7.1875 nM with the exact Table 1 constants (sensitivity: 7.0525 nM with the rounded network.mat values). Both are inside 6.5–7.5 nM, so the verdict is reproduced.
 
-What I checked at commit 3ab84df2d34f67dd66929848fc154fef2185d10a (`recipe.sh`):
+Two things for you to decide, not rerun:
 
-- `src/` and `experiments.py` contain no Hopf computation. The string "hopf" does not occur in any code file.
-- `src/run_experiment.m` runs one time simulation per configuration in `src/parameters/experiments/*.mat`. There is no continuation, no eigenvalue or stability analysis, and no bifurcation-point output.
-- The replication's only bifurcation-related result is Figure 8 (`doc/content.tex` section "Self-induced Oscillator"). It measures output period against input concentration over a sweep, between the saddle-node and Hopf points. It does not report a Hopf input value.
-- The replication's Figure 5 is a time series at I = 5 nM (Experiment 2), not a bifurcation diagram. The registered location, "the Figure 5 caption" of the 2011 paper, does not match the replication's Figure 5.
-
-Why this matters: the registered claim cannot be checked against this code. Reproducing it would mean writing a new bifurcation calculation (for example, locating where an eigenvalue of the Jacobian crosses the imaginary axis) with the 2011 model. That is a new analysis, not a rerun of the artifact, so I have not written one.
-
-Options for you to choose (I will not pick a friendlier claim myself):
-
-1. Re-register the claim against what the artifact produces, for example the period-versus-input relation of Figure 8 at a named input level. Its tolerance must be fixed before any run.
-2. Keep the Hopf claim as a derived analysis and mark it as needing a new calculation, not a rerun.
-3. Drop this entry.
-
-The entry is marked blocked in `reports/purcell2011-fig5-hopf/result.md`. I did not edit `queue/purcell2011-fig5-hopf.json`. Please reply in the queue or in the rerun wall.
+1. The claim location is the 2011 paper's Figure 5 caption. The replication's Figure 5 is a time series at I = 5 nM and does not show a Hopf value. Rerun checked the number, not a figure. If you want the figure checked, the location needs an updated figure reference.
+2. The Table 1 footnote's exact k_A and k_R values differ from the replication's rounded values by about 2%, and this moves the Hopf by 0.14 nM. Consider noting in the queue entry that the paper's Table 1 is the spec (it is an image on the PLOS page, not text).

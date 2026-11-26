@@ -1,0 +1,25 @@
+## PRIMARY (paper Table 1 exact kA, kR): Hopf, full model, continuation from I=9 nM downward
+HOPF crossing between I=7.19002 and 7.18502 nM; Re -3.169e-09 -> 1.755e-08; Im=4.9119e-05
+reached input bound at I=-0.0546
+1811 points; events: ['HOPF']
+## sensitivity (network.mat rounded kA, kR): Hopf, full model, from I=9 nM downward
+## Hopf, full model: continuation from I=9 nM downward
+HOPF crossing between I=7.05503 and 7.05003 nM; Re -1.838e-08 -> 2.703e-09; Im=5.0419e-05
+reached input bound at I=-0.0546
+1811 points; events: ['HOPF']
+## Hopf, full model: continuation from I=9 nM upward
+FOLD crossing between I=9.04000 and 9.04500 nM; Re -1.209e-07 -> 2.513e-07; Im=0.0000e+00
+reached input bound at I=12.0050
+601 points; events: ['FOLD']
+## Hopf, QSSA model (secondary): from I=9 nM downward
+HOPF crossing between I=6.82002 and 6.81502 nM; Re -6.617e-09 -> 1.564e-08; Im=6.2395e-05
+reached input bound at I=-0.0548
+1811 points; events: ['HOPF']
+## fold check, full model: from I=0 nM upward (paper's saddle-node ~0.4 nM)
+FOLD crossing between I=0.37293 and 0.37293 nM; Re -2.193e-07 -> 2.655e-07; Im=0.0000e+00
+reached input bound at I=-0.0501
+1946 points; events: ['FOLD']
+## time-domain check, full model: 6.5 and 7.5 nM, 1.5e6 s
+below I=6.5 nM: equilibrium R1=9.754 nM; |deviation| in last 10% = 2.408e-01 nM; period from zero-crossings = 1.0824e+05 s
+above I=7.5 nM: equilibrium R1=9.913 nM; |deviation| in last 10% = 6.807e-04 nM; period from zero-crossings = 1.4404e+05 s
+log: /mnt/mishe-scratch/reproducibility-tail/purcell2011-fig5-hopf/sandbox-run.log

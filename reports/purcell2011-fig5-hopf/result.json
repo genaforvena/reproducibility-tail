@@ -1,0 +1,62 @@
+{
+  "paper": {
+    "short": "purcell2011-fig5-hopf",
+    "title": "A Multi-Functional Synthetic Gene Network: A Frequency Multiplier, Oscillator and Switch",
+    "year": 2011,
+    "doi": "10.1371/journal.pone.0016140"
+  },
+  "field": "computational biology (synthetic gene networks, bifurcation analysis)",
+  "stack": "Python 3 (sandbox /usr/bin/python3), numpy 2.5.5; replication repo baioc/re-multif at 3ab84df (Octave artifact not run; no Hopf computation in it)",
+  "claim": {
+    "text": "Input concentration I (nM) of the Hopf bifurcation of equilibrium c1, Figure 5 caption (~7 nM)",
+    "values": [
+      {
+        "name": "Hopf input I (nM)",
+        "paper": 7,
+        "tol_abs": 0.5,
+        "ours": 7.1875
+      }
+    ]
+  },
+  "basis": "reimplemented",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "new bifurcation calculation (continuation and Jacobian eigenvalues) written from the model equations and the paper's Table 1 parameters; primary uses the exact kA/kR of Table 1 footnote",
+  "queue_commit": "173d69c7d5a10bf798f79db8bc4a59b05db35ed8",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "not-possible",
+    "reason": "the replication artifact (baioc/re-multif at 3ab84df) computes time simulations only; no Hopf or continuation code in src/ or experiments.py",
+    "log": "reports/purcell2011-fig5-hopf/attempt-1-result.md"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "pass"
+  },
+  "recipe": "reports/purcell2011-fig5-hopf/recipe.sh",
+  "evidence": [
+    "reports/purcell2011-fig5-hopf/evidence/sandbox-run.log",
+    "reports/purcell2011-fig5-hopf/evidence/recipe-run-1.out",
+    "reports/purcell2011-fig5-hopf/evidence/recipe-run-2.out",
+    "reports/purcell2011-fig5-hopf/evidence/branch_full_I9_down.csv",
+    "reports/purcell2011-fig5-hopf/impl/continue_branch.py",
+    "reports/purcell2011-fig5-hopf/impl/check_time_domain.py",
+    "reports/purcell2011-fig5-hopf/result.md"
+  ],
+  "replayed": [
+    {
+      "utc": "2026-11-26T13:48:11Z",
+      "value": 7.1875,
+      "ok": true
+    },
+    {
+      "utc": "2026-11-26T13:48:55Z",
+      "value": 7.1875,
+      "ok": true
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Rebuilds the rerun verdict for purcell2011-fig5-hopf (attempt 2, basis: reimplemented).
+# Rebuilds the rerun verdict for purcell2011-fig5-hopf (basis: reimplemented; original attempt not-possible, see attempt-1-result.md).
 # 1. fetch the pinned replication repo and read its parameters (src/parameters/network.mat);
 #    the replication's code is NOT executed.
 # 2. install numpy outside the sandbox (fetch step only), copy it into the scratch dir;
@@ -31,7 +31,16 @@ mkdir -p "$W/impl"
 cp "$here"/impl/*.py "$W/impl/"
 
 S="$root/tools/sandbox.sh $ID -- /usr/bin/env PYTHONPATH=/work/pylib /usr/bin/python3 /work/impl"
+# Table 1 of the paper (PLOS ONE, doi:10.1371/journal.pone.0016140.t001) gives the exact activator and
+# repressor constants as (1E-10)^(1/1.3) and (1E-12)^(1/1.3) M; network.mat stores them rounded (2e-8, 6e-10).
+# The registered spec is the paper's Table 1, so the exact values are the primary run; the rounded
+# network.mat values are kept as a sensitivity run.
+KA=$(python3 -c "print(repr((1e-10)**(1/1.3)))"); KR=$(python3 -c "print(repr((1e-12)**(1/1.3)))")
+sed -e "/name: k_a/{n;s/.*/$KA/}" -e "/name: k_r/{n;s/.*/$KR/}" "$W/network.mat" > "$W/network_exact.mat"
 {
+  echo "## PRIMARY (paper Table 1 exact kA, kR): Hopf, full model, continuation from I=9 nM downward"
+  $S/continue_branch.py /work/network_exact.mat full 9 12 0.005 -1
+  echo "## sensitivity (network.mat rounded kA, kR): Hopf, full model, from I=9 nM downward"
   echo "## Hopf, full model: continuation from I=9 nM downward"
   $S/continue_branch.py /work/network.mat full 9 12 0.005 -1
   echo "## Hopf, full model: continuation from I=9 nM upward"

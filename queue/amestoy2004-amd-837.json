@@ -1,0 +1,52 @@
+{
+ "paper": {
+  "title": "Algorithm 837: AMD, an approximate minimum degree ordering algorithm",
+  "authors": [
+   "P. R. Amestoy",
+   "T. A. Davis",
+   "I. S. Duff"
+  ],
+  "year": 2004,
+  "venue": "ACM Transactions on Mathematical Software 30(3), 381-388 (TOMS 837)",
+  "doi": null,
+  "url": "https://netlib.org/toms/837.zip"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/837.zip",
+  "commit": "netlib TOMS archive 837.zip (downloaded 2026-11-26, sha256 f9ae8b203a77bbb267a78f86416185b782c00ff845ef6c7e544abeaecce2418d); the demo output file Demo/amd_demo.out (sha256 63a791ae537cb1126fad775dbc9a629a8787568812f8cc47f1a3bf660c9702f0) is inside it",
+  "note": "AMD 1.1 (C and Fortran versions). The demo Demo/amd_demo.c runs AMD on the built-in 24-by-24 Harwell/Boeing matrix can_24 and prints statistics; build with make in Source and the demo via make fortran or the C demo target. Needs a C compiler (gcc); the Fortran demo needs a Fortran compiler. The archive's README says 'Copyright (c) 2004'."
+ },
+ "field": "numerics (sparse matrix ordering)",
+ "stack": "C/C++",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "The archive's shipped output of the C demo, Demo/amd_demo.out, section 'amd: approximate minimum degree ordering, results' for can_24: 'LDL' flop count for real A: 647'.",
+  "reference": {
+   "file": "837/Demo/amd_demo.out, line containing \"LDL' flop count for real A\"",
+   "sha256": "63a791ae537cb1126fad775dbc9a629a8787568812f8cc47f1a3bf660c9702f0",
+   "archive": "netlib.org/toms/837.zip sha256 f9ae8b203a77bbb267a78f86416185b782c00ff845ef6c7e544abeaecce2418d"
+  },
+  "metric": "The 'LDL' flop count for real A' integer printed by amd_demo for the can_24 matrix, compared with the shipped value 647 (exact integer equality).",
+  "paper_value": "Not used: the paper is paywalled (ACM DL) and was not read, so the claim rests on the shipped demo output alone.",
+  "values": [
+   {
+    "name": "LDL' flop count for real A, can_24 demo (amd_demo.out)",
+    "paper": 647,
+    "tol_abs": 0
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 0,
+   "basis": "Fixed before any run. The value is an exact integer from a deterministic ordering and symbolic count, so the tolerance is exact equality. A mismatch is a finding to diagnose (compiler, version, tie-breaking), not a licence to loosen it."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute (24x24 matrix, 160 nonzeros).",
+  "data_size": "None; the 24x24 matrix can_24 is built into the demo source.",
+  "data_licence": "Netlib TOMS code under the ACM licence of the archive; the rerun should record the licence text in the archive README."
+ },
+ "why": "AMD is a sparse ordering code whose demo prints exact integer factorisation counts for a fixed matrix; the count needs the ordering and the symbolic factor to be computed, not a closed form, and it is exact so any drift is visible.",
+ "registered": "2026-11-26T18:29Z"
+}

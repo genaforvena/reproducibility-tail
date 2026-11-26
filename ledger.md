@@ -20,7 +20,7 @@ By field: astronomy 1, biology 1, ecology 1, numerics 26, other 1, statistics 5
 By stack: C/C++ 7, Fortran 19, MATLAB/Octave 3, R 5, not-stated 1
 By decade: 1960 1, 1970 1, 1980 3, 1990 9, 2000 15, 2010 6
 
-Data as of 2026-11-26T22:26:00Z (the newest replay or funnel entry).
+Data as of 2026-11-26T22:29Z (the newest replay or funnel entry).
 
 ## The funnel
 
@@ -28,26 +28,26 @@ Every candidate is drawn from a named frame in a seeded order and none is skippe
 
 35 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
-**249 candidates considered from 4 of 4 frames: 32 attempted (13%), 0 unreachable, 217 rejected.**
+**257 candidates considered from 4 of 4 frames: 33 attempted (13%), 0 unreachable, 224 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
 | cpc-library | 2767 | 40 | 20 | 50% | 0 | 0 | 20 |
 | netlib-liblist | 160 | 40 | 40 | 100% | 0 | 0 | 40 |
 | stat-co-2010-2015 | 1872 | 80 | 50 | 62% | 1 | 0 | 49 |
-| toms-calgo-index | 570 | 160 | 139 | 87% | 31 | 0 | 108 |
+| toms-calgo-index | 570 | 160 | 147 | 92% | 32 | 0 | 115 |
 
 | why a candidate was not attempted | candidates |
 |---|---|
-| paywalled | 46 |
+| paywalled | 48 |
 | figure-only | 13 |
-| no-numeric-claim | 49 |
-| claim-not-located | 58 |
+| no-numeric-claim | 50 |
+| claim-not-located | 59 |
 | no-method-description | 0 |
 | stochastic-no-seed | 15 |
 | no-code | 3 |
 | runtime | 1 |
-| machine-dependent | 20 |
+| machine-dependent | 23 |
 | restricted-data | 0 |
 | gpu | 1 |
 | other | 11 |
@@ -58,13 +58,13 @@ Survivorship: each stack's count (and share) among all candidates considered, an
 
 | stack | considered | attempted |
 |---|---|---|
-| C/C++ | 29 (12%) | 7 (22%) |
-| Fortran | 146 (59%) | 22 (69%) |
+| C/C++ | 29 (11%) | 7 (21%) |
+| Fortran | 153 (60%) | 23 (70%) |
 | Java | 1 (0%) | 0 (0%) |
 | MATLAB/Octave | 18 (7%) | 2 (6%) |
 | R | 7 (3%) | 1 (3%) |
-| not-stated | 42 (17%) | 0 (0%) |
-| other | 6 (2%) | 0 (0%) |
+| not-stated | 42 (16%) | 0 (0%) |
+| other | 7 (3%) | 0 (0%) |
 
 ### Unreachable
 

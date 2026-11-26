@@ -1,0 +1,57 @@
+{
+  "paper": {
+    "title": "Fortran subroutine to solve the eigenvalue assignment problem (Algorithm 747, staircase reduction and eigenvalue assignment)",
+    "authors": [
+      "G. Miminis",
+      "H. Roth"
+    ],
+    "year": 1995,
+    "venue": "ACM Transactions on Mathematical Software 21(3), 299-326 (Sep 1995), TOMS 747",
+    "doi": null,
+    "url": "https://netlib.org/toms/747.gz",
+    "note": "DOI not verified in this wake; the article was not read (ACM paywall assumed, not checked), so the claim rests on the shipped double-precision reference log dlog.ref."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/747.gz",
+    "commit": "netlib TOMS archive 747.gz (fetched 2026-11-26, sha256 b24ab9b2ef2de1cd45f4448c47cb891d7ab4c9ab7bae004e9da3e1d4cb2cacc2)",
+    "note": "Fortran 77 shar of 36 files: dmevas.f, dstair.f, blas.f, lapack.f, eispk.f, ddemo.f, makefile, ddemo.sh, test01.dat..test20.dat, dlog.ref. Extract with gzip -dc into a fresh directory, split at the lines C*** filename, then build with the makefile (make ddemo). Run ddemo.sh inside that directory only."
+  },
+  "field": "numerics (linear systems and control: eigenvalue assignment by state feedback)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "Shipped double-precision demonstration log dlog.ref, block for test01: 'computed gain matrix F', first row, first two entries. ddemo.f reads test01.dat (n=11, m=7, rank(B)=7) and calls the user routines dstair, dmevas and dbktrn, then prints F. The paper location was not read.",
+    "reference": {
+      "file": "dlog.ref (member of 747.gz), test01 block",
+      "sha256": null,
+      "archive": "netlib.org/toms/747.gz sha256 b24ab9b2ef2de1cd45f4448c47cb891d7ab4c9ab7bae004e9da3e1d4cb2cacc2"
+    },
+    "metric": "Entry F(1,1) of the computed gain matrix for test01 (ddemo, double precision), as printed to 4 decimals: 1.2366. The entry F(1,2) = -0.0621 is the second check value.",
+    "paper_value": "Not used: the article was not read; the value is the one printed in the shipped log.",
+    "values": [
+      {
+        "name": "F(1,1) of test01, ddemo double precision (dlog.ref)",
+        "paper": 1.2366,
+        "tol_abs": 5e-05
+      },
+      {
+        "name": "F(1,2) of test01 (dlog.ref)",
+        "paper": -0.0621,
+        "tol_abs": 5e-05
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 5e-05,
+      "basis": "Fixed before any run. The printed value has 4 decimals, so the rounding half-unit is 5e-5. The single-precision log slog.ref prints the same 1.2366 and -.0621, so both precisions agree at this print resolution. The closed-loop eigenvalue lists of the two logs do NOT agree (.5144 vs .5147 real part), so the claim uses the gain F, not the eigenvalues. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 5 minutes: compile of about 14 files of Fortran 77 and one run of test01.dat.",
+    "data_size": "test01.dat is a few kilobytes; the archive is 10 KB compressed.",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A deterministic eigenvalue-assignment and staircase routine whose shipped double-precision log prints the computed feedback gain, so the claim tests the gain computed by the method, not a closed-form value, with a precision-stable entry.",
+  "registered": "2026-11-26T22:29Z"
+}

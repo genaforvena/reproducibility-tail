@@ -1,0 +1,38 @@
+{
+  "paper": {
+    "title": "BB: An R Package for Solving a Large System of Nonlinear Equations and for Optimizing a High-Dimensional Nonlinear Objective Function",
+    "authors": [
+      "Ravi Varadhan",
+      "Paul D. Gilbert"
+    ],
+    "year": 2009,
+    "venue": "Journal of Statistical Software 32(4), October 2009",
+    "doi": "10.18637/jss.v032.i04",
+    "url": "https://www.jstatsoft.org/article/view/v032i04/v32i04.pdf"
+  },
+  "code": {
+    "url": "https://cran.r-project.org/src/contrib/Archive/BB/BB_2009.9-1.tar.gz",
+    "commit": "CRAN archive tarball BB_2009.9-1.tar.gz, DESCRIPTION Version 2009.9-1, Date 2009-10-07",
+    "archive": "sha256 e6b145bda50727838623442e1dc7985b1e9806c68371bf542c600209394ac88e (downloaded by scout 2026-11-26 from the CRAN archive; the tarball is GPL, ~387 KB). Do not use the current BB 2026.1.0, whose results may differ.",
+    "note": "The paper's listing (JSS p. 10-11) is the code to implement: hdp(x) is the Kearfott polynomial system, multiStart(par = p0, fn = hdp, action = \"solve\"), with p0 <- matrix(runif(900), 300, 3) after setRNG(list(kind = \"Mersenne-Twister\", normal.kind = \"Inversion\", seed = 1234)). The archived tests/multiStartHDP.R uses 200 starts (runif(600)) and a different check, so it is not the paper's configuration; the rerun must follow the paper's 300-start listing. The paper calls ans$conv; R's $ partial matching resolves it to ans$converged in the archived code (rerun to confirm)."
+  },
+  "field": "computational mathematics / statistics (nonlinear equation solving, multiple roots)",
+  "stack": "R (the paper used R 2.9.1 on Windows Vista; the rerun uses a current R with the archived BB 2009.9-1), with packages setRNG (CRAN, for the Mersenne-Twister seed setting) and numDeriv (BB dependency)",
+  "claim": {
+    "location": "Section 'Finding multiple roots or multiple local optima -- Function multiStart' (JSS p. 10-11), the text and console output after the hdp listing: 'The sum(ans$conv) gives the number of successful runs (284 in our experiments).'",
+    "paper_value": "284 successful runs out of 300 starting values (printed as [1] 284 after R> sum(ans$conv)).",
+    "value_check": "Read by scout from the JSS PDF (pdftotext -layout of v32i04.pdf, 6 pages) on 2026-11-26: the printed output '[1] 284' and the sentence '(284 in our experiments)' are both on page 11. The 12 unique roots are also printed there, but scout registers only the count.",
+    "metric": "integer count of converged runs: sum(ans$conv) for multiStart(par = p0, fn = hdp, action = \"solve\") with p0 <- matrix(runif(900), 300, 3) after the seed 1234 Mersenne-Twister setting",
+    "tolerance": {
+      "count_abs": 3,
+      "basis": "Fixed before any run: the count is an integer out of 300. The paper warns (p. 9) that floating-point differences across R versions and hardware may change iteration paths, so a pass is a count of 281 to 287 inclusive. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: 300 BBsolve calls on a 3-variable polynomial system (the paper reports 0.15 s for the comparable exponential function over 1000 starts in Table 1).",
+    "data_size": "None. The multiStart input is generated with runif.",
+    "data_licence": "No external data. Code: BB (GPL) and setRNG and numDeriv (CRAN, GPL)."
+  },
+  "why": "A deterministic-given-seed integer claim in a 2009 JSS R paper, printed in the text with the seed and RNG kind stated, using the archived CRAN package, and runnable in seconds on CPU.",
+  "registered": "2026-11-26T13:09:13Z"
+}

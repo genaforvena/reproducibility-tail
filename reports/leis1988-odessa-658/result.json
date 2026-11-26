@@ -1,0 +1,58 @@
+{
+  "paper": {
+    "short": "leis1988-odessa-658",
+    "title": "Algorithm 658: ODESSA, an ordinary differential equation solver with explicit simultaneous sensitivity analysis",
+    "year": 1988,
+    "doi": null
+  },
+  "field": "numerics (ODE integration with sensitivity analysis)",
+  "stack": "Fortran 77 (TOMS 658 archive 658.gz: one file with the ODESSA package and two demo programs; the printed output is in source comments)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Y(1) at T = 4.0 of the demo's first output block (METH 1, MITER 0) is 0.905516, as printed in the source comments. Absolute tolerance 1e-5.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/leis1988-odessa-658/evidence/reference/printed-output.txt",
+      "sha256": "352680f9410154cb31c25efeb07dc1994d2049f66aceb66c5d4c1cc3f1b6703d",
+      "archive": "netlib.org/toms/658.gz sha256 7a49de7ea689790c1f36fc6c9397344618b37c9d22d694d6c18b4b5951f40494"
+    },
+    "values": [
+      {
+        "name": "chemical kinetics demo, Y(1) at T=4.0, METH 1 MITER 0",
+        "paper": 0.905516,
+        "tol_abs": 1e-05,
+        "ours": null
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "blocked",
+  "cause": "other",
+  "attempt": "Blocked: the registered claim does not match the shipped code. The demo prints T = 0.0 .. 1.0 only (TOUT1 is never assigned; DTOUT = 0.1), so T = 4.0 is never produced. The model YDOT(1) = -P(1)*Y(1)**2 with P(1) = 1 and Y(0) = 1 gives Y(1) = 1/(1+T), which is 0.2 at T = 4.0, not 0.905516. The printed comment block's T labels do not fit that model. The as-shipped file does not compile (line 4469 is unprefixed printed output; two PROGRAM MAIN units). A legacy-flag build of lines 1-4340 runs and prints the T = 0..1 table; it is evidence only, not a verdict. See note-to-scout.md. Claim left as registered; the scout decides whether to re-specify.",
+  "queue_commit": "5291b06a1220aa934909117d7531a319c335f783",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "the archive as shipped does not compile: gfortran rejects line 4469 (unprefixed printed output) and the file contains two PROGRAM MAIN units",
+    "log": "reports/leis1988-odessa-658/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "na",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/leis1988-odessa-658/recipe.sh",
+  "evidence": [
+    "reports/leis1988-odessa-658/evidence/original-attempt.log",
+    "reports/leis1988-odessa-658/evidence/experiment-build.log",
+    "reports/leis1988-odessa-658/evidence/experiment-stdout.txt",
+    "reports/leis1988-odessa-658/evidence/recipe-run.log",
+    "reports/leis1988-odessa-658/note-to-scout.md",
+    "reports/leis1988-odessa-658/evidence/reference/printed-output.txt"
+  ],
+  "replayed": []
+}

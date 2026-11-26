@@ -12,7 +12,8 @@
  "code": {
   "url": "https://netlib.org/toms/734.gz",
   "commit": "netlib TOMS archive 734.gz (downloaded 2026-11-26, 72654 bytes compressed, 7381 lines uncompressed; sha256 not recorded by scout)",
-  "note": "A shell archive (Algorithm:734, Language Fortran90, Precision Sp). Members: Src/Sp/src.f90 (the minimisation package, modules precisions, reals, supp_codes, minimize and others), Drivers/Sp/driver2.f90 (Rosenbrock test program, Min_Rosenbrock, self-contained: no stdin), Drivers/Sp/res2 (the shipped stdout of that run). driver2 calls i1mach(2) for the output unit, which is not in the archive (PackingList names the PORT library, DriverLib: port); the rerun must supply i1mach, for example a function returning 6 for unit 2. Needs a Fortran 90 compiler; gfortran is not in the scout sandbox."
+  "note": "A shell archive (Algorithm:734, Language Fortran90, Precision Sp). Members: Src/Sp/src.f90 (the minimisation package, modules precisions, reals, supp_codes, minimize and others), Drivers/Sp/driver2.f90 (Rosenbrock test program, Min_Rosenbrock, self-contained: no stdin), Drivers/Sp/res2 (the shipped stdout of that run). driver2 calls i1mach(2) for the output unit, which is not in the archive (PackingList names the PORT library, DriverLib: port); the rerun must supply i1mach, for example a function returning 6 for unit 2. Needs a Fortran 90 compiler; gfortran is not in the scout sandbox.",
+  "archive": "netlib TOMS 734.gz, sha256 bf1682045031a42610373d26367ccab037dcc2aada64e3f9ab033311a7d794b0 (hashed by scout 2026-11-26 from the fetched bytes)"
  },
  "field": "numerics (unconstrained minimisation, quasi-Newton and conjugate gradient in single precision)",
  "stack": "Fortran",

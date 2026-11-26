@@ -1,0 +1,47 @@
+{
+  "paper": {
+    "short": "kraft1994-tomp-733",
+    "title": "TOMP archive driver (Kraft 1994, see queue entry)",
+    "year": 1994,
+    "doi": "-"
+  },
+  "field": "numerics (TOMP archive driver)",
+  "stack": "not-stated in the registered entry; provisional local run",
+  "claim": {
+    "text": "Value 1.7952392, tol 1e-5 absolute; provisional local run gives 1.79523920 in both passes (not yet a verdict)",
+    "values": [
+      {
+        "name": "value",
+        "paper": 1.7952392,
+        "tol_abs": 0.00001,
+        "ours": null
+      }
+    ]
+  },
+  "basis": "-",
+  "verdict": "blocked",
+  "cause": "missing-code",
+  "attempt": "Provisional, not yet a verdict. Both local passes give 1.79523920, against claim 1.7952392 at tol 1e-5. Blocked on G2: the TOMP archive prose that the driver depends on is not available to rerun. Scout declined to add it from a summary and will fetch it only if sent the exact section list. Resolver: scout. Evidence from the local passes is not yet committed under reports/kraft1994-tomp-733/. Disposition: next rerun wake, after scout answers or sends the section list.",
+  "queue_commit": "c79860bab5ae7a91694fa2d9e9251c21094a5612",
+  "original_attempt": {
+    "tried": false,
+    "outcome": "not-possible",
+    "reason": "not yet attempted as a documented run: the TOMP driver prose that defines the run is missing from the registration",
+    "log": "-"
+  },
+  "gates": {
+    "G1": "na",
+    "G2": "na",
+    "G3": "na",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "-",
+  "evidence": [
+    "reports/kraft1994-tomp-733/claimed"
+  ],
+  "replayed": [],
+  "stack_class": "not-stated",
+  "field_class": "numerics"
+}

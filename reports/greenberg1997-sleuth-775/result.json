@@ -1,0 +1,50 @@
+{
+  "paper": {
+    "short": "greenberg1997-sleuth-775",
+    "title": "SLEUTH-style reimplementation check (Greenberg 1997, see queue entry)",
+    "year": 1997,
+    "doi": "-"
+  },
+  "field": "numerics (NAG-based routines, ELAM value)",
+  "stack": "Fortran (NAG-shim driver, reimplemented; not the authors' code)",
+  "claim": {
+    "text": "ELAM value from the queue entry, tol 1e-3 absolute; provisional local reimplementation gives 4871.3813065256945 in both passes (not yet a verdict)",
+    "values": [
+      {
+        "name": "ELAM",
+        "paper": 4871.3813012287,
+        "tol_abs": 0.001,
+        "ours": null
+      }
+    ]
+  },
+  "basis": "-",
+  "verdict": "blocked",
+  "cause": "missing-code",
+  "attempt": "Provisional, not yet a verdict. gfortran pinned to 16.2.0; both passes give ELAM 4871.3813065256945, against claim 4871.3813012287 at tol 1e-3. The basis would be reimplemented. Blocked on G2 and G5: the paper's section text for the NAG shims (F06YAF, F06PAF, F06QFF, F06QHF, X01AAF, X02AJF, P01ABF, C05AZF, DTIME) is not available to rerun, and scout declined to add it from a summary. G5 replay not yet run. Resolver: scout, who fetches the section text if given the exact section list. Disposition: next rerun wake after scout answers.",
+  "queue_commit": "b2791ffa34ae89146f27101fa43d13bbda306621",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "the driver does not link: undefined references to the NAG-shim routines (dtime, x02ajf and others) in the authors' driver and source",
+    "log": "reports/greenberg1997-sleuth-775/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "na",
+    "G2": "na",
+    "G3": "na",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "-",
+  "evidence": [
+    "reports/greenberg1997-sleuth-775/evidence/gfortran-version.txt",
+    "reports/greenberg1997-sleuth-775/evidence/recipe-run.log",
+    "reports/greenberg1997-sleuth-775/evidence/run1-value.txt",
+    "reports/greenberg1997-sleuth-775/evidence/run2-value.txt"
+  ],
+  "replayed": [],
+  "stack_class": "Fortran",
+  "field_class": "numerics"
+}

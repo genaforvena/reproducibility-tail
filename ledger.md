@@ -5,7 +5,7 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-13 papers attempted.
+16 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
@@ -14,11 +14,11 @@ Method and gates: [docs/method.md](docs/method.md).
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
-| - | blocked or not yet run | 1 |
+| - | blocked or not yet run | 4 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 6, other 1, statistics 3
-By stack: C/C++ 1, Fortran 5, MATLAB/Octave 2, R 5
-By decade: 1970 1, 1990 3, 2000 3, 2010 6
+By field: astronomy 1, biology 1, ecology 1, numerics 9, other 1, statistics 3
+By stack: C/C++ 2, Fortran 6, MATLAB/Octave 2, R 5, not-stated 1
+By decade: 1970 1, 1990 5, 2000 4, 2010 6
 
 Data as of 2026-11-26T18:46Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-26T18:46Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-13 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+16 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **181 candidates considered from 4 of 4 frames: 14 attempted (8%), 0 unreachable, 167 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 3 (did not run), not-possible 2 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 7 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 5 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 7 (ran as documented).
 
 ## Results
 
@@ -96,7 +96,11 @@ Authors' original artifact, among all attempted papers: failed 3 (did not run), 
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Differential potential) | 0.015625 ± 1e-09 | 0.015625 | 0 | 0% | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Number of cycles in S7.cy) | 4 ± 0 | 4 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics · 2010 · R | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [gaviano2003-gkls-829](reports/gaviano2003-gkls-829/result.md) | numerics · 2003 · C/C++ | Shipped reference test001.txt: global minimizer of D-type function number 1, dimension 2, f = -1, at (-0.136, 0.824), tol 1e-3 absolute (D-type function 1, dim 2, global minimizer x1) | -0.136 ± 0.001 | – | – | – | - | ✓ · · · | - | blocked | never clean |
+| [gaviano2003-gkls-829](reports/gaviano2003-gkls-829/result.md) | numerics · 2003 · C/C++ | Shipped reference test001.txt: global minimizer of D-type function number 1, dimension 2, f = -1, at (-0.136, 0.824), tol 1e-3 absolute (D-type function 1, dim 2, global minimizer x2) | 0.824 ± 0.001 | – | – | – | - | ✓ · · · | - | blocked | never clean |
+| [greenberg1997-sleuth-775](reports/greenberg1997-sleuth-775/result.md) | numerics · 1997 · Fortran | ELAM value from the queue entry, tol 1e-3 absolute; provisional local reimplementation gives 4871.3813065256945 in both passes (not yet a verdict) (ELAM) | 4871.38 ± 0.001 | – | – | – | - | · · · · | - | blocked | never clean |
 | [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics · 2012 · R | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [kraft1994-tomp-733](reports/kraft1994-tomp-733/result.md) | numerics · 1994 · not-stated | Value 1.7952392, tol 1e-5 absolute; provisional local run gives 1.79523920 in both passes (not yet a verdict) (value) | 1.79524 ± 1e-05 | – | – | – | - | · · · · | - | blocked | never clean |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDM0P5(-4)) [shipped reference output] | 0.0180819 ± 1.80819e-07 | 0.0180819 | -2.9914e-09 | 2% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDM0P5(3)) [shipped reference output] | 1.85349 ± 1.85349e-05 | 1.85349 | -8.86015e-08 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDP0P5(-4)) [shipped reference output] | 0.0181982 ± 1.81982e-07 | 0.0181982 | -3.50837e-09 | 2% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
@@ -127,10 +131,10 @@ Cause of every attempted paper that is `not-reproduced` or `blocked` (the funnel
 | cause | papers |
 |---|---|
 | dependency-rot | 0 |
-| missing-code | 0 |
+| missing-code | 2 |
 | missing-data | 0 |
 | unstated-parameter | 1 |
 | numerical-discrepancy | 1 |
 | nondeterminism | 0 |
 | platform | 0 |
-| other | 0 |
+| other | 1 |

@@ -1,0 +1,58 @@
+{
+  "paper": {
+    "short": "gaviano2003-gkls-829",
+    "title": "Software for generation of classes of test functions with known local and global minima for global optimization",
+    "year": 2003,
+    "doi": "-"
+  },
+  "field": "numerics (global optimization test-function generation)",
+  "stack": "C/C++ (GKLS generator, TOMS 829)",
+  "claim": {
+    "text": "Shipped reference test001.txt: global minimizer of D-type function number 1, dimension 2, f = -1, at (-0.136, 0.824), tol 1e-3 absolute",
+    "values": [
+      {
+        "name": "D-type function 1, dim 2, global minimizer x1",
+        "paper": -0.136,
+        "tol_abs": 0.001,
+        "ours": null
+      },
+      {
+        "name": "D-type function 1, dim 2, global minimizer x2",
+        "paper": 0.824,
+        "tol_abs": 0.001,
+        "ours": null
+      }
+    ]
+  },
+  "basis": "-",
+  "verdict": "blocked",
+  "cause": "other",
+  "attempt": "Reproduced locally, provisional, not yet a verdict. Both passes give x1 = -0.136, x2 = 0.824 and the regenerated test001.txt matches the shipped reference. The authors' Makefile fails at link on this host (--as-needed drops libm); the build runs the authors' Makefile with CFLAGS=-Wl,--no-as-needed, so the basis would be patched (build-only). Blocked on G2: the gate requires patch.archive_sha256 to equal the sha256 registered in queue/gaviano2003-gkls-829.json code.archive, and that entry has no hash. Scout declined to edit the frozen claim (DM answer). The netlib 829.gz sha256 is e4bd1b05f73b9a697c69998ba190226b38133b68d83f0b3da2cd8d9f99a5f5f6. Resolver: operator, to decide whether a new commit may add the hash to the entry; scout is the registrant.",
+  "queue_commit": "2f2d2298e3ae4b00b016b9431b83d076507646d9",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "authors' Makefile does not link on this host: -lm precedes the objects and --as-needed drops libm (undefined reference to sin)",
+    "log": "reports/gaviano2003-gkls-829/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "na",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "-",
+  "evidence": [
+    "reports/gaviano2003-gkls-829/evidence/original-attempt.log",
+    "reports/gaviano2003-gkls-829/evidence/build.log",
+    "reports/gaviano2003-gkls-829/evidence/recipe-run.log",
+    "reports/gaviano2003-gkls-829/evidence/manifest.pre",
+    "reports/gaviano2003-gkls-829/evidence/manifest.mid",
+    "reports/gaviano2003-gkls-829/evidence/manifest.post"
+  ],
+  "replayed": [],
+  "stack_class": "C/C++",
+  "field_class": "numerics"
+}

@@ -1,0 +1,78 @@
+{
+  "paper": {
+    "short": "gil2002-airy-aizbiz-819",
+    "title": "Algorithm 819: AIZ, BIZ: Two Fortran 77 Routines for the Computation of Complex Airy Functions",
+    "year": 2002,
+    "doi": null
+  },
+  "field": "numerics (special functions, complex Airy functions)",
+  "stack": "Fortran 77 (TOMS 819, shipped driver Fortran77/Dp/Drivers/driver.f, program WRTEST)",
+  "claim": {
+    "text": "Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1)",
+    "values": [
+      {
+        "name": "res1 CHECK1 maximum (shipped)",
+        "paper": 9.43689571e-15,
+        "tol_abs": 1e-13,
+        "ours": 9.5479180117763462e-15
+      },
+      {
+        "name": "res2 CHECK2 maximum (shipped)",
+        "paper": 5.23650405e-15,
+        "tol_abs": 1e-13,
+        "ours": 5.2218853419634024e-15
+      },
+      {
+        "name": "res3 CHECK3 maximum (shipped)",
+        "paper": 5.19100205e-15,
+        "tol_abs": 1e-13,
+        "ours": 5.1497626483375173e-15
+      },
+      {
+        "name": "res4 CHECK4 maximum (shipped)",
+        "paper": 9.37486625e-15,
+        "tol_abs": 1e-13,
+        "ours": 9.4061512267874000e-15
+      }
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced. The authors' Fortran 77 sources compile as shipped with gfortran -O2 (Fortran77/Dp/Drivers/driver.f with Src/src.f and Src/port.f; no edits; original attempt compiled, compile_exit=0, and both runs exited 0). Two passes (the original binary in its build directory; the same binary in a clean directory) give identical res1..res4 maxima. Each |ours - shipped| is at most 1.1e-16, far inside the registered absolute tolerance 1e-13, and every maximum is strictly below 1e-13, the paper's stated bound. Note: the readme says port.f needs replacing on Fortran 77 compilers; gfortran accepts its Fortran 90 intrinsics as shipped, so no patch was needed.",
+  "queue_commit": "efdf50bc4cdb6fc47d99d73921dd4fed47221b7d",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": null,
+    "log": "reports/gil2002-airy-aizbiz-819/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/gil2002-airy-aizbiz-819/recipe.sh",
+  "evidence": [
+    "reports/gil2002-airy-aizbiz-819/evidence/original-attempt.log",
+    "reports/gil2002-airy-aizbiz-819/evidence/recipe-run.log",
+    "reports/gil2002-airy-aizbiz-819/evidence/reference/res1",
+    "reports/gil2002-airy-aizbiz-819/evidence/reference/res2",
+    "reports/gil2002-airy-aizbiz-819/evidence/reference/res3",
+    "reports/gil2002-airy-aizbiz-819/evidence/reference/res4",
+    "reports/gil2002-airy-aizbiz-819/evidence/run1-res1-value.txt",
+    "reports/gil2002-airy-aizbiz-819/evidence/run1-res2-value.txt",
+    "reports/gil2002-airy-aizbiz-819/evidence/run1-res3-value.txt",
+    "reports/gil2002-airy-aizbiz-819/evidence/run1-res4-value.txt",
+    "reports/gil2002-airy-aizbiz-819/evidence/run2-res1-value.txt",
+    "reports/gil2002-airy-aizbiz-819/evidence/run2-res2-value.txt",
+    "reports/gil2002-airy-aizbiz-819/evidence/run2-res3-value.txt",
+    "reports/gil2002-airy-aizbiz-819/evidence/run2-res4-value.txt"
+  ],
+  "replayed": [],
+  "stack_class": "Fortran",
+  "field_class": "numerics"
+}

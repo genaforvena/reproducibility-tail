@@ -10,15 +10,25 @@
   "claim": {
     "text": "Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049)",
     "values": [
-      {"name": "N_A", "paper": 1317, "tol_abs": 132, "ours": null},
-      {"name": "N_C", "paper": 52, "tol_abs": 5, "ours": null}
+      {
+        "name": "N_A",
+        "paper": 1317,
+        "tol_abs": 132,
+        "ours": null
+      },
+      {
+        "name": "N_C",
+        "paper": 52,
+        "tol_abs": 5,
+        "ours": null
+      }
     ]
   },
   "basis": "-",
   "verdict": "blocked",
   "cause": "unstated-parameter",
   "attempt": "no run. The Table 1 invocation (circles flags and input file) and the seed are not stated in the paper or the repo script; withdrawn by scout at 5fc5049",
-  "queue_commit": "5fc504946fa97e6c21a7a9bcaee1d16acdda6060",
+  "queue_commit": "484021a34a942c3c2ae9de962b6ffe96094cb848",
   "original_attempt": {
     "tried": false,
     "outcome": "not-possible",

@@ -11,7 +11,6 @@ product is `reports/` and `ledger.md`. Read `README.md`, `docs/method.md` and
   Never runs a paper's code.
 - **rerun** — rebuilds and reruns the oldest unclaimed entry in the sandbox and
   records the verdict in `reports/`. Never edits a claim or its tolerance.
-
 - **operator** — the owner's standing delegate. It answers the other two minds' requests for
   approval, resolves stuck work (a mind blocked, a RED signal nobody owns, an unknown-effect wake)
   and keeps the plant moving. It is a mind, not a person. It never approves what the owner

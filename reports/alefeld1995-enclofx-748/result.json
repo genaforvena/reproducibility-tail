@@ -1,0 +1,62 @@
+{
+  "paper": {
+    "short": "alefeld1995-enclofx-748",
+    "title": "Algorithm 748: Enclosing Zeros of Continuous Functions",
+    "year": 1995,
+    "doi": null
+  },
+  "field": "numerics (bracketing root finding and interval enclosure)",
+  "stack": "Fortran 77",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "ROOT printed by the authors' driver.f for NPROB=1, N=1 (first line of testdata), against the shipped testout value 1.8954942670340",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/alefeld1995-enclofx-748/evidence/reference/testout",
+      "sha256": "214a35a74557a93fc9f9d0be35c59eed8e0c4fc5a2049471c7f862651fbcc315",
+      "archive": "netlib.org/toms/748.gz sha256 d82ccafd0407e2bd3cdf89347d968348d02b070da7f46e793436500629f5ac92 (member testout)"
+    },
+    "values": [
+      {
+        "name": "NPROB=1, N=1, ROOT",
+        "paper": 1.895494267034,
+        "tol_abs": 1e-08,
+        "ours": 1.895494267033981
+      }
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "The authors' driver.f and enclofx.f compile with conda-forge gfortran 16.2.0 (sandbox fetch step) and run on testdata with no source change, -O2 and -O0. Problem 1 root 1.8954942670339809 agrees with the shipped 1.8954942670340 to 2e-14, within tol_abs 1e-8. All 154 roots of the shipped testout agree within 1e-8 (max abs diff 4e-13) in both passes. exdrive.f is a separate standalone program with its own MAIN, not part of this driver, and is not linked. A first attempt linked it by mistake and failed at link time; that log is kept as evidence/original-attempt-mistaken-with-exdrive.log and is not the G1 attempt.",
+  "queue_commit": "2f2d2298e3ae4b00b016b9431b83d076507646d9",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "Authors' driver.f and enclofx.f compiled and ran as documented with no source change (evidence/original-attempt.log).",
+    "log": "reports/alefeld1995-enclofx-748/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "pass",
+    "cross_check": "na"
+  },
+  "recipe": "reports/alefeld1995-enclofx-748/recipe.sh",
+  "evidence": [
+    "reports/alefeld1995-enclofx-748/evidence/original-attempt.log",
+    "reports/alefeld1995-enclofx-748/evidence/original-attempt-mistaken-with-exdrive.log",
+    "reports/alefeld1995-enclofx-748/evidence/recipe-run.log",
+    "reports/alefeld1995-enclofx-748/evidence/run1-stdout.txt",
+    "reports/alefeld1995-enclofx-748/evidence/run2-stdout.txt",
+    "reports/alefeld1995-enclofx-748/evidence/run1-value.txt",
+    "reports/alefeld1995-enclofx-748/evidence/run2-value.txt",
+    "reports/alefeld1995-enclofx-748/evidence/reference/sources.sha256",
+    "reports/alefeld1995-enclofx-748/evidence/reference/testout",
+    "reports/alefeld1995-enclofx-748/evidence/reference/testdata"
+  ],
+  "replayed": []
+}

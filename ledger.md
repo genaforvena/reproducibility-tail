@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-12 papers attempted.
+13 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
-| A | authors' code, run clean | 6 |
+| A | authors' code, run clean | 7 |
 | B | authors' code with build fixes | 3 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 1 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 5, other 1, statistics 3
-By stack: C/C++ 1, Fortran 4, MATLAB/Octave 2, R 5
-By decade: 1970 1, 1990 2, 2000 3, 2010 6
+By field: astronomy 1, biology 1, ecology 1, numerics 6, other 1, statistics 3
+By stack: C/C++ 1, Fortran 5, MATLAB/Octave 2, R 5
+By decade: 1970 1, 1990 3, 2000 3, 2010 6
 
 Data as of 2026-11-26T18:22Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-26T18:22Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-12 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+13 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **163 candidates considered from 4 of 4 frames: 12 attempted (7%), 0 unreachable, 151 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 3 (did not run), not-possible 2 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 6 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 3 (did not run), not-possible 2 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 7 (ran as documented).
 
 ## Results
 
@@ -86,6 +86,7 @@ Authors' original artifact, among all attempted papers: failed 3 (did not run), 
 | [akima1996-sdbi3p-761](reports/akima1996-sdbi3p-761/result.md) | numerics · 1996 · Fortran | ZI1(XI,YI) printed by the authors' driver for six registered grid points of the 'Calculation by points' table in the shipped result file res (SDBI3P, 30 data points), against the values printed in the same file (ZI1(XI=20, YI=15)) [shipped reference output] | 6.95 ± 0.011 | 6.95 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [akima1996-sdbi3p-761](reports/akima1996-sdbi3p-761/result.md) | numerics · 1996 · Fortran | ZI1(XI,YI) printed by the authors' driver for six registered grid points of the 'Calculation by points' table in the shipped result file res (SDBI3P, 30 data points), against the values printed in the same file (ZI1(XI=10, YI=15)) [shipped reference output] | 22.34 ± 0.011 | 22.34 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [akima1996-sdbi3p-761](reports/akima1996-sdbi3p-761/result.md) | numerics · 1996 · Fortran | ZI1(XI,YI) printed by the authors' driver for six registered grid points of the 'Calculation by points' table in the shipped result file res (SDBI3P, 30 data points), against the values printed in the same file (ZI1(XI=15, YI=5)) [shipped reference output] | 20.17 ± 0.011 | 20.17 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [alefeld1995-enclofx-748](reports/alefeld1995-enclofx-748/result.md) | numerics · 1995 · Fortran | ROOT printed by the authors' driver.f for NPROB=1, N=1 (first line of testdata), against the shipped testout value 1.8954942670340 (NPROB=1, N=1, ROOT) [shipped reference output] | 1.89549 ± 1e-08 | 1.89549 | -1.90958e-14 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Nonlinearity) | 56 ± 0 | 56 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Algebraic degree) | 3 ± 0 | 3 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Algebraic immunity) | 3 ± 0 | 3 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ ✓ | B | reproduced | 2026-11-26 ok |

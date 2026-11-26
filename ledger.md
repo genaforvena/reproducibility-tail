@@ -13,14 +13,14 @@ Method and gates: [docs/method.md](docs/method.md).
 | B | authors' code with build fixes | 5 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
-| X | not reproduced, cause diagnosed | 2 |
-| - | blocked or not yet run | 5 |
+| X | not reproduced, cause diagnosed | 1 |
+| - | blocked or not yet run | 6 |
 
 By field: astronomy 1, biology 1, ecology 1, numerics 16, other 1, statistics 3
 By stack: C/C++ 4, Fortran 11, MATLAB/Octave 2, R 5, not-stated 1
 By decade: 1970 1, 1980 1, 1990 6, 2000 9, 2010 6
 
-Data as of 2026-11-26T20:16Z (the newest replay or funnel entry).
+Data as of 2026-11-26T20:21:49Z (the newest replay or funnel entry).
 
 ## The funnel
 
@@ -102,10 +102,10 @@ Authors' original artifact, among all attempted papers: failed 9 (did not run), 
 | [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics · 2010 · R | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [gaviano2003-gkls-829](reports/gaviano2003-gkls-829/result.md) | numerics · 2003 · C/C++ | Shipped reference test001.txt: global minimizer of D-type function number 1, dimension 2, f = -1, at (-0.136, 0.824), tol 1e-3 absolute (D-type function 1, dim 2, global minimizer x1) | -0.136 ± 0.001 | -0.136 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [gaviano2003-gkls-829](reports/gaviano2003-gkls-829/result.md) | numerics · 2003 · C/C++ | Shipped reference test001.txt: global minimizer of D-type function number 1, dimension 2, f = -1, at (-0.136, 0.824), tol 1e-3 absolute (D-type function 1, dim 2, global minimizer x2) | 0.824 ± 0.001 | 0.824 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
-| [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res1 CHECK1 maximum (shipped)) | 9.4369e-15 ± 1e-13 | 9.54792e-15 | 1.11022e-16 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
-| [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res2 CHECK2 maximum (shipped)) | 5.2365e-15 ± 1e-13 | 5.22189e-15 | -1.46187e-17 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
-| [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res3 CHECK3 maximum (shipped)) | 5.191e-15 ± 1e-13 | 5.14976e-15 | -4.12394e-17 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
-| [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res4 CHECK4 maximum (shipped)) | 9.37487e-15 ± 1e-13 | 9.40615e-15 | 3.1285e-17 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res1 CHECK1 maximum (shipped)) | 9.4369e-15 ± 1e-13 | 9.54792e-15 | 1.11022e-16 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res2 CHECK2 maximum (shipped)) | 5.2365e-15 ± 1e-13 | 5.22189e-15 | -1.46187e-17 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res3 CHECK3 maximum (shipped)) | 5.191e-15 ± 1e-13 | 5.14976e-15 | -4.12394e-17 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res4 CHECK4 maximum (shipped)) | 9.37487e-15 ± 1e-13 | 9.40615e-15 | 3.1285e-17 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [gil2004-besselia-831](reports/gil2004-besselia-831/result.md) | numerics · 2004 · Fortran | WKTEST Wronskian check, IFAC=2 (scaled functions), maximum over the driver's grid, as printed in the shipped Drivers/Res: 6.814548925149211E-13, absolute tolerance 1e-13 (WKTEST Wronskian maximum, IFAC=2 (shipped Res)) | 6.81455e-13 ± 1e-13 | 6.81566e-13 | 1.11022e-16 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [greenberg1997-sleuth-775](reports/greenberg1997-sleuth-775/result.md) | numerics · 1997 · Fortran | ELAM value from the queue entry, tol 1e-3 absolute; provisional local reimplementation gives 4871.3813065256945 in both passes (not yet a verdict) (ELAM) | 4871.38 ± 0.001 | – | – | – | - | · · · · | - | blocked | never clean |
 | [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics · 2012 · R | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
@@ -130,7 +130,7 @@ Authors' original artifact, among all attempted papers: failed 9 (did not run), 
 | [purcell2011-fig5-hopf](reports/purcell2011-fig5-hopf/result.md) | biology · 2011 · MATLAB/Octave | Input concentration I (nM) of the Hopf bifurcation of equilibrium c1, Figure 5 caption (~7 nM) (Hopf input I (nM)) | 7 ± 0.5 | 7.1875 | 0.1875 | 38% | reimplemented | ✓ ✓ ✓ ✓ | C | reproduced | 2026-11-26 ok |
 | [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | astronomy · 2008 · Fortran | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_A) | 1317 ± 132 | – | – | – | - | · · · · | - | blocked | never clean |
 | [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | astronomy · 2008 · Fortran | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_C) | 52 ± 5 | – | – | – | - | · · · · | - | blocked | never clean |
-| [renka2003-dnsplin1-828](reports/renka2003-dnsplin1-828/result.md) | numerics · 2003 · Fortran | driver on data1 (Res1), the second value after the count 241 in the output, shipped as 0.565126291685656D-01 in Fortran77/Dp/Drivers/res1 (row 3 of the file), absolute tolerance 1e-12 (driver on data1, row 2 of res1) | 0.0565126 ± 1e-12 | 0.0565126 | 3.18687e-10 | 31869% ⚠ | patched (build-only) | ✓ ✓ ✓ · | X | not-reproduced | never clean |
+| [renka2003-dnsplin1-828](reports/renka2003-dnsplin1-828/result.md) | numerics · 2003 · Fortran | driver on data1 (Res1), the second value after the count 241 in the output, shipped as 0.565126291685656D-01 in Fortran77/Dp/Drivers/res1 (row 3 of the file), absolute tolerance 1e-12 (driver on data1, row 2 of res1) | 0.0565126 ± 1e-12 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
 | [van-deun2006-besselint-858](reports/van-deun2006-besselint-858/result.md) | numerics · 2006 · MATLAB/Octave | besselint(sqrt([2 3 5 7 11]), 0, 1) returns I = 6.106434990872165e-02 (Example 5.1 of the shipped driver, experiments.m; printed in the shipped experiments.out) (I_Ex5_1) [shipped reference output] | 0.0610643 ± 1e-10 | 0.0610643 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [varadhan2009-bb-hdp-multistart](reports/varadhan2009-bb-hdp-multistart/result.md) | numerics · 2009 · R | sum(ans$conv) for multiStart(par = p0, fn = hdp, action = "solve"), 300 starts, seed 1234, JSS p. 11 (converged runs) | 284 ± 3 | 287 | 3 | 100% ⚠ | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [wang2011-species-butterfly-ace](reports/wang2011-species-butterfly-ace/result.md) | ecology · 2011 · R | ChaoLee1992(butterfly, t = 10, method = "all") $Nhat[1], ACE estimate of species richness (JSS p. 8) (ACE) | 712 ± 0.5 | 712 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
@@ -147,7 +147,7 @@ Cause of every attempted paper that is `not-reproduced` or `blocked` (the funnel
 | missing-code | 2 |
 | missing-data | 0 |
 | unstated-parameter | 1 |
-| numerical-discrepancy | 2 |
+| numerical-discrepancy | 1 |
 | nondeterminism | 0 |
 | platform | 0 |
-| other | 1 |
+| other | 2 |

@@ -14,7 +14,7 @@
         "name": "res1 CHECK1 maximum (shipped)",
         "paper": 9.43689571e-15,
         "tol_abs": 1e-13,
-        "ours": 9.5479180117763462e-15
+        "ours": 9.547918011776346e-15
       },
       {
         "name": "res2 CHECK2 maximum (shipped)",
@@ -26,13 +26,13 @@
         "name": "res3 CHECK3 maximum (shipped)",
         "paper": 5.19100205e-15,
         "tol_abs": 1e-13,
-        "ours": 5.1497626483375173e-15
+        "ours": 5.149762648337517e-15
       },
       {
         "name": "res4 CHECK4 maximum (shipped)",
         "paper": 9.37486625e-15,
         "tol_abs": 1e-13,
-        "ours": 9.4061512267874000e-15
+        "ours": 9.4061512267874e-15
       }
     ]
   },
@@ -51,7 +51,7 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -72,7 +72,22 @@
     "reports/gil2002-airy-aizbiz-819/evidence/run2-res3-value.txt",
     "reports/gil2002-airy-aizbiz-819/evidence/run2-res4-value.txt"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-26T20:21:49Z",
+      "kind": "clean",
+      "values": {
+        "res1 CHECK1 maximum (shipped)": 9.547918011776346e-15,
+        "res2 CHECK2 maximum (shipped)": 5.2218853419634024e-15,
+        "res3 CHECK3 maximum (shipped)": 5.149762648337517e-15,
+        "res4 CHECK4 maximum (shipped)": 9.4061512267874e-15
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/gil2002-airy-aizbiz-819/evidence/replay-2026-11-26T202149Z.log",
+      "seconds": 67
+    }
+  ],
   "stack_class": "Fortran",
   "field_class": "numerics"
 }

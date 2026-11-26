@@ -1,6 +1,10 @@
 # renka2003-dnsplin1-828: TOMS 828 (DNSPLIN1, discrete nonlinear spline interpolation)
 
-**Verdict: not-reproduced under these conditions (cause: numerical-discrepancy, not localised). Basis: patched (build-only).**
+**Verdict: blocked (G2 hold). Basis: patched (the build-only proof no longer holds). The measured value below is recorded here and not in result.json.**
+
+Why blocked: `tools/verify_sources.py` now counts build-configuration files (makefile.inc) as source (commit 33ef940). The re-record with that tool gives `kind: source`, with `Drivers/makefile.inc` added. So the G2 paper check applies, and the not-reproduced verdict cannot stand until the paper text is read. The claim and the tolerance are unchanged.
+
+Measured (not a verdict): ours 0.565126294872521D-01 against shipped 0.565126291685656D-01, 3.2e-10 apart, tolerance 1e-12. The earlier not-reproduced wording is withdrawn until G2 passes.
 
 ## Claim
 
@@ -36,6 +40,8 @@ output, 712 differ by more than 1e-12, the largest by 6.4e-8. So the discrepancy
   the optimisation level.
 
 ## Open
+
+- G2 paper check: not done. Resolver: the scout (or the paper text). Disposition: next wake.
 
 - The cause is not localised. The untested hypothesis: the authors' build linked an external BLAS and LAPACK (the Makefile's
   LAPACK and BLAS variables suggest this) rather than the bundled lapack.f and dblas.f. The next bounded experiment is to

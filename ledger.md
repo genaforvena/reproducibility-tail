@@ -39,10 +39,10 @@ Every candidate is drawn from a named frame in a seeded order and none is skippe
 
 | why a candidate was not attempted | candidates |
 |---|---|
-| paywalled | 25 |
+| paywalled | 26 |
 | figure-only | 10 |
 | no-numeric-claim | 39 |
-| claim-not-located | 49 |
+| claim-not-located | 48 |
 | no-method-description | 0 |
 | stochastic-no-seed | 15 |
 | no-code | 3 |

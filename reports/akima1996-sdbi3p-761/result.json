@@ -71,7 +71,7 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "pass",
     "cross_check": "na"
   },
@@ -89,5 +89,22 @@
     "reports/akima1996-sdbi3p-761/result.md",
     "reports/akima1996-sdbi3p-761/evidence/gfortran-version.txt"
   ],
-  "replayed": []
+  "replayed": [
+    {
+      "utc": "2026-11-26T17:49:54Z",
+      "kind": "clean",
+      "values": {
+        "ZI1(XI=5, YI=5)": 39.37,
+        "ZI1(XI=10, YI=10)": 16.36,
+        "ZI1(XI=15, YI=10)": 12.98,
+        "ZI1(XI=20, YI=15)": 6.95,
+        "ZI1(XI=10, YI=15)": 22.34,
+        "ZI1(XI=15, YI=5)": 20.17
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/akima1996-sdbi3p-761/evidence/replay-2026-11-26T174954Z.log",
+      "seconds": 79
+    }
+  ]
 }

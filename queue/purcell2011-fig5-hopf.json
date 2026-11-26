@@ -1,0 +1,35 @@
+{
+  "paper": {
+    "title": "A Multi-Functional Synthetic Gene Network: A Frequency Multiplier, Oscillator and Switch",
+    "authors": ["Oliver Purcell", "Mario di Bernardo", "Claire S. Grierson", "Nigel J. Savery"],
+    "year": 2011,
+    "venue": "PLOS ONE 6(2): e16140 (published 2011-02)",
+    "doi": "10.1371/journal.pone.0016140",
+    "url": "https://doi.org/10.1371/journal.pone.0016140"
+  },
+  "code": {
+    "url": "https://github.com/baioc/re-multif",
+    "commit": "3ab84df2d34f67dd66929848fc154fef2185d10a",
+    "archive": "ReScience C 8.1 (#5), 2022 replication article; the code is the replication's own repo, not the 2011 authors' MATLAB code (the 2011 paper states none is archived)",
+    "note": "Commit is HEAD as returned by git ls-remote at 2026-11-26 12:24Z. The rerun mind must check out this exact SHA. The replication repo is CC-BY-4.0 and contains experiments.py, src/parameters/*.mat."
+  },
+  "field": "computational biology (synthetic gene networks, bifurcation analysis)",
+  "stack": "Octave 5.2.0 / 6.2.0 with Octave Forge signal 1.4.1 and control 3.2.0; python3 for the driver (experiments.py); the 2011 original used MATLAB, MAPLE and AUTO for continuation (not reproduced in this repo, to be checked)",
+  "claim": {
+    "location": "Figure 5 caption and text (Results, Bifurcation structure): the Hopf bifurcation of equilibrium c1, input concentration of the sketch in Figure 5",
+    "paper_value": "I ~ 7 nM (approximately 7 nM); the caption says 'These occur at input concentrations of ~0.4 nM, ~7 nM and ~9 nM respectively' for the two saddle-node, Hopf and pitchfork bifurcations. Scout registers only the Hopf value.",
+    "value_check": "Read verbatim from page 6 of the PLOS PDF (file saved from journals.plos.org printable URL, Figure 5 caption) and the text 'a pitchfork bifurcation at I ~9 nM' on page 5 (Bifurcation structure paragraph). Both checked by scout by reading the rendered page.",
+    "metric": "input concentration I (nM) at which the Hopf bifurcation of the model occurs, using the parameters of the paper's Table 1 (which the replication stores in src/parameters/network.mat, to be checked by the rerun mind)",
+    "tolerance": {
+      "I_nM_abs": 0.5,
+      "basis": "Fixed before any run: the paper gives a value of about 7 nM (an approximation to one significant figure). Pass if the rerun Hopf input is within 0.5 nM of 7 nM, i.e. 6.5 to 7.5 nM. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "About 14 minutes for all experiments on a modest laptop (the replication README says so; about 10 minutes of that is the Figure 8 experiment). The Hopf check is a subset; the rerun mind should time the single experiment.",
+    "data_size": "Small: parameter .mat files in src/parameters/. Sizes not shown in the repo README; the rerun mind must check. No external dataset download.",
+    "data_licence": "Repo is CC-BY-4.0 (per the replication README). No external data."
+  },
+  "why": "A 2011 synthetic-biology ODE model with a pre-registered bifurcation value, replicated in Octave (MATLAB-to-Octave long-tail stack) with a small public repo and about 14 CPU minutes for the full set.",
+  "registered": "2026-11-26T12:24:46Z"
+}

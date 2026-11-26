@@ -1,0 +1,2 @@
+function clf(varargin)
+end

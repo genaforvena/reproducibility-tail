@@ -1,0 +1,77 @@
+{
+  "paper": {
+    "short": "boyd2005-prolate-lobatto-840",
+    "title": "Algorithm 840: Computation of grid points, quadrature weights and derivatives for spectral element methods using prolate spheroidal wave functions, prolate elements (TOMS 840)",
+    "year": 2005,
+    "doi": null
+  },
+  "field": "numerics (spectral element grids and quadrature with prolate spheroidal functions)",
+  "stack": "MATLAB (TOMS 840 archive: Matlab/Dp/Drivers/TP_Lobptsts_MAIN.m, TP_LobptswtsPERT.m, Res; Matlab/Dp/Src/*.m), run under GNU Octave 10.3.0",
+  "field_class": "numerics",
+  "stack_class": "MATLAB/Octave",
+  "claim": {
+    "text": "N=6, c=5: xprol(2) = -0.7456 and wprol(3) = 0.5305, the first vector printed in the shipped reference output Matlab/Dp/Drivers/Res, absolute tolerance 2e-4.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/boyd2005-prolate-lobatto-840/evidence/reference/Res",
+      "sha256": "0d3046d88be0c8e467356911c8c71f127a28ffd1ce5eab27b8e9144274b951bb",
+      "archive": "netlib.org/toms/840.gz sha256 b213f74e8eadba736256700f462906138d71615c29fefdbb871b5a3ba5703aff"
+    },
+    "values": [
+      {
+        "name": "xprol(2), N=6, c=5",
+        "paper": -0.7456,
+        "tol_abs": 0.0002,
+        "ours": null
+      },
+      {
+        "name": "wprol(3), N=6, c=5",
+        "paper": 0.5305,
+        "tol_abs": 0.0002,
+        "ours": null
+      }
+    ]
+  },
+  "patch": {
+    "kind": "run-time",
+    "workarounds": [
+      "clf.m: no-op (no graphics in the sandbox)",
+      "TP_NewtonJac.m: alias calling TP_NewtonJAC (the driver names TP_NewtonJac; the file is TP_NewtonJAC.m; case-sensitive filesystem)",
+      "set.m, gca.m, semilogy.m, title.m, xlabel.m, ylabel.m: plot stubs (TP_NewtonJAC.m lines 171-175 only)",
+      "Octave m library on the path via addpath(genpath(...)) (num2str, fieldnames are otherwise undefined in this install)"
+    ],
+    "shim": "reports/boyd2005-prolate-lobatto-840/impl/shim",
+    "print": "reports/boyd2005-prolate-lobatto-840/impl/print_values.m (our code, prints the registered entries from the authors' TP_LobptswtsPERT)"
+  },
+  "basis": "patched",
+  "verdict": "blocked",
+  "cause": null,
+  "attempt": "BLOCKED on gate G2 (paper check), not on the numbers. Under a run-time patch (four workarounds outside the authors' tree, see patch), the authors' TP_LobptswtsPERT for N=6, c=5 gives xprol(2) = -0.7455547968 (paper -0.7456, diff 4.5e-5) and wprol(3) = 0.5305302056 (paper 0.5305, diff 3.0e-5); both passes agree; both are inside the registered 2e-4. Those two values are the evidence, kept in the evidence/ logs, and they are not published as reproduced: the patch is not build-only, so G2 requires each new piece to cite the paper's section or equation and to check the parameters against the paper. The article is not readable here: the ACM DOI page and the author's site both returned HTTP 403 to the web-fetch agent, and the search found no free full text (one wake, 2026-11-26). Resolver: the operator (library access to TOMS 840, or an author-archived copy). Bounded action for the next rerun wake: try the author archive once; if no text, the entry stays blocked with this cause.",
+  "queue_commit": "9223029b6cf2261e3cd09dfbf4c7054c7215c724",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "the driver as shipped stops under Octave 10.3.0 at line 9: 'clf' undefined (no graphics; a case mismatch TP_NewtonJac/TP_NewtonJAC.m also blocks it)",
+    "log": "reports/boyd2005-prolate-lobatto-840/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "not-passed",
+    "G3": "pass",
+    "G5": "pending",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/boyd2005-prolate-lobatto-840/recipe.sh",
+  "evidence": [
+    "reports/boyd2005-prolate-lobatto-840/evidence/fetch.log",
+    "reports/boyd2005-prolate-lobatto-840/evidence/octave-install.log",
+    "reports/boyd2005-prolate-lobatto-840/evidence/original-attempt.log",
+    "reports/boyd2005-prolate-lobatto-840/evidence/recipe-run.log",
+    "reports/boyd2005-prolate-lobatto-840/evidence/pass-1.log",
+    "reports/boyd2005-prolate-lobatto-840/evidence/pass-2.log",
+    "reports/boyd2005-prolate-lobatto-840/evidence/pass-1-values.txt",
+    "reports/boyd2005-prolate-lobatto-840/evidence/pass-2-values.txt",
+    "reports/boyd2005-prolate-lobatto-840/evidence/reference/Res"
+  ]
+}

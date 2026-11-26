@@ -5,7 +5,7 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-33 papers attempted.
+34 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
@@ -14,11 +14,11 @@ Method and gates: [docs/method.md](docs/method.md).
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
-| - | blocked or not yet run | 7 |
+| - | blocked or not yet run | 8 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 24, other 1, statistics 5
-By stack: C/C++ 7, Fortran 18, MATLAB/Octave 2, R 5, not-stated 1
-By decade: 1960 1, 1970 1, 1980 3, 1990 9, 2000 13, 2010 6
+By field: astronomy 1, biology 1, ecology 1, numerics 25, other 1, statistics 5
+By stack: C/C++ 7, Fortran 18, MATLAB/Octave 3, R 5, not-stated 1
+By decade: 1960 1, 1970 1, 1980 3, 1990 9, 2000 14, 2010 6
 
 Data as of 2026-11-26T21:51:16Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-26T21:51:16Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-33 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+34 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **242 candidates considered from 4 of 4 frames: 31 attempted (13%), 0 unreachable, 211 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 18 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 11 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 19 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 11 (ran as documented).
 
 ## Results
 
@@ -99,6 +99,8 @@ Authors' original artifact, among all attempted papers: failed 18 (did not run),
 | [amestoy2004-amd-837](reports/amestoy2004-amd-837/result.md) | numerics · 2004 · C/C++ | The shipped demo output Demo/amd_demo.out, can_24 section, prints LDL' flop count for real A: 647 (exact integer equality) (LDL' flop count for real A, can_24 demo (amd_demo.out)) | 647 ± 0 | 647 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [benson2008-dsdp5-875](reports/benson2008-dsdp5-875/result.md) | numerics · 2008 · C/C++ | theta graph1 (Lovasz theta SDP of the 6-node, 8-edge graph shipped as bin/graph1): the DD Objective of the last iteration, as a magnitude, is 3.00000012 (shipped reference log bin/output.theta, iteration 4). Absolute tolerance 1e-5. (theta graph1 final DD objective (magnitude)) [shipped reference output] | 3 ± 1e-05 | 3 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ · | B | reproduced | never clean |
 | [berntsen1993-dcutet-720](reports/berntsen1993-dcutet-720/result.md) | numerics · 1993 · Fortran | DTEST1 sample program: RESULT, the integral of exp(x*x+y*y+z*z) over the reference tetrahedron (0,0,0),(1,0,0),(0,1,0),(0,0,1), EPSREL 1e-5, EPSABS 0, MAXPTS 1000. Shipped sample output 'Output produced on a SUN 3/50': RESULT = 0.22779999698986. Absolute tolerance 1e-5. (DTEST1 RESULT (integral of exp(x^2+y^2+z^2) over the reference tetrahedron)) [shipped reference output] | 0.2278 ± 1e-05 | 0.2278 | -2.41474e-15 | 0% | patched (build-only) | ✓ ✓ ✓ · | B | reproduced | never clean |
+| [boyd2005-prolate-lobatto-840](reports/boyd2005-prolate-lobatto-840/result.md) | numerics · 2005 · MATLAB/Octave | N=6, c=5: xprol(2) = -0.7456 and wprol(3) = 0.5305, the first vector printed in the shipped reference output Matlab/Dp/Drivers/Res, absolute tolerance 2e-4. (xprol(2), N=6, c=5) [shipped reference output] | -0.7456 ± 0.0002 | – | – | – | patched | ✓ ? ✓ ? | - | blocked | never clean |
+| [boyd2005-prolate-lobatto-840](reports/boyd2005-prolate-lobatto-840/result.md) | numerics · 2005 · MATLAB/Octave | N=6, c=5: xprol(2) = -0.7456 and wprol(3) = 0.5305, the first vector printed in the shipped reference output Matlab/Dp/Drivers/Res, absolute tolerance 2e-4. (wprol(3), N=6, c=5) [shipped reference output] | 0.5305 ± 0.0002 | – | – | – | patched | ✓ ? ✓ ? | - | blocked | never clean |
 | [buckley1994-minimize-734](reports/buckley1994-minimize-734/result.md) | numerics · 1994 · Fortran | Shipped reference run Drivers/Sp/res2 of driver2.f90 (Rosenbrock, from (-1.2, 1), acc 0.001): least function value 0.20053597E-08, 59 function evaluations, 36 iterations (function evaluation count (FEvals)) | 59 ± 0 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [buckley1994-minimize-734](reports/buckley1994-minimize-734/result.md) | numerics · 1994 · Fortran | Shipped reference run Drivers/Sp/res2 of driver2.f90 (Rosenbrock, from (-1.2, 1), acc 0.001): least function value 0.20053597E-08, 59 function evaluations, 36 iterations (iteration count (it)) | 36 ± 0 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [buckley1994-minimize-734](reports/buckley1994-minimize-734/result.md) | numerics · 1994 · Fortran | Shipped reference run Drivers/Sp/res2 of driver2.f90 (Rosenbrock, from (-1.2, 1), acc 0.001): least function value 0.20053597E-08, 59 function evaluations, 36 iterations (least function value) | 2.00536e-09 ± 1e-08 | – | – | – | patched | ✓ · · · | - | blocked | never clean |

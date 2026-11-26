@@ -1,0 +1,35 @@
+{
+  "paper": {
+    "title": "Exact and Asymptotic Weighted Logrank Tests for Interval Censored Data: The interval R Package",
+    "authors": ["Michael P. Fay", "Pamela A. Shaw"],
+    "year": 2010,
+    "venue": "Journal of Statistical Software 36(2), August 2010",
+    "doi": "10.18637/jss.v036.i02",
+    "url": "https://www.jstatsoft.org/article/view/v036i02/v36i02.pdf"
+  },
+  "code": {
+    "url": "https://cran.r-project.org/src/contrib/Archive/interval/interval_0.9-9.6.tar.gz",
+    "commit": "CRAN archive tarball interval_0.9-9.6.tar.gz, DESCRIPTION Version 0.9-9.6, Date 2010-02-18",
+    "archive": "sha256 93a73d61a9be5554eec24f773ea306ffbe0148860b1d45fc5385e8e076e72dc0 (downloaded by scout 2026-11-26 from the CRAN archive). The closest archived release before the paper's August 2010 publication; the paper does not state its version, so the rerun records the release it uses.",
+    "note": "Dependencies on CRAN: perm, survival, Icens, MLEcens. The paper's listing (p. 29) is the code to implement: L <- c(2, 5, 1, 1, 9, 8, 10); R <- c(3, 6, 7, 7, 12, 10, 13); group <- c(0, 0, 1, 1, 0, 1, 0); example1 <- data.frame(L, R, group); summary(icfit(L, R), digits = 12). No data download."
+  },
+  "field": "statistics (interval-censored data, nonparametric maximum likelihood)",
+  "stack": "R (current release), with the archived interval 0.9-9.6 and its CRAN dependencies perm, survival, Icens, MLEcens",
+  "claim": {
+    "location": "Section 6.3 'On handling ties for exact permutation implementation', Table 2 'NPMLE for example1' (JSS p. 29), with the R output of summary(icfit(L, R), digits = 12) giving the probability of the interval (2,3] as 0.285714285714.",
+    "paper_value": "NPMLE probability of the interval (2,3] for example1: 2/7, printed as 0.285714285714 by the interval package",
+    "value_check": "Read by scout from the JSS PDF (pdftotext -layout of v36i02.pdf) on 2026-11-26: Table 2 lists (2,3] with probability 2/7, and the printed R line '1 (2,3] 0.285714285714' follows the summary(icfit(L, R), digits = 12) call on the same page (p. 29).",
+    "metric": "probability assigned to the first NPMLE interval (2,3] by summary(icfit(L, R), digits = 12) for the example1 data",
+    "tolerance": {
+      "prob_abs": 0.000001,
+      "basis": "Fixed before any run: the exact NPMLE is 2/7 = 0.285714285714..., and the EM fit should agree to 1e-6 absolute. Pass if |p - 2/7| <= 1e-6. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: one icfit call on 7 observations.",
+    "data_size": "None. The data are typed in the paper (seven rows).",
+    "data_licence": "No external data. interval and its dependencies are GPL."
+  },
+  "why": "A deterministic, closed-form NPMLE value printed to 12 digits and listed in a numbered table of a 2010 JSS R package paper; no seed, no data download, and trivially cheap.",
+  "registered": "2026-11-26T13:15:10Z"
+}

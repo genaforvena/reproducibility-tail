@@ -75,7 +75,7 @@
     "G1": "pass",
     "G2": "na (build-only proof, no paper-text check needed)",
     "G3": "pass",
-    "G5": "na",
+    "G5": "fail",
     "G6": "na",
     "cross_check": "na"
   },
@@ -91,7 +91,26 @@
     "reports/alvarez2016-vbf-s7-959/evidence/reference/S7.cy",
     "reports/alvarez2016-vbf-s7-959/result.md"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-26T17:20:03Z",
+      "kind": "clean",
+      "values": {
+        "Nonlinearity": 56.0,
+        "Algebraic_degree": 3.0,
+        "Algebraic_immunity": 3.0,
+        "Absolute_indicator": 16.0,
+        "Sum_of_squares_indicator": 4161536.0,
+        "Linear_potential": 0.015625,
+        "Differential_potential": 0.015625,
+        "Cycles_S7_cy": 4.0
+      },
+      "ok": false,
+      "why": "recipe printed no VALUE line for ['Algebraic degree', 'Algebraic immunity', 'Absolute indicator', 'Sum-of-squares indicator', 'Linear potential', 'Differential potential', 'Number of cycles in S7.cy']",
+      "log": "reports/alvarez2016-vbf-s7-959/evidence/replay-2026-11-26T172003Z.log",
+      "seconds": 504
+    }
+  ],
   "stack_class": "C/C++",
   "field_class": "other",
   "patch": {

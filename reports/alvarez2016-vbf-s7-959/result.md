@@ -52,3 +52,7 @@ The recipe's own log is `evidence/recipe-run.log`. It printed `CY identical` and
 - The reproduction is with the authors' driver and inputs; it checks the library's outputs on one 7-bit S-box, not the algorithm in general.
 - The build needed a flags patch (the Makefile's rule cannot find `VBF.h`). Basis `patched` records that.
 - The ACM article itself was not read (its DOI returns 403 to automated fetch), so the paper values come from the queue entry and the archive's own reference outputs.
+
+## Replay (G5), 2026-11-26T17:20Z: recipe naming defect, values unchanged
+
+The clean replay (`tools/replay.py`, log `evidence/replay-2026-11-26T172003Z.log`) reran the recipe from nothing and printed all eight measures and the cycle count. The values were identical to the registered claim: Nonlinearity 56, Algebraic degree 3, Algebraic immunity 3, Absolute indicator 16, Sum-of-squares indicator 4161536, Linear potential 0.015625, Differential potential 0.015625, cycles 4. The replay still recorded `ok: false` (G5 fail), because the recipe printed its VALUE names with underscores (`Algebraic_degree`, `Cycles_S7_cy`) while the replay matches the names in `result.json` (`Algebraic degree`, `Number of cycles in S7.cy`). This is a naming defect in the recipe, not a numerical change. The fix is in `recipe.sh`: the VALUE lines now use the result.json names exactly. The replayed record stays as written (not edited by hand); the next clean replay with the fixed recipe is the one that counts.

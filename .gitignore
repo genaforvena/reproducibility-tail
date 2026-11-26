@@ -1,0 +1,5 @@
+.mishe-*/
+scratch/
+runs/
+*.log
+__pycache__/

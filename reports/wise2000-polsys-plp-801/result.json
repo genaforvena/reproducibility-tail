@@ -66,7 +66,7 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -88,5 +88,17 @@
     "reports/wise2000-polsys-plp-801/evidence/manifest.mid",
     "reports/wise2000-polsys-plp-801/evidence/manifest.post"
   ],
-  "replayed": []
+  "replayed": [
+    {
+      "utc": "2026-11-26T22:06:44Z",
+      "kind": "clean",
+      "values": {
+        "TWO QUADRICS real finite solution, Re X(2)": -0.788344824094139
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/wise2000-polsys-plp-801/evidence/replay-2026-11-26T220644Z.log",
+      "seconds": 89
+    }
+  ]
 }

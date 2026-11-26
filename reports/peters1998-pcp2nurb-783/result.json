@@ -78,7 +78,7 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -96,5 +96,19 @@
     "reports/peters1998-pcp2nurb-783/evidence/manifest.mid",
     "reports/peters1998-pcp2nurb-783/evidence/manifest.post"
   ],
-  "replayed": []
+  "replayed": [
+    {
+      "utc": "2026-11-26T21:05:38Z",
+      "kind": "clean",
+      "values": {
+        "driver1 0.5, first patch control point 1 x": 0.493056,
+        "driver1 0.5, first patch control point 1 y": 1.868056,
+        "driver1 0.5, first patch control point 1 z": 0.972222
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/peters1998-pcp2nurb-783/evidence/replay-2026-11-26T210538Z.log",
+      "seconds": 4
+    }
+  ]
 }

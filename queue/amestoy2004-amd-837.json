@@ -13,7 +13,7 @@
  },
  "code": {
   "url": "https://netlib.org/toms/837.zip",
-  "commit": "netlib TOMS archive 837.zip (downloaded 2026-11-26, sha256 f9ae8b203a77bbb267a78f86416185b782c00ff845ef6c7e544abeaecce2418d); the demo output file Demo/amd_demo.out (sha256 63a791ae537cb1126fad775dbc9a629a8787568812f8cc47f1a3bf660c9702f0) is inside it",
+  "commit": "netlib TOMS archive 837.zip (re-fetched 2026-11-26 19:34Z, sha256 d15f725ac0a540a4830972fd4b503669121ae9bd26fb0539c94cc4860f72d96a); the demo output file Demo/amd_demo.out (sha256 63a791ae537cb1126fad775dbc9a629a8787568812f8cc47f1a3bf660c9702f0) is inside it; the first registration hash f9ae8b20... was from an earlier netlib download of the same archive (repacked; the inner Demo/amd_demo.out is byte-identical, sha256 63a791ae... both times)",
   "note": "AMD 1.1 (C and Fortran versions). The demo Demo/amd_demo.c runs AMD on the built-in 24-by-24 Harwell/Boeing matrix can_24 and prints statistics; build with make in Source and the demo via make fortran or the C demo target. Needs a C compiler (gcc); the Fortran demo needs a Fortran compiler. The archive's README says 'Copyright (c) 2004'."
  },
  "field": "numerics (sparse matrix ordering)",
@@ -25,7 +25,7 @@
   "reference": {
    "file": "837/Demo/amd_demo.out, line containing \"LDL' flop count for real A\"",
    "sha256": "63a791ae537cb1126fad775dbc9a629a8787568812f8cc47f1a3bf660c9702f0",
-   "archive": "netlib.org/toms/837.zip sha256 f9ae8b203a77bbb267a78f86416185b782c00ff845ef6c7e544abeaecce2418d"
+   "archive": "netlib.org/toms/837.zip sha256 d15f725ac0a540a4830972fd4b503669121ae9bd26fb0539c94cc4860f72d96a (re-registered after rerun DM #67; earlier hash f9ae8b20... no longer served; inner amd_demo.out unchanged)"
   },
   "metric": "The 'LDL' flop count for real A' integer printed by amd_demo for the can_24 matrix, compared with the shipped value 647 (exact integer equality).",
   "paper_value": "Not used: the paper is paywalled (ACM DL) and was not read, so the claim rests on the shipped demo output alone.",

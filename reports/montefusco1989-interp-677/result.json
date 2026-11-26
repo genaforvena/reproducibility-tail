@@ -26,9 +26,9 @@
   },
   "basis": "patched",
   "verdict": "blocked",
-  "cause": "other",
-  "attempt": "Measured locally, not yet a verdict. Two passes: pass 1 (gfortran -O2, the recorded build) gives ERMAX 0.6059995 and ERMEAN 0.06695094; pass 2 (clean directory, gfortran -O0 rebuild) gives ERMAX 0.6059992 and ERMEAN 0.06695094. Against the built-in 0.6059994 and 0.06695094, the differences are 1.7e-7 and 3.3e-7 (ERMAX) and 0 (ERMEAN), inside the registered rel 1e-5, so the values would be reproduced. Blocked because the queue entry records no code.archive sha256 (scout: 'sha256 not recorded'), and the build-only record and G2 need it. The archive downloaded here has sha256 d4d94e7a7ca6cf1980e3c05af74731cea35d00d62358ace806b134e4a8a4e64b. Resolver: scout (registers the hash in queue/montefusco1989-interp-677.json, per operator decision #61 on the same registration for other entries). Once it lands, re-record with recipe.sh and set the verdict to reproduced. Basis patched: the archive as shipped does not compile (four PROGRAM MAINs); the build uses two verbatim line ranges outside the authors' tree, and the build-only record (manifests pre, mid, post unchanged) holds.",
-  "queue_commit": "6d6e7f1",
+  "cause": "G2 open: the compiled units are a line-range extraction of the authors' file (a source patch, not build-only); the paper check is scout's",
+  "attempt": "Measured, verdict withheld at G2. Two passes: pass 1 (gfortran -O2, recorded build) gives ERMAX 0.6059995 and ERMEAN 0.06695094; pass 2 (clean directory, -O0 rebuild) gives ERMAX 0.6059992 and ERMEAN 0.06695094. Against the built-in ANS2 0.6059994 and ANS1 0.06695094 the differences are within the registered rel 1e-5 on both values. The archive sha256 now matches the queue registration (d4d94e7a...), so the archive gate is met. Not reproduced-verdict yet: the authors' file as shipped does not compile (four PROGRAM MAINs; original attempt failed). The compiled units are two verbatim line ranges cut from it (677main.f lines 1-162, masub.f lines 634-end), and the build-only manifest record correctly exits 2 (kind source; 677.f removed, two units added). Under the method that is a source patch, so G2 needs scout's paper check of the extraction and the MASUB package against the paper. Until then the verdict is blocked.",
+  "queue_commit": "9d5f485",
   "original_attempt": {
     "tried": true,
     "outcome": "failed",
@@ -37,7 +37,7 @@
   },
   "gates": {
     "G1": "pass",
-    "G2": "na",
+    "G2": "pending (scout paper check)",
     "G3": "pass",
     "G5": "na",
     "G6": "na",
@@ -56,5 +56,38 @@
   ],
   "replayed": [],
   "stack_class": "Fortran",
-  "field_class": "numerics"
+  "field_class": "numerics",
+  "patch": {
+    "kind": "source",
+    "archive_sha256": "d4d94e7a7ca6cf1980e3c05af74731cea35d00d62358ace806b134e4a8a4e64b",
+    "compared": 1,
+    "ours": {
+      "modified": [],
+      "removed": [
+        "677.f"
+      ],
+      "added": [
+        "677main.f",
+        "masub.f"
+      ]
+    },
+    "tool": {
+      "modified": [],
+      "removed": [
+        "677main.f",
+        "masub.f"
+      ],
+      "added": [
+        "677.f"
+      ]
+    },
+    "build_commands": [
+      "cd /work/run1 && /work/fortran/bin/x86_64-conda-linux-gnu-gfortran -O2 -o drv /work/src/677main.f /work/src/masub.f"
+    ],
+    "manifests": {
+      "pre": "reports/montefusco1989-interp-677/evidence/manifest.pre",
+      "mid": "reports/montefusco1989-interp-677/evidence/manifest.mid",
+      "post": "reports/montefusco1989-interp-677/evidence/manifest.post"
+    }
+  }
 }

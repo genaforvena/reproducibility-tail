@@ -7,8 +7,8 @@
 # verbatim line ranges of that file, copied into /work/src outside the authors' tree: the first PROGRAM MAIN with its
 # MACEPS and MMERR (lines 1-162) and the MASUB package (lines 634 to the end). No text is edited.
 # Claim: the self-check's ERMAX and ERMEAN (MMERR on the 10x10 reconstruction) against ANS2 0.6059994 and ANS1 0.06695094, tol rel 1e-5.
-# The record step writes result.json patch as build-only; checks/gates.py then needs the archive sha256 registered in
-# queue/ID.json (code.archive), which scout has not recorded yet. Until then the verdict stays blocked (see result.md).
+# The extraction is a source patch (the authors' file as shipped does not compile; the compiled units are cut from it
+# by line range), so the record is expected to exit 2 and the G2 paper check stays open (see result.md).
 # Second pass (G3): a clean directory and a -O0 rebuild after the recorded build.
 set -uo pipefail
 ID=montefusco1989-interp-677
@@ -43,8 +43,10 @@ rm -f "$E/build-asshipped.tmp"
 python3 -I tools/verify_sources.py manifest "$W/pre" > "$W/manifest.pre" || { echo "MANIFEST-PRE-FAILED"; exit 1; }
 echo "manifest.pre: $(wc -l < "$W/manifest.pre") source files"
 
-# G2 build-only proof, manifest 2 of 3: immediately before the build commands.
-python3 -I tools/verify_sources.py manifest "$W/pre" > "$W/manifest.mid" || { echo "MANIFEST-MID-FAILED"; exit 1; }
+# G2 build-only proof, manifest 2 of 3: immediately before the build commands. This is the tree the compiler
+# actually reads (the two extracted units in /work/src), not the authors' tree, so the patch step is visible to the
+# manifest comparison: pre (the authors' file) differs from mid (the extracted units), and record exits 2.
+python3 -I tools/verify_sources.py manifest "$W/src" > "$W/manifest.mid" || { echo "MANIFEST-MID-FAILED"; exit 1; }
 echo "== build: gfortran -O2, the two extracted units (outside the authors' tree)"
 tools/sandbox.sh "$ID" -- sh -c "rm -rf /work/run1 && mkdir /work/run1 && cd /work/run1 && /work/fortran/bin/x86_64-conda-linux-gnu-gfortran -O2 -o drv /work/src/677main.f /work/src/masub.f 2>&1; echo compile_exit=\$?" | tee "$E/build.log"
 

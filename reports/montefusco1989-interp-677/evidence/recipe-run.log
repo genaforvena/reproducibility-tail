@@ -124,8 +124,8 @@ Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
       |                                                                        1
 Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
 compile_exit=0
-montefusco1989-interp-677: patch kind build-only: compared 1; ours modified 0, removed 0, added 0; build tool modified 0, added 0, removed 0
-BUILD-ONLY: exit 0
+montefusco1989-interp-677: patch kind source: compared 1; ours modified 0, removed 1, added 2; build tool modified 0, added 1, removed 2
+NOT BUILD-ONLY: the source edits are a patch, the full G2 check applies (see the record)
 == run 1: the recorded binary
 run1_exit=0
 == run 2: clean directory, -O0 rebuild

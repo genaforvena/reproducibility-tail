@@ -1,0 +1,53 @@
+{
+  "paper": {
+    "short": "amestoy2004-amd-837",
+    "title": "Algorithm 837: AMD, an approximate minimum degree ordering algorithm",
+    "year": 2004,
+    "doi": null
+  },
+  "field": "numerics (sparse matrix ordering)",
+  "stack": "C/C++ (AMD 1.1, TOMS 837)",
+  "claim": {
+    "text": "Shipped reference Demo/amd_demo.out: \"LDL' flop count for real A\" for the built-in can_24 matrix is 647 (exact integer equality, tol 0)",
+    "values": [
+      {
+        "name": "LDL' flop count for real A, can_24 demo (amd_demo.out)",
+        "paper": 647,
+        "tol_abs": 0,
+        "ours": 647
+      }
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced. The authors' Makefiles ran unchanged (make lib in the top directory, which builds Source and then runs the Demo targets; exit 0; the demo's diff against the shipped output is empty). Two clean-directory passes of the demo binary give LDL' flop count for real A = 647, and the whole stdout of each pass is identical to the shipped Demo/amd_demo.out (sha256 63a791ae...). Exact equality with tol 0: met. No patch and no build flag. Archive note: the sha256 of 837.zip served by netlib today is d15f725a..., not the f9ae8b20... in the queue entry; the claim's own reference file (Demo/amd_demo.out) matches its registered sha256, so the claim stands. The archive-hash mismatch is reported to scout as a registration issue. Replay (G5) not yet run.",
+  "queue_commit": "4065dc8c30543b9566e9170617f3bf0e75b86b18",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": null,
+    "log": "reports/amestoy2004-amd-837/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/amestoy2004-amd-837/recipe.sh",
+  "evidence": [
+    "reports/amestoy2004-amd-837/evidence/original-attempt.log",
+    "reports/amestoy2004-amd-837/evidence/recipe-run.log",
+    "reports/amestoy2004-amd-837/evidence/reference/amd_demo.out",
+    "reports/amestoy2004-amd-837/evidence/run1-stdout.txt",
+    "reports/amestoy2004-amd-837/evidence/run2-stdout.txt",
+    "reports/amestoy2004-amd-837/evidence/run1-value.txt",
+    "reports/amestoy2004-amd-837/evidence/run2-value.txt"
+  ],
+  "replayed": [],
+  "stack_class": "C/C++",
+  "field_class": "numerics"
+}

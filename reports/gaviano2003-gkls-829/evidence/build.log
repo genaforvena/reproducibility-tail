@@ -1,0 +1,5 @@
+gcc -I. -Wl,--no-as-needed -c example.c
+gcc -I. -Wl,--no-as-needed -c ../Src/gkls.c
+gcc -I. -Wl,--no-as-needed -c ../Src/rnd_gen.c
+gcc -Wl,--no-as-needed -lm example.o gkls.o rnd_gen.o -o gkls
+make_exit=0

@@ -1,0 +1,23 @@
+gcc -I.  -c example.c
+example.c: In function ‘main’:
+example.c:245:33: warning: ‘sprintf’ writing a terminating nul past the end of the destination [-Wformat-overflow=]
+  245 |  sprintf(filename,"deriv%03d.txt",func_num);
+      |                                 ^
+example.c:245:2: note: ‘sprintf’ output 13 bytes into a destination of size 12
+  245 |  sprintf(filename,"deriv%03d.txt",func_num);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -I.  -c ../Src/gkls.c
+gcc -I.  -c ../Src/rnd_gen.c
+gcc  -lm example.o gkls.o rnd_gen.o -o gkls
+/usr/bin/ld: gkls.o: in function `GKLS_norm':
+gkls.c:(.text+0xb9): undefined reference to `sqrt'
+/usr/bin/ld: gkls.o: in function `GKLS_arg_generate':
+gkls.c:(.text+0x1055): undefined reference to `cos'
+/usr/bin/ld: gkls.c:(.text+0x111f): undefined reference to `cos'
+/usr/bin/ld: gkls.c:(.text+0x117c): undefined reference to `sin'
+/usr/bin/ld: gkls.c:(.text+0x11f6): undefined reference to `cos'
+/usr/bin/ld: gkls.c:(.text+0x1305): undefined reference to `cos'
+/usr/bin/ld: gkls.c:(.text+0x1375): undefined reference to `sin'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:10: gkls] Error 1
+make_exit=2

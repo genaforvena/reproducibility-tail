@@ -1,0 +1,56 @@
+== fetch: 829.gz (sha256 checked), unpacked in the sandbox scratch
+829.gz: OK
+manifest.pre: 6 source files
+== G1 original attempt: the authors' Makefile as documented, in a copy (kept once, never overwritten)
+/usr/bin/ld: gkls.c:(.text+0x1375): undefined reference to `sin'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:10: gkls] Error 1
+make_exit=2
+== build: the authors' Makefile with one linker flag (CC=gcc CFLAGS=-Wl,--no-as-needed)
+gcc -I. -Wl,--no-as-needed -c example.c
+example.c: In function ‘main’:
+example.c:245:33: warning: ‘sprintf’ writing a terminating nul past the end of the destination [-Wformat-overflow=]
+  245 |  sprintf(filename,"deriv%03d.txt",func_num);
+      |                                 ^
+example.c:245:2: note: ‘sprintf’ output 13 bytes into a destination of size 12
+  245 |  sprintf(filename,"deriv%03d.txt",func_num);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -I. -Wl,--no-as-needed -c ../Src/gkls.c
+gcc -I. -Wl,--no-as-needed -c ../Src/rnd_gen.c
+gcc -Wl,--no-as-needed -lm example.o gkls.o rnd_gen.o -o gkls
+make_exit=0
+Traceback (most recent call last):
+  File "/home/mesh-home/reproducibility-tail/tools/verify_sources.py", line 177, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/mesh-home/reproducibility-tail/tools/verify_sources.py", line 168, in main
+    patch = record(a.repo, a.id, a.pre, a.mid, a.post, a.command)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mesh-home/reproducibility-tail/tools/verify_sources.py", line 145, in record
+    result = json.loads(rp.read_text(encoding="utf-8"))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1029, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/mesh-home/reproducibility-tail/reports/gaviano2003-gkls-829/result.json'
+NOT BUILD-ONLY: G2 hold stays (see the record's kind and the added/modified lists)
+== run1: clean directory, ./gkls (writes test001.txt in its directory)
+run1_exit=0
+
+Generating the function number 1
+run1 vs shipped test001.txt (diff ignoring the final newline):
+run1: whole file identical to the shipped reference
+== run2: clean directory, ./gkls (writes test001.txt in its directory)
+run2_exit=0
+
+Generating the function number 1
+run2 vs shipped test001.txt (diff ignoring the final newline):
+run2: whole file identical to the shipped reference
+VALUE D-type function 1, dim 2, global minimizer x1 -0.136
+VALUE D-type function 1, dim 2, global minimizer x2 0.824
+== run1 and run2 minimizer (x1, x2)
+-0.136	-0.136
+0.824	0.824

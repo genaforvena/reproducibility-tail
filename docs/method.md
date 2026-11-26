@@ -38,7 +38,9 @@ scout to try harder inside a pool it picked. The remedy is to take the choice aw
    program library, a Netlib or TOMS index, one journal's volumes, a full arXiv listing for a
    category and years). The frame, with its description and source, is the denominator.
 2. **Draw.** `tools/frame_sample.py` draws a seeded random order of N items. A frame is
-   sampled once; the draw cannot be redone to taste.
+   drawn once and never redrawn to taste. When the draw is used up, `--extend K` appends K more
+   items (seeded from what is left; the earlier order never changes), so the count can grow
+   but the choice never passes to the scout.
 3. **Account.** Candidates are considered in that order, none skipped, and each is one line
    of `queue/funnel.jsonl`: `registered` (becomes a queue entry), `rejected` with a reason
    from a fixed list, or `unreachable`. `checks/funnel.py` fails on a skipped or repeated
@@ -56,8 +58,12 @@ unreachable: it is attempted as `reimplemented`, with the lost original recorded
 `original_attempt` `not-possible`, and counted as such in the ledger.
 
 Reasons for `rejected`: `paywalled`, `figure-only`, `no-numeric-claim`, `claim-not-located`,
-`no-method-description`, `runtime` (over the cost cap), `machine-dependent`, `restricted-data`,
-`gpu`, `other`. Frames should cover the older and stranger stacks deliberately (Fortran
+`no-method-description`, `stochastic-no-seed` (results depend on randomness and neither seed nor
+code is available), `no-code`, `runtime` (over the cost cap), `machine-dependent`,
+`restricted-data`, `gpu`, `other` (needs a `detail`; the ledger flags it when it passes 15%).
+Every line also records the paper's `stack`: `Fortran`, `C/C++`, `R`, `Python`, `MATLAB/Octave`,
+`Julia`, `Java`, `other`, or `not-stated` when the paper names no language, so the survivorship
+table by stack means something. A withdrawn claim moves to `queue/withdrawn/`, never deleted. Frames should cover the older and stranger stacks deliberately (Fortran
 or C numerical libraries, Python 2, MATLAB) next to the easy ones; the funnel then shows how
 reachable each is, which is itself a finding.
 

@@ -108,3 +108,46 @@ def test_ledger_funnel_section_counts_and_lists_unreachable(tmp_path):
     assert "3 candidates considered from 1 frames: 1 attempted (33%), 1 unreachable, 1 rejected" in text
     assert "Smith 1998" in text and "| runtime | 1 |" in text
     assert "| cpc | 5 | 4 | 3 | 75% |" in text
+
+
+def test_unknown_stack_is_a_violation_not_stated_is_fine(tmp_path):
+    repo = repo_with_frame(tmp_path)
+    write(repo, line(order(repo)[0], stack="unknown"))
+    assert any("stack must be one of" in v for v in funnel.violations(repo))
+    write(repo, line(order(repo)[0], stack="not-stated"))
+    assert funnel.violations(repo) == []
+
+
+def test_new_reasons_exist(tmp_path):
+    repo = repo_with_frame(tmp_path)
+    o = order(repo)
+    write(repo, line(o[0], reason="stochastic-no-seed"), line(o[1], reason="no-code"))
+    assert funnel.violations(repo) == []
+
+
+def test_registered_claim_may_sit_in_withdrawn(tmp_path):
+    repo = repo_with_frame(tmp_path)
+    (repo / "queue" / "withdrawn").mkdir()
+    (repo / "queue" / "withdrawn" / "p1.json").write_text("{}")
+    write(repo, line(order(repo)[0], outcome="registered", id="p1"))
+    assert funnel.violations(repo) == []
+
+
+def test_extending_a_draw_keeps_the_old_order_and_adds_new_items(tmp_path):
+    repo = repo_with_frame(tmp_path, n=2)
+    before = order(repo)
+    assert frame_sample.main(["--repo", str(repo), "--frame", "cpc", "--extend", "2"]) == 0
+    after = order(repo)
+    assert after[:2] == before and len(after) == 4 and len(set(after)) == 4
+    # deterministic: the same extension of the same draw gives the same items
+    assert frame_sample.extend(ITEMS, before, 3, 2) == frame_sample.extend(ITEMS, before, 3, 2)
+    # the funnel check follows the extended order, still with none skipped
+    write(repo, line(after[0]), line(after[1]), line(after[2]))
+    assert funnel.violations(repo) == []
+    write(repo, line(after[0]), line(after[1]), line(after[3]))
+    assert any("none skipped" in v for v in funnel.violations(repo))
+
+
+def test_extend_needs_an_existing_draw(tmp_path):
+    repo = repo_with_frame(tmp_path, sampled=False)
+    assert frame_sample.main(["--repo", str(repo), "--frame", "cpc", "--extend", "2"]) == 3

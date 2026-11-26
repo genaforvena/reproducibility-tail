@@ -6,7 +6,8 @@ A report without result.json is a violation: the ledger and the gates read only 
 machine record, so prose-only reports are unfinished.
 
 Checked mechanically, per reports/ID/result.json:
-  G0  queue/ID.json has not changed since the commit the run recorded (no moving goalposts)
+  G0  the claim (queue/ID.json, or queue/withdrawn/ID.json once withdrawn) is byte-identical to the one
+      at the commit the run recorded (no moving goalposts); a withdrawn claim is moved, never deleted
   G1  basis patched/reimplemented needs original_attempt with tried, an outcome
       (failed or not-possible), a reason and, for failed, an existing log
   G2  a reimplemented or patched reproduced result needs gates.G2 == pass
@@ -60,11 +61,16 @@ def violations(repo: Path) -> list[str]:
         verdict = judge(values)
         if r.get("verdict") != verdict:
             bad.append(f"{rid}: G4 stated verdict {r.get('verdict')!r}, recorded values give {verdict!r}")
-        qrel = f"queue/{rid}.json"
-        if not (repo / qrel).exists():
-            bad.append(f"{rid}: no {qrel}")
-        elif r.get("queue_commit") != last_commit(repo, qrel):
-            bad.append(f"{rid}: G0 queue entry changed since the run (recorded {str(r.get('queue_commit'))[:8]}, now {last_commit(repo, qrel)[:8]}) or queue_commit missing")
+        qrel = next((q for q in (f"queue/{rid}.json", f"queue/withdrawn/{rid}.json") if (repo / q).exists()), None)
+        if qrel is None:
+            bad.append(f"{rid}: no queue/{rid}.json (a withdrawn claim moves to queue/withdrawn/, it is not deleted)")
+        else:
+            was = subprocess.run(["git", "-C", str(repo), "show", f"{r.get('queue_commit')}:queue/{rid}.json"],
+                                 capture_output=True, text=True, timeout=30)
+            if was.returncode != 0:
+                bad.append(f"{rid}: G0 queue_commit {str(r.get('queue_commit'))[:8]} does not hold queue/{rid}.json")
+            elif was.stdout != (repo / qrel).read_text(encoding="utf-8"):
+                bad.append(f"{rid}: G0 the claim in {qrel} differs from the one the run was made against ({str(r.get('queue_commit'))[:8]})")
         basis = r.get("basis")
         gates = r.get("gates", {})
         if verdict != "blocked":

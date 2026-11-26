@@ -12,6 +12,8 @@ considered is one line of queue/funnel.jsonl. Checked mechanically:
   - outcome is registered, rejected or unreachable, with a reason from the fixed list
   - registered names an existing queue entry; unreachable cites at least two fallbacks tried
     and the evidence, so "gone" is a checked finding
+  - stack is one of a fixed list, `not-stated` when the paper names no language, so the
+    survivorship table by stack means something
   - the legacy unstructured queue/rejected.md has been migrated away
 """
 from __future__ import annotations
@@ -23,7 +25,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "tools"))
-from build_ledger import FALLBACKS, OUTCOMES, REJECT_REASONS, UNREACHABLE_REASONS, load_funnel  # noqa: E402
+from build_ledger import FALLBACKS, OUTCOMES, REJECT_REASONS, STACKS, UNREACHABLE_REASONS, load_funnel  # noqa: E402
 
 
 def violations(repo: Path) -> list[str]:
@@ -47,11 +49,13 @@ def violations(repo: Path) -> list[str]:
             bad.append(f"{tag}: index/item do not match frame {fr['name']}")
             continue
         seen.setdefault(fr["name"], []).append(i)
+        if x.get("stack") not in STACKS:
+            bad.append(f"{tag}: stack must be one of {STACKS} (not-stated when the paper names no language)")
         if x.get("outcome") not in OUTCOMES:
             bad.append(f"{tag}: outcome must be one of {OUTCOMES}")
         elif x["outcome"] == "registered":
-            if not (repo / "queue" / f"{x.get('id')}.json").exists():
-                bad.append(f"{tag}: registered but queue/{x.get('id')}.json does not exist")
+            if not any((repo / "queue" / d / f"{x.get('id')}.json").exists() for d in ("", "withdrawn")):
+                bad.append(f"{tag}: registered but queue/{x.get('id')}.json (or queue/withdrawn/) does not exist")
         elif x["outcome"] == "rejected" and x.get("reason") not in REJECT_REASONS:
             bad.append(f"{tag}: rejection reason must be one of {REJECT_REASONS}")
         elif x["outcome"] == "unreachable":

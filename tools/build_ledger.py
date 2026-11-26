@@ -18,7 +18,8 @@ from pathlib import Path
 CAUSES = ["dependency-rot", "missing-code", "missing-data", "unstated-parameter",
           "numerical-discrepancy", "nondeterminism", "platform", "other"]
 REJECT_REASONS = ["paywalled", "figure-only", "no-numeric-claim", "claim-not-located", "no-method-description",
-                  "runtime", "machine-dependent", "restricted-data", "gpu", "other"]
+                  "stochastic-no-seed", "no-code", "runtime", "machine-dependent", "restricted-data", "gpu", "other"]
+STACKS = ["Fortran", "C/C++", "R", "Python", "MATLAB/Octave", "Julia", "Java", "other", "not-stated"]
 UNREACHABLE_REASONS = ["unreachable-code", "unreachable-data"]
 FALLBACKS = ["software-heritage", "wayback", "zenodo", "author-page", "publisher-supplement", "contact"]
 OUTCOMES = ["registered", "rejected", "unreachable"]
@@ -142,6 +143,10 @@ def funnel_section(repo: Path, rows: list[dict]) -> list[str]:
     why = collections.Counter(x.get("reason") for x in lines if x["outcome"] != "registered")
     for k in REJECT_REASONS + UNREACHABLE_REASONS:
         out.append(f"| {k} | {why.get(k, 0)} |")
+    other = why.get("other", 0)
+    if lines and other / max(1, sum(why.values())) > 0.15:
+        out += ["", f"Note: {other} of {sum(why.values())} non-attempts are filed as `other`, more than 15%; "
+                    "a reason that common needs its own code."]
     out += ["", "Survivorship: the share of each stack among all candidates considered, and among those attempted.", "",
             "| stack | considered | attempted |", "|---|---|---|"]
     stacks = sorted({x.get("stack", "?") for x in lines})

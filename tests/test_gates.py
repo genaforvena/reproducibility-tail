@@ -120,3 +120,28 @@ def test_ledger_shows_margin_column(tmp_path):
     build_ledger.main(["--repo", str(repo)])
     text = (repo / "ledger.md").read_text()
     assert "| margin |" in text and "10%" in text
+
+
+def test_withdrawn_claim_moved_not_deleted_still_passes(tmp_path):
+    repo = make(tmp_path)
+    (repo / "queue" / "withdrawn").mkdir()
+    (repo / "queue" / "p1.json").rename(repo / "queue" / "withdrawn" / "p1.json")
+    git(repo, "add", "-A")
+    git(repo, "commit", "-q", "-m", "withdraw p1")
+    assert gates.violations(repo) == []
+
+
+def test_withdrawn_claim_edited_after_the_run_is_caught(tmp_path):
+    repo = make(tmp_path)
+    (repo / "queue" / "withdrawn").mkdir()
+    (repo / "queue" / "p1.json").rename(repo / "queue" / "withdrawn" / "p1.json")
+    (repo / "queue" / "withdrawn" / "p1.json").write_text('{"claim": "friendlier"}')
+    git(repo, "add", "-A")
+    git(repo, "commit", "-q", "-m", "withdraw and edit")
+    assert any("G0" in v for v in gates.violations(repo))
+
+
+def test_deleting_the_claim_is_caught(tmp_path):
+    repo = make(tmp_path)
+    (repo / "queue" / "p1.json").unlink()
+    assert any("no queue/p1.json" in v for v in gates.violations(repo))

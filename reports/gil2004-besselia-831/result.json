@@ -1,0 +1,53 @@
+{
+  "paper": {
+    "short": "gil2004-besselia-831",
+    "title": "Algorithm 831: Modified Bessel Functions of Imaginary Order and Positive Argument",
+    "year": 2004,
+    "doi": null
+  },
+  "field": "numerics (special functions, Bessel functions of imaginary order)",
+  "stack": "Fortran 77 (TOMS 831, shipped driver Drivers/wktest.f)",
+  "claim": {
+    "text": "WKTEST Wronskian check, IFAC=2 (scaled functions), maximum over the driver's grid, as printed in the shipped Drivers/Res: 6.814548925149211E-13, absolute tolerance 1e-13",
+    "values": [
+      {
+        "name": "WKTEST Wronskian maximum, IFAC=2 (shipped Res)",
+        "paper": 6.814548925149211e-13,
+        "tol_abs": 1e-13,
+        "ours": 6.815659148173836e-13
+      }
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced. The authors' Fortran 77 sources compile as shipped with gfortran -O2 (Drivers/wktest.f with Src/src.f, Src/airy.f, Src/d1mach.f; no edits, no flags beyond -O2; original attempt succeeded). The driver writes its report to TESTF.DAT (its OPEN on unit 1). Two passes (original binary in its build directory; the same binary in a clean directory) give the same TESTF.DAT byte-for-byte and the same maximum, 6.8156591481738360E-13. |ours - paper| = 1.1e-16, inside the registered absolute tolerance 1e-13. The maximum is below 1e-12, the paper's 'close to 1e-12' scale for this grid. Note on the rest of the output: the shipped Drivers/Res and our TESTF.DAT differ in several entries of the earlier per-point error table (for example X=50, A=550, first error column: 0.399680289D-14 shipped vs 0.152100554D-12 ours; X=50, A=60, second column: 0.122124533D-14 vs 0.144328993D-14). These are not the registered claim; they are recorded, not judged, and the table is not compared further here. Replay (G5) not yet run.",
+  "queue_commit": "f2a0059fc3791af238000afc3023f186c1a91df5",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": null,
+    "log": "reports/gil2004-besselia-831/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/gil2004-besselia-831/recipe.sh",
+  "evidence": [
+    "reports/gil2004-besselia-831/evidence/original-attempt.log",
+    "reports/gil2004-besselia-831/evidence/recipe-run.log",
+    "reports/gil2004-besselia-831/evidence/reference/Res",
+    "reports/gil2004-besselia-831/evidence/run1-fort1.txt",
+    "reports/gil2004-besselia-831/evidence/run2-fort1.txt",
+    "reports/gil2004-besselia-831/evidence/run1-value.txt",
+    "reports/gil2004-besselia-831/evidence/run2-value.txt"
+  ],
+  "replayed": [],
+  "stack_class": "Fortran",
+  "field_class": "numerics"
+}

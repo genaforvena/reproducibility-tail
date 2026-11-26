@@ -48,6 +48,30 @@
    "covers": "local main reaches GitHub within a quarter hour (checks/push-lag.py): RED when the oldest unpushed commit is older, or main has diverged; UNKNOWN when the remote cannot be read. The post-commit hook (tools/post-commit-push.sh) pushes after a 30 s settle; the 17-commit backlog of 2026-11-26 had no hook"
   },
   {
+   "name": "gates",
+   "command": ["{python}", "{repo}/checks/gates.py", "--repo", "{repo}"],
+   "every": 600,
+   "timeout": 120,
+   "max_age": 1800,
+   "unknown_codes": [3],
+   "resolver": "rerun",
+   "signal": {"max_age": 1800, "subscribers": ["rerun"], "wake_on": "state"},
+   "replaces": [],
+   "covers": "every report obeys the reproduction gates (docs/method.md, checks/gates.py): result.json present, claim unchanged since the run, verdict equal to the verdict computed from the recorded values, a logged original attempt before any patched or reimplemented basis, fidelity and replay passed, not-reproduced double-confirmed with a cause. RED lists each violation and wakes rerun to repair the report; UNKNOWN when a record cannot be read"
+  },
+  {
+   "name": "scoreboard-fresh",
+   "command": ["{python}", "{repo}/tools/build_ledger.py", "--repo", "{repo}", "--check"],
+   "every": 600,
+   "timeout": 60,
+   "max_age": 1800,
+   "unknown_codes": [3],
+   "resolver": "rerun",
+   "signal": {"max_age": 1800, "subscribers": ["rerun"], "wake_on": "state"},
+   "replaces": [],
+   "covers": "ledger.md equals the text tools/build_ledger.py generates from reports/*/result.json; RED when it was edited by hand or a result changed without rebuilding it"
+  },
+  {
    "name": "disk-floor",
    "command": ["{python}", "{repo}/checks/disk-floor.py"],
    "every": 600,

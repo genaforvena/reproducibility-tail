@@ -65,6 +65,17 @@
       "why": "agrees with the record",
       "log": "reports/varadhan2009-bb-hdp-multistart/evidence/replay-2026-11-26T135258Z.log",
       "seconds": 79
+    },
+    {
+      "utc": "2026-11-26T14:29:52Z",
+      "kind": "clean",
+      "values": {
+        "converged runs": 287.0
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/varadhan2009-bb-hdp-multistart/evidence/replay-2026-11-26T142952Z.log",
+      "seconds": 76
     }
   ]
 }

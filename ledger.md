@@ -5,7 +5,7 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-9 papers attempted.
+10 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
@@ -13,12 +13,12 @@ Method and gates: [docs/method.md](docs/method.md).
 | B | authors' code with build fixes | 2 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
-| X | not reproduced, cause diagnosed | 0 |
+| X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 2 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 2, other 1, statistics 3
-By stack: C/C++ 1, Fortran 1, MATLAB/Octave 2, R 5
-By decade: 2000 3, 2010 6
+By field: astronomy 1, biology 1, ecology 1, numerics 3, other 1, statistics 3
+By stack: C/C++ 1, Fortran 2, MATLAB/Octave 2, R 5
+By decade: 1970 1, 2000 3, 2010 6
 
 Data as of 2026-11-26T16:14:00Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-26T16:14:00Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-9 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+10 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **119 candidates considered from 3 of 3 frames: 8 attempted (7%), 0 unreachable, 111 rejected.**
 
@@ -73,7 +73,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 2 (did not run), not-possible 2 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 4 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 3 (did not run), not-possible 2 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 4 (ran as documented).
 
 ## Results
 
@@ -89,6 +89,10 @@ Authors' original artifact, among all attempted papers: failed 2 (did not run), 
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Number of cycles in S7.cy) | 4 ± 0 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
 | [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics · 2010 · R | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics · 2012 · R | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f07 on [0, 1]) [shipped reference output] | 0.777505 ± 0.000777505 | 0.777505 | 3.659e-07 | 0% | patched | ✓ · ✓ · | X | partial | never clean |
+| [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f08 on [0.1, 1]) [shipped reference output] | 0.00909865 ± 9.09865e-06 | 0.00909898 | 3.34744e-07 | 4% | patched | ✓ · ✓ · | X | partial | never clean |
+| [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f12 on [0, 1]) [shipped reference output] | -0.634665 ± 0.000634665 | -0.63467 | -4.8175e-06 | 1% | patched | ✓ · ✓ · | X | partial | never clean |
+| [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f13 on [0, 1]) [shipped reference output] | 0.0134925 ± 1.34925e-05 | 0.0135495 | 5.70144e-05 | 423% ⚠ | patched | ✓ · ✓ · | X | partial | never clean |
 | [punzo2016-wine-cnm-bic](reports/punzo2016-wine-cnm-bic/result.md) | statistics · 2016 · R | Section 7.3 (wine data), Table 11, CNMs row: BIC-selected (G, parsimonious structure) over G in {1,2,3,4} and the 14 structures, labels ignored, seed 1 (selected_G) | 3 ± 0 | 3 | 0 | exact | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [punzo2016-wine-cnm-bic](reports/punzo2016-wine-cnm-bic/result.md) | statistics · 2016 · R | Section 7.3 (wine data), Table 11, CNMs row: BIC-selected (G, parsimonious structure) over G in {1,2,3,4} and the 14 structures, labels ignored, seed 1 (selected_structure_index) | 7 ± 0 | 7 | 0 | exact | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [purcell2011-fig5-hopf](reports/purcell2011-fig5-hopf/result.md) | biology · 2011 · MATLAB/Octave | Input concentration I (nM) of the Hopf bifurcation of equilibrium c1, Figure 5 caption (~7 nM) (Hopf input I (nM)) | 7 ± 0.5 | 7.1875 | 0.1875 | 38% | reimplemented | ✓ ✓ ✓ ✓ | C | reproduced | 2026-11-26 ok |
@@ -110,7 +114,7 @@ Cause of every attempted paper that is `not-reproduced` or `blocked` (the funnel
 | missing-code | 0 |
 | missing-data | 0 |
 | unstated-parameter | 1 |
-| numerical-discrepancy | 0 |
+| numerical-discrepancy | 1 |
 | nondeterminism | 0 |
 | platform | 0 |
 | other | 0 |

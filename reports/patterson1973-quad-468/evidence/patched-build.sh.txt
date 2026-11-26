@@ -1,0 +1,4 @@
+# Patched build (basis: patched). Run inside the sandbox in /work/src/Fortran/Sp/Drivers.
+# 1. The shipped Makefile names f77 (absent) and expects src.f beside driver.f (it lives in ../Src).
+#    Patch: compiler chosen by variable F77 (gfortran from conda-forge), and src.f copied beside driver.f. No source edits.
+make F77=x86_64-conda-linux-gnu-gfortran F77OPTS=-std=legacy

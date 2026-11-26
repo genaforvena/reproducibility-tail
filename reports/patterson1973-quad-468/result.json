@@ -1,0 +1,78 @@
+{
+ "paper": {
+  "short": "patterson1973-quad-468",
+  "title": "Algorithm 468: Algorithm for Automatic Numerical Integration Over a Finite Interval",
+  "year": 1973,
+  "doi": null
+ },
+ "field": "numerics (adaptive quadrature)",
+ "stack": "Fortran 77/90 mixed, single precision",
+ "field_class": "numerics",
+ "stack_class": "Fortran",
+ "claim": {
+  "text": "QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values",
+  "source": "artifact-reference",
+  "reference": {
+   "file": "reports/patterson1973-quad-468/evidence/reference/res",
+   "sha256": "b8d29a1dee8174b78d231981a488ff6bf6f06655b6565bddd4a670cbe43aea6b",
+   "archive": "netlib.org/toms/468.gz sha256 1891044f1acedad241f46b6e1a16b0803ab3a2c54b37fbab333665a755d82319 (member Fortran/Sp/Drivers/res)"
+  },
+  "values": [
+   {
+    "name": "QUAD integral of f07 on [0, 1]",
+    "paper": 0.7775046341,
+    "tol_abs": 0.0007775046341000001,
+    "ours": 0.777505
+   },
+   {
+    "name": "QUAD integral of f08 on [0.1, 1]",
+    "paper": 0.009098645256,
+    "tol_abs": 9.098645256e-06,
+    "ours": 0.00909898
+   },
+   {
+    "name": "QUAD integral of f12 on [0, 1]",
+    "paper": -0.6346651825,
+    "tol_abs": 0.0006346651825,
+    "ours": -0.63467
+   },
+   {
+    "name": "QUAD integral of f13 on [0, 1]",
+    "paper": 0.01349248565,
+    "tol_abs": 1.3492485650000001e-05,
+    "ours": 0.0135495
+   }
+  ]
+ },
+ "basis": "patched",
+ "verdict": "partial",
+ "cause": "numerical-discrepancy",
+ "attempt": "Original: shipped Makefile as documented fails (f77 absent; then src.f not beside driver.f). Patched: conda-forge gfortran via micromamba in the sandbox fetch step; F77 passed as a make variable; src.f copied beside driver.f; no source edits. Two passes (-O, then clean -O0 rebuild) give identical output, byte-equal to the shipped res file. f07, f08, f12 within tolerance; f13 is not (QUAD reports ICHECK 1, value 0.0135495 vs 0.01349248565, diff 5.7e-5 against tol 1.35e-5).",
+ "queue_commit": "826c062f5d18bc4f6431d30e664714e0997eaac9",
+ "original_attempt": {
+  "tried": true,
+  "outcome": "failed",
+  "reason": "make (shipped Makefile, default compiler) stops: f77 not found; with F77=gfortran, make stops: No rule to make target 'src.f', needed by 'src.o' (src.f is in Fortran/Sp/Src/, not beside driver.f)",
+  "log": "reports/patterson1973-quad-468/evidence/original-attempt.log"
+ },
+ "gates": {
+  "G1": "pass",
+  "G2": "na",
+  "G3": "pass",
+  "G5": "na",
+  "G6": "pass",
+  "cross_check": "na"
+ },
+ "recipe": "reports/patterson1973-quad-468/recipe.sh",
+ "evidence": [
+  "reports/patterson1973-quad-468/evidence/original-attempt.log",
+  "reports/patterson1973-quad-468/evidence/recipe-run.log",
+  "reports/patterson1973-quad-468/evidence/pass2.log",
+  "reports/patterson1973-quad-468/evidence/run1-output.txt",
+  "reports/patterson1973-quad-468/evidence/run2-output.txt",
+  "reports/patterson1973-quad-468/evidence/values.txt",
+  "reports/patterson1973-quad-468/evidence/reference/res",
+  "reports/patterson1973-quad-468/result.md"
+ ],
+ "replayed": []
+}

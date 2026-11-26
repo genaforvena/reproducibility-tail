@@ -11,6 +11,7 @@
  },
  "code": {
   "url": "https://netlib.org/toms/885.zip",
+  "archive": "sha256 4415d85ac688c4f1882f5b6100d9e8243d525c13cd65c9a8d93f40b44e544205 (netlib.org/toms/885.zip as fetched 2026-11-26, 18179 bytes; same as the registered commit field)",
   "commit": "netlib TOMS archive 885.zip (fetched 2026-11-26, HTTP 200, 18179 bytes; sha256 4415d85ac688c4f1882f5b6100d9e8243d525c13cd65c9a8d93f40b44e544205)",
   "note": "C sources in 885/C (lnnorm.c is Algorithm 304 modified for log of the normal distribution; main.c is the driver; norminc.h holds constants). The driver checktable() reads the shipped table 885/C/sheppard.txt (Table IV of Sheppard 1939, 16 significant digits) and compares -lnnorm(-x) with it. The paper (ACM DL) has not been read by scout."
  },

@@ -5,48 +5,48 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-20 papers attempted.
+21 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 9 |
-| B | authors' code with build fixes | 4 |
+| B | authors' code with build fixes | 5 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 5 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 13, other 1, statistics 3
-By stack: C/C++ 3, Fortran 9, MATLAB/Octave 2, R 5, not-stated 1
-By decade: 1970 1, 1980 1, 1990 6, 2000 6, 2010 6
+By field: astronomy 1, biology 1, ecology 1, numerics 14, other 1, statistics 3
+By stack: C/C++ 4, Fortran 9, MATLAB/Octave 2, R 5, not-stated 1
+By decade: 1970 1, 1980 1, 1990 6, 2000 7, 2010 6
 
-Data as of 2026-11-26T19:36Z (the newest replay or funnel entry).
+Data as of 2026-11-26T19:44Z (the newest replay or funnel entry).
 
 ## The funnel
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-20 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+21 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
-**190 candidates considered from 4 of 4 frames: 17 attempted (9%), 0 unreachable, 173 rejected.**
+**195 candidates considered from 4 of 4 frames: 18 attempted (9%), 0 unreachable, 177 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
 | cpc-library | 2767 | 40 | 20 | 50% | 0 | 0 | 20 |
 | netlib-liblist | 160 | 40 | 40 | 100% | 0 | 0 | 40 |
 | stat-co-2010-2015 | 1872 | 80 | 50 | 62% | 1 | 0 | 49 |
-| toms-calgo-index | 570 | 80 | 80 | 100% | 16 | 0 | 64 |
+| toms-calgo-index | 570 | 120 | 85 | 71% | 17 | 0 | 68 |
 
 | why a candidate was not attempted | candidates |
 |---|---|
-| paywalled | 27 |
+| paywalled | 29 |
 | figure-only | 10 |
-| no-numeric-claim | 43 |
+| no-numeric-claim | 44 |
 | claim-not-located | 49 |
 | no-method-description | 0 |
 | stochastic-no-seed | 15 |
 | no-code | 3 |
-| runtime | 0 |
+| runtime | 1 |
 | machine-dependent | 17 |
 | restricted-data | 0 |
 | gpu | 1 |
@@ -58,8 +58,8 @@ Survivorship: each stack's count (and share) among all candidates considered, an
 
 | stack | considered | attempted |
 |---|---|---|
-| C/C++ | 24 (13%) | 4 (24%) |
-| Fortran | 99 (52%) | 11 (65%) |
+| C/C++ | 26 (13%) | 4 (22%) |
+| Fortran | 102 (52%) | 12 (67%) |
 | Java | 1 (1%) | 0 (0%) |
 | MATLAB/Octave | 12 (6%) | 1 (6%) |
 | R | 7 (4%) | 1 (6%) |
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 7 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 9 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 8 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 9 (ran as documented).
 
 ## Results
 
@@ -102,10 +102,11 @@ Authors' original artifact, among all attempted papers: failed 7 (did not run), 
 | [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics · 2010 · R | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [gaviano2003-gkls-829](reports/gaviano2003-gkls-829/result.md) | numerics · 2003 · C/C++ | Shipped reference test001.txt: global minimizer of D-type function number 1, dimension 2, f = -1, at (-0.136, 0.824), tol 1e-3 absolute (D-type function 1, dim 2, global minimizer x1) | -0.136 ± 0.001 | -0.136 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ · | B | reproduced | never clean |
 | [gaviano2003-gkls-829](reports/gaviano2003-gkls-829/result.md) | numerics · 2003 · C/C++ | Shipped reference test001.txt: global minimizer of D-type function number 1, dimension 2, f = -1, at (-0.136, 0.824), tol 1e-3 absolute (D-type function 1, dim 2, global minimizer x2) | 0.824 ± 0.001 | 0.824 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ · | B | reproduced | never clean |
-| [gil2004-besselia-831](reports/gil2004-besselia-831/result.md) | numerics · 2004 · Fortran | WKTEST Wronskian check, IFAC=2 (scaled functions), maximum over the driver's grid, as printed in the shipped Drivers/Res: 6.814548925149211E-13, absolute tolerance 1e-13 (WKTEST Wronskian maximum, IFAC=2 (shipped Res)) | 6.81455e-13 ± 1e-13 | 6.81566e-13 | 1.11022e-16 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [gil2004-besselia-831](reports/gil2004-besselia-831/result.md) | numerics · 2004 · Fortran | WKTEST Wronskian check, IFAC=2 (scaled functions), maximum over the driver's grid, as printed in the shipped Drivers/Res: 6.814548925149211E-13, absolute tolerance 1e-13 (WKTEST Wronskian maximum, IFAC=2 (shipped Res)) | 6.81455e-13 ± 1e-13 | 6.81566e-13 | 1.11022e-16 | 0% | original | ✓ · ✓ ✗ | A | reproduced | 2026-11-26 CHANGED |
 | [greenberg1997-sleuth-775](reports/greenberg1997-sleuth-775/result.md) | numerics · 1997 · Fortran | ELAM value from the queue entry, tol 1e-3 absolute; provisional local reimplementation gives 4871.3813065256945 in both passes (not yet a verdict) (ELAM) | 4871.38 ± 0.001 | – | – | – | - | · · · · | - | blocked | never clean |
 | [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics · 2012 · R | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [kraft1994-tomp-733](reports/kraft1994-tomp-733/result.md) | numerics · 1994 · not-stated | Value 1.7952392, tol 1e-5 absolute; provisional local run gives 1.79523920 in both passes (not yet a verdict) (value) | 1.79524 ± 1e-05 | – | – | – | - | · · · · | - | blocked | never clean |
+| [linhart2008-lnnorm-885](reports/linhart2008-lnnorm-885/result.md) | numerics · 2008 · C/C++ | -lnnorm(-5.0) computed by the authors' C/lnnorm.c, against the Sheppard (1939) Table IV row x = 5.0 in the shipped C/sheppard.txt: 15.0649983939887257, absolute tolerance 1.5e-8 (-lnnorm(-5.0) against Sheppard Table IV row 5.0) | 15.065 ± 1.5e-08 | 15.065 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ · | B | reproduced | never clean |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDM0P5(-4)) [shipped reference output] | 0.0180819 ± 1.80819e-07 | 0.0180819 | -2.9914e-09 | 2% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDM0P5(3)) [shipped reference output] | 1.85349 ± 1.85349e-05 | 1.85349 | -8.86015e-08 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDP0P5(-4)) [shipped reference output] | 0.0181982 ± 1.81982e-07 | 0.0181982 | -3.50837e-09 | 2% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |

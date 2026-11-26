@@ -1,0 +1,51 @@
+{
+  "paper": {
+    "title": "Algorithm 828: DNSPLIN1: Discrete nonlinear spline interpolation",
+    "authors": [
+      "R. J. Renka"
+    ],
+    "year": 2003,
+    "venue": "ACM Transactions on Mathematical Software 29(4), 458-468 (TOMS 828, Dec 2003)",
+    "doi": null,
+    "url": "https://netlib.org/toms/828.gz"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/828.gz",
+    "archive": "sha256 86c0c495cda5ec8c8f49d394c78e53d8df4c765b0398135556b7762e78f3d7fd (netlib.org/toms/828.gz as fetched 2026-11-26, 99858 bytes)",
+    "commit": "netlib TOMS archive 828.gz (fetched 2026-11-26, HTTP 200)",
+    "note": "Fortran 77 shar archive. Remove everything above the #! /bin/sh line, run it with sh to create Fortran77/Dp/ (Makefile, driver.f, src.f, dblas.f, lapack.f, data1..5, res1..5). The Makefile target Res1 runs ./driver < data1 (its stdout to Res1_1 and dnsplin1.prt to Res1_2). Check the output against the shipped res1."
+  },
+  "field": "numerics (spline interpolation)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped reference output res1 in the 828.gz archive, data set 1 (Fortran77/Dp/res1). Row 2 (the second value after the count 241) is 0.565126291685656D-01.",
+    "reference": {
+      "file": "Fortran77/Dp/res1 (member of 828.gz), data set 1, row 2",
+      "sha256": null,
+      "archive": "netlib.org/toms/828.gz sha256 86c0c495cda5ec8c8f49d394c78e53d8df4c765b0398135556b7762e78f3d7fd"
+    },
+    "metric": "The second interpolated value printed by driver on data1 (Res1), compared with 0.565126291685656D-01 from res1.",
+    "paper_value": "Not used: the paper is paywalled and was not read.",
+    "values": [
+      {
+        "name": "driver on data1, row 2 of res1",
+        "paper": 0.0565126291685656,
+        "tol_abs": 1e-12
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 1e-12,
+      "basis": "Fixed before any run. Values are printed to 15 significant digits (about 1e-17 absolute at 0.0565), so the print rounding is far below 1e-12. 1e-12 absolute leaves room for libm and compiler differences in a double-precision spline. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 2 minutes: a Fortran compile and one run on 7 points.",
+    "data_size": "None beyond the archive (data1 is 7 points).",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "DNSPLIN1 is a discrete spline interpolation code with a shipped reference output for a 7-point data set, so the claim is a checkable number that the code must compute.",
+  "registered": "2026-11-26T19:44Z"
+}

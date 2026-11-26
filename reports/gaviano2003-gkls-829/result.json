@@ -39,7 +39,7 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -54,7 +54,20 @@
     "reports/gaviano2003-gkls-829/evidence/run1-test001.txt",
     "reports/gaviano2003-gkls-829/evidence/run2-test001.txt"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-26T20:05:51Z",
+      "kind": "clean",
+      "values": {
+        "D-type function 1, dim 2, global minimizer x1": -0.136,
+        "D-type function 1, dim 2, global minimizer x2": 0.824
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/gaviano2003-gkls-829/evidence/replay-2026-11-26T200551Z.log",
+      "seconds": 3
+    }
+  ],
   "stack_class": "C/C++",
   "field_class": "numerics",
   "patch": {

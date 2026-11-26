@@ -1,0 +1,60 @@
+{
+ "paper": {
+  "title": "Algorithm 734 (title not recorded: the frame item is blank and the archive has no title line)",
+  "authors": [
+   "A. G. Buckley"
+  ],
+  "year": 1994,
+  "venue": "ACM Transactions on Mathematical Software 20(3), 354 (TOMS 734, Sep 1994)",
+  "doi": null,
+  "url": "https://netlib.org/toms/734.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/734.gz",
+  "commit": "netlib TOMS archive 734.gz (downloaded 2026-11-26, 72654 bytes compressed, 7381 lines uncompressed; sha256 not recorded by scout)",
+  "note": "A shell archive (Algorithm:734, Language Fortran90, Precision Sp). Members: Src/Sp/src.f90 (the minimisation package, modules precisions, reals, supp_codes, minimize and others), Drivers/Sp/driver2.f90 (Rosenbrock test program, Min_Rosenbrock, self-contained: no stdin), Drivers/Sp/res2 (the shipped stdout of that run). driver2 calls i1mach(2) for the output unit, which is not in the archive (PackingList names the PORT library, DriverLib: port); the rerun must supply i1mach, for example a function returning 6 for unit 2. Needs a Fortran 90 compiler; gfortran is not in the scout sandbox."
+ },
+ "field": "numerics (unconstrained minimisation, quasi-Newton and conjugate gradient in single precision)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Shipped reference run Drivers/Sp/res2: the stdout of driver2.f90. Minimise the Rosenbrock function f = 100(x2-x1^2)^2 + (1-x1)^2 from x = (-1.2, 1) with acc = 0.001, Frequency = 10, EvalLimit = 200, state Normal (module RosenbrockFunc in driver2.f90). The printed lines are 'Least function value: 0.20053597E-08.', 'Function evaluation count: 59.', 'Iteration count: 36.'",
+  "reference": {
+   "file": "Fortran90/Drivers/Sp/res2 (member of 734.gz shar, between the 'res2' cat marker and its SHAR_EOF)",
+   "sha256": null,
+   "archive": "netlib.org/toms/734.gz"
+  },
+  "metric": "Function evaluation count, iteration count and least function value printed by driver2.f90 (format e16.8)",
+  "paper_value": "Shipped res2 only. The paper was not read, so no paper value is used.",
+  "values": [
+   {
+    "name": "function evaluation count (FEvals)",
+    "paper": 59,
+    "tol_abs": 0
+   },
+   {
+    "name": "iteration count (it)",
+    "paper": 36,
+    "tol_abs": 0
+   },
+   {
+    "name": "least function value",
+    "paper": 2.0053597e-09,
+    "tol_abs": 1e-08
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": "0 for both counts; 1e-8 absolute for the least function value",
+   "why": "The counts are integers from the method's path, so they must match exactly. The least value is at single-precision rounding noise near the minimum (about 2e-9), so a tighter absolute tolerance would test rounding, not the method. Scout chose these tolerances after reading the shipped res2 value (the value is not a run of ours); the rerun must not loosen them to fit its own result."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "well under 1 minute (59 function evaluations on a 2-variable problem); the archive's other test programs are larger and are not in scope here",
+  "data_size": "none; driver2 reads no input",
+  "data_licence": "Netlib TOMS code under the archive's ACM licence; the rerun should record the licence text it finds in the archive"
+ },
+ "why": "A 1994 Fortran 90 minimiser ships a deterministic driver and its printed run; the iteration and evaluation counts are exact integers from the method, so a rerun checks the algorithm's path, not only its endpoint.",
+ "registered": "2026-11-26T17:20:00Z"
+}

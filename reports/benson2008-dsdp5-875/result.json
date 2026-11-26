@@ -1,0 +1,88 @@
+{
+  "paper": {
+    "short": "benson2008-dsdp5-875",
+    "title": "Algorithm 875: DSDP5, software for semidefinite programming",
+    "year": 2008,
+    "doi": null
+  },
+  "field": "numerics (semidefinite programming, interior-point solver)",
+  "stack": "C (TOMS 875 archive: src/, include/, examples/, bin/ with the shipped reference log bin/output.theta and input bin/graph1)",
+  "field_class": "numerics",
+  "stack_class": "C/C++",
+  "claim": {
+    "text": "theta graph1 (Lovasz theta SDP of the 6-node, 8-edge graph shipped as bin/graph1): the DD Objective of the last iteration, as a magnitude, is 3.00000012 (shipped reference log bin/output.theta, iteration 4). Absolute tolerance 1e-5.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/benson2008-dsdp5-875/evidence/reference/output.theta",
+      "sha256": "36b4ba501c921c3afec326faa16e85aaee815e25e75a946e0c57184b28373300",
+      "archive": "netlib.org/toms/875.zip sha256 43a19f4832245b4703dc1826a9786d21073a76e9c554e951aa2d3136ed78158f"
+    },
+    "values": [
+      {
+        "name": "theta graph1 final DD objective (magnitude)",
+        "paper": 3.00000012,
+        "tol_abs": 1e-05,
+        "ours": 3.00000012
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced with a build-only change to the build command. The authors' documented route (make.include as shipped, DSDPROOT set in the environment, make all) builds libdsdp.a and fails at the first link: 'cannot find -lg2c' (make.include lists the obsolete f2c runtime in LAPACKBLAS; it is absent on this host). The same unedited make.include is used with the library list overridden on the make command line (LAPACKBLAS='-llapack -lblas -lm') and only the library and examples targets built (the matlab step needs mex and is skipped; it is not part of the claim). Three manifests prove no source or makefile was touched (verify_sources record: build-only). theta graph1 then prints the same log as the shipped reference, byte for byte (diff: identical), so the DD objective is -3.00000012 in both passes, magnitude 3.00000012, difference 0 against tol 1e-5.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make all (documented route): libdsdp.a builds; the first example link fails with '/usr/bin/ld: cannot find -lg2c' (make.include LAPACKBLAS = -llapack -lblas -lg2c -lm). The matlab target (dsdp) then fails with exit 127 because mex is absent. make exits 2.",
+    "log": "reports/benson2008-dsdp5-875/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/benson2008-dsdp5-875/recipe.sh",
+  "queue_commit": "6b9dfb1088abb4ade62d277514397aea161a1c5c",
+  "evidence": [
+    "reports/benson2008-dsdp5-875/evidence/original-attempt.log",
+    "reports/benson2008-dsdp5-875/evidence/pass1-build.log",
+    "reports/benson2008-dsdp5-875/evidence/pass1-run.log",
+    "reports/benson2008-dsdp5-875/evidence/pass2-run.log",
+    "reports/benson2008-dsdp5-875/evidence/pass1-output.txt",
+    "reports/benson2008-dsdp5-875/evidence/pass2-output.txt",
+    "reports/benson2008-dsdp5-875/evidence/pass1-dd-magnitude.txt",
+    "reports/benson2008-dsdp5-875/evidence/pass2-dd-magnitude.txt",
+    "reports/benson2008-dsdp5-875/evidence/reference/output.theta",
+    "reports/benson2008-dsdp5-875/evidence/recipe-run.log",
+    "reports/benson2008-dsdp5-875/evidence/manifest.pre",
+    "reports/benson2008-dsdp5-875/evidence/manifest.mid",
+    "reports/benson2008-dsdp5-875/evidence/manifest.post"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "43a19f4832245b4703dc1826a9786d21073a76e9c554e951aa2d3136ed78158f",
+    "compared": 139,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "cd /work/build && DSDPROOT=/work/build make LAPACKBLAS='-llapack -lblas -lm' dsdplibrary example"
+    ],
+    "manifests": {
+      "pre": "reports/benson2008-dsdp5-875/evidence/manifest.pre",
+      "mid": "reports/benson2008-dsdp5-875/evidence/manifest.mid",
+      "post": "reports/benson2008-dsdp5-875/evidence/manifest.post"
+    }
+  }
+}

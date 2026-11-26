@@ -1,0 +1,46 @@
+{
+  "paper": {
+    "short": "varadhan2009-bb-hdp-multistart",
+    "title": "BB: An R Package for Solving a Large System of Nonlinear Equations and for Optimizing a High-Dimensional Nonlinear Objective Function",
+    "year": 2009,
+    "doi": "10.18637/jss.v032.i04"
+  },
+  "field": "computational mathematics / statistics (nonlinear equation solving, multiple roots)",
+  "stack": "R 4.5.3 (sandbox, conda-forge), archived BB 2009.9-1, setRNG and numDeriv (current conda-forge)",
+  "claim": {
+    "text": "sum(ans$conv) for multiStart(par = p0, fn = hdp, action = \"solve\"), 300 starts, seed 1234, JSS p. 11",
+    "values": [
+      {"name": "converged runs", "paper": 284, "tol_abs": 3, "ours": 287}
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "authors' archived BB 2009.9-1 built with R CMD INSTALL in the sandbox; hdp taken from the authors' vignette source (not exported by the package); no edits to the package",
+  "queue_commit": "6d454ae3f6936cce3048009c147aa40b1b47daf5",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "authors' package built and ran clean; the first run failed only because hdp is not exported (fixed by sourcing the authors' vignette definition)",
+    "log": "reports/varadhan2009-bb-hdp-multistart/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "fail"
+  },
+  "recipe": "reports/varadhan2009-bb-hdp-multistart/recipe.sh",
+  "evidence": [
+    "reports/varadhan2009-bb-hdp-multistart/evidence/original-attempt.log",
+    "reports/varadhan2009-bb-hdp-multistart/evidence/attempt1-hdp-not-in-package.log",
+    "reports/varadhan2009-bb-hdp-multistart/impl/ml_original.R",
+    "reports/varadhan2009-bb-hdp-multistart/result.md"
+  ],
+  "replayed": [
+    {"utc": "2026-11-26T13:43:23Z", "value": 287, "ok": true},
+    {"utc": "2026-11-26T13:43:23Z", "value": 287, "ok": true}
+  ]
+}

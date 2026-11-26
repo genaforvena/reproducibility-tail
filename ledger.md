@@ -5,26 +5,27 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-2 papers attempted.
+3 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
-| A | authors' code, run clean | 2 |
+| A | authors' code, run clean | 3 |
 | B | authors' code with build fixes | 0 |
 | C | reimplemented, with an independent cross-check | 0 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 0 |
 | - | blocked or not yet run | 0 |
 
-By field: ecology (species richness estimation from incidence/abundance samples) 1, statistics (beta regression, maximum likelihood) 1
-By stack: R 4.5.3 (sandbox, conda-forge), archived betareg 3.0-0 1, R 4.6.2 (sandbox, conda-forge), archived SPECIES 1.0 1
-By decade: 2010 2
+By field: computational mathematics / statistics (nonlinear equation solving, multiple roots) 1, ecology (species richness estimation from incidence/abundance samples) 1, statistics (beta regression, maximum likelihood) 1
+By stack: R 4.5.3 (sandbox, conda-forge), archived BB 2009.9-1, setRNG and numDeriv (current conda-forge) 1, R 4.5.3 (sandbox, conda-forge), archived betareg 3.0-0 1, R 4.6.2 (sandbox, conda-forge), archived SPECIES 1.0 1
+By decade: 2000 1, 2010 2
 
 ## Results
 
 | paper | field · year · stack | claim | paper value ± tol | our value | Δ | basis | gates G1 G2 G3 G5 | grade | verdict | last replay |
 |---|---|---|---|---|---|---|---|---|---|---|
 | [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics (beta regression, maximum likelihood) · 2012 · R 4.5.3 (sandbox, conda-forge), archived betareg 3.0-0 | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | original | ✓ · ✓ · | A | reproduced | 2026-11-26 ok |
+| [varadhan2009-bb-hdp-multistart](reports/varadhan2009-bb-hdp-multistart/result.md) | computational mathematics / statistics (nonlinear equation solving, multiple roots) · 2009 · R 4.5.3 (sandbox, conda-forge), archived BB 2009.9-1, setRNG and numDeriv (current conda-forge) | sum(ans$conv) for multiStart(par = p0, fn = hdp, action = "solve"), 300 starts, seed 1234, JSS p. 11 (converged runs) | 284 ± 3 | 287 | 3 | original | ✓ · ✓ · | A | reproduced | 2026-11-26 ok |
 | [wang2011-species-butterfly-ace](reports/wang2011-species-butterfly-ace/result.md) | ecology (species richness estimation from incidence/abundance samples) · 2011 · R 4.6.2 (sandbox, conda-forge), archived SPECIES 1.0 | ChaoLee1992(butterfly, t = 10, method = "all") $Nhat[1], ACE estimate of species richness (JSS p. 8) (ACE) | 712 ± 0.5 | 712 | 0 | original | ✓ · ✓ · | A | reproduced | 2026-11-26 ok |
 
 ## Why papers stopped reproducing

@@ -1,0 +1,50 @@
+{
+ "paper": {
+  "title": "Algorithm 885: Computing the logarithm of the normal distribution",
+  "authors": [
+   "J. M. Linhart"
+  ],
+  "year": 2008,
+  "venue": "ACM Transactions on Mathematical Software 35(3), Article 20 (TOMS 885, Oct 2008)",
+  "doi": null,
+  "url": "https://netlib.org/toms/885.zip"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/885.zip",
+  "commit": "netlib TOMS archive 885.zip (fetched 2026-11-26, HTTP 200, 18179 bytes; sha256 4415d85ac688c4f1882f5b6100d9e8243d525c13cd65c9a8d93f40b44e544205)",
+  "note": "C sources in 885/C (lnnorm.c is Algorithm 304 modified for log of the normal distribution; main.c is the driver; norminc.h holds constants). The driver checktable() reads the shipped table 885/C/sheppard.txt (Table IV of Sheppard 1939, 16 significant digits) and compares -lnnorm(-x) with it. The paper (ACM DL) has not been read by scout."
+ },
+ "field": "numerics (special functions, log normal tail)",
+ "stack": "C/C++",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "The shipped reference table C/sheppard.txt in the 885.zip archive, row x = 5.0: '5.0    15.0649983939887257' (Sheppard 1939, Table IV, as cited by the article).",
+  "reference": {
+   "file": "885/C/sheppard.txt (member of 885.zip), row x = 5.0",
+   "sha256": null,
+   "archive": "netlib.org/toms/885.zip sha256 4415d85ac688c4f1882f5b6100d9e8243d525c13cd65c9a8d93f40b44e544205"
+  },
+  "metric": "The value -lnnorm(-5.0) computed by C/lnnorm.c (the function the driver's checktable() tests as lnx = -lnnorm(-xf) with xf = 5.0), compared with the tabulated 15.0649983939887257.",
+  "paper_value": "Not used: the paper is paywalled and was not read. The claim rests on the shipped table only.",
+  "values": [
+   {
+    "name": "-lnnorm(-5.0) against Sheppard Table IV row 5.0",
+    "paper": 15.064998393988725,
+    "tol_abs": 1.5e-08
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1.5e-08,
+   "basis": "Fixed before any run. The table is printed to 16 significant digits, so its own rounding is about 1e-16 relative. 1.5e-8 absolute is 1e-9 relative at 15.065; a double-precision implementation of Algorithm 304 with the archive's constants should agree far better, and the margin covers libm and compiler differences. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute: one C file compile and a single lnnorm call at x = -5.0.",
+  "data_size": "None; the reference table ships in the archive (sheppard.txt, a few KB).",
+  "data_licence": "Netlib TOMS code under the ACM licence of the archive; the rerun should record the licence text in the archive."
+ },
+ "why": "lnnorm computes a log tail probability by a rational approximation with no closed form at x = -5, and the archive's own table of 1939 values is a checkable reference for the same function the driver tests.",
+ "registered": "2026-11-26T18:46Z"
+}

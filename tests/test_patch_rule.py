@@ -85,6 +85,22 @@ def test_manifest_covers_source_files_only(tmp_path):
     assert set(vs.manifest(root)) == {"src/a.f", "src/b.h", "Makefile"}
 
 
+def test_build_configuration_files_are_covered(tmp_path):
+    root = tmp_path / "t"
+    for rel in ("makefile.inc", "make.inc", "Makefile.local", "src/flags.cfg", "x.o", "a.out", "res1"):
+        (root / rel).parent.mkdir(parents=True, exist_ok=True)
+        (root / rel).write_text("x")
+    assert set(vs.manifest(root)) == {"makefile.inc", "make.inc", "Makefile.local", "src/flags.cfg"}
+
+
+def test_a_makefile_inc_written_before_the_build_is_not_build_only(tmp_path):
+    """TOMS 828: the archive shipped no makefile.inc; writing one chooses the compiler and the libraries."""
+    repo = patched_report(tmp_path, mid={**SRC, "makefile.inc": "FC=gfortran\nLAPACK=lapack.o\n"},
+                          post={**SRC, "makefile.inc": "FC=gfortran\nLAPACK=lapack.o\n"})
+    assert result(repo)["patch"]["kind"] == "source"
+    assert any("G2 fidelity not passed" in v for v in gates.violations(repo))
+
+
 def test_compare_finds_modified_removed_added(tmp_path):
     a = vs.parse(tree(tmp_path, "a", SRC))
     b = vs.parse(tree(tmp_path, "b", {"src/a.f": "changed\n", "src/b.h": "#define B 1\n", "extra.c": "int x;\n"}))

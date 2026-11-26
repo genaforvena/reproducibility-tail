@@ -31,8 +31,12 @@ import sys
 from pathlib import Path
 
 SOURCE_EXT = {".f", ".for", ".f77", ".f90", ".f95", ".c", ".cc", ".cpp", ".cxx", ".h", ".hh", ".hpp", ".hxx",
-              ".m", ".r", ".py", ".jl", ".java", ".pas", ".pl", ".tex", ".sh", ".mk", ".in", ".ac", ".am"}
+              ".m", ".r", ".py", ".jl", ".java", ".pas", ".pl", ".tex", ".sh", ".mk", ".in", ".ac", ".am",
+              ".inc", ".cmake", ".cfg", ".conf", ".def", ".ini", ".mak", ".make"}
 SOURCE_NAMES = {"makefile", "gnumakefile", "configure", "cmakelists.txt", "description", "namespace"}
+# Files that choose compilers, flags and libraries are part of the build recipe, so a file we add or edit
+# before the build (makefile.inc, make.inc, Makefile.local) must show up in the pre/mid comparison.
+SOURCE_PREFIXES = ("makefile", "gnumakefile", "make.", "config.mk", "setup.", "build.")
 SKIP_DIRS = {".git", "__pycache__", "node_modules"}
 MAX_BYTES = 50_000_000
 MANIFEST_CALL = "verify_sources.py manifest"
@@ -51,7 +55,8 @@ SUSPICIOUS = [
 
 
 def is_source(path: Path) -> bool:
-    return path.suffix.lower() in SOURCE_EXT or path.name.lower() in SOURCE_NAMES
+    n = path.name.lower()
+    return path.suffix.lower() in SOURCE_EXT or n in SOURCE_NAMES or n.startswith(SOURCE_PREFIXES)
 
 
 def manifest(root: Path) -> dict[str, str]:

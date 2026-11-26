@@ -135,7 +135,7 @@ example micromamba) and try again before concluding the original cannot run.
 Old archives often fail only at the build: a Makefile that cannot find a header, a missing compiler alias,
 a library path. Fixing that changes no number, so it has nothing to check against the paper. But "I only
 touched the build" cannot be taken on trust, so it is proved from bytes. The recipe takes three manifests of
-the authors' source files with `tools/verify_sources.py manifest DIR`: **pre** right after it unpacks the
+the authors' source and build-configuration files (code, Makefiles, and files such as `makefile.inc` or `make.inc` that choose compilers, flags and libraries) with `tools/verify_sources.py manifest DIR`: **pre** right after it unpacks the
 archive, **mid** after our own patch step and immediately before the build commands, **post** after the
 build. Then `tools/verify_sources.py record --repo . --id ID --pre PRE --mid MID --post POST --command CMD`
 (one `--command` per build command, exactly as the recipe runs it) copies the manifests into the report and

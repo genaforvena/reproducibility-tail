@@ -1,0 +1,86 @@
+{
+ "paper": {
+  "title": "Algorithm 959: VBF: A Library of C++ Classes for Vector Boolean Functions in Cryptography",
+  "authors": [
+   "Jose Antonio Alvarez-Cubero",
+   "Pedro J. Zufiria"
+  ],
+  "year": 2016,
+  "venue": "ACM Transactions on Mathematical Software 42(2), Article 16 (CALGO Algorithm 959)",
+  "doi": null,
+  "url": "https://netlib.org/toms/959.zip (ACM article not read: the DL returns 403 to automated fetch)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/959.zip",
+  "commit": "netlib TOMS archive 959.zip (CPP/Src, CPP/Drivers/ex.cpp, S7.dec, Makefile, Res/S7 and Res/S9, SupportPackages/ntl-9.2.0 and gmp-6.0.0)",
+  "archive": "sha256 e22c4212904de71769091373d279dbaa3f605a95599fe0767ff676982ed287fd (netlib.org/toms/959.zip as downloaded 2026-11-26, 9437749 bytes)",
+  "note": "Build NTL 9.2.0 from SupportPackages (GMP 6.0.0 is optional), then CPP/Drivers/ex.cpp per its Makefile (g++ ... -lntl). Run in CPP/Drivers: ./ex.exe S7 7 (argv[1] the base file name with S7.dec as the input permutation, argv[2] the dimension 7, as the shipped S7.out states: Argument Dimension = 7). The 2015 authors used g++ 4.8.4; expect new-compiler errors in NTL 9.2.0 and in the library headers."
+ },
+ "field": "cryptography (S-box analysis, vector Boolean functions; computational numerics over GF(2))",
+ "stack": "C++ (NTL 9.2.0, optional GMP 6.0.0)",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Shipped reference run for the 7-bit S-box in the archive: CPP/Drivers/Res/S7/S7.out (the driver's standard output) and its companion tables S7.anf, .tt, .wal, .lp, .dp, .ac, .cy. The driver prints the cryptographic measures that the library computes; they are exact integers or exact binary fractions.",
+  "reference": {
+   "file": "959/CPP/Drivers/Res/S7/S7.out",
+   "sha256": "719dd8e11ede83e028e295a04838024ab9a6c640b02875c9423cebadb26d253f",
+   "archive": "netlib.org/toms/959.zip sha256 e22c4212904de71769091373d279dbaa3f605a95599fe0767ff676982ed287fd; S7.cy sha256 cd2da89ee18697559abd1b7e1047671dc1fcf77b1bd0ab6a9ac92d856acd591d; input S7.dec sha256 9559fb2aeffef5d576ff5eba073d3f278c1e69082712a6ba4459c07a26c7c7c3 (same permutation as Res/S7/S7.dec, formatted differently)"
+  },
+  "metric": "the measures printed on standard output by ./ex.exe S7 7, and the number of cycles in the file S7.cy it writes",
+  "paper_value": "Nonlinearity = 56; Algebraic degree = 3; Algebraic immunity = 3; Absolute indicator = 16; Sum-of-squares indicator = 4.16154e+06; Linear potential = 0.015625; Differential potential = 0.015625; Number of cycles in S7.cy = 4; cycle lengths [1, 13, 22, 92] (S7.cy)",
+  "values": [
+   {
+    "name": "Nonlinearity",
+    "paper": 56.0,
+    "tol_abs": 0
+   },
+   {
+    "name": "Algebraic degree",
+    "paper": 3.0,
+    "tol_abs": 0
+   },
+   {
+    "name": "Algebraic immunity",
+    "paper": 3.0,
+    "tol_abs": 0
+   },
+   {
+    "name": "Absolute indicator",
+    "paper": 16.0,
+    "tol_abs": 0
+   },
+   {
+    "name": "Sum-of-squares indicator",
+    "paper": 4161536.0,
+    "tol_abs": 0
+   },
+   {
+    "name": "Linear potential",
+    "paper": 0.015625,
+    "tol_abs": 1e-09
+   },
+   {
+    "name": "Differential potential",
+    "paper": 0.015625,
+    "tol_abs": 1e-09
+   },
+   {
+    "name": "Number of cycles in S7.cy",
+    "paper": 4.0,
+    "tol_abs": 0
+   }
+  ],
+  "tolerance": {
+   "abs": "0 for integers; 1e-9 for the two potentials (exact binary fractions, printed to 8 digits)",
+   "basis": "Fixed before any run. Every registered measure is an integer or an exact binary fraction computed from a 7-bit permutation by exact integer arithmetic, so a correct build must match exactly. As an independent check made at registration, the cycle structure 1, 13, 22, 92 in S7.cy was recomputed from the input permutation S7.dec and agrees. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Build of NTL 9.2.0 about 5 to 15 minutes on one core; the run itself seconds (128-element permutation).",
+  "data_size": "Archive 9.4 MB; build tree a few hundred MB.",
+  "data_licence": "No data. NTL is GPL; the VBF licence is not stated in the archive README; the rerun should record it."
+ },
+ "why": "A 2016 C++ library built on NTL ships its own reference run for a real S-box. The numbers are exact, and the code must compute them, so the claim tests whether a 2015 C++ code base (written for g++ 4.8.4) still builds and reproduces its published results on a current compiler.",
+ "registered": "2026-11-26T15:16:08Z"
+}

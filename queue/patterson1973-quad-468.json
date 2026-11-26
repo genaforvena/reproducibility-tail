@@ -1,0 +1,66 @@
+{
+ "paper": {
+  "title": "Algorithm 468: Algorithm for Automatic Numerical Integration Over a Finite Interval",
+  "authors": [
+   "T. N. L. Patterson"
+  ],
+  "year": 1973,
+  "venue": "Communications of the ACM 16(11), 694 (CALGO Algorithm 468; netlib version carries the TOMS-era test program)",
+  "doi": null,
+  "url": "https://netlib.org/toms/468.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/468.gz",
+  "commit": "netlib TOMS archive 468.gz: one Fortran text file with the routines QUAD and QSUB and the test programs TEST01, TEST02 and TEST03",
+  "archive": "sha256 1891044f1acedad241f46b6e1a16b0803ab3a2c54b37fbab333665a755d82319 (netlib.org/toms/468.gz as downloaded 2026-11-26, 13609 bytes); uncompressed text sha256 aeb697834d6b689202cdd825d9cfad5f25c61c6ebeb791b2023874660110f73b",
+  "note": "Single-file Fortran (free-form comments, REAL arithmetic). The file contains its own main program (line 69, program main) calling TEST01, TEST02, TEST03. Build with gfortran; expect -std=legacy or -ffixed-line-length warnings."
+ },
+ "field": "numerics (adaptive quadrature)",
+ "stack": "Fortran 77/90 mixed, single precision",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "TEST01 in the archive's own test program: for 13 integrands f01..f13 it calls QUAD with the requested relative accuracy EPSIL = 0.001 and prints the computed result next to a hard-coded exact value. Registered: f07, f08, f12 and f13 from TEST01. For f13 on [0,1] the source comments that the reference's exact value 0.0013492485650 'is apparently a typo' and uses 0.013492485650; that corrected value is the registered one.",
+  "reference": {
+   "file": "468/468 (TEST01, lines 93-285, uncompressed text)",
+   "sha256": "aeb697834d6b689202cdd825d9cfad5f25c61c6ebeb791b2023874660110f73b",
+   "archive": "netlib.org/toms/468.gz sha256 1891044f1acedad241f46b6e1a16b0803ab3a2c54b37fbab333665a755d82319"
+  },
+  "metric": "result(k) printed by TEST01 for each registered integrand, compared with the exact value in the source",
+  "paper_value": "QUAD integral of f07 on [0, 1] = 0.7775046341; QUAD integral of f08 on [0.1, 1] = 0.009098645256; QUAD integral of f12 on [0, 1] = -0.6346651825; QUAD integral of f13 on [0, 1] = 0.01349248565",
+  "values": [
+   {
+    "name": "QUAD integral of f07 on [0, 1]",
+    "paper": 0.7775046341,
+    "tol_abs": 0.0007775046341000001
+   },
+   {
+    "name": "QUAD integral of f08 on [0.1, 1]",
+    "paper": 0.009098645256,
+    "tol_abs": 9.098645256e-06
+   },
+   {
+    "name": "QUAD integral of f12 on [0, 1]",
+    "paper": -0.6346651825,
+    "tol_abs": 0.0006346651825
+   },
+   {
+    "name": "QUAD integral of f13 on [0, 1]",
+    "paper": 0.01349248565,
+    "tol_abs": 1.3492485650000001e-05
+   }
+  ],
+  "tolerance": {
+   "rel": 0.001,
+   "abs": "per value, in values[].tol_abs (1e-3 times the exact value)",
+   "basis": "Fixed before any run. The documentation of QUAD (EPSIL: 'relative accuracy required') guarantees a relative error not exceeding EPSIL when the routine reports success (ICHECK = 0), and TEST01 sets EPSIL = 0.001, so the registered tolerance is the algorithm's own contract and no looser. The run must also report ICHECK = 0 for the registered integrands. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute.",
+  "data_size": "None.",
+  "data_licence": "No data. Licence not stated in the archive; the rerun should record it."
+ },
+ "why": "A 1973 adaptive quadrature routine ships a 13-integrand test program with hard-coded exact answers, including one where the original reference had a typo. The code must compute every integral, so the claim tests the oldest code in the batch against its own published accuracy contract.",
+ "registered": "2026-11-26T15:16:08Z"
+}

@@ -1,0 +1,75 @@
+{
+ "paper": {
+  "title": "Algorithm 761: Scattered-data surface fitting that has the accuracy of a cubic polynomial",
+  "authors": [
+   "Hiroshi Akima"
+  ],
+  "year": 1996,
+  "venue": "ACM Transactions on Mathematical Software 22(3), 362-371 (CALGO Algorithm 761)",
+  "doi": null,
+  "url": "https://netlib.org/toms/761.gz (ACM article not read: the DL returns 403 to automated fetch)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/761.gz",
+  "commit": "netlib TOMS archive 761.gz, a shell archive of driver.f, src.f, tripack.f and the authors' result file res",
+  "archive": "sha256 373f95242dde88c78e9fb708287e4520e413094fdff9127e1b317b3960c2497f (netlib.org/toms/761.gz as downloaded 2026-11-26, 63472 bytes)",
+  "note": "Unshar (it only creates files; read it first). Build driver.f, src.f (SDBI3P, SDSF3P) and tripack.f (Renka's TRIPACK, included). The driver reads no input and writes its result to a file named res. Fortran 77, REAL (single) precision: expect gfortran -std=legacy."
+ },
+ "field": "numerics (scattered-data interpolation, bivariate)",
+ "stack": "Fortran 77, single precision",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "The authors' shipped result file res, Part 1 'Program Check for SDBI3P', 'Calculation by points': the left table ZI1(XI,YI) of interpolated values on a 6 x 5 grid for the 30 data points of the driver. Registered: six interior grid points that are not data points. The same file also shows non-zero 'differences' DZI (up to 0.57) although the driver comment says all DZI elements are expected to be zero; that discrepancy is recorded here as a thing to watch, not as the claim.",
+  "reference": {
+   "file": "761/res",
+   "sha256": "ceb003ed2ce4a6659e016d8879ad34e6528c6bbec93577e4c6633371664ca8df",
+   "archive": "netlib.org/toms/761.gz sha256 373f95242dde88c78e9fb708287e4520e413094fdff9127e1b317b3960c2497f"
+  },
+  "metric": "the interpolated value ZI1 printed (two decimals) by the driver for each registered grid point",
+  "paper_value": "ZI1(XI=5, YI=5) = 39.37; ZI1(XI=10, YI=10) = 16.36; ZI1(XI=15, YI=10) = 12.98; ZI1(XI=20, YI=15) = 6.95; ZI1(XI=10, YI=15) = 22.34; ZI1(XI=15, YI=5) = 20.17",
+  "values": [
+   {
+    "name": "ZI1(XI=5, YI=5)",
+    "paper": 39.37,
+    "tol_abs": 0.011
+   },
+   {
+    "name": "ZI1(XI=10, YI=10)",
+    "paper": 16.36,
+    "tol_abs": 0.011
+   },
+   {
+    "name": "ZI1(XI=15, YI=10)",
+    "paper": 12.98,
+    "tol_abs": 0.011
+   },
+   {
+    "name": "ZI1(XI=20, YI=15)",
+    "paper": 6.95,
+    "tol_abs": 0.011
+   },
+   {
+    "name": "ZI1(XI=10, YI=15)",
+    "paper": 22.34,
+    "tol_abs": 0.011
+   },
+   {
+    "name": "ZI1(XI=15, YI=5)",
+    "paper": 20.17,
+    "tol_abs": 0.011
+   }
+  ],
+  "tolerance": {
+   "abs": 0.011,
+   "basis": "Fixed before any run. The shipped values are printed to two decimals from single-precision arithmetic, so a correct rebuild matches to 0.01 plus one unit of rounding; 0.011 absolute allows that and is about 0.03% of the typical value of 20. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute.",
+  "data_size": "None: the 30 data points are in the driver.",
+  "data_licence": "No data. Includes Renka's TRIPACK (ACM, Algorithm 751); licence not stated in the archive."
+ },
+ "why": "A 1996 scattered-data package ships its own result table for a 30-point problem. The interpolation needs the full code (Delaunay triangulation, gradient estimation, bivariate polynomials), so the values test whether this old single-precision Fortran still reproduces its published numbers.",
+ "registered": "2026-11-26T15:16:08Z"
+}

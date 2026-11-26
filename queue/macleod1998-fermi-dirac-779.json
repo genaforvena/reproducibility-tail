@@ -1,0 +1,86 @@
+{
+ "paper": {
+  "title": "Algorithm 779: Fermi-Dirac Functions of Order -1/2, 1/2, 3/2, 5/2",
+  "authors": [
+   "Allan J. Macleod"
+  ],
+  "year": 1998,
+  "venue": "ACM Transactions on Mathematical Software 24(1), 1-12 (CALGO Algorithm 779)",
+  "doi": null,
+  "url": "https://netlib.org/toms/779.gz (ACM article not read: the DL returns 403 to automated fetch)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/779.gz",
+  "commit": "netlib TOMS archive 779.gz, a shell archive of Drivers/Dp/{fdtestdp.f,RES}, Drivers/Sp/ and Src/src.f",
+  "archive": "sha256 da2c0d3ea7b69028124524bcc886e8335bf288c2f20107c556a05d19b491da0e (netlib.org/toms/779.gz as downloaded 2026-11-26, 20699 bytes)",
+  "note": "Unshar the archive (it only creates files; read it first). The driver fdtestdp.f needs the four functions FDM0P5, FDP0P5, FDP1P5, FDP2P5 and CHEVAL from Src/src.f converted to double precision as the comments in the code instruct. Fortran 77: expect gfortran needs -std=legacy."
+ },
+ "field": "numerics (special functions, Fermi-Dirac integrals)",
+ "stack": "Fortran 77, double precision",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "The authors' own test driver Drivers/Dp/fdtestdp.f prints, for each function and 15 arguments per half-range, 'EXACT VALUE', 'COMP. VALUE' and 'REL. ERROR' (shipped as Drivers/Dp/RES). The EXACT VALUE column is a 16-digit table written into the driver's DATA statements (ARMP5M/P, AR0P5M/P, AR1P5M/P, AR2P5M/P), independent of the code under test. Registered: the 8th reference point of each of the 8 arrays, by that fixed rule.",
+  "reference": {
+   "file": "779/Drivers/Dp/RES",
+   "sha256": "f39caf7d3c27325deb4a5a041cd57efd206635e9cb0f5b59f0aefcf8aa6bcb22",
+   "archive": "netlib.org/toms/779.gz sha256 da2c0d3ea7b69028124524bcc886e8335bf288c2f20107c556a05d19b491da0e; fdtestdp.f member sha256 d41d432801206af8750caf6170e4341dd43185951d169efb2b9e0231941abab0"
+  },
+  "metric": "COMP. VALUE printed by the shipped driver for each function and argument, compared with its EXACT VALUE",
+  "paper_value": "FDM0P5(-4) = 0.0180819229913994; FDM0P5(3) = 1.85348508860152; FDP0P5(-4) = 0.0181982035083671; FDP0P5(3) = 4.48754742135171; FDP1P5(-4) = 0.0182567275851083; FDP1P5(3) = 7.78861077029597; FDP2P5(-4) = 0.0182861184132808; FDP2P5(3) = 11.1128995227117",
+  "values": [
+   {
+    "name": "FDM0P5(-4)",
+    "paper": 0.01808192299139939,
+    "tol_abs": 1.808192299139939e-07
+   },
+   {
+    "name": "FDM0P5(3)",
+    "paper": 1.8534850886015182,
+    "tol_abs": 1.8534850886015183e-05
+   },
+   {
+    "name": "FDP0P5(-4)",
+    "paper": 0.018198203508367112,
+    "tol_abs": 1.8198203508367112e-07
+   },
+   {
+    "name": "FDP0P5(3)",
+    "paper": 4.487547421351709,
+    "tol_abs": 4.4875474213517094e-05
+   },
+   {
+    "name": "FDP1P5(-4)",
+    "paper": 0.01825672758510827,
+    "tol_abs": 1.8256727585108273e-07
+   },
+   {
+    "name": "FDP1P5(3)",
+    "paper": 7.7886107702959695,
+    "tol_abs": 7.78861077029597e-05
+   },
+   {
+    "name": "FDP2P5(-4)",
+    "paper": 0.01828611841328075,
+    "tol_abs": 1.8286118413280753e-07
+   },
+   {
+    "name": "FDP2P5(3)",
+    "paper": 11.11289952271169,
+    "tol_abs": 0.0001111289952271169
+   }
+  ],
+  "tolerance": {
+   "rel": 1e-05,
+   "abs": "per value, in values[].tol_abs (1e-5 times the exact value)",
+   "basis": "Fixed before any run. The driver prints COMP. VALUE with 7 significant digits, so a printed value can differ from the 16-digit exact value by up to about 5e-6 relative by rounding alone; 1e-5 allows that and nothing more. The shipped RES shows the code's true relative error at about 1e-15, so this tolerance cannot hide a real failure of the algorithm. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute: 8 x 15 function evaluations.",
+  "data_size": "None.",
+  "data_licence": "No data. ACM code licence not stated in the archive; the rerun should record it."
+ },
+ "why": "The authors ship an independent 16-digit table of exact values and their own results; the code (Chebyshev series, 1990s Fortran 77) must compute every value, so this tests whether a 1998 numerical library still builds and still agrees with its published accuracy on a current compiler.",
+ "registered": "2026-11-26T15:16:08Z"
+}

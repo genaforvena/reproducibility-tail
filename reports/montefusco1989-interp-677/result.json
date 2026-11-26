@@ -1,0 +1,60 @@
+{
+  "paper": {
+    "short": "montefusco1989-interp-677",
+    "title": "Algorithm 677 (TOMS, Montefusco & Casciola 1989, MASUB scattered-data interpolation, self-check)",
+    "year": 1989,
+    "doi": "-"
+  },
+  "field": "numerics (scattered-data interpolation of a rapidly varying surface, single precision)",
+  "stack": "Fortran 77 (TOMS 677, MASUB package and its self-check PROGRAM MAIN)",
+  "claim": {
+    "text": "Self-check PROGRAM MAIN of TOMS 677 (first test program): the maximum and mean absolute errors ERMAX and ERMEAN that MMERR computes for the 10x10 reconstruction (IEX=1, TP=10) against the analytic Gaussian surface, compared with the built-in ANS2 = 0.6059994 and ANS1 = 0.06695094. Registered tolerance: relative 1e-5 on each value. The paper's own values were not read; the claim is the archive's built-in reference.",
+    "values": [
+      {
+        "name": "maximum absolute error (ERMAX)",
+        "paper": 0.6059994,
+        "tol_abs": 6.059994e-06,
+        "ours": null
+      },
+      {
+        "name": "mean absolute error (ERMEAN)",
+        "paper": 0.06695094,
+        "tol_abs": 6.695094e-07,
+        "ours": null
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "blocked",
+  "cause": "other",
+  "attempt": "Measured locally, not yet a verdict. Two passes: pass 1 (gfortran -O2, the recorded build) gives ERMAX 0.6059995 and ERMEAN 0.06695094; pass 2 (clean directory, gfortran -O0 rebuild) gives ERMAX 0.6059992 and ERMEAN 0.06695094. Against the built-in 0.6059994 and 0.06695094, the differences are 1.7e-7 and 3.3e-7 (ERMAX) and 0 (ERMEAN), inside the registered rel 1e-5, so the values would be reproduced. Blocked because the queue entry records no code.archive sha256 (scout: 'sha256 not recorded'), and the build-only record and G2 need it. The archive downloaded here has sha256 d4d94e7a7ca6cf1980e3c05af74731cea35d00d62358ace806b134e4a8a4e64b. Resolver: scout (registers the hash in queue/montefusco1989-interp-677.json, per operator decision #61 on the same registration for other entries). Once it lands, re-record with recipe.sh and set the verdict to reproduced. Basis patched: the archive as shipped does not compile (four PROGRAM MAINs); the build uses two verbatim line ranges outside the authors' tree, and the build-only record (manifests pre, mid, post unchanged) holds.",
+  "queue_commit": "6d6e7f1",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "the archive as shipped does not compile with gfortran -O2: 'Error: Two main PROGRAMs at (1) and (2)' (four test programs in one file)",
+    "log": "reports/montefusco1989-interp-677/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/montefusco1989-interp-677/recipe.sh",
+  "evidence": [
+    "reports/montefusco1989-interp-677/evidence/original-attempt.log",
+    "reports/montefusco1989-interp-677/evidence/recipe-run.log",
+    "reports/montefusco1989-interp-677/evidence/build.log",
+    "reports/montefusco1989-interp-677/evidence/run1-stdout.txt",
+    "reports/montefusco1989-interp-677/evidence/run2-stdout.txt",
+    "reports/montefusco1989-interp-677/evidence/values-run1.txt",
+    "reports/montefusco1989-interp-677/evidence/values-run2.txt",
+    "reports/montefusco1989-interp-677/impl/extract_values.py"
+  ],
+  "replayed": [],
+  "stack_class": "Fortran",
+  "field_class": "numerics"
+}

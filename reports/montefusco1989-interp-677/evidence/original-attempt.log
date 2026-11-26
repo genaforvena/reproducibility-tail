@@ -1,0 +1,53 @@
+677.f:63:72:
+
+   63 |       DO 40 I=1,NXI
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Shared DO termination label 40 at (1)
+677.f:97:86:
+
+   97 |      *       30H      I      XD     YD     ZD /)
+      |                                                                                      1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+677.f:99:28:
+
+   99 | 3000  FORMAT(//3X,8HANALYTIC)
+      |                            1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+677.f:100:44:
+
+  100 | 4000  FORMAT(//7X,2HYI,3X,3HXI=/12X,10F7.3/)
+      |                                            1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+677.f:102:30:
+
+  102 | 6000  FORMAT(//3X,14HRECONSTRUCTION)
+      |                              1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+677.f:104:96:
+
+  104 |      *        /3X,25HEXECUTED ON YOUR COMPUTER)
+      |                                                                                                1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+677.f:106:96:
+
+  106 |      *        /3X,25HEXECUTED ON YOUR COMPUTER)
+      |                                                                                                1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+677.f:110:0:
+
+  110 |      *        /3X,22HMEAN ERROR BUILT IN = ,E14.7)
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+677.f:153:72:
+
+  153 |         DO 10 J=1,NYI
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Shared DO termination label 10 at (1)
+677.f:4:72:
+
+    4 |       PROGRAM MAIN
+      |                                                                        1
+......
+  163 |       PROGRAM MAIN
+      |                                                                        2
+Error: Two main PROGRAMs at (1) and (2)
+compile_exit=1

@@ -1,0 +1,254 @@
+== fetch: 677.gz (sha256 checked), micromamba, gfortran (conda-forge) into the sandbox scratch
+677.gz: OK
+== G1 original attempt: the whole 677 file as shipped, gfortran -O2 (log kept once)
+Error: Two main PROGRAMs at (1) and (2)
+compile_exit=1
+manifest.pre: 1 source files
+== build: gfortran -O2, the two extracted units (outside the authors' tree)
+/work/src/677main.f:63:72:
+
+   63 |       DO 40 I=1,NXI
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Shared DO termination label 40 at (1)
+/work/src/677main.f:97:86:
+
+   97 |      *       30H      I      XD     YD     ZD /)
+      |                                                                                      1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/677main.f:99:28:
+
+   99 | 3000  FORMAT(//3X,8HANALYTIC)
+      |                            1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/677main.f:100:44:
+
+  100 | 4000  FORMAT(//7X,2HYI,3X,3HXI=/12X,10F7.3/)
+      |                                            1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/677main.f:102:30:
+
+  102 | 6000  FORMAT(//3X,14HRECONSTRUCTION)
+      |                              1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/677main.f:104:96:
+
+  104 |      *        /3X,25HEXECUTED ON YOUR COMPUTER)
+      |                                                                                                1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/677main.f:106:96:
+
+  106 |      *        /3X,25HEXECUTED ON YOUR COMPUTER)
+      |                                                                                                1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/677main.f:110:0:
+
+  110 |      *        /3X,22HMEAN ERROR BUILT IN = ,E14.7)
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/677main.f:153:72:
+
+  153 |         DO 10 J=1,NYI
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Shared DO termination label 10 at (1)
+/work/src/masub.f:160:72:
+
+  160 |       DO 85 J=1,NYI
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Shared DO termination label 85 at (1)
+/work/src/masub.f:161:72:
+
+  161 | 85    ZI(I,J)=1.E6
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 85 at (1)
+/work/src/masub.f:198:124:
+
+  198 |      *       4HIEX=,I4,4H IC=,I4,4H ND=,I4)
+      |                                                                                                                            1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/masub.f:241:72:
+
+  241 |         IF(X(I)-A)16,18,20
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+/work/src/masub.f:247:72:
+
+  247 | 20      IF(B-X(I))26,28,30
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+/work/src/masub.f:252:72:
+
+  252 | 30      IF(Y(I)-C)36,38,40
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+/work/src/masub.f:258:72:
+
+  258 | 40      IF(D-Y(I))46,48,50
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+/work/src/masub.f:729:78:
+
+  729 |  2090 FORMAT(1X/23H ***   NDP LESS THAN 4./7H  NDP =,I5)
+      |                                                                              1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/masub.f:732:0:
+
+  732 |      2       I5,5X,4HXD =,E12.4,5X,4HYD =,E12.4)
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/masub.f:734:84:
+
+  734 |      1       7H  NDP =,I5)
+      |                                                                                    1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/masub.f:735:20:
+
+  735 |  2093 FORMAT(35H ERROR DETECTED IN ROUTINE    CTANG)
+      |                    1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/masub.f:1082:26:
+
+ 1082 |     1 FORMAT(1X,26HMINIMIZATION NOT COMPLETED)
+      |                          1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/masub.f:1160:72:
+
+ 1160 |             IF (SIDE(X1,Y1,X2,Y2,XII,YII)) 130, 40, 50
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+/work/src/masub.f:1162:72:
+
+ 1162 |    50       IF (SIDE(X2,Y2,X3,Y3,XII,YII)) 130, 60, 70
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+/work/src/masub.f:1164:72:
+
+ 1164 |    70       IF (SIDE(X3,Y3,X1,Y1,XII,YII)) 130, 80, 90
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+compile_exit=0
+montefusco1989-interp-677: patch kind build-only: compared 1; ours modified 0, removed 0, added 0; build tool modified 0, added 0, removed 0
+BUILD-ONLY: exit 0
+== run 1: the recorded binary
+run1_exit=0
+== run 2: clean directory, -O0 rebuild
+/work/src/677main.f:63:72:
+
+   63 |       DO 40 I=1,NXI
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Shared DO termination label 40 at (1)
+/work/src/677main.f:97:86:
+
+   97 |      *       30H      I      XD     YD     ZD /)
+      |                                                                                      1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/677main.f:99:28:
+
+   99 | 3000  FORMAT(//3X,8HANALYTIC)
+      |                            1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/677main.f:100:44:
+
+  100 | 4000  FORMAT(//7X,2HYI,3X,3HXI=/12X,10F7.3/)
+      |                                            1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/677main.f:102:30:
+
+  102 | 6000  FORMAT(//3X,14HRECONSTRUCTION)
+      |                              1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/677main.f:104:96:
+
+  104 |      *        /3X,25HEXECUTED ON YOUR COMPUTER)
+      |                                                                                                1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/677main.f:106:96:
+
+  106 |      *        /3X,25HEXECUTED ON YOUR COMPUTER)
+      |                                                                                                1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/677main.f:110:0:
+
+  110 |      *        /3X,22HMEAN ERROR BUILT IN = ,E14.7)
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/677main.f:153:72:
+
+  153 |         DO 10 J=1,NYI
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Shared DO termination label 10 at (1)
+/work/src/masub.f:160:72:
+
+  160 |       DO 85 J=1,NYI
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Shared DO termination label 85 at (1)
+/work/src/masub.f:161:72:
+
+  161 | 85    ZI(I,J)=1.E6
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: DO termination statement which is not END DO or CONTINUE with label 85 at (1)
+/work/src/masub.f:198:124:
+
+  198 |      *       4HIEX=,I4,4H IC=,I4,4H ND=,I4)
+      |                                                                                                                            1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/masub.f:241:72:
+
+  241 |         IF(X(I)-A)16,18,20
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+/work/src/masub.f:247:72:
+
+  247 | 20      IF(B-X(I))26,28,30
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+/work/src/masub.f:252:72:
+
+  252 | 30      IF(Y(I)-C)36,38,40
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+/work/src/masub.f:258:72:
+
+  258 | 40      IF(D-Y(I))46,48,50
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+/work/src/masub.f:729:78:
+
+  729 |  2090 FORMAT(1X/23H ***   NDP LESS THAN 4./7H  NDP =,I5)
+      |                                                                              1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/masub.f:732:0:
+
+  732 |      2       I5,5X,4HXD =,E12.4,5X,4HYD =,E12.4)
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/masub.f:734:84:
+
+  734 |      1       7H  NDP =,I5)
+      |                                                                                    1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/masub.f:735:20:
+
+  735 |  2093 FORMAT(35H ERROR DETECTED IN ROUTINE    CTANG)
+      |                    1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/masub.f:1082:26:
+
+ 1082 |     1 FORMAT(1X,26HMINIMIZATION NOT COMPLETED)
+      |                          1
+Warning: The H format specifier at (1) is a Fortran 95 deleted feature
+/work/src/masub.f:1160:72:
+
+ 1160 |             IF (SIDE(X1,Y1,X2,Y2,XII,YII)) 130, 40, 50
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+/work/src/masub.f:1162:72:
+
+ 1162 |    50       IF (SIDE(X2,Y2,X3,Y3,XII,YII)) 130, 60, 70
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+/work/src/masub.f:1164:72:
+
+ 1164 |    70       IF (SIDE(X3,Y3,X1,Y1,XII,YII)) 130, 80, 90
+      |                                                                        1
+Warning: Fortran 2018 deleted feature: Arithmetic IF statement at (1)
+run2_exit=0
+== values (VALUE lines) from pass 1 and pass 2
+VALUE ERMAX 6.0599950E-01
+VALUE ERMEAN 6.6950940E-02
+pass 1 and pass 2 values differ (see both files; both within tol)

@@ -28,10 +28,11 @@ Every candidate is drawn from a named frame in a seeded order and none is skippe
 
 11 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
-**127 candidates considered from 3 of 3 frames: 10 attempted (8%), 0 unreachable, 117 rejected.**
+**127 candidates considered from 3 of 4 frames: 10 attempted (8%), 0 unreachable, 117 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
+| cpc-library | 2767 | 40 | 0 | 0% | 0 | 0 | 0 |
 | netlib-liblist | 160 | 40 | 40 | 100% | 0 | 0 | 40 |
 | stat-co-2010-2015 | 1872 | 80 | 50 | 62% | 1 | 0 | 49 |
 | toms-calgo-index | 570 | 40 | 37 | 92% | 9 | 0 | 28 |

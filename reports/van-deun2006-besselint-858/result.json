@@ -1,0 +1,70 @@
+{
+  "paper": {
+    "short": "van-deun2006-besselint-858",
+    "title": "Computing Infinite Range Integrals of an Arbitrary Product of Bessel Functions",
+    "year": 2006,
+    "doi": null
+  },
+  "field": "numerics (special functions, infinite-range integrals of Bessel products); CALGO Algorithm 858",
+  "stack": "MATLAB/Octave: authors' m-files (besselint.m, igamma.m, experiments.m) run under GNU Octave 10.3.0 (conda-forge, sandbox scratch); Octave Forge not used",
+  "claim": {
+    "text": "besselint(sqrt([2 3 5 7 11]), 0, 1) returns I = 6.106434990872165e-02 (Example 5.1 of the shipped driver, experiments.m; printed in the shipped experiments.out)",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/van-deun2006-besselint-858/evidence/reference/experiments.out",
+      "sha256": "0d7e39866c8d4c2b3fac3013fb30da94fb583762743cd292710e24ff82e2b4f0",
+      "archive": "netlib.org/toms/858.zip, sha256 63ed546d228e687e54ceed3dfeeb5d0bd82497477ddf545db6c7a8458af57431"
+    },
+    "values": [
+      {
+        "name": "I_Ex5_1",
+        "paper": 0.06106434990872165,
+        "tol_abs": 1e-10,
+        "ours": 0.06106434990872165
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "authors' besselint.m, igamma.m and experiments.m run unmodified under GNU Octave 10.3.0; the only change is an Octave search path to the m-library of the same Octave install (the relocated conda build does not find it; without it, `repmat` is undefined). No new code.",
+  "queue_commit": "d74092e9ed4a625cc5daabaa1394ba54ddbfbe16",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "unpatched authors' experiments.m under Octave 10.3.0 (conda-forge, relocated) stops at Example 1.1 in besselint>ira line 291: 'repmat' undefined. Octave's own m-library is not on the path of this build (OCTAVE_HOME is a build placeholder, so which/pkg are also undefined). Environment, not the authors' code.",
+    "log": "reports/van-deun2006-besselint-858/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/van-deun2006-besselint-858/recipe.sh",
+  "evidence": [
+    "reports/van-deun2006-besselint-858/evidence/original-attempt.log",
+    "reports/van-deun2006-besselint-858/evidence/run1.log.gz",
+    "reports/van-deun2006-besselint-858/evidence/run2.log.gz",
+    "reports/van-deun2006-besselint-858/evidence/recipe-run.log",
+    "reports/van-deun2006-besselint-858/evidence/reference/experiments.out",
+    "reports/van-deun2006-besselint-858/result.md"
+  ],
+  "replayed": [
+    {
+      "utc": "2026-11-26T15:13:38Z",
+      "kind": "clean",
+      "values": {
+        "I_Ex5_1": 0.06106434990872165
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/van-deun2006-besselint-858/evidence/replay-2026-11-26T151338Z.log",
+      "seconds": 115
+    }
+  ],
+  "stack_class": "MATLAB/Octave",
+  "field_class": "numerics"
+}

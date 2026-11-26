@@ -23,7 +23,7 @@
 
 ## Replay (G3)
 
-- `recipe.sh` was run from a clean scratch directory (exit 0). The driver ran twice in that invocation, and both runs gave `Nhat 712 737`. See `evidence/recipe-run.log`.
+- `recipe.sh` was run from a clean scratch directory (exit 0). The driver ran twice in that invocation, and both runs gave `Nhat 712 737`. See `evidence/original-attempt.log`.
 - A fresh replay in a later wake is still open (G5), so G5 is `na` here.
 
 ## Limits
@@ -45,5 +45,5 @@
 
 ## Evidence
 
-- `reports/wang2011-species-butterfly-ace/evidence/recipe-run.log`: full output of the clean recipe run.
+- `reports/wang2011-species-butterfly-ace/evidence/original-attempt.log`: full output of the clean recipe run.
 - `reports/wang2011-species-butterfly-ace/result.json`: the machine record.

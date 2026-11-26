@@ -9,6 +9,9 @@ set -euo pipefail
 ID=wang2011-species-butterfly-ace
 here="$(cd "$(dirname "$0")" && pwd)"
 root="$(cd "$here/../.." && pwd)"
+# Log: evidence/recipe-run.log by default (replay: LOG=...). The G1 original attempt is evidence/original-attempt.log, never overwritten.
+LOG="${LOG:-$root/reports/$ID/evidence/recipe-run.log}"
+exec > >(tee "$LOG") 2>&1
 W=/mnt/mishe-scratch/reproducibility-tail/$ID
 mkdir -p "$W"
 cp "$here/impl/original_run.R" "$W/"
@@ -24,4 +27,6 @@ tools/sandbox.sh --fetch "$ID" -- sh -c "/work/mm/bin/micromamba create -y -r /w
 
 # Build the authors' package (original code, no edits) and run the driver twice.
 tools/sandbox.sh "$ID" -- sh -c "mkdir -p /work/src /work/Rlib && tar -xzf /work/SPECIES_1.0.tar.gz -C /work/src && export PATH=/work/r/bin:\$PATH && R CMD INSTALL -l /work/Rlib /work/src/SPECIES"
-tools/sandbox.sh "$ID" -- sh -c "export PATH=/work/r/bin:\$PATH; R_LIBS=/work/Rlib Rscript --vanilla /work/original_run.R > /work/run1.log 2>&1; R_LIBS=/work/Rlib Rscript --vanilla /work/original_run.R > /work/run2.log 2>&1; cat /work/run1.log; echo ---; cat /work/run2.log"
+tools/sandbox.sh "$ID" -- sh -c "export PATH=/work/r/bin:\$PATH; R_LIBS=/work/Rlib Rscript --vanilla /work/original_run.R > /work/run1.log 2>&1; R_LIBS=/work/Rlib Rscript --vanilla /work/original_run.R > /work/run2.log 2>&1; echo '== driver run 1'; cat /work/run1.log; echo '== driver run 2'; cat /work/run2.log"
+# G5 contract: the VALUE line is read from the second driver run (the last 'ACE Nhat:' line in the log).
+echo "VALUE ACE $(grep '^ACE Nhat: ' "$LOG" | tail -1 | awk '{print $NF}')"

@@ -10,7 +10,12 @@
   "claim": {
     "text": "sum(ans$conv) for multiStart(par = p0, fn = hdp, action = \"solve\"), 300 starts, seed 1234, JSS p. 11",
     "values": [
-      {"name": "converged runs", "paper": 284, "tol_abs": 3, "ours": 287}
+      {
+        "name": "converged runs",
+        "paper": 284,
+        "tol_abs": 3,
+        "ours": 287
+      }
     ]
   },
   "basis": "original",
@@ -28,7 +33,7 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "fail"
   },
@@ -40,7 +45,26 @@
     "reports/varadhan2009-bb-hdp-multistart/result.md"
   ],
   "replayed": [
-    {"utc": "2026-11-26T13:43:23Z", "value": 287, "ok": true},
-    {"utc": "2026-11-26T13:43:23Z", "value": 287, "ok": true}
+    {
+      "utc": "2026-11-26T13:43:23Z",
+      "value": 287,
+      "ok": true
+    },
+    {
+      "utc": "2026-11-26T13:43:23Z",
+      "value": 287,
+      "ok": true
+    },
+    {
+      "utc": "2026-11-26T13:52:58Z",
+      "kind": "clean",
+      "values": {
+        "converged runs": 287.0
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/varadhan2009-bb-hdp-multistart/evidence/replay-2026-11-26T135258Z.log",
+      "seconds": 79
+    }
   ]
 }

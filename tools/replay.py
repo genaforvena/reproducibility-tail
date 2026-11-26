@@ -32,7 +32,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_ledger  # noqa: E402
 
 SCRATCH = Path("/mnt/mishe-scratch/reproducibility-tail")
-VALUE_LINE = re.compile(r"^VALUE (\S+) (-?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?)\s*$", re.M)
+VALUE_LINE = re.compile(r"^VALUE (.+?) (-?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?)\s*$", re.M)
 LOG_TAIL = 400_000
 
 

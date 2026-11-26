@@ -4,7 +4,7 @@
 # packages BB imports or the paper's listing needs (numDeriv, setRNG) from conda-forge.
 # Build: the authors' BB package with R CMD INSTALL (no edits). hdp is taken from the authors' vignette
 # source (the installed package does not export it). Run: impl/ml_original.R twice (G3).
-# Only --fetch steps touch the network. Log: evidence/original-attempt.log (LOG env overrides).
+# Only --fetch steps touch the network. Log: evidence/recipe-run.log by default (LOG env overrides); evidence/original-attempt.log is the first attempt and is not overwritten.
 set -uo pipefail
 ID=varadhan2009-bb-hdp-multistart
 SHA=e6b145bda50727838623442e1dc7985b1e9806c68371bf542c600209394ac88e
@@ -15,7 +15,7 @@ mkdir -p "$W"; cp "$here/impl/ml_original.R" "$W/run.R"
 cd "$root"
 URL=https://cran.r-project.org/src/contrib/Archive/BB/BB_2009.9-1.tar.gz
 MM=https://micro.mamba.pm/api/micromamba/linux-64/latest
-LOG="${LOG:-$root/reports/$ID/evidence/original-attempt.log}"
+LOG="${LOG:-$root/reports/$ID/evidence/recipe-run.log}"
 exec > >(tee "$LOG") 2>&1
 echo "== fetch: tarball, micromamba"
 tools/sandbox.sh --fetch "$ID" -- sh -c "curl -fsSL -o /work/BB.tar.gz '$URL' && curl -fsSL -o /work/mm.tar.bz2 '$MM' && mkdir -p /work/mm && tar -xjf /work/mm.tar.bz2 -C /work/mm bin/micromamba" || { echo "FETCH-FAILED"; exit 1; }
@@ -27,3 +27,5 @@ tools/sandbox.sh "$ID" -- sh -c "mkdir -p /work/src /work/Rlib && tar -xzf /work
 tools/sandbox.sh "$ID" -- sh -c "tar -xOzf /work/BB.tar.gz BB/inst/doc/BBvignetteJSS.Stex | sed -n '/^hdp <- function/,/^  }\$/p' > /work/hdp.R && test -s /work/hdp.R && cat /work/hdp.R" || { echo "HDP-EXTRACT-FAILED"; exit 1; }
 tools/sandbox.sh "$ID" -- sh -c "export PATH=/work/r/bin:\$PATH; for i in 1 2; do echo \"== driver run \$i\"; R_LIBS=/work/Rlib:/work/r/lib/R/library Rscript --vanilla /work/run.R; done" || { echo "RUN-FAILED"; exit 1; }
 echo "== done"
+# G5 contract: the VALUE line is read from the second driver run (same output the original driver printed).
+echo "VALUE converged runs $(grep '^sum(ans\$conv) =' "$LOG" | tail -1 | awk '{print $NF}')"

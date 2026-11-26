@@ -41,7 +41,7 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "pass",
     "cross_check": "na"
   },
@@ -58,5 +58,17 @@
     "reports/alefeld1995-enclofx-748/evidence/reference/testout",
     "reports/alefeld1995-enclofx-748/evidence/reference/testdata"
   ],
-  "replayed": []
+  "replayed": [
+    {
+      "utc": "2026-11-26T18:26:18Z",
+      "kind": "clean",
+      "values": {
+        "NPROB=1, N=1, ROOT": 1.895494267033981
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/alefeld1995-enclofx-748/evidence/replay-2026-11-26T182618Z.log",
+      "seconds": 64
+    }
+  ]
 }

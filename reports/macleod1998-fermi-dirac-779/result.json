@@ -115,6 +115,24 @@
       "why": "agrees with the record",
       "log": "reports/macleod1998-fermi-dirac-779/evidence/replay-2026-11-26T170733Z.log",
       "seconds": 74
+    },
+    {
+      "utc": "2026-11-26T18:06:49Z",
+      "kind": "clean",
+      "values": {
+        "FDM0P5(-4)": 0.01808192,
+        "FDM0P5(3)": 1.853485,
+        "FDP0P5(-4)": 0.0181982,
+        "FDP0P5(3)": 4.487547,
+        "FDP1P5(-4)": 0.01825673,
+        "FDP1P5(3)": 7.788611,
+        "FDP2P5(-4)": 0.01828612,
+        "FDP2P5(3)": 11.1129
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/macleod1998-fermi-dirac-779/evidence/replay-2026-11-26T180649Z.log",
+      "seconds": 61
     }
   ]
 }

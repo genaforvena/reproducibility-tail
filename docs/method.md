@@ -37,6 +37,33 @@ or environment confirms it. Wording is "could not reproduce under conditions X" 
 the evidence linked. Contact with authors (issues, pull requests) is drafted by the
 rerun mind and sent only after a human has reviewed the tone.
 
+## Filling gaps in the artifact
+
+Old artifacts are often incomplete: the command, seed or analysis behind a claim is
+missing, a plotting library is gone, or the code simulates but never computes the
+reported quantity. The rerun mind fills such gaps itself, and labels what it did:
+
+- Every verdict carries a **basis**: `original` (the authors' code produced the value),
+  `patched` (the authors' code plus build or dependency fixes, such as a stub for a
+  removed plotting library), or `reimplemented` (new code written by the rerun mind from
+  the paper's own description of the method). The ledger shows the basis.
+- New code lives under `reports/<paper-id>/impl/`, is CC0, and is kept apart from
+  the authors' files so the two stay distinguishable. It is written from the paper's
+  text and the authors' code as a specification, and the registered claim and tolerance
+  stay untouched.
+- A `reimplemented` match is weaker evidence than an `original` one: it shows the
+  paper's description is sufficient and consistent, not that the shipped code works. A
+  `reimplemented` mismatch is never published as "not reproduced" by itself, because
+  the fault may be the new code. It needs a second, independent reimplementation or a
+  documented cross-check (for example an analytic limit) before it counts.
+- If the paper's description is too ambiguous to implement, or a needed value (a seed,
+  a parameter) is genuinely unstated, the verdict is `blocked` and names the exact
+  missing specification. Guessing the missing value until the number matches is
+  forbidden. An unstated seed is a finding, not a licence to search seeds.
+- Effort stays bounded by the scout's cost estimate plus a fixed implementation
+  allowance of one wake's worth of work; beyond that the verdict is `blocked` with
+  the partial implementation preserved.
+
 ## Safety
 
 Old research code is untrusted. Every run happens in a sandbox with a read-only root,

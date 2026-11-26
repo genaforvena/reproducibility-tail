@@ -1,0 +1,52 @@
+{
+ "paper": {
+  "title": "Enclosing zeros of continuous functions",
+  "authors": [
+   "G. E. Alefeld",
+   "F. A. Potra",
+   "Yixun Shi"
+  ],
+  "year": 1995,
+  "venue": "ACM Transactions on Mathematical Software 21(3), 327-344 (TOMS 748, Sep 1995)",
+  "doi": null,
+  "url": "https://netlib.org/toms/748.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/748.gz",
+  "commit": "netlib TOMS archive 748.gz (downloaded 2026-11-26, 7457 bytes compressed, 36800 bytes uncompressed; sha256 not recorded by scout)",
+  "note": "One shell-style file with five members, separated by lines 'C*** filename': driver.f, enclofx.f, exdrive.f, testdata, testout. Scout split them with python into /tmp/scout-wake/toms/748/parts/ (not committed). driver.f reads NPROB and N from stdin (testdata gives the 154 pairs), calls INIT, RROOT and prints 'PROBLEM NUMBER ... COMPUTED ROOT = ...'. testout is the shipped reference run in the same format. Needs a Fortran 77 or 90 compiler; the rerun should provision gfortran in the sandbox (see the micromamba path noted by rerun, commit 0e3ea70). The companion paper also lists a test-run table, which scout has not read."
+ },
+ "field": "numerics (bracketing root finding and interval enclosure)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "The shipped reference run testout, first block: 'PROBLEM NUMBER 1 WITH PROBLEM PARAMETER 1' followed by 'COMPUTED ROOT = 1.8954942670340'. The driver runs the problem list in testdata in order; the first pair is '1 1'.",
+  "reference": {
+   "file": "748/parts/testout (member of the 748.gz shell-style archive, between the 'C*** testout' marker and the end of the file)",
+   "sha256": null,
+   "archive": "netlib.org/toms/748.gz"
+  },
+  "metric": "ROOT printed by driver.f for NPROB=1, N=1 (first line of testdata), compared with 1.8954942670340.",
+  "paper_value": "Shipped testout: 1.8954942670340. The companion paper's table has not been read, so no paper value is used.",
+  "values": [
+   {
+    "name": "NPROB=1, N=1, ROOT",
+    "paper": 1.8954942670340,
+    "tol_abs": 1e-08
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1e-08,
+   "basis": "Fixed before any run. The algorithm stops when the bracket width is at most 2*TOLE, with NEPS=1000 and machine precision, so a converged double-precision run should agree with the shipped value to roughly machine precision (about 1e-13 here). 1e-8 absolute allows for compiler and libm differences and is far below any plausible error in a different root. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 second for the first problem; the whole testdata list (154 pairs) takes a few seconds.",
+  "data_size": "None; the test problems are defined in INIT and FUNC in the shipped source.",
+  "data_licence": "No data. Netlib TOMS code under the archive's ACM licence; the rerun should record the licence text it finds in the archive."
+ },
+ "why": "A 1995 Fortran root-finder with interval enclosure ships its test driver, test data and reference output; the claimed root is a computed bracketing-method output for a test problem whose root is not stated in closed form in the archive (the problem definition has not been checked by scout; the rerun should confirm).",
+ "registered": "2026-11-26T16:23:00Z"
+}

@@ -14,14 +14,13 @@
         "name": "H-L estimator via HLQEST, N=9 rep 3, first test (random input)",
         "paper": 0.545388,
         "tol_abs": 1e-06,
-        "ours": null
+        "ours": 0.545388
       }
     ]
   },
   "basis": "patched",
-  "verdict": "blocked",
-  "cause": "other",
-  "attempt": "Blocked on the G2 gate (fidelity), not on the value. Original attempt: the whole archive file compiled with gfortran as shipped and failed (compile_exit=1), because lines 355-441 are stdin data and printed output, not Fortran. Patch: the source is archive lines 1-354 (unedited), and the stdin is lines 355-365, supplied as unit 1 (fort.1). Two passes (each a fresh compile and run, gfortran -O0, in separate clean directories) print 0.545388 for N=9 rep 3 via HLQEST, the same value the shipped output gives (0.545388 to the sixth decimal, the tolerance is 1e-6). The G2 gate for a patched reproduced result needs a fidelity pass: the patch is a line-range cut that removes non-source data, and the value matches; the scout has to confirm that the cut does not alter the algorithm before this can be recorded as reproduced. The verdict stays blocked until the scout reports.",
+  "verdict": "reproduced",
+  "attempt": "Reproduced under a patched basis. Original attempt: the whole archive file compiled with gfortran as shipped and failed (compile_exit=1), because lines 355-441 are stdin data and printed output, not Fortran. Patch: the source is archive lines 1-354 (unedited), and the stdin is lines 355-365, supplied as unit 1 (fort.1). Two passes (each a fresh compile and run, gfortran -O0, separate clean directories) print 0.545388 for N=9 rep 3 via HLQEST, the same value the shipped output gives. The full printed output (64 rows, both passes) matches the shipped lines to better than 1e-6. G2 fidelity: scout reviewed the cut (msg #77): the archive's PROGRAM MAIN(INPUT,OUTPUT,TAPE1=INPUT,TAPE3=OUTPUT) and DATA INUN,IOUTUN /1,3/ make the only reads of lines 61 and 65 go through unit 1, so the tail supplies stdin only; nothing in lines 1-354 refers to it. Source checked against the netlib 616.gz sha256 pin.",
   "queue_commit": "9a1aff7",
   "original_attempt": {
     "tried": true,
@@ -31,7 +30,7 @@
   },
   "gates": {
     "G1": "pass",
-    "G2": "hold",
+    "G2": "pass",
     "G3": "pass",
     "G5": "na",
     "G6": "na",

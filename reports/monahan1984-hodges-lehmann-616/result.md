@@ -1,16 +1,16 @@
-# monahan1984-hodges-lehmann-616: result (blocked, G2 hold)
+# monahan1984-hodges-lehmann-616: result (reproduced, basis patched)
 
 **Claim (registered 2026-11-26T19:36Z, artifact-reference):** the Hodges-Lehmann estimate that TOMS 616's driver prints
 for N=9, repetition 3, first test of HLQEST (random input, RANG seed 434977), shipped as `0.545388` in the archive's
 printed run output (616.gz lines 366-441). Absolute tolerance 1e-6, fixed before any run. The claim and tolerance were not edited.
 
 **Measured (ours):** `0.545388` in both passes (fresh compile and run, gfortran -O0, separate clean directories).
-Difference from shipped: below 1e-6 (the shipped value has six decimals). Measured value is kept here, not in
-`result.json` (`claim.values[0].ours` is null, as for renka2003-dnsplin1-828).
+Difference from shipped: below 1e-6 (the shipped value has six decimals). Measured value (both passes, from
+`evidence/p1-value.txt` and `evidence/p2-value.txt`) is `ours` in `result.json`, the printed six-decimal value.
 
-**Verdict:** `blocked`, cause `other`: the gate G2 (fidelity) is on hold for a patched reproduced result. The
-value matches; the verdict stays blocked until the scout confirms the line-range cut below does not change the
-algorithm. Recorded as blocked, not reproduced.
+**Verdict:** `reproduced`, basis `patched`. G2 (fidelity) passed: scout confirmed (msg #77) that the line-range cut
+below does not change the algorithm. The archive's `TAPE1=INPUT` and `DATA INUN /1/` route the only reads
+(lines 61, 65) to unit 1, and nothing in lines 1-354 refers to the tail.
 
 **Basis:** `patched`.
 

@@ -40,7 +40,7 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -61,7 +61,19 @@
     "reports/benson2008-dsdp5-875/evidence/manifest.mid",
     "reports/benson2008-dsdp5-875/evidence/manifest.post"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-26T22:26:00Z",
+      "kind": "clean",
+      "values": {
+        "theta graph1 final DD objective (magnitude)": 3.00000012
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/benson2008-dsdp5-875/evidence/replay-2026-11-26T222600Z.log",
+      "seconds": 38
+    }
+  ],
   "patch": {
     "kind": "build-only",
     "archive_sha256": "43a19f4832245b4703dc1826a9786d21073a76e9c554e951aa2d3136ed78158f",

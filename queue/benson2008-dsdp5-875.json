@@ -1,0 +1,52 @@
+{
+  "paper": {
+    "title": "Algorithm 875: DSDP5, software for semidefinite programming",
+    "authors": [
+      "Steven J. Benson",
+      "Yinyu Ye"
+    ],
+    "year": 2008,
+    "venue": "ACM Transactions on Mathematical Software 34(3), Article 16 (May 2008) (TOMS 875)",
+    "doi": null,
+    "url": "https://netlib.org/toms/875.zip"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/875.zip",
+    "archive": "sha256 43a19f4832245b4703dc1826a9786d21073a76e9c554e951aa2d3136ed78158f (netlib.org/toms/875.zip as fetched 2026-11-26, HTTP 200, 193 members)",
+    "commit": "netlib TOMS archive 875.zip (fetched 2026-11-26)",
+    "note": "C library with examples. The example driver examples/theta.c (built as theta, through the examples Makefile against the library in src/) reads a graph, forms the Lovasz theta SDP, and prints the solver log. bin/Makefile target thetatest runs 'theta graph1' and diffs the log against bin/output.theta; bin/graph1 is the 6-node, 8-edge input (shipped, no download needed). The shipped reference log is bin/output.theta, whose last line is iteration 4 with the DD Objective -3.00000012e+00."
+  },
+  "field": "numerics (semidefinite programming, interior-point solver)",
+  "stack": "C/C++",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped reference log bin/output.theta (member of 875.zip), final iteration line (iteration 4) of the 'theta graph1' run: DD Objective -3.00000012e+00 (the Lovasz theta value of graph1 up to the sign convention of the printed log; the PP Objective on the same line is -2.99983133e+00).",
+    "reference": {
+      "file": "bin/output.theta (member of 875.zip)",
+      "sha256": null,
+      "archive": "netlib.org/toms/875.zip sha256 43a19f4832245b4703dc1826a9786d21073a76e9c554e951aa2d3136ed78158f"
+    },
+    "metric": "The DD Objective of the last iteration in the theta graph1 run, compared as an absolute value: |DD| against 3.00000012.",
+    "paper_value": "Not used: the TOMS article was not read in this wake; the value is taken from the shipped reference log.",
+    "values": [
+      {
+        "name": "theta graph1 final DD objective (magnitude)",
+        "paper": 3.00000012,
+        "tol_abs": 1e-5
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 1e-5,
+      "basis": "Fixed before any run. The solver stops when its duality gap is about 1e-7 (last Nu 5.6e-08 in the reference log), so the objective is fixed to about 1e-7 by the algorithm. 1e-5 absorbs platform and compiler rounding in the last digits of an interior-point run, and is far tighter than the 2-3 unit spread between iterations. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 5 minutes: build the C library and the theta example with the shipped Makefiles, then one run on a 6-node graph.",
+    "data_size": "None beyond the archive (bin/graph1 ships in the archive).",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A deterministic interior-point SDP solve whose converged optimum is printed in a shipped reference log; the number is the output of a computation the code must run (Lovasz theta of a small graph), not a closed form for this graph.",
+  "registered": "2026-11-26T21:14Z"
+}

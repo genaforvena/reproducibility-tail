@@ -1,0 +1,53 @@
+{
+  "paper": {
+    "title": "Algorithm 720: an adaptive cubature over a collection of 3-dimensional simplices (DCUTET)",
+    "authors": [
+      "J. Berntsen",
+      "R. Cools",
+      "T. O. Espelid"
+    ],
+    "year": 1993,
+    "venue": "ACM Transactions on Mathematical Software 19(3) (TOMS 720, Sept 1993)",
+    "doi": null,
+    "url": "https://netlib.org/toms/720.gz"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/720.gz",
+    "archive": "sha256 dc7f045565f861b4561f76b55cc49596e435349847cebdc0e6e5de5230025deb (netlib.org/toms/720.gz as fetched 2026-11-26, HTTP 200, 4801 lines, one shar file)",
+    "commit": "netlib TOMS archive 720.gz (fetched 2026-11-26)",
+    "note": "Fortran 77 shar. Extract it with sh (the archive is a shell archive: strip the lines above the first 'cat' line as the archive header says) to get dcutet.f and dtest1.f. The shipped sample program is PROGRAM DTEST1 (in the header comment and at the end of the source, both with the same code): it integrates exp(x*x+y*y+z*z) over the reference tetrahedron (0,0,0),(1,0,0),(0,1,0),(0,0,1) with EPSREL = 1.D-5 and EPSABS = 0, and writes RESULT. The reference is the printed output in the source comment 'Output produced on a SUN 3/50': RESULT= 0.22779999698986."
+  },
+  "field": "numerics (multidimensional adaptive integration over tetrahedra)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped sample program PROGRAM DTEST1 in the 720 archive (dtest1 source, printed output in the comment block 'Output produced on a SUN 3/50'): RESULT = 0.22779999698986 for the integral of exp(x*x+y*y+z*z) over the reference tetrahedron, EPSREL = 1.D-5, EPSABS = 0, MAXPTS = 1000, NUMFUN = 1.",
+    "reference": {
+      "file": "PROGRAM DTEST1 comment block 'Output produced on a SUN 3/50' (member of the 720.gz shar)",
+      "sha256": null,
+      "archive": "netlib.org/toms/720.gz sha256 dc7f045565f861b4561f76b55cc49596e435349847cebdc0e6e5de5230025deb"
+    },
+    "metric": "RESULT(1) printed by DTEST1 (the estimated integral), compared as an absolute difference.",
+    "paper_value": "Not used: the TOMS article was not read in this wake; the value is taken from the shipped sample output.",
+    "values": [
+      {
+        "name": "DTEST1 RESULT (integral of exp(x^2+y^2+z^2) over the reference tetrahedron)",
+        "paper": 0.22779999698986,
+        "tol_abs": 1e-5
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 1e-5,
+      "basis": "Fixed before any run. The shipped run reports ERROR = 1.98e-6 (absolute) for the same request, so the integral is fixed to about 2e-6 by the algorithm's own error estimate. 1e-5 is about five times that estimate and absorbs compiler and platform differences in the last digits. The program's EPSREL = 1e-5 is a request, not the test. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 2 minutes: one Fortran compile of dcutet.f and dtest1.f and one run with 43 function evaluations.",
+    "data_size": "None (the integrand and the tetrahedron are in the sample program).",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "An adaptive cubature code, deterministic, whose shipped sample program has a printed result for a non-trivial integral with no closed form in elementary functions over a tetrahedron; reproducing it tests the adaptive subdivision and the cubature rule.",
+  "registered": "2026-11-26T21:12Z"
+}

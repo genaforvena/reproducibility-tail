@@ -1,0 +1,78 @@
+{
+  "paper": {
+    "short": "linhart2008-lnnorm-885",
+    "title": "Algorithm 885: Computing the logarithm of the normal distribution",
+    "year": 2008,
+    "doi": null
+  },
+  "field": "numerics (special functions, log of the normal tail)",
+  "stack": "C (TOMS 885, lnnorm.c with the authors' driver main.c and Doc/makefile)",
+  "claim": {
+    "text": "-lnnorm(-5.0) computed by the authors' C/lnnorm.c, against the Sheppard (1939) Table IV row x = 5.0 in the shipped C/sheppard.txt: 15.0649983939887257, absolute tolerance 1.5e-8",
+    "values": [
+      {
+        "name": "-lnnorm(-5.0) against Sheppard Table IV row 5.0",
+        "paper": 15.064998393988725,
+        "tol_abs": 1.5e-08,
+        "ours": 15.064998393988725
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced with a patched build. The authors' Doc/makefile does not link on this host as documented (the -lm precedes the objects; the default --as-needed linker rejects it, 'undefined reference to log'; original attempt failed, logged). The same makefile, unchanged, is run with one linker flag, CFLAGS='-Wl,--no-as-needed -lm'; no source file or makefile line is edited, and the build is proven build-only by three manifests (verify_sources record). The authors' driver main prints only maxima and means over the table, not the single claimed value, so a probe (impl/probe_lnnorm.c, written from the claim text) calls the authors' lnnorm() at x = -5.0 and prints -lnnorm(-5.0) with 17 significant digits. Two clean passes give 15.064998393988725 both times; |ours - paper| is zero at the printed precision, inside tol_abs 1.5e-8. The driver's whole-table output is kept as evidence (driver-stdout). The paper (ACM DL) was not read; the claim rests on the shipped table. Replay (G5) not yet run.",
+  "queue_commit": "07a737ea4de2c6da140e0b0e5b4c3b89d6ef9edc",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "link error: the makefile places -lm before the objects; the default --as-needed linker rejects it (undefined reference to log, exp, erf, ...)",
+    "log": "reports/linhart2008-lnnorm-885/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/linhart2008-lnnorm-885/recipe.sh",
+  "evidence": [
+    "reports/linhart2008-lnnorm-885/evidence/original-attempt.log",
+    "reports/linhart2008-lnnorm-885/evidence/build.log",
+    "reports/linhart2008-lnnorm-885/evidence/recipe-run.log",
+    "reports/linhart2008-lnnorm-885/evidence/reference/sheppard.txt",
+    "reports/linhart2008-lnnorm-885/evidence/run1-value.txt",
+    "reports/linhart2008-lnnorm-885/evidence/run2-value.txt",
+    "reports/linhart2008-lnnorm-885/evidence/run1-driver-stdout.txt",
+    "reports/linhart2008-lnnorm-885/evidence/run2-driver-stdout.txt"
+  ],
+  "replayed": [],
+  "stack_class": "C/C++",
+  "field_class": "numerics",
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "4415d85ac688c4f1882f5b6100d9e8243d525c13cd65c9a8d93f40b44e544205",
+    "compared": 10,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "make -f ../Doc/makefile CFLAGS='-Wl,--no-as-needed -lm'",
+      "cc -O -I/work/build/C -o probe /work/probe_lnnorm.c /work/build/C/lnnorm.c /work/build/C/normal.c /work/build/C/log1px.c /work/build/C/anorm.c /work/build/C/enorm.c /work/build/C/lnanorm.c /work/build/C/lnenorm.c -Wl,--no-as-needed -lm"
+    ],
+    "manifests": {
+      "pre": "reports/linhart2008-lnnorm-885/evidence/manifest.pre",
+      "mid": "reports/linhart2008-lnnorm-885/evidence/manifest.mid",
+      "post": "reports/linhart2008-lnnorm-885/evidence/manifest.post"
+    }
+  }
+}

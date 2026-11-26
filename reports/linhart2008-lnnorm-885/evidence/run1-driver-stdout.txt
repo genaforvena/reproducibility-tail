@@ -1,0 +1,166 @@
+1001 evenly spaced points on interval from    -5.0000 to     5.0000 
+
+ anorm(): 
+Maximum absolute difference: 2.2898e-16 
+Maximum relative difference: 9.6076e-15 
+Mean absolute difference:    3.4187e-17 
+Mean relative difference:    4.3056e-16 
+
+
+ enorm(): 
+Maximum absolute difference: 2.2204e-16 
+Maximum relative difference: 9.3026e-15 
+Mean absolute difference:    3.1812e-17 
+Mean relative difference:    5.9409e-16 
+
+
+ lnanorm(): 
+Maximum absolute difference: 9.3259e-15 
+Maximum relative difference: 9.6487e-15 
+Mean absolute difference:     4.479e-16 
+Mean relative difference:    4.9796e-16 
+
+
+ lnenorm(): 
+Maximum absolute difference: 8.8818e-15 
+Maximum relative difference: 9.3472e-15 
+Mean absolute difference:    5.2428e-16 
+Mean relative difference:     6.767e-16 
+
+
+1001  points on interval from    -5.0000 to     5.0000 
+
+ anorm(): 
+Maximum absolute difference: 3.3307e-16 
+Maximum relative difference: 8.2059e-15 
+Mean absolute difference:    3.0568e-17 
+Mean relative difference:    3.9894e-16 
+
+
+ enorm(): 
+Maximum absolute difference: 3.3307e-16 
+Maximum relative difference: 7.8213e-15 
+Mean absolute difference:    2.8687e-17 
+Mean relative difference:    5.4155e-16 
+
+
+ lnanorm(): 
+Maximum absolute difference: 8.4377e-15 
+Maximum relative difference: 1.1529e-14 
+Mean absolute difference:    4.5628e-16 
+Mean relative difference:    5.0807e-16 
+
+
+ lnenorm(): 
+Maximum absolute difference: 7.9936e-15 
+Maximum relative difference: 1.0844e-14 
+Mean absolute difference:    5.3581e-16 
+Mean relative difference:    6.9244e-16 
+
+1001 evenly spaced points on interval from   -37.5190 to    37.5190 
+
+ anorm(): 
+Maximum absolute difference: 2.2204e-16 
+Maximum relative difference: 5.6897e-14 
+Mean absolute difference:    4.2001e-18 
+Mean relative difference:    4.6748e-15 
+
+
+ enorm(): 
+Maximum absolute difference: 2.2204e-16 
+Maximum relative difference: 1.9644e-13 
+Mean absolute difference:    3.6989e-18 
+Mean relative difference:    1.7794e-14 
+
+
+ lnanorm(): 
+Maximum absolute difference: 1.1369e-13 
+Maximum relative difference: 5.6053e-14 
+Mean absolute difference:    6.4949e-15 
+Mean relative difference:    4.7693e-15 
+
+
+ lnenorm(): 
+Maximum absolute difference: 2.2737e-13 
+Maximum relative difference: 2.0823e-13 
+Mean absolute difference:    1.8188e-14 
+Mean relative difference:      1.75e-14 
+
+
+1001 x points on interval from   -37.5190 to    37.5190 
+
+ anorm(): 
+Maximum absolute difference: 2.2204e-16 
+Maximum relative difference: 5.6274e-14 
+Mean absolute difference:    4.9602e-18 
+Mean relative difference:    4.7702e-15 
+
+
+ enorm(): 
+Maximum absolute difference: 2.2204e-16 
+Maximum relative difference: 2.0273e-13 
+Mean absolute difference:    4.3459e-18 
+Mean relative difference:    1.7247e-14 
+
+
+ lnanorm(): 
+Maximum absolute difference: 1.1369e-13 
+Maximum relative difference: 5.7096e-14 
+Mean absolute difference:    6.6618e-15 
+Mean relative difference:    4.7345e-15 
+
+
+ lnenorm(): 
+Maximum absolute difference: 2.2737e-13 
+Maximum relative difference: 1.8526e-13 
+Mean absolute difference:    1.8359e-14 
+Mean relative difference:    1.6986e-14 
+
+Comparison with tabulated values from     0.0000 to     5.0000 
+
+ lnnorm(): 
+Maximum absolute error:   9.77e-15 
+Maximum relative error: 2.5825e-15 
+Mean absolute error:    1.1821e-15 
+Mean relative error:    2.8316e-16 
+
+
+ lnanorm(): 
+Maximum absolute error: 3.5527e-15 
+Maximum relative error: 2.9296e-16 
+Mean absolute error:    6.3783e-16 
+Mean relative error:    1.0523e-16 
+
+
+ lnenorm(): 
+Maximum absolute error: 3.5527e-15 
+Maximum relative error: 2.9756e-16 
+Mean absolute error:    7.2056e-16 
+Mean relative error:    1.1419e-16 
+
+Comparison with tabulated values from     5.0000 to    10.0000 
+
+ lnnorm(): 
+Maximum absolute error: 1.4211e-14 
+Maximum relative error: 3.7901e-16 
+Mean absolute error:    3.0303e-15 
+Mean relative error:    9.5221e-17 
+
+
+ lnanorm(): 
+Maximum absolute error: 7.1054e-15 
+Maximum relative error: 2.1268e-16 
+Mean absolute error:    2.8213e-15 
+Mean relative error:    8.1215e-17 
+
+
+ lnenorm(): 
+Maximum absolute error: 2.1316e-14 
+Maximum relative error:  4.688e-16 
+Mean absolute error:     4.528e-15 
+Mean relative error:    1.3096e-16 
+
+1000000 iterations 
+Time for lnnorm  =         0.1059670000
+Time for lnanorm =         0.0538100000
+Time for lnenorm =         0.0506070000

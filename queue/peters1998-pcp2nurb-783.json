@@ -1,0 +1,55 @@
+{
+  "paper": {
+    "title": "Algorithm 783: Pcp2Nurb -- Smooth free-form surfacing with linearly trimmed bicubic B-splines",
+    "authors": [
+      "Jorg Peters"
+    ],
+    "year": 1998,
+    "venue": "ACM Transactions on Mathematical Software 24(3), 261-267 (TOMS 783, Sep 1998)",
+    "doi": null,
+    "url": "https://netlib.org/toms/783.gz"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/783.gz",
+    "archive": "sha256 11691adb9b362f2232d25883a1a74b809698f158a27e9a26f910d56d04e2dd87 (netlib.org/toms/783.gz as fetched 2026-11-26, HTTP 200)",
+    "commit": "netlib TOMS archive 783.gz (fetched 2026-11-26)",
+    "note": "C shell archive (C/Drivers/Sp/). Remove everything above the #! /bin/sh line, run it with sh to create C/ with the Pcp2Nurb sources (src.c, pcp2nurb), driver1.c and driver2.c, and the reference files RES1 and RES2 (Inventor ascii). The driver1.c header says: cc -g -c nurb_iv1.c; cc -g -c pcp2nurb.c; cc -o nurb_iv1 ... -lm; run as 'nurb_iv1 0.5' (default blend ratio). Rebuild the program from the shar's sources; the claim is on the printed output of driver1 with blend 0.5, compared with RES1."
+  },
+  "field": "numerics (surface modelling, NURBS)",
+  "stack": "C/C++",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped reference output C/Drivers/Sp/RES1 (member of 783.gz): the first Coordinate3 point list, which belongs to the first NurbsSurface (the first patch of the three-patch corner blend). Point 1 of that list is 0.493056 1.868056 0.972222.",
+    "reference": {
+      "file": "C/Drivers/Sp/RES1 (member of 783.gz), first Coordinate3 block, point 1",
+      "sha256": null,
+      "archive": "netlib.org/toms/783.gz sha256 11691adb9b362f2232d25883a1a74b809698f158a27e9a26f910d56d04e2dd87"
+    },
+    "metric": "The x, y and z of the first control point of the first NurbsSurface printed by driver1 with blend ratio 0.5, compared with 0.493056, 1.868056, 0.972222 from RES1 (each component, absolute).",
+    "paper_value": "Not used: the paper is paywalled and was not read.",
+    "values": [
+      {
+        "name": "driver1 0.5, first patch control point 1 (x,y,z)",
+        "paper": [
+          0.493056,
+          1.868056,
+          0.972222
+        ],
+        "tol_abs": 1e-05
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 1e-05,
+      "basis": "Fixed before any run. RES1 prints 6 decimals (rounding up to 5e-7). The code is single precision (float), so a few-ulp difference per operation on magnitudes near 2 can reach about 1e-6 after a chain of operations; 1e-5 absolute allows that and still resolves to the fifth decimal, far below any change of the algorithm. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 2 minutes: a C compile and one run of driver1.",
+    "data_size": "None beyond the archive.",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "The shipped RES1 is a printed reference geometry from the Pcp2Nurb driver with fixed default input, so a control point is a checkable number that the code must compute.",
+  "registered": "2026-11-26T20:00Z"
+}

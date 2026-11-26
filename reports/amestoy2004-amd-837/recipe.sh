@@ -28,11 +28,11 @@ tools/sandbox.sh "$ID" -- cat /work/pre/837/Demo/amd_demo.out > "$E/reference/am
 echo "$(sha256sum "$E/reference/amd_demo.out")"
 sha256sum "$E/reference/amd_demo.out" | grep -q "^$DEMO_SHA " && echo "reference sha256 matches the registration" || echo "reference sha256 DIFFERS from the registration"
 
-echo "== G1 original attempt: the authors' Makefiles as documented, in a copy (kept once, never overwritten)"
+echo "== G1 original attempt: the authors' Makefiles as documented, in a copy (always rebuilt into /work/g1, the sandbox scratch is not kept between runs)"
+# The first original attempt log is kept (never overwritten); a later rebuild writes its own log so the build always exists for the runs.
 ORIG="$E/original-attempt.log"
-if [ ! -s "$ORIG" ]; then
-  tools/sandbox.sh "$ID" -- sh -c "rm -rf /work/g1 && cp -r /work/pre/837 /work/g1 && cd /work/g1 && make lib 2>&1; echo lib_exit=\$?; cd Demo && make amd_demo 2>&1; echo demo_exit=\$?" > "$ORIG" 2>&1
-fi
+[ -s "$ORIG" ] && ORIG="$E/original-attempt-rebuild.log"
+tools/sandbox.sh "$ID" -- sh -c "rm -rf /work/g1 && cp -r /work/pre/837 /work/g1 && cd /work/g1 && make lib 2>&1; echo lib_exit=\$?; cd Demo && make amd_demo 2>&1; echo demo_exit=\$?" > "$ORIG" 2>&1
 tail -8 "$ORIG"
 
 echo "== runs, twice (G3): each pass in its own clean directory, the demo binary from the original build"

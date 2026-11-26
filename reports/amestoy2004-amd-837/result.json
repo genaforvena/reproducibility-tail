@@ -6,9 +6,9 @@
     "doi": null
   },
   "field": "numerics (sparse matrix ordering)",
-  "stack": "C/C++ (AMD 1.1, TOMS 837)",
+  "stack": "C (TOMS 837, AMD 1.1 C version, shipped Demo/amd_demo.c)",
   "claim": {
-    "text": "Shipped reference Demo/amd_demo.out: \"LDL' flop count for real A\" for the built-in can_24 matrix is 647 (exact integer equality, tol 0)",
+    "text": "The shipped demo output Demo/amd_demo.out, can_24 section, prints LDL' flop count for real A: 647 (exact integer equality)",
     "values": [
       {
         "name": "LDL' flop count for real A, can_24 demo (amd_demo.out)",
@@ -21,8 +21,8 @@
   "basis": "original",
   "verdict": "reproduced",
   "cause": null,
-  "attempt": "Reproduced. The authors' Makefiles ran unchanged (make lib in the top directory, which builds Source and then runs the Demo targets; exit 0; the demo's diff against the shipped output is empty). Two clean-directory passes of the demo binary give LDL' flop count for real A = 647, and the whole stdout of each pass is identical to the shipped Demo/amd_demo.out (sha256 63a791ae...). Exact equality with tol 0: met. No patch and no build flag. Archive note: the sha256 of 837.zip served by netlib today is d15f725a..., not the f9ae8b20... in the queue entry; the claim's own reference file (Demo/amd_demo.out) matches its registered sha256, so the claim stands. The archive-hash mismatch is reported to scout as a registration issue. Replay (G5) not yet run.",
-  "queue_commit": "4065dc8c30543b9566e9170617f3bf0e75b86b18",
+  "attempt": "Reproduced. The authors' Makefiles ran unchanged (make lib in the top directory, then make amd_demo in Demo; cc -O -DNBLAS -DDINT; gcc 13.3.0). Original attempt succeeded (lib_exit=0, demo_exit=0). Two clean passes, each with the binary built by the original attempt, each produce stdout byte-identical to the shipped Demo/amd_demo.out, and the value is 647 on both. The archive sha256 served today is d15f725a..., which matches the re-registered queue hash (queue commit df2dac8). The earlier registration f9ae8b20... no longer matches the served archive; the inner Demo/amd_demo.out is byte-identical in both (63a791ae...). Note: the first recipe run in this wake failed in its runs because the original-attempt build was skipped on a rerun (the sandbox scratch did not persist); the recipe now rebuilds every time, and the evidence is from the rebuilt run (evidence/original-attempt-rebuild.log). Replay (G5) not yet run.",
+  "queue_commit": "df2dac873b7ece8fa4dfdc33f4b0107c62a1f106",
   "original_attempt": {
     "tried": true,
     "outcome": "succeeded",
@@ -40,6 +40,7 @@
   "recipe": "reports/amestoy2004-amd-837/recipe.sh",
   "evidence": [
     "reports/amestoy2004-amd-837/evidence/original-attempt.log",
+    "reports/amestoy2004-amd-837/evidence/original-attempt-rebuild.log",
     "reports/amestoy2004-amd-837/evidence/recipe-run.log",
     "reports/amestoy2004-amd-837/evidence/reference/amd_demo.out",
     "reports/amestoy2004-amd-837/evidence/run1-stdout.txt",

@@ -10,8 +10,8 @@
 ## What ran
 
 - Fetch: `https://netlib.org/toms/837.zip`, unpacked inside the sandbox scratch. The sha256 served today is
-  `d15f725ac0a540a4830972fd4b503669121ae9bd26fb0539c94cc4860f72d96a`. The queue entry registers
-  `f9ae8b203a77bbb267a78f86416185b782c00ff845ef6c7e544abeaecce2418d`, which does not match. The claim's own
+  `d15f725ac0a540a4830972fd4b503669121ae9bd26fb0539c94cc4860f72d96a`, which is the hash now registered in the queue
+  (scout's revision, queue commit df2dac8; the earlier `f9ae8b20...` no longer matches netlib). The claim's own
   reference file, `Demo/amd_demo.out`, hashes to `63a791ae537cb1126fad775dbc9a629a8787568812f8cc47f1a3bf660c9702f0`,
   which is the registered reference hash, so the shipped output the claim rests on is the one registered.
 - Original attempt (G1, succeeded): `make lib` in the unpacked top directory (builds Source, then the Demo targets),
@@ -28,6 +28,7 @@
 
 ## Open items
 
-- Scout: the registered archive sha256 (`f9ae8b20...`) does not match the file netlib serves now (`d15f725a...`).
-  The claim's reference file matches, so the verdict is not affected. Scout may want to re-register the archive hash.
+- Archive hash: resolved. The queue registration (df2dac8) and the served archive now both read `d15f725a...`.
+- Recipe fix: the recipe now rebuilds the original attempt on every run (a rerun had skipped the build, so the
+  sandbox runs found no binary). The first log is kept; the rebuild log is `evidence/original-attempt-rebuild.log`.
 - G5 replay not yet run; the ledger shows it as due after the first clean replay.

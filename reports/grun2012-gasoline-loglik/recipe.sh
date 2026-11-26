@@ -12,7 +12,7 @@ cd "$root"
 URL=https://cran.r-project.org/src/contrib/Archive/betareg/betareg_3.0-0.tar.gz
 SHA=8e021999a8647ee5d7b23cf1e6be3f60a68a2b72102d0f7852c23a3568831df3
 MM=https://micro.mamba.pm/api/micromamba/linux-64/latest
-LOG="${LOG:-$root/reports/$ID/evidence/original-attempt.log}"
+LOG="${LOG:-$root/reports/$ID/evidence/recipe-run.log}"
 exec > >(tee "$LOG") 2>&1
 echo "== fetch: tarball, micromamba"
 tools/sandbox.sh --fetch "$ID" -- sh -c "curl -fsSL -o /work/betareg_3.0-0.tar.gz '$URL' && curl -fsSL -o /work/mm.tar.bz2 '$MM' && mkdir -p /work/mm && tar -xjf /work/mm.tar.bz2 -C /work/mm bin/micromamba" || { echo "FETCH-FAILED"; exit 1; }
@@ -25,3 +25,5 @@ tools/sandbox.sh "$ID" -- sh -c "mkdir -p /work/src /work/Rlib && tar -xzf /work
 W=/mnt/mishe-scratch/reproducibility-tail/$ID; mkdir -p "$W"; cp "$here/impl/ml_original.R" "$W/ml.R"
 tools/sandbox.sh "$ID" -- sh -c "export PATH=/work/r/bin:\$PATH; for i in 1 2; do echo \"== driver run \$i\"; R_LIBS=/work/Rlib:/work/r/lib/R/library Rscript --vanilla /work/ml.R; done" || { echo "RUN-FAILED"; exit 1; }
 echo "== done"
+# G5 contract: the VALUE line is read from the second driver run (the last logLik line in the log).
+echo "VALUE logLik ML $(grep '^logLik ML = ' "$LOG" | tail -1 | awk '{print $NF}')"

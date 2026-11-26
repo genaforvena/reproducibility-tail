@@ -24,25 +24,26 @@ By decade: 2000 2, 2010 4
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-Not yet framed: 26 candidates in the legacy rejection log and 5 attempted papers (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace) were chosen before frames existed, so they are excluded from the numbers below.
+Not yet framed: 0 candidates in the legacy rejection log and 5 attempted papers (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace) were chosen before frames existed, so they are excluded from the numbers below.
 
-**0 candidates considered from 0 frames: 0 attempted (–), 0 unreachable, 0 rejected.**
+**40 candidates considered from 1 frames: 1 attempted (2%), 0 unreachable, 39 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
+| stat-co-2010-2015 | 1872 | 40 | 40 | 100% | 1 | 0 | 39 |
 
 | why a candidate was not attempted | candidates |
 |---|---|
 | paywalled | 0 |
-| figure-only | 0 |
-| no-numeric-claim | 0 |
-| claim-not-located | 0 |
+| figure-only | 8 |
+| no-numeric-claim | 8 |
+| claim-not-located | 6 |
 | no-method-description | 0 |
 | runtime | 0 |
-| machine-dependent | 0 |
+| machine-dependent | 2 |
 | restricted-data | 0 |
-| gpu | 0 |
-| other | 0 |
+| gpu | 1 |
+| other | 14 |
 | unreachable-code | 0 |
 | unreachable-data | 0 |
 
@@ -50,6 +51,9 @@ Survivorship: the share of each stack among all candidates considered, and among
 
 | stack | considered | attempted |
 |---|---|---|
+| MATLAB | 5 | 0 |
+| R | 6 | 1 |
+| unknown | 29 | 0 |
 
 ### Unreachable
 
@@ -66,7 +70,7 @@ Authors' original artifact among attempted papers: not-possible 2, succeeded 4.
 | paper | field · year · stack | claim | paper value ± tol | our value | Δ | margin | basis | gates G1 G2 G3 G5 | grade | verdict | last replay |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics (interval-censored data, nonparametric maximum likelihood) · 2010 · R 4.5.3 (sandbox, conda-forge and bioconda), archived interval 0.9-9.6, Icens 1.82.0 (bioconda), MLEcens 0.1.7.1 (CRAN), perm 1.0-0.4, survival 3.8-12 | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
-| [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics (beta regression, maximum likelihood) · 2012 · R 4.5.3 (sandbox, conda-forge), archived betareg 3.0-0 | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics (beta regression, maximum likelihood) · 2012 · R 4.5.3 (sandbox, conda-forge), archived betareg 3.0-0 | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [purcell2011-fig5-hopf](reports/purcell2011-fig5-hopf/result.md) | computational biology (synthetic gene networks, bifurcation analysis) · 2011 · Python 3 (sandbox /usr/bin/python3), numpy 2.5.5; replication repo baioc/re-multif at 3ab84df (Octave artifact not run; no Hopf computation in it) | Input concentration I (nM) of the Hopf bifurcation of equilibrium c1, Figure 5 caption (~7 nM) (Hopf input I (nM)) | 7 ± 0.5 | 7.1875 | 0.1875 | 38% | reimplemented | ✓ ✓ ✓ · | C | reproduced | never clean |
 | [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | cosmology (PDS cluster counts, Table 1) · 2008 · circles (build 0.3.2.1) with a build-only pgplot stub (patched, not run) | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_A) | 1317 ± 132 | – | – | – | - | · · · · | - | blocked | never clean |
 | [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | cosmology (PDS cluster counts, Table 1) · 2008 · circles (build 0.3.2.1) with a build-only pgplot stub (patched, not run) | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_C) | 52 ± 5 | – | – | – | - | · · · · | - | blocked | never clean |

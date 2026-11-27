@@ -1,0 +1,145 @@
+{
+ "paper": {
+  "title": "Algorithm 425: Generation of Random Correlated Normal Variables",
+  "authors": [
+   "R. L. Hurst",
+   "R. E. Knop"
+  ],
+  "year": 1972,
+  "venue": "Communications of the ACM 15(5), May 1972, pp. 355-357 (the archive header says CACM; the frame lists it under TOMS/CALGO 425.gz, so the venue is recorded as the archive states it). Paper text not checked: it is paywalled.",
+  "doi": null,
+  "url": "https://netlib.org/toms/425.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/425.gz",
+  "commit": "netlib TOMS archive 425.gz (scouted 2026-11-27, sha256 000dc68c060cad2f2941ebf85edb2f762f653b5ed6ed7783e39b53109ec9852b). Shell archive unpacks to Fortran/Sp/Drivers/{Makefile,driver.f,res} and Fortran/Sp/Src/src.f. Uses a Lewis-Goodman-Miller style seeded generator (RN in src.f); no external RNG."
+ },
+ "field": "numerics (random variate generation, multivariate normal)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Shipped reference file Fortran/Sp/Drivers/res (inside 425.gz): the printed output of driver.f subroutine TEST02, which calls RNVR on a 2x2 covariance matrix with off-diagonal 0.3 and the fixed seed iarg=123456789, for 10 samples of dimension 2.",
+  "reference": {
+   "file": "Fortran/Sp/Drivers/res (shipped in 425.gz)",
+   "sha256": "7318519503517084da980b2ea619f3d5e14df14dadc1e6ca22fdc7cdf8a3efa4",
+   "archive": "425.gz, sha256 000dc68c060cad2f2941ebf85edb2f762f653b5ed6ed7783e39b53109ec9852b"
+  },
+  "metric": "The 20 printed variates of TEST02 (10 samples x 2 components), as printed with format g14.6 in res, read in order (sample, then component).",
+  "paper_value": "Not located in the paper text (paywalled). The archive's res file is the only value to check.",
+  "values": [
+   {
+    "name": "TEST02 sample 1 component 1",
+    "paper": 1.24296,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 1 component 2",
+    "paper": 0.594892,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 2 component 1",
+    "paper": -0.134458,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 2 component 2",
+    "paper": -0.697435,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 3 component 1",
+    "paper": -0.307862,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 3 component 2",
+    "paper": -0.564875,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 4 component 1",
+    "paper": -0.430708,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 4 component 2",
+    "paper": -0.00855063,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 5 component 1",
+    "paper": -0.702977,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 5 component 2",
+    "paper": -0.288103,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 6 component 1",
+    "paper": -0.561967,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 6 component 2",
+    "paper": 1.21474,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 7 component 1",
+    "paper": 0.757011,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 7 component 2",
+    "paper": -0.0440338,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 8 component 1",
+    "paper": 0.143903,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 8 component 2",
+    "paper": 0.173469,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 9 component 1",
+    "paper": -0.217714,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 9 component 2",
+    "paper": 0.292083,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 10 component 1",
+    "paper": -0.811921,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "TEST02 sample 10 component 2",
+    "paper": -0.54103,
+    "tol_abs": 1e-05
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1e-05,
+   "basis": "Fixed before any run. The reference prints 6 significant digits (g14.6), so the largest rounding in the printed value is about 5e-6 at magnitude 1. A tolerance of 1e-5 allows one unit in the last printed place, for a single-precision rounding flip, but not a different random sequence or a different covariance transform. Not loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute (30 variates of dimension 2 across 3 tests; the driver runs all 3, TEST02 is the one claimed). Needs a Fortran 77/90 compiler; gfortran is not on this host's PATH, so the rerun must install one.",
+  "data_size": "3.5 KB archive",
+  "data_licence": "Not stated in the archive; the algorithm is a CACM algorithm published with the ACM, and the rerun should record the licence it finds."
+ },
+ "why": "The shipped driver's printed output is a seeded run of the algorithm, so the correlated variates depend on the RNVR transform and cannot be read off the code.",
+ "registered": "2026-11-27T04:28Z"
+}

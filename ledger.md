@@ -20,7 +20,7 @@ By field: astronomy 1, biology 1, ecology 1, numerics 36, other 3, statistics 5
 By stack: C/C++ 8, Fortran 30, Java 1, MATLAB/Octave 3, R 5
 By decade: 1960 1, 1970 1, 1980 3, 1990 16, 2000 18, 2010 8
 
-Data as of 2026-11-27T02:42:08Z (the newest replay or funnel entry).
+Data as of 2026-11-27T02:47Z (the newest replay or funnel entry).
 
 ## The funnel
 
@@ -28,18 +28,18 @@ Every candidate is drawn from a named frame in a seeded order and none is skippe
 
 47 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
-**284 candidates considered from 4 of 4 frames: 42 attempted (15%), 0 unreachable, 242 rejected.**
+**287 candidates considered from 4 of 4 frames: 44 attempted (15%), 0 unreachable, 243 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
 | cpc-library | 2767 | 40 | 20 | 50% | 0 | 0 | 20 |
 | netlib-liblist | 160 | 40 | 40 | 100% | 0 | 0 | 40 |
 | stat-co-2010-2015 | 1872 | 80 | 50 | 62% | 1 | 0 | 49 |
-| toms-calgo-index | 570 | 200 | 174 | 87% | 41 | 0 | 133 |
+| toms-calgo-index | 570 | 200 | 177 | 88% | 43 | 0 | 134 |
 
 | why a candidate was not attempted | candidates |
 |---|---|
-| paywalled | 54 |
+| paywalled | 55 |
 | figure-only | 15 |
 | no-numeric-claim | 52 |
 | claim-not-located | 63 |
@@ -58,10 +58,10 @@ Survivorship: each stack's count (and share) among all candidates considered, an
 
 | stack | considered | attempted |
 |---|---|---|
-| C/C++ | 32 (11%) | 8 (19%) |
-| Fortran | 172 (61%) | 30 (71%) |
+| C/C++ | 32 (11%) | 8 (18%) |
+| Fortran | 174 (61%) | 31 (70%) |
 | Java | 2 (1%) | 1 (2%) |
-| MATLAB/Octave | 21 (7%) | 2 (5%) |
+| MATLAB/Octave | 22 (8%) | 3 (7%) |
 | R | 7 (2%) | 1 (2%) |
 | not-stated | 42 (15%) | 0 (0%) |
 | other | 8 (3%) | 0 (0%) |

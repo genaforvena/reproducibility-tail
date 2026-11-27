@@ -1,0 +1,54 @@
+{
+  "paper": {
+    "title": "Algorithm 791: TSHEP2D: Cosine series Shepard method for bivariate interpolation of scattered data",
+    "authors": [
+      "Robert J. Renka",
+      "R. Brown"
+    ],
+    "year": 1999,
+    "venue": "ACM Transactions on Mathematical Software 25(1), March 1999, pp. 74-77 (archive header: 'VOL. 25, NO. 1, March, 1999, P. 74-- 77')",
+    "doi": null,
+    "url": "https://netlib.org/toms/791.gz",
+    "note": "DOI not verified in this wake; the article was not read (paywalled). Authors are taken from the funnel item and the archive's own Fortran headers (Renka). The claim rests on the shipped expected output res1_2 in the archive's driver directory."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/791.gz",
+    "commit": "netlib TOMS archive 791.gz (fetched 2026-11-27)",
+    "archive": "netlib.org/toms/791.gz sha256 733ee80b3ec4d9b5a6dcf443bb4053924f25b3339486bb3e3df6b91cf31793ac",
+    "note": "Fortran 77 shell archive (created 1999-07-27). Drop everything above the #! /bin/sh line, run with /bin/sh in a fresh directory outside the site. It creates Fortran77/Src/Sp/src.f, Fortran77/Drivers/Sp/{driver1.f, driver2.f, data1, res1, res1_2, res2, src_792.f}. The TSHEP2D driver is driver1.f; it reads node set, function range, NC, NW and NR from standard input, and res1 shows the prompts. src_792.f supplies the test-function routines TESTDT and TSTFN2 from the ACM algorithm survey."
+  },
+  "field": "numerics (scattered data interpolation)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped expected output res1_2 (archive member, Fortran77/Drivers/Sp/res1_2, produced by driver1.f): 'Average SSE/SSM over the test functions = 0.006063'. Its header records the inputs: node set 1, N = 100, NI = 33, NC = 17, NW = 30, NR = 6, functions 1 to 10. Checked by hand: the ten SSE/SSM values printed in res1_2 average to 0.0060633, so the printed average is internally consistent. The article was not read; no article page is cited.",
+    "reference": {
+      "file": "791.gz member res1_2 (driver1 expected output), average SSE/SSM line",
+      "sha256": null,
+      "archive": "netlib.org/toms/791.gz sha256 733ee80b3ec4d9b5a6dcf443bb4053924f25b3339486bb3e3df6b91cf31793ac"
+    },
+    "metric": "Average over the ten test functions of SSE/SSM, the sum of squared interpolation errors over the sum of squared test-function values on the 33 by 33 grid, as printed by driver1 for node set 1 with NC = 17, NW = 30, NR = 6.",
+    "paper_value": "Not used: the article was not read. The value is the one printed in the shipped res1_2.",
+    "values": [
+      {
+        "name": "TSHEP2D driver1, node set 1, NC 17, NW 30, NR 6: average SSE/SSM",
+        "paper": 0.006063,
+        "tol_abs": 1e-05
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 1e-05,
+      "basis": "Fixed before any run. res1_2 prints the average to 4 decimals (0.006063), so rounding allows 5e-7 absolute. 1e-5 absolute (about 0.17 percent of the value) allows for compiler and libm differences in the cosine-series evaluations, which enter the ratio only at machine-precision level (res2 shows max errors of order 1e-15 in C). It is not looser than that because the claim is one printed number. Not to be loosened after any run."
+    },
+    "note": "Only the average is checked, not the per-function rows. The per-function SSE/SSM values are printed to the same precision and could be added as further values in a later commit if needed. The inputs NC = 17 and NW = 30 differ from the manual's recommended 18 and 32; the claim uses the values in the shipped header, not the recommendations."
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 5 minutes: compile about 3000 lines of Fortran 77 and run driver1 once for ten functions on 100 nodes.",
+    "data_size": "None beyond the archive: the node sets and test functions are generated in TESTDT and TSTFN2 (src_792.f).",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A deterministic Fortran 77 interpolation code whose shipped driver prints a computed error ratio averaged over ten test functions; the number needs the interpolant to actually be built and evaluated, not a closed form.",
+  "registered": "2026-11-27T02:47Z"
+}

@@ -1,0 +1,56 @@
+{
+  "paper": {
+    "title": "Algorithm 920: SFSDP: a sparse version of full semidefinite programming relaxation for sensor network localization problems",
+    "authors": [
+      "Sunyoung Kim",
+      "Masakazu Kojima",
+      "Hayato Waki",
+      "Makoto Yamashita"
+    ],
+    "year": 2012,
+    "venue": "ACM Transactions on Mathematical Software 38(4), Article 27 (2012); netlib TOMS 920 (920.head)",
+    "doi": null,
+    "url": "https://netlib.org/toms/920.zip",
+    "note": "DOI not verified in this wake; the article was not read (paywalled). Authors are taken from the funnel item and the archive README (readme.txt). The claim rests on the transcript in the archive's own user manual, Doc/SFSDPmanual/UserManual.tex, section SFSDPplus.m."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/920.zip",
+    "commit": "netlib TOMS archive 920.zip (fetched 2026-11-27)",
+    "archive": "netlib.org/toms/920.zip sha256 3399a98e19e9b57b8a20b6f087d677764e11eea6730abdd88c818b5bb5cffc3b",
+    "note": "MATLAB package (Version 1.11 history in readme.txt; manual transcript labelled 1.22). Unzip into a fresh directory outside the site. Relevant files: Matlab/Src/SFSDP.m, Matlab/Drivers/SFSDPplus.m, Matlab/Drivers/examples/example1.mat. Needs MATLAB or Octave, plus an SDP solver: SDPA (sedumiwrap) by default, or SeDuMi via pars.SDPsolver = 'sedumi' (readmeV111.txt). Neither solver is in the archive."
+  },
+  "field": "numerics / sensor network localization (semidefinite programming)",
+  "stack": "MATLAB/Octave",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "Doc/SFSDPmanual/UserManual.tex, section 'SFSDPplus.m' (the 3-sensor, 4-anchor example with pars.noisyFac = 0, data in Matlab/Drivers/examples/example1.mat). The transcript printed after the SDP solve reads 'rmsd = 6.21e-02'. This is the SDP-stage RMSD, not the gradient-stage value 4.67e-02 that follows it in the transcript. The article was not read; no article page is cited.",
+    "reference": {
+      "file": "920.zip member Doc/SFSDPmanual/UserManual.tex, SFSDPplus.m transcript",
+      "sha256": null,
+      "archive": "netlib.org/toms/920.zip sha256 3399a98e19e9b57b8a20b6f087d677764e11eea6730abdd88c818b5bb5cffc3b"
+    },
+    "metric": "rmsd as the manual defines it (UserManual.tex, line ~1234): the root mean square of ||x_p - xhat_p|| over the n sensors, true against estimated positions, printed as 'rmsd = ...' after 'elapsed time for SDP solver'.",
+    "paper_value": "Not used: the article was not read. The value is the manual transcript in the archive.",
+    "values": [
+      {
+        "name": "SFSDPplus example1 (3 sensors, 4 anchors, noisyFac 0): rmsd after the SDP solve",
+        "paper": 0.0621,
+        "tol_abs": 0.0005
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 0.0005,
+      "basis": "Fixed before any run. The transcript prints 3 significant figures (6.21e-02), so rounding allows 5e-6 only. 5e-4 absolute (about 0.8 percent of the value) is set wide enough to absorb the solver difference the manual itself allows for: the transcript was made with sdpa 7.3.1 through sedumiwrap, and the rerun may use SeDuMi, which the readme says is an alternative, both at solver eps 1e-7. It is not tighter because the transcript records no MATLAB version or solver build. Not to be loosened after any run."
+    },
+    "note": "Only the SDP-stage rmsd is checked. The gradient-stage rmsd (4.67e-02), the mean and max distance errors, and elapsed times are not part of this claim. The transcript is from an older revision and may not match the archive's current code bit for bit; that is why the tolerance is absolute and fixed here."
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 5 minutes once a MATLAB-compatible runtime and an SDP solver are installed; the example is 3 sensors and 4 anchors (SDP of about 10 blocks).",
+    "data_size": "607 bytes (example1.mat), shipped in the archive.",
+    "data_licence": "GNU GPL 2.0 per the archive's readme.txt section 6 (\"License\"); the rerun should record it."
+  },
+  "why": "A deterministic MATLAB SDP pipeline whose archived manual prints a solver-computed RMSD for a fixed 3-sensor example; the number depends on the SDP solve and the retrieval step running, not on a closed form.",
+  "registered": "2026-11-27T02:47Z"
+}

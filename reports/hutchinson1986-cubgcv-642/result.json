@@ -88,7 +88,7 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "pass"
   },
@@ -103,5 +103,25 @@
     "reports/hutchinson1986-cubgcv-642/evidence/reference/642.txt",
     "reports/hutchinson1986-cubgcv-642/evidence/recipe-run.log"
   ],
-  "replayed": []
+  "replayed": [
+    {
+      "utc": "2026-11-27T05:44:31Z",
+      "kind": "clean",
+      "values": {
+        "TEST driver CUBGCV VAR (error variance estimate)": 0.0279,
+        "TEST driver CUBGCV GENERALIZED CROSS VALIDATION": 0.0318,
+        "TEST driver CUBGCV MEAN SQUARE RESIDUAL": 0.0246,
+        "TEST driver CUBGCV Y(1)": 0.0342,
+        "TEST driver CUBGCV SE(1)": 0.1004,
+        "TEST driver CUBGCV Y(21)": 0.9069,
+        "TEST driver CUBGCV SE(21)": 0.0525,
+        "TEST driver CUBGCV Y(41)": -0.6242,
+        "TEST driver CUBGCV SE(41)": 0.0541
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/hutchinson1986-cubgcv-642/evidence/replay-2026-11-27T054431Z.log",
+      "seconds": 55
+    }
+  ]
 }

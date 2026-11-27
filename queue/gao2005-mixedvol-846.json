@@ -1,0 +1,55 @@
+{
+  "paper": {
+    "title": "Algorithm 846: MixedVol: a software package for mixed-volume computation",
+    "authors": [
+      "Tangan Gao",
+      "T. Y. Li",
+      "Mengnien Wu"
+    ],
+    "year": 2005,
+    "venue": "ACM Transactions on Mathematical Software, volume 31 (TOMS 846); year inferred from the volume number and not verified in this wake",
+    "doi": null,
+    "url": "https://netlib.org/toms/846.zip",
+    "note": "DOI not verified; the article was not read. The claim rests on the shipped user manual Doc/userman.tex, which gives the mixed volume of a worked polynomial system as 119. The manual's title line still reads 'ALgorithm xxx', so the number is the authors' own worked example, not a test-suite expected output."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/846.zip",
+    "commit": "netlib TOMS archive 846.zip (fetched 2026-11-27)",
+    "archive": "netlib.org/toms/846.zip sha256 c1a8045a45878744ac58078c696f54b1166d8c3a7fdca00ff0a66c41bca9acdb",
+    "note": "C++ package. Unzip into a fresh directory outside the site; the top directory is 846/ with Src/, Doc/ and CopyRight. The manual says to run 'build' in the main directory to produce 'mixedvol', but the archive has no top-level build script (only Doc/makefile, for the manual), so the rerun must compile Src/MixedVolDriver.cpp and its headers itself with a C++ compiler. Run './mixedvol -p MyPolynomials' on the manual's polynomial example, typed into a file outside the archive in the manual's syntax."
+  },
+  "field": "numerics (polynomial systems, mixed volume)",
+  "stack": "C/C++",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped user manual Doc/userman.tex, section 'Call Sequence and Output': the three-polynomial system p1, p2, p3 in x1, x2, x3 (each product with (x1^2+x2^2+x3^2-1)), for which the manual says 'It will produce the mixed volume of the polynomial system (namely 119)'. The paper was not read; no paper table or page is cited.",
+    "reference": {
+      "file": "846.zip member Doc/userman.tex, section 'Call Sequence and Output' (polynomial example)",
+      "sha256": null,
+      "archive": "netlib.org/toms/846.zip sha256 c1a8045a45878744ac58078c696f54b1166d8c3a7fdca00ff0a66c41bca9acdb"
+    },
+    "metric": "The integer mixed volume printed by 'mixedvol -p' for the manual's three-polynomial example.",
+    "paper_value": "Not used: the paper was not read; the value is the one the shipped manual states.",
+    "values": [
+      {
+        "name": "mixed volume of the manual's 3-polynomial system (manual: 119)",
+        "paper": 119,
+        "tol_abs": 0
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 0,
+      "basis": "Fixed before any run. The mixed volume is an integer invariant of the system. The code draws random lifting values, which affect the path it takes but not the mixed volume it must return. Any difference from 119 is a mismatch, not rounding. Not to be loosened after any run."
+    },
+    "note": "The support example in the manual (mixed volume 18, 'mixedvol -s') is not used; it is a smaller check that could be derived by hand from the Bernstein bound. The polynomial example needs the code to run (the manual's Newton-polytope and mixed-cell computation, not a closed form). The claim is that the manual's number is the code's output; if the code disagrees, the manual's number is a mis-statement or the code has drifted, and rerun must report which."
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 5 minutes: one C++ build and one run on a 3-variable polynomial system.",
+    "data_size": "None; the polynomial file is typed from the manual.",
+    "data_licence": "Netlib TOMS code under the ACM licence (Doc/CopyRight in the archive); the rerun should record the licence text."
+  },
+  "why": "A deterministic exact-integer invariant computed by a randomized-lifting algorithm, with a worked value in the shipped manual that a deterministic code must reproduce, not a value derivable on paper.",
+  "registered": "2026-11-27T02:33Z"
+}

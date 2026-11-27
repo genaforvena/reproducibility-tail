@@ -1,0 +1,56 @@
+{
+  "paper": {
+    "title": "Algorithm 777: HOMPACK90: a suite of Fortran 90 codes for globally convergent homotopy algorithms",
+    "authors": [
+      "L. T. Watson",
+      "M. Sosonkina",
+      "R. C. Melville",
+      "A. P. Morgan"
+    ],
+    "year": 1997,
+    "venue": "ACM Transactions on Mathematical Software 23(4), 514 (Dec 1997); netlib TOMS 777",
+    "doi": null,
+    "url": "https://netlib.org/toms/777.gz",
+    "note": "DOI not verified in this wake; the article was not read (paywalled). The author list is taken from the funnel item (four authors as listed there); the archive README should be checked for the full list. The claim rests on the shipped expected output RES3 of the archive's driver3."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/777.gz",
+    "commit": "netlib TOMS archive 777.gz (fetched 2026-11-27)",
+    "archive": "netlib.org/toms/777.gz sha256 a86547e59ee7b090691b1db16e9e4d07ab018334a28f60ae13ca11e7cfd46498",
+    "note": "Fortran 90 shar archive. Drop everything above the #! /bin/sh line, run with /bin/sh in a fresh directory outside the site (it creates Doc, Drivers, Info and Src). It contains template.f, driver1.f, driver2.f, driver3.f, hompack90.f, lapack.f, blas1-3.f, RES1, RES2, RES3. Build hompack90.f with lapack.f, blas*.f and driver3.f using gfortran, run it, and compare the FIXPQS storage-mode-1 block with the shipped RES3."
+  },
+  "field": "numerics (homotopy continuation, fixed points)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped expected output RES3 (archive member, produced by driver3.f): the block 'TESTING FIXPQS WITH STORAGE MODE = 1', first solution component on the first printed row, 4.00864019E-01. The driver prints the solution at lambda = 1 (Y(1:8)) with ES16.8. The paper was not read; no paper table or page is cited.",
+    "reference": {
+      "file": "777.gz member RES3 (driver3 expected output), block FIXPQS storage mode 1, Y(1)",
+      "sha256": null,
+      "archive": "netlib.org/toms/777.gz sha256 a86547e59ee7b090691b1db16e9e4d07ab018334a28f60ae13ca11e7cfd46498"
+    },
+    "metric": "Y(1) at lambda = 1 returned by FIXPQS (the fixed-point solution of the driver's homotopy, storage mode 1), as printed in RES3.",
+    "paper_value": "Not used: the TOMS article was not read; the value is the one in the shipped RES3.",
+    "values": [
+      {
+        "name": "FIXPQS storage mode 1, solution component Y(1) at lambda=1",
+        "paper": 0.400864019,
+        "tol_abs": 1e-08
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 1e-08,
+      "basis": "Fixed before any run. RES3 prints the value to 9 significant figures (ES16.8), so rounding alone allows 5e-9 absolute; 1e-8 allows that and nothing more. The endpoint at lambda = 1 is set by the corrector tolerance ANSRE = 1e-12 in driver3, not by the arc-length step, so a different path length from compiler rounding should not move it past 1e-8. Not to be loosened after any run."
+    },
+    "note": "Chosen over the ARC LENGTH and Jacobian-evaluation counts. Timing lines are machine-dependent and are not used. Only the first component is checked; the other seven are printed to the same precision and are not part of this single claim."
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 5 minutes: gfortran compile of hompack90.f with lapack and blas files, and one run of driver3 (FIXPQS, FIXPNS and FIXPDS in two storage modes).",
+    "data_size": "None; driver3 hard-codes its homotopy.",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A deterministic Fortran 90 homotopy solver whose shipped driver prints a fixed-point solution that depends on the corrector and predictor actually running, not on a value derivable on paper.",
+  "registered": "2026-11-27T02:30Z"
+}

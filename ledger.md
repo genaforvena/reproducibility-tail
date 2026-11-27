@@ -5,28 +5,28 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-98 papers attempted.
+99 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 22 |
-| B | authors' code with build fixes | 54 |
+| B | authors' code with build fixes | 55 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 2 |
 | - | blocked or not yet run | 19 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 85, other 4, statistics 6
-By stack: C/C++ 11, Fortran 73, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 0 1, 1960 4, 1970 9, 1980 9, 1990 33, 2000 28, 2010 14
+By field: astronomy 1, biology 1, ecology 1, numerics 86, other 4, statistics 6
+By stack: C/C++ 11, Fortran 74, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 0 1, 1960 4, 1970 10, 1980 9, 1990 33, 2000 28, 2010 14
 
-Data as of 2026-11-27T14:19:52Z (the newest replay or funnel entry).
+Data as of 2026-11-27T14:23:34Z (the newest replay or funnel entry).
 
 ## The funnel
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-98 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+99 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **486 candidates considered from 4 of 4 frames: 96 attempted (20%), 0 unreachable, 390 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 64 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 24 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 65 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 24 (ran as documented).
 
 ## Results
 
@@ -142,6 +142,7 @@ Authors' original artifact, among all attempted papers: failed 64 (did not run),
 | [fairweather1969-romint-351](reports/fairweather1969-romint-351/result.md) | numerics · 1969 · Fortran | ROMINT (Romberg, EPS=1e-6, MAXE=5) on exp(-x^2) over [0, 4.3]: VAL and N in the TEST02 last row of the shipped res (VAL 0.886227, N 65). Paper value from the shipped reference (artifact-reference), VAL tol_abs 1e-5, N exact. (VAL) [shipped reference output] | 0.886227 ± 1e-05 | 0.886227 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [fairweather1969-romint-351](reports/fairweather1969-romint-351/result.md) | numerics · 1969 · Fortran | ROMINT (Romberg, EPS=1e-6, MAXE=5) on exp(-x^2) over [0, 4.3]: VAL and N in the TEST02 last row of the shipped res (VAL 0.886227, N 65). Paper value from the shipped reference (artifact-reference), VAL tol_abs 1e-5, N exact. (N) [shipped reference output] | 65 ± 0 | 65 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics · 2010 · R | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [fritsch1973-lambertw-443](reports/fritsch1973-lambertw-443/result.md) | numerics · 1973 · Fortran | TEST01 of the shipped driver: WEW_A(x = 1.0), the Computed column, is 0.56714326 (printed to 8 decimals in the shipped res). Registered by scout from the artifact's own reference output, not a paper table. Tolerance 1e-7 absolute, fixed before any run. (W_WEW_A_AT_1) [shipped reference output] | 0.567143 ± 1e-07 | 0.567143 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [gao2005-mixedvol-846](reports/gao2005-mixedvol-846/result.md) | numerics · 2005 · C/C++ | The manual's worked three-polynomial system (Doc/userman.tex, 'Call Sequence and Output'), typed into a file MyPolynomials outside the archive and run as 'mixedvol -p MyPolynomials', prints a mixed volume of 119. Integer, tolerance 0, fixed in the queue entry before any run; the paper was not read, so the claim rests on the shipped manual's stated number. (mixed volume of the manual's 3-polynomial system (manual: 119)) [shipped reference output] | 119 ± 0 | 119 | 0 | exact | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [gaviano2003-gkls-829](reports/gaviano2003-gkls-829/result.md) | numerics · 2003 · C/C++ | Shipped reference test001.txt: global minimizer of D-type function number 1, dimension 2, f = -1, at (-0.136, 0.824), tol 1e-3 absolute (D-type function 1, dim 2, global minimizer x1) | -0.136 ± 0.001 | -0.136 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [gaviano2003-gkls-829](reports/gaviano2003-gkls-829/result.md) | numerics · 2003 · C/C++ | Shipped reference test001.txt: global minimizer of D-type function number 1, dimension 2, f = -1, at (-0.136, 0.824), tol 1e-3 absolute (D-type function 1, dim 2, global minimizer x2) | 0.824 ± 0.001 | 0.824 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |

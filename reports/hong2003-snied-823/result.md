@@ -1,8 +1,21 @@
 # hong2003-snied-823: TOMS 823 (Snied), EI at I = 4096
 
-**Verdict: not-reproduced (cause: other; not isolated).** The shipped reference output is not produced by the
-archive's code under any toolchain or flag set tried here. Basis: `original` (no source file edited; see the
-build caveat below). Could not reproduce under these conditions.
+**Verdict: blocked.** Our run gives 0.99994610736637701 against the shipped 0.9999468969847435 (tol 1e-9), a
+reproducible gap of about 790 tolerances. The cause is not isolated, so this is not recorded as
+`not-reproduced (cause: ...)`. Basis: `original` (no source file edited; see the build caveat below).
+
+**What is missing to unblock:** the code version or RNG/state that produced the shipped `Drivers/res1`. Until a
+cause is shown, the numbers stay here and the ledger grade is `-`.
+
+**Diagnosis this wake** (`evidence/diagnosis-2026-11-27.txt`):
+- Toolchain exonerated: the sibling variant Sniedx, same compiler and recipe, reproduces its shipped `res1` exactly
+  (0.99998999508936381 vs 0.9999899950893638).
+- Flag choice exonerated: IFLAG 0, 2 and 3 give 0.99913877598010004, 0.99959330656565726, 0.99927082907549902; none is the shipped value.
+- `Drivers/data1` exonerated: no source or driver reads it.
+- Open lead: a whole-program `-fdefault-real-8` build moves the value to 0.999945206205708367754958574430412810, so
+  REAL precision matters somewhere on this path. Split real-size builds break an interface, so the dependence is not yet localised.
+- Not yet tested: whether the shipped `res1` came from a different `src.f`/`extra.f` version or RNG seed table. Testing a seed table
+  to match the number would be tuning, so it is not used as a verdict.
 
 ## Claim
 
@@ -12,7 +25,7 @@ build caveat below). Could not reproduce under these conditions.
 - Our value (pass 1, gfortran 16.2 -O2): **0.99994610736637701**.
 - Difference: ours minus shipped = -7.9e-7, about 790 times the tolerance.
 
-## Passes (all four agree on the claimed value)
+## Passes (all four agree on the claimed value; this is the reproducible observation the blocked verdict rests on)
 
 | pass | build | value at I = 4096 |
 |---|---|---|
@@ -23,18 +36,6 @@ build caveat below). Could not reproduce under these conditions.
 
 Passes 1 and 4 differ in toolchain and passes 1 and 3 in optimisation level; the timing line differs
 only in the elapsed time. The verdict is confirmed by the second environment (pass 4).
-
-## Diagnosis attempted (bounded, diagnostic only; none of these changed the claim)
-
-- The miss is not a rounding or optimisation effect: the difference appears at every printed I, not
-  only at 4096. Shipped vs ours: I = 512 0.9999562489621427 vs 0.99997540338373248 (1.2e-5);
-  I = 1024 0.999713791146755 vs 0.99976773631485671; I = 2048 0.9999491497757775 vs 0.99995030938172536.
-- Flag probes (`evidence/probe-*.txt`) leave the output bit-identical: `-O2 -fwrapv`,
-  `-O2 -fdefault-integer-8`, `-O2 -fno-tree-vectorize`.
-- Not tested, so still open: a different code version (the shipped `res1` may come from another release
-  of `src.f`/`extra.f`), a different platform word size or a non-gfortran compiler, and any
-  uninitialised-state behaviour that depends on the original system. Which one, if any, would settle it
-  is unknown from here.
 
 ## Build caveat
 
@@ -53,6 +54,6 @@ build cannot run as shipped. The compile lines in `recipe.sh` are ours (`gfortra
 ## Evidence
 
 - `reports/hong2003-snied-823/evidence/pass{1..4}-build.log`, `pass{1..4}-run.log`, `pass{1..4}-stdout.txt`.
-- `reports/hong2003-snied-823/evidence/probe-*.txt` (flag probes).
+- `reports/hong2003-snied-823/evidence/probe-*.txt` (flag probes), `evidence/diagnosis-2026-11-27.txt` (this wake).
 - `reports/hong2003-snied-823/evidence/recipe-run.log`.
 - The shipped output is `Drivers/res1` inside the archive (not copied into evidence).

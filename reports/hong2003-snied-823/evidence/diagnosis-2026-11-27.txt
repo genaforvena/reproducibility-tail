@@ -1,0 +1,27 @@
+Bounded diagnosis of the hong2003-snied-823 mismatch (wake 04:28Z-04:35Z). All runs in the sandbox, gfortran 16.2 (env16) unless noted.
+Shipped Drivers/res1 EI at I=4096: 0.9999468969847435 (tol_abs 1e-9). Diagnostic numbers are NOT a verdict and do not change the claim.
+
+1. Sibling control (same toolchain, same archive): Sniedx (GNNEDX, IFLAG=1, DIMEN=2, ATMOST=4096, nxs* data copied from its Drivers/).
+   ours   EI at 4096 = 0.99998999508936381
+   shipped Sniedx/Drivers/res1 = 0.9999899950893638
+   -> exact to 16 digits. The compiler/platform path reproduces an Owen-scrambled Niederreiter run exactly.
+
+2. IFLAG variants of the Snied driver (driver.f with only IFLAG changed; separate processes, -O2):
+   IFLAG=0 0.99913877598010004
+   IFLAG=1 0.99994610736637701   (the registered run)
+   IFLAG=2 0.99959330656565726
+   IFLAG=3 0.99927082907549902
+   -> no variant matches the shipped 0.9999468969847435.
+
+3. Snied/Drivers/data1 (22 integer lines): no source file or driver opens or reads it (grep for OPEN/READ across the Snied tree).
+   Sfaur and Ssobol share the same data1 and do not read it either. Not an input to this run.
+
+4. Whole-program -fdefault-real-8 (-O2): EI at 4096 = 0.999945206205708367754958574430412810 (EI at 512 = 0.999920933728599381714078567912062923).
+   The value moves by about 9e-7, so REAL precision matters somewhere on this path. A split build (real-8 driver only, or real-8 src+extra only,
+   real-4 the other side) gives nonsense (3.999..., 7.37...), i.e. the mixed-size builds break an interface. The probe therefore does not
+   localise the REAL dependence. Not resolved.
+
+5. -fimplicit-none on src.f, extra.f, driver.f: no errors (no implicitly typed variables).
+
+Conclusion of this wake: toolchain and optimisation are exonerated (item 1); flag choice is exonerated (item 2); data1 is exonerated (item 3).
+Open: the REAL-precision dependence of src.f/driver.f (item 4) and the seed/state that produced Drivers/res1. Not isolated, so the verdict is blocked.

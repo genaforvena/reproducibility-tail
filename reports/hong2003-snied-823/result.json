@@ -1,70 +1,69 @@
 {
-  "paper": {
-    "short": "hong2003-snied-823",
-    "title": "Algorithm 823: Implementing Scrambled Digital Sequences",
-    "year": 2003,
-    "doi": null,
-    "venue": "ACM TOMS 29(2), pp. 95-109 (Jun 2003); paper text not checked (artifact-reference claim)"
+ "paper": {
+  "short": "hong2003-snied-823",
+  "title": "Algorithm 823: Implementing Scrambled Digital Sequences",
+  "year": 2003,
+  "doi": null,
+  "venue": "ACM TOMS 29(2), pp. 95-109 (Jun 2003); paper text not checked (artifact-reference claim)"
+ },
+ "field": "numerics (quasi-Monte Carlo, scrambled digital sequences)",
+ "stack": "Fortran 77 (TOMS 823: Fortran77/Dp/Snied/Drivers/driver.f TSNIED, Src/src.f and Src/extra.f)",
+ "field_class": "numerics",
+ "stack_class": "Fortran",
+ "claim": {
+  "text": "EI = SUM/I at I = 4096 printed by TSNIED (Snied, IFLAG=1, DIMEN=2), the last EI line of the shipped reference Drivers/res1. Paper value 0.9999468969847435 (artifact-reference), absolute tolerance 1e-9 (fixed in the queue entry before any run).",
+  "source": "artifact-reference",
+  "reference": {
+   "file": "reports/hong2003-snied-823/evidence/shipped-res1.txt",
+   "sha256": "96ed5ac8ab49448e93eec5b798aadfbe5ad33610c06d3f6814552198e2747ce5",
+   "archive": "netlib TOMS 823.zip, sha256 de5eaa5face30d4590a8679a94f0b830229771087afbdd4bdc1b75d11b3f9785, file Fortran77/Dp/Snied/Drivers/res1 (copied from the sandbox unpack)"
   },
-  "field": "numerics (quasi-Monte Carlo, scrambled digital sequences)",
-  "stack": "Fortran 77 (TOMS 823: Fortran77/Dp/Snied/Drivers/driver.f TSNIED, Src/src.f and Src/extra.f)",
-  "field_class": "numerics",
-  "stack_class": "Fortran",
-  "claim": {
-    "text": "EI = SUM/I at I = 4096 printed by TSNIED (Snied, IFLAG=1, DIMEN=2), the last EI line of the shipped reference Drivers/res1. Paper value 0.9999468969847435 (artifact-reference), absolute tolerance 1e-9 (fixed in the queue entry before any run).",
-    "source": "artifact-reference",
-    "reference": {
-      "file": "reports/hong2003-snied-823/evidence/shipped-res1.txt",
-      "sha256": "96ed5ac8ab49448e93eec5b798aadfbe5ad33610c06d3f6814552198e2747ce5",
-      "archive": "netlib TOMS 823.zip, sha256 de5eaa5face30d4590a8679a94f0b830229771087afbdd4bdc1b75d11b3f9785, file Fortran77/Dp/Snied/Drivers/res1 (copied from the sandbox unpack)"
-    },
-    "values": [
-      {
-        "name": "EI at I=4096, Snied IFLAG=1, DIMEN=2",
-        "paper": 0.9999468969847435,
-        "tol_abs": 1e-09,
-        "ours": 0.999946107366377
-      }
-    ]
-  },
-  "basis": "original",
-  "verdict": "not-reproduced",
-  "cause": "other",
-  "attempt": "Built the unmodified sources with compile lines of our own (the archive's Drivers/Makefile needs a makefile.inc the archive does not ship); no source file edited. Ran TSNIED as shipped. Four passes: gfortran 16.2 -O2 (pass 1, the original attempt), the same repeated (pass 2), gfortran 16.2 -O0 (pass 3), gfortran 13 -O2 (pass 4). All give 0.99994610736637701 at I=4096, against the shipped 0.9999468969847435 at tol_abs 1e-9. Flag probes left the output bit-identical. Cause not isolated: candidates not tested are a different code version of src.f/extra.f, a different word size or compiler, or original-system state. See result.md.",
-  "queue_commit": "abaaef05f58af8a99bb7cb56bcaac3bf057f3767",
-  "original_attempt": {
-    "tried": true,
-    "outcome": "succeeded",
-    "reason": "the unmodified sources built with our compile lines and ran to completion (build_exit=0, run_exit=0); the output does not match the shipped reference, which is the mismatch recorded here",
-    "log": "reports/hong2003-snied-823/evidence/pass1-build.log"
-  },
-  "gates": {
-    "G1": "pass",
-    "G2": "na",
-    "G3": "pass",
-    "G5": "na",
-    "G6": "pass",
-    "cross_check": "na"
-  },
-  "recipe": "reports/hong2003-snied-823/recipe.sh",
-  "evidence": [
-    "reports/hong2003-snied-823/evidence/pass1-build.log",
-    "reports/hong2003-snied-823/evidence/pass1-run.log",
-    "reports/hong2003-snied-823/evidence/pass1-stdout.txt",
-    "reports/hong2003-snied-823/evidence/pass2-build.log",
-    "reports/hong2003-snied-823/evidence/pass2-run.log",
-    "reports/hong2003-snied-823/evidence/pass2-stdout.txt",
-    "reports/hong2003-snied-823/evidence/pass3-build.log",
-    "reports/hong2003-snied-823/evidence/pass3-run.log",
-    "reports/hong2003-snied-823/evidence/pass3-stdout.txt",
-    "reports/hong2003-snied-823/evidence/pass4-build.log",
-    "reports/hong2003-snied-823/evidence/pass4-run.log",
-    "reports/hong2003-snied-823/evidence/pass4-stdout.txt",
-    "reports/hong2003-snied-823/evidence/probe-fwrapv.txt",
-    "reports/hong2003-snied-823/evidence/probe-fdefaultinteger8.txt",
-    "reports/hong2003-snied-823/evidence/probe-fnotreevectorize.txt",
-    "reports/hong2003-snied-823/evidence/recipe-run.log",
-    "reports/hong2003-snied-823/evidence/shipped-res1.txt"
-  ],
-  "replayed": []
+  "values": [
+   {
+    "name": "EI at I=4096, Snied IFLAG=1, DIMEN=2",
+    "paper": 0.9999468969847435,
+    "tol_abs": 1e-09,
+    "ours": null
+   }
+  ]
+ },
+ "basis": "original",
+ "verdict": "blocked",
+ "attempt": "Built the unmodified sources with compile lines of our own (the archive's Drivers/Makefile needs a makefile.inc the archive does not ship); no source file edited. Ran TSNIED as shipped. Four passes: gfortran 16.2 -O2 (pass 1, the original attempt), the same repeated (pass 2), gfortran 16.2 -O0 (pass 3), gfortran 13 -O2 (pass 4). All give 0.99994610736637701 at I=4096, against the shipped 0.9999468969847435 at tol_abs 1e-9. Flag probes left the output bit-identical. Cause not isolated: see evidence/diagnosis-2026-11-27.txt (sibling control exact, IFLAG and data1 ruled out, REAL-precision dependence observed but not localised, shipped seed/state not shown). See result.md.",
+ "queue_commit": "abaaef05f58af8a99bb7cb56bcaac3bf057f3767",
+ "original_attempt": {
+  "tried": true,
+  "outcome": "succeeded",
+  "reason": "the unmodified sources built with our compile lines and ran to completion (build_exit=0, run_exit=0); the output does not match the shipped reference, which is the mismatch recorded here",
+  "log": "reports/hong2003-snied-823/evidence/pass1-build.log"
+ },
+ "gates": {
+  "G1": "pass",
+  "G2": "na",
+  "G3": "pass",
+  "G5": "na",
+  "G6": "pass",
+  "cross_check": "na"
+ },
+ "recipe": "reports/hong2003-snied-823/recipe.sh",
+ "evidence": [
+  "reports/hong2003-snied-823/evidence/pass1-build.log",
+  "reports/hong2003-snied-823/evidence/pass1-run.log",
+  "reports/hong2003-snied-823/evidence/pass1-stdout.txt",
+  "reports/hong2003-snied-823/evidence/pass2-build.log",
+  "reports/hong2003-snied-823/evidence/pass2-run.log",
+  "reports/hong2003-snied-823/evidence/pass2-stdout.txt",
+  "reports/hong2003-snied-823/evidence/pass3-build.log",
+  "reports/hong2003-snied-823/evidence/pass3-run.log",
+  "reports/hong2003-snied-823/evidence/pass3-stdout.txt",
+  "reports/hong2003-snied-823/evidence/pass4-build.log",
+  "reports/hong2003-snied-823/evidence/pass4-run.log",
+  "reports/hong2003-snied-823/evidence/pass4-stdout.txt",
+  "reports/hong2003-snied-823/evidence/probe-fwrapv.txt",
+  "reports/hong2003-snied-823/evidence/probe-fdefaultinteger8.txt",
+  "reports/hong2003-snied-823/evidence/probe-fnotreevectorize.txt",
+  "reports/hong2003-snied-823/evidence/recipe-run.log",
+  "reports/hong2003-snied-823/evidence/shipped-res1.txt"
+ ],
+ "replayed": []
 }

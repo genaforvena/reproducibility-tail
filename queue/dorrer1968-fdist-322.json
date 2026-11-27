@@ -1,0 +1,53 @@
+{
+ "paper": {
+  "title": "Algorithm 322: F-Distribution [S14]",
+  "authors": ["Egon Dorrer"],
+  "year": 1968,
+  "venue": "Communications of the ACM 11(2), 116-117 (CALGO/TOMS Algorithm 322; Field 1969 and Tolman 1979 remarks)",
+  "doi": null,
+  "url": "https://netlib.org/toms/322.gz (the ACM article was not read; the shipped archive contains the Fortran 77 coding and the test program cited here)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/322.gz",
+  "commit": "netlib TOMS archive 322.gz (downloaded 2026-11-27, sha256 f90c21567ea61d9ad8fdc0b9faaf799f9f467417ed71b04852e445b8eb294ecd); uncompressed text sha256 c6b619e2b6e13d810f8bff0b576f14ddce6d82dc9f2c0904885ea5c75ddee03b",
+  "note": "Plain text after gunzip. Contains the Fortran 77 FUNCTION PROB(LM,LN,X) (Larry Weissman's recoding, 28-Mar-94), the PROGRAM tstprob test driver, and a shar archive with a C version (fisher.c). Use the Fortran only. Expect gfortran -std=legacy; the driver writes to stdout. Test only the F-distribution rows of the driver, because the claim is about the F tables."
+ },
+ "field": "numerics (statistical distribution functions)",
+ "stack": "Fortran 77",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "The test program PROGRAM tstprob in the uncompressed 322.txt, the F-distribution block of the DATA statements: the critical values f(i) (lines 178-200) with their expected upper-tail probabilities pf(i) (line 210, the 0.05 block is entries 51-75). Registered: two critical values from that block. The driver computes p = 1 - PROB(nf1, nf2, f) and prints it beside the expected pf. Entry 61-65 is the 3rd row (nf1=10) of the 0.05 block, and the 3rd column of that row is nf2=10 (f(63)=2.9782, line 192). Entry 51 is nf1=1, nf2=1 (f=161.45, line 190, 'A 161.45' in the 0.05 block).",
+  "reference": {
+   "file": "322/322.txt (gunzip of 322.gz), lines 178-210",
+   "sha256": "c6b619e2b6e13d810f8bff0b576f14ddce6d82dc9f2c0904885ea5c75ddee03b",
+   "archive": "netlib.org/toms/322.gz sha256 f90c21567ea61d9ad8fdc0b9faaf799f9f467417ed71b04852e445b8eb294ecd"
+  },
+  "metric": "The upper-tail probability p = 1 - PROB(M, N, X) for the F-ratio X with numerator df M and denominator df N, compared with the expected probability in the shipped DATA table (0.05 for both points).",
+  "paper_value": "Shipped test driver expected values: P(F(1,1) > 161.45) = 0.05 and P(F(10,10) > 2.9782) = 0.05 (the printed pf DATA entries, not a value read from the CACM article).",
+  "values": [
+   {
+    "name": "p for F=161.45 with (1,1) df",
+    "paper": 0.05,
+    "tol_abs": 0.0005
+   },
+   {
+    "name": "p for F=2.9782 with (10,10) df",
+    "paper": 0.05,
+    "tol_abs": 0.0005
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 0.0005,
+   "basis": "Fixed before any run. The shipped expected values are printed to three decimals (0.050). The table critical values are given to 4-5 significant digits, and their rounding moves the exact tail probability by about 1e-5 at these points, so a correct rebuild should agree to well within 5e-4. The tolerance is 1% of the 0.05 level: loose enough for single precision (REAL) arithmetic and the algorithm's own series truncation, tight enough to fail a wrong tail or a wrong df order. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute (two evaluations of the series at most).",
+  "data_size": "None; the test values are in the driver's DATA statements.",
+  "data_licence": "No data. Netlib TOMS code under the ACM licence of the archive; the rerun should record the licence it finds in the archive."
+ },
+ "why": "A 1968 statistical algorithm ships its own table of critical values and expected tail probabilities. The probability needs the whole incomplete-beta-type series in PROB, so a correct rebuild must compute it; a closed form for the tail does not exist at these df.",
+ "registered": "2026-11-27T03:11Z"
+}

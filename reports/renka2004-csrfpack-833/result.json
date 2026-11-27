@@ -10,7 +10,7 @@
   "field_class": "numerics",
   "stack_class": "Fortran",
   "claim": {
-    "text": "CSRFTEST (author's driver) on the shipped 8-node data file writes a 40 x 40 grid of surface values; the grid node (X,Y) = (-0.948717948717949, -1.0) has F = 0.189783809135176 in the registered queue entry. Absolute tolerance 1e-9. The shipped output Fortran77/Drivers/res prints this node as 0.189783809135176E+01 (= 1.89783809135176); see result.md for the exponent discrepancy.",
+    "text": "CSRFTEST (author's driver) on the shipped 8-node data file writes a 40 x 40 grid of surface values; the grid node (X,Y) = (-0.948717948717949, -1.0) has F = 1.89783809135176 in the registered queue entry (corrected in queue commit a156ff2; the earlier registered value 0.189783809135176 dropped the E+01 exponent). Absolute tolerance 1e-9. The shipped output Fortran77/Drivers/res prints this node as 0.189783809135176E+01 (= 1.89783809135176); see result.md for the exponent discrepancy.",
     "source": "artifact-reference",
     "reference": {
       "file": "reports/renka2004-csrfpack-833/evidence/reference/shipped-res.txt",
@@ -20,16 +20,16 @@
     "values": [
       {
         "name": "F(X=-0.948717948717949, Y=-1.0) from CSRFTEST with the shipped data file",
-        "paper": 0.189783809135176,
+        "paper": 1.89783809135176,
         "tol_abs": 1e-09,
-        "ours": null
+        "ours": 1.89783809135176
       }
     ]
   },
   "basis": "patched",
-  "verdict": "blocked",
+  "verdict": "reproduced",
   "cause": null,
-  "attempt": "Blocked on the registered claim, not on the code. The authors' code builds and reproduces its shipped output exactly (all 4642 cells of res, max difference 0.0, pass 1 and pass 2 agree). The registered paper value 0.189783809135176 is the shipped mantissa without its exponent E+01: the shipped value at that node is 1.89783809135176, a factor of ten away. The claim cannot be edited here (method.md), so no verdict is computed from it. Build: the Makefile needs makefile.inc, which the archive does not ship, so the Makefile's three rules (src.f, driver.f, link) are run as written with the compiler and flags on the command line; no source or build file is edited or added (build-only).",
+  "attempt": "Reproduced at the corrected claim (queue commit a156ff2, paper 1.89783809135176, tol_abs 1e-9). Both passes give 1.89783809135176 at the node (pass 1 gfortran -O, pass 2 gfortran -O2, max |pass1-pass2| 0.0), and all 4642 cells of the grid match the shipped Fortran77/Drivers/res with max difference 0.0. The build is build-only (no source or build file edited; manifests pre, mid and post identical, verify_sources record exit 0). The original attempt (G1) failed because the archive does not ship makefile.inc; the Makefile's rules were run with the compiler and flags on the command line. The earlier blocked verdict (queue 2235ef0) was caused only by the registered value's missing exponent.",
   "original_attempt": {
     "tried": true,
     "outcome": "failed",
@@ -45,7 +45,7 @@
     "cross_check": "na"
   },
   "recipe": "reports/renka2004-csrfpack-833/recipe.sh",
-  "queue_commit": "2235ef085e6717eb17a7513a2d62c3ca932e363c",
+  "queue_commit": "a156ff21505b7810d8e4b779d61be7cf9892274b",
   "evidence": [
     "reports/renka2004-csrfpack-833/evidence/original-attempt.log",
     "reports/renka2004-csrfpack-833/evidence/unpack.log",

@@ -1,0 +1,44 @@
+{
+ "paper": {
+  "title": "Algorithm 435: Modified Incomplete Gamma Function",
+  "authors": [
+   "W. Fullerton"
+  ],
+  "year": 1972,
+  "venue": "Communications of the ACM 15(11), pp. 993-995 (Nov 1972), per the archive header. The frame item says 'TOMS 15,11'; the archive header says Communications of the ACM, so the header is used. The article itself is not read.",
+  "doi": null,
+  "url": "https://netlib.org/toms/435.gz (article not fetched; ACM page not used)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/435.gz",
+  "commit": "netlib CALGO archive 435.gz (shell archive; Fortran/Sp/Src/src.f, Fortran/Sp/Drivers/driver.f, Makefile, and the reference output Fortran/Sp/Drivers/res)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/435.gz (HTTP 200, 7010 bytes). sha256 of 435.gz: 07b19a251af345c24a92e380bf7831375dd6e65340353350e25f8836d1894a8d (scout download, 2026-11-27).",
+  "archive_sha256": "07b19a251af345c24a92e380bf7831375dd6e65340353350e25f8836d1894a8d",
+  "note": "Gunzip the archive and unpack the shell archive with /bin/sh in an empty directory. Build Fortran/Sp/Drivers with its Makefile against Fortran/Sp/Src/src.f, run the driver, and compare its table with Fortran/Sp/Drivers/res."
+ },
+ "field": "numerics (special functions)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "Shipped reference output Fortran/Sp/Drivers/res (inside 435.gz), table row A = 11.0000, X = 16.0000, column 'Computed / Gamma(A)' = 0.92250806. The driver computes the regularised upper-or-lower incomplete gamma of single-precision arguments by calling the Fullerton routine GAMINC with GAM = GAMMA(A) and dividing by GAM.",
+  "reference": {
+   "file": "Fortran/Sp/Drivers/res (inside 435.gz)",
+   "sha256": "not computed for the member; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/435.gz"
+  },
+  "paper_value": "Computed value 0.92250806 at A=11, X=16, as printed by the shipped driver. The archive's exact value at the same point is 0.92260396; the claim uses the computed column, not the exact one, because the reference output records this computed value. The paper is not read.",
+  "metric": "The 'Computed / Gamma(A)' value at A = 11.0 and X = 16.0 in the shipped res table, compared as an absolute number",
+  "determinism": "deterministic (fixed arguments, single precision, no random numbers)",
+  "tolerance": {
+   "abs": 1e-06,
+   "basis": "Fixed before any run. The reference is printed to 8 decimals (rounding step 1e-8), and the computed value is single precision (REAL), so the last-ulp differences of GAMMA and EXP between compilers are about 6e-8 near 1. 1e-6 allows about 16 ulp of that while still separating a different algorithm path (the rows around this point differ from the exact value by 1e-4). Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute: one Fortran build of the driver with src.f and one run.",
+  "data_size": "None (the driver embeds its test arguments).",
+  "data_licence": "Netlib CALGO archive; licence per the archive's own notices (the rerun should record it)."
+ },
+ "why": "The claimed number is the routine's own computed output (0.92250806), not the exact value. A is an integer here, so the exact value (0.92260396) has a Poisson-sum closed form; the claim is therefore not the closed form but the code's 1e-4 deviation from it, which only the Fortran method produces. Gate G0 note: a closed-form check would give the exact value and fail this claim, which is intended.",
+ "registered": "2026-11-27T16:05:48Z"
+}

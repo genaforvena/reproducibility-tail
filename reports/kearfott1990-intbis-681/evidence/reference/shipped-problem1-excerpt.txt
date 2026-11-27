@@ -1,0 +1,4 @@
+ Test problem no. 1:  cubic-parabola.........................
+ SUCCESSFUL COMPLETION OF BINARY SEARCH.
+ After ROOTS:
+  Number of roots found:       3

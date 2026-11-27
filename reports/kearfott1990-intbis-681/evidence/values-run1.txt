@@ -1,0 +1,1 @@
+VALUE test problem 1 cubic-parabola, number of roots found 3

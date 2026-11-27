@@ -1,0 +1,1175 @@
+run_exit=0
+
+ The interval arithmetic routines supplied
+ with this package will be used.
+
+ ************************************************************
+
+
+
+ Generalized bisection package
+ Test problem no. 1:  cubic-parabola.........................
+ SUCCESSFUL COMPLETION OF BINARY SEARCH.
+ After ROOTS:
+  Number of roots found:       3
+  Number of leaves:       6
+  Number of adjusted boxes:       4
+  Number of boxes deleted due to redundancy:       2
+  Maximum binary tree level reached:       4
+  Maximum stack depth reached:       3
+  Number of ftest calls:       8
+  Number of interval function calls to determine the range:      22
+  Number of Jacobian calls:      21
+  Number of function calls to do the interval Newton method:      21
+
+
+ LIST OF ROOT-CONTAINING BOXES FOLLOWS:
+
+
+ BOX NUMBER        1
+    Pointer in the linked list       7
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+      0.999999993D+00    0.100000001D+01      0.999999970D+00    0.100000003D+01
+
+ Approximate root:
+    0.100000000D+01    0.100000000D+01
+ Euclidean norm of residual at approximate root:
+    0.184740467D-07
+ Interval residual vector:
+     -0.147532525D-06    0.184097183D-06     -0.470687451D-07    0.523779979D-07
+
+ Residual vector at approx. root:
+    0.182823239D-07    0.265462519D-08
+ Resolved box number:       6
+ Box added at level:       3
+   Reason: underwent expansion step
+
+
+ BOX NUMBER        2
+    Pointer in the linked list       6
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.139698386D-08    0.232830644D-08     -0.838173271D-08    0.651912543D-08
+
+ Approximate root:
+    0.465661287D-09   -0.931303639D-09
+ Euclidean norm of residual at approximate root:
+    0.104124183D-08
+ Interval residual vector:
+     -0.135040447D-07    0.125726843D-07     -0.651912543D-08    0.838173272D-08
+
+ Residual vector at approx. root:
+   -0.465680223D-09    0.931303639D-09
+ Resolved box number:       5
+ Box added at level:       4
+   Reason: underwent expansion step
+
+
+ BOX NUMBER        3
+    Pointer in the linked list       4
+ Point Newton method succeeded with NITR =       3
+
+ Containing intervals for the coordinates:
+     -0.753682961D+00   -0.734871669D+00      0.535426747D+00    0.596081562D+00
+
+ Approximate root:
+   -0.750000008D+00    0.562500007D+00
+ Euclidean norm of residual at approximate root:
+    0.364753960D-07
+ Interval residual vector:
+     -0.103948820D+00    0.138192421D+00     -0.560451918D-01    0.326112588D-01
+
+ Residual vector at approx. root:
+   -0.362523277D-07    0.402780931D-08
+ Resolved box number:       2
+ Box added at level:       4
+   Reason: test signalled unique root
+
+
+ LIST OF DELETED BOXES FOLLOWS:
+
+
+ BOX NUMBER        1
+    Pointer in the linked list       5
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+      0.100000000D+01    0.100000000D+01      0.100000000D+01    0.100000000D+01
+
+ Approximate root:
+    0.100000000D+01    0.100000000D+01
+ Euclidean norm of residual at approximate root:
+    0.116577639D-10
+ Interval residual vector:
+     -0.105772502D-09    0.838602521D-10     -0.470099515D-10    0.390423249D-10
+
+ Residual vector at approx. root:
+   -0.109559029D-10   -0.398392430D-11
+ Resolved box number:       4
+ Box added at level:       4
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:       7
+
+
+ BOX NUMBER        2
+    Pointer in the linked list       3
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.197093959D-11    0.118256375D-11     -0.212860384D-10    0.165558076D-10
+
+ Approximate root:
+   -0.394187917D-12   -0.236511538D-11
+ Euclidean norm of residual at approximate root:
+    0.426377743D-11
+ Interval residual vector:
+     -0.201034989D-10    0.271988572D-10     -0.165558076D-10    0.212860384D-10
+
+ Residual vector at approx. root:
+    0.354767913D-11    0.236511538D-11
+ Resolved box number:       1
+ Box added at level:       4
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:       6
+ ************************************************************
+
+
+
+ Generalized bisection package
+ Test problem no. 2 -- a counterexample to a method of Branin
+ SUCCESSFUL COMPLETION OF BINARY SEARCH.
+ After ROOTS:
+  Number of roots found:       1
+  Number of leaves:      23
+  Number of adjusted boxes:       4
+  Number of boxes deleted due to redundancy:       3
+  Maximum binary tree level reached:       9
+  Maximum stack depth reached:       5
+  Number of ftest calls:      39
+  Number of interval function calls to determine the range:      66
+  Number of Jacobian calls:      50
+  Number of function calls to do the interval Newton method:      50
+
+
+ LIST OF ROOT-CONTAINING BOXES FOLLOWS:
+
+
+ BOX NUMBER        1
+    Pointer in the linked list       6
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.107508457D-06    0.179180761D-06     -0.104588895D-06    0.174314825D-06
+
+ Approximate root:
+    0.358361522D-07    0.348629650D-07
+ Euclidean norm of residual at approximate root:
+    0.402004344D-06
+ Interval residual vector:
+     -0.848389407D-06    0.141398234D-05     -0.857148295D-06    0.142858028D-05
+
+ Residual vector at approx. root:
+    0.282796469D-06    0.285716030D-06
+ Resolved box number:      20
+ Box added at level:       6
+   Reason: underwent expansion step
+
+
+ LIST OF DELETED BOXES FOLLOWS:
+
+
+ BOX NUMBER        1
+    Pointer in the linked list       5
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.959985050D-08    0.159997508D-07     -0.160012338D-07    0.960074028D-08
+
+ Approximate root:
+    0.319995017D-08   -0.320024676D-08
+ Euclidean norm of residual at approximate root:
+    0.191994044D-07
+ Interval residual vector:
+     -0.102404337D-06    0.102401964D-06     -0.832001893D-07    0.121598997D-06
+
+ Residual vector at approx. root:
+   -0.118638012D-11    0.191994043D-07
+ Resolved box number:       7
+ Box added at level:       6
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:       6
+
+
+ BOX NUMBER        2
+    Pointer in the linked list       4
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.133603154D-09    0.801618923D-10     -0.801622831D-10    0.133603805D-09
+
+ Approximate root:
+   -0.267206308D-10    0.267207610D-10
+ Euclidean norm of residual at approximate root:
+    0.160323654D-09
+ Interval residual vector:
+     -0.855061748D-09    0.855062790D-09     -0.101538436D-08    0.694737051D-09
+
+ Residual vector at approx. root:
+    0.521131939D-15   -0.160323654D-09
+ Resolved box number:       3
+ Box added at level:       3
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:       5
+
+
+ BOX NUMBER        3
+    Pointer in the linked list       3
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.743550484D-10    0.446130291D-10     -0.767505690D-10    0.460503414D-10
+
+ Approximate root:
+   -0.148710097D-10   -0.153501138D-10
+ Euclidean norm of residual at approximate root:
+    0.169943197D-09
+ Interval residual vector:
+     -0.604422470D-09    0.362653482D-09     -0.597235908D-09    0.358341545D-09
+
+ Residual vector at approx. root:
+   -0.120884494D-09   -0.119447182D-09
+ Resolved box number:       1
+ Box added at level:       4
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:       4
+ ************************************************************
+
+
+
+ Generalized bisection package
+ Test problem no. 9  --  circle-circle intersection..........
+ SUCCESSFUL COMPLETION OF BINARY SEARCH.
+ After ROOTS:
+  Number of roots found:       2
+  Number of leaves:       3
+  Number of adjusted boxes:       0
+  Number of boxes deleted due to redundancy:       0
+  Maximum binary tree level reached:       3
+  Maximum stack depth reached:       2
+  Number of ftest calls:       3
+  Number of interval function calls to determine the range:      12
+  Number of Jacobian calls:      12
+  Number of function calls to do the interval Newton method:      12
+
+
+ LIST OF ROOT-CONTAINING BOXES FOLLOWS:
+
+
+ BOX NUMBER        1
+    Pointer in the linked list       4
+ Point Newton method succeeded with NITR =       3
+
+ Containing intervals for the coordinates:
+      0.499997045D+00    0.500000066D+00      0.478687548D+00    0.483766122D+00
+
+ Approximate root:
+    0.499998508D+00    0.482683986D+00
+ Euclidean norm of residual at approximate root:
+    0.143458720D-08
+ Interval residual vector:
+     -0.529977489D-02    0.556778256D-02     -0.521827726D-02    0.535530127D-02
+
+ Residual vector at approx. root:
+    0.101441344D-08    0.101439923D-08
+ Resolved box number:       3
+ Box added at level:       2
+   Reason: test signalled unique root
+
+
+ BOX NUMBER        2
+    Pointer in the linked list       3
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+      0.499989058D+00    0.499989504D+00      0.546178836D+00    0.546646168D+00
+
+ Approximate root:
+    0.499989281D+00    0.546412502D+00
+ Euclidean norm of residual at approximate root:
+    0.155499916D-05
+ Interval residual vector:
+     -0.545787360D-03    0.548902128D-03     -0.534163707D-03    0.533473752D-03
+
+ Residual vector at approx. root:
+    0.150278424D-05   -0.399577161D-06
+ Resolved box number:       1
+ Box added at level:       3
+   Reason: test signalled unique root
+
+
+ No boxes were deleted from the list.
+ ************************************************************
+
+
+
+ Generalized bisection package
+ Test problem no. 10  --  A combustion chemistry problem.....
+ SUCCESSFUL COMPLETION OF BINARY SEARCH.
+ After ROOTS:
+  Number of roots found:       1
+  Number of leaves:      50
+  Number of adjusted boxes:       0
+  Number of boxes deleted due to redundancy:       0
+  Maximum binary tree level reached:      22
+  Maximum stack depth reached:      21
+  Number of ftest calls:      87
+  Number of interval function calls to determine the range:     140
+  Number of Jacobian calls:     112
+  Number of function calls to do the interval Newton method:     112
+
+
+ LIST OF ROOT-CONTAINING BOXES FOLLOWS:
+
+
+ BOX NUMBER        1
+    Pointer in the linked list       3
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+      0.158798143D-03    0.158799788D-03      0.252170590D-07    0.252170590D-07
+      0.147861787D+00    0.147861788D+00      0.384528006D+00    0.384528006D+00
+
+ Approximate root:
+    0.158798965D-03    0.252170590D-07    0.147861788D+00    0.384528006D+00
+
+ Euclidean norm of residual at approximate root:
+    0.857319939D-05
+ Interval residual vector:
+     -0.173860709D-08    0.173472370D-08     -0.113504279D-01    0.113332815D-01
+     -0.208712194D-12    0.313567457D-12     -0.677746470D-10    0.677750633D-10
+
+ Residual vector at approx. root:
+   -0.194161354D-11   -0.857319939D-05    0.524269558D-13    0.222044605D-15
+
+ Resolved box number:      43
+ Box added at level:       8
+   Reason: test signalled unique root
+
+
+ No boxes were deleted from the list.
+ ************************************************************
+
+
+
+ Generalized bisection package
+ Test problem no. 12  --  a numerical bifurcation problem....
+ SUCCESSFUL COMPLETION OF BINARY SEARCH.
+ After ROOTS:
+  Number of roots found:      12
+  Number of leaves:     184
+  Number of adjusted boxes:      20
+  Number of boxes deleted due to redundancy:      12
+  Maximum binary tree level reached:      13
+  Maximum stack depth reached:       9
+  Number of ftest calls:     355
+  Number of interval function calls to determine the range:     703
+  Number of Jacobian calls:     571
+  Number of function calls to do the interval Newton method:     570
+
+
+ LIST OF ROOT-CONTAINING BOXES FOLLOWS:
+
+
+ BOX NUMBER        1
+    Pointer in the linked list      26
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+      0.466980011D+00    0.466980011D+00      0.218070331D+00    0.218070331D+00
+     -0.211875522D-11    0.353125869D-11
+ Approximate root:
+    0.466980011D+00    0.218070331D+00    0.706251739D-12
+ Euclidean norm of residual at approximate root:
+    0.728027418D-12
+ Interval residual vector:
+     -0.658625814D-10    0.671818791D-10     -0.326912241D-10    0.333071902D-10
+     -0.348077567D-09    0.348089280D-09
+ Residual vector at approx. root:
+    0.659648403D-12    0.307982600D-12    0.588418203D-14
+ Resolved box number:     178
+ Box added at level:      10
+   Reason: underwent expansion step
+
+
+ BOX NUMBER        2
+    Pointer in the linked list      25
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.195428469D-07    0.325714115D-07      0.515388197D+00    0.515388211D+00
+     -0.119123754D-08    0.198539590D-08
+ Approximate root:
+    0.651428230D-08    0.515388204D+00    0.397079181D-09
+ Euclidean norm of residual at approximate root:
+    0.107687026D-08
+ Interval residual vector:
+     -0.137887779D-08    0.229812965D-08     -0.122789957D-08    0.204649958D-08
+     -0.647446180D-08    0.824179630D-08
+ Residual vector at approx. root:
+    0.459625884D-09    0.409299863D-09    0.883666917D-09
+ Resolved box number:     169
+ Box added at level:       9
+   Reason: underwent expansion step
+
+
+ BOX NUMBER        3
+    Pointer in the linked list      23
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+      0.515388181D+00    0.515388232D+00     -0.764992691D-07    0.127498782D-06
+     -0.124456135D-01   -0.124455866D-01
+ Approximate root:
+    0.515388206D+00    0.254997564D-07   -0.124456000D-01
+ Euclidean norm of residual at approximate root:
+    0.360167072D-08
+ Interval residual vector:
+     -0.207774855D-07    0.195670882D-07     -0.795266699D-08    0.477160020D-08
+     -0.229383878D-07    0.292869396D-07
+ Residual vector at approx. root:
+   -0.605197460D-09   -0.159053243D-08    0.317426757D-08
+ Resolved box number:     153
+ Box added at level:      10
+   Reason: underwent expansion step
+
+
+ BOX NUMBER        4
+    Pointer in the linked list      21
+ Point Newton method succeeded with NITR =       2
+
+ Containing intervals for the coordinates:
+      0.270771257D+00    0.289336146D+00      0.427952364D+00    0.436307642D+00
+     -0.147557267D-01   -0.135898718D-01
+ Approximate root:
+    0.279853847D+00    0.432790134D+00   -0.141891944D-01
+ Euclidean norm of residual at approximate root:
+    0.488012189D-06
+ Interval residual vector:
+     -0.173361542D-02    0.159730327D-02     -0.189535369D-02    0.193741733D-02
+     -0.916470091D-02    0.845476363D-02
+ Residual vector at approx. root:
+    0.108417018D-06   -0.988905356D-08    0.475714046D-06
+ Resolved box number:     143
+ Box added at level:      10
+   Reason: test signalled unique root
+
+
+ BOX NUMBER        5
+    Pointer in the linked list      20
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+      0.466980011D+00    0.466980011D+00     -0.218070331D+00   -0.218070331D+00
+     -0.211875522D-11    0.353125869D-11
+ Approximate root:
+    0.466980011D+00   -0.218070331D+00    0.706251739D-12
+ Euclidean norm of residual at approximate root:
+    0.728027418D-12
+ Interval residual vector:
+     -0.658625814D-10    0.671818791D-10     -0.333071902D-10    0.326912241D-10
+     -0.348077567D-09    0.348089280D-09
+ Residual vector at approx. root:
+    0.659648403D-12   -0.307982600D-12    0.588418203D-14
+ Resolved box number:     135
+ Box added at level:      10
+   Reason: underwent expansion step
+
+
+ BOX NUMBER        6
+    Pointer in the linked list      19
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.195428469D-07    0.325714115D-07     -0.515388211D+00   -0.515388197D+00
+     -0.119123754D-08    0.198539590D-08
+ Approximate root:
+    0.651428230D-08   -0.515388204D+00    0.397079181D-09
+ Euclidean norm of residual at approximate root:
+    0.107687026D-08
+ Interval residual vector:
+     -0.137887779D-08    0.229812965D-08     -0.204649958D-08    0.122789957D-08
+     -0.647446180D-08    0.824179630D-08
+ Residual vector at approx. root:
+    0.459625884D-09   -0.409299863D-09    0.883666917D-09
+ Resolved box number:     121
+ Box added at level:       9
+   Reason: underwent expansion step
+
+
+ BOX NUMBER        7
+    Pointer in the linked list      16
+ Point Newton method succeeded with NITR =       2
+
+ Containing intervals for the coordinates:
+      0.270771257D+00    0.289336146D+00     -0.436307642D+00   -0.427952364D+00
+     -0.147557267D-01   -0.135898718D-01
+ Approximate root:
+    0.279853847D+00   -0.432790134D+00   -0.141891944D-01
+ Euclidean norm of residual at approximate root:
+    0.488012189D-06
+ Interval residual vector:
+     -0.173361542D-02    0.159730327D-02     -0.193741733D-02    0.189535369D-02
+     -0.916470091D-02    0.845476363D-02
+ Residual vector at approx. root:
+    0.108417018D-06    0.988905356D-08    0.475714046D-06
+ Resolved box number:      99
+ Box added at level:      10
+   Reason: test signalled unique root
+
+
+ BOX NUMBER        8
+    Pointer in the linked list      13
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.466980011D+00   -0.466980011D+00      0.218070331D+00    0.218070331D+00
+     -0.211875522D-11    0.353125869D-11
+ Approximate root:
+   -0.466980011D+00    0.218070331D+00    0.706251739D-12
+ Euclidean norm of residual at approximate root:
+    0.728027418D-12
+ Interval residual vector:
+     -0.671818791D-10    0.658625814D-10     -0.326912241D-10    0.333071902D-10
+     -0.348077567D-09    0.348089280D-09
+ Residual vector at approx. root:
+   -0.659648403D-12    0.307982600D-12    0.588418203D-14
+ Resolved box number:      77
+ Box added at level:      10
+   Reason: underwent expansion step
+
+
+ BOX NUMBER        9
+    Pointer in the linked list      11
+ Point Newton method succeeded with NITR =       2
+
+ Containing intervals for the coordinates:
+     -0.289336146D+00   -0.270771257D+00      0.427952364D+00    0.436307642D+00
+     -0.147557267D-01   -0.135898718D-01
+ Approximate root:
+   -0.279853847D+00    0.432790134D+00   -0.141891944D-01
+ Euclidean norm of residual at approximate root:
+    0.488012189D-06
+ Interval residual vector:
+     -0.159730327D-02    0.173361542D-02     -0.189535369D-02    0.193741733D-02
+     -0.916470091D-02    0.845476363D-02
+ Residual vector at approx. root:
+   -0.108417018D-06   -0.988905356D-08    0.475714046D-06
+ Resolved box number:      67
+ Box added at level:      10
+   Reason: test signalled unique root
+
+
+ BOX NUMBER       10
+    Pointer in the linked list       9
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.515388232D+00   -0.515388181D+00     -0.764992691D-07    0.127498782D-06
+     -0.124456135D-01   -0.124455866D-01
+ Approximate root:
+   -0.515388206D+00    0.254997564D-07   -0.124456000D-01
+ Euclidean norm of residual at approximate root:
+    0.360167072D-08
+ Interval residual vector:
+     -0.195670882D-07    0.207774855D-07     -0.795266699D-08    0.477160020D-08
+     -0.229383878D-07    0.292869396D-07
+ Residual vector at approx. root:
+    0.605197460D-09   -0.159053243D-08    0.317426757D-08
+ Resolved box number:      49
+ Box added at level:      10
+   Reason: underwent expansion step
+
+
+ BOX NUMBER       11
+    Pointer in the linked list       7
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.466980011D+00   -0.466980011D+00     -0.218070331D+00   -0.218070331D+00
+     -0.211875522D-11    0.353125869D-11
+ Approximate root:
+   -0.466980011D+00   -0.218070331D+00    0.706251739D-12
+ Euclidean norm of residual at approximate root:
+    0.728027418D-12
+ Interval residual vector:
+     -0.671818791D-10    0.658625814D-10     -0.333071902D-10    0.326912241D-10
+     -0.348077567D-09    0.348089280D-09
+ Residual vector at approx. root:
+   -0.659648403D-12   -0.307982600D-12    0.588418203D-14
+ Resolved box number:      34
+ Box added at level:      10
+   Reason: underwent expansion step
+
+
+ BOX NUMBER       12
+    Pointer in the linked list       6
+ Point Newton method succeeded with NITR =       2
+
+ Containing intervals for the coordinates:
+     -0.289336146D+00   -0.270771257D+00     -0.436307642D+00   -0.427952364D+00
+     -0.147557267D-01   -0.135898718D-01
+ Approximate root:
+   -0.279853847D+00   -0.432790134D+00   -0.141891944D-01
+ Euclidean norm of residual at approximate root:
+    0.488012189D-06
+ Interval residual vector:
+     -0.159730327D-02    0.173361542D-02     -0.193741733D-02    0.189535369D-02
+     -0.916470091D-02    0.845476363D-02
+ Residual vector at approx. root:
+   -0.108417018D-06    0.988905356D-08    0.475714046D-06
+ Resolved box number:      23
+ Box added at level:      10
+   Reason: test signalled unique root
+
+
+ LIST OF DELETED BOXES FOLLOWS:
+
+
+ BOX NUMBER        1
+    Pointer in the linked list      24
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+      0.466980011D+00    0.466980011D+00      0.218070331D+00    0.218070331D+00
+     -0.313039075D-11    0.187823445D-11
+ Approximate root:
+    0.466980011D+00    0.218070331D+00   -0.626078150D-12
+ Euclidean norm of residual at approximate root:
+    0.641596397D-12
+ Interval residual vector:
+     -0.528160135D-10    0.516637249D-10     -0.265449208D-10    0.259804138D-10
+     -0.272000977D-09    0.272013245D-09
+ Residual vector at approx. root:
+   -0.576147684D-12   -0.282247836D-12    0.599520433D-14
+ Resolved box number:     154
+ Box added at level:      10
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:      26
+
+
+ BOX NUMBER        2
+    Pointer in the linked list      22
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.128911863D-06    0.214853105D-06      0.515388124D+00    0.515388304D+00
+     -0.848990843D-08    0.509394506D-08
+ Approximate root:
+    0.429706210D-07    0.515388214D+00   -0.169798169D-08
+ Euclidean norm of residual at approximate root:
+    0.117986347D-07
+ Interval residual vector:
+     -0.909559879D-08    0.151593274D-07     -0.875119902D-08    0.525073205D-08
+     -0.818179877D-07    0.104352665D-06
+ Residual vector at approx. root:
+    0.303186278D-08   -0.175023899D-08    0.112673090D-07
+ Resolved box number:     144
+ Box added at level:       9
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:      25
+
+
+ BOX NUMBER        3
+    Pointer in the linked list      18
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+      0.515388181D+00    0.515388232D+00     -0.127498782D-06    0.764992691D-07
+     -0.124456135D-01   -0.124455866D-01
+ Approximate root:
+    0.515388206D+00   -0.254997564D-07   -0.124456000D-01
+ Euclidean norm of residual at approximate root:
+    0.360167072D-08
+ Interval residual vector:
+     -0.207774855D-07    0.195670882D-07     -0.477160020D-08    0.795266699D-08
+     -0.229383878D-07    0.292869396D-07
+ Residual vector at approx. root:
+   -0.605197460D-09    0.159053243D-08    0.317426757D-08
+ Resolved box number:     117
+ Box added at level:      10
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:      23
+
+
+ BOX NUMBER        4
+    Pointer in the linked list      14
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.325714115D-07    0.195428469D-07      0.515388197D+00    0.515388211D+00
+     -0.119123754D-08    0.198539590D-08
+ Approximate root:
+   -0.651428230D-08    0.515388204D+00    0.397079181D-09
+ Euclidean norm of residual at approximate root:
+    0.107687026D-08
+ Interval residual vector:
+     -0.229812965D-08    0.137887779D-08     -0.122789957D-08    0.204649958D-08
+     -0.647446180D-08    0.824179630D-08
+ Residual vector at approx. root:
+   -0.459625884D-09    0.409299863D-09    0.883666917D-09
+ Resolved box number:      91
+ Box added at level:       9
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:      22
+
+
+ BOX NUMBER        5
+    Pointer in the linked list      17
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+      0.466980011D+00    0.466980011D+00     -0.218070331D+00   -0.218070331D+00
+     -0.313039075D-11    0.187823445D-11
+ Approximate root:
+    0.466980011D+00   -0.218070331D+00   -0.626078150D-12
+ Euclidean norm of residual at approximate root:
+    0.641596397D-12
+ Interval residual vector:
+     -0.528160135D-10    0.516637249D-10     -0.259804138D-10    0.265449208D-10
+     -0.272000977D-09    0.272013245D-09
+ Residual vector at approx. root:
+   -0.576147684D-12    0.282247836D-12    0.599520433D-14
+ Resolved box number:     116
+ Box added at level:      10
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:      20
+
+
+ BOX NUMBER        6
+    Pointer in the linked list      15
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.128911863D-06    0.214853105D-06     -0.515388304D+00   -0.515388124D+00
+     -0.848990843D-08    0.509394506D-08
+ Approximate root:
+    0.429706210D-07   -0.515388214D+00   -0.169798169D-08
+ Euclidean norm of residual at approximate root:
+    0.117986347D-07
+ Interval residual vector:
+     -0.909559879D-08    0.151593274D-07     -0.525073205D-08    0.875119902D-08
+     -0.818179877D-07    0.104352665D-06
+ Residual vector at approx. root:
+    0.303186278D-08    0.175023899D-08    0.112673090D-07
+ Resolved box number:      94
+ Box added at level:       9
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:      19
+
+
+ BOX NUMBER        7
+    Pointer in the linked list       8
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.325714115D-07    0.195428469D-07     -0.515388211D+00   -0.515388197D+00
+     -0.119123754D-08    0.198539590D-08
+ Approximate root:
+   -0.651428230D-08   -0.515388204D+00    0.397079181D-09
+ Euclidean norm of residual at approximate root:
+    0.107687026D-08
+ Interval residual vector:
+     -0.229812965D-08    0.137887779D-08     -0.204649958D-08    0.122789957D-08
+     -0.647446180D-08    0.824179630D-08
+ Residual vector at approx. root:
+   -0.459625884D-09   -0.409299863D-09    0.883666917D-09
+ Resolved box number:      43
+ Box added at level:       9
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:      15
+
+
+ BOX NUMBER        8
+    Pointer in the linked list      12
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.214853105D-06    0.128911863D-06      0.515388124D+00    0.515388304D+00
+     -0.848990843D-08    0.509394506D-08
+ Approximate root:
+   -0.429706210D-07    0.515388214D+00   -0.169798169D-08
+ Euclidean norm of residual at approximate root:
+    0.117986347D-07
+ Interval residual vector:
+     -0.151593274D-07    0.909559879D-08     -0.875119902D-08    0.525073205D-08
+     -0.818179877D-07    0.104352665D-06
+ Residual vector at approx. root:
+   -0.303186278D-08   -0.175023899D-08    0.112673090D-07
+ Resolved box number:      72
+ Box added at level:       9
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:      14
+
+
+ BOX NUMBER        9
+    Pointer in the linked list      10
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.466980011D+00   -0.466980011D+00      0.218070331D+00    0.218070331D+00
+     -0.313039075D-11    0.187823445D-11
+ Approximate root:
+   -0.466980011D+00    0.218070331D+00   -0.626078150D-12
+ Euclidean norm of residual at approximate root:
+    0.641596397D-12
+ Interval residual vector:
+     -0.516637249D-10    0.528160135D-10     -0.265449208D-10    0.259804138D-10
+     -0.272000977D-09    0.272013245D-09
+ Residual vector at approx. root:
+    0.576147684D-12   -0.282247836D-12    0.599520433D-14
+ Resolved box number:      50
+ Box added at level:      10
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:      13
+
+
+ BOX NUMBER       10
+    Pointer in the linked list       4
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.515388232D+00   -0.515388181D+00     -0.127498782D-06    0.764992691D-07
+     -0.124456135D-01   -0.124455866D-01
+ Approximate root:
+   -0.515388206D+00   -0.254997564D-07   -0.124456000D-01
+ Euclidean norm of residual at approximate root:
+    0.360167072D-08
+ Interval residual vector:
+     -0.195670882D-07    0.207774855D-07     -0.477160020D-08    0.795266699D-08
+     -0.229383878D-07    0.292869396D-07
+ Residual vector at approx. root:
+    0.605197460D-09    0.159053243D-08    0.317426757D-08
+ Resolved box number:      13
+ Box added at level:      10
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:       9
+
+
+ BOX NUMBER       11
+    Pointer in the linked list       5
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.214853105D-06    0.128911863D-06     -0.515388304D+00   -0.515388124D+00
+     -0.848990843D-08    0.509394506D-08
+ Approximate root:
+   -0.429706210D-07   -0.515388214D+00   -0.169798169D-08
+ Euclidean norm of residual at approximate root:
+    0.117986347D-07
+ Interval residual vector:
+     -0.151593274D-07    0.909559879D-08     -0.525073205D-08    0.875119902D-08
+     -0.818179877D-07    0.104352665D-06
+ Residual vector at approx. root:
+   -0.303186278D-08    0.175023899D-08    0.112673090D-07
+ Resolved box number:      22
+ Box added at level:       9
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:       8
+
+
+ BOX NUMBER       12
+    Pointer in the linked list       3
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.466980011D+00   -0.466980011D+00     -0.218070331D+00   -0.218070331D+00
+     -0.313039075D-11    0.187823445D-11
+ Approximate root:
+   -0.466980011D+00   -0.218070331D+00   -0.626078150D-12
+ Euclidean norm of residual at approximate root:
+    0.641596397D-12
+ Interval residual vector:
+     -0.516637249D-10    0.528160135D-10     -0.259804138D-10    0.265449208D-10
+     -0.272000977D-09    0.272013245D-09
+ Residual vector at approx. root:
+    0.576147684D-12    0.282247836D-12    0.599520433D-14
+ Resolved box number:      12
+ Box added at level:      10
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:       7
+ ************************************************************
+
+
+
+ Generalized bisection package
+ Test problem no. 14  --  two intersecting parabolas.........
+ SUCCESSFUL COMPLETION OF BINARY SEARCH.
+ After ROOTS:
+  Number of roots found:       2
+  Number of leaves:       8
+  Number of adjusted boxes:       3
+  Number of boxes deleted due to redundancy:       2
+  Maximum binary tree level reached:       6
+  Maximum stack depth reached:       3
+  Number of ftest calls:      13
+  Number of interval function calls to determine the range:      31
+  Number of Jacobian calls:      28
+  Number of function calls to do the interval Newton method:      28
+
+
+ LIST OF ROOT-CONTAINING BOXES FOLLOWS:
+
+
+ BOX NUMBER        1
+    Pointer in the linked list       6
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.279329085D-11    0.465548475D-11     -0.119327242D-11    0.198878736D-11
+
+ Approximate root:
+    0.931096951D-12    0.397757472D-12
+ Euclidean norm of residual at approximate root:
+    0.161397213D-11
+ Interval residual vector:
+     -0.795514944D-11    0.477308967D-11     -0.140840592D-10    0.135417312D-10
+
+ Residual vector at approx. root:
+   -0.159102989D-11   -0.271164013D-12
+ Resolved box number:       6
+ Box added at level:       6
+   Reason: underwent expansion step
+
+
+ BOX NUMBER        2
+    Pointer in the linked list       5
+ Point Newton method succeeded with NITR =       3
+
+ Containing intervals for the coordinates:
+      0.166368417D+01    0.171499114D+01      0.708805763D+00    0.727804579D+00
+
+ Approximate root:
+    0.169541520D+01    0.718608172D+00
+ Euclidean norm of residual at approximate root:
+    0.379916834D-09
+ Interval residual vector:
+     -0.143373311D+00    0.105971550D+00     -0.923536129D-01    0.113549489D+00
+
+ Residual vector at approx. root:
+    0.376452647D-09    0.511879428D-10
+ Resolved box number:       5
+ Box added at level:       6
+   Reason: test signalled unique root
+
+
+ LIST OF DELETED BOXES FOLLOWS:
+
+
+ BOX NUMBER        1
+    Pointer in the linked list       4
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.299923679D-10    0.179954207D-10     -0.292219915D-11    0.487033191D-11
+
+ Approximate root:
+   -0.599847357D-11    0.974066383D-12
+ Euclidean norm of residual at approximate root:
+    0.163638350D-10
+ Interval residual vector:
+     -0.194813277D-10    0.116887966D-10     -0.476796380D-10    0.794660634D-10
+
+ Residual vector at approx. root:
+   -0.389626553D-11    0.158932127D-10
+ Resolved box number:       4
+ Box added at level:       3
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:       6
+
+
+ BOX NUMBER        2
+    Pointer in the linked list       3
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+     -0.254662645D-06    0.229080884D-06     -0.653331570D-07    0.391998942D-07
+
+ Approximate root:
+   -0.127908804D-07   -0.130666314D-07
+ Euclidean norm of residual at approximate root:
+    0.586844646D-07
+ Interval residual vector:
+     -0.156799577D-06    0.261332693D-06     -0.719494396D-06    0.666124870D-06
+
+ Residual vector at approx. root:
+    0.522665258D-07   -0.266847647D-07
+ Resolved box number:       3
+ Box added at level:       4
+   Reason: underwent expansion step
+ Reason box deleted:       3
+ Pointer of intersecting box:       4
+ ************************************************************
+
+
+
+ Generalized bisection package
+ Test problem no. 15  --  Rosenbrock's function..............
+ SUCCESSFUL COMPLETION OF BINARY SEARCH.
+ After ROOTS:
+  Number of roots found:       1
+  Number of leaves:       1
+  Number of adjusted boxes:       1
+  Number of boxes deleted due to redundancy:       0
+  Maximum binary tree level reached:       1
+  Maximum stack depth reached:       0
+  Number of ftest calls:       1
+  Number of interval function calls to determine the range:       2
+  Number of Jacobian calls:       2
+  Number of function calls to do the interval Newton method:       2
+
+
+ LIST OF ROOT-CONTAINING BOXES FOLLOWS:
+
+
+ BOX NUMBER        1
+    Pointer in the linked list       3
+ Point Newton method succeeded with NITR =       1
+
+ Containing intervals for the coordinates:
+      0.100000000D+01    0.100000000D+01      0.100000000D+01    0.100000000D+01
+
+ Approximate root:
+    0.100000000D+01    0.100000000D+01
+ Euclidean norm of residual at approximate root:
+    0.000000000D+00
+ Interval residual vector:
+      0.000000000D+00    0.000000000D+00      0.000000000D+00    0.000000000D+00
+
+ Residual vector at approx. root:
+    0.000000000D+00    0.000000000D+00
+ Resolved box number:       1
+ Box added at level:       1
+   Reason: underwent expansion step
+
+
+ No boxes were deleted from the list.
+ ************************************************************
+
+
+
+ Generalized bisection package
+ Test problem no. 16  --  a variable-dimension system of quad
+ SUCCESSFUL COMPLETION OF BINARY SEARCH.
+ After ROOTS:
+  Number of roots found:       1
+  Number of leaves:       1
+  Number of adjusted boxes:       0
+  Number of boxes deleted due to redundancy:       0
+  Maximum binary tree level reached:       1
+  Maximum stack depth reached:       0
+  Number of ftest calls:       1
+  Number of interval function calls to determine the range:       2
+  Number of Jacobian calls:       2
+  Number of function calls to do the interval Newton method:       2
+
+
+ LIST OF ROOT-CONTAINING BOXES FOLLOWS:
+
+
+ BOX NUMBER        1
+    Pointer in the linked list       3
+ Point Newton method succeeded with NITR =       2
+
+ Containing intervals for the coordinates:
+      0.823445622D-01    0.117740115D+00      0.952866222D-01    0.104798057D+00
+      0.978750353D-01    0.102209646D+00      0.983927181D-01    0.101691964D+00
+
+ Approximate root:
+    0.100000002D+00    0.100000002D+00    0.100000002D+00    0.100000002D+00
+
+ Euclidean norm of residual at approximate root:
+    0.358504837D-08
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+ Interval residual vector:
+     -0.114807740D-01    0.121918793D-01     -0.400503572D-02    0.413495436D-02
+     -0.246968854D-02    0.256376834D-02     -0.183127035D-01    0.184028273D-01
+
+ Residual vector at approx. root:
+    0.179242682D-08    0.179248913D-08    0.179258119D-08    0.179259960D-08
+
+ Resolved box number:       1
+ Box added at level:       1
+   Reason: test signalled unique root
+
+
+ No boxes were deleted from the list.
+ ************************************************************
+
+
+
+ Generalized bisection package
+ Test problem no. 17  --  Broyden's banded function with N=5.
+ SUCCESSFUL COMPLETION OF BINARY SEARCH.
+ After ROOTS:
+  Number of roots found:       1
+  Number of leaves:      39
+  Number of adjusted boxes:       0
+  Number of boxes deleted due to redundancy:       0
+  Maximum binary tree level reached:      11
+  Maximum stack depth reached:       5
+  Number of ftest calls:      76
+  Number of interval function calls to determine the range:     108
+  Number of Jacobian calls:      80
+  Number of function calls to do the interval Newton method:      79
+
+
+ LIST OF ROOT-CONTAINING BOXES FOLLOWS:
+
+
+ BOX NUMBER        1
+    Pointer in the linked list       3
+ Point Newton method succeeded with NITR =       3
+
+ Containing intervals for the coordinates:
+     -0.428399174D+00   -0.428208473D+00     -0.480437220D+00   -0.472948156D+00
+     -0.531193847D+00   -0.506070166D+00     -0.606159841D+00   -0.540108589D+00
+     -0.600805375D+00   -0.542046332D+00
+ Approximate root:
+   -0.428302865D+00   -0.476596532D+00   -0.519637733D+00   -0.558862053D+00
+   -0.558862026D+00
+ Euclidean norm of residual at approximate root:
+    0.811738974D-06
+ Interval residual vector:
+     -0.778173152D-02    0.775344124D-02     -0.467609635D-01    0.452820797D-01
+     -0.152324617D+00    0.156055570D+00     -0.434132133D+00    0.215859681D+00
+     -0.402572661D+00    0.210926042D+00
+ Residual vector at approx. root:
+   -0.222044605D-15   -0.813977330D-09   -0.786395646D-07   -0.654775441D-06
+   -0.473291074D-06
+ Resolved box number:       1
+ Box added at level:       5
+   Reason: test signalled unique root
+
+
+ No boxes were deleted from the list.

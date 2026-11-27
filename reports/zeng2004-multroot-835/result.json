@@ -83,7 +83,7 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -104,5 +104,24 @@
     "reports/zeng2004-multroot-835/impl/run_example.m",
     "reports/zeng2004-multroot-835/extract-tree.awk"
   ],
-  "replayed": []
+  "replayed": [
+    {
+      "utc": "2026-11-27T09:02:42Z",
+      "kind": "clean",
+      "values": {
+        "mult_root_4": 5.0,
+        "root_4": 3.99999999999997,
+        "mult_root_3": 10.0,
+        "root_3": 3.00000000000002,
+        "mult_root_2": 20.0,
+        "root_2": 1.99999999999999,
+        "mult_root_1": 20.0,
+        "root_1": 1.0
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/zeng2004-multroot-835/evidence/replay-2026-11-27T090242Z.log",
+      "seconds": 102
+    }
+  ]
 }

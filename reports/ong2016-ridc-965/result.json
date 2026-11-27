@@ -1,0 +1,59 @@
+{
+  "paper": {
+    "short": "ong2016-ridc-965",
+    "title": "RIDC Methods: A Family of Parallel Time Integrators (CALGO Algorithm 965)",
+    "year": 2016,
+    "doi": null
+  },
+  "field": "numerics (parallel time integration, ODE solvers)",
+  "field_class": "numerics",
+  "stack": "C/C++ (netlib TOMS 965.zip: libridc in src/ with autotools, examples/explicit/explicit.cpp, run.sh, ref/n1.ref to n5.ref)",
+  "stack_class": "C/C++",
+  "claim": {
+    "text": "First component sol[0] printed by ./explicit 4 10 (RIDC forward Euler, order 4, nt = 10, u_i' = -(i+1) t u_i on [0,1], u_i(0) = 1), as in the shipped reference n1.ref line 1. Registered by scout (queue entry); the value is the artifact's own reference output, not a verified paper table (DOI not verified by scout).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "SOL0_RIDC4_NT10",
+        "paper": 0.606521722539,
+        "tol_abs": 1e-11,
+        "ours": 0.606521722539
+      }
+    ],
+    "reference": {
+      "file": "reports/ong2016-ridc-965/evidence/shipped-n1.ref",
+      "archive": "netlib.org/toms/965.zip, sha256 a05c08deacd16436d180e8fe7e29557732b852a089785692eac07594158560c5, file 965/examples/explicit/ref/n1.ref sha256 6a934e615e16055b197692f0b8ed4ef9368982719d5a2b40aa2bf5606d6e7370",
+      "sha256": "6a934e615e16055b197692f0b8ed4ef9368982719d5a2b40aa2bf5606d6e7370"
+    }
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Original attempt (G1) succeeded as documented: the archive's own ./configure, make and make check ran in a copy with no edits. make check passed both examples (explicit and implicit); examples/explicit/run.sh diffed n1 to n5 against ref/n*.ref with no differences (diff.log empty, :test-result: PASS). The n1 case (./explicit 4 10) printed 0.606521722539 and 0.367864508325, identical to ref/n1.ref. Compiler g++ 13.3.0 (Ubuntu 24.04), GNU Make 4.3, OpenMP via -fopenmp.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "Ran as documented; make check passes and the n1 output matches the shipped reference byte for byte.",
+    "log": "reports/ong2016-ridc-965/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pending",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/ong2016-ridc-965/recipe.sh",
+  "queue_commit": "fb1c984",
+  "evidence": [
+    "reports/ong2016-ridc-965/evidence/fetch.log",
+    "reports/ong2016-ridc-965/evidence/original-attempt.log",
+    "reports/ong2016-ridc-965/evidence/run.log",
+    "reports/ong2016-ridc-965/evidence/recipe-run.log",
+    "reports/ong2016-ridc-965/evidence/recipe-run-2.log",
+    "reports/ong2016-ridc-965/evidence/Res",
+    "reports/ong2016-ridc-965/evidence/shipped-n1.ref"
+  ],
+  "replayed": []
+}

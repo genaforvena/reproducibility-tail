@@ -1,0 +1,52 @@
+{
+  "paper": {
+    "title": "Algorithm 869: ODRPACK95: a weighted orthogonal distance regression code with bound constraints",
+    "authors": [
+      "J. W. Zwolak",
+      "P. T. Boggs",
+      "L. T. Watson"
+    ],
+    "year": 2007,
+    "venue": "ACM Transactions on Mathematical Software 33(4), Article 27 (2007); collected as ACM TOMS Algorithm 869",
+    "doi": null,
+    "url": "https://netlib.org/toms/869.zip (ACM article not read; no ACM fetch attempted this wake)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/869.zip",
+    "commit": "netlib TOMS archive 869.zip (fetched by scout 2026-11-27 09:32Z into a fresh /tmp directory, read as zip members and not executed)",
+    "archive": "netlib TOMS 869.zip, sha256 not recorded by scout (hash the fetched bytes before any run)",
+    "note": "Fortran 95 code under F95/. The example driver is F95/Drivers/simple_example.f90 (program ODRPACK95_EXAMPLE, four data points, one response, two parameters with bounds). The shipped reference output is F95/Drivers/simple_example.out, the output of that driver. The ODRPACK95 source is in the archive's F95 source directory; the rerun has to build it with the driver."
+  },
+  "field": "numerics (orthogonal distance regression with bounds)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "Shipped reference output F95/Drivers/simple_example.out, section 'Estimated BETA(J)', row J = 1. Claim value: BETA(1) = 1.63337057 at the end of the fit (INFO = 1, sum-of-squares convergence, NITER = 25).",
+    "reference": {
+      "file": "F95/Drivers/simple_example.out inside 869.zip",
+      "sha256": "not computed; the value is quoted here and compared as a number",
+      "archive": "netlib.org/toms/869.zip"
+    },
+    "metric": "First estimated parameter BETA(1) of the explicit ODR fit in simple_example.f90, as printed by ODRPACK95 (E format, 9 significant digits).",
+    "paper_value": "The paper's own examples are not read. The value is the shipped simple_example.out.",
+    "values": [
+      {
+        "name": "BETA(1) (ODR, simple example)",
+        "paper": "1.63337057",
+        "tol_abs": 1e-06
+      }
+    ],
+    "tolerance": {
+      "abs": 1e-06,
+      "basis": "The reference prints 9 significant digits, so rounding is about 5e-9. The fit stops at PARTOL = 3.67e-11 and SSTOL = 1.49e-8, so a correct build of the same code should agree to well below 1e-6 absolute, while a wrong derivative or a broken bound would move BETA(1) by far more. Fixed now, before any run; not to be loosened after a run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: four data points, 140 function evaluations.",
+    "data_size": "None: the four data points are in the driver.",
+    "data_licence": "No data. Source is the public netlib TOMS collected-algorithms archive."
+  },
+  "why": "The shipped example is a small bounded ODR fit whose printed estimate is not a closed form; a rerun must run the Fortran 95 ODR iteration, including its derivative and stopping rules, to reproduce BETA(1).",
+  "registered": "2026-11-27T09:33:00Z"
+}

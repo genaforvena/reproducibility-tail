@@ -1,0 +1,53 @@
+{
+  "paper": {
+    "title": "Algorithm 769: FORTRAN subroutines for approximate solution of sparse quadratic assignment problems using GRASP",
+    "authors": [
+      "Panos M. Pardalos",
+      "Leonidas S. Pitsoulis",
+      "Mauricio G. C. Resende"
+    ],
+    "year": 1997,
+    "venue": "ACM Transactions on Mathematical Software 23(2), 196 (1997); collected as ACM TOMS Algorithm 769",
+    "doi": null,
+    "url": "https://netlib.org/toms/769.gz (ACM article not read; no ACM fetch attempted this wake)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/769.gz",
+    "commit": "netlib TOMS archive 769.gz (fetched by scout 2026-11-27 09:34Z into a fresh /tmp directory, unpacked as text with a splitter and not executed)",
+    "archive": "netlib TOMS 769.gz, sha256 not recorded by scout (hash the fetched bytes before any run)",
+    "note": "Shell archive with driver.f (driver for subroutine gqaps), src.f (GRASP subroutines gqaps and their helpers), data (the 6-by-6 test matrices), res (the shipped reference output of driver.f with data) and a Makefile. The driver reads data and the seed is fixed at 270001 inside driver.f."
+  },
+  "field": "numerics (combinatorial optimisation: quadratic assignment by GRASP)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "stochastic",
+    "seed": "270001 (set in driver.f as seed = 270001 and passed to gqaps; the GRASP random generator uses this state)",
+    "location": "Shipped reference output res, block 'output', line 'cost of best permutation found'. Claim value: 4490, reached after 1000 GRASP iterations with look4 = -1, alpha = 0.25, beta = 0.50, on the data file of the archive.",
+    "reference": {
+      "file": "res inside 769.gz",
+      "sha256": "not computed; the value is quoted here and compared as a number",
+      "archive": "netlib.org/toms/769.gz"
+    },
+    "metric": "Cost of the best permutation found by GRASP for the 6-by-6 quadratic assignment test instance, as printed by outsol (integer).",
+    "paper_value": "The paper's own experiments are not read. The value is the shipped res output for the archive's own test data.",
+    "values": [
+      {
+        "name": "best QAP cost (GRASP, seed 270001)",
+        "paper": "4490",
+        "tol_abs": 0.5
+      }
+    ],
+    "tolerance": {
+      "abs": 0.5,
+      "basis": "The cost is an integer and is printed exactly, so a different cost differs by at least 1. The tolerance 0.5 accepts only the exact integer; it is fixed now, before any run, and not to be loosened after a run. The best permutation printed in res is also expected to match, but the claim is the cost."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: 1000 GRASP iterations on a 6-by-6 instance.",
+    "data_size": "Under 1 KB: the data file in the archive.",
+    "data_licence": "No data beyond the archive. Source is the public netlib TOMS collected-algorithms archive."
+  },
+  "why": "The shipped driver runs a seeded randomized GRASP heuristic and prints the cost of its best permutation, so a rerun must run the Fortran code with the same seed to reproduce the integer cost; the value is not a closed form.",
+  "registered": "2026-11-27T09:34:00Z"
+}

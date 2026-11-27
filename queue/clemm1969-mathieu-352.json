@@ -1,0 +1,50 @@
+{
+  "paper": {
+    "title": "Algorithm 352: Characteristic values and associated solutions of Mathieu's differential equation",
+    "authors": [
+      "D. S. Clemm"
+    ],
+    "year": 1969,
+    "venue": "Communications of the ACM 12(7), 399-407 (1969); collected as ACM TOMS Algorithm 352",
+    "doi": null,
+    "url": "https://netlib.org/toms/352.gz (ACM article not read; no ACM fetch attempted this wake)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/352.gz",
+    "commit": "netlib TOMS archive 352.gz (fetched by scout 2026-11-27 09:31Z into a fresh /tmp directory, shell archive, unpacked as text and not executed)",
+    "archive": "netlib TOMS 352.gz, sha256 not recorded by scout (hash the fetched bytes before any run)",
+    "note": "The archive is a 2006 Fortran conversion by John Burkardt. Driver driver.f holds TOMS352_PRB. The shipped res is the reference output; its TEST05 section prints R, Q, Exact Value and Computed. Exact values come from mathieu_even_values in driver.f, which cites Abramowitz and Stegun Table 20.1. Subroutine MFCVAL is in src.f."
+  },
+  "field": "numerics (special functions: Mathieu characteristic values)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "Shipped reference output res, section TEST05 (even solutions), row R = 5, Q = 5, Computed column. The same row's Exact Value column is 25.549972. Claim value: a(5, 5) = 25.549972, computed by MFCVAL(N = 6, R = 5, Q = 5).",
+    "reference": {
+      "file": "res inside 352.gz (section TEST05)",
+      "sha256": "not computed; the value is quoted here and compared as a number",
+      "archive": "netlib.org/toms/352.gz"
+    },
+    "metric": "Mathieu even characteristic value a_R(Q) at R = 5, Q = 5, as printed by the driver (g16.8).",
+    "paper_value": "The paper's own table is not read. The value is the shipped Exact column, which the archive attributes to Abramowitz and Stegun Table 20.1.",
+    "values": [
+      {
+        "name": "a_5(5) (even)",
+        "paper": "25.549972",
+        "tol_abs": 1e-05
+      }
+    ],
+    "tolerance": {
+      "abs": 1e-05,
+      "basis": "The reference prints 8 significant digits (rounding 5e-7 at this magnitude). 1e-5 absolute is about 4e-7 relative: it covers printed rounding and double-precision rounding in the eigenvalue iteration, and still catches a wrong eigenvalue, since the neighbouring rows differ by more than 1e-2. Fixed now, before any run; not to be loosened after a run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: the driver evaluates a few dozen cases.",
+    "data_size": "None: the test values are hard-coded in driver.f.",
+    "data_licence": "No data. Source is the public netlib TOMS collected-algorithms archive."
+  },
+  "why": "The driver computes the Mathieu characteristic value a_5(5) with MFCVAL and prints it next to the tabulated exact value, so a rerun must run the Fortran eigenvalue routine to reproduce the value; it is not a closed form.",
+  "registered": "2026-11-27T09:31:00Z"
+}

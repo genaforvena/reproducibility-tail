@@ -1,0 +1,19 @@
+== fetch: 823.zip (sha256 checked) unpacked to /work/tree; gfortran 16 and 13 into /work/env16 and /work/env13 if missing
+/work/823.zip: OK
+== G1 original attempt, pass 1: unmodified sources, gfortran 16 -O2
+build_exit=0
+run_exit: run_exit=0  lines: 11
+== G3 pass 2: clean rebuild, gfortran 16 -O2 again
+build_exit=0
+run_exit: run_exit=0  lines: 11
+== pass 3: gfortran 16 -O0
+build_exit=0
+run_exit: run_exit=0  lines: 11
+== pass 4: gfortran 13 -O2
+build_exit=0
+run_exit: run_exit=0  lines: 11
+PASS2 EI at I=4096 0.99994610736637701
+PASS3 (-O0) EI at I=4096 0.99994610736637701
+PASS4 (-O2, gfortran 13) EI at I=4096 0.99994610736637701
+VALUE EI at I=4096, Snied IFLAG=1, DIMEN=2 0.99994610736637701
+exit 0

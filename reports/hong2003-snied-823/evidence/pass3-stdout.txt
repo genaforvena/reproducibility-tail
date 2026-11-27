@@ -1,0 +1,11 @@
+ I = ITERATION NUMBER
+ EI = ESTIMATED INTEGRAL
+ I =          512
+ EI =   0.99997540338373248     
+ I =         1024
+ EI =   0.99976773631485671     
+ I =         2048
+ EI =   0.99995030938172536     
+ I =         4096
+ EI =   0.99994610736637701     
+ Total time elapsed =    5.77799976E-03

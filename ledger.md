@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-76 papers attempted.
+77 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 17 |
-| B | authors' code with build fixes | 42 |
+| B | authors' code with build fixes | 43 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 15 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 63, other 4, statistics 6
-By stack: C/C++ 9, Fortran 54, Java 1, MATLAB/Octave 7, R 5
-By decade: 1960 3, 1970 5, 1980 7, 1990 24, 2000 26, 2010 11
+By field: astronomy 1, biology 1, ecology 1, numerics 64, other 4, statistics 6
+By stack: C/C++ 9, Fortran 54, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 1960 3, 1970 5, 1980 7, 1990 25, 2000 26, 2010 11
 
 Data as of 2026-11-27T08:44:00Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T08:44:00Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-76 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+77 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **366 candidates considered from 4 of 4 frames: 74 attempted (20%), 0 unreachable, 292 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 48 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 49 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
 
 ## Results
 
@@ -267,6 +267,7 @@ Authors' original artifact, among all attempted papers: failed 48 (did not run),
 | [smith2010-fm-911](reports/smith2010-fm-911/result.md) | numerics · 2010 · Fortran | SampleFM (author's sample driver) sample 2 prints the real root of x**5-3x**4+x**3-4x**2+x-6 to 500 decimal places; its double rounding 3.1206562153267265 agrees with the registered value to 1e-15 absolute. (real root of x**5-3x**4+x**3-4x**2+x-6 (SampleFM.out sample 2, 500-digit value rounded to double; the first 16 significant digits are 3.120656215326726)) [shipped reference output] | 3.12066 ± 1e-15 | 3.12066 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [van-deun2006-besselint-858](reports/van-deun2006-besselint-858/result.md) | numerics · 2006 · MATLAB/Octave | besselint(sqrt([2 3 5 7 11]), 0, 1) returns I = 6.106434990872165e-02 (Example 5.1 of the shipped driver, experiments.m; printed in the shipped experiments.out) (I_Ex5_1) [shipped reference output] | 0.0610643 ± 1e-10 | 0.0610643 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [varadhan2009-bb-hdp-multistart](reports/varadhan2009-bb-hdp-multistart/result.md) | numerics · 2009 · R | sum(ans$conv) for multiStart(par = p0, fn = hdp, action = "solve"), 300 starts, seed 1234, JSS p. 11 (converged runs) | 284 ± 3 | 287 | 3 | 100% ⚠ | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [verschelde1999-phcpack-795](reports/verschelde1999-phcpack-795/result.md) | numerics · 1999 · other | The black-box solver of PHCpack (phc -b) on the shipped system Demo/cyclic5 (cyclic 5-roots) finds 70 isolated solutions. Registered tolerance: exact (0). The paper's Table VI row for cyclic5 gives n=5, D=120, BZ=120, BS=106, V=70, #sols=70; the shipped Demo/READ_ME table gives the same row. (cyclic5_solutions_regular) [shipped reference output] | 70 ± 0 | 70 | 0 | exact | patched | ✓ ✓ ✓ · | B | reproduced | never clean |
 | [waki2008-sparsepop-883](reports/waki2008-sparsepop-883/result.md) | numerics · 2008 · MATLAB/Octave | Shipped user manual Doc/UserManual/sect3.tex (section 'The GAMS scalar format'): the printed output of sparsePOP('example1.gms', param) with param.relaxOrder = 3 and SeDuMi eps 1e-9 (SparsePOP 2.00). The example is the POP of example1.m (minimize -2x1+3x2-2x3 subject to a quadratic inequality, two linear inequalities, one linear equality and box bounds). The claim is the line POP.objValue, the approximated optimal value of that POP. (POP.objValue, example1.gms, relaxOrder 3) [shipped reference output] | -7.9551 ± 1e-06 | -7.9551 | 4e-08 | 4% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [wang2008-bacolr-874](reports/wang2008-bacolr-874/result.md) | numerics · 2008 · Fortran | driver1 (single PDE, KCOL = 2, NINT = 42 at TOUT = 1.0) prints UOUT = 0.6602 at XOUT = 0.91, as in the shipped reference output res1; tolerance 1e-3 absolute, fixed in the queue entry. (UOUT(XOUT=0.91) at TOUT=1.0, KCOL=2, NINT=42) [shipped reference output] | 0.6602 ± 0.001 | 0.6602 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [wang2011-species-butterfly-ace](reports/wang2011-species-butterfly-ace/result.md) | ecology · 2011 · R | ChaoLee1992(butterfly, t = 10, method = "all") $Nhat[1], ACE estimate of species richness (JSS p. 8) (ACE) | 712 ± 0.5 | 712 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |

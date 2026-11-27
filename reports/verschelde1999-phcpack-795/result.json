@@ -1,0 +1,63 @@
+{
+  "paper": {
+    "short": "verschelde1999-phcpack-795",
+    "title": "Algorithm 795: PHCpack: A General-Purpose Solver for Polynomial Systems by Homotopy Continuation",
+    "year": 1999,
+    "doi": "10.1145/317275.317286",
+    "venue": "ACM Transactions on Mathematical Software 25(2), 251-276 (June 1999). The author's copy (homepages.math.uic.edu/~jan/acmtomsphcpack.pdf) was read as text via pdftotext; the ACM page itself returns 403 from this host."
+  },
+  "field": "numerics (polynomial system solving, homotopy continuation)",
+  "field_class": "numerics",
+  "stack": "Ada 95 (PHCpack 1.0 sources from the TOMS 795 shar; built with GNAT 13.3.0 from Ubuntu noble .deb packages, unpacked in the sandbox)",
+  "stack_class": "other",
+  "claim": {
+    "text": "The black-box solver of PHCpack (phc -b) on the shipped system Demo/cyclic5 (cyclic 5-roots) finds 70 isolated solutions. Registered tolerance: exact (0). The paper's Table VI row for cyclic5 gives n=5, D=120, BZ=120, BS=106, V=70, #sols=70; the shipped Demo/READ_ME table gives the same row.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/verschelde1999-phcpack-795/evidence/shipped-Demo-READ_ME.txt",
+      "sha256": "91a8a0ed9a34084c16cfc8486d55e2f222921650c2a7003e61b9d4a96ec5c246",
+      "archive": "netlib.org/toms/795.gz sha256 6ff06dbba5bce3143881fdce40907a435fd687c246f917aa4e150993f6dd65ec (fetched 2026-11-27, hash checked)"
+    },
+    "values": [
+      {
+        "name": "cyclic5_solutions_regular",
+        "paper": 70,
+        "tol_abs": 0,
+        "ours": 70.0
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Built the authors' GNAT tree as shipped (their own 'make links' in each GNAT/ directory, nothing else) and ran 'phc -b cyclic5' in the sandbox. That run failed (STORAGE_ERROR or SIGSEGV; memory corruption from getrusage, see below). Two source patches (recipe impl/patch-src.sh) make the run complete: (1) unix_resource_usage.ads: the 1999 record used 32-bit integer fields (72 bytes) for glibc's LP64 struct rusage (144 bytes), so getrusage overflowed the record; the fields become long_long_integer and the accessors convert. This only feeds the TIMING INFORMATION printout. (2) multivariate_polynomials.adb and multivariate_laurent_polynomials.adb: the test '(vp(j).k = number) or (vp(j).p /= null)' evaluates both operands in Ada, and GNAT 13 raises CONSTRAINT_ERROR on the discriminant when k = number; the intended test is short-circuit ('or else'). Neither patch touches the homotopy, the start system, the parameters or the root-refinement. After the patches, two independent passes (fresh run directories, same built binary) each print 'Number of regular solutions : 70', singular 0, real 10, complex 60, clustered 0, failures 0. Both build passes are recorded (patched-build.txt; the patched build and the original build both compiled without error).",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The authors' tree as shipped, built with GNAT 13 and run on Demo/cyclic5: the run does not finish (memory corruption from getrusage, a 72-byte record written with 144 bytes). Across the runs the failure showed as STORAGE_ERROR (stack overflow or erroneous memory access) or SIGSEGV (exit 139). A patch for the record width came first; the short-circuit fix then exposed a CONSTRAINT_ERROR at multivariate_polynomials.adb:855 (discriminant check on vp(j).p with k = number). The authors' code is not at fault for the solver's numbers; it is at fault for the record width and the 'or' operand evaluation under a modern Ada compiler.",
+    "log": "reports/verschelde1999-phcpack-795/evidence/original-attempt-run.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/verschelde1999-phcpack-795/recipe.sh",
+  "queue_commit": "6a53230",
+  "evidence": [
+    "reports/verschelde1999-phcpack-795/evidence/shipped-Demo-READ_ME.txt",
+    "reports/verschelde1999-phcpack-795/evidence/paper-table-VI-excerpt.txt",
+    "reports/verschelde1999-phcpack-795/evidence/original-attempt-run.log",
+    "reports/verschelde1999-phcpack-795/evidence/original-build.txt",
+    "reports/verschelde1999-phcpack-795/evidence/patched-build.txt",
+    "reports/verschelde1999-phcpack-795/evidence/patched-run-pass1.log",
+    "reports/verschelde1999-phcpack-795/evidence/patched-run-pass2.log",
+    "reports/verschelde1999-phcpack-795/evidence/gnat-version.txt",
+    "reports/verschelde1999-phcpack-795/evidence/unpack-listing.txt",
+    "reports/verschelde1999-phcpack-795/evidence/recipe-run.log"
+  ],
+  "replayed": []
+}

@@ -33,12 +33,12 @@
       {
         "name": "RJ(2,3,4,5)",
         "paper": "0.14297579667156753833",
-        "tol_rel": 1e-3
+        "tol_abs": 0.00014297579667156755
       }
     ],
     "tolerance": {
-      "rel": 1e-3,
-      "basis": "The driver sets ERRTOL = 1.D-3 and the subroutine comment says 'ERRTOL is set to the desired error tolerance'; the routine's accuracy contract is therefore a relative error of ERRTOL on its result. The tolerance is set to that contract, before any run, and is not to be loosened after a run. A coding error that moves RJ(2,3,4,5) by more than one part in a thousand fails it; a rounding-level change does not."
+      "basis": "The driver sets ERRTOL = 1.D-3 and the subroutine comment says 'ERRTOL is set to the desired error tolerance', so the routine's accuracy contract is a relative error of ERRTOL on its result. Applied to the reference value, that is an absolute tolerance of 1.4297579667e-04 (1e-3 times 0.14297579667). Set before any run and not to be loosened after a run. A coding error that moves RJ(2,3,4,5) by more than one part in a thousand fails it; a rounding-level change does not.",
+      "abs": 0.00014297579667156755
     }
   },
   "cost": {

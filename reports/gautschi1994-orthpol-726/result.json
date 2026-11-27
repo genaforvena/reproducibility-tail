@@ -1,0 +1,93 @@
+{
+  "paper": {
+    "short": "gautschi1994-orthpol-726",
+    "title": "Algorithm 726: ORTHPOL - a package of routines for generating orthogonal polynomials and Gauss-type quadrature rules",
+    "authors": [
+      "Walter Gautschi"
+    ],
+    "year": 1994,
+    "doi": null
+  },
+  "field": "numerics (orthogonal polynomials, Gauss-type quadrature)",
+  "field_class": "numerics",
+  "stack": "Fortran (netlib CALGO 726.gz: shell archive with Makefile, r1mach.f, d1mach.f, test1.f and reference output test1.out)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "test1 driver, first block (modmom=.true., om2 = 0.100): DBETA(1), the K=1 row, = 0.5065840806382684475158495727 as printed in the shipped reference test1.out (Fortran D format). Registered by scout from the artifact's own output. Tolerance 1e-12 absolute, fixed before any run.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "DBETA1_OM2_0p1",
+        "paper": 0.5065840806382684,
+        "tol_abs": 1e-12,
+        "ours": 0.5065840806382684
+      }
+    ],
+    "determinism": "deterministic (fixed weight, om2, n; no random numbers)",
+    "reference": {
+      "file": "reports/gautschi1994-orthpol-726/evidence/test1.out.shipped",
+      "archive": "netlib.org/toms/726.gz, sha256 b229159f0bd9b38948f32ccb5f2d958c80f0a95c1706f88c03284aef5b0fa186, member test1.out",
+      "sha256": "983893905f896358760edd39ab14da1f1ddcb689d54343bab9ef1a21eae7a7e6"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "G1: the archive's Makefile, unchanged, fails in the sandbox: f77 is absent, and the Makefile's link rules are already empty after unpacking (see the G1 note below). Build: the archive's own TEST1 object list is compiled by make with the sandbox gfortran 16.2.0 (conda-forge) as F77 and FC, with -fallow-invalid-boz (the Cyber 205 hexadecimal constants in r1mach.f and d1mach.f are nonstandard x'...' forms that gfortran rejects by default), then linked by hand with the same list. No archive file is edited. The driver's first DBETA(1) (om2 = 0.100) = 0.5065840806382684302633379048, which differs from the shipped value by about 2e-17, within the registered 1e-12. The single-precision error column differs from the shipped one (for example 0.4455E-07 against 0.1433E-13 at K=0) because the archive ships the CDC Cyber 205 machine constants active in r1mach.f and d1mach.f; those columns are not claimed. Two passes from a fresh unpack gave identical output.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make test1.out.local: f77 does not exist in the sandbox (Error 127). The archive's own unpacked Makefile also has empty link rules: the shell archive's unquoted heredoc expands $(LD) and $(TEST1) to nothing when /bin/sh unpacks it, so the test1 rule reads `test1 : ; -o $@`. Even with a Fortran compiler present, the authors' Makefile does not link test1 as shipped.",
+    "log": "reports/gautschi1994-orthpol-726/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/gautschi1994-orthpol-726/recipe.sh",
+  "queue_commit": "02f09c9",
+  "evidence": [
+    "reports/gautschi1994-orthpol-726/evidence/fetch.log",
+    "reports/gautschi1994-orthpol-726/evidence/env-pins.txt",
+    "reports/gautschi1994-orthpol-726/evidence/original-attempt.log",
+    "reports/gautschi1994-orthpol-726/evidence/build.log",
+    "reports/gautschi1994-orthpol-726/evidence/driver-run.log",
+    "reports/gautschi1994-orthpol-726/evidence/Res",
+    "reports/gautschi1994-orthpol-726/evidence/test1.out.shipped",
+    "reports/gautschi1994-orthpol-726/evidence/test1.out.shipped.sha256",
+    "reports/gautschi1994-orthpol-726/evidence/manifest.pre",
+    "reports/gautschi1994-orthpol-726/evidence/manifest.mid",
+    "reports/gautschi1994-orthpol-726/evidence/manifest.post",
+    "reports/gautschi1994-orthpol-726/evidence/recipe-run-pass1.log",
+    "reports/gautschi1994-orthpol-726/evidence/recipe-run-pass2.log"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "b229159f0bd9b38948f32ccb5f2d958c80f0a95c1706f88c03284aef5b0fa186",
+    "compared": 45,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "make F77=/work/env/bin/x86_64-conda-linux-gnu-gfortran FC=/work/env/bin/x86_64-conda-linux-gnu-gfortran FFLAGS=-fallow-invalid-boz test1.o r1mach.o d1mach.o recur.o drecur.o cheb.o dcheb.o",
+      "/work/env/bin/x86_64-conda-linux-gnu-gfortran -fallow-invalid-boz -o test1 test1.o r1mach.o d1mach.o recur.o drecur.o cheb.o dcheb.o"
+    ],
+    "manifests": {
+      "pre": "reports/gautschi1994-orthpol-726/evidence/manifest.pre",
+      "mid": "reports/gautschi1994-orthpol-726/evidence/manifest.mid",
+      "post": "reports/gautschi1994-orthpol-726/evidence/manifest.post"
+    }
+  }
+}

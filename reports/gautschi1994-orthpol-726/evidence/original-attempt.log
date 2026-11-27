@@ -1,0 +1,7 @@
+make_exit=2
+o test1 
+make: o: No such file or directory
+make: [Makefile:89: test1] Error 127 (ignored)
+test1  > test1.out.local
+/bin/sh: 1: test1: not found
+make: *** [Makefile:73: test1.out.local] Error 127

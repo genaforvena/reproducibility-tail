@@ -1,0 +1,85 @@
+make_exit=0
+link_exit=0
+/work/env/bin/x86_64-conda-linux-gnu-gfortran -fallow-invalid-boz  -c -o test1.o test1.f
+/work/env/bin/x86_64-conda-linux-gnu-gfortran -fallow-invalid-boz  -c -o r1mach.o r1mach.f
+r1mach.f:50:24:
+
+   50 |       data small(1) / x'9000400000000000' /
+      |                        1
+Warning: Hexadecimal constant at (1) uses nonstandard X instead of Z
+r1mach.f:51:24:
+
+   51 |       data large(1) / x'6FFF7FFFFFFFFFFF' /
+      |                        1
+Warning: Hexadecimal constant at (1) uses nonstandard X instead of Z
+r1mach.f:52:24:
+
+   52 |       data right(1) / x'FFA3400000000000' /
+      |                        1
+Warning: Hexadecimal constant at (1) uses nonstandard X instead of Z
+r1mach.f:53:24:
+
+   53 |       data diver(1) / x'FFA4400000000000' /
+      |                        1
+Warning: Hexadecimal constant at (1) uses nonstandard X instead of Z
+r1mach.f:54:24:
+
+   54 |       data log10(1) / x'FFD04D104D427DE8' /, sc/987/
+      |                        1
+Warning: Hexadecimal constant at (1) uses nonstandard X instead of Z
+/work/env/bin/x86_64-conda-linux-gnu-gfortran -fallow-invalid-boz  -c -o d1mach.o d1mach.f
+d1mach.f:50:24:
+
+   50 |       data small(1) / x'9000400000000000' /
+      |                        1
+Warning: Hexadecimal constant at (1) uses nonstandard X instead of Z
+d1mach.f:51:24:
+
+   51 |       data small(2) / x'8000000000000000' /
+      |                        1
+Warning: Hexadecimal constant at (1) uses nonstandard X instead of Z
+d1mach.f:53:24:
+
+   53 |       data large(1) / x'6FFF7FFFFFFFFFFF' /
+      |                        1
+Warning: Hexadecimal constant at (1) uses nonstandard X instead of Z
+d1mach.f:54:24:
+
+   54 |       data large(2) / x'6FD07FFFFFFFFFFF' /
+      |                        1
+Warning: Hexadecimal constant at (1) uses nonstandard X instead of Z
+d1mach.f:56:24:
+
+   56 |       data right(1) / x'FF74400000000000' /
+      |                        1
+Warning: Hexadecimal constant at (1) uses nonstandard X instead of Z
+d1mach.f:57:24:
+
+   57 |       data right(2) / x'8000000000000000' /
+      |                        1
+Warning: Hexadecimal constant at (1) uses nonstandard X instead of Z
+d1mach.f:59:24:
+
+   59 |       data diver(1) / x'FF75400000000000' /
+      |                        1
+Warning: Hexadecimal constant at (1) uses nonstandard X instead of Z
+d1mach.f:60:24:
+
+   60 |       data diver(2) / x'8000000000000000' /
+      |                        1
+Warning: Hexadecimal constant at (1) uses nonstandard X instead of Z
+d1mach.f:62:24:
+
+   62 |       data log10(1) / x'FFD04D104D427DE7' /
+      |                        1
+Warning: Hexadecimal constant at (1) uses nonstandard X instead of Z
+d1mach.f:63:24:
+
+   63 |       data log10(2) / x'FFA17DE623E2566B' /, sc/987/
+      |                        1
+Warning: Hexadecimal constant at (1) uses nonstandard X instead of Z
+/work/env/bin/x86_64-conda-linux-gnu-gfortran -fallow-invalid-boz  -c -o recur.o recur.f
+/work/env/bin/x86_64-conda-linux-gnu-gfortran -fallow-invalid-boz  -c -o drecur.o drecur.f
+/work/env/bin/x86_64-conda-linux-gnu-gfortran -fallow-invalid-boz  -c -o cheb.o cheb.f
+/work/env/bin/x86_64-conda-linux-gnu-gfortran -fallow-invalid-boz  -c -o dcheb.o dcheb.f
+-rwx------ 1 mesh-home mesh-home 35112 Nov 27 16:15 test1

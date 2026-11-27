@@ -1,0 +1,98 @@
+sha256 b229159f0bd9b38948f32ccb5f2d958c80f0a95c1706f88c03284aef5b0fa186 expected b229159f0bd9b38948f32ccb5f2d958c80f0a95c1706f88c03284aef5b0fa186
+726.gz: OK
+/work/dl/726.sh: 1: C: not found
+/work/dl/726.sh: 2: C: not found
+/work/dl/726.sh: 3: C: not found
+/work/dl/726.sh: 4: C: not found
+/work/dl/726.sh: 5: C: not found
+/work/dl/726.sh: 287: TEST1: not found
+/work/dl/726.sh: 287: LD: not found
+/work/dl/726.sh: 287: TEST1: not found
+/work/dl/726.sh: 288: TEST2: not found
+/work/dl/726.sh: 288: LD: not found
+/work/dl/726.sh: 288: TEST2: not found
+/work/dl/726.sh: 289: TEST3: not found
+/work/dl/726.sh: 289: LD: not found
+/work/dl/726.sh: 289: TEST3: not found
+/work/dl/726.sh: 290: TEST4: not found
+/work/dl/726.sh: 290: LD: not found
+/work/dl/726.sh: 290: TEST4: not found
+/work/dl/726.sh: 291: TEST5: not found
+/work/dl/726.sh: 291: LD: not found
+/work/dl/726.sh: 291: TEST5: not found
+/work/dl/726.sh: 292: TEST6: not found
+/work/dl/726.sh: 292: LD: not found
+/work/dl/726.sh: 292: TEST6: not found
+/work/dl/726.sh: 293: TEST7: not found
+/work/dl/726.sh: 293: LD: not found
+/work/dl/726.sh: 293: TEST7: not found
+/work/dl/726.sh: 294: TEST8: not found
+/work/dl/726.sh: 294: LD: not found
+/work/dl/726.sh: 294: TEST8: not found
+/work/dl/726.sh: 295: TEST9: not found
+/work/dl/726.sh: 295: LD: not found
+/work/dl/726.sh: 295: TEST9: not found
+/work/dl/726.sh: 296: TEST10: not found
+/work/dl/726.sh: 296: LD: not found
+/work/dl/726.sh: 296: TEST10: not found
+/work/dl/726.sh: 297: TEST11: not found
+/work/dl/726.sh: 297: LD: not found
+/work/dl/726.sh: 297: TEST11: not found
+gfortran_object=ok
+/work/pre/Makefile
+/work/pre/README
+/work/pre/cheb.f
+/work/pre/chri.f
+/work/pre/d1mach.f
+/work/pre/dcheb.f
+/work/pre/dchri.f
+/work/pre/dgauss.f
+/work/pre/dgchri.f
+/work/pre/dkern.f
+/work/pre/dknum.f
+/work/pre/dlancz.f
+/work/pre/dlob.f
+/work/pre/dmcdis.f
+/work/pre/dmcheb.f
+/work/pre/dqgp.f
+/work/pre/dradau.f
+/work/pre/drecur.f
+/work/pre/dsti.f
+/work/pre/gauss.f
+/work/pre/gchri.f
+/work/pre/kern.f
+/work/pre/knum.f
+/work/pre/lancz.f
+/work/pre/lob.f
+/work/pre/mccheb.f
+/work/pre/mcdis.f
+/work/pre/nu0her.f
+/work/pre/nu0jac.f
+/work/pre/nu0lag.f
+/work/pre/qgp.f
+/work/pre/r1mach.f
+/work/pre/radau.f
+/work/pre/recur.f
+/work/pre/sti.f
+/work/pre/test1.f
+/work/pre/test1.out
+/work/pre/test10.f
+/work/pre/test10.out
+/work/pre/test11.f
+/work/pre/test11.out
+/work/pre/test2.f
+/work/pre/test2.out
+/work/pre/test3.f
+/work/pre/test3.out
+/work/pre/test4.f
+/work/pre/test4.out
+/work/pre/test5.f
+/work/pre/test5.out
+/work/pre/test6.f
+/work/pre/test6.out
+/work/pre/test7.f
+/work/pre/test7.out
+/work/pre/test8.f
+/work/pre/test8.out
+/work/pre/test9.f
+/work/pre/test9.out

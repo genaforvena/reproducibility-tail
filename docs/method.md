@@ -111,7 +111,7 @@ A result counts only when it passes these gates. Most are checked by a script
 |---|---|---|
 | G0 admission | the value is located in readable text, the tolerance and its reason are fixed, the claim cannot be met without running the method, and it is labelled deterministic or stochastic with a seed. The queue entry is not edited after a run. | scout; script checks the entry is unchanged since the run |
 | G1 original first | the authors' own artifact was tried in the sandbox before anything was patched or rewritten. A failed attempt has a log; "not possible" (no code exists) has a reason. | script |
-| G2 fidelity | for `patched` or `reimplemented`: each new piece cites the paper's section or equation, and parameters were checked against the paper itself, not only against a replication. A `patched` result whose patch is shown to be build-only (below) needs no paper check | rerun; script for build-only, recorded in the report |
+| G2 fidelity | for `patched` or `reimplemented`: each new piece cites the paper's section or equation, and parameters were checked against the paper itself, not only against a replication. A `patched` result whose patch is shown to be build-only or a verbatim extraction (below) needs no paper check | rerun; script for build-only and extraction, recorded in the report |
 | G3 replay | `recipe.sh` from a clean directory gives the same value twice, or within a stated Monte Carlo error | script |
 | G4 verdict | the verdict is computed from the recorded values and the registered tolerance | script (`tools/build_ledger.py`) |
 | G5 independence | a fresh replay confirms it; a `reimplemented` mismatch also needs a second route (analytic limit or second implementation) | scheduled replay, or a fresh rerun wake |
@@ -153,8 +153,32 @@ the second and third call, and that whole region to contain no in-place editing 
 not a proof: an edit hidden in a script the build calls is not seen, which is why the label shows what the
 build tool rewrote. The gate recomputes everything from the manifests in the report and requires the archive
 hash to equal the one registered in the queue entry. Only then is gate G2 satisfied without a paper check.
-Any other patch (a modified or removed file, an added stub, a rewrite) keeps the full G2 check, and a
-`reimplemented` result can never be build-only.
+Any other patch (a modified or removed file, an added stub, a rewrite), apart from the extraction below,
+keeps the full G2 check, and a `reimplemented` result can never be build-only.
+
+## Extraction patches
+
+Some archives ship the program and its manual or notes in one file, so the authors' code cannot be
+compiled until it is cut out. Copying a contiguous run of lines changes no statement, so it has nothing to
+check against the paper. As with build-only patches, this is proved from bytes. The recipe fetches the
+archive, checks its sha256, copies one line range of one archive file into a new file, and takes the three
+manifests around that step and the build. It records them with `tools/verify_sources.py record ...
+--archive-file FILE --range START:END --extracted NAME`, which keeps the copied range as
+`evidence/source-range.f`.
+
+The patch is `extraction` only when the patch step added that one file and nothing else (no file modified
+or removed), the new file's hash in the mid manifest equals the hash of the kept range, the build commands
+meet the same checks as for build-only patches, and the archive hash equals the one in the queue entry. The
+result's basis is still `patched`, and G2 is satisfied without a paper check.
+
+The limit: the gate has no archive, so it cannot see that the kept range really is lines START to END of the
+authors' file. It checks that the record agrees with itself. What ties the range to the archive is the
+recipe, which must fetch the archive, check its hash and cut the range itself on every run, never read the
+kept copy, so that the clean replay (G5) repeats the cut from the authors' bytes. The gate does not check
+this; whoever reviews an extraction result reads the recipe for it.
+
+Extraction covers one verbatim range and nothing else. Two ranges joined, a reordering, an added line or an
+edited line is a `source` patch and keeps the full G2 check.
 
 ## Where a claim's value may come from
 

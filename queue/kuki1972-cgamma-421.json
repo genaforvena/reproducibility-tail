@@ -1,0 +1,70 @@
+{
+ "paper": {
+  "title": "Algorithm 421: Complex Gamma Function with Error Control (Kuki); article text not read (ACM page unreachable from this host)",
+  "authors": [
+   "H. Kuki"
+  ],
+  "year": 1972,
+  "venue": "Communications of the ACM 15 (1972) 271-272 (Collected Algorithms from ACM, Algorithm 421)",
+  "doi": null,
+  "url": "https://netlib.org/toms/421.gz (ACM article not read: dl.acm.org returns 403 to automated fetch)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/421.gz",
+  "commit": "netlib TOMS archive 421.gz: a shell archive (2005 Fortran 90 package, Fortran90/Dp with Drivers/driver.f90, Drivers/data, Drivers/res, Src/src.f90, Doc/Makefile). The shipped package is the one to rerun; it is not the 1972 Fortran as published.",
+  "archive": "sha256 cea2d06751db06aa54dbe7ec6d75b7ce16d24d09c0a260069f37c9eefa0d1ff1 (netlib.org/toms/421.gz as downloaded 2026-11-27, 5051 bytes; unshar in its own directory with sh, per the archive's header, and read it first)",
+  "note": "Gunzip to a .shar file, then run it with /bin/sh in an empty directory to create the package. The archive's Makefile builds driver from driver.f90 and src.f90 and runs driver < data > RES; the shipped res file is the reference."
+ },
+ "field": "numerics (special functions, complex gamma and log-gamma)",
+ "stack": "Fortran 90",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "The shipped driver output file Drivers/res, produced by driver.f90 reading Drivers/data. Five loggamma entries in res are the claim.",
+  "reference": {
+   "file": "Drivers/res (the shipped reference output)",
+   "sha256": "7d21d6f2ff26b4c3136aa5f8945440345733cf7d98f60ba0488ae79d9ff805da (sha256 of the res text between its SHAR_EOF markers, LF-terminated, from 421.gz)",
+   "archive": "netlib.org/toms/421.gz sha256 cea2d06751db06aa54dbe7ec6d75b7ce16d24d09c0a260069f37c9eefa0d1ff1"
+  },
+  "metric": "For each of the five loggamma entries in res, the real and imaginary parts computed by the driver's loggamma calls for the inputs listed in data, compared with the res values: loggamma(1,5), loggamma(2.5,5), loggamma(5,10), loggamma(2.5,-5), loggamma(5,-10). Claim: all ten real and imaginary comparisons agree within the tolerance.",
+  "paper_value": "Reference values as printed in res: loggamma(1,5) = (-6.1303241, 3.8158986); loggamma(2.5,5) = (-3.6681033, 5.8060098); loggamma(5,10) = (-4.2855074, 19.117071); loggamma(2.5,-5) = (-3.6681033, -5.8060098); loggamma(5,-10) = (-4.2855074, -19.117071). The paper itself was not read.",
+  "values": [
+   {
+    "name": "loggamma(1,5) real and imag",
+    "paper": "res: (-6.1303241, 3.8158986)",
+    "tol_abs": 1e-06
+   },
+   {
+    "name": "loggamma(2.5,5) real and imag",
+    "paper": "res: (-3.6681033, 5.8060098)",
+    "tol_abs": 1e-06
+   },
+   {
+    "name": "loggamma(5,10) real and imag",
+    "paper": "res: (-4.2855074, 19.117071)",
+    "tol_abs": 1e-06
+   },
+   {
+    "name": "loggamma(2.5,-5) real and imag",
+    "paper": "res: (-3.6681033, -5.8060098)",
+    "tol_abs": 1e-06
+   },
+   {
+    "name": "loggamma(5,-10) real and imag",
+    "paper": "res: (-4.2855074, -19.117071)",
+    "tol_abs": 1e-06
+   }
+  ],
+  "tolerance": {
+   "abs": 1e-06,
+   "basis": "Fixed before any run. The res values are printed to 8 significant digits (E format, 0.xxxxxxxxE+yy), so rounding error is at most 5e-7 at magnitude 19; 1e-6 absolute is one print unit. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute.",
+  "data_size": "None: the inputs are in Drivers/data, a few hundred bytes.",
+  "data_licence": "No data. Source is the public netlib TOMS collected-algorithms archive."
+ },
+ "why": "The shipped driver computes complex log-gamma at fixed inputs and writes results whose values only the algorithm can produce, so a modern build must reproduce the authors' own reference output.",
+ "registered": "2026-11-27T07:04:00Z"
+}

@@ -43,13 +43,25 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
   "recipe": "reports/clemm1969-mathieu-352/recipe.sh",
   "queue_commit": "e36fcd7",
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-27T10:23:11Z",
+      "kind": "clean",
+      "values": {
+        "a_5(5) (even)": 25.549972
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/clemm1969-mathieu-352/evidence/replay-2026-11-27T102311Z.log",
+      "seconds": 55
+    }
+  ],
   "evidence": [
     "reports/clemm1969-mathieu-352/evidence/archive-sha256-check.txt",
     "reports/clemm1969-mathieu-352/evidence/gfortran-version.txt",

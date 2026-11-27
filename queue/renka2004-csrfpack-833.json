@@ -32,7 +32,7 @@
     "values": [
       {
         "name": "F(X=-0.948717948717949, Y=-1.0) from CSRFTEST with the shipped data file",
-        "paper": 0.189783809135176,
+        "paper": 1.89783809135176,
         "tol_abs": 1e-09
       }
     ],

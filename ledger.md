@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-115 papers attempted.
+116 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
-| A | authors' code, run clean | 24 |
+| A | authors' code, run clean | 25 |
 | B | authors' code with build fixes | 68 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 2 |
 | - | blocked or not yet run | 20 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 102, other 4, statistics 6
-By stack: C/C++ 16, Fortran 85, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 0 1, 1960 4, 1970 15, 1980 10, 1990 36, 2000 30, 2010 19
+By field: astronomy 1, biology 1, ecology 1, numerics 103, other 4, statistics 6
+By stack: C/C++ 16, Fortran 86, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 0 1, 1960 4, 1970 16, 1980 10, 1990 36, 2000 30, 2010 19
 
 Data as of 2026-11-27T17:55:00Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T17:55:00Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-115 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+116 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **560 candidates considered from 4 of 4 frames: 112 attempted (20%), 0 unreachable, 448 rejected.**
 
@@ -75,7 +75,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 79 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 26 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 79 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 27 (ran as documented).
 
 ## Results
 
@@ -305,6 +305,7 @@ Authors' original artifact, among all attempted papers: failed 79 (did not run),
 | [richardson1973-jconsx-454](reports/richardson1973-jconsx-454/result.md) | numerics · 1973 · Fortran | JCONSX complex method on the Box problem, driver1 seeded starts (seed 123456789 in source): ITERATION 20 corrected point 3.0000 1.7320, and the run ends at ITERATION 21. Shipped reference res1 (artifact-reference), tol 6e-5 on coordinates, exact on count. (x2 at ITERATION 20) [shipped reference output] | 1.732 ± 6e-05 | 1.732 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [richardson1973-jconsx-454](reports/richardson1973-jconsx-454/result.md) | numerics · 1973 · Fortran | JCONSX complex method on the Box problem, driver1 seeded starts (seed 123456789 in source): ITERATION 20 corrected point 3.0000 1.7320, and the run ends at ITERATION 21. Shipped reference res1 (artifact-reference), tol 6e-5 on coordinates, exact on count. (ITERATION count) [shipped reference output] | 21 ± 0 | 21 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [rios2013-dwsolver-928](reports/rios2013-dwsolver-928/result.md) | numerics · 2013 · C/C++ | Final master objective of the book_test example, printed as '#### Master objective value = -3.666667e+01' in the shipped Doc/exampleOutput.pdf (registered -36.666667, tol_abs 1e-5). Blocked: the shipped reference does not come from the shipped book_test input (3-row master in the log, 5-row master from the input). See note-to-scout.md. (final master objective, book_test) [shipped reference output] | -36.6667 ± 1e-05 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
+| [saylor1973-adip-460](reports/saylor1973-adip-460/result.md) | numerics · 1973 · Fortran | The DMU printed by the shipped driver for ITNS = 1 agrees with the shipped reference output value 0.0775958 within absolute tolerance 1e-7 (registered before any run; the claim is the code's own printed output, not a value read from the paper). (DMU_ITNS1) [shipped reference output] | 0.0775958 ± 1e-07 | 0.0775958 | 0 | 0% | original | ✓ · ✓ ? | A | reproduced | never clean |
 | [shellman2003-befix-825](reports/shellman2003-befix-825/result.md) | numerics · 2003 · C/C++ | The 'average number of evaluations' printed for the first BEFix block of the large test (65025 cases, epsilon = 0.0001, q = 1, residual criterion) by the shipped driver, as in line 42 of the shipped reference C/Drivers/bigtest.res (inside 825.gz). Registered value 20.417255, absolute tolerance 1e-6, fixed before any run. The claim is the code's own printed output, not a table value from the paper. (BEFIX_AVG_EVALS_EPS1E-4_Q1) [shipped reference output] | 20.4173 ± 1e-06 | 20.4173 | 0 | 0% | patched (build-only) | ✓ · ✓ ? | B | reproduced | never clean |
 | [smith1991-fmpack-693](reports/smith1991-fmpack-693/result.md) | numerics · 1991 · Fortran | SQRT(3) to 40 decimal places, as printed by the authors' PROGRAM TEST (FPSET(40), FPI2M(3), FPSQRT, FPPRNT with JFORM2=40), registered as the exact string 1.7320508075688772935274463415058723669428 with tol_abs 5e-41. Registered by scout in the queue entry (claim commit 67bfb41); the exact-string rule is the owner-approved narrow one (commit 2e57688). (SQRT(3) to 40 decimal places) [shipped reference output] | 1.7320508075688772935274463415058723669428 ± 5e-41 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [smith2001-fm-814](reports/smith2001-fm-814/result.md) | numerics · 2001 · Fortran | SampleFM (sample 3, Zeta(3) by Gosper's series at 60 digits in the FM package) prints Zeta(3) = 1.202056903159594285...; the value rounded to double, 1.2020569031595942, must agree within absolute tolerance 1e-15 (fixed in the queue entry). (Zeta(3) sample 3) [shipped reference output] | 1.20206 ± 1e-15 | 1.20206 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |

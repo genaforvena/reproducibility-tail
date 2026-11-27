@@ -1,0 +1,63 @@
+{
+  "paper": {
+    "short": "saylor1973-adip-460",
+    "title": "Calculation of Optimum Parameters for Alternating Direction Implicit Procedures (Algorithm 460)",
+    "authors": [
+      "P. E. Saylor",
+      "D. Sebastian"
+    ],
+    "year": 1973,
+    "doi": null,
+    "venue": "ACM Transactions on Mathematical Software 16(10), p. 633 (Oct 1973), per the frame item and the shipped 460.gz shar header; article text not read"
+  },
+  "field": "numerics (alternating direction implicit iteration, optimal ADI acceleration parameters)",
+  "field_class": "numerics",
+  "stack": "Fortran (netlib CALGO 460.gz, Fortran/Dp/Src/src.f and Fortran/Dp/Drivers/driver.f; gfortran from conda-forge via micromamba in the sandbox)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "The DMU printed by the shipped driver for ITNS = 1 agrees with the shipped reference output value 0.0775958 within absolute tolerance 1e-7 (registered before any run; the claim is the code's own printed output, not a value read from the paper).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "DMU_ITNS1",
+        "paper": 0.0775958,
+        "tol_abs": 1e-7,
+        "ours": 0.0775958
+      }
+    ],
+    "determinism": "deterministic (adip is a closed computation on fixed a, b, c, d and n; no random numbers)",
+    "reference": {
+      "file": "reports/saylor1973-adip-460/evidence/res-shipped",
+      "archive": "netlib.org/toms/460.gz (sha256 542ae8263c1d41ae98a2d100713e8dc62555d50ee88446d28c2b608002c8982d)",
+      "sha256": "ef36f2e0855702347f805b053e9de0e25bedf991366f298c72e9a6fa4d0f73bd"
+    }
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "G1: the authors' Fortran compiled with gfortran as shipped (src.f from Fortran/Dp/Src with driver.f from Fortran/Dp/Drivers, one command, binary in a scratch directory; no file edited) and ran as documented. Pass 1 default optimisation, pass 2 -O2 in a clean directory: both print DMU = 0.775958E-01 for ITNS = 1, and the full output matches the shipped res file line for line. The archive's Makefile expects src.f in the driver directory, so it was not used as the build driver; the same compile was run directly on the archive's own files.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "not applicable: the shipped source compiled and ran as documented",
+    "log": "reports/saylor1973-adip-460/evidence/pass1.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pending",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/saylor1973-adip-460/recipe.sh",
+  "queue_commit": "f4decf2",
+  "replayed": [],
+  "evidence": [
+    "evidence/res-shipped",
+    "evidence/fetch.log",
+    "evidence/pass1.log",
+    "evidence/pass2.log",
+    "evidence/recipe-run.log"
+  ]
+}

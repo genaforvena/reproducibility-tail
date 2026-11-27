@@ -1,0 +1,55 @@
+{
+ "paper": {
+  "title": "Algorithm 351: Modified Romberg Quadrature (ROMINT)",
+  "authors": [
+   "G. Fairweather"
+  ],
+  "year": 1969,
+  "venue": "Communications of the ACM 12(6), June 1969, pp. 324-325 (archive header: COLLECTED ALGORITHMS FROM ACM, VOL. 12, NO. 6, June 1969, PP. 324-325). The frame lists it as TOMS 12,6; the archive header shows it is a CACM algorithm.",
+  "doi": null,
+  "url": "https://netlib.org/toms/351.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/351.gz",
+  "commit": "netlib TOMS archive 351.gz (scouted 2026-11-27, gz sha256 afeb019f1e28e0a2315b7c6a73bce6b302766961b55a3d4a58179465a7e01998). A shell archive (#! /bin/sh) of Fortran/Sp/Src/src.f (SUBROUTINE ROMINT), Fortran/Sp/Drivers/driver.f (PROGRAM TOMS351_PRB with TEST01 and TEST02), Fortran/Sp/Drivers/Makefile and a reference file Fortran/Sp/Drivers/res. The archive header states it was created 18 January 2006 by J. Burkardt's packaging, not the 1969 authors."
+ },
+ "field": "numerics (quadrature)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "seed": null,
+  "location": "Fortran/Sp/Drivers/res, the shipped reference output of driver.f. In the TEST02 block, the row with MAXE in = 5 reads: A 0.0000, B 4.3000, MAXE in 5, MAXE out 5, N 65, ERR 0.149012E-06, VAL 0.886227. The rerun should compile driver.f with src.f unedited and compare the TEST02 output with that block.",
+  "reference": {
+   "file": "Fortran/Sp/Drivers/res inside 351.gz (extracted by sh in its own directory)",
+   "sha256": "not recorded for the extracted res file; the archive sha256 is afeb019f1e28e0a2315b7c6a73bce6b302766961b55a3d4a58179465a7e01998",
+   "archive": "351.gz, sha256 afeb019f1e28e0a2315b7c6a73bce6b302766961b55a3d4a58179465a7e01998"
+  },
+  "metric": "Romberg integral VAL of exp(-x^2) over [0, 4.3] from ROMINT with EPS=1.0E-6 and MAXE=5 (TEST02, last row), printed as VAL 0.886227. Also check N = 65 exactly (an integer that the adaptive stopping rule produces; it is not a closed form).",
+  "paper_value": "Not checked against the paper (the paper is behind the ACM paywall); the archive's res file is the value to check.",
+  "values": [
+   {
+    "name": "VAL",
+    "paper": 0.886227,
+    "tol_abs": 1e-05
+   },
+   {
+    "name": "N",
+    "paper": 65,
+    "tol_abs": 0
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1e-05,
+   "basis": "Fixed before any run. The res file prints VAL to six decimals, so the print rounding is up to 5e-7; the code is single precision REAL, so a different compiler can move the last digits by a few 1e-7. 1e-5 absorbs both and is still finer than the 6.4e-5 gap between the MAXE 3 and MAXE 4 rows of the same table. N is an integer and must match exactly. Not loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 second (about 130 evaluations of exp).",
+  "data_size": "Archive 351.gz about 2.3 KB; no data files.",
+  "data_licence": "Not stated in the archive; a Collected Algorithm from ACM. The rerun should record the licence it finds."
+ },
+ "why": "The shipped driver and res file give ROMINT's adaptive step count (N = 65 at MAXE 5) and its integral to six digits, so the method's own stopping rule is checked without any paper table; N is produced by the algorithm, not by a closed form.",
+ "registered": "2026-11-27T06:13Z"
+}

@@ -34,7 +34,7 @@
     "tried": true,
     "outcome": "partial",
     "reason": "src.f compiled as shipped (gfortran -O0 and -O2) and run on the shipped FERTST.IN: it runs to the end, but FERMID(0.5, 5.0) = 3.1115013689941 against the reference 8.8442088952430, and 15 of 36 FERMID rows disagree. So the authors' code, run as documented under this toolchain, does not give the claimed value; the claim was reproduced only with the build flag.",
-    "log": "reports/goano1995-fermi-745/evidence/original-attempt.log"
+    "log": "reports/goano1995-fermi-745/evidence/original-attempt.txt"
   },
   "patch": {
     "kind": "build-only",
@@ -72,7 +72,7 @@
   "queue_commit": "dbe1ce94d52471ef1116df4248ab7b60646be856",
   "evidence": [
     "reports/goano1995-fermi-745/evidence/unpack.log",
-    "reports/goano1995-fermi-745/evidence/original-attempt.log",
+    "reports/goano1995-fermi-745/evidence/original-attempt.txt",
     "reports/goano1995-fermi-745/evidence/build.log",
     "reports/goano1995-fermi-745/evidence/runs.log",
     "reports/goano1995-fermi-745/evidence/pass1-run.txt",

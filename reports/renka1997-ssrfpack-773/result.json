@@ -1,0 +1,63 @@
+{
+  "paper": {
+    "short": "renka1997-ssrfpack-773",
+    "title": "Algorithm 773: SSRFPACK: Interpolation of scattered data on the surface of a sphere with a surface under tension",
+    "year": 1997,
+    "doi": "10.1145/275323.275330"
+  },
+  "field": "numerics (scattered-data interpolation on the sphere)",
+  "stack": "Fortran 77 (TOMS 773: Drivers/Sp/driver.f SSRFTEST, Src/Sp/src.f SSRFPACK; links TOMS 772 STRIPACK, Fortran77/Src/Sp/src.f)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "FF(I=16,J=16) of the SSRFTEST output grid (MFLAG=1, VT=TRUE, SCALE=TRUE, 33 nodes), i.e. line 562 of the shipped reference RES. Paper value 0.4441613 (the shipped reference output; the paper text was not reachable), absolute tolerance 1e-6 (fixed before any run). Registered 2026-11-27T03:36Z.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/renka1997-ssrfpack-773/evidence/shipped-RES.txt",
+      "sha256": "336b18c883624b0f1f1450108ad078cbffca4e4c5b24330c9d85d2f1aca49ab4",
+      "archive": "netlib TOMS 773.gz, sha256 410dc35305f8f08c27f318bcf459e572c52daef78b8470ed4b8288ba85bd1807, file Drivers/Sp/RES (copied from the sandbox unpack, 1090 lines)"
+    },
+    "values": [
+      {
+        "name": "FF(16,16) of SSRFTEST grid",
+        "paper": 0.4441613,
+        "tol_abs": 1e-06,
+        "ours": null
+      }
+    ]
+  },
+  "basis": "original",
+  "verdict": "blocked",
+  "cause": null,
+  "attempt": "Built the unmodified sources as the driver header says (SSRFTEST links to STRIPACK and SSRFPACK; the archive ships no build file, so the compile lines are ours). No source file was edited. The run writes RES in an empty directory holding a copy of Drivers/Sp/data. Line 562 (FF(16,16)) per pass, against the shipped 0.44416130E+00 and tol_abs 1e-6: pass 1 gfortran 16.2 -O2 = 0.44415909 (miss, 2.21e-6); pass 2 same -O2 repeated = 0.44415909 (agrees); pass 3 gfortran 16.2 -O0 = 0.44416130 (hit); pass 4 gfortran 13 -O2 = 0.44416130 (hit). Probe (evidence/probe-flags.txt): gfortran 16.2 -O1 and -O0 hit; -O2 -fno-tree-vectorize hits; -O2 -ffloat-store and -O2 -ffp-contract=off still miss. So the miss depends on the toolchain, not on the sources: it is gfortran 16.2 -O2 with vectorisation (diagnosed by flag toggling, not by reading the loop). The registered 1e-6 is about 0.45 of the 2.2e-6 spread between toolchains, which is larger than the single-precision noise the scout's tolerance basis assumed. Verdict blocked, not reproduced: the claim as registered does not decide the verdict. See note-to-scout.md. The claim and tolerance are unchanged.",
+  "queue_commit": "068fdb797a5fdbe28690f9eabee817a6a4ee2620",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "the unmodified sources built with the compile lines in the driver header and ran to completion (build_exit=0, run_exit=0) in all three passes; the compile flags are ours because the archive ships no build file, which is why the verdict is partial rather than reproduced",
+    "log": "reports/renka1997-ssrfpack-773/evidence/pass1-build.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/renka1997-ssrfpack-773/recipe.sh",
+  "evidence": [
+    "reports/renka1997-ssrfpack-773/evidence/pass1-build.log",
+    "reports/renka1997-ssrfpack-773/evidence/pass1-run.log",
+    "reports/renka1997-ssrfpack-773/evidence/pass1-RES.txt",
+    "reports/renka1997-ssrfpack-773/evidence/pass2-build.log",
+    "reports/renka1997-ssrfpack-773/evidence/pass2-run.log",
+    "reports/renka1997-ssrfpack-773/evidence/pass2-RES.txt",
+    "reports/renka1997-ssrfpack-773/evidence/pass3-build.log",
+    "reports/renka1997-ssrfpack-773/evidence/pass3-run.log",
+    "reports/renka1997-ssrfpack-773/evidence/pass3-RES.txt",
+    "reports/renka1997-ssrfpack-773/evidence/probe-flags.txt",
+    "reports/renka1997-ssrfpack-773/evidence/recipe-run.log"
+  ],
+  "replayed": []
+}

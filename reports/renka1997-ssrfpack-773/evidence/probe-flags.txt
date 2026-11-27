@@ -1,0 +1,6 @@
+-O1 : 0.44416130E+00
+-O0 : 0.44416130E+00
+-O2 : 0.44415909E+00
+-O2 -fno-tree-vectorize : 0.44416130E+00
+-O2 -ffloat-store : 0.44415909E+00
+-O2 -ffp-contract=off : 0.44415909E+00

@@ -5,7 +5,7 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-52 papers attempted.
+53 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
@@ -14,19 +14,19 @@ Method and gates: [docs/method.md](docs/method.md).
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
-| - | blocked or not yet run | 9 |
+| - | blocked or not yet run | 10 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 41, other 3, statistics 5
-By stack: C/C++ 8, Fortran 34, Java 1, MATLAB/Octave 4, R 5
-By decade: 1960 2, 1970 1, 1980 3, 1990 17, 2000 19, 2010 10
+By field: astronomy 1, biology 1, ecology 1, numerics 42, other 3, statistics 5
+By stack: C/C++ 8, Fortran 35, Java 1, MATLAB/Octave 4, R 5
+By decade: 1960 2, 1970 1, 1980 3, 1990 18, 2000 19, 2010 10
 
-Data as of 2026-11-27T03:35Z (the newest replay or funnel entry).
+Data as of 2026-11-27T03:36:40Z (the newest replay or funnel entry).
 
 ## The funnel
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-52 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+53 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **301 candidates considered from 4 of 4 frames: 48 attempted (16%), 0 unreachable, 253 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 30 (did not run), not-possible 2 (no code exists to run), partial 5 (ran only through a workaround or for part of the claim), succeeded 15 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 30 (did not run), not-possible 2 (no code exists to run), partial 5 (ran only through a workaround or for part of the claim), succeeded 16 (ran as documented).
 
 ## Results
 
@@ -106,7 +106,7 @@ Authors' original artifact, among all attempted papers: failed 30 (did not run),
 | [buckley1994-minimize-734](reports/buckley1994-minimize-734/result.md) | numerics · 1994 · Fortran | Shipped reference run Drivers/Sp/res2 of driver2.f90 (Rosenbrock, from (-1.2, 1), acc 0.001): least function value 0.20053597E-08, 59 function evaluations, 36 iterations (iteration count (it)) | 36 ± 0 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [buckley1994-minimize-734](reports/buckley1994-minimize-734/result.md) | numerics · 1994 · Fortran | Shipped reference run Drivers/Sp/res2 of driver2.f90 (Rosenbrock, from (-1.2, 1), acc 0.001): least function value 0.20053597E-08, 59 function evaluations, 36 iterations (least function value) | 2.00536e-09 ± 1e-08 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [cabay1997-vecpade-766](reports/cabay1997-vecpade-766/result.md) | numerics · 1997 · Fortran | ? (System S, z**1 coefficient matrix, entry (2,3), times 37 (RES1 value -131)) | -131 ± 0.5 | -131 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
-| [caliari2008-padua2d-886](reports/caliari2008-padua2d-886/result.md) | numerics · 2008 · Fortran | Normalized true error of the Padua interpolant at degree 60 for the Franke function F1 on the unit square (drvrec, FAMILY 1, NTG1 100), Table I of the pre-publication draft: 2E-11. Absolute tolerance 5e-12 (the printed value stands for [1.5E-11, 2.5E-11]). Registered 2026-11-27T03:28Z. (normalized true error, F1, degree 60, square) | 2e-11 ± 5e-12 | 2.468e-11 | 4.68e-12 | 94% ⚠ | original | ✓ · ✓ · | A | reproduced | never clean |
+| [caliari2008-padua2d-886](reports/caliari2008-padua2d-886/result.md) | numerics · 2008 · Fortran | Normalized true error of the Padua interpolant at degree 60 for the Franke function F1 on the unit square (drvrec, FAMILY 1, NTG1 100), Table I of the pre-publication draft: 2E-11. Absolute tolerance 5e-12 (the printed value stands for [1.5E-11, 2.5E-11]). Registered 2026-11-27T03:28Z. (normalized true error, F1, degree 60, square) | 2e-11 ± 5e-12 | 2.468e-11 | 4.68e-12 | 94% ⚠ | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
 | [dorrer1968-fdist-322](reports/dorrer1968-fdist-322/result.md) | numerics · 1968 · Fortran | Shipped test driver (PROGRAM tstprob, 322.txt lines 190-192 and 210): the upper-tail probability p = 1 - PROB(nf1, nf2, f) for two F-ratios in the 0.05 block of the DATA tables, F=161.45 with (1,1) df (entry 51) and F=2.9782 with (10,10) df (entry 63), against the printed expected 0.05. tol_abs 5e-4, fixed in the queue entry. Artifact-reference claim: the shipped expected values, not a value read from the CACM article. (p for F=161.45 with (1,1) df) | 0.05 ± 0.0005 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
 | [dorrer1968-fdist-322](reports/dorrer1968-fdist-322/result.md) | numerics · 1968 · Fortran | Shipped test driver (PROGRAM tstprob, 322.txt lines 190-192 and 210): the upper-tail probability p = 1 - PROB(nf1, nf2, f) for two F-ratios in the 0.05 block of the DATA tables, F=161.45 with (1,1) df (entry 51) and F=2.9782 with (10,10) df (entry 63), against the printed expected 0.05. tol_abs 5e-4, fixed in the queue entry. Artifact-reference claim: the shipped expected values, not a value read from the CACM article. (p for F=2.9782 with (10,10) df) | 0.05 ± 0.0005 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
 | [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics · 2010 · R | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
@@ -157,6 +157,7 @@ Authors' original artifact, among all attempted papers: failed 30 (did not run),
 | [purcell2011-fig5-hopf](reports/purcell2011-fig5-hopf/result.md) | biology · 2011 · MATLAB/Octave | Input concentration I (nM) of the Hopf bifurcation of equilibrium c1, Figure 5 caption (~7 nM) (Hopf input I (nM)) | 7 ± 0.5 | 7.1875 | 0.1875 | 38% | reimplemented | ✓ ✓ ✓ ✓ | C | reproduced | 2026-11-26 ok |
 | [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | astronomy · 2008 · Fortran | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_A) | 1317 ± 132 | – | – | – | - | · · · · | - | blocked | never clean |
 | [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | astronomy · 2008 · Fortran | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_C) | 52 ± 5 | – | – | – | - | · · · · | - | blocked | never clean |
+| [renka1997-ssrfpack-773](reports/renka1997-ssrfpack-773/result.md) | numerics · 1997 · Fortran | FF(I=16,J=16) of the SSRFTEST output grid (MFLAG=1, VT=TRUE, SCALE=TRUE, 33 nodes), i.e. line 562 of the shipped reference RES. Paper value 0.4441613 (the shipped reference output; the paper text was not reachable), absolute tolerance 1e-6 (fixed before any run). Registered 2026-11-27T03:36Z. (FF(16,16) of SSRFTEST grid) [shipped reference output] | 0.444161 ± 1e-06 | – | – | – | original | ✓ · ✓ · | - | blocked | never clean |
 | [renka1999-cshep2d-790](reports/renka1999-cshep2d-790/result.md) | numerics · 1999 · Fortran | The Max Error for interpolation function 1, node set 1 (N=100, NI=33, NC=17, NW=30, NR=6), printed by CS2TST to res1_2, is 0.0451, as in the shipped reference output. Absolute tolerance 5e-5 (half of the last printed unit). (CS2TST node set 1, function 1, Max Error (4 decimal print)) [shipped reference output] | 0.0451 ± 5e-05 | 0.0451 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [renka1999-tshep2d-791](reports/renka1999-tshep2d-791/result.md) | numerics · 1999 · Fortran | Average SSE/SSM over the ten test functions, node set 1, NC 17, NW 30, NR 6, 0.006063 (shipped res1_2), tol_abs 1e-5 (TSHEP2D driver1, node set 1, NC 17, NW 30, NR 6: average SSE/SSM) [shipped reference output] | 0.006063 ± 1e-05 | 0.006063 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [renka2003-dnsplin1-828](reports/renka2003-dnsplin1-828/result.md) | numerics · 2003 · Fortran | driver on data1 (Res1), the second value after the count 241 in the output, shipped as 0.565126291685656D-01 in Fortran77/Dp/Drivers/res1 (row 3 of the file), absolute tolerance 1e-12 (driver on data1, row 2 of res1) | 0.0565126 ± 1e-12 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |

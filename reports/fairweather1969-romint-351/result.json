@@ -1,0 +1,102 @@
+{
+  "paper": {
+    "short": "fairweather1969-romint-351",
+    "title": "Algorithm 351: Modified Romberg Quadrature (ROMINT)",
+    "year": 1969,
+    "doi": null,
+    "venue": "Communications of the ACM 12(6), June 1969, pp. 324-325 (archive header: COLLECTED ALGORITHMS FROM ACM, VOL. 12, NO. 6, June 1969, PP. 324-325). The frame lists it as TOMS 12,6; the archive header shows it is a CACM algorithm.; paper text not checked (artifact-reference claim)"
+  },
+  "field": "numerics (quadrature)",
+  "stack": "Fortran 77 (TOMS 351 Fortran/Sp/Src/src.f ROMINT, Drivers/driver.f)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "ROMINT (Romberg, EPS=1e-6, MAXE=5) on exp(-x^2) over [0, 4.3]: VAL and N in the TEST02 last row of the shipped res (VAL 0.886227, N 65). Paper value from the shipped reference (artifact-reference), VAL tol_abs 1e-5, N exact.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/fairweather1969-romint-351/evidence/shipped-res.txt",
+      "sha256": "36b295ef9c6ff6b75e385ae960c2faf1bfc8dbd08510d4e660d8f3d4d11e3895",
+      "archive": "netlib TOMS 351.gz, sha256 afeb019f1e28e0a2315b7c6a73bce6b302766961b55a3d4a58179465a7e01998, file Fortran/Sp/Drivers/res"
+    },
+    "values": [
+      {
+        "name": "VAL",
+        "paper": 0.886227,
+        "tol_abs": 1e-05,
+        "ours": 0.886227
+      },
+      {
+        "name": "N",
+        "paper": 65,
+        "tol_abs": 0,
+        "ours": 65
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Built the unmodified sources (Fortran/Sp/Src/src.f, Drivers/driver.f) with make VPATH=../Src driver: the Makefile expects src.f in Drivers, the archive ships it in Src. The f77 build-tool shim (impl/f77-shim.sh, outside the source tree) maps that name and runs gfortran -std=legacy. Manifests pre, mid and post are identical (3 files compared, no change). Ran ./driver > Res. TEST02 MAXE in=5: VAL 0.886227 (shipped 0.886227), N 65 (shipped 65). The ERR column differs in the last digits in MAXE in=2 and 3 rows (0.692247E-01 vs 0.692248E-01, 0.567320E-02 vs 0.567326E-02); not a claimed value.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make Res as the Makefile documents it stops at once: 'make: f77: No such file or directory' (exit 2). Kept in the log.",
+    "log": "reports/fairweather1969-romint-351/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/fairweather1969-romint-351/recipe.sh",
+  "queue_commit": "3b9f26f",
+  "evidence": [
+    "reports/fairweather1969-romint-351/evidence/fetch.log",
+    "reports/fairweather1969-romint-351/evidence/unpack.log",
+    "reports/fairweather1969-romint-351/evidence/original-attempt.log",
+    "reports/fairweather1969-romint-351/evidence/build.log",
+    "reports/fairweather1969-romint-351/evidence/recipe-run.log",
+    "reports/fairweather1969-romint-351/evidence/run.txt",
+    "reports/fairweather1969-romint-351/evidence/shipped-res.txt"
+  ],
+  "replayed": [
+    {
+      "utc": "2026-11-27T06:17:46Z",
+      "kind": "clean",
+      "values": {
+        "VAL": 0.886227,
+        "N": 65.0
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/fairweather1969-romint-351/evidence/replay-2026-11-27T061746Z.log",
+      "seconds": 55
+    }
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "afeb019f1e28e0a2315b7c6a73bce6b302766961b55a3d4a58179465a7e01998",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "make VPATH=../Src driver"
+    ],
+    "manifests": {
+      "pre": "reports/fairweather1969-romint-351/evidence/manifest.pre",
+      "mid": "reports/fairweather1969-romint-351/evidence/manifest.mid",
+      "post": "reports/fairweather1969-romint-351/evidence/manifest.post"
+    }
+  }
+}

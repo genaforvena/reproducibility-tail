@@ -1,7 +1,10 @@
 {
   "paper": {
     "title": "Algorithm 776: SRRIT, a Fortran subroutine to calculate the dominant invariant subspace of a nonsymmetric matrix",
-    "authors": ["Z. Bai", "G. W. Stewart"],
+    "authors": [
+      "Z. Bai",
+      "G. W. Stewart"
+    ],
     "year": 1997,
     "venue": "ACM Transactions on Mathematical Software 23(4), 494 (Dec 1997); Collected Algorithms from ACM, Algorithm 776",
     "doi": null,
@@ -18,19 +21,23 @@
   "claim": {
     "source": "artifact-reference",
     "determinism": "deterministic",
-    "location": "The shipped double-precision reference output Doc/DRES (uncompressed line 422 of the 776 shell archive, in the block 'Type of Test problem: RWK', after 'Total number of SRRIT iterations = 2000' and the header '.. Converged Eigenvalues ..'): 'WR = -1.235506919564D+03 WI = 0.000000000000D+00' for a 496 by 496 seeded random sign matrix (the RWK problem).",
+    "location": "The shipped double-precision reference output DRES (uncompressed line 422 of the 776 shell archive), in the block 'Type of Test problem: BWM', 'The test matrix size = 200', after 'Total number of SRRIT iterations = 2000': 'WR = -1.235506919564D+03 WI = 0.000000000000D+00' (the first converged real eigenvalue of the BWM 200 by 200 problem). Revised 2026-11-27 after rerun's note (reports/bai1997-srrit-776/note-to-scout.md): the value was first registered under the RWK 496 block, which prints WR = 1.0 first; the number itself is unchanged.",
     "reference": {
-      "file": "DRES (inside 776.gz, the double-precision reference for the RWK test)",
+      "file": "DRES (inside 776.gz, the double-precision reference; BWM block, line 422 of the uncompressed text)",
       "sha256": "not computed; the value is quoted here and compared as a number",
       "archive": "netlib.org/toms/776.gz sha256 11341f825b8c12bb7f51bf58affe513255d14206fa8147310284249c2e6d1d34"
     },
-    "metric": "The first converged real eigenvalue WR of the RWK problem printed by the double-precision driver (DSRRIT test), 496 by 496 matrix, seeded. Claim: the rerun's value is -1235.506919564 to within the tolerance.",
+    "metric": "The first converged real eigenvalue WR of the BWM problem (test matrix size 200, after 2000 SRRIT iterations) printed by the double-precision driver (DSRRIT test). Claim: the rerun's value is -1235.506919564 to within the tolerance.",
     "paper_value": "Shipped reference value -1.235506919564D+03 (printed by the authors' double-precision driver in DRES). The article text was not read; the value is the archive's own printed output.",
     "values": [
-      {"name": "WR, first converged eigenvalue, RWK 496x496 (double precision)", "paper": "-1235.506919564", "tol_abs": 1e-6}
+      {
+        "name": "WR, first converged eigenvalue, BWM 200x200 (double precision)",
+        "paper": "-1235.506919564",
+        "tol_abs": 1e-06
+      }
     ],
     "tolerance": {
-      "abs": 1e-6,
+      "abs": 1e-06,
       "basis": "The shipped value has 13 significant digits in the archive, so its printed rounding is far below 1e-6. The run's residual for the converged pair is about 3.6e-9 (the archive's own 'Final residual norms' line), so the eigenvalue can move by up to about that much; 1e-6 absolute is about 1e-9 relative, loose enough for compiler and libm rounding and tight enough to catch a changed iteration or a broken refinement step. Fixed now, before any run; not to be loosened after a run."
     }
   },

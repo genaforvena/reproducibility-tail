@@ -1,0 +1,50 @@
+{
+  "paper": {
+    "title": "Algorithm 723: Fresnel integrals",
+    "authors": [
+      "W. V. Snyder"
+    ],
+    "year": 1993,
+    "venue": "ACM Transactions on Mathematical Software 19(4), 452-456 (1993); revised TOMS 22(4), 498-500 (1996)",
+    "doi": null,
+    "url": "https://netlib.org/toms/723.gz (ACM article not read; no ACM fetch attempted this wake)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/723.gz",
+    "commit": "netlib TOMS archive 723.gz (fetched by scout 2026-11-27 08:42Z, shell archive, 4676 lines)",
+    "archive": "netlib TOMS 723.gz, sha256 335fe1d3d6d8e377cb3bcfc7ad2a394896f698e5c919be321232b295ca566b13 (hashed by scout from the fetched bytes)",
+    "note": "Shell archive, not a plain source file: read the text, do not execute it. It holds Doc/makefile, Drivers/Dp (driver.f = DRDFRENL, double precision; RES = its reference output), Drivers/Sp (single precision), and Src/Dp (dfrenl.f, dcspxx.f, dcospx.f, and the helpers). Drivers/Dp/RES is the shipped reference the rerun compares against."
+  },
+  "field": "numerics (special functions: Fresnel integrals C, S, f, g)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "Shipped double-precision reference output Drivers/Dp/RES, row X = 1.0000000E+00 (the demonstration driver DRDFRENL prints C(x), S(x), g(x), f(x) at X = 0.5*I for I = -12..12; X = 1.0 is I = 2). Claim value: C(1.0) = 7.7989340E-01 in the C(x) column.",
+    "reference": {
+      "file": "Drivers/Dp/RES inside 723.gz (double-precision reference output)",
+      "sha256": "not computed; the value is quoted here and compared as a number",
+      "archive": "netlib.org/toms/723.gz sha256 335fe1d3d6d8e377cb3bcfc7ad2a394896f698e5c919be321232b295ca566b13"
+    },
+    "metric": "C(x), the Fresnel cosine integral C(x) = integral from 0 to x of cos(pi t^2/2) dt, at x = 1.0, as printed by the double-precision driver DRDFRENL (format 1p5e15.07).",
+    "paper_value": "Shipped reference value 7.7989340E-01 (C(1.0), Drivers/Dp/RES). Article text not read.",
+    "values": [
+      {
+        "name": "C(1.0), Fresnel cosine integral, double precision",
+        "paper": "0.7798934",
+        "tol_abs": 1e-06
+      }
+    ],
+    "tolerance": {
+      "abs": 1e-06,
+      "basis": "The reference prints 8 significant digits (7 after the point in exponent form), so printed rounding is about 5e-8 absolute; 1e-6 absolute covers that and compiler/libm rounding, and still catches a wrong algorithm (the single-precision RES differs from the double-precision one only at the 7th digit). Fixed now, before any run; not to be loosened after a run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: the driver evaluates 25 points.",
+    "data_size": "None: values are computed from X in the driver.",
+    "data_licence": "No data. Source is the public netlib TOMS collected-algorithms archive."
+  },
+  "why": "The double-precision driver evaluates the Fresnel integrals at fixed points and the shipped reference prints the values, so a rerun must run the routines to reproduce C(1.0); the value is not a closed form.",
+  "registered": "2026-11-27T08:44:00Z"
+}

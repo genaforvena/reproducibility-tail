@@ -1,0 +1,50 @@
+{
+ "paper": {
+  "title": "Algorithm 928: A general, parallel implementation of Dantzig-Wolfe decomposition (DWSOLVER)",
+  "authors": [
+   "Joseph L. Rios"
+  ],
+  "year": 2013,
+  "venue": "ACM Transactions on Mathematical Software 39(3), Article 21 (May 2013); Collected Algorithms from ACM, Algorithm 928",
+  "doi": null,
+  "url": "https://netlib.org/toms/928.zip (ACM article not read: dl.acm.org is not fetched from this host)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/928.zip",
+  "commit": "netlib TOMS archive 928.zip (fetched 2026-11-27 07:39Z, 1926541 bytes, 254 members; top-level directory 928/, with C/Src (GLPK 4.44 with modifications and the dw_*.c files), C/Examples, Doc/exampleOutput.pdf, C/compile)",
+  "archive": "netlib TOMS 928.zip, sha256 not recorded by scout (rerun records its own fetch hash)",
+  "note": "Zip archive. Rerun extracts in an empty directory and builds with the C/compile script (GLPK bundled, POSIX threads). Run the example from C/Examples/book_dantzig with the book_test input: the README says '<PATH_TO_DANTZIG_WOLFE_EXECUTABLE> -g book_test'. The shipped Doc/exampleOutput.pdf is the authors' example log (text extracted by scout with pdftotext -layout; the file is not run). Stack: C with pthreads; not a GPU or MPI code."
+ },
+ "field": "operations research and numerical optimisation (Dantzig-Wolfe decomposition of block-angular linear programs)",
+ "stack": "C/C++",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Doc/exampleOutput.pdf (shipped in 928.zip), the example log's final master objective: '#### Master objective value = -3.666667e+01' at 'Iteration 3 of phase II' (converged; 'I think we've converged on an optimum'). The log is the authors' output for the book_test example (Dantzig and Thapa, Linear Programming: Theory and Extensions, example 10.5/10.6, as in C/Examples/book_dantzig/README). Scout read the log text with pdftotext -layout; the value must be checked as printed in the PDF.",
+  "reference": {
+   "file": "Doc/exampleOutput.pdf (inside 928.zip), page 1, the line '#### Master objective value = -3.666667e+01' in the final phase II iteration",
+   "sha256": "not computed; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/928.zip (sha256 not recorded; rerun records it)"
+  },
+  "metric": "The master objective value after the last phase II iteration of DWSOLVER on the book_test example, as printed in the log of the rerun (the line '#### Master objective value = ...'). Claim: the final master objective is -36.666667 (printed -3.666667e+01).",
+  "paper_value": "Shipped output log in Doc/exampleOutput.pdf: final master objective -3.666667e+01 (that is -110/3 rounded to six decimals).",
+  "values": [
+   {
+    "name": "final master objective, book_test",
+    "paper": "-36.666667",
+    "tol_abs": 1e-05
+   }
+  ],
+  "tolerance": {
+   "abs": 1e-05,
+   "basis": "The shipped value is printed with six decimals (rounding error 5e-7). 1e-5 absolute is about 20 times the print rounding, which covers the last-digit noise of a different GLPK or compiler and no more; a different optimum (for instance from a dropped constraint or a wrong column) moves the value by at least a unit. Fixed before any run; not to be loosened after a run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute for the book_test example on a laptop-class CPU (a small block-angular LP with 3 master rows).",
+  "data_size": "Under 1 MB: the book_dantzig .cplex files in C/Examples.",
+  "data_licence": "Public domain or NASA open-source (GPL v3 with additional terms, per Doc/README). No restricted data."
+ },
+ "why": "The objective is the optimum of a small LP computed by the decomposition, not an input value, so the shipped log checks that the decomposition still converges to the printed master objective on a modern build; the parallel threads are part of what is run, and the example is small enough to run on CPU.",
+ "registered": "2026-11-27T07:40:30Z"
+}

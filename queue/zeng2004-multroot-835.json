@@ -1,0 +1,55 @@
+{
+ "paper": {
+  "title": "Algorithm 835: MultRoot - A Matlab package for computing polynomial roots and multiplicities",
+  "authors": [
+   "Zhonggang Zeng"
+  ],
+  "year": 2004,
+  "venue": "ACM Transactions on Mathematical Software 30(2), 218-236 (June 2004); Collected Algorithms from ACM, Algorithm 835",
+  "doi": null,
+  "url": "https://netlib.org/toms/835.gz (ACM article not read: dl.acm.org returns 403 to automated fetch from this host)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/835.gz",
+  "commit": "netlib TOMS archive 835.gz (fetched 2026-11-27 07:38Z, 1120146 bytes uncompressed; shell archive, readme dated Jan. 6, 2004)",
+  "archive": "netlib TOMS 835.gz, sha256 of the downloaded gz not recorded in this entry; rerun records it from its own fetch. Scout did not execute the shell archive.",
+  "note": "Shell archive with Doc/readme.txt, Matlab/Src/multroot.m and related modules, and Matlab/Drivers/*.m test polynomial drivers. Rerun must gunzip and extract in an empty directory, then run in Octave (MATLAB is proprietary). Neither MATLAB nor Octave is installed on this host (checked by scout: which octave, which matlab)."
+ },
+ "field": "numerics (polynomial roots and multiplicities)",
+ "stack": "MATLAB/Octave",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Doc/readme.txt, section 3 'Simple applications', the worked example: f = poly([ones(1,20),2*ones(1,20),3*ones(1,10),4*ones(1,5)]); z = multroot(f). The shipped output lists the roots and multiplicities table (roots 4, 3, 2, 1 with multiplicities 5, 10, 20, 20).",
+  "reference": {
+   "file": "Doc/readme.txt (inside 835.gz, the printed computed-roots table in section 3)",
+   "sha256": "not computed; the values are quoted here and compared as numbers",
+   "archive": "netlib.org/toms/835.gz (sha256 not recorded; rerun to record it)"
+  },
+  "metric": "The multiplicity column of multroot(f) for that polynomial must equal (5, 10, 20, 20) exactly, and the roots must match (4, 3, 2, 1) within the absolute tolerance below. The printed readme also gives the structure-preserving condition number 73.6821; that number is not part of this claim.",
+  "paper_value": "Shipped readme output: roots 4.000000000000002 (mult 5), 2.999999999999999 (mult 10), 2.000000000000000 (mult 20), 1.000000000000000 (mult 20).",
+  "values": [
+   {
+    "name": "multiplicities (4,3,2,1)",
+    "paper": "5,10,20,20",
+    "tol_abs": 0
+   },
+   {
+    "name": "roots (4,3,2,1)",
+    "paper": "4.000000000000002, 2.999999999999999, 2.000000000000000, 1.000000000000000",
+    "tol_abs": 1e-09
+   }
+  ],
+  "tolerance": {
+   "abs": 1e-09,
+   "basis": "Roots of a multiplicity-20 polynomial are only known to about 1e-13 (the readme's own forward error estimate, 1.27e-13), so 1e-9 absolute is a comfortable bound that still rejects a wrong multiplicity structure. Multiplicities are integers and must match exactly. Fixed before any run; not to be loosened after a run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute for the worked example in Octave.",
+  "data_size": "None: the polynomial is generated in the example.",
+  "data_licence": "No data. Source is the public netlib TOMS collected-algorithms archive."
+ },
+ "why": "The multiplicity structure of a clustered polynomial root set is computed by the algorithm, not read off the input, so the printed table tests that the code still finds it on a modern Octave build.",
+ "registered": "2026-11-27T07:39:30Z"
+}

@@ -1,0 +1,48 @@
+{
+ "paper": {
+  "title": "Algorithm 822: GIZ, HIZ: Two Fortran 77 Routines for the Computation of Complex Scorer Functions",
+  "authors": [
+   "Amparo Gil",
+   "Javier Segura",
+   "Nico M. Temme"
+  ],
+  "year": 2002,
+  "venue": "ACM Transactions on Mathematical Software 28(4), 436-447 (TOMS 822, Dec 2002); Collected Algorithms from ACM",
+  "doi": null,
+  "url": "https://netlib.org/toms/822.gz (ACM article not read: dl.acm.org returns 403 to automated fetch from this host)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/822.gz",
+  "commit": "netlib TOMS archive 822.gz (fetched 2026-11-27 07:37Z, 660425 bytes, gzip; shell archive created Wed Apr 16 10:42:34 2003, 48477 lines uncompressed)",
+  "archive": "netlib TOMS 822.gz, sha256 ae6c947ece8fea8ba98d2f10ce44e3370e14af7a9e14a92217dfcfc5a65e8a50 (hashed by scout from the fetched bytes)",
+  "note": "Shell archive, not a plain source file: gunzip, then read it; do not execute it. It contains Fortran77/Drivers/Dp/driver.f (PROGRAM SCTEST), port.f, the reference outputs res1..res4 and Fortran77/Src/Dp/src.f (AIZ and the Airy routines) and src_819.f (GIZ, HIZ and their series, integral and expansion helpers). The Makefile lists driver.o src.o airy.f port.f, which does not match the file names in the archive (src_819.f holds GIZ/HIZ), so the rerun must work out the build from the sources. port.f is a machine-constant file that needs editing for a modern compiler."
+ },
+ "field": "numerics (special functions: complex Scorer functions HI(z) and GI(z), tested via their addition formulas)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "The shipped reference output res1 (the file the driver SCTEST writes as 'Res1', header 'TEST OF THE UNSCALED GI(Z)'), last block line in the file: 'MAXIMUM VALUE OF THE MODULUS OF THE CHECK = 9.1704421834038D-14' at line 15666 of the uncompressed 822 shell archive (the file res1 begins at line 706). The driver computes it by evaluating GI(Z+W) against its Taylor series over the grid R=0.1..29.7 (step 0.6, 50 values) and PHI=pi*J/1800 for J=10..1800 step 6, with W=0.1 (archive text lines 133-204, the driver's main loop).",
+  "reference": {
+   "file": "Fortran77/Drivers/Dp/res1 (inside 822.gz, uncompressed line 15666)",
+   "sha256": "not computed; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/822.gz sha256 ae6c947ece8fea8ba98d2f10ce44e3370e14af7a9e14a92217dfcfc5a65e8a50"
+  },
+  "metric": "The maximum modulus of the addition-formula residual for the unscaled GI(Z) (IFAC=1, driver's GITEST modulus error) over the driver's grid, as printed by the rerun driver into its res1 file. Claim: the rerun's value is at most 1e-12 in absolute terms.",
+  "paper_value": "Shipped reference value 9.1704421834038D-14 (printed by the authors' driver in res1; the article text, which might state a relative accuracy bound, was not read; the 2003 archive file is the only numeric value checked here).",
+  "values": [
+    {"name": "max |residual| unscaled GI(Z), res1", "paper": "9.1704421834038e-14", "tol_abs": 1e-12}
+  ],
+  "tolerance": {
+   "abs": 1e-12,
+   "basis": "Round-off-level quantity: the shipped value is 9.2e-14 and the residual is a difference of sums of order 1, so a modern compiler may move it by a small factor. 1e-12 allows roughly one decade of slack above the shipped value and still rejects a formula or series error, which shows up at 1e-6 or larger. Fixed now, before any run; not to be loosened after a run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute for the driver (grid of 50 x 300 points, a few function evaluations each).",
+  "data_size": "None: the grid is generated in the driver.",
+  "data_licence": "No data. Source is the public netlib TOMS collected-algorithms archive."
+ },
+ "why": "The driver computes its residual from GI(Z) at run time, so the printed maximum has to come from running the routine; the shipped res1 is a machine-independent-enough round-off check that tests bit-rot in GIZ on a modern compiler, which is the artifact-match level of the rubric.",
+ "registered": "2026-11-27T07:38:00Z"
+}

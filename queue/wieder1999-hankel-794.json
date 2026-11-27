@@ -1,0 +1,50 @@
+{
+ "paper": {
+  "title": "Algorithm 794: Numerical Hankel transform by the Fortran program HANKEL",
+  "authors": [
+   "Thomas Wieder"
+  ],
+  "year": 1999,
+  "venue": "ACM Transactions on Mathematical Software 25(2), 240-250 (June 1999); Collected Algorithms from ACM, Algorithm 794",
+  "doi": null,
+  "url": "https://netlib.org/toms/794.gz (ACM article not read: dl.acm.org returns 403 to automated fetch from this host)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/794.gz",
+  "commit": "netlib TOMS archive 794.gz (fetched 2026-11-27 07:37Z, 67330 bytes gzip, 261474 bytes uncompressed; shell archive created Fri Oct 22 09:59:44 1999)",
+  "archive": "netlib TOMS 794.gz, sha256 of the downloaded gz not recorded in this entry; the rerun records it from its own fetch. Scout read the members in its own scratch directory and did not execute the shell archive.",
+  "note": "Shell archive. Members: Fortran77/Src/Dp/specfun.f and src.f (the HANKEL code and its helpers), Fortran77/Drivers/Dp/driver.f, data (the input cards: stdin file names res.err and res, mode 1, NU 1.0, XI 5.0, then 2), res (the shipped stdout) and res.err (the shipped protocol). Rerun must gunzip and extract in an empty directory, then run the driver with the data file as stdin."
+ },
+ "field": "numerics (numerical Hankel transform of a test function with a closed-form transform)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "The shipped reference output Fortran77/Drivers/Dp/res (and its protocol res.err), the single data row '0.500000000E+01  0.208245531E-01', i.e. the numerical Hankel transform HT(FUN, NU=1, XI=5) of FUN(X)=X**(NU+1/2) for X<1 and 0 elsewhere, computed by the driver with mode 1 (function coded in DHFUNC).",
+  "reference": {
+   "file": "Fortran77/Drivers/Dp/res (inside 794.gz, the row after the header line '# XI  HANKEL_TRANSFORM(XI)')",
+   "sha256": "not computed; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/794.gz (sha256 not recorded; rerun to record it)"
+  },
+  "metric": "The HANKEL output HT at XI=5.0 for NU=1.0, as printed by the driver in its result file. Claim: the rerun gives 0.0208245531 (printed as 0.208245531E-01) to within the tolerance.",
+  "paper_value": "Shipped reference value 0.208245531E-01 (printed in res and res.err by the authors' driver). The closed form in the driver's own comments is XI**(-1/2)*J(NU+1,XI), which evaluates to 0.0208245530754 at XI=5, NU=1 (computed by scout from the power series); the claim is the numerical code's output, not the closed form.",
+  "values": [
+   {
+    "name": "HT(XI=5.0, NU=1.0)",
+    "paper": "0.0208245531",
+    "tol_abs": 1e-09
+   }
+  ],
+  "tolerance": {
+   "abs": 1e-09,
+   "basis": "The shipped value has 9 significant digits (rounding error 5e-12 absolute). 1e-9 absolute is about 5e-8 relative: tight enough to catch a changed quadrature or series, loose enough to absorb compiler and libm rounding. Fixed before any run; not to be loosened after a run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute (one transform at one XI).",
+  "data_size": "None: input is the data file in the archive.",
+  "data_licence": "No data. Source is the public netlib TOMS collected-algorithms archive."
+ },
+ "why": "The transform is computed by the code's numerical quadrature and series, so the shipped output checks the code's numerical path on a modern compiler; the closed form only serves as a sanity check on the shipped digits.",
+ "registered": "2026-11-27T07:39:00Z"
+}

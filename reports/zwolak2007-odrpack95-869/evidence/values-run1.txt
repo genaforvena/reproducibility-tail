@@ -1,0 +1,1 @@
+VALUE BETA(1) (ODR, simple example) 1.63337057

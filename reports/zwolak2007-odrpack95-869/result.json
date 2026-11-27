@@ -1,0 +1,62 @@
+{
+  "paper": {
+    "short": "zwolak2007-odrpack95-869",
+    "title": "Algorithm 869: ODRPACK95: a weighted orthogonal distance regression code with bound constraints",
+    "year": 2007,
+    "doi": null
+  },
+  "field": "numerics (orthogonal distance regression with bounds)",
+  "stack": "Fortran 95",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "BETA(1) of the explicit ODR fit in F95/Drivers/simple_example.f90, as printed in the shipped reference output F95/Drivers/simple_example.out (section 'Estimated BETA(J)', row J = 1), against the registered value 1.63337057",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/zwolak2007-odrpack95-869/evidence/reference/simple_example.out",
+      "sha256": "9e1862cc4c94ccfcff7ddbe472577a7e2d426f6f5351322401d68da57e56565a",
+      "archive": "netlib.org/toms/869.zip sha256 404eb22d15122a6ce59959f39737cba198a3767eb1976ceb8f12b211c3a09550 (member F95/Drivers/simple_example.out)"
+    },
+    "values": [
+      {
+        "name": "BETA(1) (ODR, simple example)",
+        "paper": 1.63337057,
+        "tol_abs": 1e-06,
+        "ours": 1.63337057
+      }
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "The authors' sources (F95/Src/real_precision.f, odr.f, lpkbls.f) and the registered driver (F95/Drivers/simple_example.f90) compile with conda-forge gfortran installed in the sandbox fetch step and run without any source change, using the makefile's default flags (F95OPT empty). BETA(1) = 1.63337057 in both passes, matching the shipped output at 9 significant digits. The same sources built with -O2 give 1.63337663 (6.1e-6 from the paper, six times the registered tolerance); this sensitivity is recorded in result.md and is not the verdict.",
+  "queue_commit": "45d181d",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "The shipped sources compile and run as documented with the makefile's default flags. The only addition is the compiler itself (f95 is not available in the sandbox), installed in the sandbox fetch step; no source was edited.",
+    "log": "reports/zwolak2007-odrpack95-869/evidence/original-attempt-build.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/zwolak2007-odrpack95-869/recipe.sh",
+  "evidence": [
+    "reports/zwolak2007-odrpack95-869/evidence/original-attempt-build.log",
+    "reports/zwolak2007-odrpack95-869/evidence/recipe-run.log",
+    "reports/zwolak2007-odrpack95-869/evidence/run-pass1.txt",
+    "reports/zwolak2007-odrpack95-869/evidence/run-pass2.txt",
+    "reports/zwolak2007-odrpack95-869/evidence/run-sensitivity-O2.txt",
+    "reports/zwolak2007-odrpack95-869/evidence/values-run1.txt",
+    "reports/zwolak2007-odrpack95-869/evidence/values-run2.txt",
+    "reports/zwolak2007-odrpack95-869/evidence/reference/simple_example.out",
+    "reports/zwolak2007-odrpack95-869/impl/extract_value.py",
+    "reports/zwolak2007-odrpack95-869/result.md"
+  ],
+  "replayed": []
+}

@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-84 papers attempted.
+85 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
-| A | authors' code, run clean | 18 |
+| A | authors' code, run clean | 19 |
 | B | authors' code with build fixes | 47 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 17 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 71, other 4, statistics 6
-By stack: C/C++ 10, Fortran 60, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 1960 4, 1970 7, 1980 7, 1990 28, 2000 26, 2010 12
+By field: astronomy 1, biology 1, ecology 1, numerics 72, other 4, statistics 6
+By stack: C/C++ 10, Fortran 61, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 1960 4, 1970 7, 1980 7, 1990 28, 2000 27, 2010 12
 
 Data as of 2026-11-27T09:55:19Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T09:55:19Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-84 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+85 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **396 candidates considered from 4 of 4 frames: 83 attempted (21%), 0 unreachable, 313 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 54 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 20 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 54 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 21 (ran as documented).
 
 ## Results
 
@@ -299,6 +299,7 @@ Authors' original artifact, among all attempted papers: failed 54 (did not run),
 | [zeng2004-multroot-835](reports/zeng2004-multroot-835/result.md) | numerics · 2004 · MATLAB/Octave | multroot(f) on the readme's worked example f = poly([ones(1,20),2*ones(1,20),3*ones(1,10),4*ones(1,5)]) returns multiplicities 5, 10, 20, 20 for roots 4, 3, 2, 1 (exact), and the roots within 1e-9 absolute of the printed values. The registered claim's values are split per root here: same numbers and tolerances, one numeric value per root so the gates can judge them. (root_3) [shipped reference output] | 3 ± 1e-09 | 3 | 1.11022e-14 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [zeng2004-multroot-835](reports/zeng2004-multroot-835/result.md) | numerics · 2004 · MATLAB/Octave | multroot(f) on the readme's worked example f = poly([ones(1,20),2*ones(1,20),3*ones(1,10),4*ones(1,5)]) returns multiplicities 5, 10, 20, 20 for roots 4, 3, 2, 1 (exact), and the roots within 1e-9 absolute of the printed values. The registered claim's values are split per root here: same numbers and tolerances, one numeric value per root so the gates can judge them. (root_2) [shipped reference output] | 2 ± 1e-09 | 2 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [zeng2004-multroot-835](reports/zeng2004-multroot-835/result.md) | numerics · 2004 · MATLAB/Octave | multroot(f) on the readme's worked example f = poly([ones(1,20),2*ones(1,20),3*ones(1,10),4*ones(1,5)]) returns multiplicities 5, 10, 20, 20 for roots 4, 3, 2, 1 (exact), and the roots within 1e-9 absolute of the printed values. The registered claim's values are split per root here: same numbers and tolerances, one numeric value per root so the gates can judge them. (root_1) [shipped reference output] | 1 ± 1e-09 | 1 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [zwolak2007-odrpack95-869](reports/zwolak2007-odrpack95-869/result.md) | numerics · 2007 · Fortran | BETA(1) of the explicit ODR fit in F95/Drivers/simple_example.f90, as printed in the shipped reference output F95/Drivers/simple_example.out (section 'Estimated BETA(J)', row J = 1), against the registered value 1.63337057 (BETA(1) (ODR, simple example)) [shipped reference output] | 1.63337 ± 1e-06 | 1.63337 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
 
 Margin is |our value − paper value| as a share of the tolerance registered before the run; ⚠ marks 80% or more, a result that a different environment could flip.
 

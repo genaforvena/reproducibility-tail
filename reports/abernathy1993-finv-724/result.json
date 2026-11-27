@@ -1,0 +1,96 @@
+{
+  "paper": {
+    "short": "abernathy1993-finv-724",
+    "title": "Algorithm 724: FINV, F-percentage points (Collected Algorithms from ACM)",
+    "year": 1993,
+    "doi": null
+  },
+  "field": "numerics (statistics: F-distribution percentage points)",
+  "field_class": "numerics",
+  "stack": "Fortran 77 (netlib TOMS/ACM 724.gz: one plain Fortran file, FINV with DBETAI/DLBETA/BINV/ZINV/FINIT/TINIT and the driver PROGRAM TEST, followed by the authors' printed test output pasted without comment markers)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "FINV(M=10, N=10, P=0.9), the cell in row N = 10, column M = 10 of the P = 0.90 table in the archive's printed TEST driver output: 0.23226039E+001. Registered by scout from the artifact's own printed output, not a paper table. Tolerance 2e-7 absolute, fixed before any run.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "FINV_M10_N10_P090",
+        "paper": 2.3226039,
+        "tol_abs": 2e-07,
+        "ours": 2.3226039
+      }
+    ],
+    "reference": {
+      "file": "reports/abernathy1993-finv-724/evidence/archive-724.txt",
+      "sha256": "aa1998859f9cb66ddf2d730199e990228c541b8d89e09c34de196aaa65e6c635",
+      "archive": "netlib.org/toms/724.gz, sha256 c63388b4b9ec6b2d662e9ea6d772fcf2707e028c9e99a7455db37dccd9111ac2",
+      "note": "sha256 of the decompressed archive text (evidence/archive-724.txt); the printed output is archive lines 646-690 (evidence/shipped-block.txt)."
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "G1: the archive compiled as shipped stops at line 653 (' P =  0.90000'): the authors' printed output after line 645 is not commented out, so it is read as Fortran (log kept). The patch is an extraction: archive lines 1-645 (the code, ending with END at line 643) are copied verbatim to 724.f, and the driver then compiles with gfortran defaults (gfortran 16.2.0, no flags). Nothing inside the code is edited. The driver ran to completion and wrote TESTDATA; its P = 0.90, N = 10, M = 10 cell is 0.23226039E+001, equal to the shipped printed value at the printed precision. The run is one pass; a replay will repeat the cut from the archive bytes.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "gfortran stops at line 653 of the archive: the authors' printed test output (lines 646-917) follows the code without comment markers, so it is read as Fortran statements (Error: Non-numeric character in statement label).",
+    "log": "reports/abernathy1993-finv-724/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/abernathy1993-finv-724/recipe.sh",
+  "queue_commit": "d033304",
+  "evidence": [
+    "reports/abernathy1993-finv-724/evidence/fetch.log",
+    "reports/abernathy1993-finv-724/evidence/fetch-probe.log",
+    "reports/abernathy1993-finv-724/evidence/original-attempt.log",
+    "reports/abernathy1993-finv-724/evidence/patch.log",
+    "reports/abernathy1993-finv-724/evidence/build.log",
+    "reports/abernathy1993-finv-724/evidence/run.log",
+    "reports/abernathy1993-finv-724/evidence/TESTDATA",
+    "reports/abernathy1993-finv-724/evidence/shipped-block.txt",
+    "reports/abernathy1993-finv-724/evidence/recipe-run.log",
+    "reports/abernathy1993-finv-724/evidence/archive-724.txt"
+  ],
+  "stack_note": "gfortran 16.2.0 (conda-forge), default flags; no -std option",
+  "patch": {
+    "kind": "extraction",
+    "archive_sha256": "c63388b4b9ec6b2d662e9ea6d772fcf2707e028c9e99a7455db37dccd9111ac2",
+    "compared": 0,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": [
+        "724.f"
+      ]
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -o test724 724.f"
+    ],
+    "manifests": {
+      "pre": "reports/abernathy1993-finv-724/evidence/manifest.pre",
+      "mid": "reports/abernathy1993-finv-724/evidence/manifest.mid",
+      "post": "reports/abernathy1993-finv-724/evidence/manifest.post"
+    },
+    "extraction": {
+      "file_sha256": "aa1998859f9cb66ddf2d730199e990228c541b8d89e09c34de196aaa65e6c635",
+      "file": "724.txt",
+      "start": 1,
+      "end": 645,
+      "extracted": "724.f",
+      "range_sha256": "c55d2ff894ba1f7cf019e9b4c7006594be1bcd05461959b5794e387479c569d9"
+    }
+  }
+}

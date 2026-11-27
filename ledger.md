@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-101 papers attempted.
+102 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 23 |
-| B | authors' code with build fixes | 55 |
+| B | authors' code with build fixes | 56 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 2 |
 | - | blocked or not yet run | 20 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 88, other 4, statistics 6
-By stack: C/C++ 12, Fortran 75, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 0 1, 1960 4, 1970 10, 1980 9, 1990 34, 2000 28, 2010 15
+By field: astronomy 1, biology 1, ecology 1, numerics 89, other 4, statistics 6
+By stack: C/C++ 12, Fortran 76, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 0 1, 1960 4, 1970 10, 1980 9, 1990 35, 2000 28, 2010 15
 
 Data as of 2026-11-27T14:35:00Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T14:35:00Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-101 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+102 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **496 candidates considered from 4 of 4 frames: 100 attempted (20%), 0 unreachable, 396 rejected.**
 
@@ -74,12 +74,13 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 66 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 25 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 67 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 25 (ran as documented).
 
 ## Results
 
 | paper | field · year · stack | claim | paper value ± tol | our value | Δ | margin | basis | gates G1 G2 G3 G5 | grade | verdict | last replay |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| [abernathy1993-finv-724](reports/abernathy1993-finv-724/result.md) | numerics · 1993 · Fortran | FINV(M=10, N=10, P=0.9), the cell in row N = 10, column M = 10 of the P = 0.90 table in the archive's printed TEST driver output: 0.23226039E+001. Registered by scout from the artifact's own printed output, not a paper table. Tolerance 2e-7 absolute, fixed before any run. (FINV_M10_N10_P090) [shipped reference output] | 2.3226 ± 2e-07 | 2.3226 | 0 | 0% | patched | ✓ · ✓ · | B | reproduced | never clean |
 | [akima1991-uvip3p-697](reports/akima1991-uvip3p-697/result.md) | numerics · 1991 · Fortran | The one-call result YI2 of UVIP3P, for the 31 abscissas of the shipped driver TTUVIP, agrees with the driver's expected values YIE(31,2) within 0.0005 absolute, for NP = 3 and NP = 6 (artifact-reference: the shipped expected values are the oracle, not a value printed in the paper). (YI2 vs YIE, NP=3, all 31 points) [shipped reference output] | 0 ± 0.0005 | 0 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [akima1991-uvip3p-697](reports/akima1991-uvip3p-697/result.md) | numerics · 1991 · Fortran | The one-call result YI2 of UVIP3P, for the 31 abscissas of the shipped driver TTUVIP, agrees with the driver's expected values YIE(31,2) within 0.0005 absolute, for NP = 3 and NP = 6 (artifact-reference: the shipped expected values are the oracle, not a value printed in the paper). (YI2 vs YIE, NP=6, all 31 points) [shipped reference output] | 0 ± 0.0005 | 0 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [akima1996-rgbi3p-760](reports/akima1996-rgbi3p-760/result.md) | numerics · 1996 · Fortran | ZI(XI=3.50, YI=5.00), the RGBI3P interpolated value at an off-grid point, as printed in the RGBI3P 'Calculated ZI Values' block of the shipped reference output RES. Registered tolerance: abs 0.01. (ZI(3.5, 5.0) (RGBI3P)) [shipped reference output] | 1.7 ± 0.01 | 1.7 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |

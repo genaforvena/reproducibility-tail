@@ -1,0 +1,50 @@
+{
+ "paper": {
+  "title": "Algorithm 795: PHCpack: a general-purpose solver for polynomial systems by homotopy continuation",
+  "authors": [
+   "Jan Verschelde"
+  ],
+  "year": 1999,
+  "venue": "ACM Transactions on Mathematical Software 25(2), June 1999, pp. 251-276",
+  "doi": null,
+  "url": "https://netlib.org/toms/795.gz (ACM article not read: dl.acm.org returns 403 to automated fetch)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/795.gz",
+  "commit": "netlib TOMS archive 795.gz: a shell archive (sh-shar) of the PHCpack Ada sources (about 124k lines, Ada and GNAT makefiles), with a Demo/ directory holding the polynomial-system database and its READ_ME table",
+  "archive": "sha256 6ff06dbba5bce3143881fdce40907a435fd687c246f917aa4e150993f6dd65ec (netlib.org/toms/795.gz as downloaded 2026-11-27, 808321 bytes; the unpacked shar text is 4254818 bytes)",
+  "note": "Unpack the shar into its own empty directory with sh (run it as a file, not piped to a shell in a working tree). Read Demo/READ_ME first: the table 'CHARACTERISTICS OF THE POLYNOMIAL SYSTEMS' gives, for each system, n, D, bz, bs, mv and #sols. The system cyclic5 is listed in Demo/ as its own file. Ada, built with GNAT (Ada 95); no GNAT is installed on the scout host."
+ },
+ "field": "numerics (polynomial system solving, homotopy continuation)",
+ "stack": "Ada",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "The authors' shipped database table in Demo/READ_ME, section 'CHARACTERISTICS OF THE POLYNOMIAL SYSTEMS', row cyclic5 (n = 5, D = 120, bz = 120, bs = 106, mv = 70, #sols = 70). The claim is the number of isolated solutions that the PHCpack solver computes for the cyclic 5-roots system, which the table records as 70.",
+  "reference": {
+   "file": "Demo/READ_ME (the shipped characteristics table; row cyclic5, column #sols)",
+   "sha256": "91a8a0ed9a34084c16cfc8486d55e2f222921650c2a7003e61b9d4a96ec5c246 (the body of the READ_ME heredoc, shar lines 4201-4457, hashed by the scout without running the shar; a sh-extracted copy should match apart from the final newline)",
+   "archive": "netlib.org/toms/795.gz sha256 6ff06dbba5bce3143881fdce40907a435fd687c246f917aa4e150993f6dd65ec"
+  },
+  "metric": "Number of solutions of the cyclic 5-roots system (the file Demo/cyclic5) returned by the PHCpack solver after its path tracking and endgame, counted as the number of distinct nonsingular solutions. Claim: exactly 70, equal to the table entry.",
+  "paper_value": "Not read (ACM page unreachable from this host). The value is taken from the shipped Demo/READ_ME table, not from the paper text.",
+  "values": [
+   {
+    "name": "cyclic5 number of solutions (#sols)",
+    "paper": "Demo/READ_ME table row cyclic5, #sols = 70",
+    "tol_abs": 0
+   }
+  ],
+  "tolerance": {
+   "abs": 0,
+   "basis": "Fixed before any run. The quantity is an integer count of isolated solutions of a fixed system, so the tolerance is exact equality: 70 found, not 69 or 71. Not to be loosened after any run. A mismatch is a finding to report."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Build with GNAT: unknown, likely 10 to 30 minutes for 124k lines of Ada. Solving cyclic5 with the shipped drivers: a few seconds to minutes.",
+  "data_size": "Archive 808 KB; the system cyclic5 is a 5-variable polynomial system in Demo/.",
+  "data_licence": "No data. Source is the author's distribution in the ACM collected algorithms archive on netlib; the archive states no licence beyond the ACM notice."
+ },
+ "why": "A 1999 ACM algorithm ships a demo database whose entries record the solution counts that the solver must find. The cyclic 5-roots system is a small, standard benchmark whose 70 solutions the code has to compute by homotopy continuation, so the check tests that a modern GNAT build still finds the authors' count.",
+ "registered": "2026-11-27T08:37:00Z"
+}

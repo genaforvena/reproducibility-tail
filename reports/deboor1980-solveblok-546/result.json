@@ -1,0 +1,64 @@
+{
+  "paper": {
+    "short": "deboor1980-solveblok-546",
+    "title": "Algorithm 546: Solution of almost block diagonal linear systems (SOLVEBLOK)",
+    "authors": [
+      "C. de Boor",
+      "R. Weiss"
+    ],
+    "year": 1980,
+    "doi": null,
+    "venue": "ACM Transactions on Mathematical Software 6, pp. 88-91 (1980), per the queue entry; article text not read"
+  },
+  "field": "numerics (linear algebra: almost block diagonal systems, PLU factorization, determinant)",
+  "field_class": "numerics",
+  "stack": "Fortran (netlib CALGO 546.gz, single Fortran source 546.f: SLVBLK, DTBLOK and the test program; gfortran from conda-forge in the sandbox)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "The DETERMINANT printed by the shipped test program for its fixed 11 by 11 almost block diagonal test matrix agrees with the program's own reference constant 2.418821899E6 within absolute tolerance 5.0 (registered before any run; the claim is the code's own reference constant, not a value from the paper).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "DETERMINANT_546_TEST",
+        "paper": 2418821.899,
+        "tol_abs": 5.0,
+        "ours": 2418822.8
+      }
+    ],
+    "determinism": "deterministic (fixed DATA test matrix; no random numbers)",
+    "reference": {
+      "file": "reports/deboor1980-solveblok-546/evidence/546.f",
+      "archive": "netlib.org/toms/546.gz (sha256 dec187cff28bdce0de6c53439e6562fbf9748a86e3a379a66296456b357bb524)",
+      "sha256": "864545b088756e0e4a25a03baffdbdeb12c7fb9c6757a7278e41304d44438ab7"
+    }
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "G1: the file as shipped compiles with gfortran with warnings only (Fortran 2018 deleted-feature warnings for shared DO labels) and runs as documented. No patch. Pass 1 default optimisation, pass 2 -O2 in a clean directory: both print DETERMINANT = 0.24188228E+07, so the value is 2418822.8, a difference of 0.9 from the reference 2418821.899 (tolerance 5.0). The program's own ERROR line prints 0.75.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "not applicable: the shipped source compiled and ran as documented",
+    "log": "reports/deboor1980-solveblok-546/evidence/pass1.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pending",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/deboor1980-solveblok-546/recipe.sh",
+  "queue_commit": "f4decf2",
+  "replayed": [],
+  "evidence": [
+    "evidence/546.f",
+    "evidence/fetch.log",
+    "evidence/pass1.log",
+    "evidence/pass2.log",
+    "evidence/recipe-run.log",
+    "evidence/recipe-run-full.log"
+  ]
+}

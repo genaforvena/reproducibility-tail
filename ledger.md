@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-114 papers attempted.
+115 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
-| A | authors' code, run clean | 23 |
+| A | authors' code, run clean | 24 |
 | B | authors' code with build fixes | 68 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 2 |
 | - | blocked or not yet run | 20 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 101, other 4, statistics 6
-By stack: C/C++ 16, Fortran 84, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 0 1, 1960 4, 1970 15, 1980 9, 1990 36, 2000 30, 2010 19
+By field: astronomy 1, biology 1, ecology 1, numerics 102, other 4, statistics 6
+By stack: C/C++ 16, Fortran 85, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 0 1, 1960 4, 1970 15, 1980 10, 1990 36, 2000 30, 2010 19
 
 Data as of 2026-11-27T17:50:05Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T17:50:05Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-114 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+115 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **559 candidates considered from 4 of 4 frames: 111 attempted (20%), 0 unreachable, 448 rejected.**
 
@@ -75,7 +75,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 79 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 25 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 79 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 26 (ran as documented).
 
 ## Results
 
@@ -136,6 +136,7 @@ Authors' original artifact, among all attempted papers: failed 79 (did not run),
 | [clemm1969-mathieu-352](reports/clemm1969-mathieu-352/result.md) | numerics · 1969 · Fortran | a_5(5), the even Mathieu characteristic value at R = 5, Q = 5, as printed in the Computed column of TEST05 in the shipped reference output res. Registered tolerance: abs 1e-5. (a_5(5) (even)) [shipped reference output] | 25.55 ± 1e-05 | 25.55 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [damore2014-reliadiff-946](reports/damore2014-reliadiff-946/result.md) | numerics · 2014 · C/C++ | DEMO2 default run: f_comp at x = 5.00e+00 in the shipped output_demo2.txt is 1.29653819e+00. Registered by scout from the artifact's own reference output. Tolerance 2e-8 absolute, fixed before any run. (RELIADIFF_FCOMP_X5) [shipped reference output] | 1.29654 ± 2e-08 | 1.29654 | 0 | 0% | patched (build-only; the build tool rewrote 1977 files) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [davis2010-klu-907](reports/davis2010-klu-907/result.md) | numerics · 2010 · C/C++ | KLU demo, condest for ../Matrix/w156.mtx: 1.79787e+09, as printed by the shipped Matlab/KLU/Demo/kludemo.out. Registered by scout from the artifact's own reference output. Tolerance 5e4 absolute, fixed before any run. (KLU_CONDEST_W156) [shipped reference output] | 1.79787e+09 ± 50000 | 1.79787e+09 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [deboor1980-solveblok-546](reports/deboor1980-solveblok-546/result.md) | numerics · 1980 · Fortran | The DETERMINANT printed by the shipped test program for its fixed 11 by 11 almost block diagonal test matrix agrees with the program's own reference constant 2.418821899E6 within absolute tolerance 5.0 (registered before any run; the claim is the code's own reference constant, not a value from the paper). (DETERMINANT_546_TEST) [shipped reference output] | 2.41882e+06 ± 5 | 2.41882e+06 | 0.901 | 18% | original | ✓ · ✓ ? | A | reproduced | never clean |
 | [demetriou2007-l2wpma-863](reports/demetriou2007-l2wpma-863/result.md) | numerics · 2007 · Fortran | Shipped reference Data/Appndx_B/WIVAPP (Appendix B of Doc/INSTDE04.txt): the data indices of the extrema of the best monotone fit, DRIVER1 on Data/Appndx_B/XFWDAT with KSECTN 5, default weights. Claim values: indices 0..5 = 1, 8, 27, 46, 69, 75, exact match (tolerance 0). (extremum index 0) [shipped reference output] | 1 ± 0 | 1 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [demetriou2007-l2wpma-863](reports/demetriou2007-l2wpma-863/result.md) | numerics · 2007 · Fortran | Shipped reference Data/Appndx_B/WIVAPP (Appendix B of Doc/INSTDE04.txt): the data indices of the extrema of the best monotone fit, DRIVER1 on Data/Appndx_B/XFWDAT with KSECTN 5, default weights. Claim values: indices 0..5 = 1, 8, 27, 46, 69, 75, exact match (tolerance 0). (extremum index 1) [shipped reference output] | 8 ± 0 | 8 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [demetriou2007-l2wpma-863](reports/demetriou2007-l2wpma-863/result.md) | numerics · 2007 · Fortran | Shipped reference Data/Appndx_B/WIVAPP (Appendix B of Doc/INSTDE04.txt): the data indices of the extrema of the best monotone fit, DRIVER1 on Data/Appndx_B/XFWDAT with KSECTN 5, default weights. Claim values: indices 0..5 = 1, 8, 27, 46, 69, 75, exact match (tolerance 0). (extremum index 2) [shipped reference output] | 27 ± 0 | 27 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |

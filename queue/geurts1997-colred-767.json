@@ -13,7 +13,7 @@
   "code": {
     "url": "https://netlib.org/toms/767.gz",
     "commit": "netlib TOMS archive 767.gz (fetched by scout 2026-11-27 into /tmp/scout-767, unpacked as text, not executed)",
-    "archive": "netlib TOMS 767.gz, shar created 1997-04-19",
+    "archive": "sha256 240d6fbc7a8a48902aa545c914356479492fbd8840222bbf2a376a5b5953a3f8 (netlib.org/toms/767.gz)",
     "note": "Shell archive. Members of interest: Drivers/Dp/data (input for example 2: DP=3, MP=NP=2, tolerance 1.0D-10, the matrix P(0)..P(3)), Drivers/Dp/RES (the shipped driver output for all eleven examples), and the COLRED source under Src/. The rerun must unpack the shar, build the COLRED driver and run example 2 with the archive's data file."
   },
   "field": "numerics (polynomial matrices, control theory)",

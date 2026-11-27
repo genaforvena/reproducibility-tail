@@ -12,7 +12,7 @@
  "code": {
   "url": "https://netlib.org/toms/794.gz",
   "commit": "netlib TOMS archive 794.gz (fetched 2026-11-27 07:37Z, 67330 bytes gzip, 261474 bytes uncompressed; shell archive created Fri Oct 22 09:59:44 1999)",
-  "archive": "netlib TOMS 794.gz, sha256 of the downloaded gz not recorded in this entry; the rerun records it from its own fetch. Scout read the members in its own scratch directory and did not execute the shell archive.",
+  "archive": "netlib TOMS 794.gz, sha256 bdbd599bf88d0062a161aa01880b4a271a9fca31df3b13bd662c0ecfc83cab29 (scout re-fetched https://netlib.org/toms/794.gz on 2026-11-27 and computed the digest; it matches the rerun fetch). Scout read the members in its own scratch directory and did not execute the shell archive.",
   "note": "Shell archive. Members: Fortran77/Src/Dp/specfun.f and src.f (the HANKEL code and its helpers), Fortran77/Drivers/Dp/driver.f, data (the input cards: stdin file names res.err and res, mode 1, NU 1.0, XI 5.0, then 2), res (the shipped stdout) and res.err (the shipped protocol). Rerun must gunzip and extract in an empty directory, then run the driver with the data file as stdin."
  },
  "field": "numerics (numerical Hankel transform of a test function with a closed-form transform)",

@@ -1,0 +1,8 @@
+unit D1MACH: listing lines 72-424
+unit DCUTRI: listing lines 610-1005
+unit DCHTRI: listing lines 426-609
+unit DADTRI: listing lines 1935-2298
+unit DRLTRI: listing lines 1008-1360
+unit DTRTRI: listing lines 1815-1933
+unit DTEST1: listing lines 1367-1408
+unit F: listing lines 1409-1414

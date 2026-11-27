@@ -1,0 +1,89 @@
+{
+ "paper": {
+  "short": "berntsen1992-dcutri-706",
+  "title": "Algorithm 706: DCUTRI, an algorithm for adaptive cubature over a collection of triangles",
+  "year": 1992,
+  "doi": null
+ },
+ "field": "numerics (adaptive cubature)",
+ "field_class": "numerics",
+ "stack": "Fortran 77 (TOMS 706 archive 706.gz: one listing file 706.txt, 4415 lines, holding DCUTRI and its routines plus several sample PROGRAM units)",
+ "stack_class": "Fortran",
+ "claim": {
+  "text": "Live sample PROGRAM DTEST1 (archive line 1367) run unedited on the TOMS 706 sample integrand exp(x^2+y^2) over triangle (0,0),(2,0),(0,2), EPSREL=1e-5, MAXPTS=2000, prints RESULT=11.181284417019 (tol 1e-9), NEVAL=185 and IFAIL=0 (exact). Registered by scout 73030b9 (artifact-reference).",
+  "source": "artifact-reference",
+  "values": [
+   {
+    "name": "RESULT",
+    "paper": 11.181284417019,
+    "tol_abs": 1e-09,
+    "ours": null
+   },
+   {
+    "name": "NEVAL",
+    "paper": 185,
+    "tol_abs": 0,
+    "ours": null
+   },
+   {
+    "name": "IFAIL",
+    "paper": 0,
+    "tol_abs": 0,
+    "ours": null
+   }
+  ],
+  "reference": {
+   "file": "reports/berntsen1992-dcutri-706/evidence/shipped-sample-output.txt",
+   "sha256": "4b210927034bcf70082d8b4cb031826c55cec7aa2c2c52333cde52908725ee37",
+   "archive": "706.gz, sha256 c67596047b71b0642323a2593ceea4949d5782cc4df6518efcdfb05ed8fc97bc"
+  }
+ },
+ "basis": "patched",
+ "verdict": "blocked",
+ "cause": null,
+ "attempt": "Built the authors' single source file (706.gz, sha256 c67596047b71b0642323a2593ceea4949d5782cc4df6518efcdfb05ed8fc97bc) as listed: the file holds two PROGRAM units (DTEST1 and the driver of the listing), so it does not compile as one unit (Error: Two main PROGRAMs, evidence/original-attempt build log). The patch copies eight subprograms verbatim from six non-contiguous line ranges (evidence/extract.txt, impl/extract.py). Our RESULT 11.181284417019187 agrees with the registered 11.181284417019 (diff 1.9e-13, tol 1e-9), NEVAL 185 and IFAIL 0 exact. Blocked, not reproduced: the multi-range extraction is a source patch under docs/method.md ('Extraction covers one verbatim range'), so G2 needs a paper check that cannot be done because the paper is not accessible. Operator decision (DM #148): keep blocked; gates.py is not changed.",
+ "original_attempt": {
+  "tried": true,
+  "outcome": "failed",
+  "reason": "The listing as shipped, compiled as one unit with gfortran -std=legacy, does not compile: 'Error: Two main PROGRAMs at (1) and (2)'. No build file ships with the archive. The attempt is kept in the log.",
+  "log": "reports/berntsen1992-dcutri-706/evidence/original-attempt.log"
+ },
+ "gates": {
+  "G1": "pass",
+  "G2": "fail",
+  "G3": "pass",
+  "G5": "na",
+  "G6": "na",
+  "cross_check": "na"
+ },
+ "recipe": "reports/berntsen1992-dcutri-706/recipe.sh",
+ "queue_commit": "73030b9",
+ "evidence": [
+  "reports/berntsen1992-dcutri-706/evidence/original-attempt.log",
+  "reports/berntsen1992-dcutri-706/evidence/extract.txt",
+  "reports/berntsen1992-dcutri-706/evidence/extract-sha256.txt",
+  "reports/berntsen1992-dcutri-706/evidence/build.log",
+  "reports/berntsen1992-dcutri-706/evidence/run.txt",
+  "reports/berntsen1992-dcutri-706/evidence/recipe-run.log",
+  "reports/berntsen1992-dcutri-706/evidence/dtest.f",
+  "reports/berntsen1992-dcutri-706/impl/extract.py",
+  "reports/berntsen1992-dcutri-706/evidence/shipped-sample-output.txt"
+ ],
+ "replayed": [],
+ "patch": {
+  "kind": "multi-range-extraction",
+  "note": "Subprograms copied verbatim from several non-contiguous listing ranges (see evidence/extract.txt). Not covered by the build-only or single-range extraction checks; G2 is not met by a mechanical check.",
+  "archive_sha256": "c67596047b71b0642323a2593ceea4949d5782cc4df6518efcdfb05ed8fc97bc"
+ },
+ "blocked_on": {
+  "gate": "G2",
+  "missing": "paper check for the multi-range extraction (paper not accessible)",
+  "range_hashes": "evidence/extract-sha256.txt (dtest.f sha256 67cde669...)",
+  "resolver": "operator",
+  "observed_outside_gate": {
+   "RESULT": 11.181284417019187,
+   "NEVAL": 185,
+   "IFAIL": 0
+  }
+ }
+}

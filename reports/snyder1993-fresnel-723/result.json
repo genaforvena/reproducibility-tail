@@ -1,0 +1,101 @@
+{
+  "paper": {
+    "short": "snyder1993-fresnel-723",
+    "title": "Algorithm 723: Fresnel integrals",
+    "year": 1993,
+    "venue": "ACM Transactions on Mathematical Software 19(4), 452-456 (1993); revised TOMS 22(4), 498-500 (1996)",
+    "doi": null,
+    "note": "ACM article not read; the authors' Fortran (netlib TOMS 723.gz, sha256 checked) was run."
+  },
+  "field": "numerics (special functions: Fresnel integrals C, S, f, g)",
+  "field_class": "numerics",
+  "stack": "Fortran (double precision REAL*8 sources from netlib TOMS 723); built with GNU Fortran 16.2.0 (conda-forge) in the sandbox",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "C(x), Fresnel cosine integral, double precision, at x = 1.0, as printed by the authors' double-precision driver DRDFRENL. Registered tolerance: abs 1e-6.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/snyder1993-fresnel-723/evidence/shipped-res-dp.txt",
+      "sha256": "f2f34c0bdb07e39e1275cc697347e5694e7a43282a9474e80efa05e5acd3bc1b",
+      "archive": "netlib.org/toms/723.gz sha256 335fe1d3d6d8e377cb3bcfc7ad2a394896f698e5c919be321232b295ca566b13"
+    },
+    "values": [
+      {
+        "name": "C(1.0)",
+        "paper": 0.7798934,
+        "tol_abs": 1e-06,
+        "ours": 0.7798934
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Ran the authors' double-precision sources (Drivers/Dp/driver.f and Src/Dp/*.f, unpacked verbatim from the archive, no source edit) with gfortran -O2 in the sandbox, objects named as the authors' makefile links them (driver.f compiled as drdfrenl.o). Two passes, each in a fresh run directory with the same binary, print C(1.0) = 7.7989340E-01, identical to the claim 0.7798934 (difference 0 at printed precision, inside tol 1e-6). The 25-row table of pass 1 matches the shipped Drivers/Dp/RES except for last-digit rounding in two entries (C at X=-4, S at X=-5, one unit in the 7th digit) and the zero-row formatting (.0000000E+00 in the shipped file). The claimed value is unaffected.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The authors' Doc/makefile calls f77 (absent in the sandbox) and names drdfrenl.f, which the archive does not ship (the driver is Drivers/Dp/driver.f). make: No rule to make target 'drdfrenl.o' (exit 2). A retry with F77=gfortran still fails on the missing drdfrenl.f name (exit 2). The build used gfortran on the shipped files with the driver object named drdfrenl.o in a build directory outside the tree.",
+    "log": "reports/snyder1993-fresnel-723/evidence/original-attempt-make.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/snyder1993-fresnel-723/recipe.sh",
+  "queue_commit": "9e8879b",
+  "evidence": [
+    "reports/snyder1993-fresnel-723/evidence/archive-sha256-check.txt",
+    "reports/snyder1993-fresnel-723/evidence/gfortran-version.txt",
+    "reports/snyder1993-fresnel-723/evidence/unpack-listing.txt",
+    "reports/snyder1993-fresnel-723/evidence/shipped-res-dp.txt",
+    "reports/snyder1993-fresnel-723/evidence/original-attempt-make.log",
+    "reports/snyder1993-fresnel-723/evidence/retry-make-f77-gfortran.log",
+    "reports/snyder1993-fresnel-723/evidence/manifests/manifest.pre",
+    "reports/snyder1993-fresnel-723/evidence/manifests/manifest.mid",
+    "reports/snyder1993-fresnel-723/evidence/manifests/manifest.post",
+    "reports/snyder1993-fresnel-723/evidence/build.log",
+    "reports/snyder1993-fresnel-723/evidence/run-pass1.txt",
+    "reports/snyder1993-fresnel-723/evidence/run-pass2.txt",
+    "reports/snyder1993-fresnel-723/evidence/recipe-run.log"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "335fe1d3d6d8e377cb3bcfc7ad2a394896f698e5c919be321232b295ca566b13",
+    "compared": 23,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -O2 -c /work/tree/Drivers/Dp/driver.f -o drdfrenl.o",
+      "gfortran -O2 -c /work/tree/Src/Dp/dfrenl.f -o dfrenl.o",
+      "gfortran -O2 -c /work/tree/Src/Dp/dcspxx.f -o dcspxx.o",
+      "gfortran -O2 -c /work/tree/Src/Dp/dsnpxx.f -o dsnpxx.o",
+      "gfortran -O2 -c /work/tree/Src/Dp/dcospx.f -o dcospx.o",
+      "gfortran -O2 -c /work/tree/Src/Dp/dsinpx.f -o dsinpx.o",
+      "gfortran -O2 -c /work/tree/Src/Dp/amach.f -o amach.o",
+      "gfortran -O2 -c /work/tree/Src/Dp/erfin.f -o erfin.o",
+      "gfortran -O2 -c /work/tree/Src/Dp/ermsg.f -o ermsg.o",
+      "gfortran -O2 -c /work/tree/Src/Dp/derm1.f -o derm1.o",
+      "gfortran -O2 -c /work/tree/Src/Dp/derv1.f -o derv1.o",
+      "gfortran -O2 -o drdfrenl drdfrenl.o dfrenl.o dcspxx.o dsnpxx.o dcospx.o dsinpx.o amach.o erfin.o ermsg.o derm1.o derv1.o"
+    ],
+    "manifests": {
+      "pre": "reports/snyder1993-fresnel-723/evidence/manifest.pre",
+      "mid": "reports/snyder1993-fresnel-723/evidence/manifest.mid",
+      "post": "reports/snyder1993-fresnel-723/evidence/manifest.post"
+    }
+  }
+}

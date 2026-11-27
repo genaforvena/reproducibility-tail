@@ -41,7 +41,7 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -56,7 +56,19 @@
     "reports/renka1999-tshep2d-791/evidence/reference/res1_2",
     "reports/renka1999-tshep2d-791/evidence/unpack-listing.log"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-27T03:08:55Z",
+      "kind": "clean",
+      "values": {
+        "TSHEP2D driver1, node set 1, NC 17, NW 30, NR 6: average SSE/SSM": 0.006063
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/renka1999-tshep2d-791/evidence/replay-2026-11-27T030855Z.log",
+      "seconds": 73
+    }
+  ],
   "patch": {
     "kind": "build-only",
     "archive_sha256": "733ee80b3ec4d9b5a6dcf443bb4053924f25b3339486bb3e3df6b91cf31793ac",

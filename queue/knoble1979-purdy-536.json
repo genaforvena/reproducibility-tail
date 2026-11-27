@@ -1,0 +1,55 @@
+{
+ "paper": {
+  "title": "Algorithm 536: Purdy's irreversible enciphering function; article text not read (ACM page unreachable from this host)",
+  "authors": [
+   "H. D. Knoble"
+  ],
+  "year": 1979,
+  "venue": "ACM Transactions on Mathematical Software 5 (1979) 108-111 (Collected Algorithms from ACM, Algorithm 536)",
+  "doi": null,
+  "url": "https://netlib.org/toms/536.gz (ACM article not read: dl.acm.org returns 403 to automated fetch)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/536.gz",
+  "commit": "netlib TOMS archive 536.gz: one Fortran 77 source file (720 lines, 31193 bytes uncompressed) with a sample program 'to encipher 72-bit passwords across machines with 3 different word sizes'. Build selected by activating the C32, C36 or C60 comment prefixes.",
+  "archive": "sha256 a08e12901d4b135f4f68f886ae5cbc2400c25126d728816a8bae43f71fee3ff8 (netlib.org/toms/536.gz as downloaded 2026-11-27, 8666 bytes; gzip header names the member '536', dated 1995-09-06); uncompressed 536.f sha256 7df7b737a39e075787a8e083faf1f995f13e0088de5efa2f228b3b1d7574ae2c",
+  "note": "gunzip to 536.f in an empty directory. Activate the C32 prefixes (replace the first three characters of each C32 line with blanks) to build the 32-bit variant; the program reads its input cards from the C= lines or the file's own data. The shipped text ends with printed output tables (lines 662-689)."
+ },
+ "field": "numerics and cryptographic arithmetic (modular exponentiation on a prime near 2^72)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "The printed hexadecimal output table in the shipped 536.f, lines 662-673 (header 'HEXADECIMAL INPUT(X) HEXADECIMAL OUTPUT(FX)', produced by the C32 build's format 1 and format 3). It is the only hexadecimal output in the file. The printed octal block at lines 675-687 is labelled TABLE 2A, and the header at 689 says TABLE 2B with no rows.",
+  "reference": {
+   "file": "536.f lines 662-673 (the shipped printed output)",
+   "sha256": "not computed; the rows are quoted in paper_value and are checked by exact string comparison",
+   "archive": "netlib.org/toms/536.gz sha256 a08e12901d4b135f4f68f886ae5cbc2400c25126d728816a8bae43f71fee3ff8"
+  },
+  "metric": "For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree.",
+  "paper_value": "Printed reference rows (input -> output): 000000000000000000 -> FFFFFFFFFFFFFFFF02; 000000000000000001 -> FFFFFFFFFFFFFFFEB4; 000000000000000002 -> 4539285807BE5487E8; 000000000000000003 -> FA996DE7854F3C34DD; FFFFFFFFFFFFFFFFA3 -> FFFFFFFFFFFFFFFF02; FFFFFFFFFFFFFFFFA4 -> FFFFFFFFFFFFFFFEB4; FFFFFFFFFFFFFFFFA5 -> 4539285807BE5487E8; 00000000000000005C -> A0190DBCA6F9748AAC; FFFFFFFFFFFFFFFFFF -> A0190DBCA6F9748AAC; 555555555555555555 -> 5AA6C31129CD247368. The paper was not read, so these are the shipped print, not a value checked against the paper text.",
+  "values": [
+   {"name": "X=000000000000000000", "paper": "FFFFFFFFFFFFFFFF02", "tol_abs": 0},
+   {"name": "X=000000000000000001", "paper": "FFFFFFFFFFFFFFFEB4", "tol_abs": 0},
+   {"name": "X=000000000000000002", "paper": "4539285807BE5487E8", "tol_abs": 0},
+   {"name": "X=000000000000000003", "paper": "FA996DE7854F3C34DD", "tol_abs": 0},
+   {"name": "X=FFFFFFFFFFFFFFFFA3", "paper": "FFFFFFFFFFFFFFFF02", "tol_abs": 0},
+   {"name": "X=FFFFFFFFFFFFFFFFA4", "paper": "FFFFFFFFFFFFFFFEB4", "tol_abs": 0},
+   {"name": "X=FFFFFFFFFFFFFFFFA5", "paper": "4539285807BE5487E8", "tol_abs": 0},
+   {"name": "X=00000000000000005C", "paper": "A0190DBCA6F9748AAC", "tol_abs": 0},
+   {"name": "X=FFFFFFFFFFFFFFFFFF", "paper": "A0190DBCA6F9748AAC", "tol_abs": 0},
+   {"name": "X=555555555555555555", "paper": "5AA6C31129CD247368", "tol_abs": 0}
+  ],
+  "tolerance": {
+   "abs": 0,
+   "basis": "Deterministic integer output printed in hex; the comparison is exact string equality of all 18 hex digits per row. No numerical tolerance applies. Fixed before any run; not to be loosened after a run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute.",
+  "data_size": "None: the inputs are the ten C= input cards in the file header.",
+  "data_licence": "No data. Source is the public netlib TOMS collected-algorithms archive."
+ },
+ "why": "The enciphering function is a modular exponentiation over a 72-bit prime, not a closed form, so the shipped printed outputs can only be reproduced by running the algorithm; the claim checks the 32-bit build that the file's own format statements tie to the hexadecimal block.",
+ "registered": "2026-11-27T07:11:00Z"
+}

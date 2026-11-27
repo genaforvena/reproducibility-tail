@@ -39,11 +39,23 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "pending"
+    "G5": "pass"
   },
   "recipe": "reports/cabay1997-vecpade-766/recipe.sh",
   "queue_commit": "7364679e98ce4d77ab961c9454d35e4cbd427e0a",
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-27T02:31:26Z",
+      "kind": "clean",
+      "values": {
+        "System S, z**1 coefficient matrix, entry (2,3), times 37 (RES1 value -131)": -131.0
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/cabay1997-vecpade-766/evidence/replay-2026-11-27T023126Z.log",
+      "seconds": 58
+    }
+  ],
   "evidence": [
     "reports/cabay1997-vecpade-766/evidence/original-attempt.log",
     "reports/cabay1997-vecpade-766/evidence/build.log",

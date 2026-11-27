@@ -1,0 +1,44 @@
+{
+ "paper": {
+  "title": "Algorithm 439: Product Type Three-point Gauss-Legendre Simpson Integration",
+  "authors": [
+   "W. R. Boland"
+  ],
+  "year": 1972,
+  "venue": "Communications of the ACM 15(12), p. 1072 (Dec 1972), per the archive header. The frame item says 'TOMS 15,12'; the archive header says Communications of the ACM, so the frame label is taken as wrong and the header is used. The article itself is not read.",
+  "doi": null,
+  "url": "https://netlib.org/toms/439.gz (article not fetched; ACM page not used)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/439.gz",
+  "commit": "netlib CALGO archive 439.gz (shell archive; Fortran/Dp/Src/src.f, Fortran/Dp/Drivers/driver.f, Makefile, and the reference file Fortran/Dp/Drivers/res)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/439.gz (HTTP 200, 2320 bytes). sha256 of 439.gz: sha256 81cfd10dead980d26565450b9f98bac46566f3d9da7b70552086feb4fd314407 (scout download, 2026-11-27).",
+  "archive_sha256": "81cfd10dead980d26565450b9f98bac46566f3d9da7b70552086feb4fd314407",
+  "note": "Gunzip the archive and run it with /bin/sh in an empty directory, then build the driver from Fortran/Dp/Drivers with the archive's Makefile and compare its stdout with Fortran/Dp/Drivers/res."
+ },
+ "field": "numerics (product-type quadrature)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "Shipped reference output Fortran/Dp/Drivers/res (inside 439.gz), block TEST01: integral of F(X)*G(X) from -1 to 1 with F=1, G=1/(1+x**2), table row N = 10, VINT = 2.65082 (the printed 'Exact' is 2.65164, not the claim).",
+  "reference": {
+   "file": "Fortran/Dp/Drivers/res (inside 439.gz)",
+   "sha256": "not computed for the member; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/439.gz"
+  },
+  "paper_value": "VINT 2.65082 at N = 10 as printed by the shipped driver (the paper is not read).",
+  "metric": "VINT for TEST01 at N = 10, as printed by the driver in the 5-decimal format of the res file, compared as an absolute number",
+  "determinism": "deterministic (fixed integrand, fixed N, no random numbers)",
+  "tolerance": {
+   "abs": 1e-05,
+   "basis": "Fixed before any run. The printed value has 5 decimals, so its rounding step is 1e-5 and the claim tolerance of 1e-5 allows one rounding step of difference from the printed reference (equal to two half-steps). Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 2 minutes: one Fortran build of the driver and one run.",
+  "data_size": "None (synthetic integrand).",
+  "data_licence": "Netlib CALGO archive; licence per the archive's own notices (the rerun should record it)."
+ },
+ "why": "The driver runs the product-type Gauss-Legendre Simpson rule for a fixed integrand and prints the N=10 value; no closed form gives that quadrature output at N=10, so the rerun must execute the Fortran method.",
+ "registered": "2026-11-27T15:47:00Z"
+}

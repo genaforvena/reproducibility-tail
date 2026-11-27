@@ -1,0 +1,40 @@
+C     ALGORITHM 584, COLLECTED ALGORITHMS FROM ACM.
+C     ALGORITHM APPEARED IN ACM-TRANS. MATH. SOFTWARE, VOL.8, NO. 2,
+C     JUN., 1982, P. 210.
+C     PROGRAM KONYN(OUTPUT,TAPE6=OUTPUT)                                MAN   10
+C     DRIVER MAIN PROGRAM FOR TESTING SUBROUTINE CUBTRI.  SEVEN         MAN   20
+C     INTEGRALS ARE EVALUATED AT TOLERANCES RANGING FROM                MAN   30
+C     1E-3 THROUGH 1E-9, TAKING ADVANTAGE OF THE RESTARTABILITY FEATURE.MAN   40
+      DIMENSION ACTUAL(7)                                               MAN   50
+      REAL ANS, EPS, ERR, T(2,3), W(5000), NINE, RDATA(1)               MAN   60
+      INTEGER IDATA(1)                                                  MAN   70
+C                                                                       MAN   80
+      EXTERNAL F                                                        MAN   90
+C                                                                       MAN  100
+C     FOR THE FIRST THREE EXAMPLES,T IS THE TRIANGLE CORRESPONDING TO   MAN  110
+C     INTEGRAL (0 TO 1)(0 TO X) F(X,Y,IDATA,RDATA) DY DX                MAN  120
+C                                                                       MAN  130
+      DATA ZERO /0.E0/, ONE /1.E0/, TWO /2.E0/, THREE /3.E0/, SIX /6.E0/MAN  140
+      DATA NINE /9.E0/, YTIEN /18.E0/, POINT1 /.1E0/, POINT5 /.5E0/,    MAN  150
+     * P002 /1.E-2/                                                     MAN  160
+      T(1,1) = ZERO                                                     MAN  170
+      T(1,2) = ONE                                                      MAN  180
+      T(1,3) = ONE                                                      MAN  190
+      T(2,1) = ZERO                                                     MAN  200
+      T(2,2) = ZERO                                                     MAN  210
+      T(2,3) = ONE                                                      MAN  220
+C                                                                       MAN  230
+C     SET CORRECT ANSWERS                                               MAN  240
+C                                                                       MAN  250
+      S = SQRT(THREE)                                                   MAN  260
+      ACTUAL(1) = (ALOG(TWO+S))/S                                       MAN  270
+      ACTUAL(2) = ACTUAL(1)                                             MAN  280
+      ACTUAL(3) = ATAN(ONE)/TWO                                         MAN  290
+C       ACTUAL(4) IS THE INTEGRAL (0 TO 1)(0 TO X) OF                   MAN  300
+C       EXP(SIN(X)*COS(Y)) DY DX. THIS VALUE, TO 16 DIGITS,IS GIVEN     MAN  310
+C       BY A.HAEGEMANS, COMPUTING 19(1977),179-187.                     MAN  320
+      ACTUAL(4) = .6918104506612316                                     MAN  330
+      ACTUAL(5) = POINT5 - ATAN(ONE) + POINT5*ALOG(TWO)                 MAN  340
+      ACTUAL(6) = SIN(THREE)/NINE - SIN(SIX)/YTIEN                      MAN  350
+      ACTUAL(7) = TWO/THREE                                             MAN  360
+C                                                                       MAN  370

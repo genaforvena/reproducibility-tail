@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-92 papers attempted.
+93 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
-| A | authors' code, run clean | 20 |
+| A | authors' code, run clean | 21 |
 | B | authors' code with build fixes | 51 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 2 |
 | - | blocked or not yet run | 18 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 79, other 4, statistics 6
-By stack: C/C++ 11, Fortran 67, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 0 1, 1960 4, 1970 8, 1980 8, 1990 31, 2000 27, 2010 13
+By field: astronomy 1, biology 1, ecology 1, numerics 80, other 4, statistics 6
+By stack: C/C++ 11, Fortran 68, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 0 1, 1960 4, 1970 8, 1980 9, 1990 31, 2000 27, 2010 13
 
 Data as of 2026-11-27T11:50:02Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T11:50:02Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-92 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+93 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **428 candidates considered from 4 of 4 frames: 90 attempted (21%), 0 unreachable, 338 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 60 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 22 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 60 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 23 (ran as documented).
 
 ## Results
 
@@ -227,6 +227,7 @@ Authors' original artifact, among all attempted papers: failed 60 (did not run),
 | [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(2.5,-5) imag) [shipped reference output] | -5.80601 ± 1e-06 | -5.80601 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(5,-10) real) [shipped reference output] | -4.28551 ± 1e-06 | -4.28551 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(5,-10) imag) [shipped reference output] | -19.1171 ± 1e-06 | -19.1171 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [laurie1982-cubtri-584](reports/laurie1982-cubtri-584/result.md) | numerics · 1982 · Fortran | Integral of EXP(SIN(X)*COS(Y)) over the triangle (0,1),(0,0),(1,0), computed by CUBTRI at EPS=1E-3 (MCALLS=20000, NW=5000), IER expected 0. The reference is the driver's ACTUAL(4) = .6918104506612316 (16 digits, credited to Haegemans 1977). Registered tol_abs 6.918104506612316e-4 (1e-3 relative to the reference), fixed before the run. (cubtri_int4_eps1e-3) [shipped reference output] | 0.69181 ± 0.00069181 | 0.69181 | -2.15652e-08 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
 | [leis1988-odessa-658](reports/leis1988-odessa-658/result.md) | numerics · 1988 · Fortran | Y(1) at T = 4.0 of the demo's first output block (METH 1, MITER 0) is 0.905516, as printed in the source comments. Absolute tolerance 1e-5. (chemical kinetics demo, Y(1) at T=4.0, METH 1 MITER 0) [shipped reference output] | 0.905516 ± 1e-05 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [levine1969-student-t-344](reports/levine1969-student-t-344/result.md) | statistics · 1969 · Fortran | The computed CDF printed by TOMS344_PRB for DF=1, X=0.3250 (row 1, computed column) is 0.7999537587165833, as in the shipped reference output res. Absolute tolerance 1e-6. (TTEST, DF=1, X=0.3250, two-tailed CDF transform (computed column)) [shipped reference output] | 0.799954 ± 1e-06 | 0.799954 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [lewis1982-gps-582](reports/lewis1982-gps-582/result.md) | numerics · 1982 · Fortran | GPSKCA on the BCSPWR01 power-network matrix (order 39): BANDWIDTH 6, PROFILE 100, GPSKCA ERROR CODE 0, from the shipped sample output (artifact-reference). Integers, exact tolerance. (BANDWIDTH) [shipped reference output] | 6 ± 0 | 6 | 0 | exact | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |

@@ -1,0 +1,63 @@
+{
+  "paper": {
+    "short": "laurie1982-cubtri-584",
+    "title": "Algorithm 584: CUBTRI, automatic cubature over a triangle (ACM TOMS Algorithm 584)",
+    "year": 1982,
+    "doi": null
+  },
+  "field": "numerics (cubature over a triangle)",
+  "field_class": "numerics",
+  "stack": "Fortran",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Integral of EXP(SIN(X)*COS(Y)) over the triangle (0,1),(0,0),(1,0), computed by CUBTRI at EPS=1E-3 (MCALLS=20000, NW=5000), IER expected 0. The reference is the driver's ACTUAL(4) = .6918104506612316 (16 digits, credited to Haegemans 1977). Registered tol_abs 6.918104506612316e-4 (1e-3 relative to the reference), fixed before the run.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "cubtri_int4_eps1e-3",
+        "paper": 0.6918104506612316,
+        "tol_abs": 0.0006918104506612316,
+        "ours": 0.69181042909599999
+      }
+    ],
+    "reference": {
+      "file": "reports/laurie1982-cubtri-584/evidence/shipped-driver-actual4.txt",
+      "sha256": "c42465f555782888f4eec37d4c2f08288d34f511db580fdd74a56cd0838f7255",
+      "archive": "netlib.org/toms/584.gz sha256 f5b9249f64e069d4e7bdaca43854c5bf73b06c1973a0eec99b3333e60810410e (driver lines 1-40: ACTUAL(4) at line 36, sequence column MAN 330)"
+    }
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "The archive's single file compiled and linked as shipped with gfortran 16 -O2 -std=legacy (one main program KONYN plus subprograms F, CUBTRI, RNDERR, CUBRUL), no edit; run with no input. Driver row for integrand 4 at EPS=1.E-03: ANS 0.691810429096, IER 0. Printed to 12 decimals (F15.12); the driver's own ACTUAL is single precision so its ACTUAL-ERROR column reads 0.0.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "Compiled and linked as shipped; ran with exit 0. Only a Fortran 95 'H format' deletion warning, no error.",
+    "log": "reports/laurie1982-cubtri-584/evidence/original-attempt-build.log"
+  },
+  "diagnostics": {},
+  "second_pass": null,
+  "queue_commit": "7d43a92cbb40d3ce7f4e4adb3737e17ac5c20d61",
+  "recipe": "reports/laurie1982-cubtri-584/recipe.sh",
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "pass",
+    "cross_check": "na"
+  },
+  "environment": {
+    "compiler": "GNU Fortran (conda-forge gcc 16.2.0-7) 16.2.0",
+    "flags": "-O2 -std=legacy",
+    "sandbox": "tools/sandbox.sh"
+  },
+  "evidence": {
+    "run_output": "reports/laurie1982-cubtri-584/evidence/run-pass1.txt",
+    "build_log": "reports/laurie1982-cubtri-584/evidence/original-attempt-build.log",
+    "archive_check": "reports/laurie1982-cubtri-584/evidence/archive-sha256-check.txt",
+    "manifests": "reports/laurie1982-cubtri-584/evidence/manifests/"
+  },
+  "replayed": []
+}

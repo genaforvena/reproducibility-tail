@@ -16,6 +16,9 @@ Checked mechanically, per reports/ID/result.json:
       `patch` is build-only: the authors' source files byte-identical between unpacking and the start of the
       build (three manifests kept in the report and re-derived here; the build commands from recipe.sh with no
       in-place edits; archive hash equal to the queue entry's). What the authors' own build tool rewrites is shown, not judged.
+      Or a patched one whose `patch` is `extraction`: the patch step only added one file, byte-equal to a contiguous
+      line range of the authors' archive file (range hash kept as evidence/source-range.f, the new file's hash from the
+      mid manifest), with the same build-command checks. The authors' code is copied, not changed, so G2 is met by construction.
   G3  recipe exists; a reproduced result needs a replay (gates.G3 == pass)
   G4  the stated verdict equals the verdict computed from the recorded values
   G0b an artifact-reference claim keeps the shipped reference output in the report, hash-checked
@@ -96,6 +99,69 @@ def build_only_problems(repo: Path, rid: str, r: dict, qrel) -> list[str]:
         bad.append(f"{rid}: patch.archive_sha256 must equal the sha256 registered in the queue entry's code.archive")
     return bad
 
+def extraction_problems(repo: Path, rid: str, r: dict, qrel) -> list[str]:
+    """Problems with a `patch` record that claims kind extraction; [] when it holds (or claims nothing).
+
+    The patch step may only have added the extracted file: pre and mid manifests differ by exactly that file, and
+    its mid hash equals the sha256 of evidence/source-range.f, which must be the line range the record names. The
+    build commands and recipe checks are those of build-only patches; the archive hash is the queue entry's.
+    """
+    p = r.get("patch")
+    if not isinstance(p, dict) or p.get("kind") != "extraction":
+        return []
+    bad: list[str] = []
+    if r.get("basis") != "patched":
+        bad.append(f"{rid}: an extraction patch belongs to basis patched, not {r.get('basis')!r}")
+    x = p.get("extraction") if isinstance(p.get("extraction"), dict) else {}
+    extracted = x.get("extracted")
+    start, end = x.get("start"), x.get("end")
+    if not (isinstance(extracted, str) and extracted and isinstance(start, int) and isinstance(end, int) and 1 <= start <= end):
+        return bad + [f"{rid}: patch.extraction needs extracted (file name), start and end (1 <= start <= end)"]
+    ev = repo / "reports" / rid / "evidence"
+    texts = {}
+    for n in ("pre", "mid", "post"):
+        f = ev / f"manifest.{n}"
+        if not f.is_file():
+            return bad + [f"{rid}: extraction patch needs reports/{rid}/evidence/manifest.{n} (three manifests: pre, mid, post)"]
+        texts[n] = verify_sources.parse(f.read_text(encoding="utf-8"))
+    ours = verify_sources.compare(texts["pre"], texts["mid"])
+    if p.get("compared") != ours["compared"] or p.get("ours") != {k: ours[k] for k in ("modified", "removed", "added")}:
+        bad.append(f"{rid}: patch.ours does not match the pre and mid manifests (recomputed {ours})")
+    if ours["modified"] or ours["removed"] or ours["added"] != [extracted]:
+        bad.append(f"{rid}: the patch step must only add {extracted!r}; pre and mid differ by modified {ours['modified'][:3]}, "
+                   f"removed {ours['removed'][:3]}, added {ours['added'][:3]}: not an extraction")
+    rng = ev / "source-range.f"
+    if not rng.is_file():
+        bad.append(f"{rid}: extraction needs reports/{rid}/evidence/source-range.f (the archive line range it was copied from)")
+    else:
+        range_sha = hashlib.sha256(rng.read_bytes()).hexdigest()
+        if x.get("range_sha256") != range_sha:
+            bad.append(f"{rid}: patch.extraction.range_sha256 does not match evidence/source-range.f")
+        if texts["mid"].get(extracted) != range_sha:
+            bad.append(f"{rid}: {extracted} in the mid manifest is not byte-equal to the archive line range {start}:{end}")
+    if p.get("tool") != verify_sources.tool_changes(texts["mid"], texts["post"]):
+        bad.append(f"{rid}: patch.tool does not match the mid and post manifests")
+    commands = p.get("build_commands")
+    recipe = repo / "reports" / rid / "recipe.sh"
+    region = verify_sources.build_region(recipe.read_text(encoding="utf-8")) if recipe.is_file() else None
+    if not isinstance(commands, list) or not commands or not all(isinstance(c, str) and c.strip() for c in commands):
+        bad.append(f"{rid}: patch.build_commands must list the build commands exactly as recipe.sh runs them")
+    elif region is None:
+        bad.append(f"{rid}: recipe.sh must call 'verify_sources.py manifest' exactly three times (pre, mid, post) with the build commands between the second and third")
+    else:
+        missing = [c for c in commands if verify_sources.norm(c) not in verify_sources.norm(region)]
+        if missing:
+            bad.append(f"{rid}: build command not found between the second and third manifest calls of recipe.sh: {missing[0][:80]!r}")
+        for hit in verify_sources.suspicious(region):
+            bad.append(f"{rid}: the build step of recipe.sh edits files in place ({hit}): not build-only")
+    want = ""
+    if qrel is not None:
+        want = verify_sources.archive_sha(json.loads((repo / qrel).read_text(encoding="utf-8")))
+    if not want or p.get("archive_sha256") != want:
+        bad.append(f"{rid}: patch.archive_sha256 must equal the sha256 registered in the queue entry's code.archive")
+    return bad
+
+
 def violations(repo: Path) -> list[str]:
     bad: list[str] = []
     reports = repo / "reports"
@@ -172,7 +238,10 @@ def violations(repo: Path) -> list[str]:
         patch_bad = build_only_problems(repo, rid, r, qrel)
         bad.extend(patch_bad)
         build_only = isinstance(r.get("patch"), dict) and r["patch"].get("kind") == "build-only" and not patch_bad
-        if basis in ("patched", "reimplemented") and verdict == "reproduced" and gates.get("G2") != "pass" and not build_only:
+        extraction_bad = extraction_problems(repo, rid, r, qrel)
+        bad.extend(extraction_bad)
+        extracted = isinstance(r.get("patch"), dict) and r["patch"].get("kind") == "extraction" and not extraction_bad
+        if basis in ("patched", "reimplemented") and verdict == "reproduced" and gates.get("G2") != "pass" and not (build_only or extracted):
             bad.append(f"{rid}: G2 fidelity not passed for a {basis} result")
         if verdict == "reproduced" and gates.get("G3") != "pass":
             bad.append(f"{rid}: G3 replay not passed")

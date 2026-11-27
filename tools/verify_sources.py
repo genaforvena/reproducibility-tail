@@ -9,12 +9,21 @@ A recipe takes THREE manifests of the authors' source files:
   tools/verify_sources.py manifest DIR                          print "sha256  path" for each source file
   tools/verify_sources.py compare A B                           print modified / removed / added as JSON
   tools/verify_sources.py record --repo . --id ID --pre PRE --mid MID --post POST --command CMD [--command CMD]
+      [--archive-file F --range START:END --extracted NAME]
 
 `record` copies the manifests into the report and writes result.json `patch`. The patch is `build-only`
 when pre and mid are identical (at least one file compared): nothing we did touched a source file.
 What the authors' own build tool rewrites between mid and post (NTL's configure edits config.h in place,
 for example) is recorded as `tool` changes and shown in the ledger, but does not disqualify. Anything else
 is `source` and keeps gate G2's paper check.
+
+The `extraction` kind is the one exception to that check: the patch step only copies a contiguous line range of the
+authors' archive file into a new file (the authors' code, byte for byte, nothing added or changed). Passing
+--archive-file, --range and --extracted to `record` proves it: the new file's hash in the mid manifest must equal the
+sha256 of that line range, and the range bytes are kept in the report as evidence/source-range.f. The gate re-checks
+the same chain from the kept manifests and range file. The archive's own hash (the .gz the queue entry registers) is
+checked against the queue entry as for every kind; the extracted file's hash is the range's hash, so the gate needs no
+archive bytes.
 
 checks/gates.py re-derives all of this from the manifests, requires the recorded build commands to appear
 in recipe.sh between the second and third `verify_sources.py manifest` lines, and refuses that region if it
@@ -119,8 +128,28 @@ def classify(ours: dict, commands: list[str], region: str | None) -> str:
     return "build-only" if all(norm(c) in norm(region) for c in commands) else "source"
 
 
+def extract_range(archive: bytes, start: int, end: int) -> bytes:
+    """Lines START..END (1-based, inclusive) of the archive file, as bytes with their line endings."""
+    lines = archive.splitlines(keepends=True)
+    if not 1 <= start <= end <= len(lines):
+        raise ValueError(f"range {start}:{end} is outside the archive file ({len(lines)} lines)")
+    return b"".join(lines[start - 1:end])
+
+
+def classify_extraction(ours: dict, mid: dict, extracted: str, range_sha: str, commands: list[str], region: str | None) -> str:
+    """`extraction` when the patch step only added the extracted file, its hash is the range's, and the build is as recorded."""
+    same = ours["modified"] == [] and ours["removed"] == [] and ours["added"] == [extracted] and mid.get(extracted) == range_sha
+    if not same or not commands or region is None or suspicious(region):
+        return "source"
+    return "extraction" if all(norm(c) in norm(region) for c in commands) else "source"
+
+
 def archive_sha(queue_entry: dict) -> str:
-    m = re.search(r"sha256 ([0-9a-f]{64})", str((queue_entry.get("code") or {}).get("archive", "")))
+    """The sha256 the queue entry registers for the archive: code.archive, else the .gz hash named in code.commit."""
+    code = queue_entry.get("code") or {}
+    m = re.search(r"sha256 ([0-9a-f]{64})", str(code.get("archive", "")))
+    if not m:
+        m = re.search(r"\.gz\b[^;]*?sha256 ([0-9a-f]{64})", str(code.get("commit", "")))
     return m.group(1) if m else ""
 
 
@@ -129,7 +158,12 @@ def tool_changes(mid: dict, post: dict) -> dict:
     return {"modified": d["modified"], "removed": d["removed"], "added": d["added"]}
 
 
-def record(repo: Path, rid: str, pre_p: Path, mid_p: Path, post_p: Path, commands: list[str]) -> dict:
+def record(repo: Path, rid: str, pre_p: Path, mid_p: Path, post_p: Path, commands: list[str],
+           extraction: dict | None = None) -> dict:
+    """Write the three manifests and the patch record into result.json.
+
+    extraction: {"archive_file": Path, "start": int, "end": int, "extracted": str} when the patch step copied a line range.
+    """
     ev = repo / "reports" / rid / "evidence"
     ev.mkdir(parents=True, exist_ok=True)
     texts = {}
@@ -142,10 +176,20 @@ def record(repo: Path, rid: str, pre_p: Path, mid_p: Path, post_p: Path, command
     region = build_region(recipe.read_text(encoding="utf-8")) if recipe.exists() else None
     qp = repo / "queue" / f"{rid}.json"
     qp = qp if qp.exists() else repo / "queue" / "withdrawn" / f"{rid}.json"
-    patch = {"kind": classify(ours, commands, region), "archive_sha256": archive_sha(json.loads(qp.read_text(encoding="utf-8"))),
+    kind = classify(ours, commands, region)
+    patch = {"kind": kind, "archive_sha256": archive_sha(json.loads(qp.read_text(encoding="utf-8"))),
              "compared": ours["compared"], "ours": {k: ours[k] for k in ("modified", "removed", "added")},
              "tool": tool_changes(mid, post), "build_commands": commands,
              "manifests": {n: f"reports/{rid}/evidence/manifest.{n}" for n in ("pre", "mid", "post")}}
+    if extraction is not None:
+        archive = extraction["archive_file"].read_bytes()
+        rng = extract_range(archive, extraction["start"], extraction["end"])
+        range_sha = hashlib.sha256(rng).hexdigest()
+        (ev / "source-range.f").write_bytes(rng)
+        patch["kind"] = classify_extraction(ours, mid, extraction["extracted"], range_sha, commands, region)
+        patch["extraction"] = {"file_sha256": hashlib.sha256(archive).hexdigest(), "file": extraction["archive_file"].name,
+                               "start": extraction["start"], "end": extraction["end"],
+                               "extracted": extraction["extracted"], "range_sha256": range_sha}
     rp = repo / "reports" / rid / "result.json"
     result = json.loads(rp.read_text(encoding="utf-8"))
     result["patch"] = patch
@@ -163,6 +207,9 @@ def main(argv=None) -> int:
     for n in ("pre", "mid", "post"):
         r.add_argument(f"--{n}", required=True, type=Path)
     r.add_argument("--command", action="append", default=[], help="a build command exactly as recipe.sh runs it")
+    r.add_argument("--archive-file", type=Path, help="the authors' archive file the patch step copied a range from")
+    r.add_argument("--range", help="START:END, 1-based inclusive lines of --archive-file")
+    r.add_argument("--extracted", help="the file the patch step created from that range, as named in the manifests")
     a = ap.parse_args(argv)
     if a.cmd == "manifest":
         sys.stdout.write(render(manifest(a.dir)))
@@ -170,12 +217,18 @@ def main(argv=None) -> int:
     if a.cmd == "compare":
         print(json.dumps(compare(parse(a.a.read_text()), parse(a.b.read_text())), indent=1))
         return 0
-    patch = record(a.repo, a.id, a.pre, a.mid, a.post, a.command)
+    extraction = None
+    if a.range or a.archive_file or a.extracted:
+        if not (a.range and a.archive_file and a.extracted):
+            ap.error("--range, --archive-file and --extracted go together")
+        start, end = (int(x) for x in a.range.split(":"))
+        extraction = {"archive_file": a.archive_file, "start": start, "end": end, "extracted": a.extracted}
+    patch = record(a.repo, a.id, a.pre, a.mid, a.post, a.command, extraction)
     t = patch["tool"]
     print(f"{a.id}: patch kind {patch['kind']}: compared {patch['compared']}; ours modified {len(patch['ours']['modified'])}, "
           f"removed {len(patch['ours']['removed'])}, added {len(patch['ours']['added'])}; build tool modified {len(t['modified'])}, "
           f"added {len(t['added'])}, removed {len(t['removed'])}")
-    return 0 if patch["kind"] == "build-only" else 2
+    return 0 if patch["kind"] in ("build-only", "extraction") else 2
 
 
 if __name__ == "__main__":

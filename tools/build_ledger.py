@@ -93,6 +93,9 @@ def basis_cell(r: dict) -> str:
         n = len(tool.get("modified", [])) + len(tool.get("added", [])) + len(tool.get("removed", []))
         return "patched (build-only" + (f"; the build tool rewrote {n} files)" if n else ")")
     return basis
+    if basis == "patched" and patch.get("kind") == "extraction":
+        return "patched (verbatim extraction of archive lines " + f"{patch['extraction']['start']}-{patch['extraction']['end']})"
+    return basis
 
 
 def gate_cell(r: dict) -> str:

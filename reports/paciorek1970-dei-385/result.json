@@ -1,0 +1,88 @@
+{
+  "paper": {
+    "short": "paciorek1970-dei-385",
+    "title": "Algorithm 385: Exponential integral Ei(x) (Collected Algorithms from ACM)",
+    "year": 1970,
+    "doi": null
+  },
+  "field": "numerics (special functions: exponential integral)",
+  "field_class": "numerics",
+  "stack": "Fortran 77 (netlib TOMS 385.gz shell archive: Fortran/Dp/Src/src.f with DEI, driver Fortran/Dp/Drivers/driver.f, Makefile, shipped res)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "TEST01 of the shipped driver: DEI(2.0), the exponential integral, as printed in the Computed column of the shipped res file (row X = 2.0000), is 4.9542344. Registered by scout from the artifact's own reference output. Tolerance 2e-7 absolute, fixed before any run.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "DEI_TEST01_X2",
+        "paper": 4.9542344,
+        "tol_abs": 2e-07,
+        "ours": 4.9542344
+      }
+    ],
+    "determinism": "deterministic (fixed argument X = 2.0 from the driver's table; no random input)",
+    "reference": {
+      "file": "reports/paciorek1970-dei-385/evidence/res-shipped",
+      "archive": "netlib.org/toms/385.gz, sha256 f76ca4d6610c227c020e9d7901518089ba680d596ed8888615f38b26b4b5ddb7, file Fortran/Dp/Drivers/res",
+      "sha256": "788f240f8c83240ff12aab9d2dc8965b7680ba6932989f459bf2e866a7d6eb86"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "G1: the authors' Makefile in the shipped layout stops at once with 'No rule to make target src.f, needed by src.o' because src.f sits in Fortran/Dp/Src, not beside the Makefile (log kept). The build then runs the Makefile's own rules as separate commands with the src.f path set to ../Src (gfortran 16.2.0, default flags). No source file changed: the pre, mid and post manifests of the authors' sources are identical, so this is a build-only patch. The driver's whole output is identical to the shipped res (diff exit 0), so the X = 2.0 value matches the reference line for line. Gfortran warnings only.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make stops with 'No rule to make target src.f, needed by src.o': the archive places src.f in ../Src while the Makefile expects it in the same directory.",
+    "log": "reports/paciorek1970-dei-385/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/paciorek1970-dei-385/recipe.sh",
+  "queue_commit": "166559a",
+  "evidence": [
+    "reports/paciorek1970-dei-385/evidence/fetch.log",
+    "reports/paciorek1970-dei-385/evidence/original-attempt.log",
+    "reports/paciorek1970-dei-385/evidence/manifest.pre",
+    "reports/paciorek1970-dei-385/evidence/manifest.mid",
+    "reports/paciorek1970-dei-385/evidence/manifest.post",
+    "reports/paciorek1970-dei-385/evidence/recipe-run.log",
+    "reports/paciorek1970-dei-385/evidence/Res",
+    "reports/paciorek1970-dei-385/evidence/res-shipped",
+    "reports/paciorek1970-dei-385/evidence/res-diff.txt"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "f76ca4d6610c227c020e9d7901518089ba680d596ed8888615f38b26b4b5ddb7",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -c ../Src/src.f",
+      "gfortran -c driver.f",
+      "gfortran -o driver driver.o src.o",
+      "./driver > Res"
+    ],
+    "manifests": {
+      "pre": "reports/paciorek1970-dei-385/evidence/manifest.pre",
+      "mid": "reports/paciorek1970-dei-385/evidence/manifest.mid",
+      "post": "reports/paciorek1970-dei-385/evidence/manifest.post"
+    }
+  }
+}

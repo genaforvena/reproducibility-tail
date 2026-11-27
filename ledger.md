@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-104 papers attempted.
+105 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 23 |
-| B | authors' code with build fixes | 58 |
+| B | authors' code with build fixes | 59 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 2 |
 | - | blocked or not yet run | 20 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 91, other 4, statistics 6
-By stack: C/C++ 12, Fortran 78, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 0 1, 1960 4, 1970 12, 1980 9, 1990 35, 2000 28, 2010 15
+By field: astronomy 1, biology 1, ecology 1, numerics 92, other 4, statistics 6
+By stack: C/C++ 12, Fortran 79, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 0 1, 1960 4, 1970 13, 1980 9, 1990 35, 2000 28, 2010 15
 
 Data as of 2026-11-27T14:56:07Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T14:56:07Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-104 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+105 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **510 candidates considered from 4 of 4 frames: 101 attempted (20%), 0 unreachable, 409 rejected.**
 
@@ -75,7 +75,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 69 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 25 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 70 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 25 (ran as documented).
 
 ## Results
 
@@ -258,6 +258,7 @@ Authors' original artifact, among all attempted papers: failed 69 (did not run),
 | [montefusco1989-interp-677](reports/montefusco1989-interp-677/result.md) | numerics · 1989 · Fortran | Self-check PROGRAM MAIN of TOMS 677 (first test program): the maximum and mean absolute errors ERMAX and ERMEAN that MMERR computes for the 10x10 reconstruction (IEX=1, TP=10) against the analytic Gaussian surface, compared with the built-in ANS2 = 0.6059994 and ANS1 = 0.06695094. Registered tolerance: relative 1e-5 on each value. The paper's own values were not read; the claim is the archive's built-in reference. (maximum absolute error (ERMAX)) | 0.605999 ± 6.05999e-06 | – | – | – | patched | ✓ ? ✓ · | - | blocked | never clean |
 | [montefusco1989-interp-677](reports/montefusco1989-interp-677/result.md) | numerics · 1989 · Fortran | Self-check PROGRAM MAIN of TOMS 677 (first test program): the maximum and mean absolute errors ERMAX and ERMEAN that MMERR computes for the 10x10 reconstruction (IEX=1, TP=10) against the analytic Gaussian surface, compared with the built-in ANS2 = 0.6059994 and ANS1 = 0.06695094. Registered tolerance: relative 1e-5 on each value. The paper's own values were not read; the claim is the archive's built-in reference. (mean absolute error (ERMEAN)) | 0.0669509 ± 6.69509e-07 | – | – | – | patched | ✓ ? ✓ · | - | blocked | never clean |
 | [ong2016-ridc-965](reports/ong2016-ridc-965/result.md) | numerics · 2016 · C/C++ | First component sol[0] printed by ./explicit 4 10 (RIDC forward Euler, order 4, nt = 10, u_i' = -(i+1) t u_i on [0,1], u_i(0) = 1), as in the shipped reference n1.ref line 1. Registered by scout (queue entry); the value is the artifact's own reference output, not a verified paper table (DOI not verified by scout). (SOL0_RIDC4_NT10) [shipped reference output] | 0.606522 ± 1e-11 | 0.606522 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
+| [paciorek1970-dei-385](reports/paciorek1970-dei-385/result.md) | numerics · 1970 · Fortran | TEST01 of the shipped driver: DEI(2.0), the exponential integral, as printed in the Computed column of the shipped res file (row X = 2.0000), is 4.9542344. Registered by scout from the artifact's own reference output. Tolerance 2e-7 absolute, fixed before any run. (DEI_TEST01_X2) [shipped reference output] | 4.95423 ± 2e-07 | 4.95423 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
 | [pardalos1997-grasp-769](reports/pardalos1997-grasp-769/result.md) | numerics · 1997 · Fortran | Cost of the best permutation found by GRASP for the 6-by-6 QAP test instance, seed 270001, 1000 iterations, alpha 0.25, beta 0.50, look4 -1, as printed in the shipped reference output RES. Registered tolerance: abs 0.5 (integer cost, exact match). (best QAP cost (GRASP, seed 270001)) [shipped reference output] | 4490 ± 0.5 | 4490 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f07 on [0, 1]) [shipped reference output] | 0.777505 ± 0.000777505 | 0.777505 | 3.659e-07 | 0% | patched | ✓ · ✓ · | X | partial | never clean |
 | [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f08 on [0.1, 1]) [shipped reference output] | 0.00909865 ± 9.09865e-06 | 0.00909898 | 3.34744e-07 | 4% | patched | ✓ · ✓ · | X | partial | never clean |

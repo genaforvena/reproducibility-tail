@@ -1,0 +1,91 @@
+{
+  "paper": {
+    "short": "gao2005-mixedvol-846",
+    "title": "Algorithm 846: MixedVol: a software package for mixed-volume computation",
+    "year": 2005,
+    "doi": null
+  },
+  "field": "numerics (polynomial systems, mixed volume)",
+  "field_class": "numerics",
+  "stack": "C++ (TOMS 846.zip: 846/ with Doc/{userman.tex,userman.pdf,makefile}, Src/MixedVolDriver.cpp, Src/MixedVol/*.h, Src/PolyReader/*.cpp|h, Src/PreProcess/*.h, CopyRight)",
+  "stack_class": "C/C++",
+  "claim": {
+    "text": "The manual's worked three-polynomial system (Doc/userman.tex, 'Call Sequence and Output'), typed into a file MyPolynomials outside the archive and run as 'mixedvol -p MyPolynomials', prints a mixed volume of 119. Integer, tolerance 0, fixed in the queue entry before any run; the paper was not read, so the claim rests on the shipped manual's stated number.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/gao2005-mixedvol-846/evidence/reference/userman.tex",
+      "sha256": "86d2b1cd2fd773674822d87f337df1ba1977b9fe660dae9b090c929e840bdb3e",
+      "archive": "netlib.org/toms/846.zip sha256 c1a8045a45878744ac58078c696f54b1166d8c3a7fdca00ff0a66c41bca9acdb"
+    },
+    "values": [
+      {
+        "name": "mixed volume of the manual's 3-polynomial system (manual: 119)",
+        "paper": 119,
+        "tol_abs": 0,
+        "ours": 119
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced at the registered claim. Both passes (clean rebuilds of the unpacked archive, same commands, each run of the manual's input) print 'The mixed volume of this system is 119', equal to the manual's stated 119, tolerance 0. The authors' procedure does not run as documented: the manual says to run 'build' in the main directory, and no such script exists in the archive (the queue note is mistaken about the Doc/makefile: it is the code's makefile, not a manual makefile). Run from the main directory, Doc/makefile stops with 'No rule to make target MixedVolDriver.o' (sources are in Src/). Run from Src/, it stops at MixedVolDriver.cpp:189 and :209 ('INT_MAX was not declared in this scope'; the header <climits> is not included, and current g++ does not include it transitively). The build we ran is the makefile's own commands (g++ -c -O2 -ansi, then the link) with one compiler flag, '-include climits', which supplies the declaration. No source file was edited (build-only record). The makefile's link line also names objects without their PolyReader/ path, so the link was written with the paths. The basis is therefore patched (build-only), not original.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The manual's 'build' does not exist. The shipped Doc/makefile fails from the main directory (no rule for MixedVolDriver.o) and from Src/ (INT_MAX not declared at MixedVolDriver.cpp:189 and :209 with g++ 13.3). Both logs are kept.",
+    "log": "reports/gao2005-mixedvol-846/evidence/original-attempt-src.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pending",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/gao2005-mixedvol-846/recipe.sh",
+  "queue_commit": "d3650c1705610e3f311872e885f7a9e8380ed4e8",
+  "evidence": [
+    "reports/gao2005-mixedvol-846/evidence/fetch-toolchain.log",
+    "reports/gao2005-mixedvol-846/evidence/unpack.log",
+    "reports/gao2005-mixedvol-846/evidence/original-attempt-root.log",
+    "reports/gao2005-mixedvol-846/evidence/original-attempt-src.log",
+    "reports/gao2005-mixedvol-846/evidence/pass1-build.log",
+    "reports/gao2005-mixedvol-846/evidence/pass1-run.log",
+    "reports/gao2005-mixedvol-846/evidence/pass2-run.log",
+    "reports/gao2005-mixedvol-846/evidence/pass1-output.txt",
+    "reports/gao2005-mixedvol-846/evidence/pass2-output.txt",
+    "reports/gao2005-mixedvol-846/evidence/reference-block.txt",
+    "reports/gao2005-mixedvol-846/evidence/values.txt",
+    "reports/gao2005-mixedvol-846/evidence/recipe-run.log"
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "c1a8045a45878744ac58078c696f54b1166d8c3a7fdca00ff0a66c41bca9acdb",
+    "compared": 30,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "(cd Src && g++ -c -O2 -ansi -include climits MixedVolDriver.cpp -o MixedVolDriver.o)",
+      "(cd Src && g++ -c -O2 -ansi -include climits PolyReader/GenericPolynomial.cpp -o PolyReader/GenericPolynomial.o)",
+      "(cd Src && g++ -c -O2 -ansi -include climits PolyReader/PolynomialException.cpp -o PolyReader/PolynomialException.o)",
+      "(cd Src && g++ -c -O2 -ansi -include climits PolyReader/ExpandedPolynomial.cpp -o PolyReader/ExpandedPolynomial.o)",
+      "(cd Src && g++ -c -O2 -ansi -include climits PolyReader/PolynomialSystemReader.cpp -o PolyReader/PolynomialSystemReader.o)",
+      "(cd Src && g++ -O2 MixedVolDriver.o PolyReader/GenericPolynomial.o PolyReader/PolynomialException.o PolyReader/ExpandedPolynomial.o PolyReader/PolynomialSystemReader.o -o /work/build/mixedvol)"
+    ],
+    "manifests": {
+      "pre": "reports/gao2005-mixedvol-846/evidence/manifest.pre",
+      "mid": "reports/gao2005-mixedvol-846/evidence/manifest.mid",
+      "post": "reports/gao2005-mixedvol-846/evidence/manifest.post"
+    }
+  }
+}

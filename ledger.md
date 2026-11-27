@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-105 papers attempted.
+106 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 23 |
-| B | authors' code with build fixes | 59 |
+| B | authors' code with build fixes | 60 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 2 |
 | - | blocked or not yet run | 20 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 92, other 4, statistics 6
-By stack: C/C++ 12, Fortran 79, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 0 1, 1960 4, 1970 13, 1980 9, 1990 35, 2000 28, 2010 15
+By field: astronomy 1, biology 1, ecology 1, numerics 93, other 4, statistics 6
+By stack: C/C++ 13, Fortran 79, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 0 1, 1960 4, 1970 13, 1980 9, 1990 35, 2000 28, 2010 16
 
 Data as of 2026-11-27T14:56:07Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T14:56:07Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-105 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+106 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **510 candidates considered from 4 of 4 frames: 101 attempted (20%), 0 unreachable, 409 rejected.**
 
@@ -75,7 +75,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 70 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 25 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 71 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 25 (ran as documented).
 
 ## Results
 
@@ -131,6 +131,7 @@ Authors' original artifact, among all attempted papers: failed 70 (did not run),
 | [caliari2008-padua2d-886](reports/caliari2008-padua2d-886/result.md) | numerics · 2008 · Fortran | Normalized true error of the Padua interpolant at degree 60 for the Franke function F1 on the unit square (drvrec, FAMILY 1, NTG1 100), Table I of the pre-publication draft: 2E-11. Absolute tolerance 5e-12 (the printed value stands for [1.5E-11, 2.5E-11]). Registered 2026-11-27T03:28Z. (normalized true error, F1, degree 60, square) | 2e-11 ± 5e-12 | 2.468e-11 | 4.68e-12 | 94% ⚠ | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
 | [carlson1981-elliptic-577](reports/carlson1981-elliptic-577/result.md) | numerics · 1981 · Fortran | RJ(2,3,4,5) from the Algorithm 577 subroutine RJ, called with ERRTOL = 1.D-3 by the RJ test driver (check value in the driver comment: 0.14297 57966 71567 53833 23308). Registered tol_abs 1.4297579667156755e-4 (ERRTOL 1e-3 times the value). (rj_2345) [shipped reference output] | 0.142976 ± 0.000142976 | 0.142976 | -2.77556e-17 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [clemm1969-mathieu-352](reports/clemm1969-mathieu-352/result.md) | numerics · 1969 · Fortran | a_5(5), the even Mathieu characteristic value at R = 5, Q = 5, as printed in the Computed column of TEST05 in the shipped reference output res. Registered tolerance: abs 1e-5. (a_5(5) (even)) [shipped reference output] | 25.55 ± 1e-05 | 25.55 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [damore2014-reliadiff-946](reports/damore2014-reliadiff-946/result.md) | numerics · 2014 · C/C++ | DEMO2 default run: f_comp at x = 5.00e+00 in the shipped output_demo2.txt is 1.29653819e+00. Registered by scout from the artifact's own reference output. Tolerance 2e-8 absolute, fixed before any run. (RELIADIFF_FCOMP_X5) [shipped reference output] | 1.29654 ± 2e-08 | 1.29654 | 0 | 0% | patched (build-only; the build tool rewrote 1977 files) | ✓ · ✓ · | B | reproduced | never clean |
 | [demetriou2007-l2wpma-863](reports/demetriou2007-l2wpma-863/result.md) | numerics · 2007 · Fortran | Shipped reference Data/Appndx_B/WIVAPP (Appendix B of Doc/INSTDE04.txt): the data indices of the extrema of the best monotone fit, DRIVER1 on Data/Appndx_B/XFWDAT with KSECTN 5, default weights. Claim values: indices 0..5 = 1, 8, 27, 46, 69, 75, exact match (tolerance 0). (extremum index 0) [shipped reference output] | 1 ± 0 | 1 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [demetriou2007-l2wpma-863](reports/demetriou2007-l2wpma-863/result.md) | numerics · 2007 · Fortran | Shipped reference Data/Appndx_B/WIVAPP (Appendix B of Doc/INSTDE04.txt): the data indices of the extrema of the best monotone fit, DRIVER1 on Data/Appndx_B/XFWDAT with KSECTN 5, default weights. Claim values: indices 0..5 = 1, 8, 27, 46, 69, 75, exact match (tolerance 0). (extremum index 1) [shipped reference output] | 8 ± 0 | 8 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [demetriou2007-l2wpma-863](reports/demetriou2007-l2wpma-863/result.md) | numerics · 2007 · Fortran | Shipped reference Data/Appndx_B/WIVAPP (Appendix B of Doc/INSTDE04.txt): the data indices of the extrema of the best monotone fit, DRIVER1 on Data/Appndx_B/XFWDAT with KSECTN 5, default weights. Claim values: indices 0..5 = 1, 8, 27, 46, 69, 75, exact match (tolerance 0). (extremum index 2) [shipped reference output] | 27 ± 0 | 27 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |

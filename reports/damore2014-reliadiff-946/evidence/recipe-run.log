@@ -1,0 +1,29 @@
+== fetch: 946.zip (sha256 checked), unpacked to /work/pre
+/work/pre/946/Doc/Latex/rel6.jpg
+/work/pre/946/Doc/Latex/rel9.jpg
+/work/pre/946/Doc/RELIADIFF_userguide.pdf
+== manifest pre (right after unpack, before any build step)
+39
+== G1 original attempt: the documented route in a copy (GSL 1.15 install, then DEMO2 make)
+gsl_make_exit=0
+demo2_make_exit=2
+############################################################################
+make[1]: Entering directory '/work/orig-run/946/C++_files/demos-Linux_g++/utility'
+make[1]: *** No rule to make target '/usr/local/include/gsl/', needed by 'Util.o'.  Stop.
+make[1]: Leaving directory '/work/orig-run/946/C++_files/demos-Linux_g++/utility'
+make: *** [Makefile_gslloc:67: util] Error 2
+== manifest mid (immediately before the build)
+== build: the authors' Makefiles where they work, then the DEMO2 compile and link lines (GSL at ../GSL)
+gsl_exit=0
+src_exit=0
+util_exit=0
+compile_exit=0
+link_exit=0
+run_exit=0
+Running demo with all default values...
+== manifest post (after the build)
+== evidence: the row x = 5 against the shipped output
+b7a80b4751636af82f9d76c49c912a0483724f385dd12fdb1f37a952b6d5ff64
+diff_exit=1 (full file; the elapsed-time lines are expected to differ)
+== values
+VALUE RELIADIFF_FCOMP_X5 1.29653819e+00

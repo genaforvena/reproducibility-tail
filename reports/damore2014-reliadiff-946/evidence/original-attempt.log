@@ -1,0 +1,7 @@
+gsl_make_exit=0
+demo2_make_exit=2
+############################################################################
+make[1]: Entering directory '/work/orig-run/946/C++_files/demos-Linux_g++/utility'
+make[1]: *** No rule to make target '/usr/local/include/gsl/', needed by 'Util.o'.  Stop.
+make[1]: Leaving directory '/work/orig-run/946/C++_files/demos-Linux_g++/utility'
+make: *** [Makefile_gslloc:67: util] Error 2

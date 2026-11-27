@@ -67,4 +67,4 @@ cat "$E/run-pass1.txt"
 
 # Observed value: BIVNOR column of the first row (H=0.80000, K=-1.50000, R=-0.90000) of the produced Res.
 val() { awk '$1=="0.80000" && $2=="-1.50000" && $3=="-0.90000" { printf "%.17g\n", $4+0; exit }' "$1"; }
-echo "VALUE bivnor_0.8_-1.5_-0.9 $(val "$E/run-pass1.txt")"
+echo "VALUE BIVNOR(0.8, -1.5, -0.9) $(val "$E/run-pass1.txt")"

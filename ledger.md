@@ -28,14 +28,14 @@ Every candidate is drawn from a named frame in a seeded order and none is skippe
 
 107 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
-**513 candidates considered from 4 of 4 frames: 102 attempted (20%), 0 unreachable, 411 rejected.**
+**515 candidates considered from 4 of 4 frames: 102 attempted (20%), 0 unreachable, 413 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
 | cpc-library | 2767 | 40 | 20 | 50% | 0 | 0 | 20 |
 | netlib-liblist | 160 | 40 | 40 | 100% | 0 | 0 | 40 |
 | stat-co-2010-2015 | 1872 | 80 | 50 | 62% | 1 | 0 | 49 |
-| toms-calgo-index | 570 | 440 | 403 | 92% | 101 | 0 | 302 |
+| toms-calgo-index | 570 | 440 | 405 | 92% | 101 | 0 | 304 |
 
 | why a candidate was not attempted | candidates |
 |---|---|
@@ -47,10 +47,10 @@ Every candidate is drawn from a named frame in a seeded order and none is skippe
 | stochastic-no-seed | 22 |
 | no-code | 3 |
 | runtime | 3 |
-| machine-dependent | 43 |
+| machine-dependent | 44 |
 | restricted-data | 0 |
 | gpu | 1 |
-| other | 19 |
+| other | 20 |
 | unreachable-code | 0 |
 | unreachable-data | 0 |
 
@@ -59,7 +59,7 @@ Survivorship: each stack's count (and share) among all candidates considered, an
 | stack | considered | attempted |
 |---|---|---|
 | C/C++ | 55 (11%) | 14 (14%) |
-| Fortran | 344 (67%) | 79 (77%) |
+| Fortran | 346 (67%) | 79 (77%) |
 | Java | 3 (1%) | 1 (1%) |
 | MATLAB/Octave | 44 (9%) | 6 (6%) |
 | Python | 1 (0%) | 0 (0%) |

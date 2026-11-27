@@ -1,0 +1,53 @@
+{
+  "paper": {
+    "short": "kim2012-sfsdp-920",
+    "title": "Algorithm 920: SFSDP: a sparse version of full semidefinite programming relaxation for sensor network localization problems",
+    "year": 2012,
+    "doi": null
+  },
+  "field": "numerics / sensor network localization (semidefinite programming)",
+  "stack": "MATLAB/Octave (TOMS 920 Matlab package; SDP solver SDPA via sedumiwrap)",
+  "field_class": "numerics",
+  "stack_class": "MATLAB/Octave",
+  "claim": {
+    "text": "SFSDPplus, 3 sensors and 4 anchors, with the inputs printed in the manual (distanceMatrix0, xMatrix0, eps 1e-7, minDegree 4, objSW 1, free 0): the SDP-stage rmsd is 6.21e-02 (manual transcript, Doc/SFSDPmanual/UserManual.tex, section SFSDPplus.m). tol_abs 5e-4, fixed in the queue entry.",
+    "values": [
+      {
+        "name": "sdp_rmsd_printed",
+        "paper": 0.0621,
+        "tol_abs": 0.0005,
+        "ours": null
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "blocked",
+  "cause": null,
+  "attempt": "Measured in the sandbox (tools/sandbox.sh), two passes from fresh Octave 8.4 processes on the manual's printed inputs (driver-manual-printed.m): pass 1 'rmsd = 6.21e-02', pass 2 'rmsd = 6.21e-02'. That is inside tolerance of the registered 0.0621 (difference 0), recorded in evidence and result.md, but ours is null here: a patched result may be graded reproduced only after the G2 paper check (method.md), and the article is paywalled, so the check cannot be made. Blocked on G2: missing evidence is the article text (or a legitimate copy of it) to check the SFSDP parameters and the rmsd definition against. The shipped examples/example1.mat, run with the manual's stated command (noisyFac 0, eps 1e-5), gives 'rmsd = 2.13e-05'; the claim's inputs are the printed ones, so this is a finding about the artifact, not a failed claim. Patches: Octave 8.4 in place of MATLAB, the spones compatibility shim (impl/spones.m, MATLAB semantics), and LD_PRELOAD of the system reference BLAS/LAPACK (the conda OpenBLAS crashes inside the Debian sdpam mex). The sdpa-run exits with status 1 after the rmsd line because drawPicture needs a graphics toolkit; the rmsd is printed before that.",
+  "queue_commit": "0558da1b6bf4aa6b0331f47cbbf6e6fa7f81669d",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The authors' MATLAB package has no MATLAB here, so the artifact was run in conda Octave 8.4 with the Debian SDPA mex. As first run (conda OpenBLAS, no BLAS preload) the SDPA mex segfaulted ('fatal: caught signal Segmentation fault') after the SDP relaxation was generated and before any rmsd line; that is the logged run (evidence/original-attempt-oct8.log, Octave 8.4). The fix, preloading the system reference BLAS/LAPACK, is the patch; the runs that gave rmsd lines are in evidence/pass1 and pass2. Octave 10.3 failed earlier on the mex SOVERSION (noted in the wall; no log kept).",
+    "log": "reports/kim2012-sfsdp-920/evidence/original-attempt-oct8.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/kim2012-sfsdp-920/recipe.sh",
+  "evidence": [
+    "reports/kim2012-sfsdp-920/claimed",
+    "reports/kim2012-sfsdp-920/evidence/recipe-run.log",
+    "reports/kim2012-sfsdp-920/evidence/pass1-manual-printed.log",
+    "reports/kim2012-sfsdp-920/evidence/pass2-manual-printed.log",
+    "reports/kim2012-sfsdp-920/evidence/shipped-example1.log",
+    "reports/kim2012-sfsdp-920/evidence/original-attempt-oct8.log",
+    "reports/kim2012-sfsdp-920/evidence/prior-manual-printed-run.log"
+  ],
+  "replayed": []
+}

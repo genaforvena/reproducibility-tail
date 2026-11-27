@@ -5,7 +5,7 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-48 papers attempted.
+49 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
@@ -14,11 +14,11 @@ Method and gates: [docs/method.md](docs/method.md).
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
-| - | blocked or not yet run | 7 |
+| - | blocked or not yet run | 8 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 37, other 3, statistics 5
-By stack: C/C++ 8, Fortran 31, Java 1, MATLAB/Octave 3, R 5
-By decade: 1960 1, 1970 1, 1980 3, 1990 17, 2000 18, 2010 8
+By field: astronomy 1, biology 1, ecology 1, numerics 38, other 3, statistics 5
+By stack: C/C++ 8, Fortran 31, Java 1, MATLAB/Octave 4, R 5
+By decade: 1960 1, 1970 1, 1980 3, 1990 17, 2000 18, 2010 9
 
 Data as of 2026-11-27T02:55:48Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T02:55:48Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-48 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+49 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **287 candidates considered from 4 of 4 frames: 44 attempted (15%), 0 unreachable, 243 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 27 (did not run), not-possible 2 (no code exists to run), partial 5 (ran only through a workaround or for part of the claim), succeeded 14 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 28 (did not run), not-possible 2 (no code exists to run), partial 5 (ran only through a workaround or for part of the claim), succeeded 14 (ran as documented).
 
 ## Results
 
@@ -121,6 +121,7 @@ Authors' original artifact, among all attempted papers: failed 27 (did not run),
 | [hager2006-cg-descent-851](reports/hager2006-cg-descent-851/result.md) | numerics · 2006 · Fortran | driver1 (User's Guide example: n = 100, x = 1, grad_tol 1e-8, default cg.parm) prints cg iterations 32, function evaluations 55, gradient evaluations 45, as in the shipped res1; exact match (tolerance 0). (driver1 cg iterations) [shipped reference output] | 32 ± 0 | 32 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [hager2006-cg-descent-851](reports/hager2006-cg-descent-851/result.md) | numerics · 2006 · Fortran | driver1 (User's Guide example: n = 100, x = 1, grad_tol 1e-8, default cg.parm) prints cg iterations 32, function evaluations 55, gradient evaluations 45, as in the shipped res1; exact match (tolerance 0). (driver1 function evaluations) [shipped reference output] | 55 ± 0 | 55 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [hager2006-cg-descent-851](reports/hager2006-cg-descent-851/result.md) | numerics · 2006 · Fortran | driver1 (User's Guide example: n = 100, x = 1, grad_tol 1e-8, default cg.parm) prints cg iterations 32, function evaluations 55, gradient evaluations 45, as in the shipped res1; exact match (tolerance 0). (driver1 gradient evaluations) [shipped reference output] | 45 ± 0 | 45 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [kim2012-sfsdp-920](reports/kim2012-sfsdp-920/result.md) | numerics · 2012 · MATLAB/Octave | SFSDPplus, 3 sensors and 4 anchors, with the inputs printed in the manual (distanceMatrix0, xMatrix0, eps 1e-7, minDegree 4, objSW 1, free 0): the SDP-stage rmsd is 6.21e-02 (manual transcript, Doc/SFSDPmanual/UserManual.tex, section SFSDPplus.m). tol_abs 5e-4, fixed in the queue entry. (sdp_rmsd_printed) | 0.0621 ± 0.0005 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
 | [kraft1994-tomp-733](reports/kraft1994-tomp-733/result.md) | numerics · 1994 · Fortran | Final cost of the constrained brachistochrone test driver, iteration 27, 1.7952392, tol_abs 1e-5 (shipped TOMP.OUT block, 733.f lines 77-109) (value) | 1.79524 ± 1e-05 | 1.79524 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [leis1988-odessa-658](reports/leis1988-odessa-658/result.md) | numerics · 1988 · Fortran | Y(1) at T = 4.0 of the demo's first output block (METH 1, MITER 0) is 0.905516, as printed in the source comments. Absolute tolerance 1e-5. (chemical kinetics demo, Y(1) at T=4.0, METH 1 MITER 0) [shipped reference output] | 0.905516 ± 1e-05 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [levine1969-student-t-344](reports/levine1969-student-t-344/result.md) | statistics · 1969 · Fortran | The computed CDF printed by TOMS344_PRB for DF=1, X=0.3250 (row 1, computed column) is 0.7999537587165833, as in the shipped reference output res. Absolute tolerance 1e-6. (TTEST, DF=1, X=0.3250, two-tailed CDF transform (computed column)) [shipped reference output] | 0.799954 ± 1e-06 | 0.799954 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |

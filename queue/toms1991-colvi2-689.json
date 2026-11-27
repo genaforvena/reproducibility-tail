@@ -1,0 +1,43 @@
+{
+  "paper": {
+    "title": "Algorithm 689: COLVI2, nonlinear Volterra integral equations of the second kind (Collected Algorithms from ACM)",
+    "authors": [
+      "not read: the article page is 403 here; the archive header names only the algorithm"
+    ],
+    "year": 1991,
+    "venue": "ACM Transactions on Mathematical Software 17(2), pp. 167-177 (June 1991), Algorithm 689",
+    "doi": null,
+    "url": "https://netlib.org/toms/689.gz (article DOI not verified by scout)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/689.gz",
+    "commit": "netlib TOMS archive 689.gz (Fortran COLVI2 subprograms, documentation and the driver output block of the shipped test program)",
+    "archive": "sha256 beaa7e6b4954ae0eb92c8ab58f2e606975cbc1e1ebe06910271f1d73b5a085df (downloaded by scout 2026-11-27, 81813 bytes; decompresses to 450359 bytes)",
+    "note": "The shipped text contains the driver (DKCDY, DRIVER 6) and a printed run in the comments. Rerun must rebuild COLVI2 from the archive and run the test program; the claim is the PASS 1 global error line only."
+  },
+  "field": "numerics (nonlinear Volterra integral equations)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "location": "Shipped driver output, PASS 1 of the COLVI2 test run (decompressed archive text near line 9490: the COLVI2 SUMMARY block for DEFOPT=21, REQTOL=1e-3). The printed line is '-GLOB.ERR.EST.=  -.5782217549E-07    GLOB.ERR.=  -.1165398569E-06    SD =  6.93'. The claim is the GLOB.ERR. value (the actual global error at t=50 for the first component, as printed by the driver).",
+    "reference": {
+      "file": "689/689.txt",
+      "sha256": "048cd1e16d7de7d27a4d87092fbcd0bd989fe816c3759058eeb362dbc0cb087f",
+      "archive": "netlib.org/toms/689.gz, sha256 beaa7e6b4954ae0eb92c8ab58f2e606975cbc1e1ebe06910271f1d73b5a085df"
+    },
+    "paper_value": "GLOB.ERR. = -1.165398569e-7 (PASS 1, DEFOPT=21)",
+    "metric": "GLOB.ERR. of PASS 1 as printed by the driver (first component, t = 50)",
+    "determinism": "deterministic (the Volterra problem and the driver have no random input; the step size is fixed at 1.0 in this run)",
+    "tolerance": {
+      "abs": 1e-09,
+      "basis": "Fixed before any run. The printed value has 10 significant digits, so its rounding step is about 1e-16. The global error is about 1.2e-7 and is set by the method at REQTOL 1e-3, not by arithmetic roundoff; a rerun on IEEE arithmetic should move it far less than 1e-9 unless an iteration-count decision flips. The tolerance is 1% of the value. Not to be loosened after any run. The printed KEV, corrector-iteration and CP-second counts are NOT claimed: the count fields depend on convergence tests at roundoff, and CP seconds are machine-dependent."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: the PASS 1 run is 50 steps of a 2-equation problem.",
+    "data_size": "None: the problem is fixed in the driver.",
+    "data_licence": "No data. The archive licence is not stated; the rerun should record it."
+  },
+  "why": "The authors' shipped driver prints a global error for a nonlinear Volterra solver on a fixed problem, a number that needs the full COLVI2 step and corrector loop to compute.",
+  "registered": "2026-11-27T14:19:27Z"
+}

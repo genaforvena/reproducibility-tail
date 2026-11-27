@@ -1,0 +1,52 @@
+{
+  "paper": {
+    "title": "Algorithm 814: Fortran 90 software for floating-point multiple precision arithmetic, gamma and related functions (FM package, sample driver)",
+    "authors": [
+      "David M. Smith"
+    ],
+    "year": 2001,
+    "venue": "ACM Transactions on Mathematical Software 27(4), 377-387 (Dec 2001)",
+    "doi": null,
+    "url": "https://netlib.org/toms/814.gz",
+    "note": "DOI not verified in this wake; the article was not read (paywalled), so the claim rests on the shipped sample driver output Fortran90/Sp/Drivers/SAMPLE.CHK, sample 3."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/814.gz",
+    "commit": "netlib TOMS archive 814.gz (fetched 2026-11-27, sha256 033afcb275570c5fdfd47c18e717523dd5c3b70b740ef2ad0e6daac24a25da22)",
+    "archive": "netlib.org/toms/814.gz sha256 033afcb275570c5fdfd47c18e717523dd5c3b70b740ef2ad0e6daac24a25da22",
+    "note": "Fortran 90 shar archive. Unpack the shar (remove everything above the #! /bin/sh line, run with /bin/sh) into a fresh directory; sources Fortran90/Sp/Src/FM.f90, FMSAVE.f90, FMZM90.f90 and the sample driver Fortran90/Sp/Drivers/SampleFM.f90. Compile with gfortran -O2 as the ReadMe describes and run SampleFM; its SAMPLE.LOG is compared with the shipped SAMPLE.CHK. Do not run inside the site directory."
+  },
+  "field": "numerics (multiple-precision arithmetic)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped expected output SAMPLE.CHK, sample 3 (Zeta(3) by Gosper's series, computed in the FM package at 60 digits). The paper location was not read; no paper table or page is cited.",
+    "reference": {
+      "file": "Fortran90/Sp/Drivers/SAMPLE.CHK (member of 814.gz), sample 3 block",
+      "sha256": null,
+      "archive": "netlib.org/toms/814.gz sha256 033afcb275570c5fdfd47c18e717523dd5c3b70b740ef2ad0e6daac24a25da22"
+    },
+    "metric": "Riemann zeta(3) computed by Gosper's formula (5/4)*Sum[(-1)**k (k!)**2/((k+1)**2 (2k+1)!)] in the FM package at 60-digit precision (CALL FM_SET(60) in SampleFM.f90), compared with the printed digits.",
+    "paper_value": "Not used: the TOMS article was not read; the value is taken from the shipped expected output.",
+    "values": [
+      {
+        "name": "Zeta(3) (SAMPLE.CHK sample 3, 60-digit value rounded to double; first 16 significant digits 1.202056903159594)",
+        "paper": 1.2020569031595942,
+        "tol_abs": 1e-15
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 1e-15,
+      "basis": "Fixed before any run. The gate needs a numeric value, so the claim is the printed 60-digit Zeta(3) rounded to double precision, 1.2020569031595942 (true digits 1.20205690315959428539973816...; rounding error about 9e-17). Tolerance 1e-15 absorbs double-precision rounding of a correctly computed value. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 10 minutes: compile of FM90, FMSAVE and FMZM90 with gfortran -O2, then one short run.",
+    "data_size": "None; the sample driver generates its own inputs.",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A deterministic multiple-precision package whose shipped driver computes zeta(3), an irrational constant with no closed form here, so the run tests the 60-digit series arithmetic rather than a printed-by-hand value.",
+  "registered": "2026-11-27T00:50Z"
+}

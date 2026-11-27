@@ -1,0 +1,60 @@
+{
+ "paper": {
+  "title": "Algorithm 582: GPS and GK algorithms for bandwidth and profile reduction of sparse symmetric matrices (GPSKCA and related routines)",
+  "authors": [
+   "J. G. Lewis"
+  ],
+  "year": 1982,
+  "venue": "ACM Transactions on Mathematical Software 8(2), June 1982, pp. 190-194 (archive header: ALGORITHM 582, ACM-TRANS. MATH. SOFTWARE, VOL. 8, NO. 2, JUN. 1982, P. 190)",
+  "doi": null,
+  "url": "https://netlib.org/toms/582.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/582.gz",
+  "commit": "netlib TOMS archive 582.gz (scouted 2026-11-27, gz sha256 6b71e42fd18c836c260133ae293d6cf00f5a7df6e3b64af1641aaf5319e48d1b). One plain Fortran listing of 4838 lines in four sections separated by 'C === SEPARATOR ===' cards: the GPS and GK algorithms (GPSKCA to GPSKCQ), the driver, the sample test problems (including BCSPWR01, a 39-node power-network matrix), and the shipped sample output."
+ },
+ "field": "numerics (sparse matrix reordering)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "seed": null,
+  "location": "In 582.gz, the shipped sample output after the 'C === SEPARATOR ===  END OF SAMPLE PROBLEMS, BEGINNING OF SAMPLE OUTPUT' card (about line 3948 of the extracted listing). The first block (about lines 3956-3968) is the BCSPWR01 problem: '(SCALAR RESULTS FROM GPSKCA)', BANDWIDTH 6, PROFILE 100, GPSKCA ERROR CODE 0. The rerun should build the driver and the sample problems unedited, run the BCSPWR01 problem through GPSKCA, and compare the scalar results with that block.",
+  "reference": {
+   "file": "582.gz, extracted listing, sample output block for BCSPWR01 (about lines 3956-3968)",
+   "sha256": "not recorded for the extracted listing; the archive sha256 is 6b71e42fd18c836c260133ae293d6cf00f5a7df6e3b64af1641aaf5319e48d1b",
+   "archive": "582.gz, sha256 6b71e42fd18c836c260133ae293d6cf00f5a7df6e3b64af1641aaf5319e48d1b"
+  },
+  "metric": "Profile and bandwidth of the BCSPWR01 matrix (order 39, 85 nonzeros in the lower triangle) after GPSKCA profile reduction: scalar results BANDWIDTH and PROFILE, and GPSKCA ERROR CODE.",
+  "paper_value": "Not checked against the paper; the archive's shipped sample output is the value to check.",
+  "values": [
+   {
+    "name": "BANDWIDTH",
+    "paper": 6,
+    "tol_abs": 0
+   },
+   {
+    "name": "PROFILE",
+    "paper": 100,
+    "tol_abs": 0
+   },
+   {
+    "name": "GPSKCA ERROR CODE",
+    "paper": 0,
+    "tol_abs": 0
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 0,
+   "basis": "All three are integers printed exactly, and the algorithm is deterministic (no random input). Any mismatch is a real difference in the reordering decisions, so the tolerance is exact. Fixed before any run; not loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 second (a 39-node matrix).",
+  "data_size": "Archive 582.gz is a 4838-line listing; no external data files.",
+  "data_licence": "Not stated in the archive; a Collected Algorithm from ACM. The rerun should record the licence it finds."
+ },
+ "why": "The shipped sample output prints the exact integer bandwidth and profile that GPSKCA produces on a standard power-network matrix, so the reordering decisions are checked without any paper table or external data.",
+ "registered": "2026-11-27T06:13Z"
+}

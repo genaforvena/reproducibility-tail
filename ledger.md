@@ -28,18 +28,18 @@ Every candidate is drawn from a named frame in a seeded order and none is skippe
 
 64 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
-**323 candidates considered from 4 of 4 frames: 60 attempted (19%), 0 unreachable, 263 rejected.**
+**325 candidates considered from 4 of 4 frames: 61 attempted (19%), 0 unreachable, 264 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
 | cpc-library | 2767 | 40 | 20 | 50% | 0 | 0 | 20 |
 | netlib-liblist | 160 | 40 | 40 | 100% | 0 | 0 | 40 |
 | stat-co-2010-2015 | 1872 | 80 | 50 | 62% | 1 | 0 | 49 |
-| toms-calgo-index | 570 | 240 | 213 | 89% | 59 | 0 | 154 |
+| toms-calgo-index | 570 | 240 | 215 | 90% | 60 | 0 | 155 |
 
 | why a candidate was not attempted | candidates |
 |---|---|
-| paywalled | 60 |
+| paywalled | 61 |
 | figure-only | 15 |
 | no-numeric-claim | 56 |
 | claim-not-located | 70 |
@@ -59,9 +59,9 @@ Survivorship: each stack's count (and share) among all candidates considered, an
 | stack | considered | attempted |
 |---|---|---|
 | C/C++ | 35 (11%) | 9 (15%) |
-| Fortran | 201 (62%) | 44 (73%) |
+| Fortran | 202 (62%) | 45 (74%) |
 | Java | 2 (1%) | 1 (2%) |
-| MATLAB/Octave | 28 (9%) | 5 (8%) |
+| MATLAB/Octave | 29 (9%) | 5 (8%) |
 | R | 7 (2%) | 1 (2%) |
 | not-stated | 42 (13%) | 0 (0%) |
 | other | 8 (2%) | 0 (0%) |

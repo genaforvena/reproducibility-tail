@@ -13,6 +13,7 @@
   "code": {
     "url": "https://netlib.org/toms/911.zip",
     "commit": "netlib TOMS archive 911.zip (fetched 2026-11-26, sha256 7ab4881d8495c8eca2d633835827e5c14c037dd5c0d8d1ea4729facc8234065c)",
+    "archive": "netlib.org/toms/911.zip sha256 7ab4881d8495c8eca2d633835827e5c14c037dd5c0d8d1ea4729facc8234065c",
     "note": "Fortran 95. Extract the zip; sources Fortran95/Src/FM.f95, FMZM90.f95, fmsave.f95 and the sample driver Fortran95/Drivers/SampleFM.f95 (PROGRAM SAMPLE, writes SampleFM.out). Compile with gfortran -O3 as the manual describes (Doc/FM_User_Manual.txt section on SampleFM). Do not run inside the site directory; use a fresh directory."
   },
   "field": "numerics (multiple-precision arithmetic)",

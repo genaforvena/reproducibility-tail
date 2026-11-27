@@ -1,0 +1,24 @@
+hong2003-snied-823 diagnosis, wake 04:55Z (continuation of diagnosis-2026-11-27b.txt). Diagnostic only; verdict stays blocked.
+
+1. Correction to b.txt item 3. The 400-draw parity check did not cover the dimension-2 range. Each row of GNCRML
+   (Snied/Src/src.f, NBITS=31) consumes 31 + 465 = 496 UNI draws, so dimension 2 uses draws 497..992.
+2. Probe (probes/uni-parity-probe.f, run in the sandbox with gfortran 16 at /work/env16, extra.f from Snied/Src):
+   1200 draws under the default build and under -fdefault-real-8. The INT(U*1000) parity first differs at draw 651
+   (default 0.61098284, parity 0; real8 0.61100753, parity 1). Further parity flips at 677-678 and about 268 draws
+   in total in 1..1200, all at or after 651. Draws 1..496 (dimension 1) show no parity difference.
+   Files: probes/uni-parity-default-1200.txt, probes/uni-parity-real8-1200.txt (draw, parity).
+3. Mechanism: the two builds differ at the ulp level from draw 1 (seed conversion, see b.txt item 4). The difference
+   grows through the generator: about 1e-12 at draw 255, above 1e-6 by draw 576, about 2e-5 at draw 649. A flip of
+   one parity bit in dimension 2 changes LSM row 2 and SHIFT(2), which matches the earlier finding (OUTS(1,i) identical,
+   OUTS(2,i) different). So the gap is an amplified rounding sensitivity in UNI, not a memory or loop bug.
+4. Faithfulness: the default build converts the DATA seeds correctly rounded (b.txt item 4). The real8 build does
+   not. Neither build reproduces the shipped res1 (default 0.99997540338373248, real8 0.999920933728599, shipped
+   0.9999562489621427). Choosing a rounding or seed representation until the number matches would be tuning, so
+   no such variant is used.
+5. Sibling check, unchanged: Sniedx's GNCRML is a restructured routine (MAXS, S and SV in common /NIEDX/, loops
+   I=MAXS..1 and J=30..1, 1-based indices), not line-for-line equal to Snied's GNCRML (NBITS-1..0). Its draw
+   count per row differs, so its dimension-2 draws land on different UNI positions. Sniedx matching the shipped
+   value under default rounding is therefore not a control for Snied's draw positions.
+6. Cause status: the mechanism is now localised (UNI draw 651 onward, dimension-2 scrambling). The question left open
+   is which seed representation or arithmetic the shipped res1 was produced with. The paper text does not state
+   it. Missing evidence: the authors' compiler and precision, or the seeds at more digits. Verdict: blocked.

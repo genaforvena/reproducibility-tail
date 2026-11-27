@@ -1,0 +1,61 @@
+{
+  "paper": {
+    "short": "perez2017-jmarkov-972",
+    "title": "JMarkov: An Integrated Framework for Markov Chain Modeling (TOMS 972)",
+    "year": 2017,
+    "doi": null
+  },
+  "field": "applied probability (Markov chain and queueing model analysis)",
+  "field_class": "other",
+  "stack": "Java (TOMS 972.zip: Java/jMarkov with lib/jMarkov.jar, src/jmarkov, src/examples/jmarkov/Kanban.java, test/jmarkov/KanbanTest.java; third-party MTJ 1.0 and JUnit 4.13.2 from Maven Central, sha256 pinned in recipe.sh)",
+  "stack_class": "Java",
+  "claim": {
+    "text": "The first entry of the average measures of performance of the Kanban model (examples.jmarkov.Kanban, default parameters), getMOPsAvg()[0], equals 0.7003166576899312 as in the shipped KanbanTest.testGetMOPsAvg; absolute tolerance 1e-4, fixed in the queue entry before any run. Deterministic steady-state solve.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/perez2017-jmarkov-972/evidence/reference/KanbanTest.java",
+      "sha256": "a41eef68004e2453816d2137b24e88bfbfb7b9b1b8580437dbe18a5740ede1a0",
+      "archive": "netlib.org/toms/972.zip sha256 2287337098bfa3d4086ad1363a9b39ac53983d98d788cc950f1cbdb5c2bf1df7"
+    },
+    "values": [
+      {
+        "name": "Kanban MOPs avg [0]",
+        "paper": 0.7003166576899312,
+        "tol_abs": 0.0001,
+        "ours": 0.7003166565882202
+      }
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced at the registered claim (tol_abs 1e-4). The authors' shipped jar and shipped test class ran as shipped: junit.textui.TestRunner jmarkov.KanbanTest gives OK (3 tests), including testGetMOPsAvg (all seven MOPs within 1e-4 of the shipped array). A harness (impl/PrintKanban.java, calls getMOPsAvg() with the default parameters and prints it) gives 0.7003166565882202 on both passes, a difference of 1.1e-9 from the registered value. The harness needed one sandbox change to compile: the JDK 17 javac could not read /etc/java-17-openjdk (its java.security is a symlink to it), so tools/sandbox.sh now binds that directory read-only (--ro-bind-try). The runs of the authors' code were not changed by it.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "the shipped jar and the shipped test class run as documented in Java/TEST.txt (junit TestRunner); the third-party jars are the dependencies the INSTALL lists (MTJ) and JUnit for the test runner, fetched and hash-pinned, not patches.",
+    "log": "reports/perez2017-jmarkov-972/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/perez2017-jmarkov-972/recipe.sh",
+  "queue_commit": "3a6735fe439e24c5d50a8b96d87ea809917f1a39",
+  "evidence": [
+    "reports/perez2017-jmarkov-972/evidence/original-attempt.log",
+    "reports/perez2017-jmarkov-972/evidence/pass1-run.log",
+    "reports/perez2017-jmarkov-972/evidence/pass2-run.log",
+    "reports/perez2017-jmarkov-972/evidence/pass1-output.txt",
+    "reports/perez2017-jmarkov-972/evidence/pass2-output.txt",
+    "reports/perez2017-jmarkov-972/evidence/values.txt",
+    "reports/perez2017-jmarkov-972/evidence/recipe-run.log",
+    "reports/perez2017-jmarkov-972/evidence/reference/KanbanTest.java"
+  ],
+  "replayed": [],
+  "patch": {}
+}

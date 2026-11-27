@@ -1,0 +1,51 @@
+{
+ "paper": {
+  "title": "Algorithm 886: Padua2D: Lagrange interpolation at Padua points on bivariate domains",
+  "authors": [
+   "Marco Caliari",
+   "Stefano De Marchi",
+   "Marco Vianello"
+  ],
+  "year": 2008,
+  "venue": "ACM TOMS 35(3), art. 21 (Oct 2008)",
+  "doi": "10.1145/1391989.1391994",
+  "url": "https://doi.org/10.1145/1391989.1391994 (open pre-publication draft, titled 'Algorithm xxx: Padua2D', read at https://www.math.unipd.it/~demarchi/papers/padua2d.pdf, sha256 be72d8c9e04b3b9aefa92b078747a273676b66cfb198f53cb7bf271bd425b23a)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/886.zip",
+  "commit": "netlib TOMS archive 886.zip (scouted 2026-11-27, sha256 2c2978c2ccb0ac4a4395978d23881e36d1916af9099abfcdec1cc7956628cd40)",
+  "note": "Fortran 77 under Fortran/Dp/Src (padua2.f, pdpts.f, pd2val.f, cheb.f, and a BLAS subset in Src/blas). Three drivers in Fortran/Dp/Drivers: drvrec.f (square, DEG = 60, FTYPE = 1 is the Franke function F1, 100 x 100 target grid). The shipped Results/ files are not used for this claim: their intftg.dat coordinates do not match the target grid written by the shipped drvrec.f (only 100 of 10000 points coincide), so they are not a usable oracle."
+ },
+ "field": "numerics (polynomial interpolation)",
+ "stack": "Fortran 77",
+ "claim": {
+  "source": "paper-text",
+  "determinism": "deterministic",
+  "location": "Section 3.3 (Error estimates), Table I: 'True' normalized error of interpolation at Padua points for the classical Franke test suite (taken from Caliari et al. 2007), row degree n = 60, column F1: 2E-11. The text says all errors are normalized to the maximum deviation of the function from its mean and the true errors are computed on a 100 x 100 uniform control grid. The read copy is the pre-publication draft; the published TOMS table may differ, and rerun must record which version it compared against.",
+  "reference": {
+   "file": "padua2d.pdf (draft), Table I",
+   "sha256": "be72d8c9e04b3b9aefa92b078747a273676b66cfb198f53cb7bf271bd425b23a"
+  },
+  "metric": "Normalized true error of the interpolant L_n f at degree n = 60 for the Franke function F1 on the unit square [0,1]^2: max over a 100 x 100 uniform grid of |f - L_n f| divided by max |f - mean(f)| over the same grid (the driver's MAXERR / MAXDEV, with DEG = 60, NTG1 = 100, FTYPE = 1). The rerun may compile drvrec.f against the shipped sources and compute this quantity itself; it must not read a shipped output file as the answer.",
+  "paper_value": "2E-11 (one significant figure, as printed in Table I)",
+  "values": [
+   {
+    "name": "normalized true error, F1, degree 60, square",
+    "paper": 2e-11,
+    "tol_abs": 5e-12
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 5e-12,
+   "basis": "Fixed before any run. The paper prints one significant figure, so the printed value 2E-11 stands for any value in [1.5E-11, 2.5E-11]; tol_abs 5e-12 is exactly that half-unit interval. It does not cover the parenthesised estimate (3E-10 is an estimate, not this claim). Double-precision rounding at degree 60 is far below this scale, so the tolerance tests the algorithm and not the compiler."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 5 minutes (one driver run on 1326 Padua points and 10000 targets; no data files).",
+  "data_size": "None; the Franke function is analytic and the driver generates its grid.",
+  "data_licence": "Netlib TOMS code under the ACM licence of the archive; rerun should record the licence it finds."
+ },
+ "why": "The Padua interpolant at degree 60 needs the Chebyshev-based coefficient computation and the PD2VAL evaluation to be run; the table value is a computed error on a 100 x 100 grid, not an input echo.",
+ "registered": "2026-11-27T03:28Z"
+}

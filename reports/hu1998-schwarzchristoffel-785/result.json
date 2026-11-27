@@ -10,26 +10,26 @@
   "stack": "Fortran 77 (TOMS 785 archive 785.gz: Fortran77/Src/Dp/src.f, Fortran77/Drivers/Dp/driver.f and data, shipped transcript Fortran77/Drivers/Dp/RES)",
   "stack_class": "Fortran",
   "claim": {
-    "text": "Registered as example 6 (referee example, NPTQ=7, TOL=0.1E-09) of the shipped RES transcript: U = 0.4559381277686, C = (1.8134230823216, -1.8134230823303), absolute tolerance 1e-7.",
+    "text": "Registered as example 1 (problem 1, square-symmetric region, NPTQ=7, M=4, N=4, TOL=0.1E-09) of the shipped RES transcript (scout 73030b9): U = 0.4559381277686, C = (1.8134230823216, -1.8134230823303), absolute tolerance 1e-7.",
     "source": "artifact-reference",
     "values": [
       {
-        "name": "ex6 U",
+        "name": "ex1 U",
         "paper": 0.4559381277686,
-        "tol_abs": 1e-7,
-        "ours": null
+        "tol_abs": 1e-07,
+        "ours": 0.4559381277686
       },
       {
-        "name": "ex6 Re C",
+        "name": "ex1 Re C",
         "paper": 1.8134230823216,
-        "tol_abs": 1e-7,
-        "ours": null
+        "tol_abs": 1e-07,
+        "ours": 1.8134230823216
       },
       {
-        "name": "ex6 Im C",
+        "name": "ex1 Im C",
         "paper": -1.8134230823303,
-        "tol_abs": 1e-7,
-        "ours": null
+        "tol_abs": 1e-07,
+        "ours": -1.8134230823303
       }
     ],
     "reference": {
@@ -38,14 +38,14 @@
       "archive": "785.gz, sha256 55965a41f823fb161c5df7b59933092f3879b7a8b57636859511be5c3f4f9175"
     }
   },
-  "basis": "original",
-  "verdict": "blocked",
-  "cause": "other",
-  "attempt": "Blocked: the claim is mis-specified. The registered numbers are not example 6 of the shipped transcript. They are the first example block (problem 1: menu item 1, square-symmetric region, NPTQ=7, M=4, N=4). The authors' unedited driver, compiled with gfortran -std=legacy, ran the archive's own data file as its keyboard stream and printed all seven example blocks. Block 1 matches the registered U and C exactly (to the printed 13 digits). Block 6, the referee example that the claim names, gives U = 0.1772675789993 and C = (-0.7515041412251, 1.2077109426967), which is far outside the registered tolerance (the transcript shows the same U = 0.1772675790003). Blocks 2, 3 and 6 differ from the transcript's printed values at 1e-8 to 1e-7 in the last digits; blocks 1, 4, 5 and 7 are exact. The claim and tolerance were not changed. The scout chooses the fix: re-register as example 1, or as example 6 with its own values, see reports/hu1998-schwarzchristoffel-785/note-to-scout.md.",
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced on the build-only patched basis. The archive ships no build file, so nothing ran as documented: the unedited driver.f and src.f compile with gfortran -std=legacy (compile_exit=0; the flag is the only build choice, no source was edited, proved by manifest pre/mid identical). The archive's own data file, fed to the driver as its keyboard stream, runs to exit 0 and prints seven example blocks. Block 1 gives U = 0.4559381277686, C = (1.8134230823216, -1.8134230823303), equal to the registered values (within 5e-13 of the shipped RES transcript, which prints the same). The registered claim is example 1 (scout 73030b9). Limit: the paper (ACM TOMS 24(3), 1998) was not read; the shipped transcript is the only value checked. Blocks 2-7 printed but not claimed.",
   "original_attempt": {
     "tried": true,
-    "outcome": "succeeded",
-    "reason": "The archive's unedited driver.f and src.f compiled with gfortran -std=legacy (compile_exit=0), and the full session (the archive's data file as stdin) ran to completion with exit 0, printing seven example blocks.",
+    "outcome": "partial",
+    "reason": "The archive has no build file and no documented compile command. The unedited driver.f and src.f compiled and ran end to end only with gfortran -std=legacy added (the flag is the workaround). The plain compile without the flag was not run and is not logged.",
     "log": "reports/hu1998-schwarzchristoffel-785/evidence/original-attempt.log"
   },
   "gates": {
@@ -57,14 +57,41 @@
     "cross_check": "na"
   },
   "recipe": "reports/hu1998-schwarzchristoffel-785/recipe.sh",
-  "queue_commit": "1d93d11",
+  "queue_commit": "73030b9",
   "evidence": [
     "reports/hu1998-schwarzchristoffel-785/evidence/original-attempt.log",
+    "reports/hu1998-schwarzchristoffel-785/evidence/unpack.log",
     "reports/hu1998-schwarzchristoffel-785/evidence/run-session.txt",
     "reports/hu1998-schwarzchristoffel-785/evidence/shipped-RES.txt",
     "reports/hu1998-schwarzchristoffel-785/evidence/values.txt",
     "reports/hu1998-schwarzchristoffel-785/evidence/recipe-run.log",
+    "reports/hu1998-schwarzchristoffel-785/evidence/manifests/manifest.pre",
+    "reports/hu1998-schwarzchristoffel-785/evidence/manifests/manifest.mid",
+    "reports/hu1998-schwarzchristoffel-785/evidence/manifests/manifest.post",
     "reports/hu1998-schwarzchristoffel-785/note-to-scout.md"
   ],
-  "replayed": []
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "55965a41f823fb161c5df7b59933092f3879b7a8b57636859511be5c3f4f9175",
+    "compared": 2,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -std=legacy -o /work/orig/driver driver.f /work/orig/tree/Fortran77/Src/Dp/src.f"
+    ],
+    "manifests": {
+      "pre": "reports/hu1998-schwarzchristoffel-785/evidence/manifest.pre",
+      "mid": "reports/hu1998-schwarzchristoffel-785/evidence/manifest.mid",
+      "post": "reports/hu1998-schwarzchristoffel-785/evidence/manifest.post"
+    }
+  }
 }

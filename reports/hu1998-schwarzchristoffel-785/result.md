@@ -1,16 +1,32 @@
-# hu1998-schwarzchristoffel-785: DSCPACK (ACM TOMS Algorithm 785), Fortran 77
+# hu1998-schwarzchristoffel-785: reproduced (basis: patched, build-only)
 
-**Verdict: blocked** (claim mis-specified; see `note-to-scout.md`).
+**Claim (registered, scout 73030b9):** example 1 of the shipped transcript `Fortran77/Drivers/Dp/RES`
+(problem 1, NPTQ=7, M=4, N=4): U = 0.4559381277686, C = (1.8134230823216, -1.8134230823303),
+absolute tolerance 1e-7. Claim and tolerance are as registered; not edited here.
 
-**Claim as registered:** "example 6" U = 0.4559381277686, C = (1.8134230823216, -1.8134230823303), tolerance 1e-7, from the shipped transcript `Fortran77/Drivers/Dp/RES`.
+**Our value (block 1 of our session run):** U = 0.4559381277686, C = (1.8134230823216, -1.8134230823303).
+All three agree with the registered values exactly at the printed precision. Blocks 2 to 7 print but are
+not claimed.
 
-**What the authors' code gives.** Unedited `driver.f` and `src.f`, compiled with gfortran -std=legacy (basis original). The archive's data file, fed as the keyboard stream, runs the seven examples in order and exits 0.
-- Block 1 (problem 1) matches the registered U and C exactly. So the registered numbers are example 1, not example 6.
-- Block 6 (the referee example, the one the claim names) gives U = 0.1772675789993, C = (-0.7515041412251, 1.2077109426967). It is outside the registered tolerance.
-- Blocks 2, 3 and 6 differ from the printed transcript at 1e-8 to 1e-7 in the last digits. Blocks 1, 4, 5 and 7 are exact.
+**Verdict:** reproduced. **Basis:** patched. The archive ships no build file. The unedited `driver.f` and
+`src.f` compile with `gfortran -std=legacy`, and no source file was edited. The build-only proof is in
+`result.json` `patch` (`manifest.pre` and `manifest.mid` identical, 2 files; `manifest.post` identical to `mid`).
 
-**Changed:** nothing in the claim or tolerance. The scout chooses the fix (re-register as example 1 or as example 6).
+**Exact command:** `bash reports/hu1998-schwarzchristoffel-785/recipe.sh`. Every step runs in
+`tools/sandbox.sh`. The data file is fed to the driver as its keyboard stream.
 
-**Exact command:** `reports/hu1998-schwarzchristoffel-785/recipe.sh`. Pins: gfortran 16.2.0 (conda-forge) in the sandbox; netlib `785.gz` sha256 `55965a41...`.
+**Environment pins:** gfortran from conda-forge (micromamba, installed in the sandbox `/work/env` during
+the fetch step). Archive `785.gz`, sha256 `55965a41f823fb161c5df7b59933092f3879b7a8b57636859511be5c3f4f9175`
+(checked by the recipe).
 
-**Evidence:** `reports/hu1998-schwarzchristoffel-785/evidence/`.
+**Original attempt:** partial. The compile and run worked only after the `-std=legacy` flag was added;
+the plain compile was not run and is not logged (`evidence/original-attempt.log`).
+
+**Limits:** the paper (ACM TOMS 24(3), 1998) was not read. The shipped transcript is the only value checked.
+The earlier blocked verdict (commit 93fa8a1) was against the example-6 claim, which named the wrong block.
+That claim is superseded by the scout's example-1 re-registration.
+
+**Evidence:** `evidence/run-session.txt`, `evidence/values.txt`, `evidence/shipped-RES.txt`,
+`evidence/original-attempt.log`, `evidence/unpack.log`, `evidence/manifests/`, `note-to-scout.md`.
+
+**Replay (G5):** pending at the time of writing. `replayed` is appended by `tools/replay.py`.

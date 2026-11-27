@@ -13,7 +13,8 @@
 # answers are IPOLY, NPTQ, ISOLV, ISPRT, INV (then points if INV=1), ITRY. Feeding it reproduces the shipped RES
 # transcript, which prints the examples in order (block 1 = problem 1 ... block 7 = problem 7).
 #
-# Claim (as registered): "ex6" U and C (real and imaginary parts) from the shipped transcript, absolute tolerance 1e-7.
+# Claim (as registered, scout 73030b9): "ex1" U and C (real and imaginary parts, block 1 of the shipped transcript),
+# absolute tolerance 1e-7.
 set -uo pipefail
 ID=hu1998-schwarzchristoffel-785
 URL=https://netlib.org/toms/785.gz
@@ -31,11 +32,22 @@ echo "== fetch: 785.gz (sha256 checked), gunzipped; gfortran into /work/env if m
 tools/sandbox.sh --fetch "$ID" -- sh -c "set -e; mkdir -p /work/pre && cd /work/pre && curl -fsSL -o /work/785.gz '$URL'; echo '$SHA  /work/785.gz' | sha256sum -c -; gzip -dc /work/785.gz > /work/pre/785.txt; \
   test -x /work/env/bin/gfortran || { curl -fsSL -o /work/mm.tar.bz2 https://micro.mamba.pm/api/micromamba/linux-64/latest; mkdir -p /work/mm && tar -xjf /work/mm.tar.bz2 -C /work/mm bin/micromamba; /work/mm/bin/micromamba create -y -q -r /work/mm/root -p /work/env -c conda-forge --override-channels gfortran; }" || { echo "FETCH-FAILED"; exit 1; }
 
-echo "== unpack the authors' shell archive; compile the unedited driver and src (G1 original attempt)"
-tools/sandbox.sh "$ID" -- sh -c "export PATH=/work/env/bin:\$PATH; set -e; rm -rf /work/orig && mkdir -p /work/orig/tree && cd /work/orig/tree && \
-  sed -n '/^#! \/bin\/sh/,\$p' /work/pre/785.txt > /work/orig/unpack.sh && sh /work/orig/unpack.sh && \
-  cd /work/orig/tree/Fortran77/Drivers/Dp && gfortran -std=legacy -o /work/orig/driver driver.f /work/orig/tree/Fortran77/Src/Dp/src.f; echo compile_exit=\$?" > "$E/original-attempt.log" 2>&1
+echo "== unpack the authors' shell archive (sandbox; no compile yet)"
+tools/sandbox.sh "$ID" -- sh -c "set -e; rm -rf /work/orig && mkdir -p /work/orig/tree && cd /work/orig/tree && \
+  sed -n '/^#! \/bin\/sh/,\$p' /work/pre/785.txt > /work/orig/unpack.sh && sh /work/orig/unpack.sh; echo unpack_exit=\$?" > "$E/unpack.log" 2>&1
+tail -2 "$E/unpack.log"
+
+# Build-only proof (docs/method.md): manifests of the authors' source tree, before and after the build. Nothing is
+# edited between pre and mid; the build is the authors' sources compiled with -std=legacy (the archive ships no build file).
+MAN="$E/manifests"; mkdir -p "$MAN"
+python3 tools/verify_sources.py manifest "$SCRATCH/orig/tree" > "$MAN/manifest.pre"
+python3 tools/verify_sources.py manifest "$SCRATCH/orig/tree" > "$MAN/manifest.mid"
+
+echo "== compile the unedited driver and src (build; G1 original attempt)"
+tools/sandbox.sh "$ID" -- sh -c "export PATH=/work/env/bin:\$PATH; cd /work/orig/tree/Fortran77/Drivers/Dp && \
+  gfortran -std=legacy -o /work/orig/driver driver.f /work/orig/tree/Fortran77/Src/Dp/src.f; echo compile_exit=\$?" > "$E/original-attempt.log" 2>&1
 cat "$E/original-attempt.log" | tail -5
+python3 tools/verify_sources.py manifest "$SCRATCH/orig/tree" > "$MAN/manifest.post"
 
 echo "== run the whole session: the archive's data file is the keyboard stream"
 tools/sandbox.sh "$ID" -- sh -c "cd /work/orig && ./driver < /work/orig/tree/Fortran77/Drivers/Dp/data > session.txt; echo run_exit=\$?; cat session.txt" > "$E/run-session.txt" 2>&1
@@ -57,7 +69,10 @@ print("blocks in our session run:", len(ours), "; in shipped RES:", len(shipped)
 for i, (o, s) in enumerate(zip(ours, shipped), 1):
     same = all(abs(a - b) <= 5e-13 for a, b in zip(o, s))
     print(f"block {i}: ours U={o[0]} C=({o[1]},{o[2]}); shipped U={s[0]} C=({s[1]},{s[2]}); equal: {same}")
-print("registered claim (named example 6):", [c["paper"] for c in claim])
+print("registered claim (example 1):", [c["paper"] for c in claim])
+# G5 contract: one VALUE line per claimed value, from block 1 (the registered example 1).
+for c, v in zip(claim, ours[0]):
+    print(f"VALUE {c['name']} {v}")
 hit = [i for i, o in enumerate(ours, 1) if all(abs(a - c["paper"]) <= c["tol_abs"] for a, c in zip(o, claim))]
 print("our blocks within the registered tolerance of the registered claim:", hit)
 PY

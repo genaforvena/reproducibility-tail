@@ -1,0 +1,83 @@
+{
+  "paper": {
+    "short": "smith2010-fm-911",
+    "title": "Algorithm 911: Multiple-precision exponential integral and related functions (FM/ZM multiple-precision package, sample driver)",
+    "year": 2010,
+    "doi": null
+  },
+  "field": "numerics (multiple-precision arithmetic)",
+  "stack": "Fortran 95 (TOMS 911 archive 911.zip: FM.f95, FMZM90.f95, fmsave.f95, SampleFM.f95, Doc/Makefile)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "SampleFM (author's sample driver) sample 2 prints the real root of x**5-3x**4+x**3-4x**2+x-6 to 500 decimal places; its double rounding 3.1206562153267265 agrees with the registered value to 1e-15 absolute.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/smith2010-fm-911/evidence/reference/SampleFM.out",
+      "sha256": "1a72a6951ac456cf95ce84813ca0049fb21e68eadeb7054013db4b940554074c",
+      "archive": "netlib.org/toms/911.zip sha256 7ab4881d8495c8eca2d633835827e5c14c037dd5c0d8d1ea4729facc8234065c"
+    },
+    "values": [
+      {
+        "name": "real root of x**5-3x**4+x**3-4x**2+x-6 (SampleFM.out sample 2, 500-digit value rounded to double; the first 16 significant digits are 3.120656215326726)",
+        "paper": 3.1206562153267265,
+        "tol_abs": 1e-15,
+        "ours": 3.1206562153267265
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced in both passes. The authors' Doc/Makefile cannot run as shipped: it looks for FM.f95, FMZM90.f95, fmsave.f95 and SampleFM.f95 in its own directory, but the archive puts them in Fortran95/Src and Fortran95/Drivers, so make stops at 'No rule to make target fmsave.f95' (G1 original attempt logged). Build (basis patched, build-only): the Makefile's own rules are run unedited from a separate output directory with VPATH pointing at the unedited source tree, gfortran -O3 on the command line. Pass 1 (-O3) and pass 2 (no optimisation flags, clean directory) both print a sample 2 root whose first 80 digits match the shipped SampleFM.out and whose double value is 3.1206562153267265, equal to the registered value.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make in the archive's Doc directory stops at 'No rule to make target fmsave.f95': the Makefile expects the sources beside it, and the archive does not ship makefile.inc (compiler not set) either. Nothing compiles as shipped.",
+    "log": "reports/smith2010-fm-911/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/smith2010-fm-911/recipe.sh",
+  "queue_commit": "8486f1fa4516d2609866fd5249aa2434877e4639",
+  "replayed": [],
+  "evidence": [
+    "reports/smith2010-fm-911/evidence/original-attempt.log",
+    "reports/smith2010-fm-911/evidence/pass1-build.log",
+    "reports/smith2010-fm-911/evidence/pass1-run.log",
+    "reports/smith2010-fm-911/evidence/pass2-run.log",
+    "reports/smith2010-fm-911/evidence/pass1-output.txt",
+    "reports/smith2010-fm-911/evidence/pass2-output.txt",
+    "reports/smith2010-fm-911/evidence/reference/SampleFM.out",
+    "reports/smith2010-fm-911/evidence/values.txt"
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "7ab4881d8495c8eca2d633835827e5c14c037dd5c0d8d1ea4729facc8234065c",
+    "compared": 6,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "make -f /work/build/911/Doc/Makefile VPATH=/work/build/911/Fortran95/Src:/work/build/911/Fortran95/Drivers F95=/work/fortran/bin/x86_64-conda-linux-gnu-gfortran F95FLAGS=-O3 SampleFM"
+    ],
+    "manifests": {
+      "pre": "reports/smith2010-fm-911/evidence/manifest.pre",
+      "mid": "reports/smith2010-fm-911/evidence/manifest.mid",
+      "post": "reports/smith2010-fm-911/evidence/manifest.post"
+    }
+  }
+}

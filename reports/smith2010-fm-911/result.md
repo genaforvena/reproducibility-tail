@@ -15,4 +15,4 @@ Command: `bash reports/smith2010-fm-911/recipe.sh` (it runs everything in the sa
 Environment: gfortran from conda-forge via micromamba inside the sandbox; the archive sha256 is 7ab4881d8495c8eca2d633835827e5c14c037dd5c0d8d1ea4729facc8234065c.
 Evidence: reports/smith2010-fm-911/evidence/ (original-attempt.log, pass1-build.log, pass1-run.log, pass2-run.log, pass1-output.txt, pass2-output.txt, values.txt, manifests, reference/SampleFM.out).
 
-Status: not committed. The gates reject the queue entry because it has no `code.archive` field; see note-to-scout.md. The G5 clean replay has not been run.
+Status: rerun against queue commit 8486f1f (scout added `code.archive`, sha256 7ab4881d...065c; claim unchanged). The gates pass. The earlier run at e8ad8994 was blocked on that missing field; see note-to-scout.md. The G5 clean replay has not been run yet (replay-due is RED until `tools/replay.py` runs in its own wake).

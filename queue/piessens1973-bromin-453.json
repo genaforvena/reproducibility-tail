@@ -1,0 +1,104 @@
+{
+ "paper": {
+  "title": "Algorithm 453: Gaussian Quadrature Formulas for Bromwich's Integral",
+  "authors": [
+   "Robert Piessens"
+  ],
+  "year": 1973,
+  "venue": "Communications of the ACM 16(8), August 1973, pp. 486-487 (the archive header 453.gz says CACM vol. 16 no. 8 Aug 1973 pp. 486-487). The frame lists it as TOMS 16,8 and R. Diessens; the frame's venue and author spelling are not the archive's. Paper text not checked: it is paywalled.",
+  "doi": null,
+  "url": "https://netlib.org/toms/453.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/453.gz",
+  "commit": "netlib TOMS archive 453.gz (scouted 2026-11-27, gz sha256 57563056450e03c510b778971d7539577da3f3e962cf5ce1650507466121b9f7). Shell archive unpacks to Fortran/Sp/{Makefile,driver.f,res,src.f} (BROMIN and its routines in src.f, driver TOMS453_PRB with test01)."
+ },
+ "field": "numerics (quadrature for Laplace/Bromwich inversion)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Shipped reference file Fortran/Sp/res (inside 453.gz): the printed output of driver.f subroutine TEST01 for N=6 and S=0.0, which calls BROMIN and prints the complex abscissas XR, XI and weights WR, WI (format g14.6). The three printed rows of that block are the claimed values.",
+  "reference": {
+   "file": "Fortran/Sp/res (shipped in 453.gz)",
+   "sha256": "92f4edda22c651fb966c8ebbebcfedf1b49cf2af77054fa09a962e046b82dbd2",
+   "archive": "453.gz, sha256 57563056450e03c510b778971d7539577da3f3e962cf5ce1650507466121b9f7"
+  },
+  "metric": "The 12 printed numbers of the first TEST01 block (N = 6, S = 0.00000): XR, XI, WR, WI for each of the three printed abscissas, in the order printed.",
+  "paper_value": "Not located in the paper text (paywalled; Burkardt and Netlib index describe the algorithm as a program, and no printed table of abscissas was found). The archive's res file is the only value to check.",
+  "values": [
+   {
+    "name": "TEST01 N=6 S=0 row 1 XR",
+    "paper": 6.48253,
+    "tol_abs": 0.001
+   },
+   {
+    "name": "TEST01 N=6 S=0 row 1 XI",
+    "paper": 1.49931,
+    "tol_abs": 0.001
+   },
+   {
+    "name": "TEST01 N=6 S=0 row 1 WR",
+    "paper": -27.8412,
+    "tol_abs": 0.001
+   },
+   {
+    "name": "TEST01 N=6 S=0 row 1 WI",
+    "paper": 315.065,
+    "tol_abs": 0.001
+   },
+   {
+    "name": "TEST01 N=6 S=0 row 2 XR",
+    "paper": 5.46926,
+    "tol_abs": 0.001
+   },
+   {
+    "name": "TEST01 N=6 S=0 row 2 XI",
+    "paper": 4.51993,
+    "tol_abs": 0.001
+   },
+   {
+    "name": "TEST01 N=6 S=0 row 2 WR",
+    "paper": 37.157,
+    "tol_abs": 0.001
+   },
+   {
+    "name": "TEST01 N=6 S=0 row 2 WI",
+    "paper": -124.634,
+    "tol_abs": 0.001
+   },
+   {
+    "name": "TEST01 N=6 S=0 row 3 XR",
+    "paper": 3.04821,
+    "tol_abs": 0.001
+   },
+   {
+    "name": "TEST01 N=6 S=0 row 3 XI",
+    "paper": 7.65179,
+    "tol_abs": 0.001
+   },
+   {
+    "name": "TEST01 N=6 S=0 row 3 WR",
+    "paper": -9.31577,
+    "tol_abs": 0.001
+   },
+   {
+    "name": "TEST01 N=6 S=0 row 3 WI",
+    "paper": 13.1079,
+    "tol_abs": 0.001
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 0.001,
+   "basis": "Fixed before any run. The reference prints 6 significant digits (g14.6), so the largest magnitude printed here is 315.065, whose last printed unit is 0.001 (rounding half-unit 0.0005). A tolerance of 1e-3 allows one unit in the last printed place at the largest magnitude, and no more. It does not allow a different root or weight set. Not loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute for TEST01 (the driver runs many N and S values; only the first block is claimed). Needs a Fortran 77/90 compiler; gfortran is not on this host's PATH.",
+  "data_size": "Archive a few KB (732 lines).",
+  "data_licence": "Not stated in the archive; a CACM algorithm published with the ACM. The rerun should record the licence it finds."
+ },
+ "why": "The shipped driver calls BROMIN to compute a complex Gaussian quadrature rule for Bromwich's integral; the printed abscissas and weights depend on the root-finding and recurrence in the code and cannot be read off the paper.",
+ "registered": "2026-11-27T05:23Z"
+}

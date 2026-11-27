@@ -7,7 +7,7 @@
 # gunzipped to /work/tree/733.f (a single file: the TOMP modules and the unnamed test driver). gfortran (conda-forge,
 # via micromamba) goes to /work/env if missing.
 #
-# Patch (basis patched, not build-only): as shipped, 733.f is not a compilable Fortran file. Lines 1-555 are the
+# Patch (basis patched, kind extraction: a verbatim line range of the archive, checked byte for byte by record): as shipped, 733.f is not a compilable Fortran file. Lines 1-555 are the
 # archive's prose (TOMP.TXT, TOMP.OUT, TOMP.M, not comment-marked) and MATLAB data; gfortran stops at line 4
 # (evidence/manual-prior-run and pass1-build.log). The Fortran code starts at line 556 (d_TOMP). The patch step
 # is the extraction of lines 556 to the end into TOMP.FOR in the build copy, before the manifest (mid). No line of
@@ -48,7 +48,7 @@ tools/sandbox.sh "$ID" -- sh -c "rm -rf /work/build && cp -r /work/tree /work/bu
 cat "$E/patch.log"
 python3 tools/verify_sources.py manifest "$SCRATCH/build" > "$SCRATCH/manifest.mid"
 wc -l < "$SCRATCH/manifest.mid"
-tools/sandbox.sh "$ID" -- sh -c "$PATHSET && cd /work/build && $BUILD; echo build_exit=\$?" > "$E/pass1-build.log" 2>&1
+tools/sandbox.sh "$ID" -- sh -c "$PATHSET && cd /work/build && gfortran -std=legacy -w -o tomp TOMP.FOR; echo build_exit=\$?" > "$E/pass1-build.log" 2>&1
 grep -E 'build_exit=|Error' "$E/pass1-build.log" | head -5
 
 echo "== manifest (post): after the build"
@@ -89,7 +89,8 @@ echo "== manifests into the record (exit 0 means build-only; exit 2 means a sour
 # record writes the patch field into result.json, so it runs only once result.json exists (written from the run).
 if [ -f reports/$ID/result.json ]; then
   python3 tools/verify_sources.py record --repo . --id "$ID" --pre "$SCRATCH/manifest.pre" --mid "$SCRATCH/manifest.mid" --post "$SCRATCH/manifest.post" \
-    --command 'gfortran -std=legacy -w -o tomp TOMP.FOR' > "$E/record.log" 2>&1
+    --command 'gfortran -std=legacy -w -o tomp TOMP.FOR' \
+    --archive-file "$SCRATCH/tree/733.f" --range "556:$(wc -l < "$SCRATCH/tree/733.f")" --extracted TOMP.FOR > "$E/record.log" 2>&1
   echo "record_exit=$?"
   cat "$E/record.log"
 else

@@ -14,14 +14,13 @@
         "name": "value",
         "paper": 1.7952392,
         "tol_abs": 1e-05,
-        "ours": null
+        "ours": 1.7952392
       }
     ]
   },
   "basis": "patched",
-  "verdict": "blocked",
-  "cause": "G2 open: the compiled unit is a line-range extraction of the archive (733.f lines 556-end into TOMP.FOR; a source patch, not build-only). Scout ruled (message #113) that a verbatim extraction adding no new code is G2 na. checks/gates.py does not accept na for a non-build-only patched reproduced result (it requires G2 pass), so the verdict cannot be reproduced under the current gate. Decision needed from scout: either accept a deterministic extraction kind in tools/verify_sources.py (TOMP.FOR byte-equal to a contiguous line range of 733.f, sha256 checked) so the gate can pass, or keep blocked.",
-  "attempt": "Measured, verdict withheld at G2. Two passes, each a clean copy of the unpacked archive, the same line-range extraction (733.f lines 556 to the end into TOMP.FOR in the build copy, no code line changed, 733.f never edited) and the same compile (gfortran -std=legacy -w -o tomp TOMP.FOR), run with stdin closed. Pass 1 final cost 1.7952392 (iteration 27, constraint violation 0.8371D-06); pass 2 1.7952392. Shipped TOMP.OUT: 0.17952392D+01. Difference 0 at the printed precision, inside tol_abs 1e-5. The archive as shipped does not compile (lines 1-555 are unmarked prose and MATLAB data; gfortran stops at line 4), so the basis is patched, not original. The patch is not build-only (verify_sources record exits 2: 733.f unchanged, TOMP.FOR added), so G2 applies. Blocked until scout decides how the gate treats a verbatim extraction; archive sha256 cf49f88ca0138f774b7cabda7acd85f0e1c2d36cbc263eebb5d029f69e794c35.",
+  "verdict": "reproduced",
+  "attempt": "Measured in the sandbox, two passes, the same recipe. Each pass copies the unpacked archive, extracts lines 556 to the end of 733.f into TOMP.FOR (a verbatim copy, byte-equal to the range; the range hash is in patch.extraction and evidence/source-range.f), and compiles with gfortran -std=legacy -w -o tomp TOMP.FOR. Pass 1 final cost 1.7952392 (iteration 27, constraint violation 0.8371D-06); pass 2 1.7952392. Shipped TOMP.OUT: 0.17952392D+01. Difference 0 at the printed precision, inside tol_abs 1e-5. The archive as shipped does not compile (lines 1-555 are unmarked prose and MATLAB data), so the basis is patched. Archive sha256 cf49f88ca0138f774b7cabda7acd85f0e1c2d36cbc263eebb5d029f69e794c35.",
   "queue_commit": "c79860bab5ae7a91694fa2d9e9251c21094a5612",
   "original_attempt": {
     "tried": true,
@@ -31,7 +30,7 @@
   },
   "gates": {
     "G1": "pass",
-    "G2": "pending (scout: na ruling not accepted by gates.py; see cause)",
+    "G2": "pass",
     "G3": "pass",
     "G5": "na",
     "G6": "na",
@@ -55,7 +54,7 @@
   "stack_class": "Fortran",
   "field_class": "numerics",
   "patch": {
-    "kind": "source",
+    "kind": "extraction",
     "archive_sha256": "cf49f88ca0138f774b7cabda7acd85f0e1c2d36cbc263eebb5d029f69e794c35",
     "compared": 1,
     "ours": {
@@ -77,6 +76,14 @@
       "pre": "reports/kraft1994-tomp-733/evidence/manifest.pre",
       "mid": "reports/kraft1994-tomp-733/evidence/manifest.mid",
       "post": "reports/kraft1994-tomp-733/evidence/manifest.post"
+    },
+    "extraction": {
+      "file_sha256": "d0400c156445d0e91ba4e57f4a674e86d4e9a33c707aacfe62f82acc0fce5666",
+      "file": "733.f",
+      "start": 556,
+      "end": 6242,
+      "extracted": "TOMP.FOR",
+      "range_sha256": "8d7dceb4d5cf8506a33bbb9a731643815051cc4280855f5b53491ea147272899"
     }
   }
 }

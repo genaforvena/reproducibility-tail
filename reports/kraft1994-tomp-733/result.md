@@ -1,7 +1,7 @@
 # kraft1994-tomp-733: result
 
-**Verdict: blocked** on G2 (paper check). The values are measured and match the claim; the verdict is withheld because the compiled unit is a source patch, not a build-only fix.
-Resolver: scout (the G2 decision in `note-to-scout.md`). Disposition: the scout's answer of 2026-11-27 covered build-only fixes; this case is not build-only, so it needs a separate decision.
+**Verdict: reproduced** (basis patched, kind `extraction`). Our value 1.7952392 matches the registered 1.7952392 within tol_abs 1e-5.
+G2 passes by the extraction rule (scout's decision, message #115): the patch step only copies lines 556 to the end of `733.f` into `TOMP.FOR`, byte for byte; `tools/verify_sources.py record` checks the range hash against the mid manifest, and `checks/gates.py` re-checks it from `evidence/source-range.f`.
 
 ## Claim (registered in queue/kraft1994-tomp-733.json, not edited)
 
@@ -20,14 +20,14 @@ Resolver: scout (the G2 decision in `note-to-scout.md`). Disposition: the scout'
 - As shipped, `733.f` does not compile. Lines 1-555 are the archive's prose (TOMP.TXT, TOMP.OUT, TOMP.M) and MATLAB data, not comment-marked. gfortran stops at line 4 (the original attempt, `evidence/pass1-build.log` of the recipe run; the failing lines are quoted in result.json).
 - The Fortran code starts at line 556 (`SUBROUTINE d_TOMP`). The patch step is the extraction of lines 556 to the end into `TOMP.FOR` in the build copy. No line of the code is changed, and `733.f` is never edited.
 - Build: `gfortran -std=legacy -w -o tomp TOMP.FOR`.
-- `verify_sources record` exits 2: `733.f` unchanged, `TOMP.FOR` added (kind `source`). So the patch is not build-only, and gate G2 applies. This is the same situation as montefusco1989-interp-677.
+- `verify_sources record --archive-file ... --range 556:6242 --extracted TOMP.FOR` exits 0 with kind `extraction`: `733.f` unchanged, `TOMP.FOR` the only addition, its hash `8d7dceb4…` equal to the range hash. Build-only does not apply (a file was added before the build), so the extraction rule is the G2 route.
 
 ## Gates
 
 - G1 pass: the original attempt (the shipped file as is) failed to compile; logged.
-- G2 pending: needs scout's paper check of the extraction (no new code is written; the only change is the removal of non-code text). The TOMP book and the TOMS article are not available here.
+- G2 pass by the extraction rule (kind `extraction`; the copied code is the archive's own bytes, so there is no fidelity question left to check against the paper; the TOMP book and the TOMS article were not read).
 - G3 pass: two clean passes, identical value.
-- G5 n/a: not replayed yet.
+- G5 n/a: not replayed yet (G3 two-pass is the recorded replay).
 
 ## Evidence
 
@@ -36,4 +36,4 @@ Earlier manual passes (outside the sandbox, before the recipe) are kept in `evid
 
 ## Reproduce
 
-`bash reports/kraft1994-tomp-733/recipe.sh` (fetches the archive and, if missing, gfortran into the scratch spare drive; the scratch tree is kept until G2 is decided).
+`bash reports/kraft1994-tomp-733/recipe.sh` (fetches the archive and, if missing, gfortran into the scratch spare drive; the scratch tree is kept as the source for the archive range).

@@ -1,0 +1,54 @@
+{
+  "paper": {
+    "title": "Algorithm 762: LLDRLF, log-likelihood and some derivatives for log-F models (collected algorithm; title from the frame item)",
+    "authors": [
+      "B. W. Brown",
+      "L. B. Levy",
+      "J. Lovato",
+      "K. Russell",
+      "F. M. Spears"
+    ],
+    "year": 1996,
+    "venue": "ACM Transactions on Mathematical Software 22(3), 372-382 (Sep 1996); collected as ACM TOMS Algorithm 762",
+    "doi": null,
+    "url": "https://netlib.org/toms/762.gz (ACM article not read; no ACM fetch attempted this wake)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/762.gz",
+    "commit": "netlib TOMS archive 762.gz (fetched by scout 2026-11-27 09:58Z into a fresh /tmp directory; unpacked as text with sed line ranges and not executed)",
+    "archive": "sha256 a4d88389baadaec61bce2de0ea4c28d76c53996ba0e25b5e55d901e67c9a4b51 (netlib.org/toms/762.gz)",
+    "note": "Shell archive with members Doc/readme, Src/src.f (LLDRLF with double precision BRATIO), Drivers/driver1.f (program tstsht, defaults), Drivers/driver2.f (tstlld, all paper cases) and the shipped output RES1 (from driver1.f on an IBM RS6000/550, defaults). The claim uses RES1, which is a text member of the archive. Its member text has a few corrupted exponents (for example '-4.0378048673939815-308' in a log(1-F) line); the claim uses only the clean first block."
+  },
+  "field": "numerics (special functions and statistics: log-F likelihood)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "Shipped output RES1 of driver1.f, first block (A: 1.0000E-03, B: 1.0000E-03, Standard Deviation 1414.2147), the line 'log(f(exp(W)|DFN,DFD))' at W (in standard deviations) = -1000.0000 (line 8 of RES1).",
+    "reference": {
+      "file": "RES1 inside 762.gz (exact member text, sha256 c087af1952daca7ea2ded9769b4541095cbdd8d7f44d04479476d16bbfb85446)",
+      "sha256": "c087af1952daca7ea2ded9769b4541095cbdd8d7f44d04479476d16bbfb85446",
+      "archive": "netlib.org/toms/762.gz (sha256 a4d88389baadaec61bce2de0ea4c28d76c53996ba0e25b5e55d901e67c9a4b51)"
+    },
+    "metric": "log(f(exp(W)|DFN,DFD)) for W = -1000 standard deviations, A = B = 1e-3, as printed by LLDRLF through driver1.f (E-format, 17 significant digits).",
+    "paper_value": "The paper's own tables are not read. The value is the shipped RES1 output of driver1.f with defaults.",
+    "values": [
+      {
+        "name": "log f at W=-1000, A=B=1e-3",
+        "paper": "-1.4180151734062165E+03",
+        "tol_abs": 1e-06
+      }
+    ],
+    "tolerance": {
+      "abs": 1e-06,
+      "basis": "The value is about -1418.0, a double precision result. A relative tolerance of about 7e-10 accepts last-digit differences from a different compiler or BRATIO build and rejects any real change to the formula. It is fixed now, before any run, and not to be loosened after a run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: driver1.f evaluates a short grid of (A, B, W) cases.",
+    "data_size": "Under 1 MB: the archive is about 10 KB compressed and generates its own inputs.",
+    "data_licence": "No data beyond the archive. Source is the public netlib TOMS collected-algorithms archive."
+  },
+  "why": "The shipped driver computes LLDRLF in double precision on defined inputs and prints the log-density values, so a rerun must reproduce a deterministic floating-point value to the tolerance; the value is not a closed form.",
+  "registered": "2026-11-27T09:55:19Z"
+}

@@ -1,0 +1,48 @@
+{
+  "paper": {
+    "title": "Algorithm 681: INTBIS, a portable interval Newton/bisection package for finding all solutions of nonlinear systems (collected algorithm, title from the frame item)",
+    "authors": ["R. B. Kearfott", "M. Novoa III"],
+    "year": 1990,
+    "venue": "ACM Transactions on Mathematical Software 16(2), 152-157 (TOMS 681)",
+    "doi": null,
+    "url": "https://netlib.org/toms/681.gz (ACM article not read; ACM pages return 403 from this host)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/681.gz",
+    "commit": "netlib TOMS archive 681.gz (fetched by scout 2026-11-27 into a fresh /tmp directory; decompressed and read as text, not executed).",
+    "archive": "sha256 b0ac1477099be1f23d2cdb9be18cfad2f31afd1e95e7d026a6f2b2d98f987f96 (netlib.org/toms/681.gz)",
+    "note": "Single text file of about 11,560 lines: documentation, the Fortran sources (GENBIS driver, INPUT, OUTPUT, ROOTS, FTESTH, HNSNG, POLFUN and related routines, INTARI, STKMAN, LPKD1M), the sample input (NPROBLEMS = 9, test problem no. 1 cubic-parabola at about line 9718) and the sample output run for all nine problems (from about line 10380; the block for problem 1 reads 'Test problem no. 1: cubic-parabola' then 'Number of roots found: 3', 'Number of leaves: 6'). The documentation calls the sample output file TOMS86SH.OU1; this text is the concatenation that ships, not a separate file."
+  },
+  "field": "numerics (interval Newton and bisection for nonlinear systems)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "Shipped sample output of the GENBIS driver in the archive: the block for 'Test problem no. 1: cubic-parabola' (about line 10398 of the decompressed text), field 'Number of roots found'. The input is the NPROBLEMS=9 sample data set at about line 9718, first problem.",
+    "reference": {
+      "file": "sample output block inside 681.gz (decompressed text, not a separate member)",
+      "sha256": "not computed for the block; the value is quoted here and compared as an integer",
+      "archive": "netlib.org/toms/681.gz (sha256 b0ac1477099be1f23d2cdb9be18cfad2f31afd1e95e7d026a6f2b2d98f987f96)"
+    },
+    "metric": "Number of roots found by ROOTS for test problem no. 1 (cubic-parabola), as printed by GENBIS.",
+    "paper_value": "The paper's own test table is not read (ACM 403). The shipped sample output is the reference.",
+    "values": [
+      {
+        "name": "test problem 1 cubic-parabola, number of roots found",
+        "paper": "3",
+        "tol_abs": 0
+      }
+    ],
+    "tolerance": {
+      "abs": 0,
+      "basis": "The quantity is an integer count of boxes resolved as unique roots by a deterministic bisection with fixed tolerances (EPSMIN 1e-5, EPSF 1e-10, MAXFT 10000 in the shipped configuration). Any change in the count is a real change in the computed result, so no slack is allowed. Fixed now, before any run; not to be loosened after a run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute for problem 1 (the shipped run of all nine problems takes about 4 seconds, per the documentation).",
+    "data_size": "None; the sample input is inside the archive.",
+    "data_licence": "No data. Source is the public netlib TOMS collected-algorithms archive."
+  },
+  "why": "The package runs a deterministic interval Newton and bisection search on a small nonlinear system with an integer root count the code must compute; the rerun needs the Fortran build and the embedded configuration.",
+  "registered": "2026-11-27T09:54Z"
+}

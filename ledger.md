@@ -5,37 +5,37 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-82 papers attempted.
+83 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 18 |
-| B | authors' code with build fixes | 46 |
+| B | authors' code with build fixes | 47 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 16 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 69, other 4, statistics 6
-By stack: C/C++ 10, Fortran 58, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 1960 4, 1970 6, 1980 7, 1990 27, 2000 26, 2010 12
+By field: astronomy 1, biology 1, ecology 1, numerics 70, other 4, statistics 6
+By stack: C/C++ 10, Fortran 59, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 1960 4, 1970 6, 1980 7, 1990 28, 2000 26, 2010 12
 
-Data as of 2026-11-27T09:47Z (the newest replay or funnel entry).
+Data as of 2026-11-27T09:54Z (the newest replay or funnel entry).
 
 ## The funnel
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-82 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+83 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
-**394 candidates considered from 4 of 4 frames: 81 attempted (21%), 0 unreachable, 313 rejected.**
+**395 candidates considered from 4 of 4 frames: 82 attempted (21%), 0 unreachable, 313 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
 | cpc-library | 2767 | 40 | 20 | 50% | 0 | 0 | 20 |
 | netlib-liblist | 160 | 40 | 40 | 100% | 0 | 0 | 40 |
 | stat-co-2010-2015 | 1872 | 80 | 50 | 62% | 1 | 0 | 49 |
-| toms-calgo-index | 570 | 320 | 284 | 89% | 80 | 0 | 204 |
+| toms-calgo-index | 570 | 320 | 285 | 89% | 81 | 0 | 204 |
 
 | why a candidate was not attempted | candidates |
 |---|---|
@@ -58,8 +58,8 @@ Survivorship: each stack's count (and share) among all candidates considered, an
 
 | stack | considered | attempted |
 |---|---|---|
-| C/C++ | 41 (10%) | 11 (14%) |
-| Fortran | 254 (64%) | 61 (75%) |
+| C/C++ | 41 (10%) | 11 (13%) |
+| Fortran | 255 (65%) | 62 (76%) |
 | Java | 2 (1%) | 1 (1%) |
 | MATLAB/Octave | 37 (9%) | 6 (7%) |
 | R | 7 (2%) | 1 (1%) |
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 53 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 20 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 54 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 20 (ran as documented).
 
 ## Results
 
@@ -231,6 +231,7 @@ Authors' original artifact, among all attempted papers: failed 53 (did not run),
 | [monahan1984-hodges-lehmann-616](reports/monahan1984-hodges-lehmann-616/result.md) | statistics · 1984 · Fortran | The Hodges-Lehmann estimate printed for N=9, repetition 3, first test of HLQEST (random input, RANG seed 434977), shipped as 0.545388 in the archive's printed run output, absolute tolerance 1e-6 (H-L estimator via HLQEST, N=9 rep 3, first test (random input)) | 0.545388 ± 1e-06 | 0.545388 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [montefusco1989-interp-677](reports/montefusco1989-interp-677/result.md) | numerics · 1989 · Fortran | Self-check PROGRAM MAIN of TOMS 677 (first test program): the maximum and mean absolute errors ERMAX and ERMEAN that MMERR computes for the 10x10 reconstruction (IEX=1, TP=10) against the analytic Gaussian surface, compared with the built-in ANS2 = 0.6059994 and ANS1 = 0.06695094. Registered tolerance: relative 1e-5 on each value. The paper's own values were not read; the claim is the archive's built-in reference. (maximum absolute error (ERMAX)) | 0.605999 ± 6.05999e-06 | – | – | – | patched | ✓ ? ✓ · | - | blocked | never clean |
 | [montefusco1989-interp-677](reports/montefusco1989-interp-677/result.md) | numerics · 1989 · Fortran | Self-check PROGRAM MAIN of TOMS 677 (first test program): the maximum and mean absolute errors ERMAX and ERMEAN that MMERR computes for the 10x10 reconstruction (IEX=1, TP=10) against the analytic Gaussian surface, compared with the built-in ANS2 = 0.6059994 and ANS1 = 0.06695094. Registered tolerance: relative 1e-5 on each value. The paper's own values were not read; the claim is the archive's built-in reference. (mean absolute error (ERMEAN)) | 0.0669509 ± 6.69509e-07 | – | – | – | patched | ✓ ? ✓ · | - | blocked | never clean |
+| [pardalos1997-grasp-769](reports/pardalos1997-grasp-769/result.md) | numerics · 1997 · Fortran | Cost of the best permutation found by GRASP for the 6-by-6 QAP test instance, seed 270001, 1000 iterations, alpha 0.25, beta 0.50, look4 -1, as printed in the shipped reference output RES. Registered tolerance: abs 0.5 (integer cost, exact match). (best QAP cost (GRASP, seed 270001)) [shipped reference output] | 4490 ± 0.5 | 4490 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
 | [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f07 on [0, 1]) [shipped reference output] | 0.777505 ± 0.000777505 | 0.777505 | 3.659e-07 | 0% | patched | ✓ · ✓ · | X | partial | never clean |
 | [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f08 on [0.1, 1]) [shipped reference output] | 0.00909865 ± 9.09865e-06 | 0.00909898 | 3.34744e-07 | 4% | patched | ✓ · ✓ · | X | partial | never clean |
 | [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f12 on [0, 1]) [shipped reference output] | -0.634665 ± 0.000634665 | -0.63467 | -4.8175e-06 | 1% | patched | ✓ · ✓ · | X | partial | never clean |

@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-70 papers attempted.
+71 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 17 |
-| B | authors' code with build fixes | 37 |
+| B | authors' code with build fixes | 38 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 14 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 57, other 4, statistics 6
-By stack: C/C++ 9, Fortran 49, Java 1, MATLAB/Octave 6, R 5
-By decade: 1960 3, 1970 4, 1980 6, 1990 22, 2000 24, 2010 11
+By field: astronomy 1, biology 1, ecology 1, numerics 58, other 4, statistics 6
+By stack: C/C++ 9, Fortran 50, Java 1, MATLAB/Octave 6, R 5
+By decade: 1960 3, 1970 5, 1980 6, 1990 22, 2000 24, 2010 11
 
 Data as of 2026-11-27T07:04Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T07:04Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-70 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+71 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **342 candidates considered from 4 of 4 frames: 65 attempted (19%), 0 unreachable, 277 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 42 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 43 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
 
 ## Results
 
@@ -195,6 +195,16 @@ Authors' original artifact, among all attempted papers: failed 42 (did not run),
 | [jonasson2008-varma-878](reports/jonasson2008-varma-878/result.md) | statistics · 2008 · MATLAB/Octave | varma_llc log-likelihood for the ten named test cases in comparison.txt (varma_llc column, tol_abs 1e-6). The registered values come from MATLAB's randn stream after randn('state',1); Octave's stream differs, so the data differ. Blocked: the claim does not state its data or random stream. (varma_llc mediumARMA2 log-likelihood) [shipped reference output] | -53.7619 ± 1e-06 | – | – | – |  | ✓ · ✓ · | - | blocked | never clean |
 | [kim2012-sfsdp-920](reports/kim2012-sfsdp-920/result.md) | numerics · 2012 · MATLAB/Octave | SFSDPplus, 3 sensors and 4 anchors, with the inputs printed in the manual (distanceMatrix0, xMatrix0, eps 1e-7, minDegree 4, objSW 1, free 0): the SDP-stage rmsd is 6.21e-02 (manual transcript, Doc/SFSDPmanual/UserManual.tex, section SFSDPplus.m). tol_abs 5e-4, fixed in the queue entry. (sdp_rmsd_printed) | 0.0621 ± 0.0005 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
 | [kraft1994-tomp-733](reports/kraft1994-tomp-733/result.md) | numerics · 1994 · Fortran | Final cost of the constrained brachistochrone test driver, iteration 27, 1.7952392, tol_abs 1e-5 (shipped TOMP.OUT block, 733.f lines 77-109) (value) | 1.79524 ± 1e-05 | 1.79524 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(1,5) real) [shipped reference output] | -6.13032 ± 1e-06 | -6.13032 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
+| [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(1,5) imag) [shipped reference output] | 3.8159 ± 1e-06 | 3.8159 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
+| [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(2.5,5) real) [shipped reference output] | -3.6681 ± 1e-06 | -3.6681 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
+| [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(2.5,5) imag) [shipped reference output] | 5.80601 ± 1e-06 | 5.80601 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
+| [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(5,10) real) [shipped reference output] | -4.28551 ± 1e-06 | -4.28551 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
+| [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(5,10) imag) [shipped reference output] | 19.1171 ± 1e-06 | 19.1171 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
+| [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(2.5,-5) real) [shipped reference output] | -3.6681 ± 1e-06 | -3.6681 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
+| [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(2.5,-5) imag) [shipped reference output] | -5.80601 ± 1e-06 | -5.80601 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
+| [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(5,-10) real) [shipped reference output] | -4.28551 ± 1e-06 | -4.28551 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
+| [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(5,-10) imag) [shipped reference output] | -19.1171 ± 1e-06 | -19.1171 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
 | [leis1988-odessa-658](reports/leis1988-odessa-658/result.md) | numerics · 1988 · Fortran | Y(1) at T = 4.0 of the demo's first output block (METH 1, MITER 0) is 0.905516, as printed in the source comments. Absolute tolerance 1e-5. (chemical kinetics demo, Y(1) at T=4.0, METH 1 MITER 0) [shipped reference output] | 0.905516 ± 1e-05 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [levine1969-student-t-344](reports/levine1969-student-t-344/result.md) | statistics · 1969 · Fortran | The computed CDF printed by TOMS344_PRB for DF=1, X=0.3250 (row 1, computed column) is 0.7999537587165833, as in the shipped reference output res. Absolute tolerance 1e-6. (TTEST, DF=1, X=0.3250, two-tailed CDF transform (computed column)) [shipped reference output] | 0.799954 ± 1e-06 | 0.799954 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [lewis1982-gps-582](reports/lewis1982-gps-582/result.md) | numerics · 1982 · Fortran | GPSKCA on the BCSPWR01 power-network matrix (order 39): BANDWIDTH 6, PROFILE 100, GPSKCA ERROR CODE 0, from the shipped sample output (artifact-reference). Integers, exact tolerance. (BANDWIDTH) [shipped reference output] | 6 ± 0 | 6 | 0 | exact | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |

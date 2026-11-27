@@ -1,0 +1,140 @@
+{
+  "paper": {
+    "short": "kuki1972-cgamma-421",
+    "title": "Algorithm 421: Complex Gamma Function with Error Control (Kuki)",
+    "year": 1972,
+    "doi": null,
+    "venue": "Communications of the ACM 15 (1972) 271-272 (Collected Algorithms from ACM, Algorithm 421); claim is the shipped TOMS 421 Fortran 90 package's reference output (Drivers/res), since the 1972 article was not read (dl.acm.org returns 403 to automated fetch)"
+  },
+  "field": "numerics (special functions, complex gamma and log-gamma)",
+  "stack": "Fortran 90 (TOMS 421 package 421.gz, 2005: Fortran90/Dp/Src/src.f90, Fortran90/Dp/Drivers/driver.f90)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format).",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/kuki1972-cgamma-421/evidence/shipped-res.txt",
+      "sha256": "7d21d6f2ff26b4c3136aa5f8945440345733cf7d98f60ba0488ae79d9ff805da",
+      "archive": "netlib.org/toms/421.gz sha256 cea2d06751db06aa54dbe7ec6d75b7ce16d24d09c0a260069f37c9eefa0d1ff1"
+    },
+    "values": [
+      {
+        "name": "loggamma(1,5) real",
+        "paper": -6.1303241,
+        "tol_abs": 1e-06,
+        "ours": -6.1303241
+      },
+      {
+        "name": "loggamma(1,5) imag",
+        "paper": 3.8158986,
+        "tol_abs": 1e-06,
+        "ours": 3.8158986
+      },
+      {
+        "name": "loggamma(2.5,5) real",
+        "paper": -3.6681033,
+        "tol_abs": 1e-06,
+        "ours": -3.6681033
+      },
+      {
+        "name": "loggamma(2.5,5) imag",
+        "paper": 5.8060098,
+        "tol_abs": 1e-06,
+        "ours": 5.8060098
+      },
+      {
+        "name": "loggamma(5,10) real",
+        "paper": -4.2855074,
+        "tol_abs": 1e-06,
+        "ours": -4.2855074
+      },
+      {
+        "name": "loggamma(5,10) imag",
+        "paper": 19.117071,
+        "tol_abs": 1e-06,
+        "ours": 19.117071
+      },
+      {
+        "name": "loggamma(2.5,-5) real",
+        "paper": -3.6681033,
+        "tol_abs": 1e-06,
+        "ours": -3.6681033
+      },
+      {
+        "name": "loggamma(2.5,-5) imag",
+        "paper": -5.8060098,
+        "tol_abs": 1e-06,
+        "ours": -5.8060098
+      },
+      {
+        "name": "loggamma(5,-10) real",
+        "paper": -4.2855074,
+        "tol_abs": 1e-06,
+        "ours": -4.2855074
+      },
+      {
+        "name": "loggamma(5,-10) imag",
+        "paper": -19.117071,
+        "tol_abs": 1e-06,
+        "ours": -19.117071
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Ran the authors' shipped package. Original attempt: the Makefile as documented names no compiler (F77 is empty), so make stops at the first compile (f77: No such file or directory). Build-only patch: the Makefile rules were run by hand with gfortran (default flags, no source edited): driver.f90 compiled in Drivers, src.f90 compiled from Src into Drivers/src.o, then linked to driver. Ran ./driver < data in the sandbox. All five loggamma entries print identically to the shipped res at 8 digits (abs diff 0). Manifests pre, mid and post identical for all source files, so this is build-only.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make RES as the Makefile documents stops at the first compile: 'make: f77: No such file or directory' (the Makefile names no compiler). Kept in the log.",
+    "log": "reports/kuki1972-cgamma-421/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/kuki1972-cgamma-421/recipe.sh",
+  "queue_commit": "7d0069c",
+  "evidence": [
+    "reports/kuki1972-cgamma-421/evidence/unshar.log",
+    "reports/kuki1972-cgamma-421/evidence/original-attempt.log",
+    "reports/kuki1972-cgamma-421/evidence/build.log",
+    "reports/kuki1972-cgamma-421/evidence/recipe-run.log",
+    "reports/kuki1972-cgamma-421/evidence/run.txt",
+    "reports/kuki1972-cgamma-421/evidence/manifests/manifest.pre",
+    "reports/kuki1972-cgamma-421/evidence/manifests/manifest.mid",
+    "reports/kuki1972-cgamma-421/evidence/manifests/manifest.post"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "cea2d06751db06aa54dbe7ec6d75b7ce16d24d09c0a260069f37c9eefa0d1ff1",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "cd /work/orig/Fortran90/Dp/Drivers && gfortran -c driver.f90",
+      "cd /work/orig/Fortran90/Dp/Src && gfortran -c src.f90 -o /work/orig/Fortran90/Dp/Drivers/src.o",
+      "cd /work/orig/Fortran90/Dp/Drivers && gfortran -o driver driver.o src.o"
+    ],
+    "manifests": {
+      "pre": "reports/kuki1972-cgamma-421/evidence/manifest.pre",
+      "mid": "reports/kuki1972-cgamma-421/evidence/manifest.mid",
+      "post": "reports/kuki1972-cgamma-421/evidence/manifest.post"
+    }
+  }
+}

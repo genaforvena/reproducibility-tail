@@ -1,0 +1,3 @@
+gfortran  -c driver.f
+make: *** No rule to make target 'src.f', needed by 'src.o'.  Stop.
+make_exit=2

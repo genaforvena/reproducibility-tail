@@ -41,7 +41,7 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -58,7 +58,19 @@
     "reports/paciorek1970-dei-385/evidence/res-shipped",
     "reports/paciorek1970-dei-385/evidence/res-diff.txt"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-27T15:43:53Z",
+      "kind": "clean",
+      "values": {
+        "DEI_TEST01_X2": 4.9542344
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/paciorek1970-dei-385/evidence/replay-2026-11-27T154353Z.log",
+      "seconds": 70
+    }
+  ],
   "patch": {
     "kind": "build-only",
     "archive_sha256": "f76ca4d6610c227c020e9d7901518089ba680d596ed8888615f38b26b4b5ddb7",

@@ -1,0 +1,7 @@
+sha256 f76ca4d6610c227c020e9d7901518089ba680d596ed8888615f38b26b4b5ddb7 expected f76ca4d6610c227c020e9d7901518089ba680d596ed8888615f38b26b4b5ddb7
+/work/385.gz: OK
+GNU Fortran (conda-forge gcc 16.2.0-7) 16.2.0
+/work/pre/Fortran/Dp/Drivers/Makefile
+/work/pre/Fortran/Dp/Drivers/driver.f
+/work/pre/Fortran/Dp/Drivers/res
+/work/pre/Fortran/Dp/Src/src.f

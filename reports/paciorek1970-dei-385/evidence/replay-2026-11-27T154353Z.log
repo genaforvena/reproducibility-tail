@@ -1,0 +1,27 @@
+== fetch: 385.gz (sha256 checked), shell archive unpacked to /work/pre; gfortran (conda-forge) if missing
+sha256 f76ca4d6610c227c020e9d7901518089ba680d596ed8888615f38b26b4b5ddb7 expected f76ca4d6610c227c020e9d7901518089ba680d596ed8888615f38b26b4b5ddb7
+/work/385.gz: OK
+GNU Fortran (conda-forge gcc 16.2.0-7) 16.2.0
+/work/pre/Fortran/Dp/Drivers/Makefile
+/work/pre/Fortran/Dp/Drivers/driver.f
+/work/pre/Fortran/Dp/Drivers/res
+/work/pre/Fortran/Dp/Src/src.f
+== manifest pre (right after unpack, before any build step)
+195c3ecd34503798d460d990c195db61234578fcf2044dab97945beb4a634c37  Fortran/Dp/Drivers/Makefile
+b8f272eef16f258e319975e94006a0adc1a59057908ab3d5ddb9ca4d5fa8e6bc  Fortran/Dp/Drivers/driver.f
+5e4997d155446935ec15476c9f0712a298721846012a2196d92f58cf79b6c2c5  Fortran/Dp/Src/src.f
+== G1 original attempt: the authors' Makefile in the shipped layout, run in a copy
+gfortran  -c driver.f
+make: *** No rule to make target 'src.f', needed by 'src.o'.  Stop.
+make_exit=2
+== manifest mid (no patch step touches a source file; immediately before the build)
+== build (the Makefile's rules, with src.f taken from ../Src) and run
+run_exit=0
+== manifest post (after the build)
+== evidence: Res against the shipped res
+diff_exit=0 (0 = identical to the shipped res)
+== values
+VALUE DEI_TEST01_X2 4.9542344
+== manifests into the record (exit 0 means build-only; exit 2 means a source file was changed before the build)
+record_exit=0
+paciorek1970-dei-385: patch kind build-only: compared 3; ours modified 0, removed 0, added 0; build tool modified 0, added 0, removed 0

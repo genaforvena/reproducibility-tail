@@ -26,7 +26,7 @@ tests match too.
 **Environment pins.** gfortran 16.2.0 (conda-forge gcc 16.2.0-7, micromamba, `gfortran_linux-64`), installed in the
 sandbox during the fetch step. Run through `tools/sandbox.sh` (read-only root, no network after fetch, 3G memory, 3600 s wall).
 
-**Replay (G5).** Not yet. The first clean replay is due on the scheduled duty.
+**Replay (G5).** A clean replay from an empty scratch directory agreed with the record (`evidence/replay-2026-11-27T145135Z.log`).
 
 **Command.** `reports/knop1973-dipole-441/recipe.sh` rebuilds and reruns everything from a clean scratch directory.
 

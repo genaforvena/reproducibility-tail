@@ -84,5 +84,18 @@
       "mid": "reports/knop1973-dipole-441/evidence/manifest.mid",
       "post": "reports/knop1973-dipole-441/evidence/manifest.post"
     }
-  }
+  },
+  "replayed": [
+    {
+      "utc": "2026-11-27T14:51:35Z",
+      "kind": "clean",
+      "values": {
+        "DIPOLE_MEAN_A0353553_N1000": 0.110592
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/knop1973-dipole-441/evidence/replay-2026-11-27T145135Z.log",
+      "seconds": 59
+    }
+  ]
 }

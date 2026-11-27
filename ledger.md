@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-40 papers attempted.
+41 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
-| A | authors' code, run clean | 13 |
+| A | authors' code, run clean | 14 |
 | B | authors' code with build fixes | 17 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 8 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 30, other 2, statistics 5
-By stack: C/C++ 7, Fortran 24, MATLAB/Octave 3, R 5, not-stated 1
-By decade: 1960 1, 1970 1, 1980 3, 1990 12, 2000 16, 2010 7
+By field: astronomy 1, biology 1, ecology 1, numerics 30, other 3, statistics 5
+By stack: C/C++ 7, Fortran 24, Java 1, MATLAB/Octave 3, R 5, not-stated 1
+By decade: 1960 1, 1970 1, 1980 3, 1990 12, 2000 16, 2010 8
 
 Data as of 2026-11-27T00:50Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T00:50Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-40 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+41 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **278 candidates considered from 4 of 4 frames: 37 attempted (13%), 0 unreachable, 241 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 23 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 13 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 23 (did not run), not-possible 3 (no code exists to run), partial 1 (ran only through a workaround or for part of the claim), succeeded 14 (ran as documented).
 
 ## Results
 
@@ -138,6 +138,7 @@ Authors' original artifact, among all attempted papers: failed 23 (did not run),
 | [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f08 on [0.1, 1]) [shipped reference output] | 0.00909865 ± 9.09865e-06 | 0.00909898 | 3.34744e-07 | 4% | patched | ✓ · ✓ · | X | partial | never clean |
 | [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f12 on [0, 1]) [shipped reference output] | -0.634665 ± 0.000634665 | -0.63467 | -4.8175e-06 | 1% | patched | ✓ · ✓ · | X | partial | never clean |
 | [patterson1973-quad-468](reports/patterson1973-quad-468/result.md) | numerics · 1973 · Fortran | QUAD results printed by TEST01 for f07, f08, f12, f13 (EPSIL 0.001), against the registered values (QUAD integral of f13 on [0, 1]) [shipped reference output] | 0.0134925 ± 1.34925e-05 | 0.0135495 | 5.70144e-05 | 423% ⚠ | patched | ✓ · ✓ · | X | partial | never clean |
+| [perez2017-jmarkov-972](reports/perez2017-jmarkov-972/result.md) | other · 2017 · Java | The first entry of the average measures of performance of the Kanban model (examples.jmarkov.Kanban, default parameters), getMOPsAvg()[0], equals 0.7003166576899312 as in the shipped KanbanTest.testGetMOPsAvg; absolute tolerance 1e-4, fixed in the queue entry before any run. Deterministic steady-state solve. (Kanban MOPs avg [0]) [shipped reference output] | 0.700317 ± 0.0001 | 0.700317 | -1.10171e-09 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
 | [peters1998-pcp2nurb-783](reports/peters1998-pcp2nurb-783/result.md) | numerics · 1998 · C/C++ | The first control point of the first NurbsSurface printed by driver1 with blend ratio 0.5 is (0.493056, 1.868056, 0.972222), as in the shipped reference output RES1 (first Coordinate3 block, point 1). Absolute tolerance 1e-5 per component. (driver1 0.5, first patch control point 1 x) [shipped reference output] | 0.493056 ± 1e-05 | 0.493056 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [peters1998-pcp2nurb-783](reports/peters1998-pcp2nurb-783/result.md) | numerics · 1998 · C/C++ | The first control point of the first NurbsSurface printed by driver1 with blend ratio 0.5 is (0.493056, 1.868056, 0.972222), as in the shipped reference output RES1 (first Coordinate3 block, point 1). Absolute tolerance 1e-5 per component. (driver1 0.5, first patch control point 1 y) [shipped reference output] | 1.86806 ± 1e-05 | 1.86806 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [peters1998-pcp2nurb-783](reports/peters1998-pcp2nurb-783/result.md) | numerics · 1998 · C/C++ | The first control point of the first NurbsSurface printed by driver1 with blend ratio 0.5 is (0.493056, 1.868056, 0.972222), as in the shipped reference output RES1 (first Coordinate3 block, point 1). Absolute tolerance 1e-5 per component. (driver1 0.5, first patch control point 1 z) [shipped reference output] | 0.972222 ± 1e-05 | 0.972222 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |

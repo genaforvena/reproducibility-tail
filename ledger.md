@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-80 papers attempted.
+81 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 17 |
-| B | authors' code with build fixes | 45 |
+| B | authors' code with build fixes | 46 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 16 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 67, other 4, statistics 6
-By stack: C/C++ 10, Fortran 56, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 1960 3, 1970 6, 1980 7, 1990 26, 2000 26, 2010 12
+By field: astronomy 1, biology 1, ecology 1, numerics 68, other 4, statistics 6
+By stack: C/C++ 10, Fortran 57, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 1960 4, 1970 6, 1980 7, 1990 26, 2000 26, 2010 12
 
 Data as of 2026-11-27T09:34:49Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T09:34:49Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-80 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+81 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **390 candidates considered from 4 of 4 frames: 79 attempted (20%), 0 unreachable, 311 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 52 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 53 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
 
 ## Results
 
@@ -122,6 +122,7 @@ Authors' original artifact, among all attempted papers: failed 52 (did not run),
 | [buckley1994-minimize-734](reports/buckley1994-minimize-734/result.md) | numerics · 1994 · Fortran | Shipped reference run Drivers/Sp/res2 of driver2.f90 (Rosenbrock, from (-1.2, 1), acc 0.001): least function value 0.20053597E-08, 59 function evaluations, 36 iterations (least function value) | 2.00536e-09 ± 1e-08 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [cabay1997-vecpade-766](reports/cabay1997-vecpade-766/result.md) | numerics · 1997 · Fortran | ? (System S, z**1 coefficient matrix, entry (2,3), times 37 (RES1 value -131)) | -131 ± 0.5 | -131 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [caliari2008-padua2d-886](reports/caliari2008-padua2d-886/result.md) | numerics · 2008 · Fortran | Normalized true error of the Padua interpolant at degree 60 for the Franke function F1 on the unit square (drvrec, FAMILY 1, NTG1 100), Table I of the pre-publication draft: 2E-11. Absolute tolerance 5e-12 (the printed value stands for [1.5E-11, 2.5E-11]). Registered 2026-11-27T03:28Z. (normalized true error, F1, degree 60, square) | 2e-11 ± 5e-12 | 2.468e-11 | 4.68e-12 | 94% ⚠ | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
+| [clemm1969-mathieu-352](reports/clemm1969-mathieu-352/result.md) | numerics · 1969 · Fortran | a_5(5), the even Mathieu characteristic value at R = 5, Q = 5, as printed in the Computed column of TEST05 in the shipped reference output res. Registered tolerance: abs 1e-5. (a_5(5) (even)) [shipped reference output] | 25.55 ± 1e-05 | 25.55 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
 | [demetriou2007-l2wpma-863](reports/demetriou2007-l2wpma-863/result.md) | numerics · 2007 · Fortran | Shipped reference Data/Appndx_B/WIVAPP (Appendix B of Doc/INSTDE04.txt): the data indices of the extrema of the best monotone fit, DRIVER1 on Data/Appndx_B/XFWDAT with KSECTN 5, default weights. Claim values: indices 0..5 = 1, 8, 27, 46, 69, 75, exact match (tolerance 0). (extremum index 0) [shipped reference output] | 1 ± 0 | 1 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [demetriou2007-l2wpma-863](reports/demetriou2007-l2wpma-863/result.md) | numerics · 2007 · Fortran | Shipped reference Data/Appndx_B/WIVAPP (Appendix B of Doc/INSTDE04.txt): the data indices of the extrema of the best monotone fit, DRIVER1 on Data/Appndx_B/XFWDAT with KSECTN 5, default weights. Claim values: indices 0..5 = 1, 8, 27, 46, 69, 75, exact match (tolerance 0). (extremum index 1) [shipped reference output] | 8 ± 0 | 8 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [demetriou2007-l2wpma-863](reports/demetriou2007-l2wpma-863/result.md) | numerics · 2007 · Fortran | Shipped reference Data/Appndx_B/WIVAPP (Appendix B of Doc/INSTDE04.txt): the data indices of the extrema of the best monotone fit, DRIVER1 on Data/Appndx_B/XFWDAT with KSECTN 5, default weights. Claim values: indices 0..5 = 1, 8, 27, 46, 69, 75, exact match (tolerance 0). (extremum index 2) [shipped reference output] | 27 ± 0 | 27 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |

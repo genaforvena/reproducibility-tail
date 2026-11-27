@@ -1,0 +1,89 @@
+{
+  "paper": {
+    "short": "clemm1969-mathieu-352",
+    "title": "Algorithm 352: Characteristic values and associated solutions of Mathieu's differential equation",
+    "year": 1969,
+    "venue": "Communications of the ACM 12(7), 399-407 (1969)",
+    "doi": null,
+    "note": "The article is not read. The archive is netlib TOMS/CALGO 352.gz (2006 Fortran conversion by John Burkardt), fetched inside the sandbox, sha256 00efa50b...fee."
+  },
+  "field": "numerics (special functions: Mathieu characteristic values)",
+  "field_class": "numerics",
+  "stack": "Fortran (netlib 352.gz driver.f and src.f, unpacked verbatim); built with GNU Fortran 16.2.0 (conda-forge) in the sandbox",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "a_5(5), the even Mathieu characteristic value at R = 5, Q = 5, as printed in the Computed column of TEST05 in the shipped reference output res. Registered tolerance: abs 1e-5.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/clemm1969-mathieu-352/evidence/shipped-res.txt",
+      "sha256": "6479e2425f53a8d660ea3f556eb46b11d16b0912d1f8ff24a2e634e53bc104f6",
+      "archive": "netlib.org/toms/352.gz sha256 00efa50bee19a19e7b4e5c0475d75d72bf2ab1260a01cae65056d28a2a4b1fee"
+    },
+    "values": [
+      {
+        "name": "a_5(5) (even)",
+        "paper": 25.549972,
+        "tol_abs": 1e-05,
+        "ours": 25.549972
+      }
+    ],
+    "determinism": "deterministic"
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Ran the authors' driver.f and src.f unmodified, compiled with gfortran -O2 in a build directory outside the tree (the Makefile's $(F77) is unset and absent, so the compiler name is given on the command line). Two passes, each in a fresh run directory: the TEST05 row R=5, Q=5 prints 25.549972 (Computed) in both passes, against the registered 25.549972 with tol 1e-5. Build-only: no source edit (verify_sources record).",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The authors' Makefile calls $(F77) and f77, both absent in the sandbox: make: f77: No such file or directory (exit 2).",
+    "log": "reports/clemm1969-mathieu-352/evidence/original-attempt-make.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/clemm1969-mathieu-352/recipe.sh",
+  "queue_commit": "e36fcd7",
+  "replayed": [],
+  "evidence": [
+    "reports/clemm1969-mathieu-352/evidence/archive-sha256-check.txt",
+    "reports/clemm1969-mathieu-352/evidence/gfortran-version.txt",
+    "reports/clemm1969-mathieu-352/evidence/unpack-listing.txt",
+    "reports/clemm1969-mathieu-352/evidence/shipped-res.txt",
+    "reports/clemm1969-mathieu-352/evidence/original-attempt-make.log",
+    "reports/clemm1969-mathieu-352/evidence/build.log",
+    "reports/clemm1969-mathieu-352/evidence/run-pass1.txt",
+    "reports/clemm1969-mathieu-352/evidence/run-pass2.txt",
+    "reports/clemm1969-mathieu-352/evidence/recipe-run.log"
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "00efa50bee19a19e7b4e5c0475d75d72bf2ab1260a01cae65056d28a2a4b1fee",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -O2 -c /work/tree/Fortran/Dp/Drivers/driver.f -o driver.o",
+      "gfortran -O2 -c /work/tree/Fortran/Dp/Src/src.f -o src.o",
+      "gfortran -O2 -o driver driver.o src.o"
+    ],
+    "manifests": {
+      "pre": "reports/clemm1969-mathieu-352/evidence/manifest.pre",
+      "mid": "reports/clemm1969-mathieu-352/evidence/manifest.mid",
+      "post": "reports/clemm1969-mathieu-352/evidence/manifest.post"
+    }
+  }
+}

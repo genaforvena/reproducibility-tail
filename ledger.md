@@ -5,7 +5,7 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-58 papers attempted.
+59 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
@@ -14,11 +14,11 @@ Method and gates: [docs/method.md](docs/method.md).
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
-| - | blocked or not yet run | 11 |
+| - | blocked or not yet run | 12 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 47, other 3, statistics 5
-By stack: C/C++ 8, Fortran 39, Java 1, MATLAB/Octave 5, R 5
-By decade: 1960 2, 1970 3, 1980 3, 1990 18, 2000 22, 2010 10
+By field: astronomy 1, biology 1, ecology 1, numerics 47, other 4, statistics 5
+By stack: C/C++ 8, Fortran 40, Java 1, MATLAB/Octave 5, R 5
+By decade: 1960 2, 1970 3, 1980 4, 1990 18, 2000 22, 2010 10
 
 Data as of 2026-11-27T05:28:36Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T05:28:36Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-58 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+59 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **309 candidates considered from 4 of 4 frames: 53 attempted (17%), 0 unreachable, 256 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 33 (did not run), not-possible 2 (no code exists to run), partial 5 (ran only through a workaround or for part of the claim), succeeded 18 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 34 (did not run), not-possible 2 (no code exists to run), partial 5 (ran only through a workaround or for part of the claim), succeeded 18 (ran as documented).
 
 ## Results
 
@@ -210,6 +210,7 @@ Authors' original artifact, among all attempted papers: failed 33 (did not run),
 | [wang2008-bacolr-874](reports/wang2008-bacolr-874/result.md) | numerics · 2008 · Fortran | driver1 (single PDE, KCOL = 2, NINT = 42 at TOUT = 1.0) prints UOUT = 0.6602 at XOUT = 0.91, as in the shipped reference output res1; tolerance 1e-3 absolute, fixed in the queue entry. (UOUT(XOUT=0.91) at TOUT=1.0, KCOL=2, NINT=42) [shipped reference output] | 0.6602 ± 0.001 | 0.6602 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [wang2011-species-butterfly-ace](reports/wang2011-species-butterfly-ace/result.md) | ecology · 2011 · R | ChaoLee1992(butterfly, t = 10, method = "all") $Nhat[1], ACE estimate of species richness (JSS p. 8) (ACE) | 712 ± 0.5 | 712 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [watson1997-hompack90-777](reports/watson1997-hompack90-777/result.md) | numerics · 1997 · Fortran | The shipped driver3 output RES3, block 'TESTING FIXPQS WITH STORAGE MODE = 1', prints the first solution component Y(1) at lambda = 1 as 4.00864019E-01. Rebuilt from the archive and run, the same block gives Y(1) within tol_abs 1e-8. Registered in the queue entry before any run; the TOMS article was not read (paywalled), so the claim rests on the shipped RES3. (FIXPQS storage mode 1, solution component Y(1) at lambda=1) [shipped reference output] | 0.400864 ± 1e-08 | 0.400864 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [west1983-qap-608](reports/west1983-qap-608/result.md) | other · 1983 · Fortran | HGW on the 4x4 instance hard-coded in the shipped test PROGRAM MAIN returns OBJ = 406 (driver comment), assignment 4,1,3,2, absolute tolerance 0.005 (fixed in the queue entry). The paper was not read (paywalled). (HGW objective on the driver instance (driver comment OBJ=406; assignment 4,1,3,2)) [shipped reference output] | 406 ± 0.005 | – | – | – |  | ✗ ? · · | - | blocked | never clean |
 | [wise2000-polsys-plp-801](reports/wise2000-polsys-plp-801/result.md) | numerics · 2000 · Fortran | TWO QUADRICS real finite solution (first INPUT.DAT problem, TRACKTOL 1e-4, FINALTOL 1e-14, seed 32749): Re X(2) = -0.788344824094120 as printed in the shipped OUTPUT.DAT, absolute tolerance 1e-6. (TWO QUADRICS real finite solution, Re X(2)) [shipped reference output] | -0.788345 ± 1e-06 | -0.788345 | -1.89848e-14 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 
 Margin is |our value − paper value| as a share of the tolerance registered before the run; ⚠ marks 80% or more, a result that a different environment could flip.
@@ -227,4 +228,4 @@ Cause of every attempted paper that is `not-reproduced` or `blocked` (the funnel
 | numerical-discrepancy | 1 |
 | nondeterminism | 0 |
 | platform | 0 |
-| other | 3 |
+| other | 4 |

@@ -1,0 +1,11 @@
+C
+      DELTX = DELTX + DELTX + (C(I,LJ)-C(I,LI)+C(J,LI)-C(J,LJ))
+      RETURN
+      END
+C     PROGRAM MAIN(OUTPUT,TAPE6=OUTPUT)                                 MAN   10
+C     MAIN PROG TO TEST THE QUADRATIC ASSIGNMENT HEURISTIC HGW ON       MAN   20
+C     A VARIANT OF GAVETT AND PLYTER'S 4-DIMENSIONAL TEST EXAMPLE.      MAN   30
+C     SEE OPERATIONS RESEARCH VOL 14 (1966) P210  FOR ORIGINAL PROBLEM  MAN   40
+C     SOLUTION IS: OBJ=406, ASSIGNMENTS: 4,1,3,2                        MAN   50
+      DIMENSION C(5,5), F(5,5), D(5,5), LOC3N(12), WORK4N(16)           MAN   60
+      LOGICAL GOOD                                                      MAN   70

@@ -12,7 +12,7 @@
   "code": {
     "url": "https://netlib.org/toms/462.gz",
     "commit": "netlib TOMS archive 462.gz, shar created 2005-12-15 (fetched by scout 2026-11-27 into /tmp/scout-462, unpacked as text, not executed)",
-    "archive": "netlib TOMS 462.gz",
+    "archive": "sha256 547505dbaaa2b140deffa1ed3f90c133d637b70502e468b0dc8a26c09ad88aa0 (netlib.org/toms/462.gz)",
     "note": "Shell archive. Members of interest: Fortran/Dp/Drivers/driver.f (program TOMS462_PRB calling BIVNOR), Fortran/Dp/Drivers/Makefile (target Res runs the driver into Res), Fortran/Dp/Drivers/res (the shipped output), Fortran/Dp/Src/src.f (BIVNOR) and Fortran/Dp/Src/erf.f. The rerun must unpack the shar and compile src.f, erf.f and driver.f."
   },
   "field": "numerics (statistics, bivariate normal cumulative distribution)",

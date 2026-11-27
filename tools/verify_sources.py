@@ -149,7 +149,7 @@ def archive_sha(queue_entry: dict) -> str:
     code = queue_entry.get("code") or {}
     m = re.search(r"sha256 ([0-9a-f]{64})", str(code.get("archive", "")))
     if not m:
-        m = re.search(r"\.gz\b[^;]*?sha256 ([0-9a-f]{64})", str(code.get("commit", "")))
+        m = re.search(r"\.(?:gz|zip)\b[^;]*?sha256 ([0-9a-f]{64})", str(code.get("commit", "")))
     return m.group(1) if m else ""
 
 

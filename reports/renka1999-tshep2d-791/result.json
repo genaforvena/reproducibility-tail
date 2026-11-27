@@ -1,0 +1,83 @@
+{
+  "paper": {
+    "short": "renka1999-tshep2d-791",
+    "title": "Algorithm 791: TSHEP2D: Cosine series Shepard method for bivariate interpolation of scattered data",
+    "year": 1999,
+    "doi": "-"
+  },
+  "field": "numerics (scattered data interpolation)",
+  "stack": "Fortran 77 (TOMS 791 TSHEP2D, single precision Sp; driver1.f, src_792.f, Src/Sp/src.f)",
+  "claim": {
+    "text": "Average SSE/SSM over the ten test functions, node set 1, NC 17, NW 30, NR 6, 0.006063 (shipped res1_2), tol_abs 1e-5",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "TSHEP2D driver1, node set 1, NC 17, NW 30, NR 6: average SSE/SSM",
+        "paper": 0.006063,
+        "tol_abs": 1e-05,
+        "ours": 0.006063
+      }
+    ],
+    "reference": {
+      "file": "reports/renka1999-tshep2d-791/evidence/reference/res1_2",
+      "sha256": "b214ca2322e1b033e0625c6bb28bf83ff40d52e2a7bbea8424a09773d4fe1801",
+      "archive": "netlib.org/toms/791.gz sha256 733ee80b3ec4d9b5a6dcf443bb4053924f25b3339486bb3e3df6b91cf31793ac"
+    }
+  },
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "basis": "patched",
+  "verdict": "reproduced",
+  "queue_commit": "a2a694988b572e1115c07ee484a390002a67a8d7",
+  "recipe": "reports/renka1999-tshep2d-791/recipe.sh",
+  "attempt": "Measured in the sandbox, two passes, the same recipe: copy of the unpacked archive, gfortran -std=legacy -w -o ts2tst driver1.f src_792.f ../../Src/Sp/src.f in Drivers/Sp (the PackingList names no compiler: gfortran is ours), run with data1 on stdin. The driver writes its table to res1_2 in the working directory; the shipped res1_2 is deleted from the build copy before each run and is written again by the run in both passes. Pass 1 and pass 2 res1_2 are byte-identical to the shipped res1_2 (average SSE/SSM 0.006063). Printed precision is 6 decimals, so agreement is at the printed value; tol_abs 1e-5.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "partial",
+    "reason": "The PackingList's build (driver1.f, src_792.f, Src) and data1 stdin were followed with gfortran, which the packing list does not name, so the run is partial in the strict sense, as in watson1997-hompack90-777. No step of the authors' procedure failed.",
+    "log": "reports/renka1999-tshep2d-791/evidence/pass1-build.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "evidence": [
+    "reports/renka1999-tshep2d-791/claimed",
+    "reports/renka1999-tshep2d-791/evidence/pass1-build.log",
+    "reports/renka1999-tshep2d-791/evidence/pass1-run.log",
+    "reports/renka1999-tshep2d-791/evidence/pass2-run.log",
+    "reports/renka1999-tshep2d-791/evidence/pass1-res1_2.txt",
+    "reports/renka1999-tshep2d-791/evidence/pass2-res1_2.txt",
+    "reports/renka1999-tshep2d-791/evidence/values.txt",
+    "reports/renka1999-tshep2d-791/evidence/reference/res1_2",
+    "reports/renka1999-tshep2d-791/evidence/unpack-listing.log"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "733ee80b3ec4d9b5a6dcf443bb4053924f25b3339486bb3e3df6b91cf31793ac",
+    "compared": 4,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -std=legacy -w -o ts2tst driver1.f src_792.f ../../Src/Sp/src.f"
+    ],
+    "manifests": {
+      "pre": "reports/renka1999-tshep2d-791/evidence/manifest.pre",
+      "mid": "reports/renka1999-tshep2d-791/evidence/manifest.mid",
+      "post": "reports/renka1999-tshep2d-791/evidence/manifest.post"
+    }
+  }
+}

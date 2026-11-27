@@ -1,0 +1,3 @@
+pass1 average SSE/SSM 0.006063
+pass2 average SSE/SSM 0.006063
+agree True

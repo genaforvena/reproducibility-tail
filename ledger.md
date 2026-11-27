@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-47 papers attempted.
+48 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 14 |
-| B | authors' code with build fixes | 24 |
+| B | authors' code with build fixes | 25 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 7 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 36, other 3, statistics 5
-By stack: C/C++ 8, Fortran 30, Java 1, MATLAB/Octave 3, R 5
-By decade: 1960 1, 1970 1, 1980 3, 1990 16, 2000 18, 2010 8
+By field: astronomy 1, biology 1, ecology 1, numerics 37, other 3, statistics 5
+By stack: C/C++ 8, Fortran 31, Java 1, MATLAB/Octave 3, R 5
+By decade: 1960 1, 1970 1, 1980 3, 1990 17, 2000 18, 2010 8
 
 Data as of 2026-11-27T02:48:03Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T02:48:03Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-47 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+48 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **287 candidates considered from 4 of 4 frames: 44 attempted (15%), 0 unreachable, 243 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 27 (did not run), not-possible 2 (no code exists to run), partial 4 (ran only through a workaround or for part of the claim), succeeded 14 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 27 (did not run), not-possible 2 (no code exists to run), partial 5 (ran only through a workaround or for part of the claim), succeeded 14 (ran as documented).
 
 ## Results
 
@@ -153,6 +153,7 @@ Authors' original artifact, among all attempted papers: failed 27 (did not run),
 | [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | astronomy · 2008 · Fortran | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_A) | 1317 ± 132 | – | – | – | - | · · · · | - | blocked | never clean |
 | [rbg08-pds-table1-counts](reports/rbg08-pds-table1-counts/result.md) | astronomy · 2008 · Fortran | Table 1 counts, alpha = 5 deg, r2 = 0.4 h^-1 Gpc, N_p = 1000, no preselection (withdrawn by scout at 5fc5049) (N_C) | 52 ± 5 | – | – | – | - | · · · · | - | blocked | never clean |
 | [renka1999-cshep2d-790](reports/renka1999-cshep2d-790/result.md) | numerics · 1999 · Fortran | The Max Error for interpolation function 1, node set 1 (N=100, NI=33, NC=17, NW=30, NR=6), printed by CS2TST to res1_2, is 0.0451, as in the shipped reference output. Absolute tolerance 5e-5 (half of the last printed unit). (CS2TST node set 1, function 1, Max Error (4 decimal print)) [shipped reference output] | 0.0451 ± 5e-05 | 0.0451 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
+| [renka1999-tshep2d-791](reports/renka1999-tshep2d-791/result.md) | numerics · 1999 · Fortran | Average SSE/SSM over the ten test functions, node set 1, NC 17, NW 30, NR 6, 0.006063 (shipped res1_2), tol_abs 1e-5 (TSHEP2D driver1, node set 1, NC 17, NW 30, NR 6: average SSE/SSM) [shipped reference output] | 0.006063 ± 1e-05 | 0.006063 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
 | [renka2003-dnsplin1-828](reports/renka2003-dnsplin1-828/result.md) | numerics · 2003 · Fortran | driver on data1 (Res1), the second value after the count 241 in the output, shipped as 0.565126291685656D-01 in Fortran77/Dp/Drivers/res1 (row 3 of the file), absolute tolerance 1e-12 (driver on data1, row 2 of res1) | 0.0565126 ± 1e-12 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
 | [renka2004-csrfpack-833](reports/renka2004-csrfpack-833/result.md) | numerics · 2004 · Fortran | CSRFTEST (author's driver) on the shipped 8-node data file writes a 40 x 40 grid of surface values; the grid node (X,Y) = (-0.948717948717949, -1.0) has F = 1.89783809135176 in the registered queue entry (corrected in queue commit a156ff2; the earlier registered value 0.189783809135176 dropped the E+01 exponent). Absolute tolerance 1e-9. The shipped output Fortran77/Drivers/res prints this node as 0.189783809135176E+01 (= 1.89783809135176); see result.md for the exponent discrepancy. (F(X=-0.948717948717949, Y=-1.0) from CSRFTEST with the shipped data file) [shipped reference output] | 1.89784 ± 1e-09 | 1.89784 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [resende1998-gmis-787](reports/resende1998-gmis-787/result.md) | other · 1998 · Fortran | gmis (GRASP, seed 270001, look4 50, maxitr 1000) on the shipped sample instance (data: 50 nodes, 619 arcs) prints 'Size of indep set : 7', as in the shipped RES output block. Exact tolerance (tol_abs 0), fixed in the queue entry before any run. The value 7 is the known optimum stated in read.me. (size of indep set, sample instance, seed 270001) [shipped reference output] | 7 ± 0 | 7 | 0 | exact | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |

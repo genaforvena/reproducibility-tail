@@ -45,13 +45,25 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "pending",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
   "recipe": "reports/shellman2003-befix-825/recipe.sh",
   "queue_commit": "cf1de6e33301a5042c6e8d523bcc076735cd0c32",
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-27T18:40:56Z",
+      "kind": "clean",
+      "values": {
+        "BEFIX_AVG_EVALS_EPS1E-4_Q1": 20.417255
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/shellman2003-befix-825/evidence/replay-2026-11-27T184056Z.log",
+      "seconds": 109
+    }
+  ],
   "evidence": [
     "evidence/fetch.log",
     "evidence/fetch-probe.log",

@@ -1,0 +1,46 @@
+{
+  "paper": {
+    "title": "Algorithm 946: ReLIADiff, a C++ software package for real Laplace transform inversion based on algorithmic differentiation (Collected Algorithms from ACM)",
+    "authors": [
+      "Luisa D'Amore",
+      "Rosanna Campagna",
+      "Valeria Mele",
+      "Almerico Murli"
+    ],
+    "year": 2014,
+    "venue": "ACM Transactions on Mathematical Software 40(4), Article 31 (June 2014), Algorithm 946",
+    "doi": null,
+    "url": "https://netlib.org/toms/946.zip (article DOI not verified by scout; ACM page not fetched)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/946.zip",
+    "commit": "netlib TOMS archive 946.zip (C++ library in C++_files/src, the demo DEMO2-Function_To_Give with its Makefile, TEST_FunctionToGive.c, and the authors' shipped output in scripts/output_demo2_default_EXAMPLE/output_demo2.txt)",
+    "archive": "sha256 23e42c6c0441575e12a1e4374747e3dab2c875ade6d2c6ffb58f4610cd67d55c (downloaded by scout 2026-11-27, zip of about 1 MB; extracted to scratch a/544/x/946)",
+    "note": "The demo needs the GNU Scientific Library (GSL): the Makefile points at /usr/local by default (gsllib). Build the demo from the archive's own Makefile, run the test binary with no arguments (the default script TEST_default.sh does this), and read table row x = 5.00e+00 in the output. The claim is the f_comp value in that row, which the shipped output prints as 1.29653819e+00. The elapsed-time lines are machine-dependent and are not claimed."
+  },
+  "field": "numerics (Laplace transform inversion by algorithmic differentiation)",
+  "stack": "C/C++",
+  "claim": {
+    "source": "artifact-reference",
+    "location": "Shipped output of the authors' default demo run, scripts/output_demo2_default_EXAMPLE/output_demo2.txt, the TABLE row for x = 5.00e+00: f_comp = 1.29653819e+00 (with Used tolerance 0.001000, abscissa of convergence 1.000000, maximum coefficients 2000, and Nopt = Ncal = 18).",
+    "reference": {
+      "file": "946/output_demo2_default_EXAMPLE/output_demo2.txt (scratch copy under a/544/x/946)",
+      "sha256": "not computed by scout; the rerun should hash the shipped file and record it",
+      "archive": "netlib.org/toms/946.zip, sha256 23e42c6c0441575e12a1e4374747e3dab2c875ade6d2c6ffb58f4610cd67d55c"
+    },
+    "paper_value": "1.29653819 (f_comp at x = 5 in the shipped default demo output; the paper's own numbers are not read here)",
+    "metric": "f_comp returned by the RELIADIFF inversion at x = 5 for the demo's test function, compared as a number",
+    "determinism": "deterministic (fixed test function, fixed default tolerance and abscissa, no random input; the Nopt = 18 count is also fixed by those settings)",
+    "tolerance": {
+      "abs": 2e-08,
+      "basis": "Fixed before any run. The printed value has 9 significant figures, so its rounding step is 1e-8 at this magnitude; a rerun that rounds the other way differs by one unit. 2e-8 allows two units and nothing larger. Not to be loosened after any run. A rerun whose GSL version changes the value beyond this should record the GSL version and be diagnosed, not re-tolerated."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 5 minutes to build; the default demo runs in about 7 ms of inversion time (the output's own elapsed-time line).",
+    "data_size": "None: the demo generates its own inputs.",
+    "data_licence": "No data. The archive licence is not stated; the rerun should record it."
+  },
+  "why": "The demo inverts a known Laplace transform with the package's algorithmic differentiation and prints the computed values; the value at x = 5 needs the full inversion to run, so it tests the code rather than a closed form, and the authors' own shipped output is the reference.",
+  "registered": "2026-11-27T14:36:30Z"
+}

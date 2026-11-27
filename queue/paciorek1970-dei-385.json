@@ -1,0 +1,43 @@
+{
+  "paper": {
+    "title": "Algorithm 385: Exponential integral Ei(x) (Collected Algorithms from ACM)",
+    "authors": [
+      "K. A. Paciorek"
+    ],
+    "year": 1970,
+    "venue": "Communications of the ACM 13(7), pp. 446-447 (July 1970), Algorithm 385. The frame lists it as TOMS 13,7 (Jul 1970) 446; the archive header gives Volume 13, Number 7, July 1970, pages 446-447.",
+    "doi": null,
+    "url": "https://netlib.org/toms/385.gz (article DOI not verified by scout; ACM page not fetched)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/385.gz",
+    "commit": "netlib TOMS archive 385.gz (Fortran function DEI for the exponential integral, and the test driver TOMS385_PRB with its reference output in the shar file 'res'; the driver's EI_VALUES table supplies the 'Exact' column)",
+    "archive": "sha256 f76ca4d6610c227c020e9d7901518089ba680d596ed8888615f38b26b4b5ddb7 (downloaded by scout 2026-11-27; decompressed shar text 733 lines, sha256 de281503fa321cb90c98e559ad22a8eb0b7a5d6d6615066552d0b1dd0aa328c1)",
+    "note": "The archive is a shar file. Extract Makefile, driver.f, res and the source from it, build the driver with a Fortran compiler, and run it with no input. The claim is one line of the driver's output: the Computed column of TEST01 at X = 2.0, which the shipped 'res' file prints as 4.9542344."
+  },
+  "field": "numerics (special functions: exponential integral)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "location": "Shipped reference file 'res' inside the archive (shar text lines 263-300): the TEST01 table, row X = 2.0000, Computed = 4.9542344 (the Exact Value column prints the same number). The driver prints the same table as its output.",
+    "reference": {
+      "file": "385/res (the 'res' member of the shar text; decompressed text saved by scout at scratch a/30/x/385.txt)",
+      "sha256": "de281503fa321cb90c98e559ad22a8eb0b7a5d6d6615066552d0b1dd0aa328c1",
+      "archive": "netlib.org/toms/385.gz, sha256 f76ca4d6610c227c020e9d7901518089ba680d596ed8888615f38b26b4b5ddb7"
+    },
+    "paper_value": "4.9542344 (Ei(2.0) as computed by DEI in the shipped driver; the driver's table gives the same value as its Exact column)",
+    "metric": "DEI(2.0), the exponential integral, as printed by the driver's Computed column, compared as a number",
+    "determinism": "deterministic (fixed argument x = 2.0 from the driver's table; no random input)",
+    "tolerance": {
+      "abs": 2e-07,
+      "basis": "Fixed before any run. The printed value has 8 significant figures, so its rounding step is 1e-7; a rerun on IEEE arithmetic that rounds the other way differs by one unit. 2e-7 allows two units and nothing larger. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: one evaluation of DEI (the driver runs its table of 16 points).",
+    "data_size": "None: the driver generates its own inputs.",
+    "data_licence": "No data. The archive licence is not stated; the rerun should record it."
+  },
+  "why": "The driver evaluates DEI, the authors' Fortran implementation, at a fixed point and prints the result; Ei(2.0) needs the algorithm to compute it, so the number tests the code rather than a closed form (Ei has no elementary closed form).",
+  "registered": "2026-11-27T14:35:30Z"
+}

@@ -1,0 +1,45 @@
+{
+  "paper": {
+    "title": "Algorithm 438: Product type two-point Gauss-Legendre-Simpson integration (Collected Algorithms from ACM)",
+    "authors": [
+      "E. N. Houstis",
+      "W. F. Mitchell",
+      "J. R. Rice"
+    ],
+    "year": 1972,
+    "venue": "Communications of the ACM 15(6), p. 1071 (June 1972), Algorithm 438. The frame lists it as TOMS 15,6; the archive header says Communications of the ACM, Vol. 15, No. 6, June 1972, P.1071.",
+    "doi": null,
+    "url": "https://netlib.org/toms/438.gz (article DOI not verified by scout; ACM page not fetched)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/438.gz",
+    "commit": "netlib TOMS archive 438.gz (Fortran routine P2PGS and the test driver TOMS438_PRB with its reference output in the shar file 'res'; the driver's own test functions are in driver.f)",
+    "archive": "sha256 bda38a3451fc5c7f11334fcd459802c5eb895b69b6c27c4fc9fe3527237a74e7 (downloaded by scout 2026-11-27, 8.5 KB shar; decompressed text 359 lines, sha256 685f1bfac633e90e8e757ba1a1cbe0d1ea4df48cc183f851ed925b01525e8a61)",
+    "note": "The archive is a shar file. Extract Makefile, driver.f, res and src.f from it, build the driver with a Fortran compiler, and run it with no input. The claim is one line of the driver's output: TEST01, the value of VINT for N = 10 (printed as 2.65082)."
+  },
+  "field": "numerics (quadrature: product-type two-point Gauss-Legendre-Simpson)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "location": "Shipped reference file 'res' inside the archive (shar text lines 253-300): the block TEST01, 'Integral of F(X) * G(X) from -1 to 1, with F(X) = 1, G(X) = 1/(1+x**2)', the row 'N = 10, VINT = 2.65082'. The driver prints the same block as its output.",
+    "reference": {
+      "file": "438/res (the 'res' member of the shar text; decompressed text saved by scout at scratch a/58/x/438.txt)",
+      "sha256": "685f1bfac633e90e8e757ba1a1cbe0d1ea4df48cc183f851ed925b01525e8a61",
+      "archive": "netlib.org/toms/438.gz, sha256 bda38a3451fc5c7f11334fcd459802c5eb895b69b6c27c4fc9fe3527237a74e7"
+    },
+    "paper_value": "2.65082 (VINT for N = 10, TEST01 of the shipped driver). Note for the rerun: the driver's header says G(X) = 1/(1+x**2) on [-1,1], whose integral is pi/2, yet it prints 'Exact: 2.65164'; the rerun must read fn00 and gn00 in driver.f to see what is actually integrated, and must not change the claim to fit.",
+    "metric": "VINT returned by P2PGS for N = 10 on TEST01, compared as a number",
+    "determinism": "deterministic (fixed integrand functions in the driver; no random input)",
+    "tolerance": {
+      "abs": 2e-05,
+      "basis": "Fixed before any run. The printed value has 6 significant figures, so its rounding step is 1e-5. A rerun on IEEE arithmetic that rounds the other way differs by one unit. 2e-5 allows two units and nothing larger; the quadrature itself is deterministic at this order. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: a few quadrature evaluations.",
+    "data_size": "None: the driver generates its own inputs.",
+    "data_licence": "No data. The archive licence is not stated; the rerun should record it."
+  },
+  "why": "The authors' driver prints quadrature values by N for a fixed integrand, and the N = 10 value needs the product-type rule to run, so it tests the code rather than a closed form (the printed 'Exact' value is not the rule's output).",
+  "registered": "2026-11-27T14:35:00Z"
+}

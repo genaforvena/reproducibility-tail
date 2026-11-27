@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-94 papers attempted.
+95 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 21 |
-| B | authors' code with build fixes | 52 |
+| B | authors' code with build fixes | 53 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 2 |
 | - | blocked or not yet run | 18 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 81, other 4, statistics 6
-By stack: C/C++ 11, Fortran 69, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 0 1, 1960 4, 1970 9, 1980 9, 1990 31, 2000 27, 2010 13
+By field: astronomy 1, biology 1, ecology 1, numerics 82, other 4, statistics 6
+By stack: C/C++ 11, Fortran 70, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 0 1, 1960 4, 1970 9, 1980 9, 1990 32, 2000 27, 2010 13
 
 Data as of 2026-11-27T13:15:37Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T13:15:37Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-94 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+95 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **470 candidates considered from 4 of 4 frames: 92 attempted (20%), 0 unreachable, 378 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 61 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 23 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 62 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 23 (ran as documented).
 
 ## Results
 
@@ -144,6 +144,7 @@ Authors' original artifact, among all attempted papers: failed 61 (did not run),
 | [gao2005-mixedvol-846](reports/gao2005-mixedvol-846/result.md) | numerics · 2005 · C/C++ | The manual's worked three-polynomial system (Doc/userman.tex, 'Call Sequence and Output'), typed into a file MyPolynomials outside the archive and run as 'mixedvol -p MyPolynomials', prints a mixed volume of 119. Integer, tolerance 0, fixed in the queue entry before any run; the paper was not read, so the claim rests on the shipped manual's stated number. (mixed volume of the manual's 3-polynomial system (manual: 119)) [shipped reference output] | 119 ± 0 | 119 | 0 | exact | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [gaviano2003-gkls-829](reports/gaviano2003-gkls-829/result.md) | numerics · 2003 · C/C++ | Shipped reference test001.txt: global minimizer of D-type function number 1, dimension 2, f = -1, at (-0.136, 0.824), tol 1e-3 absolute (D-type function 1, dim 2, global minimizer x1) | -0.136 ± 0.001 | -0.136 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [gaviano2003-gkls-829](reports/gaviano2003-gkls-829/result.md) | numerics · 2003 · C/C++ | Shipped reference test001.txt: global minimizer of D-type function number 1, dimension 2, f = -1, at (-0.136, 0.824), tol 1e-3 absolute (D-type function 1, dim 2, global minimizer x2) | 0.824 ± 0.001 | 0.824 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
+| [geurts1997-colred-767](reports/geurts1997-colred-767/result.md) | numerics · 1997 · Fortran | R(0)(1,1), the (1,1) coefficient of the column reduced polynomial matrix R(s) = P(s) U(s) for COLRED example 2 (DP=3, MP=NP=2, tolerance 1.0D-10), as the shipped reference output (archive member Drivers/Dp/RES) prints it in the 'column reduced polynomial matrix R(s)' section: 151.9532407. (R(0)(1,1), COLRED example 2) [shipped reference output] | 151.953 ± 5e-08 | 151.953 | 0 | 0% | patched (build-only) | ✓ · ✓ ? | B | reproduced | never clean |
 | [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res1 CHECK1 maximum (shipped)) | 9.4369e-15 ± 1e-13 | 9.54792e-15 | 1.11022e-16 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res2 CHECK2 maximum (shipped)) | 5.2365e-15 ± 1e-13 | 5.22189e-15 | -1.46187e-17 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res3 CHECK3 maximum (shipped)) | 5.191e-15 ± 1e-13 | 5.14976e-15 | -4.12394e-17 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |

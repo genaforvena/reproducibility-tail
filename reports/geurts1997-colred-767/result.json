@@ -1,0 +1,97 @@
+{
+  "paper": {
+    "short": "geurts1997-colred-767",
+    "title": "Algorithm 767: A Fortran 77 package for column reduction of polynomial matrices (COLRED)",
+    "authors": [
+      "A. J. Geurts",
+      "C. Praagman"
+    ],
+    "year": 1997,
+    "venue": "ACM Transactions on Mathematical Software 23(1), Mar 1997, pp. 111-129; collected as TOMS Algorithm 767",
+    "doi": null
+  },
+  "field": "numerics (polynomial matrices, control theory)",
+  "field_class": "numerics",
+  "stack": "Fortran",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "R(0)(1,1), the (1,1) coefficient of the column reduced polynomial matrix R(s) = P(s) U(s) for COLRED example 2 (DP=3, MP=NP=2, tolerance 1.0D-10), as the shipped reference output (archive member Drivers/Dp/RES) prints it in the 'column reduced polynomial matrix R(s)' section: 151.9532407.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "R(0)(1,1), COLRED example 2",
+        "paper": 151.9532407,
+        "tol_abs": 5e-08,
+        "ours": 151.9532407
+      }
+    ],
+    "reference": {
+      "file": "reports/geurts1997-colred-767/evidence/shipped-res.txt",
+      "sha256": "16668a76d66c6b23d29fe1a08295c75712fbffd88997a89b99fe66aa6f6904b6",
+      "archive": "netlib.org/toms/767.gz sha256 240d6fbc7a8a48902aa545c914356479492fbd8840222bbf2a376a5b5953a3f8 (member Drivers/Dp/RES, extracted by the recipe; example 2, R(0) row 1 column 1 = 151.9532407)"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "The archive ships Fortran sources and a test driver with its data and shipped output, but no Makefile or build script, so the shipped tree does not build by itself. Build-only workaround: the unedited driver.f, src.f, blas1.f, blas2.f and lapack.f compiled with gfortran -O2 -std=legacy into a binary outside the tree, then run on the archive's own data file (stdin). No source byte is edited (manifests pre == mid == post). Example 2 R(0)(1,1) = 151.9532407, equal to the shipped value at the printed 7 decimals. The complete run (11 examples, 826 lines) matches the shipped RES after normalising the sign of zero: the shipped file prints 0.0000000 where this compiler prints -0.0000000 for some near-zero entries.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The shipped Drivers/Dp directory has no Makefile: 'make: *** No targets specified and no makefile found. Stop.' (make exit 2). There is no authors' build command in the archive to try.",
+    "log": "reports/geurts1997-colred-767/evidence/original-attempt-build.log"
+  },
+  "diagnostics": {
+    "precision": "The claim is compared at the printed precision: the shipped RES prints seven decimals and the tolerance 5e-8 is the rounding half-unit of the seventh digit. The produced value printed by the same driver has the same seven decimals; the full-precision value is not printed by the driver and is not computed here.",
+    "sign_of_zero": "The shipped RES and this compiler's output differ only in the sign printed for zero-valued entries (-0.0000000 versus 0.0000000). After normalising that, the whole output matches line for line. The difference is recorded in evidence/compare-signed-zero-normalised.txt (diff of the normalised files; 0 lines)."
+  },
+  "second_pass": null,
+  "queue_commit": "4d3e1b3c5a6200ecff738bde9b7c0b909932745d",
+  "recipe": "reports/geurts1997-colred-767/recipe.sh",
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pending",
+    "G6": "pass",
+    "cross_check": "na"
+  },
+  "environment": {
+    "compiler": "GNU Fortran (conda-forge gcc 16.2.0-7) 16.2.0",
+    "flags": "-O2 -std=legacy",
+    "sandbox": "tools/sandbox.sh"
+  },
+  "evidence": {
+    "run_output": "reports/geurts1997-colred-767/evidence/run-pass1.out",
+    "build_log": "reports/geurts1997-colred-767/evidence/build-run.log",
+    "original_attempt_log": "reports/geurts1997-colred-767/evidence/original-attempt-build.log",
+    "archive_check": "reports/geurts1997-colred-767/evidence/archive-sha256-check.txt",
+    "manifests": "reports/geurts1997-colred-767/evidence/manifests/",
+    "shipped_reference": "reports/geurts1997-colred-767/evidence/shipped-res.txt",
+    "signed_zero_compare": "reports/geurts1997-colred-767/evidence/compare-signed-zero-normalised.txt"
+  },
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "240d6fbc7a8a48902aa545c914356479492fbd8840222bbf2a376a5b5953a3f8",
+    "compared": 5,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "mkdir -p /work/build && cd /work/build && export PATH=/work/env16/bin:$PATH && T=/work/tree && gfortran -O2 -std=legacy $T/Drivers/Dp/driver.f $T/Src/Dp/src.f $T/Src/Dp/blas1.f $T/Src/Dp/blas2.f $T/Src/Dp/lapack.f -o colred; echo \"gfortran exit=$?\""
+    ],
+    "manifests": {
+      "pre": "reports/geurts1997-colred-767/evidence/manifest.pre",
+      "mid": "reports/geurts1997-colred-767/evidence/manifest.mid",
+      "post": "reports/geurts1997-colred-767/evidence/manifest.post"
+    }
+  }
+}

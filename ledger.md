@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-89 papers attempted.
+90 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 20 |
-| B | authors' code with build fixes | 49 |
+| B | authors' code with build fixes | 50 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 18 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 76, other 4, statistics 6
-By stack: C/C++ 11, Fortran 64, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 1960 4, 1970 8, 1980 7, 1990 30, 2000 27, 2010 13
+By field: astronomy 1, biology 1, ecology 1, numerics 77, other 4, statistics 6
+By stack: C/C++ 11, Fortran 65, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 1960 4, 1970 8, 1980 7, 1990 31, 2000 27, 2010 13
 
 Data as of 2026-11-27T11:32:16Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T11:32:16Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-89 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+90 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **426 candidates considered from 4 of 4 frames: 89 attempted (21%), 0 unreachable, 337 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 57 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 22 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 58 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 22 (ran as documented).
 
 ## Results
 
@@ -132,6 +132,7 @@ Authors' original artifact, among all attempted papers: failed 57 (did not run),
 | [demetriou2007-l2wpma-863](reports/demetriou2007-l2wpma-863/result.md) | numerics · 2007 · Fortran | Shipped reference Data/Appndx_B/WIVAPP (Appendix B of Doc/INSTDE04.txt): the data indices of the extrema of the best monotone fit, DRIVER1 on Data/Appndx_B/XFWDAT with KSECTN 5, default weights. Claim values: indices 0..5 = 1, 8, 27, 46, 69, 75, exact match (tolerance 0). (extremum index 3) [shipped reference output] | 46 ± 0 | 46 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [demetriou2007-l2wpma-863](reports/demetriou2007-l2wpma-863/result.md) | numerics · 2007 · Fortran | Shipped reference Data/Appndx_B/WIVAPP (Appendix B of Doc/INSTDE04.txt): the data indices of the extrema of the best monotone fit, DRIVER1 on Data/Appndx_B/XFWDAT with KSECTN 5, default weights. Claim values: indices 0..5 = 1, 8, 27, 46, 69, 75, exact match (tolerance 0). (extremum index 4) [shipped reference output] | 69 ± 0 | 69 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [demetriou2007-l2wpma-863](reports/demetriou2007-l2wpma-863/result.md) | numerics · 2007 · Fortran | Shipped reference Data/Appndx_B/WIVAPP (Appendix B of Doc/INSTDE04.txt): the data indices of the extrema of the best monotone fit, DRIVER1 on Data/Appndx_B/XFWDAT with KSECTN 5, default weights. Claim values: indices 0..5 = 1, 8, 27, 46, 69, 75, exact match (tolerance 0). (extremum index 5) [shipped reference output] | 75 ± 0 | 75 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [Dobmann, Liepelt, Schittkowski 1995 (TOMS 746, ADM)](reports/dobmann1995-adm-746/result.md) | numerics · 1995 · Fortran | Generated derivative error for TP1 (Rosenbrock, X=(-2,1), MAXFUN=10000) as printed by the shipped driver output Results/tp1.res: 0.451D-03. Registered tolerance abs 5e-6 (half unit of the printed third digit). (tp1_generated_derivative_error) [shipped reference output] | 0.000451 ± 5e-06 | 0.000451 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
 | [dorrer1968-fdist-322](reports/dorrer1968-fdist-322/result.md) | numerics · 1968 · Fortran | Shipped test driver (PROGRAM tstprob, 322.txt lines 190-192 and 210): the upper-tail probability p = 1 - PROB(nf1, nf2, f) for two F-ratios in the 0.05 block of the DATA tables, F=161.45 with (1,1) df (entry 51) and F=2.9782 with (10,10) df (entry 63), against the printed expected 0.05. tol_abs 5e-4, fixed in the queue entry. Artifact-reference claim: the shipped expected values, not a value read from the CACM article. (p for F=161.45 with (1,1) df) | 0.05 ± 0.0005 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
 | [dorrer1968-fdist-322](reports/dorrer1968-fdist-322/result.md) | numerics · 1968 · Fortran | Shipped test driver (PROGRAM tstprob, 322.txt lines 190-192 and 210): the upper-tail probability p = 1 - PROB(nf1, nf2, f) for two F-ratios in the 0.05 block of the DATA tables, F=161.45 with (1,1) df (entry 51) and F=2.9782 with (10,10) df (entry 63), against the printed expected 0.05. tol_abs 5e-4, fixed in the queue entry. Artifact-reference claim: the shipped expected values, not a value read from the CACM article. (p for F=2.9782 with (10,10) df) | 0.05 ± 0.0005 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
 | [fairweather1969-romint-351](reports/fairweather1969-romint-351/result.md) | numerics · 1969 · Fortran | ROMINT (Romberg, EPS=1e-6, MAXE=5) on exp(-x^2) over [0, 4.3]: VAL and N in the TEST02 last row of the shipped res (VAL 0.886227, N 65). Paper value from the shipped reference (artifact-reference), VAL tol_abs 1e-5, N exact. (VAL) [shipped reference output] | 0.886227 ± 1e-05 | 0.886227 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |

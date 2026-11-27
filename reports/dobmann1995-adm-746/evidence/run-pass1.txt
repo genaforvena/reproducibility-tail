@@ -1,0 +1,22 @@
+run_exit=0
+
+ *** TP1                                               
+
+     Function repeat:            10000
+     Number of variables:            2
+     Number of functions:            1
+     Index of selected function:     1
+     Symbolic function value:      0.90900000000000D+03
+     Generated function value:     0.90900000000000D+03
+     Symbolic derivative error:   0.451D-03
+     Generated derivative error:  0.451D-03
+
+
+
+     Execution times:
+
+       code      function    gradient  num gradient work-ratio  num work-ratio 
+    ---------------------------------------------------------------------------
+    symbolic     0.000005    0.000011    0.000019        2.14        3.71
+    generated    0.000000    0.000002    0.000001       11.19        4.59
+

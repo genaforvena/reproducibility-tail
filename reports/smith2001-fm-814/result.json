@@ -1,0 +1,90 @@
+{
+  "paper": {
+    "short": "smith2001-fm-814",
+    "title": "Algorithm 814: Fortran 90 software for floating-point multiple precision arithmetic, gamma and related functions (FM package, sample driver)",
+    "year": 2001,
+    "doi": null
+  },
+  "field": "numerics (multiple-precision arithmetic)",
+  "field_class": "numerics",
+  "stack": "Fortran 90 (TOMS 814 archive 814.gz: a shar with the FM package Fortran90/Sp/Src/FM.f90, FMSAVE.f90, FMZM90.f90, the sample driver SampleFM.f90 and the expected output SAMPLE.CHK)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "SampleFM (sample 3, Zeta(3) by Gosper's series at 60 digits in the FM package) prints Zeta(3) = 1.202056903159594285...; the value rounded to double, 1.2020569031595942, must agree within absolute tolerance 1e-15 (fixed in the queue entry).",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/smith2001-fm-814/evidence/reference/SAMPLE.CHK",
+      "sha256": "1a6c80747160f4891814f10658af37f1769f9f727a2a7c983abd6ec3f1cf4eeb",
+      "archive": "netlib.org/toms/814.gz sha256 033afcb275570c5fdfd47c18e717523dd5c3b70b740ef2ad0e6daac24a25da22 (member Fortran90/Sp/Drivers/SAMPLE.CHK, sample 3)"
+    },
+    "values": [
+      {
+        "name": "Zeta(3) sample 3",
+        "paper": 1.2020569031595942,
+        "tol_abs": 1e-15,
+        "ours": 1.2020569031595942
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced at the registered claim. The ReadMe's build commands ran unchanged except that 'f90' is a one-line wrapper to gfortran (translating the ReadMe's '-f free' to -ffree-form); all five commands are the ReadMe's, run in one flat build directory (the Src modules and the driver must share it for the USE statements to find the .mod files). Two clean rebuild-and-run passes (two runs of recipe.sh from empty scratch) print Zeta(3) = 1.2020569031595942 and the program's own last line 'All results were ok.' The paper's article was not read; the claim is the shipped SAMPLE.CHK sample 3 value.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The ReadMe's f90 command is absent on the host and in the sandbox: the first build command stops with 'f90: not found' (build_exit=127).",
+    "log": "reports/smith2001-fm-814/evidence/original-attempt.txt"
+  },
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "033afcb275570c5fdfd47c18e717523dd5c3b70b740ef2ad0e6daac24a25da22",
+    "compared": 4,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "f90 FMSAVE.f90 -c -f free -o FMSAVE.o",
+      "f90 FMZM90.f90 -c -f free -o FMZM90.o",
+      "f90 FM.f90 -O -c -f free -o FM.o",
+      "f90 SampleFM.f90 -c -f free -o SampleFM.o",
+      "f90 SampleFM.o FMSAVE.o FMZM90.o FM.o -o SampleFM"
+    ],
+    "manifests": {
+      "pre": "reports/smith2001-fm-814/evidence/manifest.pre",
+      "mid": "reports/smith2001-fm-814/evidence/manifest.mid",
+      "post": "reports/smith2001-fm-814/evidence/manifest.post"
+    }
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/smith2001-fm-814/recipe.sh",
+  "queue_commit": "ec70a18099e314ebfa2bb26c8f3e24c309353d62",
+  "evidence": [
+    "reports/smith2001-fm-814/evidence/original-attempt.txt",
+    "reports/smith2001-fm-814/evidence/unpack.log",
+    "reports/smith2001-fm-814/evidence/build.log",
+    "reports/smith2001-fm-814/evidence/runs.log",
+    "reports/smith2001-fm-814/evidence/SAMPLE.LOG",
+    "reports/smith2001-fm-814/evidence/values.txt",
+    "reports/smith2001-fm-814/evidence/reference/SAMPLE.CHK",
+    "reports/smith2001-fm-814/evidence/record.log",
+    "reports/smith2001-fm-814/evidence/manifest.pre",
+    "reports/smith2001-fm-814/evidence/manifest.mid",
+    "reports/smith2001-fm-814/evidence/manifest.post"
+  ],
+  "replayed": []
+}

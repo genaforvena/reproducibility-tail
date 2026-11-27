@@ -21,5 +21,5 @@ cd /work/run
 param.relaxOrder = 3;
 param.SeDuMiEpsilon = 1e-9;
 [param, SDPobjValue, POP] = sparsePOP("example1.gms", param);
-printf("VALUE POP.objValue %.10g\n", POP.objValue);
+printf("VALUE POP.objValue, example1.gms, relaxOrder 3 %.10g\n", POP.objValue);
 printf("SDPobjValue %.10g\n", SDPobjValue);

@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-112 papers attempted.
+113 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 23 |
-| B | authors' code with build fixes | 66 |
+| B | authors' code with build fixes | 67 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 2 |
 | - | blocked or not yet run | 20 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 99, other 4, statistics 6
-By stack: C/C++ 15, Fortran 83, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 0 1, 1960 4, 1970 15, 1980 9, 1990 36, 2000 29, 2010 18
+By field: astronomy 1, biology 1, ecology 1, numerics 100, other 4, statistics 6
+By stack: C/C++ 15, Fortran 84, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 0 1, 1960 4, 1970 15, 1980 9, 1990 36, 2000 29, 2010 19
 
 Data as of 2026-11-27T17:04:34Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T17:04:34Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-112 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+113 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **552 candidates considered from 4 of 4 frames: 108 attempted (20%), 0 unreachable, 444 rejected.**
 
@@ -75,7 +75,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 77 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 25 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 78 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 25 (ran as documented).
 
 ## Results
 
@@ -132,6 +132,7 @@ Authors' original artifact, among all attempted papers: failed 77 (did not run),
 | [cabay1997-vecpade-766](reports/cabay1997-vecpade-766/result.md) | numerics · 1997 · Fortran | ? (System S, z**1 coefficient matrix, entry (2,3), times 37 (RES1 value -131)) | -131 ± 0.5 | -131 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [caliari2008-padua2d-886](reports/caliari2008-padua2d-886/result.md) | numerics · 2008 · Fortran | Normalized true error of the Padua interpolant at degree 60 for the Franke function F1 on the unit square (drvrec, FAMILY 1, NTG1 100), Table I of the pre-publication draft: 2E-11. Absolute tolerance 5e-12 (the printed value stands for [1.5E-11, 2.5E-11]). Registered 2026-11-27T03:28Z. (normalized true error, F1, degree 60, square) | 2e-11 ± 5e-12 | 2.468e-11 | 4.68e-12 | 94% ⚠ | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
 | [carlson1981-elliptic-577](reports/carlson1981-elliptic-577/result.md) | numerics · 1981 · Fortran | RJ(2,3,4,5) from the Algorithm 577 subroutine RJ, called with ERRTOL = 1.D-3 by the RJ test driver (check value in the driver comment: 0.14297 57966 71567 53833 23308). Registered tol_abs 1.4297579667156755e-4 (ERRTOL 1e-3 times the value). (rj_2345) [shipped reference output] | 0.142976 ± 0.000142976 | 0.142976 | -2.77556e-17 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [celledoni2010-frb-903](reports/celledoni2010-frb-903/result.md) | numerics · 2010 · Fortran | Line 14 of the shipped reference output Fortran77/Drivers/out_example0.dat (inside 903.zip): the first component of the output angular momentum PIOUT(1) after one exact step (Np = 0) of length h = 0.1 for the free rigid body, from init_example0.dat. Registered value -0.7088447919224319, absolute tolerance 1e-10, fixed before any run. The claim is the code's own printed output, not a table value from the paper. (PIOUT1_h0p1) [shipped reference output] | -0.708845 ± 1e-10 | -0.708845 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
 | [clemm1969-mathieu-352](reports/clemm1969-mathieu-352/result.md) | numerics · 1969 · Fortran | a_5(5), the even Mathieu characteristic value at R = 5, Q = 5, as printed in the Computed column of TEST05 in the shipped reference output res. Registered tolerance: abs 1e-5. (a_5(5) (even)) [shipped reference output] | 25.55 ± 1e-05 | 25.55 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [damore2014-reliadiff-946](reports/damore2014-reliadiff-946/result.md) | numerics · 2014 · C/C++ | DEMO2 default run: f_comp at x = 5.00e+00 in the shipped output_demo2.txt is 1.29653819e+00. Registered by scout from the artifact's own reference output. Tolerance 2e-8 absolute, fixed before any run. (RELIADIFF_FCOMP_X5) [shipped reference output] | 1.29654 ± 2e-08 | 1.29654 | 0 | 0% | patched (build-only; the build tool rewrote 1977 files) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [davis2010-klu-907](reports/davis2010-klu-907/result.md) | numerics · 2010 · C/C++ | KLU demo, condest for ../Matrix/w156.mtx: 1.79787e+09, as printed by the shipped Matlab/KLU/Demo/kludemo.out. Registered by scout from the artifact's own reference output. Tolerance 5e4 absolute, fixed before any run. (KLU_CONDEST_W156) [shipped reference output] | 1.79787e+09 ± 50000 | 1.79787e+09 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |

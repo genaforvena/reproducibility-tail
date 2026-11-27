@@ -1,0 +1,208 @@
+# Makefile for the FRB fortran package
+
+FC = /opt/NAGWare/bin/f95
+FOPTS = -gline -u -dcfuns -nan -save -C -C=undefined
+
+all: driver_example0 driver_example1 driver_example2 driver_example3 driver_example4
+
+driver_example0 : driver_example0.f frb_step.f
+	$(FC) $(FOPTS) -o driver_example0 driver_example0.f frb_step.f
+
+driver_example1 : driver_example1.f frb_step.f
+	$(FC) $(FOPTS) -o driver_example1 driver_example1.f frb_step.f
+
+driver_example2 : driver_example2.f quat_step.f
+	$(FC) $(FOPTS) -o driver_example2 driver_example2.f quat_step.f
+
+driver_example3 : driver_example3.f frb_step.f
+	$(FC) $(FOPTS) -o driver_example3 driver_example3.f frb_step.f
+
+driver_example4 : driver_example4.f quat_step.f
+	$(FC) $(FOPTS) -o driver_example4 driver_example4.f quat_step.f
+
+clean:
+	rm -f driver_example0 driver_example1 driver_example2 driver_example3
+	rm -f driver_example4
+====DRV
+c FILE driver_example0.f
+c Example of driver for the subroutine frb_step. Single step of length h
+c for the free rigid body.
+c InputData file: init_example0.dat
+c Output data file: out_example0.dat
+
+
+c     Initialization
+C     .. Local Scalars ..
+      DOUBLE PRECISION ANORMPI,H,HIJ
+      INTEGER I,J,K
+C     ..
+C     .. Local Arrays ..
+      DOUBLE PRECISION AINERT(3),PIIN(3),PIOUT(3),QIN(3,3),QOUT(3,3)
+C     ..
+C     .. External Subroutines ..
+      EXTERNAL FRB_STEP
+C     ..
+C     .. Intrinsic Functions ..
+      INTRINSIC SQRT
+C     ..
+      OPEN (11,FILE='init_example0.dat')
+      REWIND (11)
+
+c     read timestep
+      READ (11,FMT=*) H
+
+c     read inertia matrix, initial angular moment, initial attitude
+      READ (11,FMT=*) (AINERT(I),I=1,3)
+      READ (11,FMT=*) (PIIN(I),I=1,3)
+c     OBS: read Qin columnwise
+      READ (11,FMT=*) ((QIN(I,J),I=1,3),J=1,3)
+      CLOSE (11)
+
+c     open output file
+      OPEN (11,FILE='out_example0.dat')
+      REWIND (11)
+
+      DO I = 1,3
+          WRITE (11,FMT=*) PIIN(I)
+      END DO
+c     OBS: write Qout columnwise
+      DO J = 1,3
+          DO I = 1,3
+              WRITE (11,FMT=*) QIN(I,J)
+          END DO
+      END DO
+      WRITE (11,FMT=*) 0.0D0*H
+
+c     display the data
+C      WRITE (6,FMT=*) 'Initial data'
+C      WRITE (6,FMT=*) 'Piin = ', (PIIN(I),I=1,3)
+C      WRITE (6,FMT=*) 'Qin =', ((QIN(I,J),J=1,3),I=1,3)
+C      WRITE (6,FMT=*) 'h = ',H
+
+c     main computational routine
+
+      ANORMPI = SQRT(PIIN(1)**2+PIIN(2)**2+PIIN(3)**2)
+      DO K = 1,3
+          PIIN(K) = PIIN(K)/ANORMPI
+      END DO
+
+      HIJ = ANORMPI*H
+      CALL FRB_STEP(PIOUT,QOUT,HIJ,AINERT,PIIN,QIN, 0)
+
+      DO K = 1,3
+          PIOUT(K) = ANORMPI*PIOUT(K)
+      END DO
+
+c     write the data in the output file
+      DO I = 1,3
+          WRITE (11,FMT=*) PIOUT(I)
+      END DO
+c     OBS: write Qout columnwise
+      DO J = 1,3
+          DO I = 1,3
+              WRITE (11,FMT=*) QOUT(I,J)
+          END DO
+      END DO
+      CLOSE (11)
+
+c     display the data
+C      WRITE (6,FMT=*) 'Computational results:'
+C      WRITE (6,FMT=*) 'Piout =', (PIOUT(I),I=1,3)
+C      WRITE (6,FMT=*) 'Qout =', ((QOUT(I,J),J=1,3),I=1,3)
+
+      END
+====INIT
+ 1.0000000000000000e-01
+1.0000000000000000e+00
+   1.6487857827119290e+00
+   1.9720127096641928e+00
+ -0.709894965287627e+00
+  -0.685144717153487e+00
+   0.163174308075589e+00
+-0.139359936806125e+00
+  -0.414251479478192e+00
+  -0.899430108326112e+00
+  -0.726901415681411e+00
+  -0.574008408466476e+00
+   0.376999574124619e+00
+  -0.672453076350874e+00
+   0.706335655874678e+00
+  -0.221126211350745e+00
+
+====OUT
+     1	  -0.7098949652876270
+     2	  -0.6851447171534870
+     3	   0.1631743080755890
+     4	  -0.1393599368061250
+     5	  -0.4142514794781920
+     6	  -0.8994301083261120
+     7	  -0.7269014156814110
+     8	  -0.5740084084664760
+     9	   0.3769995741246190
+    10	  -0.6724530763508740
+    11	   0.7063356558746779
+    12	  -0.2211262113507450
+    13	   0.0000000000000000
+    14	  -0.7088447919224319
+    15	  -0.6905148054187735
+    16	   0.1439734852739128
+    17	  -0.1738074934114603
+    18	  -0.3899498888586271
+    19	  -0.9042842691395055
+    20	  -0.6764198014689503
+    21	  -0.6200966959613320
+    22	   0.3974120529608350
+    23	  -0.7157144733863716
+    24	   0.6807489785794644
+    25	  -0.1559923740068242
+====SRC
+
+      SUBROUTINE FRB_STEP(PIOUT,QOUT,H,AINERT,PIIN,QIN,NP)
+
+c$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+c$$$% Computes a single step (angular momentum Pi, attitude matrix Q) in 
+c$$$% the time interval [0,h] for a free rigid body with inertia momenta
+c$$$% aInert = (A,B,C), where A < B < C.
+c$$$%
+c$$$% Dimension Piin(3), Qin(3,3), Piout(3), Qout(3,3), h(1), aInert(3)
+c$$$%           NP(1)
+c$$$%
+c$$$% Solves Pi'= Pi x Omega
+c$$$%        Q' = Q hatmap(Omega)
+c$$$% (Omega = (Pi(1)/A, Pi(2)/B, Pi(3)/c), Omega angular velocity, 
+c$$$% Pi angular momentum)
+c$$$%
+c$$$% Input: h (time step), aInert (vector of inertia moments, 0<A<B<C), 
+c$$$% Piin angular momentum at time t=0, Qin attitude matrix at time t=0,
+c$$$% NP = integer quadrature order. Use NP=0 for exact elliptic 
+c$$$% integrals, while 1<= NP <= 10 gives Gaussian quadrature of 
+c$$$% order 2*NP.
+c$$$%
+c$$$% Output: Piout angular momentum at time t=h, Qout attitude matrix 
+c$$$% at time t=h.
+c$$$%
+c$$$% OBS: Piin normalized so that ||Piin||=1 (euclidean norm)
+c$$$% NB: The variables are case insensitive. 
+c$$$%
+c$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Fortran77/Src/frb_step.f:2:      SUBROUTINE FRB_STEP(PIOUT,QOUT,H,AINERT,PIIN,QIN,NP)
+Fortran77/Src/frb_step.f:349:c     End main subroutine
+Fortran77/Src/frb_step.f:357:      SUBROUTINE ELLINT_PI(AOUT,PHI1,PHI2,AK,AM)
+Fortran77/Src/frb_step.f:362:c     computed using the subroutine ELLPI.
+Fortran77/Src/frb_step.f:440:      SUBROUTINE ELLPI(ELLPIVAL,PHI,EN,AK)
+Fortran77/Src/frb_step.f:478:      SUBROUTINE RF(RFXYZ,X,Y,Z)
+Fortran77/Src/frb_step.f:553:      SUBROUTINE RJ(RJXYZP,X,Y,Z,P)
+Fortran77/Src/frb_step.f:680:      SUBROUTINE RC(RCXY,X,Y)
+Fortran77/Src/frb_step.f:752:      SUBROUTINE EGELLIPX_STEP(SN,CN,DN,PHIOUT,H,PHIIN,AM,ANY)
+Fortran77/Src/frb_step.f:836:      SUBROUTINE EINT_GAUSS(ELLPIVAL,PHI0,PHI1,AK2,EN,NORDER)
+Fortran77/Src/quat_step.f:2:      SUBROUTINE QUAT_STEP(PIOUT,QOUT,H,AINERT,PIIN,QIN,NP)
+Fortran77/Src/quat_step.f:351:      SUBROUTINE ELLINT_PI(AOUT,PHI1,PHI2,AK,AM)
+Fortran77/Src/quat_step.f:356:c     computed using the subroutine ELLPI.
+Fortran77/Src/quat_step.f:430:      SUBROUTINE ELLPI(ELLPIVAL,PHI,EN,AK)
+Fortran77/Src/quat_step.f:467:      SUBROUTINE RF(RFXYZ,X,Y,Z)
+Fortran77/Src/quat_step.f:537:      SUBROUTINE RJ(RJXYZP,X,Y,Z,P)
+Fortran77/Src/quat_step.f:662:      SUBROUTINE RC(RCXY,X,Y)
+Fortran77/Src/quat_step.f:729:      SUBROUTINE QUAT_PROD(QOUT,Q1,Q2)
+Fortran77/Src/quat_step.f:745:      SUBROUTINE EGELLIPX_STEP(SN,CN,DN,PHIOUT,H,PHIIN,AM,ANY)
+Fortran77/Src/quat_step.f:830:      SUBROUTINE EINT_GAUSS(ELLPIVAL,PHI0,PHI1,AK,EN,NORDER)

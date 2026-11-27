@@ -1,0 +1,96 @@
+{
+  "paper": {
+    "short": "celledoni2010-frb-903",
+    "title": "Algorithm 903: FRB, Fortran routines for the exact computation of free rigid body motions",
+    "authors": [
+      "Elena Celledoni",
+      "Antonella Zanna"
+    ],
+    "year": 2010,
+    "doi": null
+  },
+  "field": "mechanics / numerics (free rigid body, geometric integration)",
+  "field_class": "numerics",
+  "stack": "Fortran 77 (netlib CALGO 903.zip: Fortran77/Src frb_step.f, quat_step.f; Fortran77/Drivers driver_example0.f with init_example0.dat and out_example0.dat; Doc/Makefile)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Line 14 of the shipped reference output Fortran77/Drivers/out_example0.dat (inside 903.zip): the first component of the output angular momentum PIOUT(1) after one exact step (Np = 0) of length h = 0.1 for the free rigid body, from init_example0.dat. Registered value -0.7088447919224319, absolute tolerance 1e-10, fixed before any run. The claim is the code's own printed output, not a table value from the paper.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "PIOUT1_h0p1",
+        "paper": -0.7088447919224319,
+        "tol_abs": 1e-10,
+        "ours": -0.7088447919224319
+      }
+    ],
+    "determinism": "deterministic (fixed init_example0.dat input, no random numbers, Np = 0 exact elliptic integration)",
+    "reference": {
+      "file": "reports/celledoni2010-frb-903/evidence/out_example0.shipped",
+      "archive": "netlib.org/toms/903.zip (sha256 b3be3b3a7ed19cbcfd7869b11285b531a7329ea90c98cfccc298a4f5a661ef14), member Fortran77/Drivers/out_example0.dat",
+      "sha256": "e2805228bd0df3d5237f83527fd96c99ec6fe66d67b56f41069f486685c70e1a"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "G1: the archive's Makefile (Doc/Makefile), unchanged, fails in the sandbox: its FC is /opt/NAGWare/bin/f95 (NAG, absent) and it expects the sources beside Doc/, but the archive ships them in Fortran77/Src and Fortran77/Drivers, so make stops at 'No rule to make target driver_example0.f'. Patch (build-only): the Makefile's one driver rule, $(FC) $(FOPTS) -o driver_example0 driver_example0.f frb_step.f, run with FC = the sandbox gfortran 16.2.0, FOPTS = -O (pass 1) and -O2 (pass 2), and the two sources' absolute paths in the archive tree. make's VPATH does not rewrite that command text, so the command is written out literally. No archive file is edited. The driver's output file (out_example0.dat) is written to a separate build directory, and line 14 is compared with the shipped file.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make: No rule to make target 'driver_example0.f' (the archive's Makefile in Doc/ expects its sources beside it, and its FC is the NAG compiler /opt/NAGWare/bin/f95, which is absent from the sandbox).",
+    "log": "reports/celledoni2010-frb-903/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/celledoni2010-frb-903/recipe.sh",
+  "queue_commit": "6701098",
+  "evidence": [
+    "evidence/fetch.log",
+    "evidence/env-pins.txt",
+    "evidence/archive-read.txt",
+    "evidence/original-attempt.log",
+    "evidence/build.log",
+    "evidence/run.log",
+    "evidence/recipe-run.log",
+    "evidence/out_example0.build.dat",
+    "evidence/out_example0.build2.dat",
+    "evidence/out_example0.shipped",
+    "evidence/out_example0.shipped.dat",
+    "evidence/out_example0.shipped.sha256",
+    "evidence/manifest.pre",
+    "evidence/manifest.mid",
+    "evidence/manifest.post"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "b3be3b3a7ed19cbcfd7869b11285b531a7329ea90c98cfccc298a4f5a661ef14",
+    "compared": 8,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "/work/env/bin/x86_64-conda-linux-gnu-gfortran -O -o driver_example0 /work/pre/903/Fortran77/Drivers/driver_example0.f /work/pre/903/Fortran77/Src/frb_step.f",
+      "/work/env/bin/x86_64-conda-linux-gnu-gfortran -O2 -o driver_example0 /work/pre/903/Fortran77/Drivers/driver_example0.f /work/pre/903/Fortran77/Src/frb_step.f"
+    ],
+    "manifests": {
+      "pre": "reports/celledoni2010-frb-903/evidence/manifest.pre",
+      "mid": "reports/celledoni2010-frb-903/evidence/manifest.mid",
+      "post": "reports/celledoni2010-frb-903/evidence/manifest.post"
+    }
+  }
+}

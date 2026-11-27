@@ -1,0 +1,77 @@
+{
+  "paper": {
+    "short": "wieder1999-hankel-794",
+    "title": "Algorithm 794: Numerical Hankel transform by the Fortran program HANKEL",
+    "year": 1999,
+    "doi": null,
+    "venue": "ACM TOMS 25(2), 240-250 (June 1999); the ACM article was not read (dl.acm.org refuses automated fetch from this host); the netlib archive was used"
+  },
+  "field": "numerics (numerical Hankel transform of a test function with a closed-form transform)",
+  "stack": "Fortran 77 (TOMS 794 netlib shell archive: Fortran77/Src/Dp/specfun.f and src.f, Fortran77/Drivers/Dp/driver.f)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "HT(XI=5.0, NU=1.0) printed by the authors' HANKEL driver into its result file, the shipped reference value 0.208245531E-01 (artifact-reference), absolute tolerance 1e-9 (fixed in the queue entry before any run).",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/wieder1999-hankel-794/evidence/shipped-res.txt",
+      "sha256": "848121f728e527a1f83dc8f8c5a1d016b140149ccbb61d3c7801cd37fe0e3acd",
+      "archive": "netlib TOMS 794.gz, sha256 bdbd599bf88d0062a161aa01880b4a271a9fca31df3b13bd662c0ecfc83cab29, file Fortran77/Drivers/Dp/res (copied from the sandbox unpack)"
+    },
+    "values": [
+      {
+        "name": "HT_XI5_NU1",
+        "paper": 0.0208245531,
+        "tol_abs": 1e-09,
+        "ours": 0.0208245531
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "attempt": "The archive does not ship the machine constants D1MACH and I1MACH that specfun.f and src.f call (the PackingList names SrcLibs: port, which is absent). The original link fails on them (original-attempt-link.log, link_exit=1). We wrote impl/machine.f with IEEE double-precision values, from the PORT description, and linked it in with the authors' unmodified sources. No source file was edited, so the patch is build-only and proved by three manifests. Two builds (-O2 and -O0) give the same printed value, 0.208245531E-01, which matches the shipped reference.",
+  "queue_commit": "88f96dc",
+  "original_attempt": {
+    "tried": "The authors' sources compiled and linked with gfortran 16.2.0 -O2 exactly as the archive's sources are, without machine.f",
+    "outcome": "failed",
+    "reason": "link error: undefined reference to d1mach_ and i1mach_ from specfun.o and src.o (SrcLibs: port is not in the archive)",
+    "log": "reports/wieder1999-hankel-794/evidence/original-attempt-link.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/wieder1999-hankel-794/recipe.sh",
+  "evidence": "reports/wieder1999-hankel-794/evidence",
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "bdbd599bf88d0062a161aa01880b4a271a9fca31df3b13bd662c0ecfc83cab29",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -O2 -c /work/impl/machine.f -o machine.o",
+      "gfortran -O2 -c /work/tree/Fortran77/Src/Dp/src.f -o src.o",
+      "gfortran -O2 -c /work/tree/Fortran77/Src/Dp/specfun.f -o specfun.o",
+      "gfortran -O2 -c /work/tree/Fortran77/Drivers/Dp/driver.f -o driver.o",
+      "gfortran -O2 driver.o src.o specfun.o machine.o -o hankel"
+    ],
+    "manifests": {
+      "pre": "reports/wieder1999-hankel-794/evidence/manifest.pre",
+      "mid": "reports/wieder1999-hankel-794/evidence/manifest.mid",
+      "post": "reports/wieder1999-hankel-794/evidence/manifest.post"
+    }
+  }
+}

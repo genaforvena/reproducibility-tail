@@ -1,0 +1,98 @@
+{
+  "paper": {
+    "short": "dorrer1968-fdist-322",
+    "title": "Algorithm 322: F-Distribution [S14]",
+    "year": 1968,
+    "doi": null
+  },
+  "field": "numerics (statistical distribution functions)",
+  "stack": "Fortran 77 (TOMS 322; Weissman 1994 recoding of PROB, with the test program PROGRAM tstprob)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Shipped test driver (PROGRAM tstprob, 322.txt lines 190-192 and 210): the upper-tail probability p = 1 - PROB(nf1, nf2, f) for two F-ratios in the 0.05 block of the DATA tables, F=161.45 with (1,1) df (entry 51) and F=2.9782 with (10,10) df (entry 63), against the printed expected 0.05. tol_abs 5e-4, fixed in the queue entry. Artifact-reference claim: the shipped expected values, not a value read from the CACM article.",
+    "values": [
+      {
+        "name": "p for F=161.45 with (1,1) df",
+        "paper": 0.05,
+        "tol_abs": 0.0005,
+        "ours": null
+      },
+      {
+        "name": "p for F=2.9782 with (10,10) df",
+        "paper": 0.05,
+        "tol_abs": 0.0005,
+        "ours": null
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "blocked",
+  "cause": null,
+  "attempt": "Measured in the sandbox (tools/sandbox.sh): two passes, each a clean rebuild from the unpacked archive with the same commands (gfortran 16.2 -std=legacy -w). Both passes print p-calc 0.5000E-01 for F=161.45 (1,1) and for F=2.9782 (10,10); the report's e-diff column gives |0.05 - p-calc| of 3.5e-7 and 1.9e-6, far inside tol_abs 5e-4 (evidence/pass1-stdout.txt, pass2-stdout.txt). ours is null here, not because the number fails. The patch deletes three non-Fortran separator lines (117-119) from the authors' file, so the record is a source change, not an extraction (record exit 2), and gate G2 applies. G2 check against the article: a public scanned copy of CACM 11(2) pp. 116-117 was found at unibw.de (evidence/cacm-1968-alg322-webcopy.pdf, text layer in evidence/paper-alg322-text-layer.txt; not the ACM publisher's copy). The deletion adds no new code. The paper check finds the shipped Fortran's shared parts (parity a, b; the loops and the b=1 branches) match Dorrer's text, but the a/=1 branch that the (10,10) claim uses is Weissman's closed form (ZK = Z**((N-1)/2)), not Dorrer's recurrence (p := (p+w)*z in the j-loop), and the MIN(M,300) / MIN(N,5000) caps are not in Dorrer's text. These are differences of the authors' code from the paper, not of our patch. Whether that is a G2 failure or a documented finding is a decision for the scout: G2 stays na and the verdict stays blocked until it is made.",
+  "queue_commit": "faf8473",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The authors' file as shipped (322.txt, the netlib archive text) is not a compilable Fortran source: lines 1-23 are mail prose, and line 1 is the shar separator '<<<<<<<<'. gfortran -std=legacy stops at line 1 (evidence/original-attempt.log). The Fortran code (PROB and the driver) is lines 24-254; the patch step extracts it and removes the separator lines 117-119 that gfortran rejects.",
+    "log": "reports/dorrer1968-fdist-322/evidence/original-attempt.log"
+  },
+  "patch": {
+    "kind": "source",
+    "archive_sha256": "f90c21567ea61d9ad8fdc0b9faaf799f9f467417ed71b04852e445b8eb294ecd",
+    "compared": 0,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": [
+        "DORRER.FOR"
+      ]
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -std=legacy -w -o tstprob DORRER.FOR"
+    ],
+    "manifests": {
+      "pre": "reports/dorrer1968-fdist-322/evidence/manifest.pre",
+      "mid": "reports/dorrer1968-fdist-322/evidence/manifest.mid",
+      "post": "reports/dorrer1968-fdist-322/evidence/manifest.post"
+    },
+    "extraction": {
+      "file_sha256": "c6b619e2b6e13d810f8bff0b576f14ddce6d82dc9f2c0904885ea5c75ddee03b",
+      "file": "322.txt",
+      "start": 24,
+      "end": 254,
+      "extracted": "DORRER.FOR",
+      "range_sha256": "cc6ee4fd00016399e18f8445add16e2b5f01077bdabdfec39fe75d33988a2dc8"
+    }
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/dorrer1968-fdist-322/recipe.sh",
+  "evidence": [
+    "reports/dorrer1968-fdist-322/claimed",
+    "reports/dorrer1968-fdist-322/evidence/toolchain-fetch.log",
+    "reports/dorrer1968-fdist-322/evidence/original-attempt.log",
+    "reports/dorrer1968-fdist-322/evidence/unpack.log",
+    "reports/dorrer1968-fdist-322/evidence/patch.log",
+    "reports/dorrer1968-fdist-322/evidence/pass1-build.log",
+    "reports/dorrer1968-fdist-322/evidence/pass1-run.log",
+    "reports/dorrer1968-fdist-322/evidence/pass1-stdout.txt",
+    "reports/dorrer1968-fdist-322/evidence/pass2-run.log",
+    "reports/dorrer1968-fdist-322/evidence/pass2-stdout.txt",
+    "reports/dorrer1968-fdist-322/evidence/reference-block.txt",
+    "reports/dorrer1968-fdist-322/evidence/values.txt",
+    "reports/dorrer1968-fdist-322/evidence/recipe-run.log"
+  ],
+  "replayed": []
+}

@@ -1,0 +1,80 @@
+ALGORITHM 322
+F-DISTRIBUTION [S14]
+EGON DORRER (Recd. 25 Jan. 1967, 3 July 1967, and 17
+Oct. 1967)
+Institut fiir Photogrammetrie und Kartographie, Technische Hochschule Miinchen, W. Germany; now: Department of Surveying Engineering, University of
+New Brunswick, Fredericton, N.B., Canada
+K E Y WORDS AND P H R A S E S : F i s h e r ' s F - d i s t r i b u t i o n , Stud e n t ' s t-distribution
+CR C A T E G O R I E S : 5.5
+r e a l p r o c e d u r e Fisher (m, n, x);
+v a l u e m, n, x; i n t e g e r m, n; r e a l x;
+comment
+F i s h e r ' s F - d i s t r i b u t i o n w i t h m and n degrees of
+freedom. C o m p u t a t i o n of the probability
+
+Pr(F < x) =
+
+• ;
+
+d~,
+30 (~ + 1)(~)/2
+
+2
+where w = (m/n)x and F = ( ~ - lmx ~ / m2 ) / ( ~ i f l y j ~
+/ n ) . The
+solution results recursively from the basic integrals
+
+Fisher (1,1,x) = 2 . a r e t a n ~/w/~,
+
+Fisher (1,2,x)
+
+= (w/(w+l))t,
+
+Fisher (2,1,x) = 1 -- 1/(w+l)~,
+
+Fisher (2,2, x) = w / ( w + l ) .
+
+~r is introduced b y 0.3183098862 = 1/~-. By calling Fisher (1, n,
+t l' 2), S t u d e n t ' s t-distribution will be o b t a i n e d ;
+b e g i n i n t e g e r a, b, i, j ; r e a l w, y, z, d, p;
+a := 2 X (m+2) - m + 2 ;
+b := 2 X ( n + 2 ) -- n + 2 ;
+w := x X m / n ; z := 1 / ( l + w ) ;
+if a = 1 then
+begin
+if b = 1 then
+begin
+p := sqrt(w); y := 0.3183098862;
+d := y X z / p ; p := 2 X y X arctan(p)
+end else
+begin
+p := sqrt(wXz); d := 0.5Xp X z / w
+end
+end else
+V o l u m e 11 / N u m b e r 2 / F e b r u a r y , 1968
+
+if b = 1 then
+begin
+p := sqrt(z);
+end else
+begin
+
+d:=
+
+zXz;
+
+d := 0.5 X z X p;
+
+p := 1 - - p
+
+p:=wXz
+
+end ;
+y := 2 X w / z ;
+for j : = b + 2 s t e p 2 u n t i l n d o
+begin
+d := (1 + a / ( j - - 2 ) ) X d X z;
+p := i f a = 1 t h e n p + d X y / ( j - 1 )
+e n d j;
+y := w X z; z := 2/z; b := n - - 2;
+for i := a + 2 s t e p 2 u n t i l m d o

@@ -1,0 +1,5 @@
+7cbf364344407e79e7ffd775467a9bac1d344d0ccb8344be019ae95e52d66065  Doc/Makefile
+d5a55aa76cedb383c26bccac596762cd6cf20b24a20f7f07f26d06efae18bd78  Fortran77/Drivers/Dp/driver.f
+4284086126220923bcee0b6cfda533c7d60094fdfa8dd5a7e211158d19b0a13a  Fortran77/Drivers/Dp/port.f
+09cb229a31ee448ae70cf367249775bbb1f019556517faec98b2b25aaac78eb8  Fortran77/Src/Dp/src.f
+ca13154091134ea1166824a9b25515ebb3e7abad6a2b3c9cb88bec01f5e9425e  Fortran77/Src/Dp/src_819.f

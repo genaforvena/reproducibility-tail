@@ -5,28 +5,28 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-71 papers attempted.
+72 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 17 |
-| B | authors' code with build fixes | 38 |
+| B | authors' code with build fixes | 39 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 14 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 58, other 4, statistics 6
-By stack: C/C++ 9, Fortran 50, Java 1, MATLAB/Octave 6, R 5
-By decade: 1960 3, 1970 5, 1980 6, 1990 22, 2000 24, 2010 11
+By field: astronomy 1, biology 1, ecology 1, numerics 59, other 4, statistics 6
+By stack: C/C++ 9, Fortran 51, Java 1, MATLAB/Octave 6, R 5
+By decade: 1960 3, 1970 5, 1980 6, 1990 22, 2000 25, 2010 11
 
-Data as of 2026-11-27T07:40Z (the newest replay or funnel entry).
+Data as of 2026-11-27T07:48:05Z (the newest replay or funnel entry).
 
 ## The funnel
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-71 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+72 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **350 candidates considered from 4 of 4 frames: 70 attempted (20%), 0 unreachable, 280 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 43 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 44 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
 
 ## Results
 
@@ -138,6 +138,7 @@ Authors' original artifact, among all attempted papers: failed 43 (did not run),
 | [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res2 CHECK2 maximum (shipped)) | 5.2365e-15 ± 1e-13 | 5.22189e-15 | -1.46187e-17 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res3 CHECK3 maximum (shipped)) | 5.191e-15 ± 1e-13 | 5.14976e-15 | -4.12394e-17 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res4 CHECK4 maximum (shipped)) | 9.37487e-15 ± 1e-13 | 9.40615e-15 | 3.1285e-17 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [gil2002-scorer-822](reports/gil2002-scorer-822/result.md) | numerics · 2002 · Fortran | max |residual| of the unscaled GI(Z) addition-formula check (IFAC=1, GITEST modulus) printed by SCTEST into Res1, the shipped reference value 9.1704421834038D-14 (artifact-reference), absolute tolerance 1e-12 (fixed in the queue entry before any run). (max_modulus_unscaled_GI) [shipped reference output] | 9.17044e-14 ± 1e-12 | 9.17044e-14 | -7.57306e-29 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [gil2004-besselia-831](reports/gil2004-besselia-831/result.md) | numerics · 2004 · Fortran | WKTEST Wronskian check, IFAC=2 (scaled functions), maximum over the driver's grid, as printed in the shipped Drivers/Res: 6.814548925149211E-13, absolute tolerance 1e-13 (WKTEST Wronskian maximum, IFAC=2 (shipped Res)) | 6.81455e-13 ± 1e-13 | 6.81566e-13 | 1.11022e-16 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [gil2017-incgamneg-969](reports/gil2017-incgamneg-969/result.md) | numerics · 2017 · Fortran | Shipped driver value gamma*(a,z) at a=-0.03, z=-0.03 (testgamstar.f90 DATA igams(11) = 0.98117651308252274; OutGammStar row '-.3000D-01 -.3000D-01 0.9811765130825D+00'), tol_abs 1e-9, fixed in the queue entry. Artifact-reference claim: the shipped expected value, not a value printed in the paper (the paper states relative accuracy about 1e-13 in this region). (gamma*(-0.03,-0.03)) | 0.981177 ± 1e-09 | 0.981177 | -2.27596e-14 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [goano1995-fermi-745](reports/goano1995-fermi-745/result.md) | numerics · 1995 · Fortran | The authors' FERTST driver computes FERMID(ORD=0.5, X=5.0) for the row registered in FERTST.IN (FERMID block, row 17); the value must equal the shipped reference 8.8442088952430 to relative tolerance 1e-10 (fixed in the queue entry; recorded here as the absolute tolerance 8.8442088952430e-10 at that value). (FERMID(0.5, 5.0)) [shipped reference output] | 8.84421 ± 8.84421e-10 | 8.84421 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |

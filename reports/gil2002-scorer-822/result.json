@@ -1,0 +1,106 @@
+{
+  "paper": {
+    "short": "gil2002-scorer-822",
+    "title": "Algorithm 822: GIZ, HIZ: Two Fortran 77 Routines for the Computation of Complex Scorer Functions",
+    "year": 2002,
+    "doi": null,
+    "venue": "ACM TOMS 28(4), 436-447 (Dec 2002); the ACM article was not read (dl.acm.org refuses automated fetch from this host); the netlib archive was used"
+  },
+  "field": "numerics (special functions: complex Scorer functions HI(z) and GI(z), tested via their addition formulas)",
+  "stack": "Fortran 77 (TOMS 822 netlib shell archive: Fortran77/Drivers/Dp/driver.f SCTEST, port.f, Fortran77/Src/Dp/src.f and src_819.f)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "max |residual| of the unscaled GI(Z) addition-formula check (IFAC=1, GITEST modulus) printed by SCTEST into Res1, the shipped reference value 9.1704421834038D-14 (artifact-reference), absolute tolerance 1e-12 (fixed in the queue entry before any run).",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/gil2002-scorer-822/evidence/shipped-res1.txt",
+      "sha256": "89e7b3c7f283e1ecdeac431a6ff1dfa862a3dad4b928dde0091a01a7ac6d9468",
+      "archive": "netlib TOMS 822.gz, sha256 ae6c947ece8fea8ba98d2f10ce44e3370e14af7a9e14a92217dfcfc5a65e8a50, file Fortran77/Drivers/Dp/res1 (copied from the sandbox unpack)"
+    },
+    "values": [
+      {
+        "name": "max_modulus_unscaled_GI",
+        "paper": 9.1704421834038e-14,
+        "tol_abs": 1e-12,
+        "ours": 9.170442183403793e-14
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "attempt": "The archive's Doc/Makefile (epcf90, lists airy.f) cannot run here: epcf90 is absent and airy.f is not in the archive (original-attempt-make.log). The compile and link lines were written by us (gfortran 16, -O2 and -O0) with no source file edited, so the patch is build-only and proved by three manifests (evidence/manifests). The value is the MAXIMUM VALUE OF THE MODULUS OF THE CHECK line of Res1, identical in three builds (two at -O2, one at -O0).",
+  "queue_commit": "88873de",
+  "original_attempt": {
+    "tried": "The authors' Doc/Makefile run in the sandbox (make in Fortran77/Drivers/Dp with that Makefile's FC=epcf90 and OBJS)",
+    "outcome": "failed",
+    "reason": "epcf90 is not installed (make: epcf90: No such file or directory, exit 2); the Makefile also lists airy.f, which the archive does not ship; the archive's file names do not match its own Makefile (src_819.f holds GIZ/HIZ).",
+    "log": "reports/gil2002-scorer-822/evidence/original-attempt-make.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/gil2002-scorer-822/recipe.sh",
+  "evidence": "reports/gil2002-scorer-822/evidence",
+  "replayed": [
+    {
+      "utc": "2026-11-27T07:45:27Z",
+      "kind": "clean",
+      "values": {
+        "max_modulus_unscaled_GI": 9.170442183403793e-14
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/gil2002-scorer-822/evidence/replay-2026-11-27T074527Z.log",
+      "seconds": 62
+    },
+    {
+      "utc": "2026-11-27T07:48:05Z",
+      "kind": "clean",
+      "values": {
+        "max_modulus_unscaled_GI": 9.170442183403793e-14
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/gil2002-scorer-822/evidence/replay-2026-11-27T074805Z.log",
+      "seconds": 54
+    }
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "ae6c947ece8fea8ba98d2f10ce44e3370e14af7a9e14a92217dfcfc5a65e8a50",
+    "compared": 5,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -O2 -c /work/tree/Fortran77/Src/Dp/src.f -o src.o",
+      "gfortran -O2 -c /work/tree/Fortran77/Src/Dp/src_819.f -o src819.o",
+      "gfortran -O2 -c /work/tree/Fortran77/Drivers/Dp/driver.f -o driver.o",
+      "gfortran -O2 -c /work/tree/Fortran77/Drivers/Dp/port.f -o port.o",
+      "gfortran -O2 driver.o src.o src819.o port.o -o sctest",
+      "gfortran -O0 -c /work/tree/Fortran77/Src/Dp/src.f -o src.o",
+      "gfortran -O0 -c /work/tree/Fortran77/Src/Dp/src_819.f -o src819.o",
+      "gfortran -O0 -c /work/tree/Fortran77/Drivers/Dp/driver.f -o driver.o",
+      "gfortran -O0 -c /work/tree/Fortran77/Drivers/Dp/port.f -o port.o",
+      "gfortran -O0 driver.o src.o src819.o port.o -o sctest"
+    ],
+    "manifests": {
+      "pre": "reports/gil2002-scorer-822/evidence/manifest.pre",
+      "mid": "reports/gil2002-scorer-822/evidence/manifest.mid",
+      "post": "reports/gil2002-scorer-822/evidence/manifest.post"
+    }
+  }
+}

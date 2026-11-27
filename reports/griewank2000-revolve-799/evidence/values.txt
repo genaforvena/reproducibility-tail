@@ -1,0 +1,8 @@
+revolve steps=14 snaps=3 advances: ours 27.0 paper 27 |diff| 0 tol 0 ok=True
+revolve steps=14 snaps=3 takeshots: ours 6.0 paper 6 |diff| 0 tol 0 ok=True
+revolve steps=14 snaps=3 commands: ours 47.0 paper 47 |diff| 0 tol 0 ok=True
+revolve steps=14 snaps=3 slowdown factor: ours 1.9286 paper 1.9286 |diff| 0 tol 5e-05 ok=True
+VALUE revolve steps=14 snaps=3 advances 27.0
+VALUE revolve steps=14 snaps=3 takeshots 6.0
+VALUE revolve steps=14 snaps=3 commands 47.0
+VALUE revolve steps=14 snaps=3 slowdown factor 1.9286

@@ -1,0 +1,105 @@
+{
+  "paper": {
+    "short": "griewank2000-revolve-799",
+    "title": "Algorithm 799: Revolve, an implementation of checkpointing for the reverse or adjoint mode of computational differentiation",
+    "year": 2000,
+    "doi": null
+  },
+  "field": "numerics (automatic differentiation, checkpointing)",
+  "field_class": "numerics",
+  "stack": "C (TOMS 799 archive 799.gz: C/Src revolve.h and src.c, C/Drivers driver.c with data and the shipped res transcript; the Fortran 77 version is in the same archive and was not run)",
+  "stack_class": "C/C++",
+  "claim": {
+    "text": "Shipped reference output C/Drivers/res: the revolve() action trace for STEPS=14, SNAPS=3, INFO=3 (data file), giving advances 27, takeshots 6, commands 47 and slowdown factor 1.9286; counts exact, slowdown factor absolute tolerance 5e-5 (printed to 4 decimals).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "revolve steps=14 snaps=3 advances",
+        "paper": 27,
+        "tol_abs": 0,
+        "ours": 27
+      },
+      {
+        "name": "revolve steps=14 snaps=3 takeshots",
+        "paper": 6,
+        "tol_abs": 0,
+        "ours": 6
+      },
+      {
+        "name": "revolve steps=14 snaps=3 commands",
+        "paper": 47,
+        "tol_abs": 0,
+        "ours": 47
+      },
+      {
+        "name": "revolve steps=14 snaps=3 slowdown factor",
+        "paper": 1.9286,
+        "tol_abs": 5e-05,
+        "ours": 1.9286
+      }
+    ],
+    "reference": {
+      "file": "reports/griewank2000-revolve-799/evidence/shipped-res.txt",
+      "sha256": "1bb5a2b8c41c2552377e70f29dbd28c97a3490d91b74cdf05c9c36227de35e82",
+      "archive": "799.gz, sha256 8587175531d158f0c6f95f3bd507f149f04bbe0f1928810819c913d2c773a657"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced on the build-only patched basis. The authors' archive, unpacked by its own shell script, leaves Doc/makefile_c without its $(CC) and $(LIBS) values, so the authors' make builds nothing (original attempt failed, log kept). No authors' file was edited: the makefile's compile and link lines were run by hand on the unpacked tree (gcc -c -O3 src.c; gcc -c -O3 -I../Src driver.c; gcc -o driver src.o driver.o -lm). The build-only proof is in result.json patch (manifest.pre and manifest.mid identical). The built driver, run on data (14 3 3), prints an action trace whose end lines are advances 27, takeshots 6, commands 47; the slowdown factor printed is 1.9286. The run output equals the shipped res after whitespace normalisation (diff empty). Each of the four values matches the registered value exactly (counts) or within 5e-5 (slowdown factor). Limit: the paper (ACM TOMS 26(1), 2000) was not read; the shipped transcript is the only value checked. The Fortran 77 driver in the archive was not run.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The archive's own unpacking expanded the makefile's $(CC) and $(LIBS) variables in an unquoted here-document, so Doc/makefile_c as unpacked runs 'c -O3 src.c', 'o driver ...' and similar lines. make reports 'No such file or directory' for each and builds no src.o, driver.o or driver (checked: none exists in the copy). make's exit status is 0 because the errors are ignored (Error 127 (ignored)).",
+    "log": "reports/griewank2000-revolve-799/evidence/original-attempt.log"
+  },
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "8587175531d158f0c6f95f3bd507f149f04bbe0f1928810819c913d2c773a657",
+    "compared": 7,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "cd /work/orig/tree/C/Src && gcc -c -O3 src.c",
+      "cd /work/orig/tree/C/Drivers && gcc -c -O3 -I/work/orig/tree/C/Src driver.c",
+      "cd /work/orig/tree/C/Drivers && gcc -o driver /work/orig/tree/C/Src/src.o driver.o -lm"
+    ],
+    "manifests": {
+      "pre": "reports/griewank2000-revolve-799/evidence/manifest.pre",
+      "mid": "reports/griewank2000-revolve-799/evidence/manifest.mid",
+      "post": "reports/griewank2000-revolve-799/evidence/manifest.post"
+    }
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/griewank2000-revolve-799/recipe.sh",
+  "queue_commit": "8353538",
+  "evidence": [
+    "reports/griewank2000-revolve-799/evidence/unpack.log",
+    "reports/griewank2000-revolve-799/evidence/original-attempt.log",
+    "reports/griewank2000-revolve-799/evidence/build.log",
+    "reports/griewank2000-revolve-799/evidence/run-C.txt",
+    "reports/griewank2000-revolve-799/evidence/shipped-res.txt",
+    "reports/griewank2000-revolve-799/evidence/values.txt",
+    "reports/griewank2000-revolve-799/evidence/manifest.pre",
+    "reports/griewank2000-revolve-799/evidence/manifest.mid",
+    "reports/griewank2000-revolve-799/evidence/manifest.post",
+    "reports/griewank2000-revolve-799/evidence/recipe-run.log"
+  ],
+  "replayed": []
+}

@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-61 papers attempted.
+62 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 17 |
-| B | authors' code with build fixes | 29 |
+| B | authors' code with build fixes | 30 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 13 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 48, other 4, statistics 6
-By stack: C/C++ 8, Fortran 41, Java 1, MATLAB/Octave 6, R 5
-By decade: 1960 2, 1970 3, 1980 5, 1990 18, 2000 23, 2010 10
+By field: astronomy 1, biology 1, ecology 1, numerics 49, other 4, statistics 6
+By stack: C/C++ 9, Fortran 41, Java 1, MATLAB/Octave 6, R 5
+By decade: 1960 2, 1970 3, 1980 5, 1990 18, 2000 24, 2010 10
 
 Data as of 2026-11-27T05:52Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T05:52Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-61 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+62 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **316 candidates considered from 4 of 4 frames: 57 attempted (18%), 0 unreachable, 259 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 34 (did not run), not-possible 2 (no code exists to run), partial 6 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 35 (did not run), not-possible 2 (no code exists to run), partial 6 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
 
 ## Results
 
@@ -127,6 +127,10 @@ Authors' original artifact, among all attempted papers: failed 34 (did not run),
 | [gil2017-incgamneg-969](reports/gil2017-incgamneg-969/result.md) | numerics · 2017 · Fortran | Shipped driver value gamma*(a,z) at a=-0.03, z=-0.03 (testgamstar.f90 DATA igams(11) = 0.98117651308252274; OutGammStar row '-.3000D-01 -.3000D-01 0.9811765130825D+00'), tol_abs 1e-9, fixed in the queue entry. Artifact-reference claim: the shipped expected value, not a value printed in the paper (the paper states relative accuracy about 1e-13 in this region). (gamma*(-0.03,-0.03)) | 0.981177 ± 1e-09 | 0.981177 | -2.27596e-14 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [goano1995-fermi-745](reports/goano1995-fermi-745/result.md) | numerics · 1995 · Fortran | The authors' FERTST driver computes FERMID(ORD=0.5, X=5.0) for the row registered in FERTST.IN (FERMID block, row 17); the value must equal the shipped reference 8.8442088952430 to relative tolerance 1e-10 (fixed in the queue entry; recorded here as the absolute tolerance 8.8442088952430e-10 at that value). (FERMID(0.5, 5.0)) [shipped reference output] | 8.84421 ± 8.84421e-10 | 8.84421 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [greenberg1997-sleuth-775](reports/greenberg1997-sleuth-775/result.md) | numerics · 1997 · Fortran | ELAM value from the queue entry, tol 1e-3 absolute; provisional local reimplementation gives 4871.3813065256945 in both passes (not yet a verdict) (ELAM) | 4871.38 ± 0.001 | – | – | – | - | · · · · | - | blocked | never clean |
+| [griewank2000-revolve-799](reports/griewank2000-revolve-799/result.md) | numerics · 2000 · C/C++ | Shipped reference output C/Drivers/res: the revolve() action trace for STEPS=14, SNAPS=3, INFO=3 (data file), giving advances 27, takeshots 6, commands 47 and slowdown factor 1.9286; counts exact, slowdown factor absolute tolerance 5e-5 (printed to 4 decimals). (revolve steps=14 snaps=3 advances) [shipped reference output] | 27 ± 0 | 27 | 0 | exact | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
+| [griewank2000-revolve-799](reports/griewank2000-revolve-799/result.md) | numerics · 2000 · C/C++ | Shipped reference output C/Drivers/res: the revolve() action trace for STEPS=14, SNAPS=3, INFO=3 (data file), giving advances 27, takeshots 6, commands 47 and slowdown factor 1.9286; counts exact, slowdown factor absolute tolerance 5e-5 (printed to 4 decimals). (revolve steps=14 snaps=3 takeshots) [shipped reference output] | 6 ± 0 | 6 | 0 | exact | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
+| [griewank2000-revolve-799](reports/griewank2000-revolve-799/result.md) | numerics · 2000 · C/C++ | Shipped reference output C/Drivers/res: the revolve() action trace for STEPS=14, SNAPS=3, INFO=3 (data file), giving advances 27, takeshots 6, commands 47 and slowdown factor 1.9286; counts exact, slowdown factor absolute tolerance 5e-5 (printed to 4 decimals). (revolve steps=14 snaps=3 commands) [shipped reference output] | 47 ± 0 | 47 | 0 | exact | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
+| [griewank2000-revolve-799](reports/griewank2000-revolve-799/result.md) | numerics · 2000 · C/C++ | Shipped reference output C/Drivers/res: the revolve() action trace for STEPS=14, SNAPS=3, INFO=3 (data file), giving advances 27, takeshots 6, commands 47 and slowdown factor 1.9286; counts exact, slowdown factor absolute tolerance 5e-5 (printed to 4 decimals). (revolve steps=14 snaps=3 slowdown factor) [shipped reference output] | 1.9286 ± 5e-05 | 1.9286 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
 | [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics · 2012 · R | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [hager2006-cg-descent-851](reports/hager2006-cg-descent-851/result.md) | numerics · 2006 · Fortran | driver1 (User's Guide example: n = 100, x = 1, grad_tol 1e-8, default cg.parm) prints cg iterations 32, function evaluations 55, gradient evaluations 45, as in the shipped res1; exact match (tolerance 0). (driver1 cg iterations) [shipped reference output] | 32 ± 0 | 32 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [hager2006-cg-descent-851](reports/hager2006-cg-descent-851/result.md) | numerics · 2006 · Fortran | driver1 (User's Guide example: n = 100, x = 1, grad_tol 1e-8, default cg.parm) prints cg iterations 32, function evaluations 55, gradient evaluations 45, as in the shipped res1; exact match (tolerance 0). (driver1 function evaluations) [shipped reference output] | 55 ± 0 | 55 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |

@@ -5,28 +5,28 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-97 papers attempted.
+98 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
-| A | authors' code, run clean | 21 |
+| A | authors' code, run clean | 22 |
 | B | authors' code with build fixes | 54 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 2 |
 | - | blocked or not yet run | 19 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 84, other 4, statistics 6
-By stack: C/C++ 11, Fortran 72, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 0 1, 1960 4, 1970 9, 1980 9, 1990 33, 2000 28, 2010 13
+By field: astronomy 1, biology 1, ecology 1, numerics 85, other 4, statistics 6
+By stack: C/C++ 11, Fortran 73, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 0 1, 1960 4, 1970 9, 1980 9, 1990 33, 2000 28, 2010 14
 
-Data as of 2026-11-27T14:11:30Z (the newest replay or funnel entry).
+Data as of 2026-11-27T14:16:57Z (the newest replay or funnel entry).
 
 ## The funnel
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-97 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+98 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **484 candidates considered from 4 of 4 frames: 94 attempted (19%), 0 unreachable, 390 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 64 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 23 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 64 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 24 (ran as documented).
 
 ## Results
 
@@ -293,6 +293,8 @@ Authors' original artifact, among all attempted papers: failed 64 (did not run),
 | [smith2001-fm-814](reports/smith2001-fm-814/result.md) | numerics · 2001 · Fortran | SampleFM (sample 3, Zeta(3) by Gosper's series at 60 digits in the FM package) prints Zeta(3) = 1.202056903159594285...; the value rounded to double, 1.2020569031595942, must agree within absolute tolerance 1e-15 (fixed in the queue entry). (Zeta(3) sample 3) [shipped reference output] | 1.20206 ± 1e-15 | 1.20206 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [smith2010-fm-911](reports/smith2010-fm-911/result.md) | numerics · 2010 · Fortran | SampleFM (author's sample driver) sample 2 prints the real root of x**5-3x**4+x**3-4x**2+x-6 to 500 decimal places; its double rounding 3.1206562153267265 agrees with the registered value to 1e-15 absolute. (real root of x**5-3x**4+x**3-4x**2+x-6 (SampleFM.out sample 2, 500-digit value rounded to double; the first 16 significant digits are 3.120656215326726)) [shipped reference output] | 3.12066 ± 1e-15 | 3.12066 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [snyder1993-fresnel-723](reports/snyder1993-fresnel-723/result.md) | numerics · 1993 · Fortran | C(x), Fresnel cosine integral, double precision, at x = 1.0, as printed by the authors' double-precision driver DRDFRENL. Registered tolerance: abs 1e-6. (C(1.0)) [shipped reference output] | 0.779893 ± 1e-06 | 0.779893 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [thompson2013-incgamneg-926](reports/thompson2013-incgamneg-926/result.md) | numerics · 2013 · Fortran | Summary of in_gamma_test, menu choice 2 (compare with the shipped Maple data), summary mode 1: the count of evaluations with 53 correct binary digits is 30540 (tol +/-100), out of 51051 evaluations in total (exact). Registered by scout (queue entry); the value is the shipped reference RES, not a verified paper table (ACM refuses the article from this sandbox). (OCCURRENCES_53_DIGITS) [shipped reference output] | 30540 ± 100 | 30540 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
+| [thompson2013-incgamneg-926](reports/thompson2013-incgamneg-926/result.md) | numerics · 2013 · Fortran | Summary of in_gamma_test, menu choice 2 (compare with the shipped Maple data), summary mode 1: the count of evaluations with 53 correct binary digits is 30540 (tol +/-100), out of 51051 evaluations in total (exact). Registered by scout (queue entry); the value is the shipped reference RES, not a verified paper table (ACM refuses the article from this sandbox). (TOTAL_EVALUATIONS) [shipped reference output] | 51051 ± 0 | 51051 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
 | [van-deun2006-besselint-858](reports/van-deun2006-besselint-858/result.md) | numerics · 2006 · MATLAB/Octave | besselint(sqrt([2 3 5 7 11]), 0, 1) returns I = 6.106434990872165e-02 (Example 5.1 of the shipped driver, experiments.m; printed in the shipped experiments.out) (I_Ex5_1) [shipped reference output] | 0.0610643 ± 1e-10 | 0.0610643 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [varadhan2009-bb-hdp-multistart](reports/varadhan2009-bb-hdp-multistart/result.md) | numerics · 2009 · R | sum(ans$conv) for multiStart(par = p0, fn = hdp, action = "solve"), 300 starts, seed 1234, JSS p. 11 (converged runs) | 284 ± 3 | 287 | 3 | 100% ⚠ | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [verschelde1999-phcpack-795](reports/verschelde1999-phcpack-795/result.md) | numerics · 1999 · other | The black-box solver of PHCpack (phc -b) on the shipped system Demo/cyclic5 (cyclic 5-roots) finds 70 isolated solutions. Registered tolerance: exact (0). The paper's Table VI row for cyclic5 gives n=5, D=120, BZ=120, BS=106, V=70, #sols=70; the shipped Demo/READ_ME table gives the same row. (cyclic5_solutions_regular) [shipped reference output] | 70 ± 0 | 70 | 0 | exact | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |

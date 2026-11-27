@@ -1,0 +1,89 @@
+{
+  "paper": {
+    "short": "thompson2013-incgamneg-926",
+    "title": "Incomplete gamma functions with negative arguments (Algorithm 926)",
+    "year": 2013,
+    "doi": "10.1145/2427023.2427030"
+  },
+  "field": "numerics (special functions)",
+  "field_class": "numerics",
+  "stack": "Fortran 90 (TOMS 926 archive 926.zip: Fortran/Src/in_gamma_sequence.f90, driver Fortran/Driver/in_gamma_test.f90, shipped Maple data in_gamma_test.dat)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Summary of in_gamma_test, menu choice 2 (compare with the shipped Maple data), summary mode 1: the count of evaluations with 53 correct binary digits is 30540 (tol +/-100), out of 51051 evaluations in total (exact). Registered by scout (queue entry); the value is the shipped reference RES, not a verified paper table (ACM refuses the article from this sandbox).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "OCCURRENCES_53_DIGITS",
+        "paper": 30540,
+        "tol_abs": 100,
+        "ours": 30540
+      },
+      {
+        "name": "TOTAL_EVALUATIONS",
+        "paper": 51051,
+        "tol_abs": 0,
+        "ours": 51051
+      }
+    ],
+    "reference": {
+      "file": "reports/thompson2013-incgamneg-926/evidence/shipped-RES.txt",
+      "archive": "netlib.org/toms/926.zip, sha256 673f9f6ef6a8f7b563d8869d4dff95bda88c246cd08eac15ca66474afda2b3fe, file Fortran/Driver/RES",
+      "sha256": "b50daeaa260d4bcf26e56d72f5b76dbf00f388ef99baea87e37aa057f79b870e"
+    }
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Original attempt (G1) succeeded as documented: the authors' manual gives the gfortran flags `-c -std=f2003 -cpp` for in_gamma_sequence.f90 (Doc/manual.tex). The driver was compiled with the same flags against that module and run with its menu answered 2 then 1 (summary). Output matches the shipped RES: 'A total of 51051 evaluations were performed.' and '53 correct digits : 30540 occurrences (59.8225%)', identical in every line of the summary. No source file was changed; the gfortran warning 'Illegal preprocessor directive' is about the `#endif` lines, which -cpp handles. Compiler gfortran 16.2.0 (conda-forge).",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "Ran as documented; the summary matches the shipped RES line for line.",
+    "log": "reports/thompson2013-incgamneg-926/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/thompson2013-incgamneg-926/recipe.sh",
+  "queue_commit": "2ee3b7f",
+  "evidence": [
+    "reports/thompson2013-incgamneg-926/evidence/original-attempt.log",
+    "reports/thompson2013-incgamneg-926/evidence/original-attempt-compile.log",
+    "reports/thompson2013-incgamneg-926/evidence/fetch.log",
+    "reports/thompson2013-incgamneg-926/evidence/fortran-install.log",
+    "reports/thompson2013-incgamneg-926/evidence/recipe-run.log",
+    "reports/thompson2013-incgamneg-926/evidence/shipped-RES.txt"
+  ],
+  "replayed": [
+    {
+      "utc": "2026-11-27T14:15:35Z",
+      "kind": "clean",
+      "values": {
+        "OCCURRENCES_53_DIGITS": 30540.0,
+        "TOTAL_EVALUATIONS": 51051.0
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/thompson2013-incgamneg-926/evidence/replay-2026-11-27T141535Z.log",
+      "seconds": 77
+    },
+    {
+      "utc": "2026-11-27T14:16:57Z",
+      "kind": "clean",
+      "values": {
+        "OCCURRENCES_53_DIGITS": 30540.0,
+        "TOTAL_EVALUATIONS": 51051.0
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/thompson2013-incgamneg-926/evidence/replay-2026-11-27T141657Z.log",
+      "seconds": 69
+    }
+  ]
+}

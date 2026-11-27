@@ -40,7 +40,7 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -85,5 +85,18 @@
       "mid": "reports/brankin1997-rksuite90-771/evidence/manifest.mid",
       "post": "reports/brankin1997-rksuite90-771/evidence/manifest.post"
     }
-  }
+  },
+  "replayed": [
+    {
+      "utc": "2026-11-27T02:35:13Z",
+      "kind": "clean",
+      "values": {
+        "calls to F, eg_simple_c0_a": 117.0
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/brankin1997-rksuite90-771/evidence/replay-2026-11-27T023513Z.log",
+      "seconds": 66
+    }
+  ]
 }

@@ -1,0 +1,51 @@
+{
+  "paper": {
+    "title": "Automatic boundary integral equation programs for the planar Laplace equation (TOMS Algorithm 788: drchlt.f and neuman.f)",
+    "authors": [
+      "K. Atkinson",
+      "Y. Jeon"
+    ],
+    "year": 1998,
+    "venue": "ACM Transactions on Mathematical Software 24(4), Dec 1998, pp. 395-417; collected as TOMS Algorithm 788",
+    "doi": null,
+    "url": "https://netlib.org/toms/788.gz (ACM article not read; ACM pages are not fetched here)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/788.gz",
+    "commit": "netlib TOMS archive 788.gz, sha256 86e9c5c9ae7abcee40dbc4afe303e559416a91dd9a0383d6c09edb9d8706a775 (fetched by scout 2026-11-27 into /tmp/scout-b2, unpacked as text into /tmp/scout-b3/788, not executed).",
+    "archive": "netlib TOMS 788.gz, sha256 86e9c5c9ae7abcee40dbc4afe303e559416a91dd9a0383d6c09edb9d8706a775",
+    "note": "Shell archive, Fortran 90/77 double precision. Members of interest: Fortran77/Drivers/Dp/driver1.f (test driver for NEUMAN, the Neumann problem), Fortran77/Drivers/Dp/data1 (input: one run, EPS=1.0E-7, boundary function 3, curve 1), and Fortran77/Drivers/Dp/RES1 (the authors' shipped output, computed on an HP C200 per the README). The README says the output files supplied by the authors (computed on an HP C200) are the reference output. The rerun must create neuman.f, rfft_pack.f, d1mach.f and lasys.f from the archive as the README and Makefile direct."
+  },
+  "field": "numerics (boundary integral equations, potential theory)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "Shipped output RES1 (Fortran77/Drivers/Dp/RES1 inside 788.gz), the table of the NEUMAN run on data1: boundary function 3, curve 1, EPS=1.000D-07, NTHETA=5, NR=10. The row for interior point (X,Y)=(0.1112, 1.3695) with IBD=0 reads U(X,Y) = -7.7655693670D-01, ERROR 7.77D-16, PREDERR 4.73D-14.",
+    "reference": {
+      "file": "Fortran77/Drivers/Dp/RES1 inside 788.gz",
+      "sha256": "not the member's own hash: the shipped text is line-split from the shar; rerun should compare the member, not this",
+      "archive": "netlib.org/toms/788.gz (sha256 86e9c5c9ae7abcee40dbc4afe303e559416a91dd9a0383d6c09edb9d8706a775)"
+    },
+    "metric": "U(X,Y), the exterior Neumann-problem solution as printed by driver1 (D format, 11 significant digits), at the interior point (0.1112, 1.3695), from the run whose input is data1.",
+    "paper_value": "Shipped reference output RES1 value -7.7655693670D-01 (the paper's table is not read here; the value is taken from the authors' shipped output, which the README names as the reference).",
+    "values": [
+      {
+        "name": "U(0.1112, 1.3695), NEUMAN, data1, EPS 1e-7",
+        "paper": "-0.77655693670",
+        "tol_abs": 5e-12
+      }
+    ],
+    "tolerance": {
+      "abs": 5e-12,
+      "basis": "The printed value has 11 digits after the decimal point, so its rounding half-unit is 5e-12. The code's own predicted error bound at this point is PREDERR 4.73D-14, which is smaller, so the printed precision is the binding limit. The true error printed alongside is 7.77D-16. Tolerance is set to the rounding half-unit before any run and is not to be loosened after a run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: one NEUMAN run with NTHETA=5, NR=10 (data1). The build needs a Fortran 90 compiler and the included LAPACK-subset file lasys.f.",
+    "data_size": "None; the input is the data1 file (a few lines).",
+    "data_licence": "No data. Source is the public netlib TOMS archive."
+  },
+  "why": "The value is the solution of a Neumann boundary integral equation at an interior point, computed by the NEUMAN routine; it is not a closed form, and the RES1 row gives an independent check (true error 7.77D-16) that a correct port must reproduce to the printed precision.",
+  "registered": "2026-11-27T10:43Z"
+}

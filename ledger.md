@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-110 papers attempted.
+111 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 23 |
-| B | authors' code with build fixes | 64 |
+| B | authors' code with build fixes | 65 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 2 |
 | - | blocked or not yet run | 20 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 97, other 4, statistics 6
-By stack: C/C++ 14, Fortran 82, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 0 1, 1960 4, 1970 15, 1980 9, 1990 36, 2000 28, 2010 17
+By field: astronomy 1, biology 1, ecology 1, numerics 98, other 4, statistics 6
+By stack: C/C++ 15, Fortran 82, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 0 1, 1960 4, 1970 15, 1980 9, 1990 36, 2000 29, 2010 17
 
 Data as of 2026-11-27T16:43:00Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T16:43:00Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-110 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+111 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **536 candidates considered from 4 of 4 frames: 107 attempted (20%), 0 unreachable, 429 rejected.**
 
@@ -75,7 +75,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 75 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 25 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 76 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 25 (ran as documented).
 
 ## Results
 
@@ -92,6 +92,7 @@ Authors' original artifact, among all attempted papers: failed 75 (did not run),
 | [akima1996-sdbi3p-761](reports/akima1996-sdbi3p-761/result.md) | numerics · 1996 · Fortran | ZI1(XI,YI) printed by the authors' driver for six registered grid points of the 'Calculation by points' table in the shipped result file res (SDBI3P, 30 data points), against the values printed in the same file (ZI1(XI=10, YI=15)) [shipped reference output] | 22.34 ± 0.011 | 22.34 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [akima1996-sdbi3p-761](reports/akima1996-sdbi3p-761/result.md) | numerics · 1996 · Fortran | ZI1(XI,YI) printed by the authors' driver for six registered grid points of the 'Calculation by points' table in the shipped result file res (SDBI3P, 30 data points), against the values printed in the same file (ZI1(XI=15, YI=5)) [shipped reference output] | 20.17 ± 0.011 | 20.17 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [alefeld1995-enclofx-748](reports/alefeld1995-enclofx-748/result.md) | numerics · 1995 · Fortran | ROOT printed by the authors' driver.f for NPROB=1, N=1 (first line of testdata), against the shipped testout value 1.8954942670340 (NPROB=1, N=1, ROOT) [shipped reference output] | 1.89549 ± 1e-08 | 1.89549 | -1.90958e-14 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [alhargan2000-mathieu-804](reports/alhargan2000-mathieu-804/result.md) | numerics · 2000 · C/C++ | Shipped driver output, file CPP/Dp/Drivers/res1 (inside 804.gz), row x = 19.790, column 4 (h = 9, even circumferential first-kind standard Mathieu function Sn of order 3), value +2.750024 (6 decimals). Registered by scout from the artifact's own reference output. The claim is the code's printed value, not the paper's table. (col4_x19790) [shipped reference output] | 2.75002 ± 1e-06 | 2.75002 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
 | [alhargan2006-mathieu-855](reports/alhargan2006-mathieu-855/result.md) | numerics · 2006 · C/C++ | Table 2 (nu = 10.5), row t = 1.50, column c = Compute_c(10.5, 0, h = 15.75), printed as 130.971685 in the shipped reference output, absolute tolerance 1e-6. (Table 2, nu=10.5, t=1.50, c) [shipped reference output] | 130.972 ± 1e-06 | 130.972 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Nonlinearity) | 56 ± 0 | 56 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Algebraic degree) | 3 ± 0 | 3 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ ✓ | B | reproduced | 2026-11-26 ok |

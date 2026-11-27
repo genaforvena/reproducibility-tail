@@ -1,0 +1,98 @@
+{
+  "paper": {
+    "short": "alhargan2000-mathieu-804",
+    "title": "Algorithm 804: Subroutines for the computation of Mathieu functions of integer orders",
+    "authors": [
+      "Fayez A. Alhargan"
+    ],
+    "year": 2000,
+    "doi": null
+  },
+  "field": "numerics (special functions, Mathieu functions)",
+  "field_class": "numerics",
+  "stack": "C/C++ (netlib CALGO 804.gz: shell archive with CPP/Dp/Src/*.cpp and *.h, CPP/Dp/Drivers/driver.cpp, Makefile, data1, res1, res2)",
+  "stack_class": "C/C++",
+  "claim": {
+    "text": "Shipped driver output, file CPP/Dp/Drivers/res1 (inside 804.gz), row x = 19.790, column 4 (h = 9, even circumferential first-kind standard Mathieu function Sn of order 3), value +2.750024 (6 decimals). Registered by scout from the artifact's own reference output. The claim is the code's printed value, not the paper's table.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "col4_x19790",
+        "paper": 2.750024,
+        "tol_abs": 1e-06,
+        "ours": 2.750024
+      }
+    ],
+    "determinism": "deterministic (fixed data1 input, fixed grid v = k x 0.0314 rad, no random numbers)",
+    "reference": {
+      "file": "reports/alhargan2000-mathieu-804/evidence/res1.shipped",
+      "archive": "netlib.org/toms/804.gz, sha256 d6cb0600a2257bb2f935d370e0d5140a7d57120fafbe39b446fb0fba98b0dd02, member CPP/Dp/Drivers/res1",
+      "sha256": "ff7a9fea6879691747e5af7919dc2a4f6b6f5184a7f7c27f93e737a93deaf702"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "G1: the archive's Makefile, unchanged, stops at its first line `include makefile.inc`: makefile.inc is not in the archive (make: No rule to make target 'makefile.inc'). The rules were then run by hand with the Makefile's own compile and link lines (g++ -O2, -I../Src for driver.cpp) with the host's g++ 13.3.0 inside the sandbox. The first compile of bsslr.cpp as shipped fails: its global abs(double) (bsslr.cpp:19) conflicts with the using-declaration of std::abs that the C++ wrapper <stdlib.h> injects, and the calls abs(n) are ambiguous; -std=gnu++98 does not help. Workaround (patched, build-only): a compiler include path /work/shim/stdlib.h outside the archive, which includes /usr/include/stdlib.h directly; no archive source edited. Run: ./driver < data1 reproduces res1 line for line (diff exit 0, all 206 lines).",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make res1: makefile.inc missing from the archive (stops before any compile); and the authors' own compile lines fail under g++ 13.3.0 at bsslr.cpp:19 (abs ambiguity), logged separately. Its log is original-attempt.log; the compile failure is in evidence/build-original-abs.log.",
+    "log": "reports/alhargan2000-mathieu-804/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/alhargan2000-mathieu-804/recipe.sh",
+  "queue_commit": "ced86bb",
+  "evidence": [
+    "reports/alhargan2000-mathieu-804/evidence/fetch.log",
+    "reports/alhargan2000-mathieu-804/evidence/manifest.pre",
+    "reports/alhargan2000-mathieu-804/evidence/manifest.mid",
+    "reports/alhargan2000-mathieu-804/evidence/manifest.post",
+    "reports/alhargan2000-mathieu-804/evidence/shim.log",
+    "reports/alhargan2000-mathieu-804/evidence/original-attempt.log",
+    "reports/alhargan2000-mathieu-804/evidence/build-original-abs.log",
+    "reports/alhargan2000-mathieu-804/evidence/build.log",
+    "reports/alhargan2000-mathieu-804/evidence/driver-run.log",
+    "reports/alhargan2000-mathieu-804/evidence/Res1",
+    "reports/alhargan2000-mathieu-804/evidence/res1.shipped",
+    "reports/alhargan2000-mathieu-804/evidence/res1.shipped.sha256",
+    "reports/alhargan2000-mathieu-804/evidence/recipe-run.log"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "d6cb0600a2257bb2f935d370e0d5140a7d57120fafbe39b446fb0fba98b0dd02",
+    "compared": 12,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "g++ -O2 -I/work/shim -I../Src -c driver.cpp -o driver.o",
+      "g++ -O2 -I/work/shim -c ../Src/bsslr.cpp -o bsslr.o",
+      "g++ -O2 -I/work/shim -c ../Src/mathur.cpp -o mathur.o",
+      "g++ -O2 -I/work/shim -c ../Src/mbsslr.cpp -o mbsslr.o",
+      "g++ -O2 -I/work/shim -c ../Src/mcnr.cpp -o mcnr.o",
+      "g++ -O2 -I/work/shim -c ../Src/mmathur.cpp -o mmathur.o",
+      "g++ -O2 -o driver driver.o bsslr.o mathur.o mbsslr.o mcnr.o mmathur.o"
+    ],
+    "manifests": {
+      "pre": "reports/alhargan2000-mathieu-804/evidence/manifest.pre",
+      "mid": "reports/alhargan2000-mathieu-804/evidence/manifest.mid",
+      "post": "reports/alhargan2000-mathieu-804/evidence/manifest.post"
+    }
+  }
+}

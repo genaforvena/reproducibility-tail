@@ -150,6 +150,9 @@ def archive_sha(queue_entry: dict) -> str:
     m = re.search(r"sha256 ([0-9a-f]{64})", str(code.get("archive", "")))
     if not m:
         m = re.search(r"\.(?:gz|zip)\b[^;]*?sha256 ([0-9a-f]{64})", str(code.get("commit", "")))
+    if not m:
+        # an explicit registered field, as scout writes it for entries whose archive text says "sha256 of NAME: HASH"
+        m = re.fullmatch(r"([0-9a-f]{64})", str(code.get("archive_sha256", "")))
     return m.group(1) if m else ""
 
 

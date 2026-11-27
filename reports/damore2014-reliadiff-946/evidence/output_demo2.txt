@@ -31,8 +31,8 @@ Used maximum number of Laguerre series coefficients: 2000;
 
 
 
-elapsed time (all values) in sec = 1.773834e-03;
-max elapsed time (x=1.50e+01) in sec = 5.679131e-04;
+elapsed time (all values) in sec = 2.124071e-03;
+max elapsed time (x=1.50e+01) in sec = 7.200241e-04;
 
 
 

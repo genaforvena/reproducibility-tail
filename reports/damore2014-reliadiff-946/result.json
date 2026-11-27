@@ -41,7 +41,7 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -58,7 +58,19 @@
     "reports/damore2014-reliadiff-946/evidence/output_demo2-shipped.txt",
     "reports/damore2014-reliadiff-946/evidence/output-diff.txt"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-27T15:49:27Z",
+      "kind": "clean",
+      "values": {
+        "RELIADIFF_FCOMP_X5": 1.29653819
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/damore2014-reliadiff-946/evidence/replay-2026-11-27T154927Z.log",
+      "seconds": 371
+    }
+  ],
   "patch": {
     "kind": "build-only",
     "archive_sha256": "23e42c6c0441575e12a1e4374747e3dab2c875ade6d2c6ffb58f4610cd67d55c",

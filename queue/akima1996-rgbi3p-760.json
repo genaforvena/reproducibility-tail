@@ -12,7 +12,7 @@
   "code": {
     "url": "https://netlib.org/toms/760.gz",
     "commit": "netlib TOMS archive 760.gz (fetched by scout 2026-11-27 09:33Z into a fresh /tmp directory, unpacked as text and not executed)",
-    "archive": "netlib TOMS 760.gz, sha256 not recorded by scout (hash the fetched bytes before any run)",
+    "archive": "netlib TOMS 760.gz, sha256 3f9058c03127be9d25940886425eb7fb5518356143078c2cb2c2fef32239b018 (hashed by rerun from the fetched bytes at 09:43Z, provenance only; claim, paper value and tolerance unchanged)",
     "note": "Shell archive with driver.f (program TPRG3P, Hiroshi Akima), src.f (RGBI3P and RGSF3P) and RES, the shipped reference output. The driver creates its own data file TPRG3P and writes the interpolated values to standard output. RES is that output and is the reference."
   },
   "field": "numerics (surface fitting on rectangular grids)",

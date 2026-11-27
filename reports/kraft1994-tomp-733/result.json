@@ -1,47 +1,82 @@
 {
-  "paper": {
-    "short": "kraft1994-tomp-733",
-    "title": "TOMP archive driver (Kraft 1994, see queue entry)",
-    "year": 1994,
-    "doi": "-"
+ "paper": {
+  "short": "kraft1994-tomp-733",
+  "title": "Algorithm 733: TOMP - Fortran modules for optimal control calculations (test driver)",
+  "year": 1994,
+  "doi": "-"
+ },
+ "field": "numerics (optimal control)",
+ "stack": "Fortran 77 (TOMS 733, single file 733.f with the TOMP modules and the unnamed test driver)",
+ "claim": {
+  "text": "Final cost of the constrained brachistochrone test driver, iteration 27, 1.7952392, tol_abs 1e-5 (shipped TOMP.OUT block, 733.f lines 77-109)",
+  "values": [
+   {
+    "name": "value",
+    "paper": 1.7952392,
+    "tol_abs": 1e-05,
+    "ours": null
+   }
+  ]
+ },
+ "basis": "patched",
+ "verdict": "blocked",
+ "cause": "G2 open: the compiled unit is a line-range extraction of the archive (733.f lines 556-end into TOMP.FOR; a source patch, not build-only); the paper check is scout's",
+ "attempt": "Measured, verdict withheld at G2. Two passes, each a clean copy of the unpacked archive, the same extraction and the same compile (gfortran -std=legacy -w -o tomp TOMP.FOR), run with stdin closed. Pass 1 final cost 1.7952392 (iteration 27, constraint violation 0.8371D-06); pass 2 1.7952392. Shipped TOMP.OUT: 0.17952392D+01. Difference 0 at the printed precision, inside tol_abs 1e-5. The archive as shipped does not compile: lines 1-555 are prose (TOMP.TXT, TOMP.OUT, TOMP.M) and MATLAB data that are not comment-marked, and gfortran stops at line 4. The extraction is therefore a source patch (verify_sources record exits 2: 733.f unchanged, TOMP.FOR added). Under the method that needs scout's paper check; the TOMP book and the TOMS article are still not available here. Scout answered G2 for build-only fixes only (not this case). Blocked until scout decides.",
+ "queue_commit": "c79860bab5ae7a91694fa2d9e9251c21094a5612",
+ "original_attempt": {
+  "tried": true,
+  "outcome": "failed",
+  "reason": "733.f as shipped does not compile: gfortran stops at line 4 ('Non-numeric character in statement label') on the unmarked archive prose; also 'Coarrays disabled' at line 28 once the prose is past. Earlier manual passes were run outside the sandbox and are kept in evidence/manual-prior-run (superseded; not used for the value).",
+  "log": "reports/kraft1994-tomp-733/evidence/pass1-build.log"
+ },
+ "gates": {
+  "G1": "pass",
+  "G2": "pending (scout paper check)",
+  "G3": "pass",
+  "G5": "na",
+  "G6": "na",
+  "cross_check": "na"
+ },
+ "recipe": "reports/kraft1994-tomp-733/recipe.sh",
+ "evidence": [
+  "reports/kraft1994-tomp-733/claimed",
+  "reports/kraft1994-tomp-733/evidence/patch.log",
+  "reports/kraft1994-tomp-733/evidence/pass1-build.log",
+  "reports/kraft1994-tomp-733/evidence/pass1-run.log",
+  "reports/kraft1994-tomp-733/evidence/pass2-run.log",
+  "reports/kraft1994-tomp-733/evidence/pass1-tomp.out",
+  "reports/kraft1994-tomp-733/evidence/pass2-tomp.out",
+  "reports/kraft1994-tomp-733/evidence/values.txt",
+  "reports/kraft1994-tomp-733/evidence/reference-block.txt",
+  "reports/kraft1994-tomp-733/evidence/record.log",
+  "reports/kraft1994-tomp-733/evidence/manual-prior-run"
+ ],
+ "replayed": [],
+ "stack_class": "Fortran",
+ "field_class": "numerics",
+ "patch": {
+  "kind": "source",
+  "archive_sha256": "cf49f88ca0138f774b7cabda7acd85f0e1c2d36cbc263eebb5d029f69e794c35",
+  "compared": 1,
+  "ours": {
+   "modified": [],
+   "removed": [],
+   "added": [
+    "TOMP.FOR"
+   ]
   },
-  "field": "numerics (TOMP archive driver)",
-  "stack": "not-stated in the registered entry; provisional local run",
-  "claim": {
-    "text": "Value 1.7952392, tol 1e-5 absolute; provisional local run gives 1.79523920 in both passes (not yet a verdict)",
-    "values": [
-      {
-        "name": "value",
-        "paper": 1.7952392,
-        "tol_abs": 0.00001,
-        "ours": null
-      }
-    ]
+  "tool": {
+   "modified": [],
+   "removed": [],
+   "added": []
   },
-  "basis": "-",
-  "verdict": "blocked",
-  "cause": "missing-code",
-  "attempt": "Provisional, not yet a verdict. Both local passes give 1.79523920, against claim 1.7952392 at tol 1e-5. Blocked on G2: the TOMP archive prose that the driver depends on is not available to rerun. Scout declined to add it from a summary and will fetch it only if sent the exact section list. Resolver: scout. Evidence from the local passes is not yet committed under reports/kraft1994-tomp-733/. Disposition: next rerun wake, after scout answers or sends the section list.",
-  "queue_commit": "c79860bab5ae7a91694fa2d9e9251c21094a5612",
-  "original_attempt": {
-    "tried": false,
-    "outcome": "not-possible",
-    "reason": "not yet attempted as a documented run: the TOMP driver prose that defines the run is missing from the registration",
-    "log": "-"
-  },
-  "gates": {
-    "G1": "na",
-    "G2": "na",
-    "G3": "na",
-    "G5": "na",
-    "G6": "na",
-    "cross_check": "na"
-  },
-  "recipe": "-",
-  "evidence": [
-    "reports/kraft1994-tomp-733/claimed"
+  "build_commands": [
+   "gfortran -std=legacy -w -o tomp TOMP.FOR"
   ],
-  "replayed": [],
-  "stack_class": "not-stated",
-  "field_class": "numerics"
+  "manifests": {
+   "pre": "reports/kraft1994-tomp-733/evidence/manifest.pre",
+   "mid": "reports/kraft1994-tomp-733/evidence/manifest.mid",
+   "post": "reports/kraft1994-tomp-733/evidence/manifest.post"
+  }
+ }
 }

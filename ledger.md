@@ -17,7 +17,7 @@ Method and gates: [docs/method.md](docs/method.md).
 | - | blocked or not yet run | 8 |
 
 By field: astronomy 1, biology 1, ecology 1, numerics 34, other 3, statistics 5
-By stack: C/C++ 7, Fortran 28, Java 1, MATLAB/Octave 3, R 5, not-stated 1
+By stack: C/C++ 7, Fortran 29, Java 1, MATLAB/Octave 3, R 5
 By decade: 1960 1, 1970 1, 1980 3, 1990 15, 2000 17, 2010 8
 
 Data as of 2026-11-27T02:31Z (the newest replay or funnel entry).
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 25 (did not run), not-possible 3 (no code exists to run), partial 3 (ran only through a workaround or for part of the claim), succeeded 14 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 26 (did not run), not-possible 2 (no code exists to run), partial 3 (ran only through a workaround or for part of the claim), succeeded 14 (ran as documented).
 
 ## Results
 
@@ -120,7 +120,7 @@ Authors' original artifact, among all attempted papers: failed 25 (did not run),
 | [hager2006-cg-descent-851](reports/hager2006-cg-descent-851/result.md) | numerics · 2006 · Fortran | driver1 (User's Guide example: n = 100, x = 1, grad_tol 1e-8, default cg.parm) prints cg iterations 32, function evaluations 55, gradient evaluations 45, as in the shipped res1; exact match (tolerance 0). (driver1 cg iterations) [shipped reference output] | 32 ± 0 | 32 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [hager2006-cg-descent-851](reports/hager2006-cg-descent-851/result.md) | numerics · 2006 · Fortran | driver1 (User's Guide example: n = 100, x = 1, grad_tol 1e-8, default cg.parm) prints cg iterations 32, function evaluations 55, gradient evaluations 45, as in the shipped res1; exact match (tolerance 0). (driver1 function evaluations) [shipped reference output] | 55 ± 0 | 55 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [hager2006-cg-descent-851](reports/hager2006-cg-descent-851/result.md) | numerics · 2006 · Fortran | driver1 (User's Guide example: n = 100, x = 1, grad_tol 1e-8, default cg.parm) prints cg iterations 32, function evaluations 55, gradient evaluations 45, as in the shipped res1; exact match (tolerance 0). (driver1 gradient evaluations) [shipped reference output] | 45 ± 0 | 45 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
-| [kraft1994-tomp-733](reports/kraft1994-tomp-733/result.md) | numerics · 1994 · not-stated | Value 1.7952392, tol 1e-5 absolute; provisional local run gives 1.79523920 in both passes (not yet a verdict) (value) | 1.79524 ± 1e-05 | – | – | – | - | · · · · | - | blocked | never clean |
+| [kraft1994-tomp-733](reports/kraft1994-tomp-733/result.md) | numerics · 1994 · Fortran | Final cost of the constrained brachistochrone test driver, iteration 27, 1.7952392, tol_abs 1e-5 (shipped TOMP.OUT block, 733.f lines 77-109) (value) | 1.79524 ± 1e-05 | – | – | – | patched | ✓ ? ✓ · | - | blocked | never clean |
 | [leis1988-odessa-658](reports/leis1988-odessa-658/result.md) | numerics · 1988 · Fortran | Y(1) at T = 4.0 of the demo's first output block (METH 1, MITER 0) is 0.905516, as printed in the source comments. Absolute tolerance 1e-5. (chemical kinetics demo, Y(1) at T=4.0, METH 1 MITER 0) [shipped reference output] | 0.905516 ± 1e-05 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [levine1969-student-t-344](reports/levine1969-student-t-344/result.md) | statistics · 1969 · Fortran | The computed CDF printed by TOMS344_PRB for DF=1, X=0.3250 (row 1, computed column) is 0.7999537587165833, as in the shipped reference output res. Absolute tolerance 1e-6. (TTEST, DF=1, X=0.3250, two-tailed CDF transform (computed column)) [shipped reference output] | 0.799954 ± 1e-06 | 0.799954 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [linhart2008-lnnorm-885](reports/linhart2008-lnnorm-885/result.md) | numerics · 2008 · C/C++ | -lnnorm(-5.0) computed by the authors' C/lnnorm.c, against the Sheppard (1939) Table IV row x = 5.0 in the shipped C/sheppard.txt: 15.0649983939887257, absolute tolerance 1.5e-8 (-lnnorm(-5.0) against Sheppard Table IV row 5.0) | 15.065 ± 1.5e-08 | 15.065 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
@@ -172,7 +172,7 @@ Cause of every attempted paper that is `not-reproduced` or `blocked` (the funnel
 | cause | papers |
 |---|---|
 | dependency-rot | 0 |
-| missing-code | 2 |
+| missing-code | 1 |
 | missing-data | 0 |
 | unstated-parameter | 1 |
 | numerical-discrepancy | 1 |

@@ -1,0 +1,44 @@
+{
+ "paper": {
+  "title": "Algorithm 726: ORTHPOL - a package of routines for generating orthogonal polynomials and Gauss-type quadrature rules",
+  "authors": [
+   "Walter Gautschi"
+  ],
+  "year": 1994,
+  "venue": "ACM Transactions on Mathematical Software 20(1), 21-62 (March 1994), per the frame item and the shipped README",
+  "doi": null,
+  "url": "https://netlib.org/toms/726.gz (article not fetched; ACM page not used)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/726.gz",
+  "commit": "netlib CALGO archive 726.gz (shell archive with README, Makefile, r1mach.f, d1mach.f, test1.f to test8.f and the matching testN.out files)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/726.gz (HTTP 200, 102785 bytes). sha256 of 726.gz: b229159f0bd9b38948f32ccb5f2d958c80f0a95c1706f88c03284aef5b0fa186 (scout download, 2026-11-27).",
+  "archive_sha256": "b229159f0bd9b38948f32ccb5f2d958c80f0a95c1706f88c03284aef5b0fa186",
+  "note": "Gunzip the archive and unpack the shell archive with /bin/sh in an empty directory. Build test1.f with the shipped Makefile (it links r1mach.f and d1mach.f) and compare the output block with the shipped test1.out."
+ },
+ "field": "numerics (orthogonal polynomials, Gauss-type quadrature)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "Shipped reference output test1.out (inside 726.gz), first block, header 'output of test1 with modmom=.true.', row K=1, column DBETA(K). The block covers the weight ((1-om2*x**2)*(1-x**2))**(-1/2) on (-1,1) at om2=0.100, computed with modified moments (n=80).",
+  "reference": {
+   "file": "test1.out (inside 726.gz)",
+   "sha256": "not computed for the member; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/726.gz"
+  },
+  "paper_value": "DBETA(1) = 0.5065840806382684475158495727 at om2=0.1 as printed by the shipped test1 driver in double precision. The paper's Example 3.1 table is not read here; the README maps test1.f to Example 3.1.",
+  "metric": "DBETA(1) for om2 = 0.100 with modified moments (modmom=.true.), the double-precision value printed in test1.out, compared as an absolute number",
+  "determinism": "deterministic (fixed weight, fixed om2, fixed n, no random numbers)",
+  "tolerance": {
+   "abs": 1e-12,
+   "basis": "Fixed before any run. The reference is double precision (28 printed digits); the driver's own error column is about 1e-13 relative, so 1e-12 absolute allows compiler and libm differences in the Chebyshev-based modified-moment recurrence while still separating a wrong recurrence (typically errors far above 1e-10). Not to be loosened after any run. The modmom=.false. block (ordinary moments, ill-conditioned) is not claimed."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 2 minutes: one Fortran build of test1.f with its small helper routines and one run.",
+  "data_size": "None (synthetic weight).",
+  "data_licence": "Netlib CALGO archive; licence per the archive's own notices (the rerun should record it)."
+ },
+ "why": "The driver computes the recurrence coefficients of a weight with a singular endpoint behaviour from modified moments; the value DBETA(1) is not a closed form (beta_0 is an elliptic integral, but DBETA(1) needs the recurrence), so the rerun must execute the Fortran method.",
+ "registered": "2026-11-27T16:04:50Z"
+}

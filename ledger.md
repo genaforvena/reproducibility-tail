@@ -5,28 +5,28 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-67 papers attempted.
+68 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 17 |
-| B | authors' code with build fixes | 34 |
+| B | authors' code with build fixes | 35 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 14 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 54, other 4, statistics 6
-By stack: C/C++ 9, Fortran 46, Java 1, MATLAB/Octave 6, R 5
-By decade: 1960 3, 1970 3, 1980 6, 1990 21, 2000 24, 2010 10
+By field: astronomy 1, biology 1, ecology 1, numerics 55, other 4, statistics 6
+By stack: C/C++ 9, Fortran 47, Java 1, MATLAB/Octave 6, R 5
+By decade: 1960 3, 1970 4, 1980 6, 1990 21, 2000 24, 2010 10
 
-Data as of 2026-11-27T06:20:56Z (the newest replay or funnel entry).
+Data as of 2026-11-27T06:24:45Z (the newest replay or funnel entry).
 
 ## The funnel
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-67 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+68 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **327 candidates considered from 4 of 4 frames: 62 attempted (19%), 0 unreachable, 265 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 39 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 40 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
 
 ## Results
 
@@ -244,6 +244,9 @@ Authors' original artifact, among all attempted papers: failed 39 (did not run),
 | [renka2003-dnsplin1-828](reports/renka2003-dnsplin1-828/result.md) | numerics · 2003 · Fortran | driver on data1 (Res1), the second value after the count 241 in the output, shipped as 0.565126291685656D-01 in Fortran77/Dp/Drivers/res1 (row 3 of the file), absolute tolerance 1e-12 (driver on data1, row 2 of res1) | 0.0565126 ± 1e-12 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
 | [renka2004-csrfpack-833](reports/renka2004-csrfpack-833/result.md) | numerics · 2004 · Fortran | CSRFTEST (author's driver) on the shipped 8-node data file writes a 40 x 40 grid of surface values; the grid node (X,Y) = (-0.948717948717949, -1.0) has F = 1.89783809135176 in the registered queue entry (corrected in queue commit a156ff2; the earlier registered value 0.189783809135176 dropped the E+01 exponent). Absolute tolerance 1e-9. The shipped output Fortran77/Drivers/res prints this node as 0.189783809135176E+01 (= 1.89783809135176); see result.md for the exponent discrepancy. (F(X=-0.948717948717949, Y=-1.0) from CSRFTEST with the shipped data file) [shipped reference output] | 1.89784 ± 1e-09 | 1.89784 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [resende1998-gmis-787](reports/resende1998-gmis-787/result.md) | other · 1998 · Fortran | gmis (GRASP, seed 270001, look4 50, maxitr 1000) on the shipped sample instance (data: 50 nodes, 619 arcs) prints 'Size of indep set : 7', as in the shipped RES output block. Exact tolerance (tol_abs 0), fixed in the queue entry before any run. The value 7 is the known optimum stated in read.me. (size of indep set, sample instance, seed 270001) [shipped reference output] | 7 ± 0 | 7 | 0 | exact | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [richardson1973-jconsx-454](reports/richardson1973-jconsx-454/result.md) | numerics · 1973 · Fortran | JCONSX complex method on the Box problem, driver1 seeded starts (seed 123456789 in source): ITERATION 20 corrected point 3.0000 1.7320, and the run ends at ITERATION 21. Shipped reference res1 (artifact-reference), tol 6e-5 on coordinates, exact on count. (x1 at ITERATION 20) [shipped reference output] | 3 ± 6e-05 | 3 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [richardson1973-jconsx-454](reports/richardson1973-jconsx-454/result.md) | numerics · 1973 · Fortran | JCONSX complex method on the Box problem, driver1 seeded starts (seed 123456789 in source): ITERATION 20 corrected point 3.0000 1.7320, and the run ends at ITERATION 21. Shipped reference res1 (artifact-reference), tol 6e-5 on coordinates, exact on count. (x2 at ITERATION 20) [shipped reference output] | 1.732 ± 6e-05 | 1.732 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [richardson1973-jconsx-454](reports/richardson1973-jconsx-454/result.md) | numerics · 1973 · Fortran | JCONSX complex method on the Box problem, driver1 seeded starts (seed 123456789 in source): ITERATION 20 corrected point 3.0000 1.7320, and the run ends at ITERATION 21. Shipped reference res1 (artifact-reference), tol 6e-5 on coordinates, exact on count. (ITERATION count) [shipped reference output] | 21 ± 0 | 21 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [smith2001-fm-814](reports/smith2001-fm-814/result.md) | numerics · 2001 · Fortran | SampleFM (sample 3, Zeta(3) by Gosper's series at 60 digits in the FM package) prints Zeta(3) = 1.202056903159594285...; the value rounded to double, 1.2020569031595942, must agree within absolute tolerance 1e-15 (fixed in the queue entry). (Zeta(3) sample 3) [shipped reference output] | 1.20206 ± 1e-15 | 1.20206 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [smith2010-fm-911](reports/smith2010-fm-911/result.md) | numerics · 2010 · Fortran | SampleFM (author's sample driver) sample 2 prints the real root of x**5-3x**4+x**3-4x**2+x-6 to 500 decimal places; its double rounding 3.1206562153267265 agrees with the registered value to 1e-15 absolute. (real root of x**5-3x**4+x**3-4x**2+x-6 (SampleFM.out sample 2, 500-digit value rounded to double; the first 16 significant digits are 3.120656215326726)) [shipped reference output] | 3.12066 ± 1e-15 | 3.12066 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [van-deun2006-besselint-858](reports/van-deun2006-besselint-858/result.md) | numerics · 2006 · MATLAB/Octave | besselint(sqrt([2 3 5 7 11]), 0, 1) returns I = 6.106434990872165e-02 (Example 5.1 of the shipped driver, experiments.m; printed in the shipped experiments.out) (I_Ex5_1) [shipped reference output] | 0.0610643 ± 1e-10 | 0.0610643 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |

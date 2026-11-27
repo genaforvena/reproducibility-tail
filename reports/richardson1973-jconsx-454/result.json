@@ -1,0 +1,123 @@
+{
+  "paper": {
+    "short": "richardson1973-jconsx-454",
+    "title": "Algorithm 454: The complex method for constrained optimization (JCONSX)",
+    "year": 1973,
+    "doi": null,
+    "venue": "Communications of the ACM 16(8), August 1973, pp. 487-489 (archive header: COLLECTED ALGORITHMS FROM ACM, VOL. 16, NO. 8, August 1973, PP. 487-489); paper text not checked (artifact-reference claim)"
+  },
+  "field": "numerics (constrained optimization)",
+  "stack": "Fortran 77 (TOMS 454 src.f JCONSX, Drivers/driver1.f)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "JCONSX complex method on the Box problem, driver1 seeded starts (seed 123456789 in source): ITERATION 20 corrected point 3.0000 1.7320, and the run ends at ITERATION 21. Shipped reference res1 (artifact-reference), tol 6e-5 on coordinates, exact on count.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/richardson1973-jconsx-454/evidence/shipped-res1.txt",
+      "sha256": "f7c33bf066ceeb113225ed3f877ab26fbf596565913b211cc61321d5b4336817",
+      "archive": "netlib TOMS 454.gz, sha256 62edf4cce130c6e7ccce05b9da7908b3446ac74ce5ae74ca1fe9fe80087cf9f0, file Fortran/Sp/Drivers/res1"
+    },
+    "values": [
+      {
+        "name": "x1 at ITERATION 20",
+        "paper": 3.0,
+        "tol_abs": 6e-05,
+        "ours": 3.0
+      },
+      {
+        "name": "x2 at ITERATION 20",
+        "paper": 1.732,
+        "tol_abs": 6e-05,
+        "ours": 1.732
+      },
+      {
+        "name": "ITERATION count",
+        "paper": 21,
+        "tol_abs": 0,
+        "ours": 21
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Built the unmodified sources with make VPATH=../Src driver1 (src.f lives in Src/ in the archive); an f77 build-tool shim (impl/f77-shim.sh, outside the source tree) maps src.f and runs gfortran -std=legacy. Manifests pre, mid, post identical (no source change). Ran driver1 > Res1: the whole output equals the shipped res1 except trailing blanks (diff -b is empty, evidence/res1-compare.txt).",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make Res as the Makefile documents it stops at once: 'make: f77: No such file or directory' (exit 2). Kept in the log.",
+    "log": "reports/richardson1973-jconsx-454/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/richardson1973-jconsx-454/recipe.sh",
+  "queue_commit": "bb5bf0e",
+  "evidence": [
+    "reports/richardson1973-jconsx-454/evidence/fetch.log",
+    "reports/richardson1973-jconsx-454/evidence/unpack.log",
+    "reports/richardson1973-jconsx-454/evidence/original-attempt.log",
+    "reports/richardson1973-jconsx-454/evidence/build.log",
+    "reports/richardson1973-jconsx-454/evidence/recipe-run.log",
+    "reports/richardson1973-jconsx-454/evidence/run.txt",
+    "reports/richardson1973-jconsx-454/evidence/res1-compare.txt",
+    "reports/richardson1973-jconsx-454/evidence/shipped-res1.txt"
+  ],
+  "replayed": [
+    {
+      "utc": "2026-11-27T06:23:37Z",
+      "kind": "clean",
+      "values": {
+        "x1 ITERATION 20": 3.0,
+        "x2 ITERATION 20": 1.732,
+        "ITERATION COUNT": 21.0
+      },
+      "ok": false,
+      "why": "recipe printed no VALUE line for ['x1 at ITERATION 20', 'x2 at ITERATION 20', 'ITERATION count']",
+      "log": "reports/richardson1973-jconsx-454/evidence/replay-2026-11-27T062337Z.log",
+      "seconds": 64
+    },
+    {
+      "utc": "2026-11-27T06:24:45Z",
+      "kind": "clean",
+      "values": {
+        "x1 at ITERATION 20": 3.0,
+        "x2 at ITERATION 20": 1.732,
+        "ITERATION count": 21.0
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/richardson1973-jconsx-454/evidence/replay-2026-11-27T062445Z.log",
+      "seconds": 56
+    }
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "62edf4cce130c6e7ccce05b9da7908b3446ac74ce5ae74ca1fe9fe80087cf9f0",
+    "compared": 5,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "make VPATH=../Src driver1"
+    ],
+    "manifests": {
+      "pre": "reports/richardson1973-jconsx-454/evidence/manifest.pre",
+      "mid": "reports/richardson1973-jconsx-454/evidence/manifest.mid",
+      "post": "reports/richardson1973-jconsx-454/evidence/manifest.post"
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "paper": {
+    "short": "shellman2003-befix-825",
+    "title": "Algorithm 825: A deep-cut bisection envelope algorithm for fixed points (BEDFix/BEFix)",
+    "authors": [
+      "S. Shellman",
+      "K. Sikorski"
+    ],
+    "year": 2003,
+    "doi": null
+  },
+  "field": "numerics (fixed points of bivariate functions, bisection envelope)",
+  "field_class": "numerics",
+  "stack": "C (netlib CALGO 825.gz, shell archive dated 2003-10-24: C/Src/src.c, C/Drivers/driver.c, C/Drivers/bigtest.res, C/Drivers/smalltest.res, Doc/readme)",
+  "stack_class": "C/C++",
+  "claim": {
+    "text": "The 'average number of evaluations' printed for the first BEFix block of the large test (65025 cases, epsilon = 0.0001, q = 1, residual criterion) by the shipped driver, as in line 42 of the shipped reference C/Drivers/bigtest.res (inside 825.gz). Registered value 20.417255, absolute tolerance 1e-6, fixed before any run. The claim is the code's own printed output, not a table value from the paper.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "BEFIX_AVG_EVALS_EPS1E-4_Q1",
+        "paper": 20.417255,
+        "tol_abs": 1e-06,
+        "ours": 20.417255
+      }
+    ],
+    "determinism": "deterministic (the large test enumerates a fixed grid of 65025 cases; no random numbers)",
+    "reference": {
+      "file": "reports/shellman2003-befix-825/evidence/bigtest.shipped.txt",
+      "archive": "netlib.org/toms/825.gz (sha256 b28e369b226302276dfb83188d493c3029ebfca1714f66123495015b5dbf9b07), member C/Drivers/bigtest.res",
+      "sha256": "6dfb430ebcadf2746c61ffe5acfba2f1a0b0b0a7dd3f287f4ae571ca22b7b221"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "G1: the readme's documented command, `gcc -lm fp.c -o fp`, unchanged, fails in the sandbox: the archive ships no fp.c (it ships C/Src/src.c and C/Drivers/driver.c). Patch (build-only): the same documented GNU C compile (-lm) on the archive's own two files, C/Src/src.c and C/Drivers/driver.c, written to a build directory outside the archive; pass 1 -O2, pass 2 -O0. No archive file is edited. The value is the printed first BEFix block of ./driver 1 (large test), identical in both passes and identical to the shipped reference.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "gcc: fp.c does not exist in the archive (the readme's documented command names fp.c; the archive ships src.c and driver.c)",
+    "log": "reports/shellman2003-befix-825/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pending",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/shellman2003-befix-825/recipe.sh",
+  "queue_commit": "cf1de6e33301a5042c6e8d523bcc076735cd0c32",
+  "replayed": [],
+  "evidence": [
+    "evidence/fetch.log",
+    "evidence/fetch-probe.log",
+    "evidence/original-attempt.log",
+    "evidence/build.log",
+    "evidence/run.log",
+    "evidence/recipe-run.log",
+    "evidence/out.build.txt",
+    "evidence/out.build2.txt",
+    "evidence/bigtest.shipped.txt",
+    "evidence/bigtest.shipped.sha256",
+    "evidence/manifest.pre",
+    "evidence/manifest.mid",
+    "evidence/manifest.post"
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "b28e369b226302276dfb83188d493c3029ebfca1714f66123495015b5dbf9b07",
+    "compared": 2,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gcc -O2 -o driver /work/pre/C/Src/src.c /work/pre/C/Drivers/driver.c -lm",
+      "gcc -O0 -o driver /work/pre/C/Src/src.c /work/pre/C/Drivers/driver.c -lm"
+    ],
+    "manifests": {
+      "pre": "reports/shellman2003-befix-825/evidence/manifest.pre",
+      "mid": "reports/shellman2003-befix-825/evidence/manifest.mid",
+      "post": "reports/shellman2003-befix-825/evidence/manifest.post"
+    }
+  }
+}

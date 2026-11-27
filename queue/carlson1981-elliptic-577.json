@@ -1,0 +1,51 @@
+{
+  "paper": {
+    "title": "Algorithms for incomplete elliptic integrals (ACM TOMS Algorithm 577: RC, RF, RD, RJ; symmetric incomplete elliptic integrals)",
+    "authors": [
+      "B.C. Carlson",
+      "E.M. Notis"
+    ],
+    "year": 1981,
+    "venue": "ACM Transactions on Mathematical Software 7(3), 1981, pp. 398-403; collected as TOMS Algorithm 577",
+    "doi": null,
+    "url": "https://netlib.org/toms/577.gz (ACM article not read; ACM pages are not fetched here)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/577.gz",
+    "commit": "netlib TOMS archive 577.gz, sha256 61ac0a82555128503bb1c0e7ad1b1911534377e0d1bb407a794579c4d2272c0e (fetched by scout 2026-11-27 into /tmp/scout-b2, read as text in /tmp/scout-b3/577, not executed).",
+    "archive": "netlib TOMS 577.gz, sha256 61ac0a82555128503bb1c0e7ad1b1911534377e0d1bb407a794579c4d2272c0e",
+    "note": "Single Fortran file: four DOUBLE PRECISION subroutines (RC, RF, RD, RJ) followed by six test drivers. The RJ driver (the one whose comment block names the check value) sets ERRTOL = 1.D-3 and calls RJ(X,Y,Z,P,ERRTOL,IERR) for the sets it reads from stdin. Drivers print a table; they do not print an expected-value file. The check value is in the driver's comment, not in a separate .out file."
+  },
+  "field": "numerics (special functions, elliptic integrals)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "Comment block of the RJ test driver inside 577.gz (the driver that follows the RF/RD drivers and reads X,Y,Z,P sets). Stated there: 'THE TWENTY-SECOND SET IS A CHECK VALUE: RJ(2,3,4,5) = 0.14297 57966 71567 53833 23308'. The input block of that driver (read on stdin, unit 5, 42 sets) has the 22nd set at file line 867: '2.00D+00 3.00D+00 4.00D+00 5.00D+00'. The routine must evaluate the integral numerically to produce its printed RJ value.",
+    "reference": {
+      "file": "577.gz, the RJ driver's comment block (text inside the archive)",
+      "sha256": "not the member's own hash: scout's extracted text of the single file is /tmp/scout-b3/577/577.raw; rerun should read the archive member, not this copy",
+      "archive": "netlib.org/toms/577.gz (sha256 61ac0a82555128503bb1c0e7ad1b1911534377e0d1bb407a794579c4d2272c0e)"
+    },
+    "metric": "RJ(2,3,4,5), the Carlson symmetric elliptic integral of the third kind, as returned by the Algorithm 577 subroutine RJ called with ERRTOL = 1.D-3 from the RJ driver.",
+    "paper_value": "Shipped reference value 0.1429757966715675383323308 (the comment's 20 digits: 0.14297 57966 71567 53833 23308), read from the driver comment in the archive. The ACM article is not read here.",
+    "values": [
+      {
+        "name": "RJ(2,3,4,5)",
+        "paper": "0.14297579667156753833",
+        "tol_rel": 1e-3
+      }
+    ],
+    "tolerance": {
+      "rel": 1e-3,
+      "basis": "The driver sets ERRTOL = 1.D-3 and the subroutine comment says 'ERRTOL is set to the desired error tolerance'; the routine's accuracy contract is therefore a relative error of ERRTOL on its result. The tolerance is set to that contract, before any run, and is not to be loosened after a run. A coding error that moves RJ(2,3,4,5) by more than one part in a thousand fails it; a rounding-level change does not."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute for the RJ driver's first sets; the build needs a Fortran compiler and no other tool.",
+    "data_size": "None; the input values are in the driver's data block.",
+    "data_licence": "No data. Source is the public netlib TOMS archive."
+  },
+  "why": "RJ(2,3,4,5) is a non-closed-form numerical value that the driver's own check comment gives to 20 digits, so the code has to run to reproduce it; the RC and RD check values in the same file are closed forms (pi, ln 2, lemniscate constants) and are not used as the claim.",
+  "registered": "2026-11-27T10:40Z"
+}

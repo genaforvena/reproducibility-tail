@@ -20,7 +20,7 @@ By field: astronomy 1, biology 1, ecology 1, numerics 35, other 3, statistics 5
 By stack: C/C++ 7, Fortran 30, Java 1, MATLAB/Octave 3, R 5
 By decade: 1960 1, 1970 1, 1980 3, 1990 16, 2000 17, 2010 8
 
-Data as of 2026-11-27T02:35:13Z (the newest replay or funnel entry).
+Data as of 2026-11-27T02:42:08Z (the newest replay or funnel entry).
 
 ## The funnel
 
@@ -161,7 +161,7 @@ Authors' original artifact, among all attempted papers: failed 26 (did not run),
 | [varadhan2009-bb-hdp-multistart](reports/varadhan2009-bb-hdp-multistart/result.md) | numerics · 2009 · R | sum(ans$conv) for multiStart(par = p0, fn = hdp, action = "solve"), 300 starts, seed 1234, JSS p. 11 (converged runs) | 284 ± 3 | 287 | 3 | 100% ⚠ | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [wang2008-bacolr-874](reports/wang2008-bacolr-874/result.md) | numerics · 2008 · Fortran | driver1 (single PDE, KCOL = 2, NINT = 42 at TOUT = 1.0) prints UOUT = 0.6602 at XOUT = 0.91, as in the shipped reference output res1; tolerance 1e-3 absolute, fixed in the queue entry. (UOUT(XOUT=0.91) at TOUT=1.0, KCOL=2, NINT=42) [shipped reference output] | 0.6602 ± 0.001 | 0.6602 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [wang2011-species-butterfly-ace](reports/wang2011-species-butterfly-ace/result.md) | ecology · 2011 · R | ChaoLee1992(butterfly, t = 10, method = "all") $Nhat[1], ACE estimate of species richness (JSS p. 8) (ACE) | 712 ± 0.5 | 712 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
-| [watson1997-hompack90-777](reports/watson1997-hompack90-777/result.md) | numerics · 1997 · Fortran | The shipped driver3 output RES3, block 'TESTING FIXPQS WITH STORAGE MODE = 1', prints the first solution component Y(1) at lambda = 1 as 4.00864019E-01. Rebuilt from the archive and run, the same block gives Y(1) within tol_abs 1e-8. Registered in the queue entry before any run; the TOMS article was not read (paywalled), so the claim rests on the shipped RES3. (FIXPQS storage mode 1, solution component Y(1) at lambda=1) [shipped reference output] | 0.400864 ± 1e-08 | 0.400864 | 0 | 0% | patched (build-only) | ✓ · ✓ ? | B | reproduced | never clean |
+| [watson1997-hompack90-777](reports/watson1997-hompack90-777/result.md) | numerics · 1997 · Fortran | The shipped driver3 output RES3, block 'TESTING FIXPQS WITH STORAGE MODE = 1', prints the first solution component Y(1) at lambda = 1 as 4.00864019E-01. Rebuilt from the archive and run, the same block gives Y(1) within tol_abs 1e-8. Registered in the queue entry before any run; the TOMS article was not read (paywalled), so the claim rests on the shipped RES3. (FIXPQS storage mode 1, solution component Y(1) at lambda=1) [shipped reference output] | 0.400864 ± 1e-08 | 0.400864 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [wise2000-polsys-plp-801](reports/wise2000-polsys-plp-801/result.md) | numerics · 2000 · Fortran | TWO QUADRICS real finite solution (first INPUT.DAT problem, TRACKTOL 1e-4, FINALTOL 1e-14, seed 32749): Re X(2) = -0.788344824094120 as printed in the shipped OUTPUT.DAT, absolute tolerance 1e-6. (TWO QUADRICS real finite solution, Re X(2)) [shipped reference output] | -0.788345 ± 1e-06 | -0.788345 | -1.89848e-14 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 
 Margin is |our value − paper value| as a share of the tolerance registered before the run; ⚠ marks 80% or more, a result that a different environment could flip.

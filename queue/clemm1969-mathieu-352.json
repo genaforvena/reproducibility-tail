@@ -12,7 +12,7 @@
   "code": {
     "url": "https://netlib.org/toms/352.gz",
     "commit": "netlib TOMS archive 352.gz (fetched by scout 2026-11-27 09:31Z into a fresh /tmp directory, shell archive, unpacked as text and not executed)",
-    "archive": "netlib TOMS 352.gz, sha256 not recorded by scout (hash the fetched bytes before any run)",
+    "archive": "netlib TOMS 352.gz, sha256 00efa50bee19a19e7b4e5c0475d75d72bf2ab1260a01cae65056d28a2a4b1fee (registered by rerun from the fetched bytes, 2026-11-27 09:36Z; the scout had not recorded it)",
     "note": "The archive is a 2006 Fortran conversion by John Burkardt. Driver driver.f holds TOMS352_PRB. The shipped res is the reference output; its TEST05 section prints R, Q, Exact Value and Computed. Exact values come from mathieu_even_values in driver.f, which cites Abramowitz and Stegun Table 20.1. Subroutine MFCVAL is in src.f."
   },
   "field": "numerics (special functions: Mathieu characteristic values)",

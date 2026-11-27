@@ -1,0 +1,50 @@
+{
+  "paper": {
+    "title": "Algorithm 693: A FORTRAN package for floating-point multiple-precision arithmetic",
+    "authors": [
+      "David M. Smith"
+    ],
+    "year": 1991,
+    "venue": "ACM Transactions on Mathematical Software 17(2), June 1991, pp. 273-283 (volume, issue and pages from the archive header; article not read, ACM pages return 403 from this sandbox)",
+    "doi": null,
+    "url": "https://netlib.org/toms/693.gz (article not read)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/693.gz",
+    "commit": "netlib TOMS archive 693.gz (fetched by scout 2026-11-27 into /tmp/scout-693 as 693.raw, read as text, not executed)",
+    "archive": "netlib TOMS 693.gz, single Fortran source file 9743 lines, FM 1.0 by David M Smith (1990)",
+    "note": "The file is the complete package with a self-checking driver: PROGRAM TEST (line 9534) and subroutine CHECK. The rerun must compile the whole file with a Fortran 77 compiler, run the program, and compare TEST.OUT with the expected values written in the program's own header comment (lines 9534-9600, the 'output from this program should be' block) and in its RESULT strings."
+  },
+  "field": "numerics (multiple-precision arithmetic, elementary functions)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The expected output block in the header comment of PROGRAM TEST in 693.gz (the entry 'SQRT(3) =' at 40 decimal places), which the program also checks itself through RESULT and CHECK. The program calls FPI2M, FPSQRT and FPPRNT with 40 significant digits set by FPSET(40).",
+    "reference": {
+      "file": "PROGRAM TEST header comment and RESULT string in 693.gz (TEST routine, lines 9534-9600)",
+      "sha256": "not recorded: text read from the netlib shar; rerun should compare the member",
+      "archive": "netlib.org/toms/693.gz"
+    },
+    "metric": "Decimal digits of sqrt(3) produced by FPSQRT on FPI2M(3) and printed by FPPRNT with JFORM2=40 (fixed point, 40 places).",
+    "paper_value": "Shipped reference: 1.7320508075688772935274463415058723669428 (the paper itself is not read here).",
+    "values": [
+      {
+        "name": "SQRT(3) to 40 decimal places",
+        "paper": "1.7320508075688772935274463415058723669428",
+        "tol_abs": 5e-41
+      }
+    ],
+    "tolerance": {
+      "abs": 5e-41,
+      "basis": "The reference has 40 decimal places, so its rounding half-unit in the last place is 5e-41. The driver's own CHECK compares the printed 80-character string exactly, which is stricter. Set before any run and not to be loosened after a run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: one compile and a handful of FM operations.",
+    "data_size": "None.",
+    "data_licence": "No data. Public netlib TOMS archive."
+  },
+  "why": "sqrt(3) to 40 digits needs the package's extended-precision square root, so the printed digits test the port of the method rather than a value the reader can write down.",
+  "registered": "2026-11-27T11:39Z"
+}

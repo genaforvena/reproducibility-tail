@@ -1,0 +1,4 @@
+pass 1: FERMID rows 36, matching reference to 1e-10 rel: 36; ORD=0.5 X=5.0 computed=0.88442088952430E+01 reference=0.88442088952430E+01
+pass 2: FERMID rows 36, matching reference to 1e-10 rel: 36; ORD=0.5 X=5.0 computed=0.88442088952430E+01 reference=0.88442088952430E+01
+VALUE FERMID(0.5, 5.0) 8.844208895243
+VALUE FERMID(0.5, 5.0) 8.844208895243

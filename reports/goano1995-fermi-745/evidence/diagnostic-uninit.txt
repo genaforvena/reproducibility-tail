@@ -1,0 +1,20 @@
+Warning: Label 40 at (1) defined but not used [-Wunused-label]
+===
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+===
+fchk_exit=0
+  Computed result = 0.31115013689941E+01
+  Reference value = 0.52372002804923E+04
+  Computed result = 0.54337796650050E+03
+
+  ORD =0.5000      X = 5.000      RELERR =0.1000E-13
+  Reference value = 0.88442088952430E+01
+--
+0
+  ORD =0.5000      X = 5.000      RELERR =0.1000E-13
+  Reference value = 0.88442088952430E+01
+  Computed result = 0.88442088952430E+01
+
+
+0
+0

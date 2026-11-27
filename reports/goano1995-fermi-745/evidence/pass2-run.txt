@@ -1,0 +1,386 @@
+ Output from MACHAR:
+
+  IBETA  =      2
+  MACHEP =    -52
+  NEGEXP =    -53
+  MINEXP =  -1022
+  MAXEXP =   1024
+
+  EPS    =      0.2220446049250E-15
+  XMIN   =      0.2225073858507-307
+  XMAX   =      0.1797693134862+309
+
+************************* Test on FERMID *************************              
+  ORD =-5.500      X =-.5000      RELERR =0.1000E-13
+  Reference value =-0.14643185714193E-01
+  Computed result =-0.14643185714158E-01
+
+  ORD =-5.500      X =-5.000      RELERR =0.1000E-13
+  Reference value = 0.57525445691656E-02
+  Computed result = 0.57525445691656E-02
+
+  ORD =-5.500      X =-50.00      RELERR =0.1000E-13
+  Reference value = 0.19287498479639E-21
+  Computed result = 0.19287498479639E-21
+
+  ORD =-5.500      X =0.5000      RELERR =0.1000E-13
+  Reference value = 0.17998449250451E+00
+  Computed result = 0.17998449250500E+00
+
+  ORD =-5.500      X = 5.000      RELERR =0.1000E-13
+  Reference value = 0.28063216586543E-03
+  Computed result = 0.28063216586530E-03
+
+  ORD =-5.500      X = 50.00      RELERR =0.1000E-13
+  Reference value = 0.85173905899593E-07
+  Computed result = 0.85173905899593E-07
+
+  ORD =-.5000      X =-.5000      RELERR =0.1000E-13
+  Reference value = 0.43123144192640E+00
+  Computed result = 0.43123144192640E+00
+
+  ORD =-.5000      X =-5.000      RELERR =0.1000E-13
+  Reference value = 0.67060199892682E-02
+  Computed result = 0.67060199892682E-02
+
+  ORD =-.5000      X =-50.00      RELERR =0.1000E-13
+  Reference value = 0.19287498479639E-21
+  Computed result = 0.19287498479639E-21
+
+  ORD =-.5000      X =0.5000      RELERR =0.1000E-13
+  Reference value = 0.80774596957991E+00
+  Computed result = 0.80774596957991E+00
+
+  ORD =-.5000      X = 5.000      RELERR =0.1000E-13
+  Reference value = 0.24729876224829E+01
+  Computed result = 0.24729876224829E+01
+
+  ORD =-.5000      X = 50.00      RELERR =0.1000E-13
+  Reference value = 0.79775308585819E+01
+  Computed result = 0.79775308585819E+01
+
+  ORD =0.5000      X =-.5000      RELERR =0.1000E-13
+  Reference value = 0.50753710355464E+00
+  Computed result = 0.50753710355464E+00
+
+  ORD =0.5000      X =-5.000      RELERR =0.1000E-13
+  Reference value = 0.67219543145059E-02
+  Computed result = 0.67219543145059E-02
+
+  ORD =0.5000      X =-50.00      RELERR =0.1000E-13
+  Reference value = 0.19287498479639E-21
+  Computed result = 0.19287498479639E-21
+
+  ORD =0.5000      X =0.5000      RELERR =0.1000E-13
+  Reference value = 0.11173314873128E+01
+  Computed result = 0.11173314873128E+01
+
+  ORD =0.5000      X = 5.000      RELERR =0.1000E-13
+  Reference value = 0.88442088952430E+01
+  Computed result = 0.88442088952430E+01
+
+  ORD =0.5000      X = 50.00      RELERR =0.1000E-13
+  Reference value = 0.26609281252136E+03
+  Computed result = 0.26609281252136E+03
+
+  ORD = 1.500      X =-.5000      RELERR =0.1000E-13
+  Reference value = 0.55264952594735E+00
+  Computed result = 0.55264952594735E+00
+
+  ORD = 1.500      X =-5.000      RELERR =0.1000E-13
+  Reference value = 0.67299409090147E-02
+  Computed result = 0.67299409090147E-02
+
+  ORD = 1.500      X =-50.00      RELERR =0.1000E-13
+  Reference value = 0.19287498479639E-21
+  Computed result = 0.19287498479639E-21
+
+  ORD = 1.500      X =0.5000      RELERR =0.1000E-13
+  Reference value = 0.13335889194418E+01
+  Computed result = 0.13335889194418E+01
+
+  ORD = 1.500      X = 5.000      RELERR =0.1000E-13
+  Reference value = 0.20914467402763E+02
+  Computed result = 0.20914467402763E+02
+
+  ORD = 1.500      X = 50.00      RELERR =0.1000E-13
+  Reference value = 0.53323535666871E+04
+  Computed result = 0.53323535666871E+04
+
+  ORD = 10.50      X =-.5000      RELERR =0.1000E-13
+  Reference value = 0.60640435487226E+00
+  Computed result = 0.60640435487226E+00
+
+  ORD = 10.50      X =-5.000      RELERR =0.1000E-13
+  Reference value = 0.67379313249854E-02
+  Computed result = 0.67379313249854E-02
+
+  ORD = 10.50      X =-50.00      RELERR =0.1000E-13
+  Reference value = 0.19287498479639E-21
+  Computed result = 0.19287498479639E-21
+
+  ORD = 10.50      X =0.5000      RELERR =0.1000E-13
+  Reference value = 0.16477965571375E+01
+  Computed result = 0.16477965571375E+01
+
+  ORD = 10.50      X = 5.000      RELERR =0.1000E-13
+  Reference value = 0.14376446705081E+03
+  Computed result = 0.14376446705081E+03
+
+  ORD = 10.50      X = 50.00      RELERR =0.1000E-13
+  Reference value = 0.27311495733481E+12
+  Computed result = 0.27311495733481E+12
+
+  ORD =0.5000      X =-1.000      RELERR =0.1000E-13
+  Reference value = 0.32779515926071E+00
+  Computed result = 0.32779515926071E+00
+
+  ORD = 0.000      X =-1.000      RELERR =0.1000E-13
+  Reference value = 0.31326168751822E+00
+  Computed result = 0.31326168751822E+00
+
+  ORD = 0.000      X =-.1000      RELERR =0.1000E-13
+  Reference value = 0.64439666007357E+00
+  Computed result = 0.64439666007357E+00
+
+  ORD = 2.000      X = 0.000      RELERR =0.1000E-13
+  Reference value = 0.90154267736970E+00
+  Computed result = 0.90154267736970E+00
+
+  ORD = 1.000      X = 0.000      RELERR =0.1000E-13
+  Reference value = 0.82246703342411E+00
+  Computed result = 0.82246703342411E+00
+
+  ORD =0.5000      X = 0.000      RELERR =0.1000E-13
+  Reference value = 0.76514702462541E+00
+  Computed result = 0.76514702462541E+00
+
+************************* Test on FERINC *************************              
+  ORD =0.5000      X = 1.000      B = 0.000      RELERR =0.1000E-13
+  Reference value = 0.15756407761513E+01
+  Computed result = 0.15756407761513E+01
+
+  ORD = 0.000      X = 1.000      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.69314718055995E+00
+  Computed result = 0.69314718055995E+00
+
+  ORD =-2.000      X = 1.000      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.00000000000000E+00
+  Computed result = 0.00000000000000E+00
+
+  ORD =-.5000      X =-.5000      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.29928939278890E+00
+  Computed result = 0.29928939278890E+00
+
+  ORD =-.5000      X =-.5000      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.85145615229523E-01
+  Computed result = 0.85145615229523E-01
+
+  ORD =-.5000      X =-.5000      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.46970386387300E-05
+  Computed result = 0.46970386387300E-05
+
+  ORD =-.5000      X =-5.000      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.43946305030484E-02
+  Computed result = 0.43946305030484E-02
+
+  ORD =-.5000      X =-5.000      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.10584155652031E-02
+  Computed result = 0.10584155652031E-02
+
+  ORD =-.5000      X =-5.000      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.52180111708956E-07
+  Computed result = 0.52180111708956E-07
+
+  ORD =-.5000      X =-50.00      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.12627927322171E-21
+  Computed result = 0.12627927322171E-21
+
+  ORD =-.5000      X =-50.00      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.30339082168308E-22
+  Computed result = 0.30339082168308E-22
+
+  ORD =-.5000      X =-50.00      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.14936656263976E-26
+  Computed result = 0.14936656263976E-26
+
+  ORD =-.5000      X =0.5000      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.58845190282971E+00
+  Computed result = 0.58845190282971E+00
+
+  ORD =-.5000      X =0.5000      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.19728054188845E+00
+  Computed result = 0.19728054188845E+00
+
+  ORD =-.5000      X =0.5000      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.12767566233360E-04
+  Computed result = 0.12767566233360E-04
+
+  ORD =-.5000      X = 5.000      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.21186324433330E+01
+  Computed result = 0.21186324433330E+01
+
+  ORD =-.5000      X = 5.000      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.13556092481699E+01
+  Computed result = 0.13556092481699E+01
+
+  ORD =-.5000      X = 5.000      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.11454059504348E-02
+  Computed result = 0.11454059504348E-02
+
+  ORD =-.5000      X = 50.00      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.76207060353513E+01
+  Computed result = 0.76207060353513E+01
+
+  ORD =-.5000      X = 50.00      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.68491516914864E+01
+  Computed result = 0.68491516914864E+01
+
+  ORD =-.5000      X = 50.00      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.44092826262763E+01
+  Computed result = 0.44092826262763E+01
+
+  ORD =0.5000      X =-.5000      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.49888840695234E+00
+  Computed result = 0.49888840695234E+00
+
+  ORD =0.5000      X =-.5000      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.31730447299475E+00
+  Computed result = 0.31730447299475E+00
+
+  ORD =0.5000      X =-.5000      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.10295260558775E-03
+  Computed result = 0.10295260558775E-03
+
+  ORD =0.5000      X =-5.000      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.65719053176167E-02
+  Computed result = 0.65719053176167E-02
+
+  ORD =0.5000      X =-5.000      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.38526557564582E-02
+  Computed result = 0.38526557564582E-02
+
+  ORD =0.5000      X =-5.000      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.11437153632226E-05
+  Computed result = 0.11437153632226E-05
+
+  ORD =0.5000      X =-50.00      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.18855252094289E-21
+  Computed result = 0.18855252094289E-21
+
+  ORD =0.5000      X =-50.00      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.11040293442217E-21
+  Computed result = 0.11040293442217E-21
+
+  ORD =0.5000      X =-50.00      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.32739069676554E-25
+  Computed result = 0.32739069676554E-25
+
+  ORD =0.5000      X =0.5000      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.11028624490699E+01
+  Computed result = 0.11028624490699E+01
+
+  ORD =0.5000      X =0.5000      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.75977320912409E+00
+  Computed result = 0.75977320912409E+00
+
+  ORD =0.5000      X =0.5000      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.27984772438614E-03
+  Computed result = 0.27984772438614E-03
+
+  ORD =0.5000      X = 5.000      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.88205896171001E+01
+  Computed result = 0.88205896171001E+01
+
+  ORD =0.5000      X = 5.000      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.81013757188862E+01
+  Computed result = 0.81013757188862E+01
+
+  ORD =0.5000      X = 5.000      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.25109402202195E-01
+  Computed result = 0.25109402202195E-01
+
+  ORD =0.5000      X = 50.00      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.26606902419981E+03
+  Computed result = 0.26606902419981E+03
+
+  ORD =0.5000      X = 50.00      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.26534055974330E+03
+  Computed result = 0.26534055974330E+03
+
+  ORD =0.5000      X = 50.00      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.24230449097266E+03
+  Computed result = 0.24230449097266E+03
+
+  ORD = 1.500      X =-.5000      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.55230609709149E+00
+  Computed result = 0.55230609709149E+00
+
+  ORD = 1.500      X =-.5000      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.48311889069830E+00
+  Computed result = 0.48311889069830E+00
+
+  ORD = 1.500      X =-.5000      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.75799019128587E-03
+  Computed result = 0.75799019128587E-03
+
+  ORD = 1.500      X =-5.000      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.67240074019198E-02
+  Computed result = 0.67240074019198E-02
+
+  ORD = 1.500      X =-5.000      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.57170908268779E-02
+  Computed result = 0.57170908268779E-02
+
+  ORD = 1.500      X =-5.000      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.84206170983181E-05
+  Computed result = 0.84206170983181E-05
+
+  ORD = 1.500      X =-50.00      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.19270407079097E-21
+  Computed result = 0.19270407079097E-21
+
+  ORD = 1.500      X =-50.00      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.16377883592475E-21
+  Computed result = 0.16377883592475E-21
+
+  ORD = 1.500      X =-50.00      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.24104176334426E-24
+  Computed result = 0.24104176334426E-24
+
+  ORD = 1.500      X =0.5000      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.13330127463731E+01
+  Computed result = 0.13330127463731E+01
+
+  ORD = 1.500      X =0.5000      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.11990614180048E+01
+  Computed result = 0.11990614180048E+01
+
+  ORD = 1.500      X =0.5000      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.20603856047679E-02
+  Computed result = 0.20603856047679E-02
+
+  ORD = 1.500      X = 5.000      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.20913522708020E+02
+  Computed result = 0.20913522708020E+02
+
+  ORD = 1.500      X = 5.000      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.20617736869930E+02
+  Computed result = 0.20617736869930E+02
+
+  ORD = 1.500      X = 5.000      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.18489751464581E+00
+  Computed result = 0.18489751464581E+00
+
+  ORD = 1.500      X = 50.00      B =0.1000      RELERR =0.1000E-13
+  Reference value = 0.53323526151543E+04
+  Computed result = 0.53323526151543E+04
+
+  ORD = 1.500      X = 50.00      B = 1.000      RELERR =0.1000E-13
+  Reference value = 0.53320526655759E+04
+  Computed result = 0.53320526655759E+04
+
+  ORD = 1.500      X = 50.00      B = 10.00      RELERR =0.1000E-13
+  Reference value = 0.52372002804923E+04
+  Computed result = 0.52372002804923E+04
+

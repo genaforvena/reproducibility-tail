@@ -1,0 +1,88 @@
+{
+  "paper": {
+    "short": "goano1995-fermi-745",
+    "title": "Algorithm 745: Computation of the complete and incomplete Fermi-Dirac integral",
+    "year": 1995,
+    "doi": null
+  },
+  "field": "numerics (special functions: Fermi-Dirac integrals)",
+  "field_class": "numerics",
+  "stack": "Fortran 77 (TOMS 745 archive 745.gz: FERTST.IN, FERTST.OUT and src.f, with the authors' own test main program FERTST in src.f)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "The authors' FERTST driver computes FERMID(ORD=0.5, X=5.0) for the row registered in FERTST.IN (FERMID block, row 17); the value must equal the shipped reference 8.8442088952430 to relative tolerance 1e-10 (fixed in the queue entry; recorded here as the absolute tolerance 8.8442088952430e-10 at that value).",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/goano1995-fermi-745/evidence/reference/FERTST.IN",
+      "sha256": "55b8b7e3c589a1e3e82ce98387be16211e8ef59585025fa7df8a512c293bc600",
+      "archive": "netlib.org/toms/745.gz sha256 575d82e32dfdbe780834f0d7cfb49bfd82f8394fd25c50c9c40cc7daccf89ae0 (member FERTST.IN, FERMID block, row ORD=0.5D+00 X=5.0D+00)"
+    },
+    "values": [
+      {
+        "name": "FERMID(0.5, 5.0)",
+        "paper": 8.844208895243,
+        "tol_abs": 8.844208895243e-10,
+        "ours": 8.844208895243
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced at the registered claim, under a build flag. As shipped, src.f built with gfortran (-O0 and -O2) runs to the end but gives FERMID(0.5, 5.0) = 3.1115013689941 (not 8.8442088952430), and 15 of the 36 FERMID rows disagree with their shipped references (several are NaN); the same 15 rows at both optimisation levels. The shipped FERTST.OUT, the authors' own run, matches the reference. A diagnostic build with -finit-local-zero (evidence/diagnostic-uninit.txt) gives 8.8442088952430 for the claimed point and all 36 FERMID rows within 1e-10 relative, so the difference is consistent with a local variable that src.f reads before it is set (undefined behaviour) which the authors' compiler happened to leave zero. Which variable is not isolated (gfortran -Wall reports none; FDPOS reads LOGGAM only after it is set on one path). The verdict uses the build flag -finit-local-zero, which changes no source byte (build-only: manifests pre, mid and post are equal over the sources). It is therefore a patched result (grade B), not an original run; the as-shipped mismatch is the original attempt. Both optimisation levels with the flag give the same value (pass 1 -O0, pass 2 -O2).",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "partial",
+    "reason": "src.f compiled as shipped (gfortran -O0 and -O2) and run on the shipped FERTST.IN: it runs to the end, but FERMID(0.5, 5.0) = 3.1115013689941 against the reference 8.8442088952430, and 15 of 36 FERMID rows disagree. So the authors' code, run as documented under this toolchain, does not give the claimed value; the claim was reproduced only with the build flag.",
+    "log": "reports/goano1995-fermi-745/evidence/original-attempt.log"
+  },
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "575d82e32dfdbe780834f0d7cfb49bfd82f8394fd25c50c9c40cc7daccf89ae0",
+    "compared": 2,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -O0 -finit-local-zero src.f -o fertst_O0",
+      "gfortran -O2 -finit-local-zero src.f -o fertst_O2"
+    ],
+    "manifests": {
+      "pre": "reports/goano1995-fermi-745/evidence/manifest.pre",
+      "mid": "reports/goano1995-fermi-745/evidence/manifest.mid",
+      "post": "reports/goano1995-fermi-745/evidence/manifest.post"
+    }
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/goano1995-fermi-745/recipe.sh",
+  "queue_commit": "dbe1ce94d52471ef1116df4248ab7b60646be856",
+  "evidence": [
+    "reports/goano1995-fermi-745/evidence/unpack.log",
+    "reports/goano1995-fermi-745/evidence/original-attempt.log",
+    "reports/goano1995-fermi-745/evidence/build.log",
+    "reports/goano1995-fermi-745/evidence/runs.log",
+    "reports/goano1995-fermi-745/evidence/pass1-run.txt",
+    "reports/goano1995-fermi-745/evidence/pass2-run.txt",
+    "reports/goano1995-fermi-745/evidence/values.txt",
+    "reports/goano1995-fermi-745/evidence/diagnostic-uninit.txt",
+    "reports/goano1995-fermi-745/evidence/record.log",
+    "reports/goano1995-fermi-745/evidence/manifest.pre",
+    "reports/goano1995-fermi-745/evidence/manifest.mid",
+    "reports/goano1995-fermi-745/evidence/manifest.post"
+  ],
+  "replayed": []
+}

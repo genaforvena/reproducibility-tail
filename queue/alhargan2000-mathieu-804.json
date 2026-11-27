@@ -1,0 +1,44 @@
+{
+ "paper": {
+  "title": "Algorithm 804: Subroutines for the computation of Mathieu functions of integer orders",
+  "authors": [
+   "Fayez A. Alhargan"
+  ],
+  "year": 2000,
+  "venue": "ACM Transactions on Mathematical Software 26(3), p. 408 (Sep 2000), per the frame item and the shipped Read.me",
+  "doi": null,
+  "url": "https://netlib.org/toms/804.gz (article not fetched; ACM page not used)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/804.gz",
+  "commit": "netlib CALGO archive 804.gz (shell archive; CPP/Dp/Src/*.cpp and *.h, CPP/Dp/Drivers/driver.cpp, Makefile, data1, data2, the reference outputs res1 and res2, and Doc/Read.me)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/804.gz (HTTP 200, 34972 bytes). sha256 of 804.gz: d6cb0600a2257bb2f935d370e0d5140a7d57120fafbe39b446fb0fba98b0dd02 (scout download, 2026-11-27).",
+  "archive_sha256": "d6cb0600a2257bb2f935d370e0d5140a7d57120fafbe39b446fb0fba98b0dd02",
+  "note": "Gunzip the archive, then unpack the shell archive with /bin/sh in an empty directory (the shar begins at the #! /bin/sh line). Build CPP/Dp/Drivers with its Makefile (C++), run the driver on data1 (typ e, n 3, circumferential, first kind, standard) and compare its output with the shipped CPP/Dp/Drivers/res1."
+ },
+ "field": "numerics (special functions, Mathieu functions)",
+ "stack": "C/C++",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "Shipped reference output CPP/Dp/Drivers/res1 (inside 804.gz). Table row x = 19.790 (degrees; the driver's v = 11 x 0.0314 rad), column 4 (h = 3n = 9), value +2.750024. The driver computes the even circumferential first-kind standard Mathieu function Sn of order 3 with the column's parameter h.",
+  "reference": {
+   "file": "CPP/Dp/Drivers/res1 (inside 804.gz)",
+   "sha256": "not computed for the member; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/804.gz"
+  },
+  "paper_value": "Value +2.750024 at x = 19.790 in column 4 of the shipped res1, as printed by the shipped driver (6 decimals). The paper's table or figure is not read; the claim is the code's own printed output.",
+  "metric": "The column-4 value of res1 at the row with x = 19.790, compared as an absolute number with the driver's own printed value",
+  "determinism": "deterministic (fixed data1 input, fixed grid v = k x 0.0314 rad, no random numbers)",
+  "tolerance": {
+   "abs": 1e-06,
+   "basis": "Fixed before any run. The reference is printed to 6 decimals (rounding step 1e-6, so the true printed value lies within 5e-7 of the stored number). 1e-6 allows that rounding plus small libm and compiler differences in the Mathieu series evaluation, while a different algorithm path or a wrong h gives differences in the 1e-3 range or more (neighbouring rows change by about 0.1). Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 2 minutes: one C++ build of the five library sources with the driver and one run on data1.",
+  "data_size": "None (data1 is five input lines embedded in the shar).",
+  "data_licence": "Netlib CALGO archive; licence per the archive's own notices and the author's Read.me (the rerun should record it)."
+ },
+ "why": "The shipped driver computes the Mathieu characteristic-function series at a set of parameter values; the value at x = 19.790, h = 9 is a numerical evaluation with no closed form, so the rerun must execute the C++ method to reproduce it.",
+ "registered": "2026-11-27T16:17:30Z"
+}

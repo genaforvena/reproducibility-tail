@@ -1,0 +1,46 @@
+{
+ "paper": {
+  "title": "Algorithm 939: Computation of the Marcum Q-function",
+  "authors": [
+   "Amparo Gil",
+   "Javier Segura",
+   "Nico M. Temme"
+  ],
+  "year": 2014,
+  "venue": "ACM Transactions on Mathematical Software 40(3), Article 20 (Apr 2014), per the frame item and the shipped 939.head",
+  "doi": null,
+  "url": "https://netlib.org/toms/939.zip (article not fetched; ACM page not used)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/939.zip",
+  "commit": "netlib CALGO archive 939.zip (Fortran90/Src: cons.f90, constants, incgam.f90, marcumq.f90; Fortran90/Drivers: testmarq.f90 and the expected results outputQP.dat; Doc/README; Makefile)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/939.zip (HTTP 200, 65451 bytes). sha256 of 939.zip: dbf77461a9c02c603f8eb2bfcfcef6e3d1cfbb7d628b54b18f79c4a7e62af9e4 (scout download, 2026-11-27).",
+  "archive_sha256": "dbf77461a9c02c603f8eb2bfcfcef6e3d1cfbb7d628b54b18f79c4a7e62af9e4",
+  "note": "Unzip into an empty directory. Build the four Fortran 90 sources in the order given in Doc/README (cons, incgam, marcumq, testmarq; the Makefile has the same) and run testmarq; it writes testQP.dat. Compare with the shipped Fortran90/Drivers/outputQP.dat and with the reference DATA arrays p and q in testmarq.f90."
+ },
+ "field": "numerics (special functions, Marcum Q-function)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "Reference DATA array q in Fortran90/Drivers/testmarq.f90 (inside 939.zip), element 5, which is Q_mu(x,y) at mu = 8, x = 13, y = 15: value 0.8516869957363. The shipped test computes ERR = |1 - Q/q(i)| for this point, and outputQP.dat reports a relative error of about 2e-14 for the row mu = 8, x = 0.13D+02, y = 0.15D+02.",
+  "reference": {
+   "file": "Fortran90/Drivers/testmarq.f90 (DATA q, element 5) inside 939.zip",
+   "sha256": "not computed for the member; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/939.zip"
+  },
+  "paper_value": "Q_8(13, 15) = 0.8516869957363 as stored in the shipped test driver's reference array q. The paper's tables are not read.",
+  "metric": "The function marcum(mu=8, x=13, y=15) returns the Marcum Q value Q as its output variable (q0); compare as an absolute number with 0.8516869957363",
+  "determinism": "deterministic (fixed arguments, no random numbers)",
+  "tolerance": {
+   "abs": 1e-10,
+   "basis": "Fixed before any run. The reference has 13 significant digits. The shipped driver's own relative error at the 18 test points is at most about 4e-12 (outputQP.dat), so 1e-10 absolute allows compiler and libm differences with a margin of about 25x over the largest shipped error, while a different algorithm or a wrong incomplete-gamma branch is expected to give errors far above 1e-8. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 2 minutes: one gfortran build of four small Fortran 90 files and one run of the 18-point test plus the recurrence check (about 10000 calls).",
+  "data_size": "None (the test embeds its arguments; the constants file is 2 KB).",
+  "data_licence": "Netlib CALGO archive; licence per the archive's own notices (the rerun should record it)."
+ },
+ "why": "The Marcum Q-function is a non-elementary numerical result: it has no closed form for these arguments, and the value needs the incomplete-gamma-ratio recurrence in the shipped Fortran 90 code to reproduce, so a rerun has to execute the method.",
+ "registered": "2026-11-27T16:20:30Z"
+}

@@ -20,7 +20,7 @@ By field: astronomy 1, biology 1, ecology 1, numerics 96, other 4, statistics 6
 By stack: C/C++ 14, Fortran 81, Java 1, MATLAB/Octave 7, R 5, other 1
 By decade: 0 1, 1960 4, 1970 14, 1980 9, 1990 36, 2000 28, 2010 17
 
-Data as of 2026-11-27T16:09:06Z (the newest replay or funnel entry).
+Data as of 2026-11-27T16:20:02Z (the newest replay or funnel entry).
 
 ## The funnel
 
@@ -28,21 +28,21 @@ Every candidate is drawn from a named frame in a seeded order and none is skippe
 
 109 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
-**527 candidates considered from 4 of 4 frames: 104 attempted (20%), 0 unreachable, 423 rejected.**
+**535 candidates considered from 4 of 4 frames: 106 attempted (20%), 0 unreachable, 429 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
 | cpc-library | 2767 | 40 | 20 | 50% | 0 | 0 | 20 |
 | netlib-liblist | 160 | 40 | 40 | 100% | 0 | 0 | 40 |
 | stat-co-2010-2015 | 1872 | 80 | 50 | 62% | 1 | 0 | 49 |
-| toms-calgo-index | 570 | 440 | 417 | 95% | 103 | 0 | 314 |
+| toms-calgo-index | 570 | 440 | 425 | 97% | 105 | 0 | 320 |
 
 | why a candidate was not attempted | candidates |
 |---|---|
-| paywalled | 129 |
+| paywalled | 132 |
 | figure-only | 20 |
-| no-numeric-claim | 75 |
-| claim-not-located | 104 |
+| no-numeric-claim | 76 |
+| claim-not-located | 105 |
 | no-method-description | 0 |
 | stochastic-no-seed | 22 |
 | no-code | 3 |
@@ -50,7 +50,7 @@ Every candidate is drawn from a named frame in a seeded order and none is skippe
 | machine-dependent | 45 |
 | restricted-data | 0 |
 | gpu | 1 |
-| other | 21 |
+| other | 22 |
 | unreachable-code | 0 |
 | unreachable-data | 0 |
 
@@ -58,8 +58,8 @@ Survivorship: each stack's count (and share) among all candidates considered, an
 
 | stack | considered | attempted |
 |---|---|---|
-| C/C++ | 55 (10%) | 14 (13%) |
-| Fortran | 357 (68%) | 81 (78%) |
+| C/C++ | 57 (11%) | 15 (14%) |
+| Fortran | 363 (68%) | 82 (77%) |
 | Java | 3 (1%) | 1 (1%) |
 | MATLAB/Octave | 44 (8%) | 6 (6%) |
 | Python | 1 (0%) | 0 (0%) |

@@ -1,0 +1,50 @@
+{
+  "paper": {
+    "title": "Algorithm 584: CUBTRI, automatic cubature over a triangle (ACM TOMS Algorithm 584)",
+    "authors": [
+      "D.P. Laurie"
+    ],
+    "year": 1982,
+    "venue": "ACM Transactions on Mathematical Software 8(2), 1982, pp. 210-218; collected as TOMS Algorithm 584",
+    "doi": null,
+    "url": "https://netlib.org/toms/584.gz (ACM article not read; ACM pages are not fetched here)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/584.gz",
+    "commit": "netlib TOMS archive 584.gz, sha256 f5b9249f64e069d4e7bdaca43854c5bf73b06c1973a0eec99b3333e60810410e (fetched by scout 2026-11-27T10:45Z into /tmp/scout-584, read as text in /tmp/scout-584/584.raw, not executed).",
+    "archive": "netlib TOMS 584.gz, sha256 f5b9249f64e069d4e7bdaca43854c5bf73b06c1973a0eec99b3333e60810410e",
+    "note": "Single Fortran file: subroutine CUBTRI with its helpers (RNDERR, CUBRUL) and the test driver KONYN, which runs seven integrands at EPS = 1e-3 down to 1e-9 and prints the actual error against ACTUAL(k)."
+  },
+  "field": "numerics (cubature over a triangle)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "Test driver KONYN in 584.gz (driver section, extracted line 36 (sequence column MAN 330); the comment above it is MAN 300-320): ACTUAL(4) = .6918104506612316, the integral of EXP(SIN(X)*COS(Y)) over 0<=X<=1, 0<=Y<=1-X (the comment credits it to Haegemans 1977). For IDATA=4 the driver sets T to vertices (0,1), (0,0), (1,0), and it calls CUBTRI with EPS=1E-3 first.",
+    "reference": {
+      "file": "584.gz, driver KONYN, ACTUAL(4) = .6918104506612316 (sequence column MAN 330)",
+      "sha256": "see archive sha256 above; rerun should read the archive member",
+      "archive": "netlib.org/toms/584.gz (sha256 f5b9249f64e069d4e7bdaca43854c5bf73b06c1973a0eec99b3333e60810410e)"
+    },
+    "metric": "ANS returned by CUBTRI for integrand 4 (EXP(SIN(X)*COS(Y))) over the triangle with vertices (0,1), (0,0), (1,0), at EPS=1E-3, MCALLS=20000, NW=5000, with IER=0 expected.",
+    "paper_value": "0.6918104506612316 from the shipped driver's ACTUAL(4). The ACM article is not read here; this value is the driver's reference, not a number taken from the paper text.",
+    "values": [
+      {
+        "name": "integral of EXP(SIN(X)*COS(Y)) over the driver's triangle",
+        "paper": "0.6918104506612316",
+        "tol_abs": 0.0006918104506612316
+      }
+    ],
+    "tolerance": {
+      "basis": "The routine's accuracy contract is a relative error of the requested EPS (the driver's first row is EPS=1E-3). Applied to the reference, that is an absolute tolerance of 1e-3 times 0.69181045 = 6.918e-4. Set before any run and not to be loosened after a run. The driver's own actual-error column reads |ANS - ACTUAL(4)|; a failure at this EPS means CUBTRI missed its own contract.",
+      "abs": 0.0006918104506612316
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute (one CUBTRI call at EPS=1E-3 with MCALLS=20000).",
+    "data_size": "None; the integrand and triangle are in the driver.",
+    "data_licence": "No data. Source is the public netlib TOMS archive."
+  },
+  "why": "The integral of EXP(SIN(X)*COS(Y)) has no closed form, so CUBTRI has to run to reproduce the 16-digit reference the driver checks against; the other ACTUAL values are closed forms and are not used.",
+  "registered": "2026-11-27T10:45Z"
+}

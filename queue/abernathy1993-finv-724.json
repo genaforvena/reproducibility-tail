@@ -1,0 +1,44 @@
+{
+  "paper": {
+    "title": "Algorithm 724: FINV, F-percentage points (Collected Algorithms from ACM)",
+    "authors": [
+      "Abernathy",
+      "Smith"
+    ],
+    "year": 1993,
+    "venue": "ACM Transactions on Mathematical Software 19(4), pp. 481-483 (December 1993), Algorithm 724",
+    "doi": null,
+    "url": "https://netlib.org/toms/724.gz (article DOI not verified by scout; ACM page not fetched)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/724.gz",
+    "commit": "netlib TOMS archive 724.gz (Fortran FINV function and its test driver TEST, with the driver's output listing in comments)",
+    "archive": "sha256 c63388b4b9ec6b2d662e9ea6d772fcf2707e028c9e99a7455db37dccd9111ac2 (downloaded by scout 2026-11-27, 8069 bytes; decompresses to 917 lines)",
+    "note": "Build FINV and the driver TEST from the archive text (the driver writes TESTDATA; it needs no input). The claim is the single table cell for P = 0.90, M = 10, N = 10 in the TEST output block."
+  },
+  "field": "numerics (statistics: F-distribution percentage points)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "location": "Shipped test-driver output, the 'Output from test driver TEST' block in the archive comments (decompressed lines ~646-690): the first table, P = 0.90, in the group of columns N:M = 1, 2, 3, 10. The printed row for N = 10 is the cell in column M = 10: 0.23226039E+001. The same value appears in the 'My output' block the author prints after it.",
+    "reference": {
+      "file": "724/724.txt",
+      "sha256": "aa1998859f9cb66ddf2d730199e990228c541b8d89e09c34de196aaa65e6c635",
+      "archive": "netlib.org/toms/724.gz, sha256 c63388b4b9ec6b2d662e9ea6d772fcf2707e028c9e99a7455db37dccd9111ac2"
+    },
+    "paper_value": "0.23226039E+001 (P = 0.90, M = 10, N = 10; the printed value 2.3226039)",
+    "metric": "FINV(M=10, N=10, P=0.9), the F-percentage point, compared as a number",
+    "determinism": "deterministic (the function and the table inputs are fixed; no random input)",
+    "tolerance": {
+      "abs": 2e-07,
+      "basis": "Fixed before any run. The printed value has 8 significant figures, so its rounding step is 1e-7; a rerun on IEEE arithmetic that rounds the other way differs by one unit. 2e-7 allows one unit of change in either direction, about 1e-7 relative, and nothing larger. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: a few thousand evaluations of FINV.",
+    "data_size": "None: the driver generates its own inputs.",
+    "data_licence": "No data. The archive licence is not stated; the rerun should record it."
+  },
+  "why": "The authors' own test driver prints a table of F-percentage points computed by FINV's iteration, and the number needs the algorithm to compute, so it tests the old Fortran code rather than a closed form (no closed form exists for these percentage points).",
+  "registered": "2026-11-27T14:19:52Z"
+}

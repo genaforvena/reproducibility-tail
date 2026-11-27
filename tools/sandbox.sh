@@ -38,6 +38,7 @@ exec systemd-run --user --scope --quiet --collect \
         --ro-bind /etc/resolv.conf /etc/resolv.conf \
         --ro-bind /etc/ssl /etc/ssl --ro-bind /etc/ca-certificates /etc/ca-certificates \
         --ro-bind /etc/alternatives /etc/alternatives \
+        --ro-bind-try /etc/java-17-openjdk /etc/java-17-openjdk \
         --ro-bind /etc/passwd /etc/passwd --ro-bind /etc/group /etc/group \
         --proc /proc --dev /dev --tmpfs /tmp \
         --bind "$work" /work --chdir /work \

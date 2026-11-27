@@ -40,7 +40,7 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -62,7 +62,19 @@
     "reports/renka2004-csrfpack-833/evidence/manifest.mid",
     "reports/renka2004-csrfpack-833/evidence/manifest.post"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-27T00:25:20Z",
+      "kind": "clean",
+      "values": {
+        "F(X=-0.948717948717949, Y=-1.0) from CSRFTEST with the shipped data file": 1.89783809135176
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/renka2004-csrfpack-833/evidence/replay-2026-11-27T002520Z.log",
+      "seconds": 55
+    }
+  ],
   "patch": {
     "kind": "build-only",
     "archive_sha256": "e40e3df805baca94da32f5b9bd460abb8f03049675da6573bf1b7439819a7720",

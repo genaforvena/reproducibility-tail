@@ -1,0 +1,74 @@
+{
+ "paper": {
+  "title": "Algorithm 863: L2WPMA, a Fortran 77 package for weighted least squares piecewise monotonic data approximation",
+  "authors": [
+   "Ioannis C. Demetriou"
+  ],
+  "year": 2007,
+  "venue": "ACM TOMS 33(1), Article 6 (Mar 2007); paper text not reached in this wake (ACM DL paywalled; the archive's Doc/INSTDE04.txt and Data/ are the source used)",
+  "doi": null,
+  "url": "https://netlib.org/toms/863.zip"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/863.zip",
+  "commit": "netlib TOMS archive 863.zip (scouted 2026-11-27, sha256 5947abcafb61ea258152d11ba98f8c81e28fcdfbcef832144362c7ca6d5f7657). Fortran 77 in 863/Fortran/Dp/ (driver1.f, rnd.f, src.f) and 863/Fortran/Sp/. Reference data and outputs in 863/Data/Appndx_B/ (XFWDAT input, WIVAPP, WPMAPP, WIAKN, WACTLG, RAPP_B). No RNG is needed for this driver."
+ },
+ "field": "numerics (data approximation, monotone piecewise fitting)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Shipped Appendix B of Doc/INSTDE04.txt (the printed output of DRIVER1 for the example data set), and the same numbers as the output file Data/Appndx_B/WIVAPP (column 2). The claim is the set of data indices of the extrema of the best monotonic approximation at the optimum, with KSECTN = 5 sections, for the 75-point data set Data/Appndx_B/XFWDAT and default weights (WFMODE 0).",
+  "reference": {
+   "file": "Data/Appndx_B/WIVAPP (shipped in 863.zip; Appendix B of Doc/INSTDE04.txt prints the same indices)",
+   "sha256": "c6b56edea970bd8d19f0e51157927dd8b092a5d2786a0e913b1c14255ea9b767",
+   "archive": "863.zip, sha256 5947abcafb61ea258152d11ba98f8c81e28fcdfbcef832144362c7ca6d5f7657"
+  },
+  "metric": "Data indices (ITHETA) of the extrema at the optimum, i.e. WIVAPP column 2 for increments 0..5, from DRIVER1 run on XFWDAT with 5 monotone sections",
+  "paper_value": "Indices 1, 8, 27, 46, 69, 75 as printed in INSTDE04.txt Appendix B. The paper text was not checked.",
+  "values": [
+   {
+    "name": "extremum index 0",
+    "paper": 1,
+    "tol_abs": 0
+   },
+   {
+    "name": "extremum index 1",
+    "paper": 8,
+    "tol_abs": 0
+   },
+   {
+    "name": "extremum index 2",
+    "paper": 27,
+    "tol_abs": 0
+   },
+   {
+    "name": "extremum index 3",
+    "paper": 46,
+    "tol_abs": 0
+   },
+   {
+    "name": "extremum index 4",
+    "paper": 69,
+    "tol_abs": 0
+   },
+   {
+    "name": "extremum index 5",
+    "paper": 75,
+    "tol_abs": 0
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 0,
+   "basis": "Fixed before any run. The values are integer data indices, so the only correct comparison is exact equality. A tolerance of 0 cannot hide a different optimum, and no rounding applies. Not loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute (75 data points, one call of L2WPMA); plus a Fortran 77 compiler (gfortran is not on this host's PATH, so the rerun must install one).",
+  "data_size": "About 2 MB zip; the Appendix B data set is 75 records.",
+  "data_licence": "Not stated in the archive readme; the rerun should record the licence it finds."
+ },
+ "why": "The shipped Appendix B prints the optimum's extremum indices for a 75-point monotone fit, which the L2WPMA solver must compute from the weighted least squares problem, so the indices cannot be read off the code.",
+ "registered": "2026-11-27T04:09Z"
+}

@@ -20,7 +20,7 @@ By field: astronomy 1, biology 1, ecology 1, numerics 44, other 3, statistics 5
 By stack: C/C++ 8, Fortran 36, Java 1, MATLAB/Octave 5, R 5
 By decade: 1960 2, 1970 1, 1980 3, 1990 18, 2000 21, 2010 10
 
-Data as of 2026-11-27T03:51Z (the newest replay or funnel entry).
+Data as of 2026-11-27T04:09Z (the newest replay or funnel entry).
 
 ## The funnel
 
@@ -28,18 +28,18 @@ Every candidate is drawn from a named frame in a seeded order and none is skippe
 
 55 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
-**303 candidates considered from 4 of 4 frames: 50 attempted (17%), 0 unreachable, 253 rejected.**
+**306 candidates considered from 4 of 4 frames: 51 attempted (17%), 0 unreachable, 255 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
 | cpc-library | 2767 | 40 | 20 | 50% | 0 | 0 | 20 |
 | netlib-liblist | 160 | 40 | 40 | 100% | 0 | 0 | 40 |
 | stat-co-2010-2015 | 1872 | 80 | 50 | 62% | 1 | 0 | 49 |
-| toms-calgo-index | 570 | 200 | 193 | 96% | 49 | 0 | 144 |
+| toms-calgo-index | 570 | 200 | 196 | 98% | 50 | 0 | 146 |
 
 | why a candidate was not attempted | candidates |
 |---|---|
-| paywalled | 56 |
+| paywalled | 58 |
 | figure-only | 15 |
 | no-numeric-claim | 55 |
 | claim-not-located | 67 |
@@ -59,7 +59,7 @@ Survivorship: each stack's count (and share) among all candidates considered, an
 | stack | considered | attempted |
 |---|---|---|
 | C/C++ | 33 (11%) | 8 (16%) |
-| Fortran | 187 (62%) | 36 (72%) |
+| Fortran | 190 (62%) | 37 (73%) |
 | Java | 2 (1%) | 1 (2%) |
 | MATLAB/Octave | 24 (8%) | 4 (8%) |
 | R | 7 (2%) | 1 (2%) |

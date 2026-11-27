@@ -1,0 +1,53 @@
+{
+  "paper": {
+    "title": "Algorithm 608: extended Koopmans-Beckmann quadratic assignment problem (HGW heuristic)",
+    "authors": [
+      "D. H. West"
+    ],
+    "year": 1983,
+    "venue": "ACM Transactions on Mathematical Software 9(3), 461-466 (Sep 1983)",
+    "doi": null,
+    "url": "https://netlib.org/toms/608.gz",
+    "note": "DOI not verified in this wake; the article was not read (paywalled). The claim rests on the value stated in the shipped test driver MAIN (lines 470-474 of the archive source)."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/608.gz",
+    "commit": "netlib TOMS archive 608.gz (fetched 2026-11-27)",
+    "archive": "netlib.org/toms/608.gz sha256 bac06089237cf8bdf3e0e2d84df41f594a95fd17993a0e536f0d473f119ae64f",
+    "note": "gzip'd Fortran 77 source: subroutine HGW and its helpers (INITRD, DELTA, UPDRD, DELTX and alternatives) plus the test PROGRAM MAIN. Gunzip into a fresh directory outside the site, compile with gfortran -std=legacy (or -ffixed-form) and run the MAIN program; its output line is compared with the value in the driver's own comment."
+  },
+  "field": "operations research / numerical optimisation (quadratic assignment)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped test driver PROGRAM MAIN in 608.gz, whose header comment states SOLUTION IS: OBJ=406, ASSIGNMENTS: 4,1,3,2 for its 4-dimensional example. The paper was not read; no paper table or page is cited.",
+    "reference": {
+      "file": "608 source, PROGRAM MAIN (driver comment and its GOOD test, lines 470-474 and 320-340 of the gunzipped source)",
+      "sha256": null,
+      "archive": "netlib.org/toms/608.gz sha256 bac06089237cf8bdf3e0e2d84df41f594a95fd17993a0e536f0d473f119ae64f"
+    },
+    "metric": "Objective value OBJ returned by HGW (WORK4N(1)) on the driver's 4x4 instance, printed by MAIN with format F10.2, with the assignment LOC3N(1..4).",
+    "paper_value": "Not used: the TOMS article was not read; the value is the one the shipped driver states.",
+    "values": [
+      {
+        "name": "HGW objective on the driver instance (driver comment OBJ=406; assignment 4,1,3,2)",
+        "paper": 406.0,
+        "tol_abs": 0.005
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 0.005,
+      "basis": "Fixed before any run. The driver prints OBJ with F10.2, so two decimals are the printed precision; 0.005 is half the last printed digit. The driver's own check uses 0.5, which is looser than the printed output and is not used. Not to be loosened after any run."
+    },
+    "note": "The driver is described as a VARIANT of Gavett and Plyter's example, so the number is the archive's stated result, not necessarily the paper's table value. Heuristic output is deterministic (no random draws in HGW)."
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 2 minutes: gfortran compile of one file, one tiny run (N=4).",
+    "data_size": "None; the driver hard-codes its matrices.",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A deterministic heuristic whose shipped driver states the optimum-like objective 406 for a fixed instance, so the run tests the HGW code path rather than a value derivable on paper.",
+  "registered": "2026-11-27T01:01Z"
+}

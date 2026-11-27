@@ -1,0 +1,59 @@
+{
+ "paper": {
+  "short": "waki2008-sparsepop-883",
+  "title": "Algorithm 883: SparsePOP---A Sparse Semidefinite Programming Relaxation of Polynomial Optimization Problems",
+  "year": 2008,
+  "doi": null
+ },
+ "field": "numerics (polynomial optimization, semidefinite relaxation)",
+ "stack": "MATLAB/Octave (SparsePOP 2.00, TOMS 883 archive 883.zip)",
+ "field_class": "numerics",
+ "stack_class": "MATLAB/Octave",
+ "claim": {
+  "text": "Shipped user manual Doc/UserManual/sect3.tex (section 'The GAMS scalar format'): the printed output of sparsePOP('example1.gms', param) with param.relaxOrder = 3 and SeDuMi eps 1e-9 (SparsePOP 2.00). The example is the POP of example1.m (minimize -2x1+3x2-2x3 subject to a quadratic inequality, two linear inequalities, one linear equality and box bounds). The claim is the line POP.objValue, the approximated optimal value of that POP.",
+  "source": "artifact-reference",
+  "values": [
+   {
+    "name": "POP.objValue, example1.gms, relaxOrder 3",
+    "paper": -7.9550951,
+    "tol_abs": 1e-06,
+    "ours": -7.95509506
+   }
+  ],
+  "reference": {
+   "file": "reports/waki2008-sparsepop-883/evidence/reference/sect3.tex",
+   "sha256": "1641b1e4b30224f62d3ac177327a3f6c02cf4b68636d952d79f6628d736a7fc4",
+   "archive": "netlib.org/toms/883.zip sha256 2c05deedb393a2959240791cf94d27ebd8e3617eb7bed620415d31b8b2b4123e"
+  }
+ },
+ "basis": "patched",
+ "verdict": "reproduced",
+ "cause": null,
+ "attempt": "Original archive run as shipped under Octave 10.3 failed (ver/pkg, findstr, strtok, common_size; no SeDuMi in archive). Patched: SeDuMi 1.3 built with installer edits and a BLAS typedef shim; pkg.m and findstr.m environment shims. The authors' SparsePOP files are unchanged. Two clean passes give -7.95509506 (paper -7.9550951, tol 1e-6).",
+ "original_attempt": {
+  "tried": true,
+  "outcome": "failed",
+  "reason": "the authors' code did not run under Octave 10.3 without environment shims; SeDuMi is not in the archive",
+  "log": "reports/waki2008-sparsepop-883/evidence/attempts/run.log"
+ },
+ "gates": {
+  "G1": "pass",
+  "G2": "pass",
+  "G3": "pass",
+  "G5": "na",
+  "G6": "na",
+  "cross_check": "na"
+ },
+ "recipe": "reports/waki2008-sparsepop-883/recipe.sh",
+ "queue_commit": "d2c154ede1e798f8e612f544e57a45e37e892dd5",
+ "evidence": [
+  "reports/waki2008-sparsepop-883/result.md",
+  "reports/waki2008-sparsepop-883/evidence/run1.log",
+  "reports/waki2008-sparsepop-883/evidence/run2.log",
+  "reports/waki2008-sparsepop-883/evidence/recipe-run.log",
+  "reports/waki2008-sparsepop-883/evidence/sedumi-install.log",
+  "reports/waki2008-sparsepop-883/evidence/attempts",
+  "reports/waki2008-sparsepop-883/evidence/reference/sect3.tex"
+ ],
+ "replayed": []
+}

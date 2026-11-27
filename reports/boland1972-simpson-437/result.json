@@ -1,0 +1,87 @@
+{
+  "paper": {
+    "short": "boland1972-simpson-437",
+    "title": "Product Type {Simpson}'s Integration",
+    "year": 1972,
+    "doi": null
+  },
+  "field": "numerics (product integration, Simpson's rule)",
+  "stack": "Fortran",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "VINT for TEST02 at N = 10 printed by Fortran/Dp/Drivers/driver.f (product Simpson, integral of exp(-x)*cos(x) from 0 to pi), against the shipped reference output Drivers/res (0.521610), tolerance abs 1e-6",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/boland1972-simpson-437/evidence/reference/res",
+      "sha256": "a39beb9c5ab374145f73d25e6b156512ca116985960a08195d555ce0d537fca5",
+      "archive": "netlib.org/toms/437.gz sha256 3d5d67394e0a50131e5eaf60cdfff518c41e7e70b86e01f27e9eeaf65090f3ce (member Fortran/Dp/Drivers/res)"
+    },
+    "values": [
+      {
+        "name": "TEST02 product Simpson, N=10",
+        "paper": 0.52161,
+        "tol_abs": 1e-06,
+        "ours": 0.52161
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "The archive's Drivers/Makefile stops as shipped: it looks for src.f in Drivers/ and the archive ships src.f in Src/. In a build copy, the Makefile and driver are built with src.f placed next to them (a layout fix, no source edit; the tree's manifests are identical before and after). The built driver's stdout is byte-identical to the shipped res. A second pass compiles driver.f and src.f directly with gfortran and no optimisation flag; it is also byte-identical to res. TEST02 N=10 prints 0.521610 in both passes.",
+  "queue_commit": "4302021",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "Attempt 1: no gfortran in the sandbox /usr (make: gfortran: No such file or directory). Attempt 2, with the micromamba gfortran: the Makefile as shipped stops with 'No rule to make target src.f' because src.f is in Src/, not Drivers/. Both logs are kept.",
+    "log": "reports/boland1972-simpson-437/evidence/original-attempt-build.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/boland1972-simpson-437/recipe.sh",
+  "evidence": [
+    "reports/boland1972-simpson-437/evidence/original-attempt-build.log",
+    "reports/boland1972-simpson-437/evidence/original-attempt-2-build.log",
+    "reports/boland1972-simpson-437/evidence/build.log",
+    "reports/boland1972-simpson-437/evidence/recipe-run.log",
+    "reports/boland1972-simpson-437/evidence/run-pass1.txt",
+    "reports/boland1972-simpson-437/evidence/run-pass2.txt",
+    "reports/boland1972-simpson-437/evidence/values-run1.txt",
+    "reports/boland1972-simpson-437/evidence/values-run2.txt",
+    "reports/boland1972-simpson-437/evidence/reference/res",
+    "reports/boland1972-simpson-437/evidence/unpack-listing.txt",
+    "reports/boland1972-simpson-437/impl/extract_value.py",
+    "reports/boland1972-simpson-437/result.md"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "3d5d67394e0a50131e5eaf60cdfff518c41e7e70b86e01f27e9eeaf65090f3ce",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "make F77=gfortran F77OPTS=-O2 DIFF=diff SRCLIBS= driver"
+    ],
+    "manifests": {
+      "pre": "reports/boland1972-simpson-437/evidence/manifest.pre",
+      "mid": "reports/boland1972-simpson-437/evidence/manifest.mid",
+      "post": "reports/boland1972-simpson-437/evidence/manifest.post"
+    }
+  }
+}

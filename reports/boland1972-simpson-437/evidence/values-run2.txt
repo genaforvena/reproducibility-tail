@@ -1,0 +1,1 @@
+VALUE TEST02 product Simpson, N=10 0.521610

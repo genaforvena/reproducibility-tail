@@ -64,3 +64,8 @@ tools/sandbox.sh "$ID" -- sh -c 'rm -rf /work/run1 && mkdir /work/run1 && cd /wo
 head -1 "$E/run-pass1.txt"
 echo "== values (VALUE line) from pass 1"
 python3 -I "$here/impl/extract_value.py" "$E/run-pass1.txt" | tee "$E/values-run1.txt"
+echo "== problem 1 output block against the shipped block (lines 10398-10530 of the archive text), whitespace ignored; evidence only, not the claim"
+tools/sandbox.sh "$ID" -- sh -c 'sed -n "10398,10530p" /work/raw/681.txt' > "$E/reference/shipped-problem1.txt"
+awk '/Test problem no. 1:  cubic/{f=1} /Test problem no. 2 --/{if(f)exit} f' "$E/run-pass1.txt" > "$E/problem1-run1.txt"
+diff -w -B "$E/reference/shipped-problem1.txt" "$E/problem1-run1.txt" > "$E/problem1-diff.txt"; true
+echo "problem 1 differing lines (whitespace ignored): $(grep -c '^[<>]' "$E/problem1-diff.txt")"

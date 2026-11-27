@@ -40,13 +40,25 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
   "recipe": "reports/smith2010-fm-911/recipe.sh",
   "queue_commit": "8486f1fa4516d2609866fd5249aa2434877e4639",
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-27T00:19:59Z",
+      "kind": "clean",
+      "values": {
+        "real root of x**5-3x**4+x**3-4x**2+x-6 (SampleFM.out sample 2, 500-digit value rounded to double; the first 16 significant digits are 3.120656215326726)": 3.1206562153267265
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/smith2010-fm-911/evidence/replay-2026-11-27T001959Z.log",
+      "seconds": 168
+    }
+  ],
   "evidence": [
     "reports/smith2010-fm-911/evidence/original-attempt.log",
     "reports/smith2010-fm-911/evidence/pass1-build.log",

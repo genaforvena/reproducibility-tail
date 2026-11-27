@@ -46,7 +46,7 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -69,7 +69,20 @@
     "reports/miminis1995-eigassign-747/evidence/manifest.post",
     "reports/miminis1995-eigassign-747/evidence/reference/dlog.ref"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-27T00:59:57Z",
+      "kind": "clean",
+      "values": {
+        "F(1,1) of test01, ddemo double precision (dlog.ref)": 1.2366,
+        "F(1,2) of test01 (dlog.ref)": -0.0621
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/miminis1995-eigassign-747/evidence/replay-2026-11-27T005957Z.log",
+      "seconds": 57
+    }
+  ],
   "patch": {
     "kind": "build-only",
     "archive_sha256": "b24ab9b2ef2de1cd45f4448c47cb891d7ab4c9ab7bae004e9da3e1d4cb2cacc2",

@@ -1,0 +1,145 @@
+{
+  "paper": {
+    "short": "berntsen1991-dcuhre-698",
+    "title": "Algorithm 698: DCUHRE, an adaptive multiple-dimensional cubature (sample driver DTEST1)",
+    "year": 1991,
+    "doi": null
+  },
+  "field": "numerics (adaptive cubature)",
+  "field_class": "numerics",
+  "stack": "Fortran 77 (TOMS 698 shell archive 698.gz: makefile, dtest1.f, dcuhre.f and the other DOUBLE and SINGLE PRECISION routines)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Live sample PROGRAM DTEST1 (5-dimensional integral over the unit cube of exp(-sum n z_n^2/2), ABSREQ=0, RELREQ=1E-3, MINCLS=0, MAXCLS=10000, KEY=0, NW=5000) prints the integral components 1 to 6 as 0.13850818, 0.06369469, 0.05861748, 0.05407034, 0.05005614, 0.04654608, FTEST CALLS = 3549 and IFAIL = 0 (printed output, Sun 3/50). Registered by scout (artifact-reference).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "integral 1",
+        "paper": 0.13850818,
+        "tol_abs": 1e-07,
+        "ours": 0.13850818
+      },
+      {
+        "name": "integral 2",
+        "paper": 0.06369469,
+        "tol_abs": 1e-07,
+        "ours": 0.06369469
+      },
+      {
+        "name": "integral 3",
+        "paper": 0.05861748,
+        "tol_abs": 1e-07,
+        "ours": 0.05861748
+      },
+      {
+        "name": "integral 4",
+        "paper": 0.05407034,
+        "tol_abs": 1e-07,
+        "ours": 0.05407034
+      },
+      {
+        "name": "integral 5",
+        "paper": 0.05005614,
+        "tol_abs": 1e-07,
+        "ours": 0.05005614
+      },
+      {
+        "name": "integral 6",
+        "paper": 0.04654608,
+        "tol_abs": 1e-07,
+        "ours": 0.04654608
+      },
+      {
+        "name": "FTEST CALLS",
+        "paper": 3549,
+        "tol_abs": 0,
+        "ours": 3549
+      },
+      {
+        "name": "IFAIL",
+        "paper": 0,
+        "tol_abs": 0,
+        "ours": 0
+      }
+    ],
+    "reference": {
+      "file": "reports/berntsen1991-dcuhre-698/evidence/shipped-sample-output.txt",
+      "sha256": "746ccf46d3a9a06b8293fd2e04e825f6f81c4748187173df337b8f8c0548b451",
+      "archive": "698.gz, sha256 27d891c14cabaefddd7c9cd6d3a6a2ae5b60eafa70901c32914f019363fda501"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced on a build-only patched basis. The archive's makefile calls f77, which the sandbox does not have; the original run stopped there. We added an f77 shim outside the source tree (/work/bin/f77 runs gfortran -std=legacy). No source file was edited: manifests pre, mid and post are identical. The make dtest1 build ran and DTEST1 exited 0 printing FTEST CALLS = 3549, IFAIL = 0 and the six integrals. Every integral matches the printed value to all 8 printed decimals, within 1e-7; FTEST CALLS and IFAIL match exactly. Limit: the paper (ACM TOMS 17(4), 1991) was not read; the value checked is the archive's printed sample output. The ESTIMATED ERROR column is not claimed.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make dtest1 as the makefile documents it stops at once: 'make: f77: No such file or directory' (exit 2). The sandbox has no f77. Kept in the log.",
+    "log": "reports/berntsen1991-dcuhre-698/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/berntsen1991-dcuhre-698/recipe.sh",
+  "queue_commit": "86516a6",
+  "evidence": [
+    "reports/berntsen1991-dcuhre-698/evidence/original-attempt.log",
+    "reports/berntsen1991-dcuhre-698/evidence/unpack.log",
+    "reports/berntsen1991-dcuhre-698/evidence/build.log",
+    "reports/berntsen1991-dcuhre-698/evidence/run.txt",
+    "reports/berntsen1991-dcuhre-698/evidence/recipe-run.log",
+    "reports/berntsen1991-dcuhre-698/evidence/shipped-sample-output.txt",
+    "reports/berntsen1991-dcuhre-698/evidence/manifests/manifest.pre",
+    "reports/berntsen1991-dcuhre-698/evidence/manifests/manifest.mid",
+    "reports/berntsen1991-dcuhre-698/evidence/manifests/manifest.post"
+  ],
+  "replayed": [
+    {
+      "utc": "2026-11-27T06:09:36Z",
+      "kind": "clean",
+      "values": {
+        "FTEST CALLS": 3549.0,
+        "IFAIL": 0.0,
+        "integral 1": 0.13850818,
+        "integral 2": 0.06369469,
+        "integral 3": 0.05861748,
+        "integral 4": 0.05407034,
+        "integral 5": 0.05005614,
+        "integral 6": 0.04654608
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/berntsen1991-dcuhre-698/evidence/replay-2026-11-27T060936Z.log",
+      "seconds": 59
+    }
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "27d891c14cabaefddd7c9cd6d3a6a2ae5b60eafa70901c32914f019363fda501",
+    "compared": 27,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "make dtest1"
+    ],
+    "manifests": {
+      "pre": "reports/berntsen1991-dcuhre-698/evidence/manifest.pre",
+      "mid": "reports/berntsen1991-dcuhre-698/evidence/manifest.mid",
+      "post": "reports/berntsen1991-dcuhre-698/evidence/manifest.post"
+    }
+  }
+}

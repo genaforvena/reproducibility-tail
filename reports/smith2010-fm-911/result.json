@@ -57,6 +57,17 @@
       "why": "agrees with the record",
       "log": "reports/smith2010-fm-911/evidence/replay-2026-11-27T001959Z.log",
       "seconds": 168
+    },
+    {
+      "utc": "2026-11-27T01:26:16Z",
+      "kind": "clean",
+      "values": {
+        "real root of x**5-3x**4+x**3-4x**2+x-6 (SampleFM.out sample 2, 500-digit value rounded to double; the first 16 significant digits are 3.120656215326726)": 3.1206562153267265
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/smith2010-fm-911/evidence/replay-2026-11-27T012616Z.log",
+      "seconds": 141
     }
   ],
   "evidence": [

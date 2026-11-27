@@ -1,0 +1,33 @@
+hong2003-snied-823 diagnosis, wake 04:34Z (continuation of diagnosis-2026-11-27.txt). Diagnostic only; verdict stays blocked.
+Probe sources in probes/ (dump*.f, run in the sandbox against /work/tree Snied sources, gfortran 16.2, -O2 unless noted).
+
+1. Dimension split. OUTS(1,i) is identical between the default-real-4 and -fdefault-real-8 builds for i=1..6 (to 16 digits).
+   OUTS(2,i) differs from i=1. So the difference is in the dimension-2 generator matrix, not in the sequence engine.
+   Generator rows (SCJ, probes/dump2.f): row 1 identical in both builds; row 2 differs from its first entry
+   (real4 1854258392 1585634634 2034281129 ...; real8 1803085656 1371001802 2106670633 ...).
+2. Scrambling matrices (probes/dump4.f, GNCRML): LSM row 1 identical; LSM row 2 differs from column 3 on, and SHIFT(2) differs
+   (real4 740508288, real8 1575012736). No uninitialised values involved: -finit-real=nan, -finit-integer=-999,
+   -finit-local-zero, -fcheck=all and -Wuninitialized give identical output (flags test in the earlier session).
+3. The only random input is UNI (Src/extra.f, James RCG), which feeds GNCRML as INT(UNI()*1000.0) mod 2.
+   400 UNI draws (probes/dump5.f): the INT(U*1000) parities are identical in all 400 draws, but the double values differ by
+   about one ulp in 377 of 400 draws.
+4. Root of the ulp difference (probes/dump6.f): the DATA seeds of UNI are stored differently by the two builds.
+   seed SEEDS(24) = 0.5140357d0:
+     default real-4 build stores 0.51403569999999998 (= correctly rounded nearest double; python float('0.5140357'))
+     -fdefault-real-8 build stores 0.51403570000000000 (a different double, one ulp up)
+   SEEDS(1) = 0.8804418d0: real4 0.88044180000000005 (correctly rounded), real8 0.88044180000000000.
+   So -fdefault-real-8 changes how the d0 literals in DATA are converted. The seeds are double in both builds, so this is a
+   compiler conversion effect, not a REAL variable in the source (grep finds only REAL TARRAY(2) in src.f and REAL SECOND, T1 in driver).
+5. Interpretation: the REAL-precision lead from the first session is real but is a conversion of the UNI seed constants, which
+   moves the scrambling matrices of dimension 2 and not the algorithm. Whether the shipped res1 comes from a different rounding of
+   these constants (for example an x87/double-rounding toolchain of the era) is an untested hypothesis. It is NOT a reproduction:
+   testing it means choosing constants until the number matches, which is not allowed. A legitimate test would be a documented
+   compiler/rounding mode that the authors could have used, applied before seeing the shipped number.
+6. Shipped res1 at 512 = 0.9999562489621427; ours (default real-4) 0.99997540338373248; real-8 build 0.999920933728599. Neither matches, so
+   the seed rounding alone does not explain the shipped value. Verdict remains blocked.
+
+7. Sibling check: Sniedx, Snied, Sfaur and Ssobol carry the identical DATA SEEDS table (Src/extra.f line 62-70), and Sniedx
+   matches its shipped value exactly under the default real-4 build. So the default build's seed rounding is the one the sibling
+   family's shipped values were produced with; the seed-rounding lead therefore does not explain the Snied gap by itself.
+   Open: the -fdefault-real-8 result is not tested on Sniedx; the Snied gap (dimension 2 in GNCRML) remains unlocalised.
+Open next step: find which Snied-only code (GNCRML/SCLCC2 call order for dimension 2, or the driver's DIMEN/IFLAG) differs from the Sniedx path.

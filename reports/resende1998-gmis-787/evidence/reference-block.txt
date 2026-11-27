@@ -1,0 +1,4 @@
+ output--------------------------------------------------------
+ Size of indep set :          7
+ Found on tuple    :          1
+ Iteration         :          1

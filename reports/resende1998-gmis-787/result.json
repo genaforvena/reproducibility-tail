@@ -1,0 +1,91 @@
+{
+  "paper": {
+    "short": "resende1998-gmis-787",
+    "title": "Algorithm 787: Fortran subroutines for approximate solution of maximum independent stable set problems using GRASP",
+    "year": 1998,
+    "doi": null
+  },
+  "field": "combinatorics and optimization (maximum independent set heuristic, GRASP)",
+  "field_class": "other",
+  "stack": "Fortran 77 (TOMS 787.gz: a shar with Doc/Makefile, Doc/read.me, Fortran77/Drivers/Sp/{driver.f,RES,data}, Fortran77/Src/Sp/src.f)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "gmis (GRASP, seed 270001, look4 50, maxitr 1000) on the shipped sample instance (data: 50 nodes, 619 arcs) prints 'Size of indep set : 7', as in the shipped RES output block. Exact tolerance (tol_abs 0), fixed in the queue entry before any run. The value 7 is the known optimum stated in read.me.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/resende1998-gmis-787/evidence/reference/RES",
+      "sha256": "9dd030a049102f6cdfa3ca885edad7b4356092b08b82e7116ff9ca96572be9e4",
+      "archive": "netlib.org/toms/787.gz sha256 dc7105e38d4dac8082ee6d010bd4c9a904d61b1a182532414ecd2c7dcf3768fe"
+    },
+    "values": [
+      {
+        "name": "size of indep set, sample instance, seed 270001",
+        "paper": 7,
+        "tol_abs": 0,
+        "ours": 7
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced at the registered claim (exact). Both passes (clean rebuilds of the unpacked tree, each run on the shipped sample instance) print 'Size of indep set : 7' at iteration 1, with the same independent set {5, 15, 16, 27, 31, 32, 45} as the shipped RES block. The archive as shipped did not produce a binary: the shar's heredoc is unquoted, so the shell expands $(FC) $(FFLAGS) $(OBJS_GMIS) at unpack time and the Makefile rule loses its prerequisites and compiler (make reports 'o: No such file' and exits 0 because the error is ignored; no gmis executable). The build was therefore run as three gfortran commands carrying out the rule the Makefile intends (FFLAGS=-O from the Makefile; FC=gfortran). No source or build file was edited before the build (build-only, manifests pre, mid and post compared). Caveat: the claim is weak: the integer 7 is the known optimum, reached on the first GRASP iteration, so any run that finds an optimum would pass it; the set comparison with RES is extra evidence, not part of the registered claim.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "the authors' Doc/Makefile, as unpacked from the shar, has an empty compile rule (FC, FFLAGS and OBJS_GMIS expanded to nothing by the unquoted heredoc), so make produces no gmis executable (gmis_binary=no). make's own exit status is 0 only because the error is marked ignored.",
+    "log": "reports/resende1998-gmis-787/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/resende1998-gmis-787/recipe.sh",
+  "queue_commit": "be3325d49a47e0bc6f77a2cb2576db93e6b74a4a",
+  "evidence": [
+    "reports/resende1998-gmis-787/evidence/fetch-toolchain.log",
+    "reports/resende1998-gmis-787/evidence/original-attempt.log",
+    "reports/resende1998-gmis-787/evidence/unpack.log",
+    "reports/resende1998-gmis-787/evidence/pass1-build.log",
+    "reports/resende1998-gmis-787/evidence/pass1-run.log",
+    "reports/resende1998-gmis-787/evidence/pass2-run.log",
+    "reports/resende1998-gmis-787/evidence/pass1-output.txt",
+    "reports/resende1998-gmis-787/evidence/pass2-output.txt",
+    "reports/resende1998-gmis-787/evidence/reference-block.txt",
+    "reports/resende1998-gmis-787/evidence/values.txt",
+    "reports/resende1998-gmis-787/evidence/trial-compile.log",
+    "reports/resende1998-gmis-787/evidence/record.log",
+    "reports/resende1998-gmis-787/evidence/recipe-run.log",
+    "reports/resende1998-gmis-787/evidence/reference/RES"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "dc7105e38d4dac8082ee6d010bd4c9a904d61b1a182532414ecd2c7dcf3768fe",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -O -c Fortran77/Drivers/Sp/driver.f -o driver.o",
+      "gfortran -O -c Fortran77/Src/Sp/src.f -o src.o",
+      "gfortran -O driver.o src.o -o gmis"
+    ],
+    "manifests": {
+      "pre": "reports/resende1998-gmis-787/evidence/manifest.pre",
+      "mid": "reports/resende1998-gmis-787/evidence/manifest.mid",
+      "post": "reports/resende1998-gmis-787/evidence/manifest.post"
+    }
+  }
+}

@@ -40,5 +40,5 @@
   "data_licence": "Netlib CALGO archive; licence per the archive's own notices (the rerun should record it)."
  },
  "why": "The driver runs the product-type Gauss-Legendre Simpson rule for a fixed integrand and prints the N=10 value; no closed form gives that quadrature output at N=10, so the rerun must execute the Fortran method.",
- "registered": "2026-11-27T15:47:00Z"
+ "registered": "2026-11-27T15:46:30Z"
 }

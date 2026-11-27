@@ -20,7 +20,7 @@ By field: astronomy 1, biology 1, ecology 1, numerics 94, other 4, statistics 6
 By stack: C/C++ 14, Fortran 79, Java 1, MATLAB/Octave 7, R 5, other 1
 By decade: 0 1, 1960 4, 1970 13, 1980 9, 1990 35, 2000 28, 2010 17
 
-Data as of 2026-11-27T15:52:00Z (the newest replay or funnel entry).
+Data as of 2026-11-27T15:47:56Z (the newest replay or funnel entry).
 
 ## The funnel
 

@@ -5,28 +5,28 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-69 papers attempted.
+70 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 17 |
-| B | authors' code with build fixes | 36 |
+| B | authors' code with build fixes | 37 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 14 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 56, other 4, statistics 6
-By stack: C/C++ 9, Fortran 48, Java 1, MATLAB/Octave 6, R 5
-By decade: 1960 3, 1970 4, 1980 6, 1990 21, 2000 24, 2010 11
+By field: astronomy 1, biology 1, ecology 1, numerics 57, other 4, statistics 6
+By stack: C/C++ 9, Fortran 49, Java 1, MATLAB/Octave 6, R 5
+By decade: 1960 3, 1970 4, 1980 6, 1990 22, 2000 24, 2010 11
 
-Data as of 2026-11-27T06:53Z (the newest replay or funnel entry).
+Data as of 2026-11-27T06:56:39Z (the newest replay or funnel entry).
 
 ## The funnel
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-69 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+70 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **339 candidates considered from 4 of 4 frames: 64 attempted (19%), 0 unreachable, 275 rejected.**
 
@@ -74,12 +74,14 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 41 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 42 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
 
 ## Results
 
 | paper | field · year · stack | claim | paper value ± tol | our value | Δ | margin | basis | gates G1 G2 G3 G5 | grade | verdict | last replay |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| [akima1991-uvip3p-697](reports/akima1991-uvip3p-697/result.md) | numerics · 1991 · Fortran | The one-call result YI2 of UVIP3P, for the 31 abscissas of the shipped driver TTUVIP, agrees with the driver's expected values YIE(31,2) within 0.0005 absolute, for NP = 3 and NP = 6 (artifact-reference: the shipped expected values are the oracle, not a value printed in the paper). (YI2 vs YIE, NP=3, all 31 points) [shipped reference output] | 0 ± 0.0005 | 0 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [akima1991-uvip3p-697](reports/akima1991-uvip3p-697/result.md) | numerics · 1991 · Fortran | The one-call result YI2 of UVIP3P, for the 31 abscissas of the shipped driver TTUVIP, agrees with the driver's expected values YIE(31,2) within 0.0005 absolute, for NP = 3 and NP = 6 (artifact-reference: the shipped expected values are the oracle, not a value printed in the paper). (YI2 vs YIE, NP=6, all 31 points) [shipped reference output] | 0 ± 0.0005 | 0 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [akima1996-sdbi3p-761](reports/akima1996-sdbi3p-761/result.md) | numerics · 1996 · Fortran | ZI1(XI,YI) printed by the authors' driver for six registered grid points of the 'Calculation by points' table in the shipped result file res (SDBI3P, 30 data points), against the values printed in the same file (ZI1(XI=5, YI=5)) [shipped reference output] | 39.37 ± 0.011 | 39.37 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [akima1996-sdbi3p-761](reports/akima1996-sdbi3p-761/result.md) | numerics · 1996 · Fortran | ZI1(XI,YI) printed by the authors' driver for six registered grid points of the 'Calculation by points' table in the shipped result file res (SDBI3P, 30 data points), against the values printed in the same file (ZI1(XI=10, YI=10)) [shipped reference output] | 16.36 ± 0.011 | 16.36 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [akima1996-sdbi3p-761](reports/akima1996-sdbi3p-761/result.md) | numerics · 1996 · Fortran | ZI1(XI,YI) printed by the authors' driver for six registered grid points of the 'Calculation by points' table in the shipped result file res (SDBI3P, 30 data points), against the values printed in the same file (ZI1(XI=15, YI=10)) [shipped reference output] | 12.98 ± 0.011 | 12.98 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |

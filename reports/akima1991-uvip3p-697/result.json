@@ -1,0 +1,116 @@
+{
+  "paper": {
+    "short": "akima1991-uvip3p-697",
+    "title": "Algorithm 697: univariate interpolation, improved Akima method (subroutine UVIP3P)",
+    "year": 1991,
+    "doi": null,
+    "venue": "ACM Transactions on Mathematical Software 17(3), Sept 1991, p. 367 (Collected Algorithms from ACM, Algorithm 697); article text not read (ACM page unreachable from this host)"
+  },
+  "field": "numerics (univariate interpolation, piecewise polynomial)",
+  "stack": "Fortran 77 (TOMS 697 697.f: test program TTUVIP and subroutine UVIP3P, Hiroshi Akima, NTIA/ITS, version of 89/07/04)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "The one-call result YI2 of UVIP3P, for the 31 abscissas of the shipped driver TTUVIP, agrees with the driver's expected values YIE(31,2) within 0.0005 absolute, for NP = 3 and NP = 6 (artifact-reference: the shipped expected values are the oracle, not a value printed in the paper).",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/akima1991-uvip3p-697/evidence/source-range.f",
+      "sha256": "ee32dfeb679873fa2bf1a413d23fcc5e13c20f0deab61382bfdf8e2f8eb3b4d5",
+      "archive": "netlib.org/toms/697.gz sha256 4ffb55563069643e621b7142134398e4a8c2fb4364e4472ede2bb455cf5d5e22; the file is lines 1-538 of its 697.f (sha256 946b9d16e236c1e8ba235ba0a6f95502401235dfc1caf78571a4a83a5a8dbff8), which hold the driver TTUVIP with the DATA YIE expected values"
+    },
+    "values": [
+      {
+        "name": "YI2 vs YIE, NP=3, all 31 points",
+        "paper": 0.0,
+        "tol_abs": 0.0005,
+        "ours": 0.0
+      },
+      {
+        "name": "YI2 vs YIE, NP=6, all 31 points",
+        "paper": 0.0,
+        "tol_abs": 0.0005,
+        "ours": 0.0
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Compiled the authors' 697.f as shipped: it fails ('Two main PROGRAMs at (1) and (2)') because the file holds the program TTUVIP and the subroutine UVIP3P twice (lines 1-538 and 539-1073; the second copy differs only in a comment and an uncommented OPEN, label 10). Patch (extraction): the build copies lines 1-538 verbatim into UVIP.f and compiles it with gfortran -std=legacy -w -o ttuvip UVIP.f. record checks the copied bytes against the archive lines (sha256 ee32dfeb...), and the manifests before the patch, before the build and after it show that only UVIP.f was added. Two clean passes (rebuilt from a fresh copy each time) print identical tables. The printed value is the largest |DYI2| (the driver's YI2 - YIE, F9.3) for each NP: 0.000 for both. The driver also prints DYI1 and DYI3 (the repeated-call and inverted-data calls); those are 0.000 at print precision too. Print precision is 0.001, so a printed 0.000 means |YI2 - YIE| < 0.0005; the result is therefore a match at the registered tolerance, not a finer value.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The file as shipped does not compile: the program TTUVIP and the subroutine UVIP3P are each defined twice in 697.f ('Two main PROGRAMs at (1) and (2)'). No build file ships. Kept in the log.",
+    "log": "reports/akima1991-uvip3p-697/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/akima1991-uvip3p-697/recipe.sh",
+  "queue_commit": "ecbf0e0",
+  "evidence": [
+    "reports/akima1991-uvip3p-697/evidence/original-attempt.log",
+    "reports/akima1991-uvip3p-697/evidence/build.log",
+    "reports/akima1991-uvip3p-697/evidence/recipe-run.log",
+    "reports/akima1991-uvip3p-697/evidence/pass1-stdout.txt",
+    "reports/akima1991-uvip3p-697/evidence/pass2-stdout.txt",
+    "reports/akima1991-uvip3p-697/evidence/values.txt",
+    "reports/akima1991-uvip3p-697/evidence/source-range.f",
+    "reports/akima1991-uvip3p-697/evidence/record.log",
+    "reports/akima1991-uvip3p-697/evidence/manifest.pre",
+    "reports/akima1991-uvip3p-697/evidence/manifest.mid",
+    "reports/akima1991-uvip3p-697/evidence/manifest.post"
+  ],
+  "replayed": [
+    {
+      "utc": "2026-11-27T06:56:39Z",
+      "kind": "clean",
+      "values": {
+        "YI2 vs YIE, NP=3, all 31 points": 0.0,
+        "YI2 vs YIE, NP=6, all 31 points": 0.0
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/akima1991-uvip3p-697/evidence/replay-2026-11-27T065639Z.log",
+      "seconds": 180
+    }
+  ],
+  "patch": {
+    "kind": "extraction",
+    "archive_sha256": "4ffb55563069643e621b7142134398e4a8c2fb4364e4472ede2bb455cf5d5e22",
+    "compared": 1,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": [
+        "UVIP.f"
+      ]
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -std=legacy -w -o ttuvip UVIP.f"
+    ],
+    "manifests": {
+      "pre": "reports/akima1991-uvip3p-697/evidence/manifest.pre",
+      "mid": "reports/akima1991-uvip3p-697/evidence/manifest.mid",
+      "post": "reports/akima1991-uvip3p-697/evidence/manifest.post"
+    },
+    "extraction": {
+      "file_sha256": "946b9d16e236c1e8ba235ba0a6f95502401235dfc1caf78571a4a83a5a8dbff8",
+      "file": "697.f",
+      "start": 1,
+      "end": 538,
+      "extracted": "UVIP.f",
+      "range_sha256": "ee32dfeb679873fa2bf1a413d23fcc5e13c20f0deab61382bfdf8e2f8eb3b4d5"
+    }
+  }
+}

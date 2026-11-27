@@ -21,7 +21,7 @@
       {
         "name": "DMU_ITNS1",
         "paper": 0.0775958,
-        "tol_abs": 1e-7,
+        "tol_abs": 1e-07,
         "ours": 0.0775958
       }
     ],
@@ -46,13 +46,25 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "pending",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
   "recipe": "reports/saylor1973-adip-460/recipe.sh",
   "queue_commit": "f4decf2",
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-27T18:58:49Z",
+      "kind": "clean",
+      "values": {
+        "DMU_ITNS1": 0.0775958
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/saylor1973-adip-460/evidence/replay-2026-11-27T185849Z.log",
+      "seconds": 64
+    }
+  ],
   "evidence": [
     "evidence/res-shipped",
     "evidence/fetch.log",

@@ -1,0 +1,195 @@
+{
+  "paper": {
+    "short": "hurst1972-rnvr-425",
+    "title": "Algorithm 425: Generation of Random Correlated Normal Variables",
+    "year": 1972,
+    "doi": null
+  },
+  "field": "numerics (random variate generation, multivariate normal)",
+  "stack": "Fortran 77 (TOMS/CALGO 425 shell archive 425.gz; driver.f and src.f, gfortran 16.2.0 from conda-forge)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Shipped reference Fortran/Sp/Drivers/res (inside 425.gz): the printed TEST02 output of driver.f, RNVR on the 2x2 covariance [1 0.3; 0.3 1] with seed iarg=123456789, 10 samples x 2 components, g14.6 format. Claim values: the 20 printed variates, tolerance 1e-5 absolute.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "TEST02 sample 1 component 1",
+        "paper": 1.24296,
+        "tol_abs": 1e-05,
+        "ours": 1.24296
+      },
+      {
+        "name": "TEST02 sample 1 component 2",
+        "paper": 0.594892,
+        "tol_abs": 1e-05,
+        "ours": 0.594892
+      },
+      {
+        "name": "TEST02 sample 2 component 1",
+        "paper": -0.134458,
+        "tol_abs": 1e-05,
+        "ours": -0.134458
+      },
+      {
+        "name": "TEST02 sample 2 component 2",
+        "paper": -0.697435,
+        "tol_abs": 1e-05,
+        "ours": -0.697435
+      },
+      {
+        "name": "TEST02 sample 3 component 1",
+        "paper": -0.307862,
+        "tol_abs": 1e-05,
+        "ours": -0.307862
+      },
+      {
+        "name": "TEST02 sample 3 component 2",
+        "paper": -0.564875,
+        "tol_abs": 1e-05,
+        "ours": -0.564875
+      },
+      {
+        "name": "TEST02 sample 4 component 1",
+        "paper": -0.430708,
+        "tol_abs": 1e-05,
+        "ours": -0.430708
+      },
+      {
+        "name": "TEST02 sample 4 component 2",
+        "paper": -0.00855063,
+        "tol_abs": 1e-05,
+        "ours": -0.00855063
+      },
+      {
+        "name": "TEST02 sample 5 component 1",
+        "paper": -0.702977,
+        "tol_abs": 1e-05,
+        "ours": -0.702977
+      },
+      {
+        "name": "TEST02 sample 5 component 2",
+        "paper": -0.288103,
+        "tol_abs": 1e-05,
+        "ours": -0.288103
+      },
+      {
+        "name": "TEST02 sample 6 component 1",
+        "paper": -0.561967,
+        "tol_abs": 1e-05,
+        "ours": -0.561967
+      },
+      {
+        "name": "TEST02 sample 6 component 2",
+        "paper": 1.21474,
+        "tol_abs": 1e-05,
+        "ours": 1.21474
+      },
+      {
+        "name": "TEST02 sample 7 component 1",
+        "paper": 0.757011,
+        "tol_abs": 1e-05,
+        "ours": 0.757011
+      },
+      {
+        "name": "TEST02 sample 7 component 2",
+        "paper": -0.0440338,
+        "tol_abs": 1e-05,
+        "ours": -0.0440338
+      },
+      {
+        "name": "TEST02 sample 8 component 1",
+        "paper": 0.143903,
+        "tol_abs": 1e-05,
+        "ours": 0.143903
+      },
+      {
+        "name": "TEST02 sample 8 component 2",
+        "paper": 0.173469,
+        "tol_abs": 1e-05,
+        "ours": 0.173469
+      },
+      {
+        "name": "TEST02 sample 9 component 1",
+        "paper": -0.217714,
+        "tol_abs": 1e-05,
+        "ours": -0.217714
+      },
+      {
+        "name": "TEST02 sample 9 component 2",
+        "paper": 0.292083,
+        "tol_abs": 1e-05,
+        "ours": 0.292083
+      },
+      {
+        "name": "TEST02 sample 10 component 1",
+        "paper": -0.811921,
+        "tol_abs": 1e-05,
+        "ours": -0.811921
+      },
+      {
+        "name": "TEST02 sample 10 component 2",
+        "paper": -0.54103,
+        "tol_abs": 1e-05,
+        "ours": -0.54103
+      }
+    ],
+    "reference": {
+      "file": "reports/hurst1972-rnvr-425/evidence/shipped-res.txt",
+      "sha256": "7318519503517084da980b2ea619f3d5e14df14dadc1e6ca22fdc7cdf8a3efa4",
+      "archive": "425.gz sha256 000dc68c060cad2f2941ebf85edb2f762f653b5ed6ed7783e39b53109ec9852b"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Authors' Fortran 77 (Fortran/Sp/Drivers/driver.f and Fortran/Sp/Src/src.f) built with gfortran 16.2.0 (conda-forge) and run twice from clean directories. The shipped Makefile names no compiler (F77 empty) and its src.o rule expects src.f beside driver.f, which the archive places in Src; the build therefore uses the Makefile's own compile and link rules by hand, with -O2 and no source edits (build-only per the manifests). All 20 TEST02 values equal the shipped res to the printed precision; both passes agree.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "no Fortran compiler on the host PATH or in the sandbox; the shipped Makefile runs f77 with no compiler set (make: f77: No such file or directory)",
+    "log": "reports/hurst1972-rnvr-425/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "not-run",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/hurst1972-rnvr-425/recipe.sh",
+  "queue_commit": "9e7d956",
+  "evidence": [
+    "reports/hurst1972-rnvr-425/result.md",
+    "reports/hurst1972-rnvr-425/evidence/recipe-run.log",
+    "reports/hurst1972-rnvr-425/evidence/original-attempt.log",
+    "reports/hurst1972-rnvr-425/evidence/shipped-res.txt",
+    "reports/hurst1972-rnvr-425/impl/parse_hurst.py"
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "000dc68c060cad2f2941ebf85edb2f762f653b5ed6ed7783e39b53109ec9852b",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -O2 -c driver.f",
+      "gfortran -O2 -c ../Src/src.f -o src.o",
+      "gfortran -O2 -o driver driver.o src.o"
+    ],
+    "manifests": {
+      "pre": "reports/hurst1972-rnvr-425/evidence/manifest.pre",
+      "mid": "reports/hurst1972-rnvr-425/evidence/manifest.mid",
+      "post": "reports/hurst1972-rnvr-425/evidence/manifest.post"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+addpath(genpath('/work/oct8/share/octave/8.4.0/m'));
+addpath('/work/fetch/root/usr/share/sdpa/mex');
+addpath('/work/fetch/root/usr/lib/sdpa/mex');
+addpath('/work/shim');
+addpath('/work/src/920/Matlab/Src');
+addpath('/work/src/920/Matlab/Drivers');
+sDim = 2; noOfSensors = 3; noOfAnchors = 4;
+xMatrix0 = [0.3000 0.3000 0.7000 0 0 1.0000 1.0000; 0.4000 0.6000 0.6000 0 1.0000 0 1.0000];
+distanceMatrix0 = [0 0.219579 0.414739 0.501646 0.756645 0 0; 0 0 0.356155 0.629003 0.471282 0 0; 0 0 0 0 0 0.647147 0.468894];
+pars.free = 0; pars.eps = 1.0e-07; pars.minDegree = 4; pars.objSW = 1;
+[xMatrix, info] = SFSDPplus(sDim, noOfSensors, noOfAnchors, xMatrix0, distanceMatrix0, pars);

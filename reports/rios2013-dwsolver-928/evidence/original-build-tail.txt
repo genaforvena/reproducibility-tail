@@ -1,0 +1,22 @@
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking whether gcc and cc understand -c and -o together... yes
+checking for exp in -lm... yes
+checking for sem_wait in -lpthread... yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking for gettimeofday... yes
+checking whether to use named semaphores... no
+checking whether to use recursive mutices... no
+checking whether to use GNU MP bignum library... no
+checking whether to use zlib data compression library... no
+checking whether to enable shared library support... no
+checking whether to enable MathProg ODBC support... no
+checking whether to enable MathProg MySQL support... no
+configure: creating ./config.status
+config.status: error: cannot find input file: `src/Makefile.in'
+----
+make: *** No targets specified and no makefile found.  Stop.

@@ -1,0 +1,43 @@
+                                                                 ·   1
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+DWSOLVER: Stand-alone Dantzig-Wolfe Decomposition Solver
+(C) 2010 National Aeronautics and Space Administration
+Covered under GPLv3 with Additional Terms
+Compiled using GLPK version 4.44 (slightly modified)
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+The master currently has 3 rows and 1 columns.
+No auxiliary variables introduced. Straight to Phase II.
+
+### Iteration 0 of phase II ###
+################################################
+#### Master objective value = -3.200000e+01
+################################################
+
+### Iteration 1 of phase II ###
+No columns added, but simplex made progress.
+################################################
+#### Master objective value = -3.200000e+01
+################################################
+
+### Iteration 2 of phase II ###
+################################################
+#### Master objective value = -3.666667e+01
+################################################
+
+### Iteration 3 of phase II ###
+I think we’ve converged on an optimum.
+################################################
+#### Master objective value = -3.666667e+01
+################################################
+Didn’t add any columns? Let’s break.
+Done with solving the relaxation...
+Printing final master to done.cpxlp...   DONE!
+Waiting for subthreads...                DONE!
+Printing relaxed solution to file...     DONE!
+Freeing subproblem data..                DONE!
+Freeing globals...                       DONE!
+Master made it to the end. Exiting gracefully, dignity intact.
+

@@ -1,0 +1,69 @@
+{
+  "paper": {
+    "short": "rios2013-dwsolver-928",
+    "title": "Algorithm 928: A general, parallel implementation of Dantzig-Wolfe decomposition (DWSOLVER)",
+    "year": 2013,
+    "doi": null
+  },
+  "field": "operations research and numerical optimisation (Dantzig-Wolfe decomposition of block-angular linear programs)",
+  "field_class": "numerics",
+  "stack": "C with POSIX threads; bundled GLPK 4.44 (modified for thread safety); netlib TOMS 928.zip (C/Src/src, C/Examples, Doc/)",
+  "stack_class": "C/C++",
+  "claim": {
+    "text": "Final master objective of the book_test example, printed as '#### Master objective value = -3.666667e+01' in the shipped Doc/exampleOutput.pdf (registered -36.666667, tol_abs 1e-5). Blocked: the shipped reference does not come from the shipped book_test input (3-row master in the log, 5-row master from the input). See note-to-scout.md.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "final master objective, book_test",
+        "paper": -36.666667,
+        "tol_abs": 1e-05,
+        "ours": null
+      }
+    ],
+    "reference": {
+      "file": "reports/rios2013-dwsolver-928/evidence/shipped-exampleOutput.txt",
+      "archive": "netlib.org/toms/928.zip, Doc/exampleOutput.pdf (pdftotext -layout). Archive sha256 703ed2c2fd8c665b7e1552727cbfaf5f77dcaaac440b5ba6189622e7639b4dca (fetched 2026-11-27 by rerun)",
+      "sha256": "a99087cadfffda02750e82be618b86f271e47fa5c2a6cd038e220785b266f3c8"
+    }
+  },
+  "basis": "patched",
+  "verdict": "blocked",
+  "cause": null,
+  "attempt": "Original attempt (G1): the authors' tree as shipped does not configure (archive ships C/Src/src; configure expects C/src; 'cannot find input file src/Makefile.in'). Patched build, build layout and flags only, no source edit (impl/build-rios.sh pat): symlink src -> Src/src, CPPFLAGS=-I for config.h, CFLAGS=-fcommon (dw.h globals without extern), and the same gcc link in place of the missing libtool wrapper; 115 objects built. Two runs of dwsolver -g book_test: final master objective 6.357895e+01 both times, the master starts at 5 rows and 2 columns. The shipped reference starts at 3 rows and 1 column and ends at -3.666667e+01, so it does not come from the shipped input. Blocked on the claim, not a not-reproduced verdict. G2 not evaluated (blocked).",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "configure fails on the archive layout (C/Src/src versus the configure.ac expectation C/src); make then finds no makefile. Build flags and a libtool wrapper are also missing in the patched build; the authors' documented ./configure && make cannot complete as shipped.",
+    "log": "reports/rios2013-dwsolver-928/evidence/original-build-tail.txt"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/rios2013-dwsolver-928/recipe.sh",
+  "queue_commit": "88873de",
+  "evidence": [
+    "reports/rios2013-dwsolver-928/evidence/fetch.log",
+    "reports/rios2013-dwsolver-928/evidence/original-build.txt",
+    "reports/rios2013-dwsolver-928/evidence/original-build-tail.txt",
+    "reports/rios2013-dwsolver-928/evidence/patched-build.txt",
+    "reports/rios2013-dwsolver-928/evidence/shipped-exampleOutput.txt",
+    "reports/rios2013-dwsolver-928/evidence/input-book_test-and-master.txt",
+    "reports/rios2013-dwsolver-928/evidence/run-pass1-full.log",
+    "reports/rios2013-dwsolver-928/evidence/run-pass2-full.log",
+    "reports/rios2013-dwsolver-928/evidence/run-pass1.log",
+    "reports/rios2013-dwsolver-928/evidence/run-pass2.log",
+    "reports/rios2013-dwsolver-928/evidence/recipe-run.log",
+    "reports/rios2013-dwsolver-928/note-to-scout.md"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-layout-and-flags",
+    "note": "Not build-only by the verify_sources definition (no manifests recorded). Not used for a value; G2 not evaluated."
+  },
+  "blocked_on": "scout: the claim's reference output does not match the shipped input (see note-to-scout.md)"
+}

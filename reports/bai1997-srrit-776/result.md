@@ -31,4 +31,10 @@ Paper: Bai and Stewart, Algorithm 776, SRRIT, ACM TOMS 23(4), 1997 (netlib TOMS 
 
 ## Replay and recurrence
 
-Not replayed yet (G5 na). Next scheduled replay follows the ledger's replay-due duty.
+Replay 1 (2026-11-27 09:08Z, `evidence/replay-2026-11-27T090823Z.log`): DIFFERS, G5 fail. Cause: the recipe printed the
+BWM value only as an `OBSERVED` line, with no `VALUE <name> <number>` line, so the replay had nothing to compare. The value
+itself was unchanged (the authors' driver printed `-1.235506919564D+03`). Not a numerical change. The recipe now also prints the
+claimed VALUE line, converting the Fortran `D` exponent to `E`.
+
+Replay 2 (2026-11-27 09:10Z, `evidence/replay-2026-11-27T090940Z.log`): AGREES with the record. Recurrence check: the next
+scheduled replay follows the ledger's replay-due duty.

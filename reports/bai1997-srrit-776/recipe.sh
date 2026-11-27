@@ -72,8 +72,10 @@ tools/sandbox.sh "$ID" -- sh -c 'rm -rf /work/run && mkdir -p /work/run && cd /w
   timeout 300 /work/build/dsubspiter < input > stdout.txt 2> stderr.txt; echo run_exit=$?; cat doutput 2>/dev/null' > "$E/run-doutput.txt" 2> "$E/run.log"
 tail -1 "$E/run.log"
 
-# Observed values, printed by the authors' own output (not a claimed VALUE line): the first converged WR of each
-# problem block that prints one. The BWM block (200 x 200) holds the shipped value -1.235506919564D+03.
+# Observed values: the first converged WR of each problem block that prints one. The BWM block (200 x 200) holds the
+# shipped value -1.235506919564D+03. The registered claim value is printed as a VALUE line (the replay contract), with
+# the Fortran D exponent written as E so the number parses. The name is the one in result.json and queue/ (unchanged).
 blockwr() { awk -v b="$2" 'index($0, "Type of Test problem: " b) {f=1} f && /Converged Eigenvalues/ {g=1; next} g && /WR =/ {print $3; exit}' "$1"; }
 echo "OBSERVED RWK_first_WR $(blockwr "$E/run-doutput.txt" RWK)"
 echo "OBSERVED BWM_first_WR $(blockwr "$E/run-doutput.txt" BWM)"
+echo "VALUE WR, first converged eigenvalue, BWM 200x200 (double precision) $(blockwr "$E/run-doutput.txt" BWM | tr 'D' 'E')"

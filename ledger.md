@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-102 papers attempted.
+103 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 23 |
-| B | authors' code with build fixes | 56 |
+| B | authors' code with build fixes | 57 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 2 |
 | - | blocked or not yet run | 20 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 89, other 4, statistics 6
-By stack: C/C++ 12, Fortran 76, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 0 1, 1960 4, 1970 10, 1980 9, 1990 35, 2000 28, 2010 15
+By field: astronomy 1, biology 1, ecology 1, numerics 90, other 4, statistics 6
+By stack: C/C++ 12, Fortran 77, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 0 1, 1960 4, 1970 11, 1980 9, 1990 35, 2000 28, 2010 15
 
 Data as of 2026-11-27T14:44:18Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T14:44:18Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-102 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+103 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **496 candidates considered from 4 of 4 frames: 100 attempted (20%), 0 unreachable, 396 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 67 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 25 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 68 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 25 (ran as documented).
 
 ## Results
 
@@ -221,6 +221,7 @@ Authors' original artifact, among all attempted papers: failed 67 (did not run),
 | [knoble1979-purdy-536](reports/knoble1979-purdy-536/result.md) | numerics · 1979 · Fortran | For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree. (X=00000000000000005C) [shipped reference output] | 2.95328e+21 ± 0 | – | – | – | ? | · · · · | - | blocked | never clean |
 | [knoble1979-purdy-536](reports/knoble1979-purdy-536/result.md) | numerics · 1979 · Fortran | For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree. (X=FFFFFFFFFFFFFFFFFF) [shipped reference output] | 2.95328e+21 ± 0 | – | – | – | ? | · · · · | - | blocked | never clean |
 | [knoble1979-purdy-536](reports/knoble1979-purdy-536/result.md) | numerics · 1979 · Fortran | For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree. (X=555555555555555555) [shipped reference output] | 1.67222e+21 ± 0 | – | – | – | ? | · · · · | - | blocked | never clean |
+| [knop1973-dipole-441](reports/knop1973-dipole-441/result.md) | numerics · 1973 · Fortran | TEST01-style driver test 2 (A = B = 0.353553), Sample mean of 1000 DIPOLE deviates generated with seed 123456789 set in driver.f, is 0.110592 in the shipped res file. Registered by scout from the artifact's own reference output. Tolerance 5e-5 absolute, fixed before any run. (DIPOLE_MEAN_A0353553_N1000) [shipped reference output] | 0.110592 ± 5e-05 | 0.110592 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | never clean |
 | [kraft1994-tomp-733](reports/kraft1994-tomp-733/result.md) | numerics · 1994 · Fortran | Final cost of the constrained brachistochrone test driver, iteration 27, 1.7952392, tol_abs 1e-5 (shipped TOMP.OUT block, 733.f lines 77-109) (value) | 1.79524 ± 1e-05 | 1.79524 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(1,5) real) [shipped reference output] | -6.13032 ± 1e-06 | -6.13032 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(1,5) imag) [shipped reference output] | 3.8159 ± 1e-06 | 3.8159 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |

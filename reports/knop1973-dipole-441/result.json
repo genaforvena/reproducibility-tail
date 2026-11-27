@@ -1,0 +1,88 @@
+{
+  "paper": {
+    "short": "knop1973-dipole-441",
+    "title": "Algorithm 441: Random deviates from the dipole distribution (Collected Algorithms from ACM)",
+    "year": 1973,
+    "doi": null
+  },
+  "field": "numerics (statistics: random deviates from the dipole distribution)",
+  "field_class": "numerics",
+  "stack": "Fortran 77/90 (netlib TOMS 441.gz shell archive: Fortran/Sp/Src/src.f, driver Fortran/Sp/Drivers/driver.f, Makefile, shipped res)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "TEST01-style driver test 2 (A = B = 0.353553), Sample mean of 1000 DIPOLE deviates generated with seed 123456789 set in driver.f, is 0.110592 in the shipped res file. Registered by scout from the artifact's own reference output. Tolerance 5e-5 absolute, fixed before any run.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "DIPOLE_MEAN_A0353553_N1000",
+        "paper": 0.110592,
+        "tol_abs": 5e-05,
+        "ours": 0.110592
+      }
+    ],
+    "determinism": "stochastic, seed 123456789 set in driver.f (Park-Miller R11 integer generator; the stream is exact)",
+    "reference": {
+      "file": "reports/knop1973-dipole-441/evidence/res-shipped",
+      "archive": "netlib.org/toms/441.gz, sha256 bb261e7a11c7b173d6cc63e70961dff7611249b99bd1eee5bffa9ada77200fb0, file Fortran/Sp/Drivers/res",
+      "sha256": "7d6c2b196d7dfd85cec939bcc5255df1ee619784acc6d0a5cbad83f576636b16",
+      "note": "queue entry's f44af714... is the sha of the decompressed shar text, not of res."
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "G1: the authors' Makefile in the shipped layout stops at once with 'No rule to make target src.f, needed by src.o' because src.f sits in Fortran/Sp/Src, not beside the Makefile (log kept). The build then runs the Makefile's own rules as separate commands with the src.f path set to ../Src (gfortran 16.2.0, default flags, F77OPTS empty). No source file changed: the pre, mid and post manifests of the authors' sources are identical, so this is a build-only patch. Output of the driver is identical to the shipped res (diff exit 0), so the test-2 mean matches the reference line for line. Gfortran warns about the arithmetic IF in src.f (deleted in Fortran 2018); these are warnings, not errors.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make stops with 'No rule to make target src.f, needed by src.o': the archive places src.f in ../Src while the Makefile expects it in the same directory.",
+    "log": "reports/knop1973-dipole-441/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/knop1973-dipole-441/recipe.sh",
+  "queue_commit": "d245251",
+  "evidence": [
+    "reports/knop1973-dipole-441/evidence/fetch.log",
+    "reports/knop1973-dipole-441/evidence/original-attempt.log",
+    "reports/knop1973-dipole-441/evidence/manifest.pre",
+    "reports/knop1973-dipole-441/evidence/manifest.mid",
+    "reports/knop1973-dipole-441/evidence/manifest.post",
+    "reports/knop1973-dipole-441/evidence/recipe-run.log",
+    "reports/knop1973-dipole-441/evidence/Res",
+    "reports/knop1973-dipole-441/evidence/res-shipped",
+    "reports/knop1973-dipole-441/evidence/res-diff.txt"
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "bb261e7a11c7b173d6cc63e70961dff7611249b99bd1eee5bffa9ada77200fb0",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -c ../Src/src.f",
+      "gfortran -c driver.f",
+      "gfortran -o driver driver.o src.o",
+      "./driver > Res"
+    ],
+    "manifests": {
+      "pre": "reports/knop1973-dipole-441/evidence/manifest.pre",
+      "mid": "reports/knop1973-dipole-441/evidence/manifest.mid",
+      "post": "reports/knop1973-dipole-441/evidence/manifest.post"
+    }
+  }
+}

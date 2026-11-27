@@ -32,7 +32,7 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -50,7 +50,19 @@
     "reports/kraft1994-tomp-733/evidence/record.log",
     "reports/kraft1994-tomp-733/evidence/manual-prior-run"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-27T02:55:48Z",
+      "kind": "clean",
+      "values": {
+        "value": 1.7952392
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/kraft1994-tomp-733/evidence/replay-2026-11-27T025548Z.log",
+      "seconds": 64
+    }
+  ],
   "stack_class": "Fortran",
   "field_class": "numerics",
   "patch": {

@@ -35,7 +35,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "tools"))
-from build_ledger import CAUSES, FIELDS, ORIGINAL_OUTCOMES, STACKS, judge  # noqa: E402
+from build_ledger import CAUSES, FIELDS, ORIGINAL_OUTCOMES, STACKS, exact_string_claim, judge  # noqa: E402
 import verify_sources  # noqa: E402
 
 BASES = ("original", "patched", "reimplemented")
@@ -183,8 +183,10 @@ def violations(repo: Path) -> list[str]:
             bad.append(f"{rid}: claim.values missing")
             continue
         for v in values:
-            if not isinstance(v.get("paper"), (int, float)) or not isinstance(v.get("tol_abs"), (int, float)):
-                bad.append(f"{rid}: every claim value needs numeric paper and tol_abs")
+            numeric = isinstance(v.get("paper"), (int, float)) and not isinstance(v.get("paper"), bool)
+            if not (numeric or exact_string_claim(v)) or not isinstance(v.get("tol_abs"), (int, float)):
+                bad.append(f"{rid}: every claim value needs numeric paper and tol_abs, or an exact-string claim "
+                           f"(string paper with tol_abs = half a unit in its last printed decimal)")
                 break
         claim = r.get("claim", {})
         if claim.get("source", "paper-text") not in ("paper-text", "artifact-reference"):
@@ -211,6 +213,16 @@ def violations(repo: Path) -> list[str]:
                 bad.append(f"{rid}: G0 queue_commit {str(r.get('queue_commit'))[:8]} does not hold queue/{rid}.json")
             elif was.stdout != (repo / qrel).read_text(encoding="utf-8"):
                 bad.append(f"{rid}: G0 the claim in {qrel} differs from the one the run was made against ({str(r.get('queue_commit'))[:8]})")
+            elif any(exact_string_claim(v) for v in values):
+                try:
+                    registered_values = json.loads(was.stdout)["claim"]["values"]
+                except (ValueError, KeyError, TypeError):
+                    registered_values = []
+                registered = {(q.get("name"), q.get("paper"), q.get("tol_abs")) for q in registered_values
+                              if isinstance(q, dict)}
+                for v in values:
+                    if exact_string_claim(v) and (v.get("name"), v.get("paper"), v.get("tol_abs")) not in registered:
+                        bad.append(f"{rid}: exact-string value {v.get('name')!r} is not registered as a string in the queue claim")
         basis = r.get("basis")
         gates = r.get("gates", {})
         if verdict != "blocked":

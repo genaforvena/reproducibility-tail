@@ -12,7 +12,9 @@ from __future__ import annotations
 import argparse
 import collections
 import json
+import re
 import sys
+from decimal import Decimal
 from pathlib import Path
 
 CAUSES = ["dependency-rot", "missing-code", "missing-data", "unstated-parameter",
@@ -36,11 +38,37 @@ GRADE_TEXT = {
 }
 
 
+STRING_PAPER = re.compile(r"[-+]?\d+\.\d+")
+
+
+def exact_string_claim(v: dict) -> bool:
+    """True when a registered value is an exact-string claim (see docs/method.md, 'Exact-string claims').
+
+    Only a string `paper` with at least one decimal place, and a `tol_abs` equal to half a unit in its last
+    printed decimal, qualifies. Such a value is judged character for character, never as a float.
+    """
+    paper, tol = v.get("paper"), v.get("tol_abs")
+    if not isinstance(paper, str) or not STRING_PAPER.fullmatch(paper):
+        return False
+    if isinstance(tol, bool) or not isinstance(tol, (int, float)):
+        return False
+    decimals = len(paper.split(".", 1)[1])
+    return Decimal(repr(float(tol))) == Decimal(5).scaleb(-(decimals + 1))
+
+
+def value_hit(v: dict) -> bool:
+    if exact_string_claim(v):
+        return isinstance(v["ours"], str) and v["ours"] == v["paper"]
+    return abs(v["ours"] - v["paper"]) <= v["tol_abs"]
+
+
 def judge(values: list) -> str:
     """Compare every recorded value to its pre-registered tolerance. Pure arithmetic."""
     if not values or any(v.get("ours") is None for v in values):
         return "blocked"
-    hits = [abs(v["ours"] - v["paper"]) <= v["tol_abs"] for v in values]
+    if any(isinstance(v.get("paper"), str) and not exact_string_claim(v) for v in values):
+        return "blocked"  # a string paper is valid only as an exact-string claim; never a pass
+    hits = [value_hit(v) for v in values]
     return "reproduced" if all(hits) else ("partial" if any(hits) else "not-reproduced")
 
 
@@ -78,6 +106,8 @@ def margin_cell(ours, paper, tol) -> str:
     """|difference| as a share of the registered tolerance; flagged near the edge."""
     if ours is None or paper is None:
         return "–"
+    if isinstance(paper, str):
+        return "match" if ours == paper else "mismatch"
     if not tol:
         return "exact" if ours == paper else "off"
     share = abs(ours - paper) / tol
@@ -217,7 +247,7 @@ def build(repo: Path) -> str:
         p, c = r.get("paper", {}), r.get("claim", {})
         for v in c.get("values", [{}]):
             ours = v.get("ours")
-            delta = None if ours is None or "paper" not in v else ours - v["paper"]
+            delta = None if ours is None or "paper" not in v or isinstance(v["paper"], str) else ours - v["paper"]
             out.append("| " + " | ".join([
                 f"[{p.get('short', r['_dir'])}](reports/{r['_dir']}/result.md)",
                 f"{r.get('field_class', '?')} · {p.get('year', '?')} · {r.get('stack_class', '?')}",

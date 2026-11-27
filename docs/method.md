@@ -194,6 +194,18 @@ the tolerance is fixed before the run, in the queue entry, as for any claim; the
 row "[shipped reference output]" because it is weaker than a number the authors printed in a
 paper (it shows the code still does what its authors saw, not that the paper's claim holds).
 
+## Exact-string claims
+
+Some papers print a value only as text, for example a constant to 40 decimal places, where a float cannot hold
+the digits. Such a value is an exact-string claim when its registered `paper` is a string with at least one decimal
+place and its `tol_abs` is exactly half a unit in the last printed decimal (`5e-41` for 40 decimals). Only then does
+the verdict compare strings: the recipe's `VALUE <name> <string>` token must equal `paper` character for character,
+with no trimming, float parsing or prefix match. Replay compares the raw token the same way.
+
+Any other string `paper` is not a valid claim (blocked, never a pass), and a numeric claim is judged exactly as before.
+An exact-string value in a report must match, by name, paper and tolerance, a value the queue entry registered
+as a string, so the string cannot be converted after a run.
+
 ## Result record and grades
 
 Each report ends with `reports/<id>/result.json`, written by `rerun`:

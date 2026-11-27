@@ -32,12 +32,22 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_ledger  # noqa: E402
 
 SCRATCH = Path("/mnt/mishe-scratch/reproducibility-tail")
-VALUE_LINE = re.compile(r"^VALUE (.+?) (-?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?)\s*$", re.M)
+VALUE_LINE = re.compile(r"^VALUE (.+?) (\S+)\s*$", re.M)
+NUMBER = re.compile(r"-?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?")
 LOG_TAIL = 400_000
 
 
-def parse_values(text: str) -> dict:
-    return {m.group(1): float(m.group(2)) for m in VALUE_LINE.finditer(text)}
+def parse_values(text: str, recorded: list = ()) -> dict:
+    """VALUE lines of the recipe: a float for a numeric claim, the raw token for an exact-string claim."""
+    exact = {v["name"] for v in recorded if build_ledger.exact_string_claim(v)}
+    out = {}
+    for m in VALUE_LINE.finditer(text):
+        name, token = m.group(1), m.group(2)
+        if name in exact:
+            out[name] = token
+        elif NUMBER.fullmatch(token):
+            out[name] = float(token)
+    return out
 
 
 def agrees(recorded: list, new: dict) -> tuple[bool, str]:
@@ -51,6 +61,10 @@ def agrees(recorded: list, new: dict) -> tuple[bool, str]:
     if build_ledger.judge(probe) != "reproduced":
         return False, "the replayed value is outside the registered tolerance"
     for v, p in zip(recorded, probe):
+        if build_ledger.exact_string_claim(v):
+            if p["ours"] != v["ours"]:
+                return False, f"{v['name']}: replayed {p['ours']!r} differs from recorded {v['ours']!r}"
+            continue
         slack = v.get("replay_abs", max(1e-9, 1e-6 * abs(v["ours"])))
         if abs(p["ours"] - v["ours"]) > slack:
             return False, f"{v['name']}: replayed {p['ours']} differs from recorded {v['ours']} by more than {slack}"
@@ -110,7 +124,7 @@ def main(argv=None) -> int:
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     code, out = run_recipe(recipe, repo, a.timeout)
     shutil.rmtree(work, ignore_errors=True)        # the cap is for what is in flight
-    new = parse_values(out)
+    new = parse_values(out, values)
     stamp_name = stamp.replace(':', '')
     if code != 0 and not new:
         # A recipe that exits before printing any VALUE line (fetch, unpack or build failed) did not

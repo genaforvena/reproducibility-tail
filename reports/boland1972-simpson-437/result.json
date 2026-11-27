@@ -41,7 +41,7 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -60,7 +60,19 @@
     "reports/boland1972-simpson-437/impl/extract_value.py",
     "reports/boland1972-simpson-437/result.md"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-27T10:52:06Z",
+      "kind": "clean",
+      "values": {
+        "TEST02 product Simpson, N=10": 0.52161
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/boland1972-simpson-437/evidence/replay-2026-11-27T105206Z.log",
+      "seconds": 63
+    }
+  ],
   "patch": {
     "kind": "build-only",
     "archive_sha256": "3d5d67394e0a50131e5eaf60cdfff518c41e7e70b86e01f27e9eeaf65090f3ce",

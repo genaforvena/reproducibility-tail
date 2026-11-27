@@ -1,0 +1,55 @@
+{
+  "paper": {
+    "title": "Experiments with a weakly stable algorithm for computing Pade'-Hermite and simultaneous Pade' approximants",
+    "authors": [
+      "S. Cabay",
+      "A. R. Jones",
+      "G. Labahn"
+    ],
+    "year": 1997,
+    "venue": "ACM Transactions on Mathematical Software 23(1), 91 (Mar 1997); netlib TOMS 766",
+    "doi": null,
+    "url": "https://netlib.org/toms/766.gz",
+    "note": "DOI not verified in this wake; the article was not read (paywalled). The claim rests on the shipped expected output RES1 of the archive's test driver (the driver's header names the same paper as its source)."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/766.gz",
+    "commit": "netlib TOMS archive 766.gz (fetched 2026-11-27)",
+    "archive": "netlib.org/toms/766.gz sha256 f62245620e2f3c48b7c5555c266adfbb9a496fc3d74d5cc9941cf96cb8d40acd",
+    "note": "Fortran 90 shar archive. Unpack the shar (remove everything above the #! /bin/sh line, run with /bin/sh) into a fresh directory outside the site. Build vector_pade.f90 with driver1.f90 (test example, n=(2,3,1)) using gfortran; the program prints the System S tables that are compared with the shipped RES1."
+  },
+  "field": "numerics (Pade-Hermite and simultaneous Pade approximation)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped expected output RES1 (driver1 test example, n=(2,3,1)), section 'Pade'-Hermite System S, Normalized and multiplied by 37', Coefficient matrix of z**1, row 2, column 3. The paper was not read; no paper table or page is cited.",
+    "reference": {
+      "file": "766.gz member RES1 (driver1 expected output), System S, Coefficient matrix of z**1, row 2 col 3",
+      "sha256": null,
+      "archive": "netlib.org/toms/766.gz sha256 f62245620e2f3c48b7c5555c266adfbb9a496fc3d74d5cc9941cf96cb8d40acd"
+    },
+    "metric": "Entry (2,3) of the z**1 coefficient matrix of the Pade'-Hermite System S computed by the code, multiplied by 37 as the driver prints it (printed as -131.).",
+    "paper_value": "Not used: the TOMS article was not read; the value is the one in the shipped RES1.",
+    "values": [
+      {
+        "name": "System S, z**1 coefficient matrix, entry (2,3), times 37 (RES1 value -131)",
+        "paper": -131.0,
+        "tol_abs": 0.5
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 0.5,
+      "basis": "Fixed before any run. RES1 prints integer-valued entries (exact after the factor 37), so 0.5 is half the printed unit. The run is deterministic (no random draws). Not to be loosened after any run."
+    },
+    "note": "Chosen as one integer entry, not the kappa column: the 0.34E+39 stability estimate is ill-conditioned and would make a tolerance meaningless. The solution vector of the driver is all ones by construction and is not used as the claim (closed form, G0)."
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 5 minutes: gfortran compile of a few files, one small run (n=(2,3,1)).",
+    "data_size": "None; driver1 hard-codes its input series.",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A deterministic vector Pade solver whose shipped test driver prints an exact integer-valued Pade'-Hermite system, so the run tests the construction of the system rather than a value derivable on paper from the input.",
+  "registered": "2026-11-27T01:02Z"
+}

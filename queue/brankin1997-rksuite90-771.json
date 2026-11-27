@@ -1,0 +1,54 @@
+{
+  "paper": {
+    "title": "Algorithm 771: rksuite_90: Fortran 90 software for ordinary differential equation initial value problems",
+    "authors": [
+      "R. W. Brankin",
+      "I. Gladwell"
+    ],
+    "year": 1997,
+    "venue": "ACM Transactions on Mathematical Software 23(3), 402 (Sep 1997); netlib TOMS 771",
+    "doi": null,
+    "url": "https://netlib.org/toms/771.gz",
+    "note": "DOI not verified in this wake; the article was not read (paywalled). The claim rests on the shipped reference output eg_simple_c0_a.r inside the archive (the archive's own example set)."
+  },
+  "code": {
+    "url": "https://netlib.org/toms/771.gz",
+    "commit": "netlib TOMS archive 771.gz (fetched 2026-11-27)",
+    "archive": "netlib.org/toms/771.gz sha256 e1babc0304d142e28b54e6fe10c54824db27c08950a2b404426e23a97d2dab46",
+    "note": "Fortran 90 shar archive. Unpack the shar (drop everything above the #! /bin/sh line, run with /bin/sh) into a fresh directory outside the site. Build the rksuite_90 module with the example eg_simple_c0_a.f90 using gfortran, run it, and compare its printed output with the shipped eg_simple_c0_a.r."
+  },
+  "field": "numerics (ODE initial value problems)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped reference output eg_simple_c0_a.r (archive member, example program eg_simple_c0_a.f90): the line 'The cost of the integration in calls to F was 117'. The paper was not read; no paper table or page is cited.",
+    "reference": {
+      "file": "771.gz member eg_simple_c0_a.r",
+      "sha256": null,
+      "archive": "netlib.org/toms/771.gz sha256 e1babc0304d142e28b54e6fe10c54824db27c08950a2b404426e23a97d2dab46"
+    },
+    "metric": "Number of calls to the user's derivative routine F made by RKSUITE_90 integrating the eg_simple_c0_a problem (integer count).",
+    "paper_value": "Not used: the TOMS article was not read; the value is the one in the shipped eg_simple_c0_a.r.",
+    "values": [
+      {
+        "name": "calls to F, eg_simple_c0_a",
+        "paper": 117,
+        "tol_abs": 2
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 2,
+      "basis": "Fixed before any run. The count is an integer from an adaptive step-size scheme; a different floating-point rounding (compiler, optimisation level) can move it by a step or two, so +/-2 calls allows that and nothing more. Not to be loosened after any run."
+    },
+    "note": "Chosen over the printed error estimates in eg_two_body.r, whose digits depend on rounding more directly. Its ymax and solution tables are not used because they are printed to 3-4 significant figures."
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 5 minutes: gfortran compile of the rksuite_90 module and one small example.",
+    "data_size": "None; the example hard-codes its problem.",
+    "data_licence": "Netlib TOMS code under the ACM licence; the rerun should record the licence text."
+  },
+  "why": "A deterministic adaptive ODE solver whose shipped example prints an integer call count that depends on the step-size control actually running, not on a value derivable on paper.",
+  "registered": "2026-11-27T01:34Z"
+}

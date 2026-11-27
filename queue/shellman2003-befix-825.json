@@ -1,0 +1,45 @@
+{
+ "paper": {
+  "title": "A deep-cut bisection envelope algorithm for fixed points (Algorithm 825)",
+  "authors": [
+   "S. Shellman",
+   "K. Sikorski"
+  ],
+  "year": 2003,
+  "venue": "ACM Transactions on Mathematical Software 29(3), p. 309 (Sep 2003), per the frame item and the shipped 825.gz shar header",
+  "doi": null,
+  "url": "https://netlib.org/toms/825.gz (article not fetched; ACM page not used)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/825.gz",
+  "commit": "netlib CALGO archive 825.gz (shell archive dated 2003-10-24; C/Src/src.c, C/Drivers/driver.c, C/Drivers/bigtest.res, C/Drivers/smalltest.res, Doc/readme)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/825.gz (HTTP 200, 7160 bytes). sha256 of 825.gz: b28e369b226302276dfb83188d493c3029ebfca1714f66123495015b5dbf9b07 (scout download, 2026-11-27).",
+  "archive_sha256": "b28e369b226302276dfb83188d493c3029ebfca1714f66123495015b5dbf9b07",
+  "note": "Gunzip the archive, then unpack the shell archive with /bin/sh in an empty directory (the shar begins at the #! /bin/sh line). Build C/Src/src.c with C/Drivers/driver.c using a C compiler, run the driver from C/Drivers, answer 1 at its first prompt (the large test), and compare the printed BEFix block with the shipped C/Drivers/bigtest.res."
+ },
+ "field": "numerics (bisection-type fixed-point and root methods, envelope algorithm)",
+ "stack": "C/C++",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "Shipped reference output C/Drivers/bigtest.res (inside 825.gz), first block 'BEFix residual criterion method, epsilon = 0.000100, q = 1.000000', line 42: 'average number of evaluations = 20.417255'. The driver runs the large test (65025 tests) of the BEFix method at that epsilon and reports the mean number of function evaluations.",
+  "reference": {
+   "file": "C/Drivers/bigtest.res (inside 825.gz), line 42",
+   "sha256": "not computed for the member; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/825.gz"
+  },
+  "paper_value": "Value 20.417255 at line 42 of the shipped bigtest.res, as printed by the shipped driver (6 decimals). The paper's table is not read; the claim is the code's own printed output.",
+  "metric": "The 'average number of evaluations' printed for the first (BEFix) block of the regenerated large-test output, compared as an absolute number with the shipped value",
+  "determinism": "deterministic (the large test enumerates a fixed grid of 65025 cases; no random numbers)",
+  "tolerance": {
+   "abs": 1e-06,
+   "basis": "Fixed before any run. The shipped value is printed to 6 decimals, so the print rounding alone is up to 5e-7; 1e-6 covers that and nothing more. The mean is over an integer count of evaluations, so a faithful build must reproduce it exactly. A changed bisection step, a different stopping rule or an off-by-one in the evaluation count moves the mean by far more than 1e-6. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 5 minutes: one C build and one driver run over 65025 cases (the shipped test is small, 0.03 s per thousand evaluations expected).",
+  "data_size": "None (the test cases are generated inside the driver).",
+  "data_licence": "Netlib CALGO archive; licence per the archive's own notices (the rerun should record it)."
+ },
+ "why": "The shipped large test runs the BEFix bisection on a full grid of cases and prints a mean evaluation count that the code must compute, so the rerun has to execute the C method to reproduce it.",
+ "registered": "2026-11-27T16:48:27Z"
+}

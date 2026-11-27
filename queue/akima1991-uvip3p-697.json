@@ -1,0 +1,55 @@
+{
+ "paper": {
+  "title": "Algorithm 697: univariate interpolation (improved Akima method, subroutine UVIP3P); article title not read (ACM page unreachable from this host)",
+  "authors": [
+   "Hiroshi Akima"
+  ],
+  "year": 1991,
+  "venue": "ACM Transactions on Mathematical Software 17(3), Sept 1991, p. 367 (Collected Algorithms from ACM, Algorithm 697)",
+  "doi": null,
+  "url": "https://netlib.org/toms/697.gz (ACM article not read: dl.acm.org returns 403 to automated fetch)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/697.gz",
+  "commit": "netlib TOMS archive 697.gz: a single Fortran file holding the test program TTUVIP and the subroutine UVIP3P (the file header is 'Version of 89/07/04', Hiroshi Akima, NTIA/ITS)",
+  "archive": "sha256 4ffb55563069643e621b7142134398e4a8c2fb4364e4472ede2bb455cf5d5e22 (netlib.org/toms/697.gz as downloaded 2026-11-27, 5701 bytes; the unpacked file 697.f is 1073 lines, sha256 946b9d16e236c1e8ba235ba0a6f95502401235dfc1caf78571a4a83a5a8dbff8)",
+  "note": "Gunzip it into its own directory and read it first. The file is a single source with two programs (the test driver and UVIP3P); split at the second PROGRAM or subroutine header. The driver reads no input and writes to standard output with WRITE (*,...). Fortran 77."
+ },
+ "field": "numerics (univariate interpolation, piecewise polynomial)",
+ "stack": "Fortran 77",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "The authors' shipped test program TTUVIP in 697.f. Its DATA statements hold the expected interpolated values YIE(31,2) for two NP settings (NP=3 in column 1, NP=6 in column 2) at 31 abscissas XI1 = 0.0, 0.5, ..., 15.0, for the 10 data points XD1/YD1. The driver calls UVIP3P three ways (one point per call, all points in one call, and all points on inverted data) and compares each result with YIE. The claim is about the one-call result YI2 for both NP values.",
+  "reference": {
+   "file": "697.f (the shipped driver, DATA YIE statement in TTUVIP)",
+   "sha256": "946b9d16e236c1e8ba235ba0a6f95502401235dfc1caf78571a4a83a5a8dbff8",
+   "archive": "netlib.org/toms/697.gz sha256 4ffb55563069643e621b7142134398e4a8c2fb4364e4472ede2bb455cf5d5e22"
+  },
+  "metric": "For each NP in {3, 6} and each of the 31 abscissas XI1(II): the one-call interpolated value YI2(II) computed by UVIP3P, compared with the reference YIE(II, NP). Claim: all 62 comparisons agree within the tolerance.",
+  "paper_value": "Reference YIE as printed in the DATA statement of TTUVIP (3 decimal places). The paper itself was not read.",
+  "values": [
+   {
+    "name": "YI2 vs YIE, NP=3, all 31 points",
+    "paper": "YIE(:,1) from DATA YIE, columns 1 of the statement",
+    "tol_abs": 0.0005
+   },
+   {
+    "name": "YI2 vs YIE, NP=6, all 31 points",
+    "paper": "YIE(:,2) from DATA YIE, column 2 of the statement",
+    "tol_abs": 0.0005
+   }
+  ],
+  "tolerance": {
+   "abs": 0.0005,
+   "basis": "Fixed before any run. The reference values are stored to three decimal places (the driver's F9.3 output), so a result equal to the reference at print precision lies within 0.0005. Not to be loosened after any run. A failing point is a finding to report, not a reason to widen the tolerance."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute.",
+  "data_size": "None: the 10 data points and the 31 expected values are in the driver.",
+  "data_licence": "No data. Source is the author's public-domain distribution of a CALGO algorithm; the archive states no licence beyond the ACM collected algorithms notice."
+ },
+ "why": "A 1991 ACM algorithm ships a driver whose expected values are precomputed numbers that only the interpolation code can produce. The test checks that a modern gfortran build still reproduces the authors' own reference values within print precision.",
+ "registered": "2026-11-27T06:53:00Z"
+}

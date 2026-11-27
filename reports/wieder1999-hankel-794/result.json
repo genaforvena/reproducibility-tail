@@ -73,5 +73,18 @@
       "mid": "reports/wieder1999-hankel-794/evidence/manifest.mid",
       "post": "reports/wieder1999-hankel-794/evidence/manifest.post"
     }
-  }
+  },
+  "replayed": [
+    {
+      "utc": "2026-11-27T08:23:34Z",
+      "kind": "clean",
+      "values": {
+        "HT_XI5_NU1": 0.0208245531
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/wieder1999-hankel-794/evidence/replay-2026-11-27T082334Z.log",
+      "seconds": 58
+    }
+  ]
 }

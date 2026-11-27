@@ -20,7 +20,7 @@ By field: astronomy 1, biology 1, ecology 1, numerics 60, other 4, statistics 6
 By stack: C/C++ 9, Fortran 52, Java 1, MATLAB/Octave 6, R 5
 By decade: 1960 3, 1970 5, 1980 6, 1990 23, 2000 25, 2010 11
 
-Data as of 2026-11-27T08:02Z (the newest replay or funnel entry).
+Data as of 2026-11-27T08:23:34Z (the newest replay or funnel entry).
 
 ## The funnel
 
@@ -270,7 +270,7 @@ Authors' original artifact, among all attempted papers: failed 45 (did not run),
 | [wang2011-species-butterfly-ace](reports/wang2011-species-butterfly-ace/result.md) | ecology · 2011 · R | ChaoLee1992(butterfly, t = 10, method = "all") $Nhat[1], ACE estimate of species richness (JSS p. 8) (ACE) | 712 ± 0.5 | 712 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [watson1997-hompack90-777](reports/watson1997-hompack90-777/result.md) | numerics · 1997 · Fortran | The shipped driver3 output RES3, block 'TESTING FIXPQS WITH STORAGE MODE = 1', prints the first solution component Y(1) at lambda = 1 as 4.00864019E-01. Rebuilt from the archive and run, the same block gives Y(1) within tol_abs 1e-8. Registered in the queue entry before any run; the TOMS article was not read (paywalled), so the claim rests on the shipped RES3. (FIXPQS storage mode 1, solution component Y(1) at lambda=1) [shipped reference output] | 0.400864 ± 1e-08 | 0.400864 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [west1983-qap-608](reports/west1983-qap-608/result.md) | other · 1983 · Fortran | HGW on the 4x4 instance hard-coded in the shipped test PROGRAM MAIN returns OBJ = 406 (driver comment), assignment 4,1,3,2, absolute tolerance 0.005 (fixed in the queue entry). The paper was not read (paywalled). (HGW objective on the driver instance (driver comment OBJ=406; assignment 4,1,3,2)) [shipped reference output] | 406 ± 0.005 | – | – | – |  | ✗ ? · · | - | blocked | never clean |
-| [wieder1999-hankel-794](reports/wieder1999-hankel-794/result.md) | numerics · 1999 · Fortran | HT(XI=5.0, NU=1.0) printed by the authors' HANKEL driver into its result file, the shipped reference value 0.208245531E-01 (artifact-reference), absolute tolerance 1e-9 (fixed in the queue entry before any run). (HT_XI5_NU1) [shipped reference output] | 0.0208246 ± 1e-09 | 0.0208246 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | never clean |
+| [wieder1999-hankel-794](reports/wieder1999-hankel-794/result.md) | numerics · 1999 · Fortran | HT(XI=5.0, NU=1.0) printed by the authors' HANKEL driver into its result file, the shipped reference value 0.208245531E-01 (artifact-reference), absolute tolerance 1e-9 (fixed in the queue entry before any run). (HT_XI5_NU1) [shipped reference output] | 0.0208246 ± 1e-09 | 0.0208246 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [wise2000-polsys-plp-801](reports/wise2000-polsys-plp-801/result.md) | numerics · 2000 · Fortran | TWO QUADRICS real finite solution (first INPUT.DAT problem, TRACKTOL 1e-4, FINALTOL 1e-14, seed 32749): Re X(2) = -0.788344824094120 as printed in the shipped OUTPUT.DAT, absolute tolerance 1e-6. (TWO QUADRICS real finite solution, Re X(2)) [shipped reference output] | -0.788345 ± 1e-06 | -0.788345 | -1.89848e-14 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 
 Margin is |our value − paper value| as a share of the tolerance registered before the run; ⚠ marks 80% or more, a result that a different environment could flip.

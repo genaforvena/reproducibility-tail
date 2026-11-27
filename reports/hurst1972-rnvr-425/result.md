@@ -14,10 +14,10 @@ Original attempt (G1): `make Res` as shipped, no compiler on PATH; it fails at `
 
 Environment pins: gfortran 16.2.0 (conda-forge gcc 16.2.0-7), make 4.4.1, bwrap sandbox with no network after fetch. The archive 425.gz was fetched from netlib.org/toms/425.gz and sha256-checked.
 
-Toolchain note: this wake's micromamba install of gfortran_linux-64 stalled at "Transaction starting" (network under 30 bytes/s). The env used was copied from the hong2003-snied-823 scratch env16 (same gfortran 16.2.0 package), and recipe.sh now skips the install when /work/env16/bin/gfortran exists. A clean replay from nothing needs the install to work.
+Toolchain note: the first micromamba install stalled (network under 30 bytes/s); the env used for the original build was copied from the hong2003-snied-823 scratch env16 (same gfortran 16.2.0 package). recipe.sh skips the install when /work/env16/bin/gfortran exists.
 
 Evidence: recipe-run.log (both passes, `PASSES AGREE`), shipped-res.txt (the reference copy), impl/parse_hurst.py (the parser that turns the TEST02 block into VALUE lines; checked on the shipped res).
 
-Replay (G5): not yet run. The replay-due duty will show this result as due.
+Replay (G5): clean replay from nothing agrees with the record (05:19Z, log evidence/replay-2026-11-27T051935Z.log). Two earlier replays (05:09Z, 05:14Z) failed at fetch: the conda install did not link a `bin/gfortran` name, so recipe.sh now links it.
 
 Rebuild: `reports/hurst1972-rnvr-425/recipe.sh`.

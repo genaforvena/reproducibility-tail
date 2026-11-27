@@ -1,0 +1,96 @@
+{
+  "paper": {
+    "short": "miminis1995-eigassign-747",
+    "title": "Algorithm 747: Fortran subroutine to solve the eigenvalue assignment problem (staircase reduction and eigenvalue assignment)",
+    "year": 1995,
+    "doi": null
+  },
+  "field": "numerics (linear systems and control: eigenvalue assignment by state feedback)",
+  "field_class": "numerics",
+  "stack": "Fortran 77 (TOMS 747 archive 747.gz: a shar of 36 files, with ddemo.f, dstair.f, dmevas.f, blas.f, lapack.f, eispk.f and makefile; test01.dat and dlog.ref)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "ddemo (double precision) on the shipped test01.dat (n=11, m=7) prints the computed gain matrix F; entry F(1,1) = 1.2366 and F(1,2) = -0.0621 (the first row, first two entries), as printed in the shipped dlog.ref. Absolute tolerance 5e-5 (the 4-decimal print half-unit), fixed in the queue entry before any run.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/miminis1995-eigassign-747/evidence/reference/dlog.ref",
+      "sha256": "a77b16acaf6bc6ae28bb034c49707c5a46c8ceddec4455266cad2789ef55fbf0",
+      "archive": "netlib.org/toms/747.gz sha256 b24ab9b2ef2de1cd45f4448c47cb891d7ab4c9ab7bae004e9da3e1d4cb2cacc2"
+    },
+    "values": [
+      {
+        "name": "F(1,1) of test01, ddemo double precision (dlog.ref)",
+        "paper": 1.2366,
+        "tol_abs": 5e-05,
+        "ours": 1.2366
+      },
+      {
+        "name": "F(1,2) of test01 (dlog.ref)",
+        "paper": -0.0621,
+        "tol_abs": 5e-05,
+        "ours": -0.0621
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced at the registered claim (tol_abs 5e-5). Both passes (clean rebuilds of the unpacked tree with the authors' makefile target make ddemo, each run on test01.dat) give F(1,1) = 1.2366 and F(1,2) = -0.0621, matching the shipped dlog.ref block at its printed precision. The printed values are 4 decimals, so agreement is at the print resolution (the claim tolerance is the half-unit). The archive as shipped did not build: the makefile calls f77, which is absent from the host and the sandbox (make: f77: No such file or directory, build_exit=2). The fix was a compiler alias f77 -> gfortran (conda-forge) placed outside the tree; no source or build file was edited (build-only, manifests pre, mid and post compared). The shipped eigenvalue lists of the closed loop were not used as the claim (the queue entry says the two shipped logs disagree there).",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make ddemo stops at the first compile (ddemo.f, line makefile:29): f77 is not installed on the host or in the sandbox, so the archive as shipped does not build.",
+    "log": "reports/miminis1995-eigassign-747/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/miminis1995-eigassign-747/recipe.sh",
+  "queue_commit": "72a55d5025f5ac11e28d83b97485958c9adfeaf6",
+  "evidence": [
+    "reports/miminis1995-eigassign-747/evidence/original-attempt.log",
+    "reports/miminis1995-eigassign-747/evidence/unpack.log",
+    "reports/miminis1995-eigassign-747/evidence/pass1-build.log",
+    "reports/miminis1995-eigassign-747/evidence/pass1-run.log",
+    "reports/miminis1995-eigassign-747/evidence/pass2-run.log",
+    "reports/miminis1995-eigassign-747/evidence/pass1-test01.out",
+    "reports/miminis1995-eigassign-747/evidence/pass2-test01.out",
+    "reports/miminis1995-eigassign-747/evidence/reference-row.txt",
+    "reports/miminis1995-eigassign-747/evidence/values.txt",
+    "reports/miminis1995-eigassign-747/evidence/record.log",
+    "reports/miminis1995-eigassign-747/evidence/recipe-run.log",
+    "reports/miminis1995-eigassign-747/evidence/manifest.pre",
+    "reports/miminis1995-eigassign-747/evidence/manifest.mid",
+    "reports/miminis1995-eigassign-747/evidence/manifest.post",
+    "reports/miminis1995-eigassign-747/evidence/reference/dlog.ref"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "b24ab9b2ef2de1cd45f4448c47cb891d7ab4c9ab7bae004e9da3e1d4cb2cacc2",
+    "compared": 12,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "make ddemo"
+    ],
+    "manifests": {
+      "pre": "reports/miminis1995-eigassign-747/evidence/manifest.pre",
+      "mid": "reports/miminis1995-eigassign-747/evidence/manifest.mid",
+      "post": "reports/miminis1995-eigassign-747/evidence/manifest.post"
+    }
+  }
+}

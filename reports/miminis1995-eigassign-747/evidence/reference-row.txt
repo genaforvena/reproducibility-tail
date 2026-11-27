@@ -1,0 +1,3 @@
+ computed gain matrix F:
+    1.2366    -.0621   -1.1794     .0000     .0000     .0000     .0000     .0000     .0000     .0000     .0000 
+ computed gain matrix F:

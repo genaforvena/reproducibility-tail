@@ -5,28 +5,28 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-95 papers attempted.
+96 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 21 |
-| B | authors' code with build fixes | 53 |
+| B | authors' code with build fixes | 54 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 2 |
 | - | blocked or not yet run | 18 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 82, other 4, statistics 6
-By stack: C/C++ 11, Fortran 70, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 0 1, 1960 4, 1970 9, 1980 9, 1990 32, 2000 27, 2010 13
+By field: astronomy 1, biology 1, ecology 1, numerics 83, other 4, statistics 6
+By stack: C/C++ 11, Fortran 71, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 0 1, 1960 4, 1970 9, 1980 9, 1990 32, 2000 28, 2010 13
 
-Data as of 2026-11-27T13:29:30Z (the newest replay or funnel entry).
+Data as of 2026-11-27T13:57:41Z (the newest replay or funnel entry).
 
 ## The funnel
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-95 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+96 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **470 candidates considered from 4 of 4 frames: 92 attempted (20%), 0 unreachable, 378 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 62 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 23 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 63 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 23 (ran as documented).
 
 ## Results
 
@@ -103,6 +103,7 @@ Authors' original artifact, among all attempted papers: failed 62 (did not run),
 | [armstrong1984-lav-615](reports/armstrong1984-lav-615/result.md) | numerics · 1984 · Fortran | SUM OF ABSOLUTE VALUES for the LAV subset of size 3 (DL1BL3, BLISS vol II p.294) as printed by the authors' SUBL1 run on its shipped TAPE5 data, registered 3.877 (tol 1e-3). Registered by scout in the queue entry (claim commit eda92af). (SUM_ABS_SIZE3) [shipped reference output] | 3.877 ± 0.001 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [atkinson1998-laplace-788](reports/atkinson1998-laplace-788/result.md) | numerics · ? · Fortran | U(0.1112, 1.3695) from NEUMAN on data1 (boundary function 3, curve 1, EPS 1e-7, NTHETA 5, NR 10), as printed in the shipped RES1 (D format, 11 decimals). Registered tolerance abs 5e-12 (half unit of the printed 11th decimal). (neuman_u_0p1112_1p3695) [shipped reference output] | -0.776557 ± 5e-12 | -0.776557 | 5.861e-08 | 1172200% ⚠ | patched | ✓ ✓ ✓ · | X | not-reproduced | never clean |
 | [bai1997-srrit-776](reports/bai1997-srrit-776/result.md) | numerics · 1997 · Fortran | WR, first converged real eigenvalue, of the BWM problem (test matrix size 200, after 2000 SRRIT iterations) printed by the authors' double-precision driver, registered as -1235.506919564 (tol_abs 1e-6). Revised by scout in 9e8879b from the earlier RWK 496 location, which prints 1.0 first; the value is in the BWM block. (WR, first converged eigenvalue, BWM 200x200 (double precision)) [shipped reference output] | -1235.51 ± 1e-06 | -1235.51 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [benner2006-hapack-854](reports/benner2006-hapack-854/result.md) | numerics · 2006 · Fortran | WR(1), the real part of the first stable eigenvalue of the DHAESU example (tdhaesu.f reading dhaesu.dat, N=5), as the shipped reference output dhaesu.res prints it in 'The stable eigenvalues', row i=1: -3.1941 (4 decimals). (WR(1), DHAESU example first stable eigenvalue) [shipped reference output] | -3.1941 ± 0.0001 | -3.1941 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [benson2008-dsdp5-875](reports/benson2008-dsdp5-875/result.md) | numerics · 2008 · C/C++ | theta graph1 (Lovasz theta SDP of the 6-node, 8-edge graph shipped as bin/graph1): the DD Objective of the last iteration, as a magnitude, is 3.00000012 (shipped reference log bin/output.theta, iteration 4). Absolute tolerance 1e-5. (theta graph1 final DD objective (magnitude)) [shipped reference output] | 3 ± 1e-05 | 3 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [berntsen1991-dcuhre-698](reports/berntsen1991-dcuhre-698/result.md) | numerics · 1991 · Fortran | Live sample PROGRAM DTEST1 (5-dimensional integral over the unit cube of exp(-sum n z_n^2/2), ABSREQ=0, RELREQ=1E-3, MINCLS=0, MAXCLS=10000, KEY=0, NW=5000) prints the integral components 1 to 6 as 0.13850818, 0.06369469, 0.05861748, 0.05407034, 0.05005614, 0.04654608, FTEST CALLS = 3549 and IFAIL = 0 (printed output, Sun 3/50). Registered by scout (artifact-reference). (integral 1) [shipped reference output] | 0.138508 ± 1e-07 | 0.138508 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [berntsen1991-dcuhre-698](reports/berntsen1991-dcuhre-698/result.md) | numerics · 1991 · Fortran | Live sample PROGRAM DTEST1 (5-dimensional integral over the unit cube of exp(-sum n z_n^2/2), ABSREQ=0, RELREQ=1E-3, MINCLS=0, MAXCLS=10000, KEY=0, NW=5000) prints the integral components 1 to 6 as 0.13850818, 0.06369469, 0.05861748, 0.05407034, 0.05005614, 0.04654608, FTEST CALLS = 3549 and IFAIL = 0 (printed output, Sun 3/50). Registered by scout (artifact-reference). (integral 2) [shipped reference output] | 0.0636947 ± 1e-07 | 0.0636947 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |

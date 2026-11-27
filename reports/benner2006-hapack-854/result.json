@@ -1,0 +1,121 @@
+{
+  "paper": {
+    "short": "benner2006-hapack-854",
+    "title": "Fortran 77 subroutines for computing the eigenvalues of Hamiltonian matrices II (HAPACK, Algorithm 854)",
+    "authors": [
+      "Peter Benner",
+      "Daniel Kressner"
+    ],
+    "year": 2006,
+    "venue": "ACM TOMS 32(2), 2006, 352-373",
+    "doi": null
+  },
+  "field": "numerics (linear algebra)",
+  "field_class": "numerics",
+  "stack": "Fortran",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "WR(1), the real part of the first stable eigenvalue of the DHAESU example (tdhaesu.f reading dhaesu.dat, N=5), as the shipped reference output dhaesu.res prints it in 'The stable eigenvalues', row i=1: -3.1941 (4 decimals).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "WR(1), DHAESU example first stable eigenvalue",
+        "paper": -3.1941,
+        "tol_abs": 0.0001,
+        "ours": -3.1941
+      }
+    ],
+    "reference": {
+      "file": "reports/benner2006-hapack-854/evidence/shipped-dhaesu.res",
+      "sha256": "0ad09ec8f36bb56931f80df4e7263f255f919c00fe05b73661025fbcb01ce9a2",
+      "archive": "netlib.org/toms/854.zip sha256 dc9ab3fb0bc12bd5c7d5b8ea8b5805bb7a8b6c38b0926f519632be4cdb580c66 (member Fortran77/Dp/Drivers/dhaesu.res)"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "The archive ships the Fortran 77 sources, the example data dhaesu.dat and the shipped output dhaesu.res, but the Src and Drivers makefiles include ../make.inc, which the archive does not ship, and the template Doc/make.inc names the compiler f77, which is not installed. The authors' documented make therefore fails at the compiler (original attempt). Build-only workaround: the 46 unedited Src .f files are compiled with gfortran -O2 -std=legacy (with -fallow-argument-mismatch, a gfortran default that rejects this old code otherwise) into hapack.a, and the unedited tdhaesu.f is linked against the system LAPACK and BLAS. No source byte is edited (manifests pre == mid == post). TDHAESU run on the authors' dhaesu.dat gives WR(1) = -3.1941, equal to the shipped value at the printed 4 decimals.",
+  "diagnostics": {
+    "precision": "Both the shipped reference and the run print WR(1) to 4 decimals; the tolerance 1e-4 is the registered value (rounding half-unit 5e-5 plus last-digit slack). The run prints S, T, G, U, V with more digits than the shipped file, which the shipped file lists to 4 decimals; that format difference is not compared.",
+    "conjugate_pair_order": "The shipped file lists WI(2) = -0.3179 and WI(3) = +0.3179; this build prints WI(2) = +0.3179 and WI(3) = -0.3179 for the same conjugate pair (eigenvalues 2 and 3, real part -0.1350 in both). The claim is WR(1), which is not affected; the pair order is recorded here and not judged."
+  },
+  "second_pass": null,
+  "queue_commit": "2ee3b7fde15ff4ee8ae6b1359f05713f015ca741",
+  "recipe": "reports/benner2006-hapack-854/recipe.sh",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The archive's documented make needs ../make.inc, which is not shipped; the template Doc/make.inc names f77, which is not installed in the sandbox (make: f77: No such file or directory, make exit 2).",
+    "log": "reports/benner2006-hapack-854/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "environment": {
+    "compiler": "GNU Fortran (conda-forge gcc 16.2.0-7) 16.2.0",
+    "flags": "-O2 -std=legacy -w -fallow-argument-mismatch",
+    "libraries": "system LAPACK and BLAS (/usr/lib/x86_64-linux-gnu liblapack.so and libblas.so, Debian reference packages; versions recorded on the host by dpkg-query, see evidence)",
+    "sandbox": "tools/sandbox.sh"
+  },
+  "evidence": {
+    "run_output": "reports/benner2006-hapack-854/evidence/run.out",
+    "build_log": "reports/benner2006-hapack-854/evidence/build.log",
+    "fetch_log": "reports/benner2006-hapack-854/evidence/fetch.log",
+    "original_attempt_log": "reports/benner2006-hapack-854/evidence/original-attempt.log",
+    "shipped_reference": "reports/benner2006-hapack-854/evidence/shipped-dhaesu.res",
+    "manifests": "reports/benner2006-hapack-854/evidence/"
+  },
+  "replayed": [
+    {
+      "utc": "2026-11-27T13:56:07Z",
+      "kind": "clean",
+      "values": {
+        "R(1) first stable eigenvalue real part": -3.1941
+      },
+      "ok": false,
+      "why": "recipe printed no VALUE line for ['WR(1), DHAESU example first stable eigenvalue']",
+      "log": "reports/benner2006-hapack-854/evidence/replay-2026-11-27T135607Z.log",
+      "seconds": 83
+    },
+    {
+      "utc": "2026-11-27T13:57:41Z",
+      "kind": "clean",
+      "values": {
+        "WR(1), DHAESU example first stable eigenvalue": -3.1941
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/benner2006-hapack-854/evidence/replay-2026-11-27T135741Z.log",
+      "seconds": 82
+    }
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "dc9ab3fb0bc12bd5c7d5b8ea8b5805bb7a8b6c38b0926f519632be4cdb580c66",
+    "compared": 65,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "cd Fortran77/Dp/Src && gfortran -O2 -std=legacy -w -fallow-argument-mismatch -c *.f && ar crs ../hapack.a *.o",
+      "cd Fortran77/Dp/Drivers && gfortran -O2 -std=legacy -w -fallow-argument-mismatch tdhaesu.f -o tdhaesu ../hapack.a -L/usr/lib/x86_64-linux-gnu -llapack -lblas"
+    ],
+    "manifests": {
+      "pre": "reports/benner2006-hapack-854/evidence/manifest.pre",
+      "mid": "reports/benner2006-hapack-854/evidence/manifest.mid",
+      "post": "reports/benner2006-hapack-854/evidence/manifest.post"
+    }
+  }
+}

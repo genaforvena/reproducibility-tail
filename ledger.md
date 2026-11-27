@@ -5,7 +5,7 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-83 papers attempted.
+84 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
@@ -14,11 +14,11 @@ Method and gates: [docs/method.md](docs/method.md).
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
-| - | blocked or not yet run | 16 |
+| - | blocked or not yet run | 17 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 70, other 4, statistics 6
-By stack: C/C++ 10, Fortran 59, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 1960 4, 1970 6, 1980 7, 1990 28, 2000 26, 2010 12
+By field: astronomy 1, biology 1, ecology 1, numerics 71, other 4, statistics 6
+By stack: C/C++ 10, Fortran 60, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 1960 4, 1970 7, 1980 7, 1990 28, 2000 26, 2010 12
 
 Data as of 2026-11-27T09:55:19Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T09:55:19Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-83 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+84 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **396 candidates considered from 4 of 4 frames: 83 attempted (21%), 0 unreachable, 313 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 54 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 20 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 54 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 20 (ran as documented).
 
 ## Results
 
@@ -200,6 +200,16 @@ Authors' original artifact, among all attempted papers: failed 54 (did not run),
 | [jonasson2008-varma-878](reports/jonasson2008-varma-878/result.md) | statistics · 2008 · MATLAB/Octave | varma_llc log-likelihood for the ten named test cases in comparison.txt (varma_llc column, tol_abs 1e-6). The registered values come from MATLAB's randn stream after randn('state',1); Octave's stream differs, so the data differ. Blocked: the claim does not state its data or random stream. (varma_llc mediumARMA1 log-likelihood) [shipped reference output] | -52.084 ± 1e-06 | – | – | – |  | ✓ · ✓ · | - | blocked | never clean |
 | [jonasson2008-varma-878](reports/jonasson2008-varma-878/result.md) | statistics · 2008 · MATLAB/Octave | varma_llc log-likelihood for the ten named test cases in comparison.txt (varma_llc column, tol_abs 1e-6). The registered values come from MATLAB's randn stream after randn('state',1); Octave's stream differs, so the data differ. Blocked: the claim does not state its data or random stream. (varma_llc mediumARMA2 log-likelihood) [shipped reference output] | -53.7619 ± 1e-06 | – | – | – |  | ✓ · ✓ · | - | blocked | never clean |
 | [kim2012-sfsdp-920](reports/kim2012-sfsdp-920/result.md) | numerics · 2012 · MATLAB/Octave | SFSDPplus, 3 sensors and 4 anchors, with the inputs printed in the manual (distanceMatrix0, xMatrix0, eps 1e-7, minDegree 4, objSW 1, free 0): the SDP-stage rmsd is 6.21e-02 (manual transcript, Doc/SFSDPmanual/UserManual.tex, section SFSDPplus.m). tol_abs 5e-4, fixed in the queue entry. (sdp_rmsd_printed) | 0.0621 ± 0.0005 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
+| [knoble1979-purdy-536](reports/knoble1979-purdy-536/result.md) | numerics · 1979 · Fortran | For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree. (X=000000000000000000) [shipped reference output] | 4.72237e+21 ± 0 | – | – | – | ? | · · · · | - | blocked | never clean |
+| [knoble1979-purdy-536](reports/knoble1979-purdy-536/result.md) | numerics · 1979 · Fortran | For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree. (X=000000000000000001) [shipped reference output] | 4.72237e+21 ± 0 | – | – | – | ? | · · · · | - | blocked | never clean |
+| [knoble1979-purdy-536](reports/knoble1979-purdy-536/result.md) | numerics · 1979 · Fortran | For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree. (X=000000000000000002) [shipped reference output] | 1.27694e+21 ± 0 | – | – | – | ? | · · · · | - | blocked | never clean |
+| [knoble1979-purdy-536](reports/knoble1979-purdy-536/result.md) | numerics · 1979 · Fortran | For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree. (X=000000000000000003) [shipped reference output] | 4.62274e+21 ± 0 | – | – | – | ? | · · · · | - | blocked | never clean |
+| [knoble1979-purdy-536](reports/knoble1979-purdy-536/result.md) | numerics · 1979 · Fortran | For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree. (X=FFFFFFFFFFFFFFFFA3) [shipped reference output] | 4.72237e+21 ± 0 | – | – | – | ? | · · · · | - | blocked | never clean |
+| [knoble1979-purdy-536](reports/knoble1979-purdy-536/result.md) | numerics · 1979 · Fortran | For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree. (X=FFFFFFFFFFFFFFFFA4) [shipped reference output] | 4.72237e+21 ± 0 | – | – | – | ? | · · · · | - | blocked | never clean |
+| [knoble1979-purdy-536](reports/knoble1979-purdy-536/result.md) | numerics · 1979 · Fortran | For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree. (X=FFFFFFFFFFFFFFFFA5) [shipped reference output] | 1.27694e+21 ± 0 | – | – | – | ? | · · · · | - | blocked | never clean |
+| [knoble1979-purdy-536](reports/knoble1979-purdy-536/result.md) | numerics · 1979 · Fortran | For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree. (X=00000000000000005C) [shipped reference output] | 2.95328e+21 ± 0 | – | – | – | ? | · · · · | - | blocked | never clean |
+| [knoble1979-purdy-536](reports/knoble1979-purdy-536/result.md) | numerics · 1979 · Fortran | For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree. (X=FFFFFFFFFFFFFFFFFF) [shipped reference output] | 2.95328e+21 ± 0 | – | – | – | ? | · · · · | - | blocked | never clean |
+| [knoble1979-purdy-536](reports/knoble1979-purdy-536/result.md) | numerics · 1979 · Fortran | For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree. (X=555555555555555555) [shipped reference output] | 1.67222e+21 ± 0 | – | – | – | ? | · · · · | - | blocked | never clean |
 | [kraft1994-tomp-733](reports/kraft1994-tomp-733/result.md) | numerics · 1994 · Fortran | Final cost of the constrained brachistochrone test driver, iteration 27, 1.7952392, tol_abs 1e-5 (shipped TOMP.OUT block, 733.f lines 77-109) (value) | 1.79524 ± 1e-05 | 1.79524 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(1,5) real) [shipped reference output] | -6.13032 ± 1e-06 | -6.13032 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [kuki1972-cgamma-421](reports/kuki1972-cgamma-421/result.md) | numerics · 1972 · Fortran | Five loggamma entries in the shipped reference output Drivers/res, each real and imaginary part, absolute tolerance 1e-6 (one print unit of the 8-digit E format). (loggamma(1,5) imag) [shipped reference output] | 3.8159 ± 1e-06 | 3.8159 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |

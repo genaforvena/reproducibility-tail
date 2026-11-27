@@ -1,0 +1,120 @@
+{
+  "paper": {
+    "short": "knoble1979-purdy-536",
+    "title": "Algorithm 536: Purdy's irreversible enciphering function; article text not read (ACM page unreachable from this host)",
+    "year": 1979,
+    "venue": "ACM Transactions on Mathematical Software 5 (1979) 108-111 (Collected Algorithms from ACM, Algorithm 536)",
+    "doi": null,
+    "note": "Article not read (ACM page 403 to automated fetch). Code is netlib TOMS 536.gz; the shipped printed table lines 662-673 is the artifact reference."
+  },
+  "field": "numerics and cryptographic arithmetic (modular exponentiation on a prime near 2^72)",
+  "field_class": "numerics",
+  "stack": "Fortran 77 (netlib 536.gz, one file 536.f)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree.",
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "reference": {
+      "file": "reports/knoble1979-purdy-536/evidence/shipped-rows-662-673.txt",
+      "sha256": "a11a9cf1555d153c6f2608c60592b9fcd1f8a8f349953cd740e30e99037f4fcc",
+      "archive": "netlib.org/toms/536.gz sha256 a08e12901d4b135f4f68f886ae5cbc2400c25126d728816a8bae43f71fee3ff8"
+    },
+    "values": [
+      {
+        "name": "X=000000000000000000",
+        "paper": 4722366482869645213442,
+        "tol_abs": 0,
+        "ours": null,
+        "paper_hex": "FFFFFFFFFFFFFFFF02"
+      },
+      {
+        "name": "X=000000000000000001",
+        "paper": 4722366482869645213364,
+        "tol_abs": 0,
+        "ours": null,
+        "paper_hex": "FFFFFFFFFFFFFFFEB4"
+      },
+      {
+        "name": "X=000000000000000002",
+        "paper": 1276943979735470606312,
+        "tol_abs": 0,
+        "ours": null,
+        "paper_hex": "4539285807BE5487E8"
+      },
+      {
+        "name": "X=000000000000000003",
+        "paper": 4622741765647398352093,
+        "tol_abs": 0,
+        "ours": null,
+        "paper_hex": "FA996DE7854F3C34DD"
+      },
+      {
+        "name": "X=FFFFFFFFFFFFFFFFA3",
+        "paper": 4722366482869645213442,
+        "tol_abs": 0,
+        "ours": null,
+        "paper_hex": "FFFFFFFFFFFFFFFF02"
+      },
+      {
+        "name": "X=FFFFFFFFFFFFFFFFA4",
+        "paper": 4722366482869645213364,
+        "tol_abs": 0,
+        "ours": null,
+        "paper_hex": "FFFFFFFFFFFFFFFEB4"
+      },
+      {
+        "name": "X=FFFFFFFFFFFFFFFFA5",
+        "paper": 1276943979735470606312,
+        "tol_abs": 0,
+        "ours": null,
+        "paper_hex": "4539285807BE5487E8"
+      },
+      {
+        "name": "X=00000000000000005C",
+        "paper": 2953284358244509452972,
+        "tol_abs": 0,
+        "ours": null,
+        "paper_hex": "A0190DBCA6F9748AAC"
+      },
+      {
+        "name": "X=FFFFFFFFFFFFFFFFFF",
+        "paper": 2953284358244509452972,
+        "tol_abs": 0,
+        "ours": null,
+        "paper_hex": "A0190DBCA6F9748AAC"
+      },
+      {
+        "name": "X=555555555555555555",
+        "paper": 1672223433735847310184,
+        "tol_abs": 0,
+        "ours": null,
+        "paper_hex": "5AA6C31129CD247368"
+      }
+    ],
+    "encoding": "Each hexadecimal output string is recorded as its exact integer value (int(hex,16)); tol_abs 0 means exact equality, which is the registered comparison. The hex string is kept in paper_hex."
+  },
+  "verdict": "blocked",
+  "attempt": "No build or run. Netlib 536.gz fetched inside the sandbox; archive sha256 a08e1290...ff3 matches the queue; 536.f sha256 7df7b737...2c2; printed table lines 662-673 hash to a11a9cf1...037f, as registered (queue commit 90f9563). The paper's own value (G2) is not available, and the netlib printed rows are not a stand-in for it (see #177 and the ruling in docs/method.md).",
+  "original_attempt": {
+    "tried": false,
+    "outcome": "not-possible",
+    "reason": "Not run: the verdict is blocked on the paper check (G2) before a build decision is needed.",
+    "log": null
+  },
+  "gates": {
+    "G1": "na",
+    "G2": "na",
+    "G3": "na",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": null,
+  "queue_commit": "90f9563b96f323491d95a72b7430872f1dd87d23",
+  "replayed": [],
+  "evidence": [
+    "reports/knoble1979-purdy-536/evidence/shipped-rows-662-673.txt",
+    "reports/knoble1979-purdy-536/result.md"
+  ]
+}

@@ -15,6 +15,7 @@
   "code": {
     "url": "https://netlib.org/toms/787.gz",
     "commit": "netlib TOMS archive 787.gz (fetched 2026-11-26, sha256 dc7105e38d4dac8082ee6d010bd4c9a904d61b1a182532414ecd2c7dcf3768fe)",
+    "archive": "sha256 dc7105e38d4dac8082ee6d010bd4c9a904d61b1a182532414ecd2c7dcf3768fe (netlib.org/toms/787.gz)",
     "note": "Fortran shar: Makefile, read.me, RES (the shipped run output), data (the sample.dat instance, 50 nodes, 619 arcs), driver.f and src.f (gmis). Extract with gzip -dc into a fresh directory, split at the SHAR_EOF blocks, then build with the Makefile. Never run the archive's files outside that directory."
   },
   "field": "combinatorics and optimization (maximum independent set heuristic, GRASP)",

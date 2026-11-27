@@ -1,0 +1,44 @@
+{
+ "paper": {
+  "title": "Algorithm 868: Globally Doubly Adaptive Quadrature - Reliable Matlab Codes",
+  "authors": [
+   "T. O. Espelid"
+  ],
+  "year": 2007,
+  "venue": "ACM Transactions on Mathematical Software 33(3), Aug 2007, Article 21 (per the frame item and the shipped 868.head). The ACM article was not fetched.",
+  "doi": null,
+  "url": "https://netlib.org/toms/868.zip (article not fetched; ACM page not used)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/868.zip",
+  "commit": "netlib CALGO archive 868.zip (Matlab/Src: da0glob.m, da2glob.m, da3glob.m; Matlab/Drivers: simple_example.m, simple_test.m, correct.m, problems.m, battery_test.m; Doc/READ.ME)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/868.zip (zip, 35734 bytes, 17 entries). Extracted into a scratch directory under /tmp/scout_probe_868 (not committed); no code run by scout.",
+  "archive_sha256": "not computed by scout; the reference is quoted from the shipped simple_test.m",
+  "note": "Matlab code. The rerun needs a MATLAB or GNU Octave environment (quadl is built in or from Octave's own library). Octave is not installed on this host, so the rerun must install it or record the blocker; the claim does not change for that. The claim uses only simple_test.m's da3glob call; the battery statistics in battery_test.m are not part of the claim."
+ },
+ "field": "numerics (adaptive quadrature, one-dimensional integration)",
+ "stack": "MATLAB/Octave",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "Matlab/Drivers/simple_test.m inside 868.zip. The header comment of simple_test.m prints the reference: exact = 0.013492485649467772692, and the da3glob result in the printed q vector is 0.01349248564949 (error_q(3) about 2.2e-13). The printed nfun for da3glob is 337 (not gated; informational).",
+  "reference": {
+   "file": "Matlab/Drivers/simple_test.m inside 868.zip (netlib.org/toms/868.zip)",
+   "sha256": "not computed for the member; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/868.zip"
+  },
+  "paper_value": "The ACM article was not read; the claim is the code's own shipped reference output, not a value located in the paper.",
+  "metric": "The value returned by da3glob(@simple_example,[0,1],1e-12,0,1) (q_estimate(3)), compared with the printed value 0.01349248564949 in simple_test.m, which is the reference's own printed q to 14 decimals.",
+  "determinism": "deterministic (fixed interval, integrand and tolerance hard-coded in simple_test.m; no random numbers)",
+  "tolerance": {
+   "abs": 1e-12,
+   "basis": "Fixed before any run. The shipped output differs from the exact integral by about 2e-13, and the printed value has 14 decimals (rounding 5e-15). The requested absolute tolerance is 1e-12, so an absolute 1e-12 comparison to the printed value is the same scale as the code's own accuracy target. A changed rule set or an error in the quadrature changes the value far more. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 5 minutes in Octave: one da3glob call with about 337 integrand evaluations.",
+  "data_size": "none (integrand is an analytic one-line function in simple_example.m)",
+  "data_licence": "Netlib CALGO archive; use under the ACM/TOMS redistribution terms of the archive. The rerun should record it."
+ },
+ "why": "The code integrates a fixed analytic function by a globally doubly adaptive rule and the shipped driver prints the value to be compared; the number depends on the implemented adaptive rule and is not a closed form checkable on paper.",
+ "registered": "2026-11-27T19:04:40Z"
+}

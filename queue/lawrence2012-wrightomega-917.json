@@ -1,0 +1,46 @@
+{
+ "paper": {
+  "title": "Algorithm 917: Complex Double-Precision Evaluation of the Wright omega Function",
+  "authors": [
+   "Piers W. Lawrence",
+   "Robert M. Corless",
+   "David J. Jeffrey"
+  ],
+  "year": 2012,
+  "venue": "ACM Transactions on Mathematical Software 38(3), Apr 2012, Article 20 (per the frame item and the shipped 917.head). The ACM article was not fetched.",
+  "doi": null,
+  "url": "https://netlib.org/toms/917.zip (article not fetched; ACM page not used)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/917.zip",
+  "commit": "netlib CALGO archive 917.zip (C/Src: wright.c, wright.h, Makefile; C/Drivers: driver.c, test_boundary.c, Makefile, results.dat)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/917.zip (zip, 35896 bytes, 9 entries). Extracted into a scratch directory under /tmp/scout_probe_917 (not committed); no code run by scout.",
+  "archive_sha256": "not computed by scout; the reference is quoted from the shipped C/Drivers/results.dat",
+  "note": "Build C/Src/wright.c with C/Drivers/test_boundary.c (Makefile: cc -I../Src, link -lm). test_boundary writes Results.dat in its working directory; the claim is one row of that file. Record the compiler and flags. The Makefile's diff_boundary target diffs the regenerated file against results.dat; that full diff is informational, not the claim."
+ },
+ "field": "numerics (special functions, complex double-precision evaluation)",
+ "stack": "C/C++",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "C/Drivers/results.dat inside 917.zip, first row: '-2.000000 6.283185 -3.689001 3.962752' (columns: Re z, Im z, Re omega(z), Im omega(z)). test_boundary.c generates this row at z = nextafter(-2.0,1.0) + i*nextafter(2*pi,-1.0), region 1 boundary, i=0.",
+  "reference": {
+   "file": "C/Drivers/results.dat inside 917.zip (netlib.org/toms/917.zip)",
+   "sha256": "not computed for the member; the values are quoted here and compared as numbers",
+   "archive": "netlib.org/toms/917.zip"
+  },
+  "paper_value": "The ACM article was not read; the claim is the code's own shipped reference output, not a value located in the paper.",
+  "metric": "Re and Im of wrightomega_ext's w (the function value) at the test_boundary.c first point, compared componentwise with -3.689001 and 3.962752 from results.dat (printed with %f, six decimals).",
+  "determinism": "deterministic (fixed inputs in test_boundary.c; no random numbers)",
+  "tolerance": {
+   "abs": 1e-05,
+   "basis": "Fixed before any run. results.dat prints six decimals, so print rounding is 5e-7. Compiler and libm differences in the last ulps of a well-conditioned evaluation are far below 1e-5. A wrong branch, region or algorithm changes the value by far more. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 2 minutes: compile two C files and run test_boundary (3200 evaluations, under a second).",
+  "data_size": "none (inputs are hard-coded; results.dat is 122553 bytes and is not needed as input)",
+  "data_licence": "Netlib CALGO archive; use under the ACM/TOMS redistribution terms of the archive. The rerun should record it."
+ },
+ "why": "The code evaluates the complex Wright omega function by region-specific approximations and the shipped boundary driver prints the values; the number depends on the implemented approximation and is not a closed form checkable on paper.",
+ "registered": "2026-11-27T19:05:12Z"
+}

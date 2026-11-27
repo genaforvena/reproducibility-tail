@@ -41,7 +41,7 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -92,5 +92,18 @@
       "extracted": "724.f",
       "range_sha256": "c55d2ff894ba1f7cf019e9b4c7006594be1bcd05461959b5794e387479c569d9"
     }
-  }
+  },
+  "replayed": [
+    {
+      "utc": "2026-11-27T14:50:04Z",
+      "kind": "clean",
+      "values": {
+        "FINV_M10_N10_P090": 2.3226039
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/abernathy1993-finv-724/evidence/replay-2026-11-27T145004Z.log",
+      "seconds": 87
+    }
+  ]
 }

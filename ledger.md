@@ -20,7 +20,7 @@ By field: astronomy 1, biology 1, ecology 1, numerics 90, other 4, statistics 6
 By stack: C/C++ 12, Fortran 77, Java 1, MATLAB/Octave 7, R 5, other 1
 By decade: 0 1, 1960 4, 1970 11, 1980 9, 1990 35, 2000 28, 2010 15
 
-Data as of 2026-11-27T14:44:18Z (the newest replay or funnel entry).
+Data as of 2026-11-27T14:50:04Z (the newest replay or funnel entry).
 
 ## The funnel
 
@@ -80,7 +80,7 @@ Authors' original artifact, among all attempted papers: failed 68 (did not run),
 
 | paper | field · year · stack | claim | paper value ± tol | our value | Δ | margin | basis | gates G1 G2 G3 G5 | grade | verdict | last replay |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| [abernathy1993-finv-724](reports/abernathy1993-finv-724/result.md) | numerics · 1993 · Fortran | FINV(M=10, N=10, P=0.9), the cell in row N = 10, column M = 10 of the P = 0.90 table in the archive's printed TEST driver output: 0.23226039E+001. Registered by scout from the artifact's own printed output, not a paper table. Tolerance 2e-7 absolute, fixed before any run. (FINV_M10_N10_P090) [shipped reference output] | 2.3226 ± 2e-07 | 2.3226 | 0 | 0% | patched | ✓ · ✓ · | B | reproduced | never clean |
+| [abernathy1993-finv-724](reports/abernathy1993-finv-724/result.md) | numerics · 1993 · Fortran | FINV(M=10, N=10, P=0.9), the cell in row N = 10, column M = 10 of the P = 0.90 table in the archive's printed TEST driver output: 0.23226039E+001. Registered by scout from the artifact's own printed output, not a paper table. Tolerance 2e-7 absolute, fixed before any run. (FINV_M10_N10_P090) [shipped reference output] | 2.3226 ± 2e-07 | 2.3226 | 0 | 0% | patched | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [akima1991-uvip3p-697](reports/akima1991-uvip3p-697/result.md) | numerics · 1991 · Fortran | The one-call result YI2 of UVIP3P, for the 31 abscissas of the shipped driver TTUVIP, agrees with the driver's expected values YIE(31,2) within 0.0005 absolute, for NP = 3 and NP = 6 (artifact-reference: the shipped expected values are the oracle, not a value printed in the paper). (YI2 vs YIE, NP=3, all 31 points) [shipped reference output] | 0 ± 0.0005 | 0 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [akima1991-uvip3p-697](reports/akima1991-uvip3p-697/result.md) | numerics · 1991 · Fortran | The one-call result YI2 of UVIP3P, for the 31 abscissas of the shipped driver TTUVIP, agrees with the driver's expected values YIE(31,2) within 0.0005 absolute, for NP = 3 and NP = 6 (artifact-reference: the shipped expected values are the oracle, not a value printed in the paper). (YI2 vs YIE, NP=6, all 31 points) [shipped reference output] | 0 ± 0.0005 | 0 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [akima1996-rgbi3p-760](reports/akima1996-rgbi3p-760/result.md) | numerics · 1996 · Fortran | ZI(XI=3.50, YI=5.00), the RGBI3P interpolated value at an off-grid point, as printed in the RGBI3P 'Calculated ZI Values' block of the shipped reference output RES. Registered tolerance: abs 0.01. (ZI(3.5, 5.0) (RGBI3P)) [shipped reference output] | 1.7 ± 0.01 | 1.7 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |

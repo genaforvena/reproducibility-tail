@@ -5,7 +5,7 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-87 papers attempted.
+88 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
@@ -14,11 +14,11 @@ Method and gates: [docs/method.md](docs/method.md).
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
-| - | blocked or not yet run | 17 |
+| - | blocked or not yet run | 18 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 74, other 4, statistics 6
-By stack: C/C++ 11, Fortran 62, Java 1, MATLAB/Octave 7, R 5, other 1
-By decade: 1960 4, 1970 8, 1980 7, 1990 28, 2000 27, 2010 13
+By field: astronomy 1, biology 1, ecology 1, numerics 75, other 4, statistics 6
+By stack: C/C++ 11, Fortran 63, Java 1, MATLAB/Octave 7, R 5, other 1
+By decade: 1960 4, 1970 8, 1980 7, 1990 29, 2000 27, 2010 13
 
 Data as of 2026-11-27T11:08:30Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T11:08:30Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-87 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+88 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **417 candidates considered from 4 of 4 frames: 87 attempted (21%), 0 unreachable, 330 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 55 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 22 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 56 (did not run), not-possible 3 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 22 (ran as documented).
 
 ## Results
 
@@ -200,6 +200,7 @@ Authors' original artifact, among all attempted papers: failed 55 (did not run),
 | [jonasson2008-varma-878](reports/jonasson2008-varma-878/result.md) | statistics · 2008 · MATLAB/Octave | varma_llc log-likelihood for the ten named test cases in comparison.txt (varma_llc column, tol_abs 1e-6). The registered values come from MATLAB's randn stream after randn('state',1); Octave's stream differs, so the data differ. Blocked: the claim does not state its data or random stream. (varma_llc mediumAR log-likelihood) [shipped reference output] | -45.0671 ± 1e-06 | – | – | – |  | ✓ · ✓ · | - | blocked | never clean |
 | [jonasson2008-varma-878](reports/jonasson2008-varma-878/result.md) | statistics · 2008 · MATLAB/Octave | varma_llc log-likelihood for the ten named test cases in comparison.txt (varma_llc column, tol_abs 1e-6). The registered values come from MATLAB's randn stream after randn('state',1); Octave's stream differs, so the data differ. Blocked: the claim does not state its data or random stream. (varma_llc mediumARMA1 log-likelihood) [shipped reference output] | -52.084 ± 1e-06 | – | – | – |  | ✓ · ✓ · | - | blocked | never clean |
 | [jonasson2008-varma-878](reports/jonasson2008-varma-878/result.md) | statistics · 2008 · MATLAB/Octave | varma_llc log-likelihood for the ten named test cases in comparison.txt (varma_llc column, tol_abs 1e-6). The registered values come from MATLAB's randn stream after randn('state',1); Octave's stream differs, so the data differ. Blocked: the claim does not state its data or random stream. (varma_llc mediumARMA2 log-likelihood) [shipped reference output] | -53.7619 ± 1e-06 | – | – | – |  | ✓ · ✓ · | - | blocked | never clean |
+| [kearfott1990-intbis-681](reports/kearfott1990-intbis-681/result.md) | numerics · 1990 · Fortran | Number of roots found by ROOTS for test problem no. 1 (cubic-parabola), as printed by the shipped GENBIS sample output. Registered tolerance: abs 0. (test problem 1 cubic-parabola, number of roots found) [shipped reference output] | 3 ± 0 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [kim2012-sfsdp-920](reports/kim2012-sfsdp-920/result.md) | numerics · 2012 · MATLAB/Octave | SFSDPplus, 3 sensors and 4 anchors, with the inputs printed in the manual (distanceMatrix0, xMatrix0, eps 1e-7, minDegree 4, objSW 1, free 0): the SDP-stage rmsd is 6.21e-02 (manual transcript, Doc/SFSDPmanual/UserManual.tex, section SFSDPplus.m). tol_abs 5e-4, fixed in the queue entry. (sdp_rmsd_printed) | 0.0621 ± 0.0005 | – | – | – | patched | ✓ · ✓ · | - | blocked | never clean |
 | [knoble1979-purdy-536](reports/knoble1979-purdy-536/result.md) | numerics · 1979 · Fortran | For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree. (X=000000000000000000) [shipped reference output] | 4.72237e+21 ± 0 | – | – | – | ? | · · · · | - | blocked | never clean |
 | [knoble1979-purdy-536](reports/knoble1979-purdy-536/result.md) | numerics · 1979 · Fortran | For each of the ten input rows X (18 hex digits, 72 bits) in the printed table, the program's output FX, written by the C32 build's format 3, equals the printed FX string exactly. Claim: all ten rows agree. (X=000000000000000001) [shipped reference output] | 4.72237e+21 ± 0 | – | – | – | ? | · · · · | - | blocked | never clean |

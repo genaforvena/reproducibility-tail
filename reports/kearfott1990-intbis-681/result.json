@@ -1,0 +1,68 @@
+{
+  "paper": {
+    "short": "kearfott1990-intbis-681",
+    "title": "Algorithm 681: INTBIS, a portable interval Newton/bisection package for finding all solutions of nonlinear systems",
+    "year": 1990,
+    "venue": "ACM Transactions on Mathematical Software 16(2), 152-157 (TOMS 681)",
+    "doi": null,
+    "note": "ACM article not read (403 from this host); the netlib archive 681.gz was checked by sha256 and read as text, not executed."
+  },
+  "field": "numerics (interval Newton and bisection for nonlinear systems)",
+  "field_class": "numerics",
+  "stack": "Fortran",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Number of roots found by ROOTS for test problem no. 1 (cubic-parabola), as printed by the shipped GENBIS sample output. Registered tolerance: abs 0.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "test problem 1 cubic-parabola, number of roots found",
+        "paper": 3,
+        "tol_abs": 0,
+        "ours": null
+      }
+    ],
+    "reference": {
+      "file": "reports/kearfott1990-intbis-681/evidence/reference/shipped-problem1.txt",
+      "archive": "netlib.org/toms/681.gz sha256 b0ac1477099be1f23d2cdb9be18cfad2f31afd1e95e7d026a6f2b2d98f987f96",
+      "sha256": "2464e8d4c09d8a89158a4fd409dc8e12ad7340913281deeee7d4dedcd5a51288"
+    }
+  },
+  "basis": "patched",
+  "verdict": "blocked",
+  "cause": null,
+  "blocker": {
+    "gate": "G2",
+    "missing": "a written G2 rule for a token-proven identifier rename (FREE -> FREEBX, two lines, no paper counterpart), or a decision that the full G2 check cannot be met for it",
+    "resolver": "operator (question sent in chat #197; no answer in the inbox as of 2026-11-27T11:08Z)",
+    "detail": "The archive does not compile as shipped: gfortran rejects the package routine FREE ('Too many arguments in call to free') because it collides with the C library free. Renaming FREE to FREEBX at two sites fixes it. Compiler-flag routes were tried and ruled out (-fno-builtin, -fno-builtin -fno-builtin-free). The change is a source patch, so the full G2 check stands. Paper check: see reports/kearfott1990-intbis-681/g2-note.md."
+  },
+  "attempt": "Original authors' archive built as documented: failed, because of the FREE name clash (evidence/original-attempt-build.log). The build compiled the whole text file, prose included, so this is a weak G1 record. Test problem 1 was run on the patched source in two clean passes ('Number of roots found: 3', matching the claim); not counted as a verdict because the patch is not yet G2-cleared.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "gfortran rejects the package routine FREE (Too many arguments in call to 'free', intbis.f:1397); the archive does not build as shipped.",
+    "log": "reports/kearfott1990-intbis-681/evidence/original-attempt-build.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "na",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/kearfott1990-intbis-681/recipe.sh",
+  "queue_commit": "aedeb1e",
+  "evidence": [
+    "reports/kearfott1990-intbis-681/g2-note.md",
+    "reports/kearfott1990-intbis-681/evidence/original-attempt-build.log",
+    "reports/kearfott1990-intbis-681/evidence/rename-diff-vs-archive-range.txt",
+    "reports/kearfott1990-intbis-681/evidence/run-pass1.txt",
+    "reports/kearfott1990-intbis-681/evidence/problem1-diff.txt",
+    "reports/kearfott1990-intbis-681/evidence/build.log",
+    "reports/kearfott1990-intbis-681/evidence/gfortran-version.txt",
+    "reports/kearfott1990-intbis-681/evidence/recipe-run.log"
+  ],
+  "replayed": []
+}

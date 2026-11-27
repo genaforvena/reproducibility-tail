@@ -95,7 +95,7 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -111,7 +111,28 @@
     "reports/kuki1972-cgamma-421/evidence/manifests/manifest.mid",
     "reports/kuki1972-cgamma-421/evidence/manifests/manifest.post"
   ],
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-27T07:15:03Z",
+      "kind": "clean",
+      "values": {
+        "loggamma(1,5) real": -6.1303241,
+        "loggamma(1,5) imag": 3.8158986,
+        "loggamma(2.5,5) real": -3.6681033,
+        "loggamma(2.5,5) imag": 5.8060098,
+        "loggamma(5,10) real": -4.2855074,
+        "loggamma(5,10) imag": 19.117071,
+        "loggamma(2.5,-5) real": -3.6681033,
+        "loggamma(2.5,-5) imag": -5.8060098,
+        "loggamma(5,-10) real": -4.2855074,
+        "loggamma(5,-10) imag": -19.117071
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/kuki1972-cgamma-421/evidence/replay-2026-11-27T071503Z.log",
+      "seconds": 54
+    }
+  ],
   "patch": {
     "kind": "build-only",
     "archive_sha256": "cea2d06751db06aa54dbe7ec6d75b7ce16d24d09c0a260069f37c9eefa0d1ff1",

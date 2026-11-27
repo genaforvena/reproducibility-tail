@@ -1,0 +1,61 @@
+{
+ "paper": {
+  "title": "Algorithm 454: The complex method for constrained optimization (JCONSX)",
+  "authors": [
+   "J. A. Richardson",
+   "J. L. Kuester"
+  ],
+  "year": 1973,
+  "venue": "Communications of the ACM 16(8), August 1973, pp. 487-489 (archive header: COLLECTED ALGORITHMS FROM ACM, VOL. 16, NO. 8, August 1973, PP. 487-489)",
+  "doi": null,
+  "url": "https://netlib.org/toms/454.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/454.gz",
+  "commit": "netlib TOMS archive 454.gz (scouted 2026-11-27, gz sha256 62edf4cce130c6e7ccce05b9da7908b3446ac74ce5ae74ca1fe9fe80087cf9f0). A shell archive (#! /bin/sh, created 10 March 2006 by J. Burkardt's packaging) of Fortran/Sp/Src/src.f (JCONSX), Fortran/Sp/Drivers/driver1.f, driver2.f, driver3.f, a Makefile and the reference files res1, res2, res3 that the Makefile diffs against."
+ },
+ "field": "numerics (constrained optimization)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "seed": 123456789,
+  "location": "Fortran/Sp/Drivers/res1, the shipped reference output of driver1.f (TOMS454_PRB1, the Box problem). Its last printed iterate before the exact-solution line is ITERATION 20, CORRECTED POINT 3.0000 1.7320, and the run then prints ITERATION 21 and 'The exact solution is F(3.0000,1.7321)'. driver1.f sets seed = 123456789 at line 71 and fills the starting points with the Park-Miller generator RN. The rerun should compile src.f and driver1.f unedited and compare the ITERATION 20 corrected point and the ITERATION 21 count with res1.",
+  "reference": {
+   "file": "454.gz, extracted Fortran/Sp/Drivers/res1 (produced by the archive's own driver, shipped in the shar)",
+   "sha256": "not recorded for the extracted res1; the archive sha256 is 62edf4cce130c6e7ccce05b9da7908b3446ac74ce5ae74ca1fe9fe80087cf9f0",
+   "archive": "454.gz, sha256 62edf4cce130c6e7ccce05b9da7908b3446ac74ce5ae74ca1fe9fe80087cf9f0"
+  },
+  "metric": "Corrected point of the complex method on the Box problem (driver1, seeded starting points) at ITERATION 20: the two coordinates printed to four decimals, and the number of iterations printed before the exact-solution line (21).",
+  "paper_value": "Not checked against the paper (CACM 16(8) 487-489 is behind the ACM paywall); the archive's shipped res1 is the value to check.",
+  "values": [
+   {
+    "name": "x1 at ITERATION 20",
+    "paper": 3.0,
+    "tol_abs": 6e-05
+   },
+   {
+    "name": "x2 at ITERATION 20",
+    "paper": 1.732,
+    "tol_abs": 6e-05
+   },
+   {
+    "name": "ITERATION count",
+    "paper": 21,
+    "tol_abs": 0
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 6e-05,
+   "basis": "Fixed before any run. res1 prints the coordinates to four decimals, so the print rounding is up to 5e-5 per coordinate; 6e-5 absorbs it and nothing more. The iteration count is an integer and must match exactly. A different compiler or libm may move the last bits, and the Park-Miller generator is integer, so this is the deterministic check. Not loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 second (21 iterations of a 2-variable problem).",
+  "data_size": "Archive 454.gz is a 2774-line shar; no data files.",
+  "data_licence": "Not stated in the archive; a Collected Algorithm from ACM. The rerun should record the licence it finds."
+ },
+ "why": "The shipped driver and reference res1 print a seeded, deterministic run of JCONSX's complex method that converges to the known Box-problem optimum, so the iterate path and the convergence count are checked without any paper table.",
+ "registered": "2026-11-27T06:14Z"
+}

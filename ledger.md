@@ -5,7 +5,7 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-62 papers attempted.
+63 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
@@ -14,11 +14,11 @@ Method and gates: [docs/method.md](docs/method.md).
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
-| - | blocked or not yet run | 13 |
+| - | blocked or not yet run | 14 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 49, other 4, statistics 6
-By stack: C/C++ 9, Fortran 41, Java 1, MATLAB/Octave 6, R 5
-By decade: 1960 2, 1970 3, 1980 5, 1990 18, 2000 24, 2010 10
+By field: astronomy 1, biology 1, ecology 1, numerics 50, other 4, statistics 6
+By stack: C/C++ 9, Fortran 42, Java 1, MATLAB/Octave 6, R 5
+By decade: 1960 2, 1970 3, 1980 5, 1990 19, 2000 24, 2010 10
 
 Data as of 2026-11-27T05:52Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T05:52Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-62 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+63 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **316 candidates considered from 4 of 4 frames: 57 attempted (18%), 0 unreachable, 259 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 35 (did not run), not-possible 2 (no code exists to run), partial 6 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 35 (did not run), not-possible 2 (no code exists to run), partial 6 (ran only through a workaround or for part of the claim), succeeded 20 (ran as documented).
 
 ## Results
 
@@ -136,6 +136,9 @@ Authors' original artifact, among all attempted papers: failed 35 (did not run),
 | [hager2006-cg-descent-851](reports/hager2006-cg-descent-851/result.md) | numerics · 2006 · Fortran | driver1 (User's Guide example: n = 100, x = 1, grad_tol 1e-8, default cg.parm) prints cg iterations 32, function evaluations 55, gradient evaluations 45, as in the shipped res1; exact match (tolerance 0). (driver1 function evaluations) [shipped reference output] | 55 ± 0 | 55 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [hager2006-cg-descent-851](reports/hager2006-cg-descent-851/result.md) | numerics · 2006 · Fortran | driver1 (User's Guide example: n = 100, x = 1, grad_tol 1e-8, default cg.parm) prints cg iterations 32, function evaluations 55, gradient evaluations 45, as in the shipped res1; exact match (tolerance 0). (driver1 gradient evaluations) [shipped reference output] | 45 ± 0 | 45 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [hong2003-snied-823](reports/hong2003-snied-823/result.md) | numerics · 2003 · Fortran | EI = SUM/I at I = 4096 printed by TSNIED (Snied, IFLAG=1, DIMEN=2), the last EI line of the shipped reference Drivers/res1. Paper value 0.9999468969847435 (artifact-reference), absolute tolerance 1e-9 (fixed in the queue entry before any run). (EI at I=4096, Snied IFLAG=1, DIMEN=2) [shipped reference output] | 0.999947 ± 1e-09 | – | – | – | original | ✓ · ✓ · | - | blocked | never clean |
+| [hu1998-schwarzchristoffel-785](reports/hu1998-schwarzchristoffel-785/result.md) | numerics · 1998 · Fortran | Registered as example 6 (referee example, NPTQ=7, TOL=0.1E-09) of the shipped RES transcript: U = 0.4559381277686, C = (1.8134230823216, -1.8134230823303), absolute tolerance 1e-7. (ex6 U) [shipped reference output] | 0.455938 ± 1e-07 | – | – | – | original | ✓ · ✓ · | - | blocked | never clean |
+| [hu1998-schwarzchristoffel-785](reports/hu1998-schwarzchristoffel-785/result.md) | numerics · 1998 · Fortran | Registered as example 6 (referee example, NPTQ=7, TOL=0.1E-09) of the shipped RES transcript: U = 0.4559381277686, C = (1.8134230823216, -1.8134230823303), absolute tolerance 1e-7. (ex6 Re C) [shipped reference output] | 1.81342 ± 1e-07 | – | – | – | original | ✓ · ✓ · | - | blocked | never clean |
+| [hu1998-schwarzchristoffel-785](reports/hu1998-schwarzchristoffel-785/result.md) | numerics · 1998 · Fortran | Registered as example 6 (referee example, NPTQ=7, TOL=0.1E-09) of the shipped RES transcript: U = 0.4559381277686, C = (1.8134230823216, -1.8134230823303), absolute tolerance 1e-7. (ex6 Im C) [shipped reference output] | -1.81342 ± 1e-07 | – | – | – | original | ✓ · ✓ · | - | blocked | never clean |
 | [hurst1972-rnvr-425](reports/hurst1972-rnvr-425/result.md) | numerics · 1972 · Fortran | Shipped reference Fortran/Sp/Drivers/res (inside 425.gz): the printed TEST02 output of driver.f, RNVR on the 2x2 covariance [1 0.3; 0.3 1] with seed iarg=123456789, 10 samples x 2 components, g14.6 format. Claim values: the 20 printed variates, tolerance 1e-5 absolute. (TEST02 sample 1 component 1) [shipped reference output] | 1.24296 ± 1e-05 | 1.24296 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [hurst1972-rnvr-425](reports/hurst1972-rnvr-425/result.md) | numerics · 1972 · Fortran | Shipped reference Fortran/Sp/Drivers/res (inside 425.gz): the printed TEST02 output of driver.f, RNVR on the 2x2 covariance [1 0.3; 0.3 1] with seed iarg=123456789, 10 samples x 2 components, g14.6 format. Claim values: the 20 printed variates, tolerance 1e-5 absolute. (TEST02 sample 1 component 2) [shipped reference output] | 0.594892 ± 1e-05 | 0.594892 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [hurst1972-rnvr-425](reports/hurst1972-rnvr-425/result.md) | numerics · 1972 · Fortran | Shipped reference Fortran/Sp/Drivers/res (inside 425.gz): the printed TEST02 output of driver.f, RNVR on the 2x2 covariance [1 0.3; 0.3 1] with seed iarg=123456789, 10 samples x 2 components, g14.6 format. Claim values: the 20 printed variates, tolerance 1e-5 absolute. (TEST02 sample 2 component 1) [shipped reference output] | -0.134458 ± 1e-05 | -0.134458 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
@@ -251,4 +254,4 @@ Cause of every attempted paper that is `not-reproduced` or `blocked` (the funnel
 | numerical-discrepancy | 1 |
 | nondeterminism | 0 |
 | platform | 0 |
-| other | 5 |
+| other | 6 |

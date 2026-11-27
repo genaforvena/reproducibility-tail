@@ -1,0 +1,70 @@
+{
+  "paper": {
+    "short": "hu1998-schwarzchristoffel-785",
+    "title": "Algorithm 785: A software package for computing Schwarz-Christoffel conformal transformation for doubly connected polygonal regions",
+    "year": 1998,
+    "doi": null
+  },
+  "field": "numerics (conformal mapping, Schwarz-Christoffel)",
+  "field_class": "numerics",
+  "stack": "Fortran 77 (TOMS 785 archive 785.gz: Fortran77/Src/Dp/src.f, Fortran77/Drivers/Dp/driver.f and data, shipped transcript Fortran77/Drivers/Dp/RES)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Registered as example 6 (referee example, NPTQ=7, TOL=0.1E-09) of the shipped RES transcript: U = 0.4559381277686, C = (1.8134230823216, -1.8134230823303), absolute tolerance 1e-7.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "ex6 U",
+        "paper": 0.4559381277686,
+        "tol_abs": 1e-7,
+        "ours": null
+      },
+      {
+        "name": "ex6 Re C",
+        "paper": 1.8134230823216,
+        "tol_abs": 1e-7,
+        "ours": null
+      },
+      {
+        "name": "ex6 Im C",
+        "paper": -1.8134230823303,
+        "tol_abs": 1e-7,
+        "ours": null
+      }
+    ],
+    "reference": {
+      "file": "reports/hu1998-schwarzchristoffel-785/evidence/shipped-RES.txt",
+      "sha256": "2cb6f780e75e9b650d6a5a96f9ccebcf4fa139f583e8bf36408b36bc9181977b",
+      "archive": "785.gz, sha256 55965a41f823fb161c5df7b59933092f3879b7a8b57636859511be5c3f4f9175"
+    }
+  },
+  "basis": "original",
+  "verdict": "blocked",
+  "cause": "other",
+  "attempt": "Blocked: the claim is mis-specified. The registered numbers are not example 6 of the shipped transcript. They are the first example block (problem 1: menu item 1, square-symmetric region, NPTQ=7, M=4, N=4). The authors' unedited driver, compiled with gfortran -std=legacy, ran the archive's own data file as its keyboard stream and printed all seven example blocks. Block 1 matches the registered U and C exactly (to the printed 13 digits). Block 6, the referee example that the claim names, gives U = 0.1772675789993 and C = (-0.7515041412251, 1.2077109426967), which is far outside the registered tolerance (the transcript shows the same U = 0.1772675790003). Blocks 2, 3 and 6 differ from the transcript's printed values at 1e-8 to 1e-7 in the last digits; blocks 1, 4, 5 and 7 are exact. The claim and tolerance were not changed. The scout chooses the fix: re-register as example 1, or as example 6 with its own values, see reports/hu1998-schwarzchristoffel-785/note-to-scout.md.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "The archive's unedited driver.f and src.f compiled with gfortran -std=legacy (compile_exit=0), and the full session (the archive's data file as stdin) ran to completion with exit 0, printing seven example blocks.",
+    "log": "reports/hu1998-schwarzchristoffel-785/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/hu1998-schwarzchristoffel-785/recipe.sh",
+  "queue_commit": "1d93d11",
+  "evidence": [
+    "reports/hu1998-schwarzchristoffel-785/evidence/original-attempt.log",
+    "reports/hu1998-schwarzchristoffel-785/evidence/run-session.txt",
+    "reports/hu1998-schwarzchristoffel-785/evidence/shipped-RES.txt",
+    "reports/hu1998-schwarzchristoffel-785/evidence/values.txt",
+    "reports/hu1998-schwarzchristoffel-785/evidence/recipe-run.log",
+    "reports/hu1998-schwarzchristoffel-785/note-to-scout.md"
+  ],
+  "replayed": []
+}

@@ -1,0 +1,91 @@
+{
+  "paper": {
+    "short": "davis2004-umfpack-832",
+    "title": "Algorithm 832: UMFPACK V4.3 -- an unsymmetric-pattern multifrontal method",
+    "authors": [
+      "T. A. Davis"
+    ],
+    "year": 2004,
+    "doi": null,
+    "venue": "ACM Transactions on Mathematical Software 30(2), June 2004, p. 196 (per the frame item); article not fetched"
+  },
+  "field": "numerics (sparse LU factorization, multifrontal method, fill-reducing ordering)",
+  "field_class": "numerics",
+  "stack": "C (UMFPACK V4.3 with AMD V1.1, netlib CALGO 832.zip, stock Make/Make.include: CONFIG = -DNBLAS, CFLAGS = -O; gcc 13.3.0 from Ubuntu 24.04; the Fortran readhb helpers built with gfortran 16.2.0 from conda-forge)",
+  "stack_class": "C/C++",
+  "claim": {
+    "text": "The 'numeric factorization flops' value printed for the west0067 matrix (HB/west0067.rua, 67 by 67, 294 entries) by the shipped reference output UMFPACK/Demo/umf4.out, 1.41920e+04, agrees with the value the rerun prints for the same matrix within absolute tolerance 0.05 (registered before any run; the claim is the code's own shipped reference output, not a value from the paper).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "flops_west0067",
+        "paper": 14192.0,
+        "tol_abs": 0.05,
+        "ours": 14192.0
+      }
+    ],
+    "determinism": "deterministic (fixed input HB/west0067.rua; AMD and COLAMD orderings with fixed defaults, no random numbers)",
+    "reference": {
+      "file": "reports/davis2004-umfpack-832/evidence/umf4.out.reference",
+      "archive": "netlib.org/toms/832.zip (sha256 c0149f87f95678435f0363c84689975cad5814ac3a6912bdb4c6894dbb74debd)",
+      "sha256": "6b816cb5239a07adff9595229edc4d88fa0ab679c3c63f16ea56f034a97535e8"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "G1 original attempt: the authors' tree as shipped, with its stock Make/Make.include, run as 'make hb' in UMFPACK/Demo, builds UMFPACK, AMD and umf4 and then fails at readhb: 'make: f77: No such file or directory' (no Fortran compiler named f77 in the sandbox). Patch (build-only, no source file touched): gfortran 16.2.0 from conda-forge installed in the sandbox during the fetch step, and the same 'make hb' run with the command-line variable F77=gfortran. The west0067 run then gives the flop line 'numeric factorization flops 1.41920e+04', identical to the shipped reference at its printed precision, in two clean passes.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "stock make hb cannot build the Fortran readhb helpers: the stock Make.include names the Fortran compiler f77, which the sandbox does not have (make: f77: No such file or directory, exit 2)",
+    "log": "reports/davis2004-umfpack-832/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/davis2004-umfpack-832/recipe.sh",
+  "queue_commit": "8300bf24f31b7ae268fc3bab72965135781548bd",
+  "replayed": [],
+  "evidence": [
+    "evidence/fetch.log",
+    "evidence/original-attempt.log",
+    "evidence/build-hb.exit",
+    "evidence/build-hb.log",
+    "evidence/pass2.exit",
+    "evidence/pass2-hb.log",
+    "evidence/umf4.out.reference",
+    "evidence/manifest.pre",
+    "evidence/manifest.mid",
+    "evidence/manifest.post",
+    "evidence/recipe-run.log"
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "c0149f87f95678435f0363c84689975cad5814ac3a6912bdb4c6894dbb74debd",
+    "compared": 246,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "cd /work/pre/832/UMFPACK/Demo && make hb F77=gfortran"
+    ],
+    "manifests": {
+      "pre": "reports/davis2004-umfpack-832/evidence/manifest.pre",
+      "mid": "reports/davis2004-umfpack-832/evidence/manifest.mid",
+      "post": "reports/davis2004-umfpack-832/evidence/manifest.post"
+    }
+  }
+}

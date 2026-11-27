@@ -64,7 +64,7 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -84,5 +84,17 @@
     "reports/goano1995-fermi-745/evidence/manifest.mid",
     "reports/goano1995-fermi-745/evidence/manifest.post"
   ],
-  "replayed": []
+  "replayed": [
+    {
+      "utc": "2026-11-27T01:12:31Z",
+      "kind": "clean",
+      "values": {
+        "FERMID(0.5, 5.0)": 8.844208895243
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/goano1995-fermi-745/evidence/replay-2026-11-27T011231Z.log",
+      "seconds": 59
+    }
+  ]
 }

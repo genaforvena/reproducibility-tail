@@ -1,0 +1,107 @@
+{
+  "paper": {
+    "short": "hanson2004-givens-830",
+    "title": "Another Visit With Standard and Modified Givens Transformations and A Remark On Algorithm 539 (Algorithm 830)",
+    "year": 2004,
+    "doi": null,
+    "authors": [
+      "R. J. Hanson",
+      "T. R. Hopkins"
+    ],
+    "venue": "ACM TOMS 30(1), March 2004, pp. 86-94 (ACM article not read)"
+  },
+  "field": "numerics (dense linear algebra: modified Givens rotations)",
+  "field_class": "numerics",
+  "stack": "Fortran 90",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "The first element of the scaled x-vector in the first test of the shipped reference output res1 (rotm_battery.f90 on data3): 14.519450 (E16.8 print), compared with tolerance 1e-5 absolute.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "rotm-x1-scaled",
+        "paper": 14.51945,
+        "tol_abs": 1e-05,
+        "ours": 14.51945
+      }
+    ],
+    "reference": {
+      "file": "reports/hanson2004-givens-830/evidence/shipped-res1.txt",
+      "sha256": "0b55a3749e08121c9db582bbf2f72fc796fe2da9a43a8184ed609f9caa3eb00f",
+      "archive": "netlib.org/toms/830.gz sha256 aadb021e657f625267c8aa6e4b9f4b5b83aed15a5b7755e8339798e8704925a6 (member Fortran90/Drivers/res1, copied into evidence/ by the recipe; first test x-vector element 0.14519450E+02)"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "The authors' Makefile as shipped uses F90 = /opt/NAGWare/bin/f95, which does not exist in the sandbox (make: /opt/NAGWare/bin/f95: No such file or directory). Build-only workaround: a directory of symlinks to the unedited archive (Fortran90/Src, Drivers/Makefile, Drivers/rotm_battery.f90, Drivers/data3); then the Makefile's own target res1 with F90=gfortran, F90OPTS=-O2, F90LINK=gfortran, F90LINKOPTS=-O2 on the command line. No source byte is edited. The full output res1 is byte-identical to the shipped res1 (diff: 0 lines, all 12 values of the first test block).",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make: /opt/NAGWare/bin/f95: No such file or directory (NAG compiler named in the shipped Makefile is absent)",
+    "log": "reports/hanson2004-givens-830/evidence/original-attempt-build.log"
+  },
+  "diagnostics": {
+    "precision": "Printed value has 8 significant digits (E16.8). The compared value is 14.51945 as parsed from the output; tolerance 1e-5 absorbs print rounding (5e-7 absolute at this magnitude)."
+  },
+  "second_pass": null,
+  "queue_commit": "b93b757f19577881e58fb3d787812e7fcdeab3ec",
+  "recipe": "reports/hanson2004-givens-830/recipe.sh",
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "environment": {
+    "compiler": "GNU Fortran (conda-forge gcc 16.2.0-7) 16.2.0",
+    "flags": "-O2 (command-line override of the Makefile's NAG flags)",
+    "sandbox": "tools/sandbox.sh"
+  },
+  "evidence": {
+    "run_output": "reports/hanson2004-givens-830/evidence/run-pass1.txt",
+    "build_log": "reports/hanson2004-givens-830/evidence/build-run.log",
+    "original_attempt_log": "reports/hanson2004-givens-830/evidence/original-attempt-build.log",
+    "archive_check": "reports/hanson2004-givens-830/evidence/archive-sha256-check.txt",
+    "manifests": "reports/hanson2004-givens-830/evidence/manifests/",
+    "shipped_reference": "reports/hanson2004-givens-830/evidence/shipped-res1.txt"
+  },
+  "replayed": [
+    {
+      "utc": "2026-11-27T19:02:07Z",
+      "kind": "clean",
+      "values": {
+        "rotm-x1-scaled": 14.51945
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/hanson2004-givens-830/evidence/replay-2026-11-27T190207Z.log",
+      "seconds": 66
+    }
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "aadb021e657f625267c8aa6e4b9f4b5b83aed15a5b7755e8339798e8704925a6",
+    "compared": 17,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "cd /work/build/Fortran90/Drivers && export PATH=/work/env16/bin:$PATH && timeout 600 make F90=gfortran \"F90OPTS=-O2\" F90LINK=gfortran \"F90LINKOPTS=-O2\" res1; echo \"make exit=$?\""
+    ],
+    "manifests": {
+      "pre": "reports/hanson2004-givens-830/evidence/manifest.pre",
+      "mid": "reports/hanson2004-givens-830/evidence/manifest.mid",
+      "post": "reports/hanson2004-givens-830/evidence/manifest.post"
+    }
+  }
+}

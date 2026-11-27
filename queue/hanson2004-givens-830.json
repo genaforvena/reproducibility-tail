@@ -1,0 +1,45 @@
+{
+ "paper": {
+  "title": "Another Visit With Standard and Modified Givens Transformations and A Remark On Algorithm 539 (Algorithm 830)",
+  "authors": [
+   "R. J. Hanson",
+   "T. R. Hopkins"
+  ],
+  "year": 2004,
+  "venue": "ACM Transactions on Mathematical Software 30(1), March 2004, pp. 86-94 (per the frame item and the archive header). The ACM article was not fetched.",
+  "doi": null,
+  "url": "https://netlib.org/toms/830.gz (article not fetched; ACM page not used)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/830.gz",
+  "commit": "netlib CALGO archive 830.gz (shar archive: Fortran90/Src, Fortran90/Drivers, Fortran90/BenchMark)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/830.gz (HTTP 200, 31708 bytes; unpacked 268823 bytes). sha256 of 830.gz: aadb021e657f625267c8aa6e4b9f4b5b83aed15a5b7755e8339798e8704925a6 (scout download, 2026-11-27). Read in /tmp/scout-450-RopK; the shar script was not executed, its members were read in place.",
+  "archive_sha256": "aadb021e657f625267c8aa6e4b9f4b5b83aed15a5b7755e8339798e8704925a6",
+  "note": "The archive is a shell archive: run it with /bin/sh in an empty directory to create Fortran90/. The claim uses only Fortran90/Src/Import_Kinds.f90 and Fortran90/Src/Givens_Rotations.f90 (the generic Fortran 90 rotm routine), Fortran90/Drivers/rotm_battery.f90, the input Fortran90/Drivers/data3 and the shipped reference Fortran90/Drivers/res1. The Drivers Makefile target res1 builds these with Import_Kinds.o, Givens_Rotations.o and rotm_battery.f90 and runs ./a.out < data3 > res1. The Makefile names the NAG f95 compiler; the rerun uses any Fortran 90 compiler (gfortran) and must not change the source. The BenchMark directory (timings) and the downdating tests (sdate_res, ddate_res, which use random matrices) are NOT part of this claim. No external BLAS or LAPACK is needed for res1 as far as the driver reads (rotm_battery calls only the rotm routine of the Givens_Rotations module); the rerun should confirm this at build time."
+ },
+ "field": "numerics (floating-point Givens and modified Givens rotations, BLAS level 1 style)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "Fortran90/Drivers/res1 (shipped reference output of rotm_battery.f90 on the input Fortran90/Drivers/data3). The first test block is titled '>>> Straight-forward. Type = anti-diagonal. Equal unit stride.' with input x = (2.0, 3.0), d = (4.0, 9.0), k = 4, incx = incy = 1. In its 'Output vectors (scaled to match _rot output)' block, the x-vector is printed on the line after the 'x-vector:' label: first element 0.14519450E+02 (res1 line 3793 in the archive's shar text).",
+  "reference": {
+   "file": "Fortran90/Drivers/res1 inside 830.gz (netlib.org/toms/830.gz), line 3793 of the shar text",
+   "sha256": "not computed for the member; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/830.gz"
+  },
+  "paper_value": "The ACM article was not read; the claim is the code's own shipped reference output, not a value located in the paper.",
+  "metric": "The first element of the x-vector in the 'Output vectors (scaled to match _rot output)' block of the first test in res1, i.e. the value 14.519450 printed with format E16.8. Compared as an absolute number with the value the rerun prints in the same place of its own res1. The other values in res1 are not part of the claim.",
+  "determinism": "deterministic (fixed input data3; no random numbers in rotm_battery.f90)",
+  "tolerance": {
+   "abs": 0.00001,
+   "basis": "Fixed before any run. The reference prints 8 significant digits (last printed digit 1e-6 at this magnitude), so print rounding alone is up to 5e-7 absolute. 1e-5 absorbs print rounding and compiler-level differences in the last double-precision digits (about 1e-15 relative here). A wrong modified-Givens parameter or a wrong scaling changes the value by far more than 1e-5. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 2 minutes: unpack the shar archive, compile three Fortran 90 files with one compiler, run one small driver on a 4-element input.",
+  "data_size": "None beyond the archive (data3 is under 1 KB).",
+  "data_licence": "Netlib CALGO archive; licence per the archive's own notices (the rerun should record it)."
+ },
+ "why": "The shipped driver runs the generic Fortran 90 modified Givens routine on a fixed input and prints its output vectors; the printed value depends on the routine's scaling and parameter logic, and it is not a closed-form number the paper can be checked against on paper alone.",
+ "registered": "2026-11-27T17:55:00Z"
+}

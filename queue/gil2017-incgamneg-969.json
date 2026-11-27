@@ -1,0 +1,52 @@
+{
+ "paper": {
+  "title": "Computation of the incomplete gamma function for negative values of the argument (Algorithm 969)",
+  "authors": [
+   "Amparo Gil",
+   "Diego Ruiz-Antolín",
+   "Javier Segura",
+   "Nico M. Temme"
+  ],
+  "year": 2017,
+  "venue": "ACM TOMS 43(3), art. 26 (2016 online); arXiv:1608.04152",
+  "doi": "10.1145/2972951",
+  "url": "https://arxiv.org/abs/1608.04152"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/969.zip",
+  "commit": "netlib TOMS archive 969.zip (scouted 2026-11-27, sha256 4d365512e230338da001de56c62cfc5b78aa74e4f3b9f1a32b1dabe93e5a3ce7)",
+  "note": "Fortran 90 module IncgamNEG (incgamNEG.f90), with setprecision, cons, gammaError. Driver testgamstar.f90 and its shipped output OutGammStar are in Fortran90/Drivers. Compile with gfortran; the constants file is in Src."
+ },
+ "field": "numerics (special functions)",
+ "stack": "Fortran 90",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Shipped driver Fortran90/Drivers/testgamstar.f90: DATA igams entry 11 (0.98117651308252274), which is gamma*(a,z) at a=-0.03, z=-0.03. The same value is printed in the shipped OutGammStar file on the row '-.3000D-01 -.3000D-01 0.9811765130825D+00'. Paper location for the accuracy claim: arXiv:1608.04152 abstract, relative accuracy about 1e-13 in [-500,500] x [-500,0).",
+  "reference": {
+   "file": "969/Fortran90/Drivers/OutGammStar and testgamstar.f90 DATA igams(11)",
+   "sha256": "4d365512e230338da001de56c62cfc5b78aa74e4f3b9f1a32b1dabe93e5a3ce7 (archive)"
+  },
+  "metric": "gamma*(a,z) = z**(-a) gamma(a,z)/Gamma(a) at a=-0.03, z=-0.03, as printed by incgamstar in the shipped driver",
+  "paper_value": "0.98117651308252274 (shipped expected value; the paper prints no table of this value)",
+  "values": [
+   {
+    "name": "gamma*(-0.03,-0.03)",
+    "paper": 0.9811765130825227,
+    "tol_abs": 1e-09
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1e-09,
+   "basis": "Fixed before any run. The paper states relative accuracy about 1e-13 in this region; the shipped driver prints 13 significant digits. 1e-9 absolute (about 1e-9 relative at this value) is about 1e4 times the stated accuracy: loose enough for compiler and precision differences, tight enough to reject a wrong branch, since other branches differ by orders of magnitude."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute (one evaluation after compiling).",
+  "data_size": "None; the value is in the driver's DATA statements.",
+  "data_licence": "Netlib TOMS code under the ACM licence of the archive; the rerun should record the licence it finds."
+ },
+ "why": "The gamma* function has no closed form at a=-0.03, and the shipped driver compares the computed value with precomputed reference values, so a rebuild must run the series or asymptotic method.",
+ "registered": "2026-11-27T03:19Z"
+}

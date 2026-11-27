@@ -1,0 +1,14 @@
+./Doc/Makefile
+./Doc/README
+./Drivers/Dp/DRES
+./Drivers/Dp/data
+./Drivers/Dp/driver.f
+./Drivers/Sp/SRES
+./Drivers/Sp/data
+./Drivers/Sp/driver.f
+./Src/Dp/dblas.f
+./Src/Dp/dlapack.f
+./Src/Dp/dsrrit.f
+./Src/Sp/sblas.f
+./Src/Sp/slapack.f
+./Src/Sp/srrit.f

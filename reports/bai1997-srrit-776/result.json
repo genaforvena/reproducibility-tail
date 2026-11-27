@@ -1,0 +1,90 @@
+{
+  "paper": {
+    "short": "bai1997-srrit-776",
+    "title": "Algorithm 776: SRRIT, a Fortran subroutine to calculate the dominant invariant subspace of a nonsymmetric matrix (ACM TOMS 23(4), 1997)",
+    "year": 1997,
+    "doi": null
+  },
+  "field": "numerics (dominant invariant subspace and eigenvalues of a nonsymmetric matrix, subspace iteration with Ritz refinement)",
+  "field_class": "numerics",
+  "stack": "Fortran 77 (netlib TOMS 776.gz: shell archive with Doc/, Drivers/Dp, Drivers/Sp, Src/Dp, Src/Sp; the double-precision driver and routines are Drivers/Dp/driver.f and Src/Dp/dsrrit.f, dblas.f, dlapack.f)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "WR, first converged real eigenvalue, of the seeded problem printed by the authors' double-precision driver, registered as -1235.506919564 (tol_abs 1e-6), located by the scout in the shipped reference Doc DRES as the 'RWK' block of a 496 by 496 matrix. The located value is NOT in the RWK block; see result.md. Registered by scout in the queue entry (fcdf386).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "WR_first_converged_RWK_496",
+        "paper": -1235.506919564,
+        "tol_abs": 1e-06,
+        "ours": null
+      }
+    ],
+    "reference": {
+      "file": "reports/bai1997-srrit-776/evidence/shipped-DRES-double.txt",
+      "archive": "776.gz, sha256 11341f825b8c12bb7f51bf58affe513255d14206fa8147310284249c2e6d1d34",
+      "sha256": "e798e5c0cf0d0a9384b40a35ae1495fc65c38b60669c428341d6106000f56034"
+    }
+  },
+  "basis": "patched",
+  "verdict": "blocked",
+  "cause": null,
+  "attempt": "Original attempt (G1): the authors' documented build (Doc/Makefile, epcf90 -sloppy -C -d1 -g) fails because epcf90 is not installed in the sandbox (make exit 2). Patch (compiler substitution only): the authors' double-precision driver and routines Drivers/Dp/driver.f, Src/Dp/dsrrit.f, dblas.f, dlapack.f are compiled unmodified with gfortran 16 -O2 and linked (build-only: manifests pre and mid are identical). The run prints a converged eigenvalue for each problem block. The run's BWM block (test matrix size 200, seeded by the driver) gives WR = -1.235506919564D+03 at the same digits as the shipped DRES line 260, and the RWK block (test matrix size 496) gives first WR = 1.000000000000D+00. The registered claim names the RWK 496 by 496 problem, so the claim as written does not match the value it points to. Verdict blocked: the claim is mis-specified (location and problem identity). The claim and tolerance are not edited here; see note-to-scout.md.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The authors' documented make target calls epcf90, which is not installed in the sandbox (make: epcf90: No such file or directory). The authors' own compiler is not available to this plant.",
+    "log": "reports/bai1997-srrit-776/evidence/original-attempt-make.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "na",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "blocked_on": {
+    "gate": "claim",
+    "missing": "a claim whose registered location matches the value: -1235.506919564 is printed by the BWM block (test matrix size 200), while the registered metric says RWK 496 by 496 (RWK prints WR 1.000000000000D+00 first). Resolver: scout (queue entry revision in a new commit, or withdrawal). Bounded action: scout checks reports/bai1997-srrit-776/result.md and note-to-scout.md, then revises the claim's metric and location, or withdraws it. Disposition: when the scout's revision commit appears, rerun reruns against it on the next wake."
+  },
+  "recipe": "reports/bai1997-srrit-776/recipe.sh",
+  "queue_commit": "fcdf386",
+  "evidence": [
+    "reports/bai1997-srrit-776/evidence/original-attempt-make.log",
+    "reports/bai1997-srrit-776/evidence/unpack-listing.txt",
+    "reports/bai1997-srrit-776/evidence/build.log",
+    "reports/bai1997-srrit-776/evidence/run-doutput.txt",
+    "reports/bai1997-srrit-776/evidence/run.log",
+    "reports/bai1997-srrit-776/evidence/recipe-run.log",
+    "reports/bai1997-srrit-776/evidence/gfortran-version.txt"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "11341f825b8c12bb7f51bf58affe513255d14206fa8147310284249c2e6d1d34",
+    "compared": 9,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -O2 -c /work/tree/Drivers/Dp/driver.f -o driver.o",
+      "gfortran -O2 -c /work/tree/Src/Dp/dsrrit.f -o dsrrit.o",
+      "gfortran -O2 -c /work/tree/Src/Dp/dblas.f -o dblas.o",
+      "gfortran -O2 -c /work/tree/Src/Dp/dlapack.f -o dlapack.o",
+      "gfortran -O2 driver.o dsrrit.o dblas.o dlapack.o -o dsubspiter"
+    ],
+    "manifests": {
+      "pre": "reports/bai1997-srrit-776/evidence/manifest.pre",
+      "mid": "reports/bai1997-srrit-776/evidence/manifest.mid",
+      "post": "reports/bai1997-srrit-776/evidence/manifest.post"
+    }
+  }
+}

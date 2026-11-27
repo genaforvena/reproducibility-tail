@@ -1,0 +1,110 @@
+{
+  "paper": {
+    "short": "jonasson2008-varma-878",
+    "title": "Evaluating exact VARMA likelihood and its gradient when data are incomplete (Algorithm 878)",
+    "year": 2008,
+    "doi": null
+  },
+  "field": "time series / statistics (exact VARMA likelihood)",
+  "field_class": "statistics",
+  "stack": "MATLAB/Octave (TOMS 878 archive 878.zip: Matlab/Src, test compare files)",
+  "stack_class": "MATLAB/Octave",
+  "claim": {
+    "text": "varma_llc log-likelihood for the ten named test cases in comparison.txt (varma_llc column, tol_abs 1e-6). The registered values come from MATLAB's randn stream after randn('state',1); Octave's stream differs, so the data differ. Blocked: the claim does not state its data or random stream.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "varma_llc tinyAR log-likelihood",
+        "paper": -12.621279429,
+        "tol_abs": 1e-06,
+        "ours": null
+      },
+      {
+        "name": "varma_llc tinyMA log-likelihood",
+        "paper": -13.531820317,
+        "tol_abs": 1e-06,
+        "ours": null
+      },
+      {
+        "name": "varma_llc tinyARMA log-likelihood",
+        "paper": -12.767279761,
+        "tol_abs": 1e-06,
+        "ours": null
+      },
+      {
+        "name": "varma_llc smallAR log-likelihood",
+        "paper": -37.692684654,
+        "tol_abs": 1e-06,
+        "ours": null
+      },
+      {
+        "name": "varma_llc smallMA log-likelihood",
+        "paper": -29.386512158,
+        "tol_abs": 1e-06,
+        "ours": null
+      },
+      {
+        "name": "varma_llc smallARMA1 log-likelihood",
+        "paper": -35.221617495,
+        "tol_abs": 1e-06,
+        "ours": null
+      },
+      {
+        "name": "varma_llc smallARMA2 log-likelihood",
+        "paper": -31.778782744,
+        "tol_abs": 1e-06,
+        "ours": null
+      },
+      {
+        "name": "varma_llc mediumAR log-likelihood",
+        "paper": -45.067120936,
+        "tol_abs": 1e-06,
+        "ours": null
+      },
+      {
+        "name": "varma_llc mediumARMA1 log-likelihood",
+        "paper": -52.084019573,
+        "tol_abs": 1e-06,
+        "ours": null
+      },
+      {
+        "name": "varma_llc mediumARMA2 log-likelihood",
+        "paper": -53.761861,
+        "tol_abs": 1e-06,
+        "ours": null
+      }
+    ],
+    "reference": {
+      "file": "reports/jonasson2008-varma-878/evidence/reference/comparison.txt",
+      "sha256": "34f60a83059b47189b46052ef747edcf4ff77e99201b59313f9f75e036406d7c",
+      "archive": "878.zip sha256 cbf6aec91cef72ae3c71af66c31274d4c76ac5c88f68acd2fef69a1001afd337"
+    }
+  },
+  "basis": "",
+  "verdict": "blocked",
+  "cause": "other",
+  "attempt": "Blocked. Octave 10.3.0 ran the authors' unedited varma_llc and varma_sim through a wrapper that replays the test loop (same randn('state',1) seed and call order), without the as311 column. The ten values differ from the registered ones (e.g. tinyAR -15.18 vs -12.62). The registered data come from MATLAB's randn stream, which the archive does not state or supply; reimplementing it to match would be tuning. Missing evidence: the test data or random stream behind the claim, or a MATLAB run of the shipped driver. Not verified: that the cause is the randn stream alone (no MATLAB run), and whether varma_llc is correct on the Octave data.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "partial",
+    "reason": "The authors' code ran under Octave through a driver wrapper (path fix and the test loop, with testcase reached from beside Src). The run finished but produced data and values different from the registered ones.",
+    "log": "reports/jonasson2008-varma-878/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/jonasson2008-varma-878/recipe.sh",
+  "queue_commit": "13d241b",
+  "evidence": [
+    "reports/jonasson2008-varma-878/evidence/fetch.log",
+    "reports/jonasson2008-varma-878/evidence/original-attempt.log",
+    "reports/jonasson2008-varma-878/impl/run_varma_llc.m",
+    "reports/jonasson2008-varma-878/evidence/reference/comparison.txt"
+  ],
+  "replayed": []
+}

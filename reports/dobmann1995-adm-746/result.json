@@ -1,101 +1,113 @@
 {
- "patch": {
-  "kind": "build-only",
-  "archive_sha256": "c68a4dffe06114a5d59f4feff663a734adcaa930d6513d88c3efae22188b5749",
-  "compared": 4,
-  "ours": {
-   "modified": [],
-   "removed": [],
-   "added": []
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "c68a4dffe06114a5d59f4feff663a734adcaa930d6513d88c3efae22188b5749",
+    "compared": 4,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -O2 -std=legacy -c /work/tree/Fortran77/Dp/Src/src.f -o src.o",
+      "gfortran -O2 -std=legacy -c /work/tree/Fortran77/Dp/Drivers/admfor.f -o admfor.o",
+      "gfortran -O2 -o admfor admfor.o src.o",
+      "gfortran -O2 -std=legacy -c /work/tree/Fortran77/Dp/Drivers/adm.f -o adm.o",
+      "cp /work/tree/Fortran77/Dp/Drivers/Examples/tp1.inp ADM.INP",
+      "cp /work/tree/Fortran77/Dp/Drivers/Examples/tp1.fun ADM.FUN",
+      "./admfor",
+      "gfortran -O2 -std=legacy -c adm_gen.f -o adm_gen.o",
+      "gfortran -O2 -o adm adm.o adm_gen.o src.o"
+    ],
+    "manifests": {
+      "pre": "reports/dobmann1995-adm-746/evidence/manifest.pre",
+      "mid": "reports/dobmann1995-adm-746/evidence/manifest.mid",
+      "post": "reports/dobmann1995-adm-746/evidence/manifest.post"
+    }
   },
-  "tool": {
-   "modified": [],
-   "removed": [],
-   "added": []
+  "paper": {
+    "short": "Dobmann, Liepelt, Schittkowski 1995 (TOMS 746, ADM)",
+    "title": "Fortran code for automatic differentiation (ADM: symbolic and generated derivatives, Dobmann, Liepelt and Schittkowski)",
+    "year": 1995,
+    "doi": null
   },
-  "build_commands": [
-   "gfortran -O2 -std=legacy -c /work/tree/Fortran77/Dp/Src/src.f -o src.o",
-   "gfortran -O2 -std=legacy -c /work/tree/Fortran77/Dp/Drivers/admfor.f -o admfor.o",
-   "gfortran -O2 -o admfor admfor.o src.o",
-   "gfortran -O2 -std=legacy -c /work/tree/Fortran77/Dp/Drivers/adm.f -o adm.o",
-   "cp /work/tree/Fortran77/Dp/Drivers/Examples/tp1.inp ADM.INP",
-   "cp /work/tree/Fortran77/Dp/Drivers/Examples/tp1.fun ADM.FUN",
-   "./admfor",
-   "gfortran -O2 -std=legacy -c adm_gen.f -o adm_gen.o",
-   "gfortran -O2 -o adm adm.o adm_gen.o src.o"
+  "field": "numerics (automatic differentiation)",
+  "field_class": "numerics",
+  "stack": "Fortran",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Generated derivative error for TP1 (Rosenbrock, X=(-2,1), MAXFUN=10000) as printed by the shipped driver output Results/tp1.res: 0.451D-03. Registered tolerance abs 5e-6 (half unit of the printed third digit).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "tp1_generated_derivative_error",
+        "paper": 0.000451,
+        "tol_abs": 5e-06,
+        "ours": 0.000451
+      }
+    ],
+    "reference": {
+      "file": "reports/dobmann1995-adm-746/evidence/shipped-tp1.res",
+      "sha256": "3d7dbfd658cf74b50b02c7def6469a52b41b58727d55811936779087b60bf73e",
+      "archive": "netlib.org/toms/746.gz sha256 c68a4dffe06114a5d59f4feff663a734adcaa930d6513d88c3efae22188b5749 (member Fortran77/Dp/Drivers/Results/tp1.res)"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Original Makefile target tp1 failed (parse error on the all: line; epcf90 absent). Build rerun with gfortran 16 from the authors' sources, the Makefile's tp1 commands run directly; no source edit.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "Doc/Makefile (the archive's build file, FC = epcf90, TIMER on an NFS path) is rejected by make: missing separator at the all: continuation, which ends in a literal double backslash. epcf90 is not on the sandbox PATH either. Log kept.",
+    "log": "reports/dobmann1995-adm-746/evidence/original-attempt-build.log"
+  },
+  "queue_commit": "5453931",
+  "recipe": "reports/dobmann1995-adm-746/recipe.sh",
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "environment": {
+    "sandbox": "tools/sandbox.sh (bwrap, read-only root, no network after fetch)",
+    "compiler": "GNU Fortran (conda-forge gcc 16.2.0-7) 16.2.0 via micromamba",
+    "flags": "gfortran -O2 -std=legacy",
+    "make": "GNU make from /usr/bin"
+  },
+  "replayed": [
+    {
+      "utc": "2026-11-27T11:50:02Z",
+      "kind": "clean",
+      "values": {
+        "tp1_generated_derivative_error": 0.000451
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/dobmann1995-adm-746/evidence/replay-2026-11-27T115002Z.log",
+      "seconds": 92
+    }
   ],
-  "manifests": {
-   "pre": "reports/dobmann1995-adm-746/evidence/manifest.pre",
-   "mid": "reports/dobmann1995-adm-746/evidence/manifest.mid",
-   "post": "reports/dobmann1995-adm-746/evidence/manifest.post"
-  }
- },
- "paper": {
-  "short": "Dobmann, Liepelt, Schittkowski 1995 (TOMS 746, ADM)",
-  "title": "Fortran code for automatic differentiation (ADM: symbolic and generated derivatives, Dobmann, Liepelt and Schittkowski)",
-  "year": 1995,
-  "doi": null
- },
- "field": "numerics (automatic differentiation)",
- "field_class": "numerics",
- "stack": "Fortran",
- "stack_class": "Fortran",
- "claim": {
-  "text": "Generated derivative error for TP1 (Rosenbrock, X=(-2,1), MAXFUN=10000) as printed by the shipped driver output Results/tp1.res: 0.451D-03. Registered tolerance abs 5e-6 (half unit of the printed third digit).",
-  "source": "artifact-reference",
-  "values": [
-   {
-    "name": "tp1_generated_derivative_error",
-    "paper": 0.000451,
-    "tol_abs": 5e-06,
-    "ours": 0.000451
-   }
-  ],
-  "reference": {
-   "file": "reports/dobmann1995-adm-746/evidence/shipped-tp1.res",
-   "sha256": "3d7dbfd658cf74b50b02c7def6469a52b41b58727d55811936779087b60bf73e",
-   "archive": "netlib.org/toms/746.gz sha256 c68a4dffe06114a5d59f4feff663a734adcaa930d6513d88c3efae22188b5749 (member Fortran77/Dp/Drivers/Results/tp1.res)"
-  }
- },
- "basis": "patched",
- "verdict": "reproduced",
- "cause": null,
- "attempt": "Original Makefile target tp1 failed (parse error on the all: line; epcf90 absent). Build rerun with gfortran 16 from the authors' sources, the Makefile's tp1 commands run directly; no source edit.",
- "original_attempt": {
-  "tried": true,
-  "outcome": "failed",
-  "reason": "Doc/Makefile (the archive's build file, FC = epcf90, TIMER on an NFS path) is rejected by make: missing separator at the all: continuation, which ends in a literal double backslash. epcf90 is not on the sandbox PATH either. Log kept.",
-  "log": "reports/dobmann1995-adm-746/evidence/original-attempt-build.log"
- },
- "queue_commit": "5453931",
- "recipe": "reports/dobmann1995-adm-746/recipe.sh",
- "gates": {
-  "G1": "pass",
-  "G2": "na",
-  "G3": "pass",
-  "G5": "na",
-  "G6": "na",
-  "cross_check": "na"
- },
- "environment": {
-  "sandbox": "tools/sandbox.sh (bwrap, read-only root, no network after fetch)",
-  "compiler": "GNU Fortran (conda-forge gcc 16.2.0-7) 16.2.0 via micromamba",
-  "flags": "gfortran -O2 -std=legacy",
-  "make": "GNU make from /usr/bin"
- },
- "replayed": [],
- "evidence": [
-  "reports/dobmann1995-adm-746/evidence/archive-sha256-check.txt",
-  "reports/dobmann1995-adm-746/evidence/gfortran-version.txt",
-  "reports/dobmann1995-adm-746/evidence/unpack-listing.txt",
-  "reports/dobmann1995-adm-746/evidence/original-attempt-build.log",
-  "reports/dobmann1995-adm-746/evidence/manifests/manifest.pre",
-  "reports/dobmann1995-adm-746/evidence/manifests/manifest.mid",
-  "reports/dobmann1995-adm-746/evidence/manifests/manifest.post",
-  "reports/dobmann1995-adm-746/evidence/build.log",
-  "reports/dobmann1995-adm-746/evidence/run-pass1.txt",
-  "reports/dobmann1995-adm-746/evidence/run-pass2.txt",
-  "reports/dobmann1995-adm-746/evidence/recipe-run.log",
-  "reports/dobmann1995-adm-746/evidence/shipped-tp1.res"
- ]
+  "evidence": [
+    "reports/dobmann1995-adm-746/evidence/archive-sha256-check.txt",
+    "reports/dobmann1995-adm-746/evidence/gfortran-version.txt",
+    "reports/dobmann1995-adm-746/evidence/unpack-listing.txt",
+    "reports/dobmann1995-adm-746/evidence/original-attempt-build.log",
+    "reports/dobmann1995-adm-746/evidence/manifests/manifest.pre",
+    "reports/dobmann1995-adm-746/evidence/manifests/manifest.mid",
+    "reports/dobmann1995-adm-746/evidence/manifests/manifest.post",
+    "reports/dobmann1995-adm-746/evidence/build.log",
+    "reports/dobmann1995-adm-746/evidence/run-pass1.txt",
+    "reports/dobmann1995-adm-746/evidence/run-pass2.txt",
+    "reports/dobmann1995-adm-746/evidence/recipe-run.log",
+    "reports/dobmann1995-adm-746/evidence/shipped-tp1.res"
+  ]
 }

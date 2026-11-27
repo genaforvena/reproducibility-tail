@@ -1,0 +1,52 @@
+{
+ "paper": {
+  "title": "Algorithm 883: SparsePOP---A Sparse Semidefinite Programming Relaxation of Polynomial Optimization Problems",
+  "authors": [
+   "Hayato Waki",
+   "Sunyoung Kim",
+   "Masakazu Kojima",
+   "Masakazu Muramatsu",
+   "Hiroshi Sugimoto"
+  ],
+  "year": 2008,
+  "venue": "ACM TOMS 35(2), Article 15 (Jul 2008); paper text not reachable in this wake (not searched; the archive's Doc/ manual is the source used)",
+  "doi": null,
+  "url": "https://netlib.org/toms/883.zip"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/883.zip",
+  "commit": "netlib TOMS archive 883.zip (scouted 2026-11-27, sha256 2c05deedb393a2959240791cf94d27ebd8e3617eb7bed620415d31b8b2b4123e). MATLAB/Octave tree 883/SparsePOP200/ (sparsePOP.m, example1.m, example1.gms, subPrograms/) plus its manual 883/Doc/UserManual/sect3.tex. The solver SeDuMi is NOT in the archive; the rerun must obtain it (GPL, free) and an Octave or MATLAB interpreter."
+ },
+ "field": "numerics (polynomial optimization, semidefinite relaxation)",
+ "stack": "MATLAB/Octave",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Shipped user manual Doc/UserManual/sect3.tex (section 'The GAMS scalar format'): the printed output of sparsePOP('example1.gms', param) with param.relaxOrder = 3 and SeDuMi eps 1e-9 (SparsePOP 2.00). The example is the POP of example1.m (minimize -2x1+3x2-2x3 subject to a quadratic inequality, two linear inequalities, one linear equality and box bounds). The claim is the line POP.objValue, the approximated optimal value of that POP.",
+  "reference": {
+   "file": "Doc/UserManual/sect3.tex, printed output line 'POP.objValue = -7.9550951e+00'",
+   "sha256": "2c05deedb393a2959240791cf94d27ebd8e3617eb7bed620415d31b8b2b4123e (archive 883.zip)"
+  },
+  "metric": "POP.objValue printed by printSolution.m for example1.gms, relaxOrder 3, SeDuMi eps 1e-9",
+  "paper_value": "-7.9550951 (manual printout; the paper text was not checked, so no printed table value was located)",
+  "values": [
+   {
+    "name": "POP.objValue, example1.gms, relaxOrder 3",
+    "paper": -7.9550951,
+    "tol_abs": 1e-06
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1e-06,
+   "basis": "Fixed before any run. The reference is printed to 8 significant digits, a rounding step of 5e-8; the same manual reports relative objective error 1.086e-9 from SeDuMi at eps 1e-9. 1e-6 absolute covers print rounding and solver-version noise about 20 times over, yet is far below the difference between the relaxOrder=3 value and a different relaxation (SDPobjValue -7.9550950 is itself a bound of the same order). Not loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute for the example (manual reports 0.05 s conversion and 0.27 s SeDuMi); plus interpreter and SeDuMi install.",
+  "data_size": "None beyond the archive (about 3 MB zip; the GMS and SDPA sample files are not needed).",
+  "data_licence": "GPL (SparsePOP and SeDuMi are GPL per the archive's Doc/GPL.txt); the rerun should record the licence it finds."
+ },
+ "why": "The shipped manual prints a numerical SDP-relaxation optimum for a small POP, which the SparsePOP code must compute from the sparse moment relaxation, so the number cannot be obtained by reading the code.",
+ "registered": "2026-11-27T03:51Z"
+}

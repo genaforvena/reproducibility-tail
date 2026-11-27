@@ -1,0 +1,100 @@
+{
+  "paper": {
+    "short": "gil2014-marcumq-939",
+    "title": "Algorithm 939: Computation of the Marcum Q-function",
+    "authors": [
+      "Amparo Gil",
+      "Javier Segura",
+      "Nico M. Temme"
+    ],
+    "year": 2014,
+    "doi": null
+  },
+  "field": "numerics (special functions, Marcum Q-function)",
+  "field_class": "numerics",
+  "stack": "Fortran 90 (netlib CALGO 939.zip: Fortran90/Src cons.f90, incgam.f90, marcumq.f90, constants; Fortran90/Drivers testmarq.f90 and outputQP.dat; Doc/Makefile)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Reference DATA array q, element 5, in Fortran90/Drivers/testmarq.f90 (inside 939.zip): Q_8(13, 15) = 0.8516869957363, the Marcum-Q value at mu = 8, x = 13, y = 15. Registered by scout from the artifact's own reference data. Tolerance 1e-10 absolute, fixed before any run.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "Q_mu8_x13_y15",
+        "paper": 0.8516869957363,
+        "tol_abs": 1e-10,
+        "ours": 0.8516869957363014
+      }
+    ],
+    "determinism": "deterministic (fixed arguments, no random numbers)",
+    "reference": {
+      "file": "reports/gil2014-marcumq-939/evidence/testmarq.f90.shipped",
+      "archive": "netlib.org/toms/939.zip (sha256 dbf77461a9c02c603f8eb2bfcfcef6e3d1cfbb7d628b54b18f79c4a7e62af9e4), member Fortran90/Drivers/testmarq.f90",
+      "sha256": "21b863f38dc6e170c5a575c4cf90a6eb960f1c61667ebb84e4adcb3b51714738"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "G1: the archive's Makefile (Doc/Makefile), unchanged, fails in the sandbox: it names g95 (absent) and expects the sources beside it, but the archive ships them in Fortran90/Src and Fortran90/Drivers, so make stops at 'No rule to make target cons.f90'. Patch (build-only): the same Makefile run with FC = the sandbox gfortran 16.2.0 and VPATH pointing at the archive's Src and Drivers, objects in a separate build directory. The shipped driver prints only relative errors, so impl/valq8.f90 (new code, outside the archive) calls the authors' marcum(8, 13, 15) and prints the value. No archive file is edited. Two passes: the recipe ran twice from a fresh unpack.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make: no rule to make target 'cons.f90' (the archive's Makefile in Doc/ expects its sources beside it; the archive ships them in Fortran90/Src and Drivers). g95, the Makefile's default compiler, is also absent from the sandbox (checked with command -v).",
+    "log": "reports/gil2014-marcumq-939/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/gil2014-marcumq-939/recipe.sh",
+  "queue_commit": "ced86bb",
+  "evidence": [
+    "evidence/fetch.log",
+    "evidence/env-pins.txt",
+    "evidence/original-attempt.log",
+    "evidence/recipe-run.log (first run: the build passed, the record step refused the patch as source, kind source, record_exit 2; cause: the build commands were not literal text in the recipe)",
+    "evidence/recipe-run-pass1.log",
+    "evidence/recipe-run-pass2.log",
+    "evidence/build.log",
+    "evidence/run.log",
+    "evidence/valq8.out",
+    "evidence/testQP.dat",
+    "evidence/outputQP.shipped",
+    "evidence/outputQP.shipped.sha256",
+    "evidence/testmarq.f90.shipped",
+    "evidence/testmarq.f90.shipped.sha256",
+    "evidence/manifest.pre",
+    "evidence/manifest.mid",
+    "evidence/manifest.post"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "dbf77461a9c02c603f8eb2bfcfcef6e3d1cfbb7d628b54b18f79c4a7e62af9e4",
+    "compared": 5,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "make -f /work/pre/939/Doc/Makefile FC=/work/env/bin/x86_64-conda-linux-gnu-gfortran VPATH=/work/pre/939/Fortran90/Src:/work/pre/939/Fortran90/Drivers FFLAGS=-O",
+      "/work/env/bin/x86_64-conda-linux-gnu-gfortran -O -c /work/valq8.f90 -o valq8.o",
+      "/work/env/bin/x86_64-conda-linux-gnu-gfortran -o valq8 valq8.o cons.o incgam.o marcumq.o"
+    ],
+    "manifests": {
+      "pre": "reports/gil2014-marcumq-939/evidence/manifest.pre",
+      "mid": "reports/gil2014-marcumq-939/evidence/manifest.mid",
+      "post": "reports/gil2014-marcumq-939/evidence/manifest.post"
+    }
+  }
+}

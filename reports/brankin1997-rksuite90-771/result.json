@@ -1,0 +1,89 @@
+{
+  "paper": {
+    "short": "brankin1997-rksuite90-771",
+    "title": "Algorithm 771: RKSUITE_90: Fortran 90 software for ordinary differential equation initial value problems",
+    "year": 1997,
+    "doi": null
+  },
+  "field": "numerics (ordinary differential equation initial value problems)",
+  "field_class": "numerics",
+  "stack": "Fortran 90 (TOMS 771.gz: a shar with Doc/, Src/Base/{make_rk,do_1_to_0,do_1_to_2,do_r_to_c,rksuite_90.bas}, Src/Derived/, Drivers/eg_simple_c0_a.f90 and its shipped reference eg_simple_c0_a.r)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "The example eg_simple_c0_a (complex scalar dependent variable, RKSUITE_90 step_integrate, method high, tol 5e-23 thresholds) prints 'The cost of the integration in calls to F was' with the value 117, as in the shipped eg_simple_c0_a.r. Integer count, tol_abs 2 (fixed in the queue entry before any run).",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/brankin1997-rksuite90-771/evidence/reference/eg_simple_c0_a.r",
+      "sha256": "da046965e5ae7bd63b78185fa93c6b2f3cf3b4b0cc0c3fd308226c66e8dbc4bc",
+      "archive": "netlib.org/toms/771.gz sha256 e1babc0304d142e28b54e6fe10c54824db27c08950a2b404426e23a97d2dab46"
+    },
+    "values": [
+      {
+        "name": "calls to F, eg_simple_c0_a",
+        "paper": 117,
+        "tol_abs": 2,
+        "ours": 117
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced at the registered claim. Both passes (clean rebuilds of the unpacked tree, same README build commands, each run of the example) print 'calls to F was 117', equal to the shipped eg_simple_c0_a.r (117), within tol_abs 2. The authors' build ran as documented (no source edit; build-only record, exit 0): Doc/README says to run make_rk with the dependent-variable option (c0 here) and to check the code with the example. make_rk ran from Src/Base with its helper scripts on PATH and produced rksuite_90.f90 with no edit to any shipped file. The README gives no compiler command; gfortran compiles the generated module and the example with the -I path to the module files, and links the example. That compile line is our addition, not an edit, and it is the only step not in the README; the basis is therefore patched (build-only), not original. Caveat: the value is an integer step-count of an adaptive solver on a fixed problem; the tolerance of 2 allows a step or two of rounding difference. Only the count is compared; the printed solution table and error estimates are not part of the claim.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "partial",
+    "reason": "the README stops at make_rk: make_rk c0 ran (exit 0) and produced rksuite_90.f90, but the README documents no compile, link or run command for the module and the example. The gfortran lines that compile and run the example are ours, so the original attempt is partial; the first build attempt is the one logged in pass1-build.log (exit 0 with those lines).",
+    "log": "reports/brankin1997-rksuite90-771/evidence/pass1-build.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/brankin1997-rksuite90-771/recipe.sh",
+  "queue_commit": "ba1ce34f45a4b855c1c6150602003ae671f8514c",
+  "evidence": [
+    "reports/brankin1997-rksuite90-771/evidence/fetch-toolchain.log",
+    "reports/brankin1997-rksuite90-771/evidence/unpack.log",
+    "reports/brankin1997-rksuite90-771/evidence/pass1-build.log",
+    "reports/brankin1997-rksuite90-771/evidence/pass1-run.log",
+    "reports/brankin1997-rksuite90-771/evidence/pass2-run.log",
+    "reports/brankin1997-rksuite90-771/evidence/pass1-output.txt",
+    "reports/brankin1997-rksuite90-771/evidence/pass2-output.txt",
+    "reports/brankin1997-rksuite90-771/evidence/reference-block.txt",
+    "reports/brankin1997-rksuite90-771/evidence/values.txt",
+    "reports/brankin1997-rksuite90-771/evidence/recipe-run.log"
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "e1babc0304d142e28b54e6fe10c54824db27c08950a2b404426e23a97d2dab46",
+    "compared": 25,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": [
+        "Src/Base/rksuite_90.f90"
+      ]
+    },
+    "build_commands": [
+      "(cd Src/Base && PATH=\"$PWD:$PATH\" ./make_rk c0)",
+      "(cd Src/Base && gfortran -c rksuite_90.f90 -o rksuite_90.o)",
+      "gfortran -c -ISrc/Base Drivers/eg_simple_c0_a.f90 -o eg_simple_c0_a.o",
+      "gfortran Src/Base/rksuite_90.o eg_simple_c0_a.o -o eg_simple_c0_a"
+    ],
+    "manifests": {
+      "pre": "reports/brankin1997-rksuite90-771/evidence/manifest.pre",
+      "mid": "reports/brankin1997-rksuite90-771/evidence/manifest.mid",
+      "post": "reports/brankin1997-rksuite90-771/evidence/manifest.post"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+
+             ymax     1.00E+00
+
+ The cost of the integration in calls to F was       117

@@ -1,0 +1,93 @@
+{
+  "paper": {
+    "short": "gil2017-incgamneg-969",
+    "title": "Algorithm 969: Computation of the incomplete gamma function for negative values of the argument",
+    "year": 2017,
+    "doi": "10.1145/2972951"
+  },
+  "field": "numerics (special functions)",
+  "stack": "Fortran 90 (TOMS 969: module IncgamNEG, with setprecision, cons, gammaError; driver testgamstar.f90)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Shipped driver value gamma*(a,z) at a=-0.03, z=-0.03 (testgamstar.f90 DATA igams(11) = 0.98117651308252274; OutGammStar row '-.3000D-01 -.3000D-01 0.9811765130825D+00'), tol_abs 1e-9, fixed in the queue entry. Artifact-reference claim: the shipped expected value, not a value printed in the paper (the paper states relative accuracy about 1e-13 in this region).",
+    "values": [
+      {
+        "name": "gamma*(-0.03,-0.03)",
+        "paper": 0.9811765130825227,
+        "tol_abs": 1e-09,
+        "ours": 0.9811765130825
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Measured in the sandbox (tools/sandbox.sh), two passes, the same recipe (reports/gil2017-incgamneg-969/recipe.sh). Toolchain: gfortran 16.2.0 (conda-forge gcc 16.2.0-7) via micromamba into the sandbox scratch. Each pass copies the unpacked archive, builds the authors' Makefile in Fortran90/Drivers with make VPATH=../Src (gfortran -O, the Makefile's own flags; no source file is edited), and runs testgamstar, which writes testGammStar.dat. Row 11 (a=-0.3000D-01, z=-0.3000D-01) gives 0.9811765130825D+00 in both passes, agreeing with the shipped reference to 3.3e-16 relative (the driver's own ERR column) and with the registered value to about 2e-14 absolute, far inside tol_abs 1e-9. The driver prints 13 significant digits, so the recorded ours is that printed value; the registered claim is not edited.",
+  "queue_commit": "a6311a7",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The authors' Makefile as shipped stops at once: 'No rule to make target setprecision.f90, needed by setprecision.o'. Its SRCS lists the sources that live in ../Src, not in Drivers, so nothing compiles without the VPATH build variable.",
+    "log": "reports/gil2017-incgamneg-969/evidence/original-attempt.log"
+  },
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "4d365512e230338da001de56c62cfc5b78aa74e4f3b9f1a32b1dabe93e5a3ce7",
+    "compared": 6,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "make VPATH=../Src"
+    ],
+    "manifests": {
+      "pre": "reports/gil2017-incgamneg-969/evidence/manifest.pre",
+      "mid": "reports/gil2017-incgamneg-969/evidence/manifest.mid",
+      "post": "reports/gil2017-incgamneg-969/evidence/manifest.post"
+    }
+  },
+  "recipe": "reports/gil2017-incgamneg-969/recipe.sh",
+  "evidence": [
+    "reports/gil2017-incgamneg-969/claimed",
+    "reports/gil2017-incgamneg-969/evidence/original-attempt.log",
+    "reports/gil2017-incgamneg-969/evidence/pass1-build.log",
+    "reports/gil2017-incgamneg-969/evidence/pass1-run.log",
+    "reports/gil2017-incgamneg-969/evidence/pass2-run.log",
+    "reports/gil2017-incgamneg-969/evidence/pass1-testGammStar.dat",
+    "reports/gil2017-incgamneg-969/evidence/pass2-testGammStar.dat",
+    "reports/gil2017-incgamneg-969/evidence/values.txt",
+    "reports/gil2017-incgamneg-969/evidence/reference.txt",
+    "reports/gil2017-incgamneg-969/evidence/unpack.log",
+    "reports/gil2017-incgamneg-969/evidence/patch.log"
+  ],
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "licence": "Netlib TOMS archive under the ACM licence distributed with 969.zip (not restated here).",
+  "replayed": [
+    {
+      "utc": "2026-11-27T03:23:25Z",
+      "kind": "clean",
+      "values": {
+        "gamma*(-0.03,-0.03)": 0.9811765130825
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/gil2017-incgamneg-969/evidence/replay-2026-11-27T032325Z.log",
+      "seconds": 59
+    }
+  ]
+}

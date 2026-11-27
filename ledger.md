@@ -5,28 +5,28 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-50 papers attempted.
+51 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 14 |
-| B | authors' code with build fixes | 25 |
+| B | authors' code with build fixes | 26 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 9 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 39, other 3, statistics 5
-By stack: C/C++ 8, Fortran 32, Java 1, MATLAB/Octave 4, R 5
-By decade: 1960 2, 1970 1, 1980 3, 1990 17, 2000 18, 2010 9
+By field: astronomy 1, biology 1, ecology 1, numerics 40, other 3, statistics 5
+By stack: C/C++ 8, Fortran 33, Java 1, MATLAB/Octave 4, R 5
+By decade: 1960 2, 1970 1, 1980 3, 1990 17, 2000 18, 2010 10
 
-Data as of 2026-11-27T03:19Z (the newest replay or funnel entry).
+Data as of 2026-11-27T03:23:25Z (the newest replay or funnel entry).
 
 ## The funnel
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-50 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+51 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **297 candidates considered from 4 of 4 frames: 46 attempted (15%), 0 unreachable, 251 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 29 (did not run), not-possible 2 (no code exists to run), partial 5 (ran only through a workaround or for part of the claim), succeeded 14 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 30 (did not run), not-possible 2 (no code exists to run), partial 5 (ran only through a workaround or for part of the claim), succeeded 14 (ran as documented).
 
 ## Results
 
@@ -117,6 +117,7 @@ Authors' original artifact, among all attempted papers: failed 29 (did not run),
 | [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res3 CHECK3 maximum (shipped)) | 5.191e-15 ± 1e-13 | 5.14976e-15 | -4.12394e-17 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [gil2002-airy-aizbiz-819](reports/gil2002-airy-aizbiz-819/result.md) | numerics · 2002 · Fortran | Wronskian checks for scaled Airy functions (IFAC=2), the four maxima WRTEST prints in the shipped Drivers/res1..res4, each within 1e-13 absolute of the shipped value; the paper states relative accuracy better than 1e-13 (Section 4.1) (res4 CHECK4 maximum (shipped)) | 9.37487e-15 ± 1e-13 | 9.40615e-15 | 3.1285e-17 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [gil2004-besselia-831](reports/gil2004-besselia-831/result.md) | numerics · 2004 · Fortran | WKTEST Wronskian check, IFAC=2 (scaled functions), maximum over the driver's grid, as printed in the shipped Drivers/Res: 6.814548925149211E-13, absolute tolerance 1e-13 (WKTEST Wronskian maximum, IFAC=2 (shipped Res)) | 6.81455e-13 ± 1e-13 | 6.81566e-13 | 1.11022e-16 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [gil2017-incgamneg-969](reports/gil2017-incgamneg-969/result.md) | numerics · 2017 · Fortran | Shipped driver value gamma*(a,z) at a=-0.03, z=-0.03 (testgamstar.f90 DATA igams(11) = 0.98117651308252274; OutGammStar row '-.3000D-01 -.3000D-01 0.9811765130825D+00'), tol_abs 1e-9, fixed in the queue entry. Artifact-reference claim: the shipped expected value, not a value printed in the paper (the paper states relative accuracy about 1e-13 in this region). (gamma*(-0.03,-0.03)) | 0.981177 ± 1e-09 | 0.981177 | -2.27596e-14 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [goano1995-fermi-745](reports/goano1995-fermi-745/result.md) | numerics · 1995 · Fortran | The authors' FERTST driver computes FERMID(ORD=0.5, X=5.0) for the row registered in FERTST.IN (FERMID block, row 17); the value must equal the shipped reference 8.8442088952430 to relative tolerance 1e-10 (fixed in the queue entry; recorded here as the absolute tolerance 8.8442088952430e-10 at that value). (FERMID(0.5, 5.0)) [shipped reference output] | 8.84421 ± 8.84421e-10 | 8.84421 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [greenberg1997-sleuth-775](reports/greenberg1997-sleuth-775/result.md) | numerics · 1997 · Fortran | ELAM value from the queue entry, tol 1e-3 absolute; provisional local reimplementation gives 4871.3813065256945 in both passes (not yet a verdict) (ELAM) | 4871.38 ± 0.001 | – | – | – | - | · · · · | - | blocked | never clean |
 | [grun2012-gasoline-loglik](reports/grun2012-gasoline-loglik/result.md) | statistics · 2012 · R | betareg(yield ~ batch + temp, data = GasolineYield, type = "ML") logLik, JSS p. 23 (logLik ML) | 84.7976 ± 0.001 | 84.7976 | -2.04e-06 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |

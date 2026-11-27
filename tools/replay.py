@@ -111,8 +111,18 @@ def main(argv=None) -> int:
     code, out = run_recipe(recipe, repo, a.timeout)
     shutil.rmtree(work, ignore_errors=True)        # the cap is for what is in flight
     new = parse_values(out)
-    ok, why = agrees(values, new) if code == 0 else (False, f"recipe exited {code}")
-    log_rel = f"reports/{a.id}/evidence/replay-{stamp.replace(':', '')}.log"
+    stamp_name = stamp.replace(':', '')
+    if code != 0 and not new:
+        # A recipe that exits before printing any VALUE line (fetch, unpack or build failed) did not
+        # produce a number, so there is nothing to compare: it could not be run (exit 3), not DIFFERS.
+        log_rel = f"reports/{a.id}/evidence/replay-not-run-{stamp_name}.log"
+        (repo / log_rel).parent.mkdir(parents=True, exist_ok=True)
+        (repo / log_rel).write_text(out[-LOG_TAIL:], encoding="utf-8")
+        print(f"{a.id}: NOT RUN: recipe exited {code} before printing any value; no replay entry written; "
+              f"log {log_rel}", file=sys.stderr)
+        return 3
+    ok, why = agrees(values, new) if code == 0 else (False, f"recipe exited {code} after printing values")
+    log_rel = f"reports/{a.id}/evidence/replay-{stamp_name}.log"
     (repo / log_rel).parent.mkdir(parents=True, exist_ok=True)
     (repo / log_rel).write_text(out[-LOG_TAIL:], encoding="utf-8")
     result.setdefault("replayed", []).append(

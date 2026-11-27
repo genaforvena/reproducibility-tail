@@ -1,0 +1,49 @@
+{
+ "paper": {
+  "title": "Algorithm 823: Implementing Scrambled Digital Sequences",
+  "authors": [
+   "Hee Sun Hong",
+   "Fred J. Hickernell"
+  ],
+  "year": 2003,
+  "venue": "ACM TOMS 29(2), pp. 95-109 (Jun 2003); paper text not checked in this wake (no paper search attempted)",
+  "doi": null,
+  "url": "https://netlib.org/toms/823.zip"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/823.zip",
+  "commit": "netlib TOMS archive 823.zip (scouted 2026-11-27, sha256 de5eaa5face30d4590a8679a94f0b830229771087afbdd4bdc1b75d11b3f9785). Fortran 77 tree 823/Fortran77/Dp/{Snied,Sniedx,Sfaur,Ssobol}/ each with Src/ (src.f, extra.f) and Drivers/ (driver.f, Makefile, res1, data1). The Snied variant is the one claimed here."
+ },
+ "field": "numerics (quasi-Monte Carlo, scrambled digital sequences)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Shipped driver Fortran77/Dp/Snied/Drivers/driver.f (program TSNIED). It sets DIMEN=2, ATMOST=2**12=4096, IFLAG=1 (Owen-type scrambling), calls GNNIED to generate 4096 scrambled Niederreiter points, and prints the running estimate EI = SUM/I of the Davis-Rabinowitz integrand (2) (product of |4x-2| over the two coordinates; exact value 1) at I = 512, 1024, 2048, 4096. The shipped reference output Drivers/Snied/res1 records those values; the claim is the final line, I = 4096.",
+  "reference": {
+   "file": "Fortran77/Dp/Snied/Drivers/res1 (EI at I=4096)",
+   "sha256": "de5eaa5face30d4590a8679a94f0b830229771087afbdd4bdc1b75d11b3f9785 (archive 823.zip)"
+  },
+  "metric": "EI = SUM/I at I = 4096 printed by TSNIED (Snied variant, IFLAG=1, DIMEN=2)",
+  "paper_value": "0.9999468969847435 (shipped reference output res1; the paper text was not checked, so no printed table value was located)",
+  "values": [
+   {
+    "name": "EI at I=4096, Snied IFLAG=1, DIMEN=2",
+    "paper": 0.9999468969847435,
+    "tol_abs": 1e-09
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1e-09,
+   "basis": "Fixed before any run. The code is double precision and the value is a mean of 4096 terms, each of magnitude at most 2 (the product of two |4x-2| factors on [0,1]^2), so accumulated rounding is of order 1e-13. The reference is printed to 16 significant digits. 1e-9 absolute leaves about four orders of magnitude over rounding, yet is far below the change a different scrambling, sequence or generator-matrix bug makes (the res1 values at I=512, 1024 and 2048 differ from the I=4096 value by up to 3e-4)."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute (one GNNIED run of 4096 points in dimension 2, plus compile).",
+  "data_size": "None beyond the archive (about 67 KB zip).",
+  "data_licence": "Netlib TOMS code under the ACM licence of the archive; the rerun should record the licence it finds."
+ },
+ "why": "The shipped driver generates a scrambled Niederreiter sequence and evaluates a known test integral; reproducing the printed running estimate needs the full GNNIED generator-matrix and scrambling path to run, so the number cannot be obtained by reading the code.",
+ "registered": "2026-11-27T03:47Z"
+}

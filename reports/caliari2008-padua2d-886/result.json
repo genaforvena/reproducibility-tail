@@ -1,0 +1,55 @@
+{
+  "paper": {
+    "short": "caliari2008-padua2d-886",
+    "title": "Algorithm 886: Padua2D: Lagrange interpolation at Padua points on bivariate domains",
+    "year": 2008,
+    "doi": "10.1145/1391989.1391994"
+  },
+  "field": "numerics (polynomial interpolation)",
+  "stack": "Fortran 77 (TOMS 886: Fortran/Dp/Drivers/drvrec.f, Fortran/Dp/Src/padua2.f, pdpts.f, pd2val.f, cheb.f, blas/*.f)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Normalized true error of the Padua interpolant at degree 60 for the Franke function F1 on the unit square (drvrec, FAMILY 1, NTG1 100), Table I of the pre-publication draft: 2E-11. Absolute tolerance 5e-12 (the printed value stands for [1.5E-11, 2.5E-11]). Registered 2026-11-27T03:28Z.",
+    "source": "paper-text",
+    "reference": {
+      "file": "padua2d.pdf (pre-publication draft, sha256 be72d8c9e04b3b9aefa92b078747a273676b66cfb198f53cb7bf271bd425b23a), Table I",
+      "sha256": "be72d8c9e04b3b9aefa92b078747a273676b66cfb198f53cb7bf271bd425b23a"
+    },
+    "values": [
+      {
+        "name": "normalized true error, F1, degree 60, square",
+        "paper": 2e-11,
+        "tol_abs": 5e-12,
+        "ours": 2.468e-11
+      }
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced as the authors document: the archive ships no Makefile; Doc/README gives the compile line for drvrec with gfortran, using the documented blas/*.f alternative to -lblas, -O2 (the README's usual FFLAGS). No source file was edited. The driver prints Actual error (MAXERR / MAXDEV, the normalized true error of Table I) = 0.2468E-10 in both passes, i.e. 2.468e-11 against the paper's 2e-11: inside the tolerance (|diff| 4.68e-12 <= 5e-12), but at 94% of it (flagged by the ledger at 80% or more). The driver's source also contains a constant 'Expected error 0.2468D-10'; it is not used as the oracle, and the value registered in the queue is the paper's Table I. The shipped Results/ files are not used (queue note: their coordinates do not match the target grid). Toolchain: gfortran 16.2.0 (conda-forge) in the sandbox scratch. Caveat: the claim reads the pre-publication draft; the published TOMS table may differ. Replay (G5) not yet run.",
+  "queue_commit": "81e177bf6fd5e034a9af5666686018af008efc4b",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "the documented compile line built drvrec and it ran to completion with no source edit (exit 0 in both passes)",
+    "log": "reports/caliari2008-padua2d-886/evidence/pass1-build.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/caliari2008-padua2d-886/recipe.sh",
+  "evidence": [
+    "reports/caliari2008-padua2d-886/evidence/pass1-build.log",
+    "reports/caliari2008-padua2d-886/evidence/pass1-run.log",
+    "reports/caliari2008-padua2d-886/evidence/pass2.log",
+    "reports/caliari2008-padua2d-886/evidence/recipe-run.log"
+  ],
+  "replayed": []
+}

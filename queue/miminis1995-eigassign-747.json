@@ -14,6 +14,7 @@
   "code": {
     "url": "https://netlib.org/toms/747.gz",
     "commit": "netlib TOMS archive 747.gz (fetched 2026-11-26, sha256 b24ab9b2ef2de1cd45f4448c47cb891d7ab4c9ab7bae004e9da3e1d4cb2cacc2)",
+    "archive": "sha256 b24ab9b2ef2de1cd45f4448c47cb891d7ab4c9ab7bae004e9da3e1d4cb2cacc2 (netlib.org/toms/747.gz)",
     "note": "Fortran 77 shar of 36 files: dmevas.f, dstair.f, blas.f, lapack.f, eispk.f, ddemo.f, makefile, ddemo.sh, test01.dat..test20.dat, dlog.ref. Extract with gzip -dc into a fresh directory, split at the lines C*** filename, then build with the makefile (make ddemo). Run ddemo.sh inside that directory only."
   },
   "field": "numerics (linear systems and control: eigenvalue assignment by state feedback)",

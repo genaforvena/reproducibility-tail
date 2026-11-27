@@ -1,0 +1,45 @@
+{
+  "paper": {
+    "title": "Solution of the Transcendental Equation w e^w = x (Algorithm 443)",
+    "authors": [
+      "F. N. Fritsch",
+      "R. E. Shafer",
+      "W. P. Gowley (as listed in the frame; probably Crowley, not verified)"
+    ],
+    "year": 1973,
+    "venue": "Communications of the ACM 16(2), 123-124, February 1973 (the frame lists it as TOMS 16,2; the archive header says CACM VOL. 16, NO. 2)",
+    "doi": null,
+    "url": "not fetched by scout; the paper text was not read"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/443.gz",
+    "commit": "netlib TOMS archive 443.gz (a shell archive, read but not run: Fortran/Sp/Drivers/driver.f, Makefile and res; Fortran/Sp/Src/src.f)",
+    "archive": "sha256 bf664e74f2700a5c8a2f6c27b4cbc9e1d7b37c19a792764fd73c6941f642026f (downloaded by scout 2026-11-27 from netlib.org/toms/443.gz, the single .gz file)",
+    "note": "The archive is a /bin/sh shell archive that creates Fortran/ files. The rerun must unpack it into its own directory and not run it as a script; the driver calls WEW_A, the Lambert W routine in src.f. The shipped res file is the expected output of the driver, from TEST01 (Test WEW_A)."
+  },
+  "field": "numerics (special functions, Lambert W)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "location": "Shipped reference output, Fortran/Sp/Drivers/res, block 'TEST01 / Test WEW_A to evaluate Lambert's W function', row x = 1.0000: 'Exact Value 0.5671', 'Computed 0.56714326'. The driver calls WEW_A(x) for x = 0.0, 0.5, ..., and the Computed column is the code's own output.",
+    "reference": {
+      "file": "Fortran/Sp/Drivers/res (embedded in 443.gz, lines 308-363 of the decompressed shell archive)",
+      "sha256": "b0ad6d705c4ca2ca094039f176486720d0a39a5d732185f789ae4b9a628da4e1 (sha256 of the decompressed shell-archive text, read by scout; the .gz itself is bf664e74...)",
+      "archive": "netlib.org/toms/443.gz, sha256 bf664e74f2700a5c8a2f6c27b4cbc9e1d7b37c19a792764fd73c6941f642026f"
+    },
+    "paper_value": "W(1.0) computed by WEW_A = 0.56714326 (printed to 8 decimals in res; the exact W(1) = 0.5671432904...)",
+    "metric": "value returned by WEW_A at x = 1.0 (the Computed column, TEST01), compared as a number",
+    "determinism": "deterministic (no random input; the test points are fixed in driver.f)",
+    "tolerance": {
+      "abs": 1e-7,
+      "basis": "Fixed before any run. The reference is printed to 8 decimals, so the rounding step is 5e-9. The printed value differs from the exact W(1) by 3e-8, which is the original code's own error, so a tolerance tighter than 1e-7 would test rounding of the print, not the routine. A value outside 1e-7 would be a real change in WEW_A's output. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: a few evaluations of a closed-form-style iteration.",
+    "data_size": "None: the driver generates its own inputs.",
+    "data_licence": "No data. Code licence is not stated in the archive; the rerun should record it."
+  },
+  "why": "The authors' shipped driver prints a computed Lambert W value for the transcendental equation w e^w = x; the number needs the iterative routine to evaluate, and the value tests the old Fortran on a modern compiler rather than a closed form, since W(1) has no elementary form.",
+  "registered": "2026-11-27T14:05:00Z"
+}

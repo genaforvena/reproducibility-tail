@@ -1,0 +1,45 @@
+{
+  "paper": {
+    "title": "RIDC Methods: A Family of Parallel Time Integrators",
+    "authors": [
+      "Benjamin W. Ong",
+      "Ronald D. Haynes",
+      "Kyle Ladd"
+    ],
+    "year": 2016,
+    "venue": "ACM Transactions on Mathematical Software 43(1), Article 8 (CALGO Algorithm 965)",
+    "doi": null,
+    "url": "https://dl.acm.org (article page not fetched by scout; DOI not verified)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/965.zip",
+    "commit": "netlib TOMS archive 965.zip (contains the RIDC C++ library src/ and examples/explicit/ with explicit.cpp, run.sh, Makefile.am and ref/n1.ref to n5.ref)",
+    "archive": "sha256 a05c08deacd16436d180e8fe7e29557732b852a089785692eac07594158560c5 (downloaded by scout 2026-11-27 from netlib.org/toms/965.zip, 1208981 bytes)",
+    "note": "Build with the autotools files in the archive (libridc from src/, then examples/explicit). run.sh runs the explicit executable at order 4 with nt = 10, 20, 40, 80, 160 and diffs each output against ref/n*.ref; the rerun should use the n1 case only for this claim."
+  },
+  "field": "numerics (parallel time integration, ODE solvers)",
+  "stack": "C/C++",
+  "claim": {
+    "source": "artifact-reference",
+    "location": "Shipped reference output 965/examples/explicit/ref/n1.ref, the first line. explicit.cpp prints sol[i] with %14.12f after running ridc_fe at order 4 with nt = 10 steps on the test system u_i' = -(i+1) t u_i over [0,1] with u_i(0) = 1 (explicit.cpp rhs; run.sh, STEPS=10). The exact first component is exp(-1/2) = 0.6065306597, so the printed value carries the method's own error and is not the closed form. The n1.ref file is the code's own output, not an echo of the input.",
+    "reference": {
+      "file": "965/examples/explicit/ref/n1.ref",
+      "sha256": "6a934e615e16055b197692f0b8ed4ef9368982719d5a2b40aa2bf5606d6e7370",
+      "archive": "netlib.org/toms/965.zip, sha256 a05c08deacd16436d180e8fe7e29557732b852a089785692eac07594158560c5"
+    },
+    "paper_value": "sol[0] = 0.606521722539 (n1.ref line 1; ./explicit 4 10 prints this as the first line)",
+    "metric": "first component sol[0] printed by ./explicit 4 10 (order 4, nt 10), compared as a number",
+    "determinism": "deterministic (fixed ODE, no random input; the driver takes no seed)",
+    "tolerance": {
+      "abs": 1e-11,
+      "basis": "Fixed before any run. The reference is printed to 12 decimal places, so the rounding step is 1e-12; the shipped driver compares exactly as text. A tolerance of 1e-11 absolute allows the last printed digit to change across compilers and math libraries and nothing larger. The n1 case is a 10-step integration with an order-4 method, so an error above 1e-11 would be a real change in the code's output, not rounding. Not to be loosened after any run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: one 10-step run of a 2-equation ODE.",
+    "data_size": "None: the driver generates its own initial condition.",
+    "data_licence": "No data. Code licence is not stated in the archive README; the rerun should record it."
+  },
+  "why": "The authors' own shipped driver and reference output test a parallel time integrator on a fixed ODE, and the number needs the full RIDC iteration to compute, so it tests the old C++ code on a modern toolchain rather than a closed form.",
+  "registered": "2026-11-27T14:06:00Z"
+}

@@ -1,0 +1,87 @@
+{
+  "paper": {
+    "short": "watson1997-hompack90-777",
+    "title": "Algorithm 777: HOMPACK90: a suite of Fortran 90 codes for globally convergent homotopy algorithms",
+    "year": 1997,
+    "doi": null
+  },
+  "field": "numerics (homotopy continuation for fixed points of nonlinear systems)",
+  "field_class": "numerics",
+  "stack": "Fortran 90 (TOMS 777.gz: a shar with Doc/, Src/{hompack90.f,lapack.f,blas1-3.f}, Drivers/{driver1-3.f,template.f,DATA2,RES1-3}, Info/depend; the shipped expected output RES3 is produced by driver3.f)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "The shipped driver3 output RES3, block 'TESTING FIXPQS WITH STORAGE MODE = 1', prints the first solution component Y(1) at lambda = 1 as 4.00864019E-01. Rebuilt from the archive and run, the same block gives Y(1) within tol_abs 1e-8. Registered in the queue entry before any run; the TOMS article was not read (paywalled), so the claim rests on the shipped RES3.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/watson1997-hompack90-777/evidence/reference/RES3",
+      "sha256": "b478fa646191514543938ba9ac5e207571c5aa16cb884d320ec9aa1e2e3a3e84",
+      "archive": "netlib.org/toms/777.gz sha256 a86547e59ee7b090691b1db16e9e4d07ab018334a28f60ae13ca11e7cfd46498"
+    },
+    "values": [
+      {
+        "name": "FIXPQS storage mode 1, solution component Y(1) at lambda=1",
+        "paper": 0.400864019,
+        "tol_abs": 1e-08,
+        "ours": 0.400864019
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced at the registered claim. Both passes (clean rebuilds of the unpacked shar, same build commands, each run of driver3) print Y(1) = 0.400864019 for FIXPQS storage mode 1 at lambda = 1, equal to the shipped RES3 value 4.00864019E-01 to the nine printed figures and within tol_abs 1e-8. The whole FIXPQS, FIXPNS and FIXPDS output (both storage modes) matches RES3 except the EXECUTION TIME lines, which are machine-dependent and not used. The authors' archive was unpacked as shipped and no source file was edited (build-only record, exit recorded in result.json patch). The Info/README gives the compile order (hompack90.f, lapack.f, blas1.f, blas2.f, blas3.f, driver3.f) and no compiler command; gfortran with default flags is ours, so the basis is patched (build-only), not original. The compiler emits warnings in hompack90.f (a shape mismatch in a DNRM2 call and a type warning) that did not change the output.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "partial",
+    "reason": "The README's compile-and-link order was followed with gfortran, which is not named there, so the first build (pass1-build.log, exit 0) is partial in the strict sense. No step of the authors' procedure failed; the README gives no build tool, so the compiler is the one thing not documented.",
+    "log": "reports/watson1997-hompack90-777/evidence/pass1-build.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pending",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/watson1997-hompack90-777/recipe.sh",
+  "queue_commit": "d3650c1705610e3f311872e885f7a9e8380ed4e8",
+  "evidence": [
+    "reports/watson1997-hompack90-777/evidence/fetch-toolchain.log",
+    "reports/watson1997-hompack90-777/evidence/unpack.log",
+    "reports/watson1997-hompack90-777/evidence/pass1-build.log",
+    "reports/watson1997-hompack90-777/evidence/pass1-run.log",
+    "reports/watson1997-hompack90-777/evidence/pass2-run.log",
+    "reports/watson1997-hompack90-777/evidence/pass1-output.txt",
+    "reports/watson1997-hompack90-777/evidence/pass2-output.txt",
+    "reports/watson1997-hompack90-777/evidence/reference-block.txt",
+    "reports/watson1997-hompack90-777/evidence/values.txt",
+    "reports/watson1997-hompack90-777/evidence/recipe-run.log"
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "a86547e59ee7b090691b1db16e9e4d07ab018334a28f60ae13ca11e7cfd46498",
+    "compared": 9,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "(cd Src && gfortran -c hompack90.f)",
+      "(cd Src && gfortran -c lapack.f blas1.f blas2.f blas3.f)",
+      "(cd Drivers && gfortran -I../Src -c driver3.f)",
+      "(cd Drivers && gfortran ../Src/hompack90.o ../Src/lapack.o ../Src/blas1.o ../Src/blas2.o ../Src/blas3.o driver3.o -o driver3)"
+    ],
+    "manifests": {
+      "pre": "reports/watson1997-hompack90-777/evidence/manifest.pre",
+      "mid": "reports/watson1997-hompack90-777/evidence/manifest.mid",
+      "post": "reports/watson1997-hompack90-777/evidence/manifest.post"
+    }
+  }
+}

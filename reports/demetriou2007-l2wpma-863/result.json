@@ -1,0 +1,127 @@
+{
+  "paper": {
+    "short": "demetriou2007-l2wpma-863",
+    "title": "Algorithm 863: L2WPMA, a Fortran 77 package for weighted least squares piecewise monotonic data approximation",
+    "year": 2007,
+    "doi": null
+  },
+  "field": "numerics (data approximation, monotone piecewise fitting)",
+  "stack": "Fortran 77 (TOMS 863 archive 863.zip, Dp double precision drivers)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Shipped reference Data/Appndx_B/WIVAPP (Appendix B of Doc/INSTDE04.txt): the data indices of the extrema of the best monotone fit, DRIVER1 on Data/Appndx_B/XFWDAT with KSECTN 5, default weights. Claim values: indices 0..5 = 1, 8, 27, 46, 69, 75, exact match (tolerance 0).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "extremum index 0",
+        "paper": 1,
+        "tol_abs": 0,
+        "ours": 1.0
+      },
+      {
+        "name": "extremum index 1",
+        "paper": 8,
+        "tol_abs": 0,
+        "ours": 8.0
+      },
+      {
+        "name": "extremum index 2",
+        "paper": 27,
+        "tol_abs": 0,
+        "ours": 27.0
+      },
+      {
+        "name": "extremum index 3",
+        "paper": 46,
+        "tol_abs": 0,
+        "ours": 46.0
+      },
+      {
+        "name": "extremum index 4",
+        "paper": 69,
+        "tol_abs": 0,
+        "ours": 69.0
+      },
+      {
+        "name": "extremum index 5",
+        "paper": 75,
+        "tol_abs": 0,
+        "ours": 75.0
+      }
+    ],
+    "reference": {
+      "file": "reports/demetriou2007-l2wpma-863/evidence/reference/WIVAPP",
+      "sha256": "c6b56edea970bd8d19f0e51157927dd8b092a5d2786a0e913b1c14255ea9b767",
+      "archive": "netlib.org/toms/863.zip sha256 5947abcafb61ea258152d11ba98f8c81e28fcdfbcef832144362c7ca6d5f7657"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Authors' Fortran 77 (Dp drivers and src.f) run with no compiler on the host or in the sandbox (original attempt failed: gfortran not found). Installed conda-forge gfortran 16.2.0 in the sandbox and built DRIVER1 from the authors' unedited sources with gfortran -std=legacy -O2 (the shipped Doc/Makefile leaves every compiler choice commented out, so the builder names the compiler). Build-only per the manifests. Two clean passes (KSECTN 5 from stdin) give indices 1, 8, 27, 46, 69, 75, identical to the shipped WIVAPP.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "no Fortran compiler on the host PATH or in the sandbox; the shipped Doc/Makefile has every FC choice commented out",
+    "log": "reports/demetriou2007-l2wpma-863/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/demetriou2007-l2wpma-863/recipe.sh",
+  "queue_commit": "ebb6a38",
+  "evidence": [
+    "reports/demetriou2007-l2wpma-863/result.md",
+    "reports/demetriou2007-l2wpma-863/evidence/recipe-run.log",
+    "reports/demetriou2007-l2wpma-863/evidence/original-attempt.log",
+    "reports/demetriou2007-l2wpma-863/evidence/reference/WIVAPP",
+    "reports/demetriou2007-l2wpma-863/evidence/reference/XFWDAT"
+  ],
+  "replayed": [
+    {
+      "utc": "2026-11-27T04:24:17Z",
+      "kind": "clean",
+      "values": {
+        "extremum index 0": 1.0,
+        "extremum index 1": 8.0,
+        "extremum index 2": 27.0,
+        "extremum index 3": 46.0,
+        "extremum index 4": 69.0,
+        "extremum index 5": 75.0
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/demetriou2007-l2wpma-863/evidence/replay-2026-11-27T042417Z.log",
+      "seconds": 74
+    }
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "5947abcafb61ea258152d11ba98f8c81e28fcdfbcef832144362c7ca6d5f7657",
+    "compared": 10,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -std=legacy -O2 -o driver1 Drivers/driver1.f Src/src.f"
+    ],
+    "manifests": {
+      "pre": "reports/demetriou2007-l2wpma-863/evidence/manifest.pre",
+      "mid": "reports/demetriou2007-l2wpma-863/evidence/manifest.mid",
+      "post": "reports/demetriou2007-l2wpma-863/evidence/manifest.post"
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+ "paper": {
+  "title": "Algorithm 698: DCUHRE, an adaptive multidimensional integration routine for a vector of integrals",
+  "authors": [
+   "J. Berntsen",
+   "T. O. Espelid",
+   "A. Genz"
+  ],
+  "year": 1991,
+  "venue": "ACM Transactions on Mathematical Software 17(4), December 1991, pp. 452-456 (archive header: VOL. 17, NO. 4, DECEMBER 1991, PP. 452-456)",
+  "doi": null,
+  "url": "https://netlib.org/toms/698.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/698.gz",
+  "commit": "netlib TOMS archive 698.gz (scouted 2026-11-27, gz sha256 27d891c14cabaefddd7c9cd6d3a6a2ae5b60eafa70901c32914f019363fda501). Shell archive (GNU sharutils 4.1) with READ.ME, makefile, dtest1.f, dtest2.f, dcuhre.f and the other double-precision and single-precision routines; extract with sh into a fresh directory."
+ },
+ "field": "numerics (adaptive multidimensional cubature)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "seed": null,
+  "location": "Inside 698.gz, the member dtest1.f, its header comment block (the lines after 'DTEST1 is a simple test driver for DCUHRE', headed 'Output produced on a SUN 3/50' and 'DCUHRE TEST RESULTS'; about lines 1-10 of the extracted dtest1.f). It is the printed output of the driver dtest1.f: 5-dimensional integral over the unit cube of F(z)=exp(-sum_n n z_n^2/2) (FTEST in dtest1.f), with ABSREQ=0, RELREQ=1E-3, MINCLS=0, MAXCLS=10000, KEY=0, NW=5000.",
+  "reference": {
+   "file": "dtest1.f inside 698.gz (header comment, SUN 3/50 output block)",
+   "sha256": "not recorded for the extracted dtest1.f; the archive sha256 is 27d891c14cabaefddd7c9cd6d3a6a2ae5b60eafa70901c32914f019363fda501",
+   "archive": "698.gz, sha256 27d891c14cabaefddd7c9cd6d3a6a2ae5b60eafa70901c32914f019363fda501"
+  },
+  "metric": "The integral column of the DTEST1 table, components 1 to 6: 0.13850818, 0.06369469, 0.05861748, 0.05407034, 0.05005614, 0.04654608 (the integral of F and of z_n F over the unit cube). The count FTEST CALLS = 3549 and IFAIL = 0 must also match exactly (integers).",
+  "paper_value": "Not checked against the paper; the archive's printed sample output is the value to check.",
+  "values": [
+   {
+    "name": "integral 1",
+    "paper": 0.13850818,
+    "tol_abs": 1e-07
+   },
+   {
+    "name": "integral 2",
+    "paper": 0.06369469,
+    "tol_abs": 1e-07
+   },
+   {
+    "name": "integral 3",
+    "paper": 0.05861748,
+    "tol_abs": 1e-07
+   },
+   {
+    "name": "integral 4",
+    "paper": 0.05407034,
+    "tol_abs": 1e-07
+   },
+   {
+    "name": "integral 5",
+    "paper": 0.05005614,
+    "tol_abs": 1e-07
+   },
+   {
+    "name": "integral 6",
+    "paper": 0.04654608,
+    "tol_abs": 1e-07
+   },
+   {
+    "name": "FTEST CALLS",
+    "paper": 3549,
+    "tol_abs": 0
+   },
+   {
+    "name": "IFAIL",
+    "paper": 0,
+    "tol_abs": 0
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1e-07,
+   "basis": "Fixed before any run. The printed values have 8 decimals, so rounding is 5e-9. Different libm or compiler rounding changes the last bits, far below 1e-7. A different adaptive subdivision path changes the integrals by about the estimated errors printed alongside, up to 8.7e-6, so 1e-7 separates a rounding difference from a changed path. CALLS and IFAIL are integers and must match exactly. Not loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute for DTEST1 (3549 integrand calls in 5 dimensions).",
+  "data_size": "Archive 698.gz about 6053 lines; no data files.",
+  "data_licence": "Not stated in the archive; a Collected Algorithm from ACM TOMS. The rerun should record the licence it finds."
+ },
+ "why": "The archive ships a Fortran driver and its printed output of a 5-dimensional adaptive integral, so the integrals and the call count can be compared to 1e-7 without the paper's tables.",
+ "registered": "2026-11-27T05:56Z"
+}

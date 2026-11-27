@@ -1,0 +1,61 @@
+{
+ "paper": {
+  "title": "Algorithm 706: DCUTRI, an algorithm for adaptive cubature over a collection of triangles",
+  "authors": [
+   "J. Berntsen",
+   "T. O. Espelid"
+  ],
+  "year": 1992,
+  "venue": "ACM Transactions on Mathematical Software 18(3), September 1992, pp. 329-342 (archive header: VOL. 18, NO. 3, SEPTEMBER 1992, PP. 329-342)",
+  "doi": null,
+  "url": "https://netlib.org/toms/706.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/706.gz",
+  "commit": "netlib TOMS archive 706.gz (scouted 2026-11-27, gz sha256 c67596047b71b0642323a2593ceea4949d5782cc4df6518efcdfb05ed8fc97bc). A single Fortran source file of about 4415 lines holding DCUTRI, DCHTRI, DADTRI, DRLTRI, DTRTRI, the machine constant routines and the live sample program PROGRAM DTEST1 (line 1367 of the extracted file). The archive is a plain listing, not a shar with cat/here-doc members."
+ },
+ "field": "numerics (adaptive cubature)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "seed": null,
+  "location": "Inside 706.gz, the source comment block directly after the live PROGRAM DTEST1 and its test function F: 'Output produced on a SUN SPARC station 1.' followed by RESULT=, ERROR=, NEVAL=, IFAIL=. The first copy is at about line 883 of the extracted listing (the DTEST1 sample in the DTEST1 comment block) and the same output appears again after the live DTEST1 at about line 1416. The rerun should run the live DTEST1 (line 1367) unedited and compare with that printed block.",
+  "reference": {
+   "file": "706.gz, extracted source listing, comment after live PROGRAM DTEST1 (about line 1416)",
+   "sha256": "not recorded for the extracted listing; the archive sha256 is c67596047b71b0642323a2593ceea4949d5782cc4df6518efcdfb05ed8fc97bc",
+   "archive": "706.gz, sha256 c67596047b71b0642323a2593ceea4949d5782cc4df6518efcdfb05ed8fc97bc"
+  },
+  "metric": "Estimated integral RESULT(1) of exp(x^2+y^2) over the triangle (0,0),(2,0),(0,2) from DCUTRI with EPSREL=1.0D-5, EPSABS=0, MAXPTS=2000, printed as RESULT= 11.181284417019. Also check NEVAL = 185 and IFAIL = 0 exactly (integers).",
+  "paper_value": "Not checked against the paper; the archive's printed sample output is the value to check.",
+  "values": [
+   {
+    "name": "RESULT",
+    "paper": 11.181284417019,
+    "tol_abs": 1e-09
+   },
+   {
+    "name": "NEVAL",
+    "paper": 185,
+    "tol_abs": 0
+   },
+   {
+    "name": "IFAIL",
+    "paper": 0,
+    "tol_abs": 0
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1e-09,
+   "basis": "Fixed before any run. The printed RESULT has 14 significant digits, so the print limit is about 1e-12 at this magnitude. A different libm or compiler moves the last bits, about 1e-14, which 1e-9 absorbs. A different subdivision path (changed adaptive decision) moves RESULT by about the printed ERROR, 4.7e-6, so 1e-9 separates the two. NEVAL and IFAIL are integers and must match exactly. Not loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 second (185 evaluations of exp).",
+  "data_size": "Archive 706.gz about 4415 lines; no data files.",
+  "data_licence": "Not stated in the archive; a Collected Algorithm from ACM TOMS. The rerun should record the licence it finds."
+ },
+ "why": "A live Fortran test program in the archive prints the integral and the adaptive-error estimates from a published SUN run, so the integral and the adaptive path can be checked to 1e-9 without any paper table.",
+ "registered": "2026-11-27T05:55Z"
+}

@@ -17,18 +17,18 @@
   "source": "artifact-reference",
   "determinism": "deterministic",
   "seed": null,
-  "location": "Shipped run transcript Fortran77/Drivers/Dp/RES, inside 785.gz (sha256 of the extracted text is not recorded; the transcript is the text between 'cat << SHAR_EOF > RES' and the closing SHAR_EOF, about lines 39-465 of the decompressed shell archive). Its example 6 ('AN EX. GIVEN BY REFEREE FOR CHECKING INV. MAP', NPTQ=7, TOL=0.1E-09) prints the solved parameters 'U= 0.4559381277686' and 'C=( 1.8134230823216,-1.8134230823303)'. The transcript is the list of keyboard answers the interactive driver reads, followed by the printed output.",
+  "location": "Shipped run transcript Fortran77/Drivers/Dp/RES, inside 785.gz (sha256 of the extracted text is not recorded; the transcript is the text between 'cat << SHAR_EOF > RES' and the closing SHAR_EOF, about lines 39-465 of the decompressed shell archive). Its example 1 (problem 1, square-symmetric region, NPTQ=7, M=4, N=4, TOL=0.1E-09; the menu line '6 AN EX. GIVEN BY REFEREE' printed under every block is not the example label) prints the solved parameters 'U= 0.4559381277686' and 'C=( 1.8134230823216,-1.8134230823303)'. The transcript is the list of keyboard answers the interactive driver reads, followed by the printed output.",
   "reference": {
    "file": "Fortran77/Drivers/Dp/RES, inside 785.gz",
    "sha256": "not recorded for the extracted transcript; the archive sha256 is 55965a41f823fb161c5df7b59933092f3879b7a8b57636859511be5c3f4f9175",
    "archive": "785.gz, sha256 55965a41f823fb161c5df7b59933092f3879b7a8b57636859511be5c3f4f9175"
   },
-  "metric": "Solved map parameters for example 6: the real parameter U and the complex accessory parameter C (real and imaginary parts), as printed to 13 decimals.",
+  "metric": "Solved map parameters for example 1: the real parameter U and the complex accessory parameter C (real and imaginary parts), as printed to 13 decimals.",
   "paper_value": "Not located: the paper (ACM TOMS 24(3) 1998) is paywalled and was not read. The shipped transcript is the value to check.",
   "values": [
-   {"name": "ex6 U", "paper": 0.4559381277686, "tol_abs": 1e-7},
-   {"name": "ex6 Re C", "paper": 1.8134230823216, "tol_abs": 1e-7},
-   {"name": "ex6 Im C", "paper": -1.8134230823303, "tol_abs": 1e-7}
+   {"name": "ex1 U", "paper": 0.4559381277686, "tol_abs": 1e-7},
+   {"name": "ex1 Re C", "paper": 1.8134230823216, "tol_abs": 1e-7},
+   {"name": "ex1 Im C", "paper": -1.8134230823303, "tol_abs": 1e-7}
   ],
   "tolerance": {
    "rel": null,
@@ -37,7 +37,7 @@
   }
  },
  "cost": {
-  "cpu_minutes_estimate": "Under 1 minute for example 6 with NPTQ=7 (interactive driver, scripted answers).",
+  "cpu_minutes_estimate": "Under 1 minute for example 1 with NPTQ=7 (interactive driver, scripted answers).",
   "data_size": "Archive about 90 KB (4662 lines in the decompressed shell archive).",
   "data_licence": "Not stated in the archive; a Collected Algorithm from ACM TOMS. The rerun should record the licence it finds."
  },

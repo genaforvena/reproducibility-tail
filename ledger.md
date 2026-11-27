@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-60 papers attempted.
+61 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
-| A | authors' code, run clean | 16 |
+| A | authors' code, run clean | 17 |
 | B | authors' code with build fixes | 29 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 13 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 47, other 4, statistics 6
-By stack: C/C++ 8, Fortran 40, Java 1, MATLAB/Octave 6, R 5
-By decade: 1960 2, 1970 3, 1980 4, 1990 18, 2000 23, 2010 10
+By field: astronomy 1, biology 1, ecology 1, numerics 48, other 4, statistics 6
+By stack: C/C++ 8, Fortran 41, Java 1, MATLAB/Octave 6, R 5
+By decade: 1960 2, 1970 3, 1980 5, 1990 18, 2000 23, 2010 10
 
 Data as of 2026-11-27T05:38Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T05:38Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-60 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+61 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **313 candidates considered from 4 of 4 frames: 55 attempted (18%), 0 unreachable, 258 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 34 (did not run), not-possible 2 (no code exists to run), partial 6 (ran only through a workaround or for part of the claim), succeeded 18 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 34 (did not run), not-possible 2 (no code exists to run), partial 6 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
 
 ## Results
 
@@ -152,6 +152,15 @@ Authors' original artifact, among all attempted papers: failed 34 (did not run),
 | [hurst1972-rnvr-425](reports/hurst1972-rnvr-425/result.md) | numerics · 1972 · Fortran | Shipped reference Fortran/Sp/Drivers/res (inside 425.gz): the printed TEST02 output of driver.f, RNVR on the 2x2 covariance [1 0.3; 0.3 1] with seed iarg=123456789, 10 samples x 2 components, g14.6 format. Claim values: the 20 printed variates, tolerance 1e-5 absolute. (TEST02 sample 9 component 2) [shipped reference output] | 0.292083 ± 1e-05 | 0.292083 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [hurst1972-rnvr-425](reports/hurst1972-rnvr-425/result.md) | numerics · 1972 · Fortran | Shipped reference Fortran/Sp/Drivers/res (inside 425.gz): the printed TEST02 output of driver.f, RNVR on the 2x2 covariance [1 0.3; 0.3 1] with seed iarg=123456789, 10 samples x 2 components, g14.6 format. Claim values: the 20 printed variates, tolerance 1e-5 absolute. (TEST02 sample 10 component 1) [shipped reference output] | -0.811921 ± 1e-05 | -0.811921 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [hurst1972-rnvr-425](reports/hurst1972-rnvr-425/result.md) | numerics · 1972 · Fortran | Shipped reference Fortran/Sp/Drivers/res (inside 425.gz): the printed TEST02 output of driver.f, RNVR on the 2x2 covariance [1 0.3; 0.3 1] with seed iarg=123456789, 10 samples x 2 components, g14.6 format. Claim values: the 20 printed variates, tolerance 1e-5 absolute. (TEST02 sample 10 component 2) [shipped reference output] | -0.54103 ± 1e-05 | -0.54103 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [hutchinson1986-cubgcv-642](reports/hutchinson1986-cubgcv-642/result.md) | numerics · 1986 · Fortran | CUBGCV TEST DRIVER printed output (seed DSEED=1.2345D4): VAR, GCV, MSR and Y, SE at I = 1, 21, 41, from the shipped printed output, absolute tolerance 1e-4 (the print rounding unit). (TEST driver CUBGCV VAR (error variance estimate)) [shipped reference output] | 0.0279 ± 0.0001 | 0.0279 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [hutchinson1986-cubgcv-642](reports/hutchinson1986-cubgcv-642/result.md) | numerics · 1986 · Fortran | CUBGCV TEST DRIVER printed output (seed DSEED=1.2345D4): VAR, GCV, MSR and Y, SE at I = 1, 21, 41, from the shipped printed output, absolute tolerance 1e-4 (the print rounding unit). (TEST driver CUBGCV GENERALIZED CROSS VALIDATION) [shipped reference output] | 0.0318 ± 0.0001 | 0.0318 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [hutchinson1986-cubgcv-642](reports/hutchinson1986-cubgcv-642/result.md) | numerics · 1986 · Fortran | CUBGCV TEST DRIVER printed output (seed DSEED=1.2345D4): VAR, GCV, MSR and Y, SE at I = 1, 21, 41, from the shipped printed output, absolute tolerance 1e-4 (the print rounding unit). (TEST driver CUBGCV MEAN SQUARE RESIDUAL) [shipped reference output] | 0.0246 ± 0.0001 | 0.0246 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [hutchinson1986-cubgcv-642](reports/hutchinson1986-cubgcv-642/result.md) | numerics · 1986 · Fortran | CUBGCV TEST DRIVER printed output (seed DSEED=1.2345D4): VAR, GCV, MSR and Y, SE at I = 1, 21, 41, from the shipped printed output, absolute tolerance 1e-4 (the print rounding unit). (TEST driver CUBGCV Y(1)) [shipped reference output] | 0.0342 ± 0.0001 | 0.0342 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [hutchinson1986-cubgcv-642](reports/hutchinson1986-cubgcv-642/result.md) | numerics · 1986 · Fortran | CUBGCV TEST DRIVER printed output (seed DSEED=1.2345D4): VAR, GCV, MSR and Y, SE at I = 1, 21, 41, from the shipped printed output, absolute tolerance 1e-4 (the print rounding unit). (TEST driver CUBGCV SE(1)) [shipped reference output] | 0.1004 ± 0.0001 | 0.1004 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [hutchinson1986-cubgcv-642](reports/hutchinson1986-cubgcv-642/result.md) | numerics · 1986 · Fortran | CUBGCV TEST DRIVER printed output (seed DSEED=1.2345D4): VAR, GCV, MSR and Y, SE at I = 1, 21, 41, from the shipped printed output, absolute tolerance 1e-4 (the print rounding unit). (TEST driver CUBGCV Y(21)) [shipped reference output] | 0.9069 ± 0.0001 | 0.9069 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [hutchinson1986-cubgcv-642](reports/hutchinson1986-cubgcv-642/result.md) | numerics · 1986 · Fortran | CUBGCV TEST DRIVER printed output (seed DSEED=1.2345D4): VAR, GCV, MSR and Y, SE at I = 1, 21, 41, from the shipped printed output, absolute tolerance 1e-4 (the print rounding unit). (TEST driver CUBGCV SE(21)) [shipped reference output] | 0.0525 ± 0.0001 | 0.0525 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [hutchinson1986-cubgcv-642](reports/hutchinson1986-cubgcv-642/result.md) | numerics · 1986 · Fortran | CUBGCV TEST DRIVER printed output (seed DSEED=1.2345D4): VAR, GCV, MSR and Y, SE at I = 1, 21, 41, from the shipped printed output, absolute tolerance 1e-4 (the print rounding unit). (TEST driver CUBGCV Y(41)) [shipped reference output] | -0.6242 ± 0.0001 | -0.6242 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
+| [hutchinson1986-cubgcv-642](reports/hutchinson1986-cubgcv-642/result.md) | numerics · 1986 · Fortran | CUBGCV TEST DRIVER printed output (seed DSEED=1.2345D4): VAR, GCV, MSR and Y, SE at I = 1, 21, 41, from the shipped printed output, absolute tolerance 1e-4 (the print rounding unit). (TEST driver CUBGCV SE(41)) [shipped reference output] | 0.0541 ± 0.0001 | 0.0541 | 0 | 0% | original | ✓ · ✓ · | A | reproduced | never clean |
 | [jonasson2008-varma-878](reports/jonasson2008-varma-878/result.md) | statistics · 2008 · MATLAB/Octave | varma_llc log-likelihood for the ten named test cases in comparison.txt (varma_llc column, tol_abs 1e-6). The registered values come from MATLAB's randn stream after randn('state',1); Octave's stream differs, so the data differ. Blocked: the claim does not state its data or random stream. (varma_llc tinyAR log-likelihood) [shipped reference output] | -12.6213 ± 1e-06 | – | – | – |  | ✓ · ✓ · | - | blocked | never clean |
 | [jonasson2008-varma-878](reports/jonasson2008-varma-878/result.md) | statistics · 2008 · MATLAB/Octave | varma_llc log-likelihood for the ten named test cases in comparison.txt (varma_llc column, tol_abs 1e-6). The registered values come from MATLAB's randn stream after randn('state',1); Octave's stream differs, so the data differ. Blocked: the claim does not state its data or random stream. (varma_llc tinyMA log-likelihood) [shipped reference output] | -13.5318 ± 1e-06 | – | – | – |  | ✓ · ✓ · | - | blocked | never clean |
 | [jonasson2008-varma-878](reports/jonasson2008-varma-878/result.md) | statistics · 2008 · MATLAB/Octave | varma_llc log-likelihood for the ten named test cases in comparison.txt (varma_llc column, tol_abs 1e-6). The registered values come from MATLAB's randn stream after randn('state',1); Octave's stream differs, so the data differ. Blocked: the claim does not state its data or random stream. (varma_llc tinyARMA log-likelihood) [shipped reference output] | -12.7673 ± 1e-06 | – | – | – |  | ✓ · ✓ · | - | blocked | never clean |

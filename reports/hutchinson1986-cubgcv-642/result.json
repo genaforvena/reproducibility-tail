@@ -1,0 +1,107 @@
+{
+  "paper": {
+    "short": "hutchinson1986-cubgcv-642",
+    "title": "Algorithm 642: O(n) computation of a cubic smoothing spline fitted to n noisy data",
+    "year": 1986,
+    "doi": null
+  },
+  "field": "numerics (smoothing splines, statistics)",
+  "field_class": "numerics",
+  "stack": "Fortran 77 (TOMS 642 archive 642.gz: CUBGCV, subroutines and TEST DRIVER, printed output after line 628)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "CUBGCV TEST DRIVER printed output (seed DSEED=1.2345D4): VAR, GCV, MSR and Y, SE at I = 1, 21, 41, from the shipped printed output, absolute tolerance 1e-4 (the print rounding unit).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "TEST driver CUBGCV VAR (error variance estimate)",
+        "paper": 0.0279,
+        "tol_abs": 0.0001,
+        "ours": 0.0279
+      },
+      {
+        "name": "TEST driver CUBGCV GENERALIZED CROSS VALIDATION",
+        "paper": 0.0318,
+        "tol_abs": 0.0001,
+        "ours": 0.0318
+      },
+      {
+        "name": "TEST driver CUBGCV MEAN SQUARE RESIDUAL",
+        "paper": 0.0246,
+        "tol_abs": 0.0001,
+        "ours": 0.0246
+      },
+      {
+        "name": "TEST driver CUBGCV Y(1)",
+        "paper": 0.0342,
+        "tol_abs": 0.0001,
+        "ours": 0.0342
+      },
+      {
+        "name": "TEST driver CUBGCV SE(1)",
+        "paper": 0.1004,
+        "tol_abs": 0.0001,
+        "ours": 0.1004
+      },
+      {
+        "name": "TEST driver CUBGCV Y(21)",
+        "paper": 0.9069,
+        "tol_abs": 0.0001,
+        "ours": 0.9069
+      },
+      {
+        "name": "TEST driver CUBGCV SE(21)",
+        "paper": 0.0525,
+        "tol_abs": 0.0001,
+        "ours": 0.0525
+      },
+      {
+        "name": "TEST driver CUBGCV Y(41)",
+        "paper": -0.6242,
+        "tol_abs": 0.0001,
+        "ours": -0.6242
+      },
+      {
+        "name": "TEST driver CUBGCV SE(41)",
+        "paper": 0.0541,
+        "tol_abs": 0.0001,
+        "ours": 0.0541
+      }
+    ],
+    "reference": {
+      "file": "reports/hutchinson1986-cubgcv-642/evidence/reference/642.txt",
+      "sha256": "7d3029107f127b56570c65401194b3c7d556dbaacf10453b5d455fd3643b7c25",
+      "archive": "642.gz, sha256 fea2d2ad84a7883c2a45f04844cfb56b6112992cda5e485d6c47e01c0ae58f19"
+    }
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced. The shipped source (lines 1..628 of 642.gz, unedited) compiled with gfortran -std=legacy at -O0 and at -O2 (cross-check). Both runs print the same text, and the nine registered values match the shipped printed output exactly at the printed 4-decimal precision. The driver is deterministic (its generator GGRAND is a multiplicative congruential generator with a fixed seed). Limit: the shipped printed output is the only value checked; the paper's own numbers were not read (paywalled).",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "Compiled as shipped with gfortran -std=legacy at -O0 (and -O2), ran to completion (exit 0), output identical to the shipped printed block at the registered values.",
+    "log": "reports/hutchinson1986-cubgcv-642/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "pass"
+  },
+  "recipe": "reports/hutchinson1986-cubgcv-642/recipe.sh",
+  "queue_commit": "13d241b",
+  "evidence": [
+    "reports/hutchinson1986-cubgcv-642/evidence/fetch.log",
+    "reports/hutchinson1986-cubgcv-642/evidence/original-attempt.log",
+    "reports/hutchinson1986-cubgcv-642/evidence/run-O0.txt",
+    "reports/hutchinson1986-cubgcv-642/evidence/run-O2.txt",
+    "reports/hutchinson1986-cubgcv-642/evidence/values.txt",
+    "reports/hutchinson1986-cubgcv-642/evidence/reference/642.txt",
+    "reports/hutchinson1986-cubgcv-642/evidence/recipe-run.log"
+  ],
+  "replayed": []
+}

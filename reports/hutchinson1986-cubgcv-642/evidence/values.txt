@@ -1,0 +1,11 @@
+run-O0.txt: all 9 values within tol_abs 1e-4 of the registered claim: True; max |diff| 0
+run-O2.txt: all 9 values within tol_abs 1e-4 of the registered claim: True; max |diff| 0
+VALUE TEST driver CUBGCV VAR (error variance estimate) 0.0279
+VALUE TEST driver CUBGCV GENERALIZED CROSS VALIDATION 0.0318
+VALUE TEST driver CUBGCV MEAN SQUARE RESIDUAL 0.0246
+VALUE TEST driver CUBGCV Y(1) 0.0342
+VALUE TEST driver CUBGCV SE(1) 0.1004
+VALUE TEST driver CUBGCV Y(21) 0.9069
+VALUE TEST driver CUBGCV SE(21) 0.0525
+VALUE TEST driver CUBGCV Y(41) -0.6242
+VALUE TEST driver CUBGCV SE(41) 0.0541

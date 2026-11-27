@@ -1,0 +1,44 @@
+{
+  "paper": {
+    "title": "Algorithm 615: Linear regression under a least absolute value criterion (best-subset L1 regression, program SUBL1)",
+    "authors": ["R. D. Armstrong", "P. O. Beck", "M. T. Kung"],
+    "year": 1984,
+    "venue": "ACM Transactions on Mathematical Software 10(2), 202-206 (June 1984); Collected Algorithms from ACM, Algorithm 615",
+    "doi": null,
+    "url": "https://netlib.org/toms/615.gz (ACM article not read: dl.acm.org returns 403 to automated fetch from this host)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/615.gz",
+    "commit": "netlib TOMS archive 615.gz (fetched by scout 2026-11-27 08:00Z, 12234 bytes gzip, 1817 lines uncompressed)",
+    "archive": "netlib TOMS 615.gz, sha256 96a1bdcc048a50dd6043028fef594c19f7dcf350559ef77c1e49b0018a7ff832 (hashed by scout from the fetched bytes)",
+    "note": "Shell archive, not a plain source file: gunzip, then read it; do not execute it. It holds the Fortran program SUBL1 (best-subset least absolute value regression), its subroutines, the problem data (DL1BL3, 60 observations, 3 parameters, the BLISS vol. II p.294 data set) on the input lines before the shipped run, and the shipped sample run output at the end of the file (after the line 'DL1BL3= BLISS VOL II P.294... ALL DATA'). The rerun must gunzip into an empty directory, split out the program and its data, compile with a modern Fortran compiler, feed the data on the input unit (TAPE5), and compare the printed sums."
+  },
+  "field": "numerics (least absolute value regression: best-subset L1 fit by a branch-and-bound/linear programming search)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped sample run output at the end of the 615 shell archive (uncompressed lines 1792-1812): under 'BEST RESULTS FOR LAV SUBSET OF SIZE= 3' the line '**************SUM OF ABSOLUTE VALUES= 3.877' for the BLISS vol. II p.294 data set (60 observations, all parameters). The driver SUBL1 prints it after running the best-subset search; the number is the optimal sum of absolute residuals for the best 3-parameter subset.",
+    "reference": {
+      "file": "615.gz shell archive, sample run output following the data (uncompressed lines 1792-1812)",
+      "sha256": "not computed; the value is quoted here and compared as a number",
+      "archive": "netlib.org/toms/615.gz sha256 96a1bdcc048a50dd6043028fef594c19f7dcf350559ef77c1e49b0018a7ff832"
+    },
+    "metric": "The optimal sum of absolute residuals (SUM OF ABSOLUTE VALUES) printed for LAV SUBSET OF SIZE=3 on the DL1BL3 data set. Claim: the rerun prints a value within the tolerance of 3.877.",
+    "paper_value": "Shipped reference value 3.877 (printed to three decimals in the archive's sample run). The article text was not read; the value is the archive's own printed output.",
+    "values": [
+      {"name": "SUM OF ABSOLUTE VALUES, best LAV subset of size 3, DL1BL3", "paper": "3.877", "tol_abs": 1e-3}
+    ],
+    "tolerance": {
+      "abs": 1e-3,
+      "basis": "The shipped value is printed to three decimals, so its rounding error alone is 5e-4. 1e-3 absolute is therefore just above rounding and well below the difference between subsets (the size-2 value is 5.407, and the size-1 value is 7.659), so a wrong subset or a changed objective shows up. Fixed now, before any run; not to be loosened after a run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: 60 observations, 3 parameters, a few thousand simplex iterations at most (the shipped run reports ITERATION COUNT=106).",
+    "data_size": "None beyond the 60-row data block inside the archive.",
+    "data_licence": "No external data. The data set is reproduced inside the public netlib TOMS archive; it is the BLISS (1979) vol. II p.294 example, cited by the archive."
+  },
+  "why": "The archive ships a complete sample run with its data, so the printed SUM OF ABSOLUTE VALUES for the size-3 subset is a value the code has to compute from its own search, and a modern compiler can reproduce it at three-decimal precision.",
+  "registered": "2026-11-27T08:01:00Z"
+}

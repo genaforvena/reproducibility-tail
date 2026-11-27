@@ -5,44 +5,44 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-72 papers attempted.
+73 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 17 |
-| B | authors' code with build fixes | 39 |
+| B | authors' code with build fixes | 40 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 14 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 59, other 4, statistics 6
-By stack: C/C++ 9, Fortran 51, Java 1, MATLAB/Octave 6, R 5
-By decade: 1960 3, 1970 5, 1980 6, 1990 22, 2000 25, 2010 11
+By field: astronomy 1, biology 1, ecology 1, numerics 60, other 4, statistics 6
+By stack: C/C++ 9, Fortran 52, Java 1, MATLAB/Octave 6, R 5
+By decade: 1960 3, 1970 5, 1980 6, 1990 23, 2000 25, 2010 11
 
-Data as of 2026-11-27T07:48:05Z (the newest replay or funnel entry).
+Data as of 2026-11-27T08:02Z (the newest replay or funnel entry).
 
 ## The funnel
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-72 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+73 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
-**350 candidates considered from 4 of 4 frames: 70 attempted (20%), 0 unreachable, 280 rejected.**
+**359 candidates considered from 4 of 4 frames: 72 attempted (20%), 0 unreachable, 287 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
 | cpc-library | 2767 | 40 | 20 | 50% | 0 | 0 | 20 |
 | netlib-liblist | 160 | 40 | 40 | 100% | 0 | 0 | 40 |
 | stat-co-2010-2015 | 1872 | 80 | 50 | 62% | 1 | 0 | 49 |
-| toms-calgo-index | 570 | 240 | 240 | 100% | 69 | 0 | 171 |
+| toms-calgo-index | 570 | 280 | 249 | 89% | 71 | 0 | 178 |
 
 | why a candidate was not attempted | candidates |
 |---|---|
 | paywalled | 67 |
-| figure-only | 15 |
-| no-numeric-claim | 58 |
-| claim-not-located | 75 |
+| figure-only | 16 |
+| no-numeric-claim | 60 |
+| claim-not-located | 79 |
 | no-method-description | 0 |
 | stochastic-no-seed | 18 |
 | no-code | 3 |
@@ -58,10 +58,10 @@ Survivorship: each stack's count (and share) among all candidates considered, an
 
 | stack | considered | attempted |
 |---|---|---|
-| C/C++ | 38 (11%) | 10 (14%) |
-| Fortran | 220 (63%) | 52 (74%) |
+| C/C++ | 39 (11%) | 10 (14%) |
+| Fortran | 227 (63%) | 54 (75%) |
 | Java | 2 (1%) | 1 (1%) |
-| MATLAB/Octave | 32 (9%) | 6 (9%) |
+| MATLAB/Octave | 33 (9%) | 6 (8%) |
 | R | 7 (2%) | 1 (1%) |
 | not-stated | 42 (12%) | 0 (0%) |
 | other | 9 (3%) | 0 (0%) |
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 44 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 45 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
 
 ## Results
 
@@ -270,6 +270,7 @@ Authors' original artifact, among all attempted papers: failed 44 (did not run),
 | [wang2011-species-butterfly-ace](reports/wang2011-species-butterfly-ace/result.md) | ecology · 2011 · R | ChaoLee1992(butterfly, t = 10, method = "all") $Nhat[1], ACE estimate of species richness (JSS p. 8) (ACE) | 712 ± 0.5 | 712 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [watson1997-hompack90-777](reports/watson1997-hompack90-777/result.md) | numerics · 1997 · Fortran | The shipped driver3 output RES3, block 'TESTING FIXPQS WITH STORAGE MODE = 1', prints the first solution component Y(1) at lambda = 1 as 4.00864019E-01. Rebuilt from the archive and run, the same block gives Y(1) within tol_abs 1e-8. Registered in the queue entry before any run; the TOMS article was not read (paywalled), so the claim rests on the shipped RES3. (FIXPQS storage mode 1, solution component Y(1) at lambda=1) [shipped reference output] | 0.400864 ± 1e-08 | 0.400864 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [west1983-qap-608](reports/west1983-qap-608/result.md) | other · 1983 · Fortran | HGW on the 4x4 instance hard-coded in the shipped test PROGRAM MAIN returns OBJ = 406 (driver comment), assignment 4,1,3,2, absolute tolerance 0.005 (fixed in the queue entry). The paper was not read (paywalled). (HGW objective on the driver instance (driver comment OBJ=406; assignment 4,1,3,2)) [shipped reference output] | 406 ± 0.005 | – | – | – |  | ✗ ? · · | - | blocked | never clean |
+| [wieder1999-hankel-794](reports/wieder1999-hankel-794/result.md) | numerics · 1999 · Fortran | HT(XI=5.0, NU=1.0) printed by the authors' HANKEL driver into its result file, the shipped reference value 0.208245531E-01 (artifact-reference), absolute tolerance 1e-9 (fixed in the queue entry before any run). (HT_XI5_NU1) [shipped reference output] | 0.0208246 ± 1e-09 | 0.0208246 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | never clean |
 | [wise2000-polsys-plp-801](reports/wise2000-polsys-plp-801/result.md) | numerics · 2000 · Fortran | TWO QUADRICS real finite solution (first INPUT.DAT problem, TRACKTOL 1e-4, FINALTOL 1e-14, seed 32749): Re X(2) = -0.788344824094120 as printed in the shipped OUTPUT.DAT, absolute tolerance 1e-6. (TWO QUADRICS real finite solution, Re X(2)) [shipped reference output] | -0.788345 ± 1e-06 | -0.788345 | -1.89848e-14 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 
 Margin is |our value − paper value| as a share of the tolerance registered before the run; ⚠ marks 80% or more, a result that a different environment could flip.

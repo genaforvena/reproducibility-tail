@@ -1,0 +1,44 @@
+{
+  "paper": {
+    "title": "Algorithm 776: SRRIT, a Fortran subroutine to calculate the dominant invariant subspace of a nonsymmetric matrix",
+    "authors": ["Z. Bai", "G. W. Stewart"],
+    "year": 1997,
+    "venue": "ACM Transactions on Mathematical Software 23(4), 494 (Dec 1997); Collected Algorithms from ACM, Algorithm 776",
+    "doi": null,
+    "url": "https://netlib.org/toms/776.gz (ACM article not read: dl.acm.org returns 403 to automated fetch from this host)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/776.gz",
+    "commit": "netlib TOMS archive 776.gz (fetched by scout 2026-11-27 08:01Z, 132987 bytes gzip)",
+    "archive": "netlib TOMS 776.gz, sha256 11341f825b8c12bb7f51bf58affe513255d14206fa8147310284249c2e6d1d34 (hashed by scout from the fetched bytes)",
+    "note": "Shell archive, not a plain source file: gunzip, then read it; do not execute it. It holds Doc/ (README, Makefile, DRES and SRES reference outputs), Drivers/ (driver.f for the double-precision and single-precision tests, data), and Src/ (dsrrit.f, srrit.f, the BLAS and LAPACK helpers). The DRES file is the double-precision reference output and the claim is taken from it. The test matrices are seeded in the driver (ISEED set to 3192 1221 1322 8097 with DLARAN), so the RWK problem is deterministic. The Makefile compares the run output with the shipped reference (diff)."
+  },
+  "field": "numerics (dominant invariant subspace and eigenvalues of a nonsymmetric matrix, subspace iteration with Ritz refinement)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "The shipped double-precision reference output Doc/DRES (uncompressed line 422 of the 776 shell archive, in the block 'Type of Test problem: RWK', after 'Total number of SRRIT iterations = 2000' and the header '.. Converged Eigenvalues ..'): 'WR = -1.235506919564D+03 WI = 0.000000000000D+00' for a 496 by 496 seeded random sign matrix (the RWK problem).",
+    "reference": {
+      "file": "DRES (inside 776.gz, the double-precision reference for the RWK test)",
+      "sha256": "not computed; the value is quoted here and compared as a number",
+      "archive": "netlib.org/toms/776.gz sha256 11341f825b8c12bb7f51bf58affe513255d14206fa8147310284249c2e6d1d34"
+    },
+    "metric": "The first converged real eigenvalue WR of the RWK problem printed by the double-precision driver (DSRRIT test), 496 by 496 matrix, seeded. Claim: the rerun's value is -1235.506919564 to within the tolerance.",
+    "paper_value": "Shipped reference value -1.235506919564D+03 (printed by the authors' double-precision driver in DRES). The article text was not read; the value is the archive's own printed output.",
+    "values": [
+      {"name": "WR, first converged eigenvalue, RWK 496x496 (double precision)", "paper": "-1235.506919564", "tol_abs": 1e-6}
+    ],
+    "tolerance": {
+      "abs": 1e-6,
+      "basis": "The shipped value has 13 significant digits in the archive, so its printed rounding is far below 1e-6. The run's residual for the converged pair is about 3.6e-9 (the archive's own 'Final residual norms' line), so the eigenvalue can move by up to about that much; 1e-6 absolute is about 1e-9 relative, loose enough for compiler and libm rounding and tight enough to catch a changed iteration or a broken refinement step. Fixed now, before any run; not to be loosened after a run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 5 minutes: the RWK run is 2000 SRRIT iterations on a 496 by 496 matrix, dense double-precision linear algebra.",
+    "data_size": "None: the matrix is generated inside the driver from the seed.",
+    "data_licence": "No data. Source is the public netlib TOMS collected-algorithms archive."
+  },
+  "why": "The driver generates its test matrix from a fixed seed and prints converged eigenvalues computed by the subspace iteration, so the shipped DRES value can only be reproduced by running the routine; a modern compiler should reproduce it to the tolerance.",
+  "registered": "2026-11-27T08:03:00Z"
+}

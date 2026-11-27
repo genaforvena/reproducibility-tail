@@ -46,13 +46,25 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "pending",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
   "recipe": "reports/deboor1980-solveblok-546/recipe.sh",
   "queue_commit": "f4decf2",
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-27T18:10:49Z",
+      "kind": "clean",
+      "values": {
+        "DETERMINANT_546_TEST": 2418822.8
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/deboor1980-solveblok-546/evidence/replay-2026-11-27T181049Z.log",
+      "seconds": 59
+    }
+  ],
   "evidence": [
     "evidence/546.f",
     "evidence/fetch.log",

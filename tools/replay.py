@@ -118,7 +118,13 @@ def main(argv=None) -> int:
         log_rel = f"reports/{a.id}/evidence/replay-not-run-{stamp_name}.log"
         (repo / log_rel).parent.mkdir(parents=True, exist_ok=True)
         (repo / log_rel).write_text(out[-LOG_TAIL:], encoding="utf-8")
-        print(f"{a.id}: NOT RUN: recipe exited {code} before printing any value; no replay entry written; "
+        # Visible in result.json so replay-due can flag it; G5 and the recorded values are untouched.
+        result.setdefault("replayed", []).append(
+            {"utc": stamp, "kind": "not-run", "exit": code, "log": log_rel,
+             "why": f"recipe exited {code} before printing any value", "seconds": round(time.time() - started)})
+        result_path.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        (repo / "ledger.md").write_text(build_ledger.build(repo), encoding="utf-8")
+        print(f"{a.id}: NOT RUN: recipe exited {code} before printing any value; not-run entry written; "
               f"log {log_rel}", file=sys.stderr)
         return 3
     ok, why = agrees(values, new) if code == 0 else (False, f"recipe exited {code} after printing values")

@@ -71,8 +71,8 @@ def test_recipe_without_value_lines_fails(tmp_path):
 def test_timeout_is_a_failed_replay_not_a_hang(tmp_path):
     repo = make(tmp_path)
     recipe(repo, "sleep 30\necho VALUE v 7.05\n")
-    assert run(repo, tmp_path, "--timeout", "1") == 2
-    assert "exited 124" in entry(repo)["why"]
+    assert run(repo, tmp_path, "--timeout", "1") == 3          # no value printed: not run, not DIFFERS
+    assert entry(repo)["kind"] == "not-run" and entry(repo)["exit"] == 124
 
 
 def test_scratch_is_wiped_before_the_run(tmp_path):
@@ -112,6 +112,28 @@ def stamp(days_ago):
     ([{"utc": stamp(3), "kind": "clean", "ok": False}, {"utc": stamp(1), "kind": "clean", "ok": True}], None),
 ])
 def test_replay_due_detector(tmp_path, replayed, expect):
+    repo = make(tmp_path, replayed=replayed)
+    found = replay_due.findings(repo, NOW)
+    assert (not found) if expect is None else any(expect in line for line in found)
+
+
+def test_not_run_is_recorded_visibly_and_keeps_g5(tmp_path):
+    repo = make(tmp_path)
+    recipe(repo, "echo fetch failed >&2\nexit 1\n")
+    assert run(repo, tmp_path) == 3
+    e = entry(repo)
+    assert e["kind"] == "not-run" and e["exit"] == 1 and (repo / e["log"]).is_file()
+    r = json.loads((repo / "reports" / "p1" / "result.json").read_text())
+    assert r.get("gates", {}).get("G5") is None      # the not-run replay does not touch the gate
+    assert replay_due.findings(repo, NOW) and "NOT RUN" in replay_due.findings(repo, NOW)[0]
+
+
+@pytest.mark.parametrize("replayed,expect", [
+    ([{"utc": stamp(1), "kind": "clean", "ok": True}, {"utc": stamp(0.5), "kind": "not-run", "exit": 1, "log": "x"}],
+     "NOT RUN"),
+    ([{"utc": stamp(3), "kind": "not-run", "exit": 1, "log": "x"}, {"utc": stamp(1), "kind": "clean", "ok": True}], None),
+])
+def test_replay_due_flags_a_newest_not_run(tmp_path, replayed, expect):
     repo = make(tmp_path, replayed=replayed)
     found = replay_due.findings(repo, NOW)
     assert (not found) if expect is None else any(expect in line for line in found)

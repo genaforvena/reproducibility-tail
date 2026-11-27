@@ -8,6 +8,8 @@ A result is owed a replay when its computed verdict is `reproduced` and its newe
 of kind `clean` in result.json `replayed` is missing or older than MAX_AGE_DAYS. A result
 is CHANGED when that newest clean entry did not agree with the record: that needs
 diagnosis, not another replay, and stays RED until an entry that agrees follows it.
+A result is NOT RUN when its newest entry of any kind is `not-run` (the recipe died before
+printing a value, so the replay could not be compared): visible RED until a later clean replay.
 """
 from __future__ import annotations
 
@@ -35,7 +37,12 @@ def findings(repo: Path, now: datetime.datetime, max_age_days: float = MAX_AGE_D
         if judge(r.get("claim", {}).get("values", [])) != "reproduced":
             continue
         rid = f.parent.name
-        clean = [e for e in r.get("replayed", []) if e.get("kind") == "clean"]
+        entries = r.get("replayed", [])
+        if entries:
+            last = max(entries, key=lambda e: e["utc"])
+            if last.get("kind") == "not-run":
+                owed.append(f"{rid}: NOT RUN at {last['utc']} (exit {last.get('exit')}); log {last.get('log')}")
+        clean = [e for e in entries if e.get("kind") == "clean"]
         if not clean:
             owed.append(f"{rid}: never replayed clean")
             continue

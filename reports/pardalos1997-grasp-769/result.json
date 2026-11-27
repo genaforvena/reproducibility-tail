@@ -1,0 +1,92 @@
+{
+  "paper": {
+    "short": "pardalos1997-grasp-769",
+    "title": "Algorithm 769: FORTRAN subroutines for approximate solution of sparse quadratic assignment problems using GRASP",
+    "year": 1997,
+    "venue": "ACM Transactions on Mathematical Software 23(2), 196 (1997); collected as ACM TOMS Algorithm 769",
+    "doi": null,
+    "note": "The article is not read. The archive is netlib TOMS 769.gz, fetched inside the sandbox, sha256 431c7443...b98. The shipped RES (block 'output', cost of best permutation found) is the oracle."
+  },
+  "field": "numerics (combinatorial optimisation: quadratic assignment by GRASP)",
+  "field_class": "numerics",
+  "stack": "Fortran (netlib 769.gz driver.f and src.f, unpacked verbatim from the shell archive; authors' Doc/Makefile names epcf90 with PGI flags, which the sandbox does not have); built with GNU Fortran 16.2.0 (conda-forge) in the sandbox",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Cost of the best permutation found by GRASP for the 6-by-6 QAP test instance, seed 270001, 1000 iterations, alpha 0.25, beta 0.50, look4 -1, as printed in the shipped reference output RES. Registered tolerance: abs 0.5 (integer cost, exact match).",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/pardalos1997-grasp-769/evidence/shipped-res.txt",
+      "sha256": "d51fe3f48eb47743988e6ded8bc581fc5b61f800ee026a3b6d3799627087a14f",
+      "archive": "netlib.org/toms/769.gz sha256 431c74438646c4f82fa52b2ffc6979bb899adad0825b61cae9466e5d3f2f6b98"
+    },
+    "values": [
+      {
+        "name": "best QAP cost (GRASP, seed 270001)",
+        "paper": 4490,
+        "tol_abs": 0.5,
+        "ours": 4490
+      }
+    ],
+    "determinism": "stochastic (fixed seed 270001 set in driver.f)"
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Built the authors' driver.f and src.f with gfortran (three commands, no source edit). The authors' Doc/Makefile names the proprietary epcf90 compiler with PGI-only flags (-sloppy -C -d5 -g -temp=/tmp -u), which the sandbox does not have, so the build is patched: the compiler is substituted and the flags dropped. This is a build-only patch: manifests pre and mid are identical. Two passes, each in a fresh run directory, data fed on stdin (driver reads unit 5). Both print 'cost of best permutation found : 4490' and best permutation 1 5 4 2 6 3, matching the shipped RES.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The authors' Doc/Makefile as shipped runs epcf90, which is not installed in the sandbox (make: epcf90: No such file or directory, make_exit=2). No gqaps binary was produced. The compiler is proprietary PGI and is not on conda-forge, so the original Makefile build cannot run here.",
+    "log": "reports/pardalos1997-grasp-769/evidence/original-attempt-build.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/pardalos1997-grasp-769/recipe.sh",
+  "queue_commit": "0cdfc8e",
+  "replayed": [],
+  "evidence": [
+    "reports/pardalos1997-grasp-769/evidence/archive-sha256-check.txt",
+    "reports/pardalos1997-grasp-769/evidence/gfortran-version.txt",
+    "reports/pardalos1997-grasp-769/evidence/unpack-listing.txt",
+    "reports/pardalos1997-grasp-769/evidence/shipped-res.txt",
+    "reports/pardalos1997-grasp-769/evidence/original-attempt-build.log",
+    "reports/pardalos1997-grasp-769/evidence/build.log",
+    "reports/pardalos1997-grasp-769/evidence/manifests/manifest.pre",
+    "reports/pardalos1997-grasp-769/evidence/manifests/manifest.mid",
+    "reports/pardalos1997-grasp-769/evidence/manifests/manifest.post",
+    "reports/pardalos1997-grasp-769/evidence/run-pass1.txt",
+    "reports/pardalos1997-grasp-769/evidence/run-pass2.txt",
+    "reports/pardalos1997-grasp-769/evidence/recipe-run.log"
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "431c74438646c4f82fa52b2ffc6979bb899adad0825b61cae9466e5d3f2f6b98",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -c /work/tree/Fortran77/Drivers/Sp/driver.f -o driver.o",
+      "gfortran -c /work/tree/Fortran77/Src/Sp/src.f -o src.o",
+      "gfortran -o gqaps driver.o src.o"
+    ],
+    "manifests": {
+      "pre": "reports/pardalos1997-grasp-769/evidence/manifest.pre",
+      "mid": "reports/pardalos1997-grasp-769/evidence/manifest.mid",
+      "post": "reports/pardalos1997-grasp-769/evidence/manifest.post"
+    }
+  }
+}

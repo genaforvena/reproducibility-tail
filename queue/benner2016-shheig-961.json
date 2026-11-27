@@ -1,0 +1,46 @@
+{
+ "paper": {
+  "title": "Fortran 77 Subroutines for the Solution of Skew-Hamiltonian/Hamiltonian Eigenproblems (Algorithm 961, SHHEIG)",
+  "authors": [
+   "Peter Benner",
+   "Vasile Sima",
+   "Matthias Voigt"
+  ],
+  "year": 2016,
+  "venue": "ACM Transactions on Mathematical Software 42(3), Article 24 (June 2016), per the frame item; the ACM article was not fetched. Algorithmic basis also in MPI Magdeburg preprints MPIMD/13-11 and MPIMD/13-12 (named in the archive's readme), not fetched.",
+  "doi": null,
+  "url": "https://netlib.org/toms/961.zip (article not fetched; ACM page not used)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/961.zip",
+  "commit": "netlib CALGO archive 961.zip (SHHEIG release 1.0 tree 961/Src: src/, examples/, make.inc, makefile)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/961.zip (HTTP 200, 714565 bytes). sha256 of 961.zip: aaaf3abf3a23dbf7fe63c1f0cf66cc76a5bd671599d11787184004d51de745c1 (scout download, 2026-11-27).",
+  "archive_sha256": "aaaf3abf3a23dbf7fe63c1f0cf66cc76a5bd671599d11787184004d51de745c1",
+  "note": "Unzip; the library is in 961/Src/src (Fortran 77, double precision). Its example programs are in 961/Src/examples: TDGHFDF.f is the driver and examples/DGHFDF.dat its input; examples/DGHFDF.res is the shipped reference output. The archive does NOT contain the SLICOT routines the library calls (MA01BD, MA02AD, MA02ED, MB01KD, MB01LD, MB01MD, MB01ND, MB01RU, MB01RX, MB02UW, MB03BA, MB03BB, MB03BD, MB03BZ, MB03KD, MB04SU, MB04WU; the complex ZGHFDF path too) nor LAPACK/BLAS. The rerun must obtain SLICOT (slicot.org or netlib SLICOT) and LAPACK/BLAS separately. make.inc sets SLICOTLIB to ../libs/slicot64.a; the rerun may change the path but must not change the code."
+ },
+ "field": "numerics (linear algebra: skew-Hamiltonian/Hamiltonian pencils, deflating subspaces)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "examples/DGHFDF.res (shipped reference output of the DGHFDF example program TDGHFDF.f, input examples/DGHFDF.dat: a real 8 by 8 skew-Hamiltonian/Hamiltonian pencil, N = 8, M = 4). The reference lists the vector ALPHAR at line 11, ALPHAI at line 13 and BETA at line 15 of the file. Values: ALPHAR = (0.7353, 0.0000, 0.5168, -0.5168); ALPHAI = (0.0000, 0.7190, 0.5610, 0.5610); BETA = (2.0000, 2.8284, 11.3137, 11.3137).",
+  "reference": {
+   "file": "examples/DGHFDF.res inside 961.zip (netlib.org/toms/961.zip), lines 11 to 15",
+   "sha256": "not computed for the member; the values are quoted here and compared as numbers",
+   "archive": "netlib.org/toms/961.zip"
+  },
+  "paper_value": "The shipped reference output's eigenvalue vectors (ALPHAR, ALPHAI, BETA) for the DGHFDF example. The ACM article was not read; the claim is the code's own reference output, not a value located in the paper.",
+  "metric": "The four-element vectors ALPHAR, ALPHAI and BETA printed by TDGHFDF.f (the eigenvalues alpha/beta of the pencil with negative real part, as computed by DGHFDF), compared elementwise with the .res values. Z, Q and U are NOT part of the claim: the readme says the signs of some matrix elements may differ between runs.",
+  "determinism": "deterministic (fixed input in DGHFDF.dat; no random numbers)",
+  "tolerance": {
+   "abs": 0.001,
+   "basis": "Fixed before any run. The reference prints each value with F8.4, so print rounding alone is up to 5e-5 absolute; double-precision rounding through an 8 by 8 pencil is far smaller. 1e-3 absorbs print rounding and BLAS/LAPACK differences in the last digits. A wrong deflation, wrong pairing of the real and imaginary parts, or a wrong ordering changes the values by far more than 1e-3. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 5 minutes: a Fortran build of the SHHEIG library with SLICOT and LAPACK/BLAS, then one run of an 8 by 8 example.",
+  "data_size": "None beyond the archive (the example input is 1 KB).",
+  "data_licence": "Netlib CALGO archive; licence per the archive's own notices (the rerun should record it). SLICOT and LAPACK licences apply to the rebuilt dependencies."
+ },
+ "why": "The shipped example driver calls the DGHFDF deflating-subspace routine on a fixed pencil and prints the eigenvalue vectors; reproducing the printed vectors needs the Fortran eigensolver to run, not a closed-form answer.",
+ "registered": "2026-11-27T17:37:00Z"
+}

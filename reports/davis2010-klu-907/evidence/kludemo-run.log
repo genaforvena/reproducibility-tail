@@ -1,0 +1,12 @@
+w156 exit=0
+1c exit=0
+arrowc exit=0
+arrow exit=0
+impcol_a exit=0
+ctina exit=0
+./kludemo < ../Matrix/w156.mtx
+KLU: Nov 30, 2009, version: 1.1.1
+n 156 nnz(A) 362 nnz(L+U+F) 396 resid 6.23816e-08
+recip growth 0.00889922 condest 1.79787e+09 rcond 0.000124785 flops 175
+peak memory usage: 39516 bytes
+

@@ -1,0 +1,7 @@
+kludemo_make_exit=2
+cc -O3 -fexceptions -I../../UFconfig -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../CHOLMOD/Include kludemo.c -o kludemo ../Lib/libklu.a  ../../BTF/Lib/libbtf.a ../../AMD/Lib/libamd.a ../../COLAMD/Lib/libcolamd.a ../../CHOLMOD/Lib/libcholmod.a -lm
+kludemo.c:303:10: fatal error: cholmod.h: No such file or directory
+  303 | #include "cholmod.h"
+      |          ^~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:59: kludemo] Error 1

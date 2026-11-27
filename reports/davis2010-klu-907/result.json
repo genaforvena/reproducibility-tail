@@ -1,0 +1,90 @@
+{
+  "paper": {
+    "short": "davis2010-klu-907",
+    "title": "Algorithm 907: KLU, a direct sparse solver for circuit simulation problems (Collected Algorithms from ACM)",
+    "year": 2010,
+    "doi": null
+  },
+  "field": "numerics (sparse direct linear solvers, circuit simulation)",
+  "field_class": "numerics",
+  "stack": "C (netlib TOMS 907.zip: Matlab/KLU/Source, Include, Lib and Demo, with AMD, COLAMD, BTF and UFconfig in the same tree; the C driver kludemo.c reads its matrix with CHOLMOD)",
+  "stack_class": "C/C++",
+  "claim": {
+    "text": "KLU demo, condest for ../Matrix/w156.mtx: 1.79787e+09, as printed by the shipped Matlab/KLU/Demo/kludemo.out. Registered by scout from the artifact's own reference output. Tolerance 5e4 absolute, fixed before any run.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "KLU_CONDEST_W156",
+        "paper": 1797870000.0,
+        "tol_abs": 50000.0,
+        "ours": 1797870000.0
+      }
+    ],
+    "determinism": "deterministic (fixed input matrix, no random numbers in the demo; the estimate uses the factorization only)",
+    "reference": {
+      "file": "reports/davis2010-klu-907/evidence/kludemo-shipped.out",
+      "archive": "netlib.org/toms/907.zip, sha256 d01a10366cc289ea803b119ea5f62dfa548867fe12460f9e2c593bab6489dc31, file 907/Matlab/KLU/Demo/kludemo.out",
+      "sha256": "2deae3955d3c826ea82f6c007484a02ef36c5d9ae01009077d49c1106a96ebe7"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "G1: the authors' Makefile target kludemo in a copy stops at compile time: kludemo.c includes cholmod.h, which the archive does not ship (no CHOLMOD tree). The build then compiles the archive's KLU library and klu_simple with the authors' Makefile, and kludemo with the Demo Makefile's own compile line, with the CHOLMOD headers and library taken from SuiteSparse 7.10.1 (conda-forge, /work/env). The archive's KLU source is not edited. The run is the authors' driver on w156.mtx and five other shipped matrices. All six condest and residual lines match the shipped kludemo.out exactly.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "kludemo.c:303: fatal error: cholmod.h: No such file or directory. The archive has no CHOLMOD; the Demo Makefile links ../../CHOLMOD/Lib/libcholmod.a, which is also absent.",
+    "log": "reports/davis2010-klu-907/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/davis2010-klu-907/recipe.sh",
+  "queue_commit": "29d90e1",
+  "evidence": [
+    "reports/davis2010-klu-907/evidence/fetch.log",
+    "reports/davis2010-klu-907/evidence/env-pins.txt",
+    "reports/davis2010-klu-907/evidence/original-attempt.log",
+    "reports/davis2010-klu-907/evidence/manifest.pre",
+    "reports/davis2010-klu-907/evidence/manifest.mid",
+    "reports/davis2010-klu-907/evidence/manifest.post",
+    "reports/davis2010-klu-907/evidence/recipe-run-pass1.log",
+    "reports/davis2010-klu-907/evidence/recipe-run-pass2.log",
+    "reports/davis2010-klu-907/evidence/kludemo-run.log",
+    "reports/davis2010-klu-907/evidence/kludemo-run.out",
+    "reports/davis2010-klu-907/evidence/kludemo-shipped.out",
+    "reports/davis2010-klu-907/evidence/kludemo-shipped.sha256",
+    "reports/davis2010-klu-907/evidence/cross-check.txt"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "d01a10366cc289ea803b119ea5f62dfa548867fe12460f9e2c593bab6489dc31",
+    "compared": 145,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "make -f Makefile klu_simple",
+      "cc -O3 -fexceptions -I../../UFconfig -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I$CHO/include/suitesparse kludemo.c -o kludemo ../Lib/libklu.a ../../BTF/Lib/libbtf.a ../../AMD/Lib/libamd.a ../../COLAMD/Lib/libcolamd.a -L$CHO/lib -lcholmod -lm"
+    ],
+    "manifests": {
+      "pre": "reports/davis2010-klu-907/evidence/manifest.pre",
+      "mid": "reports/davis2010-klu-907/evidence/manifest.mid",
+      "post": "reports/davis2010-klu-907/evidence/manifest.post"
+    }
+  }
+}

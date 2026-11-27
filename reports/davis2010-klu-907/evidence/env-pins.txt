@@ -1,0 +1,6 @@
+  libblas                  3.11.0   12_h4a7cf45_openblas  conda-forge
+  libcblas                 3.11.0   12_h0358290_openblas  conda-forge
+  liblapack                3.11.0   12_h47877c9_openblas  conda-forge
+  libopenblas              0.3.34   pthreads_hf13c14d_2   conda-forge
+  libsuitesparseconfig     7.10.1   h92d6892_7100102      conda-forge
+  suitesparse              7.10.1   ha0f6916_7100102      conda-forge

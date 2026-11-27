@@ -1,0 +1,6 @@
+w156: shipped (('156', '362', '396', '6.23816e-08'), '1.79787e+09') run (('156', '362', '396', '6.23816e-08'), '1.79787e+09') same_structure_and_condest=True
+1c: shipped (('1', '1', '1', '0'), '1') run (('1', '1', '1', '0'), '1') same_structure_and_condest=True
+arrowc: shipped (('100', '298', '298', '1.68007e-14'), '295.99') run (('100', '298', '298', '1.68007e-14'), '295.99') same_structure_and_condest=True
+arrow: shipped (('100', '298', '298', '1.77636e-15'), '303') run (('100', '298', '298', '1.77636e-15'), '303') same_structure_and_condest=True
+impcol_a: shipped (('207', '572', '615', '6.98492e-10'), '4.35093e+07') run (('207', '572', '615', '6.98492e-10'), '4.35093e+07') same_structure_and_condest=True
+ctina: shipped (('11', '36', '45', '4.44089e-16'), '56') run (('11', '36', '45', '4.44089e-16'), '56') same_structure_and_condest=True

@@ -20,7 +20,7 @@ By field: astronomy 1, biology 1, ecology 1, numerics 68, other 4, statistics 6
 By stack: C/C++ 10, Fortran 57, Java 1, MATLAB/Octave 7, R 5, other 1
 By decade: 1960 4, 1970 6, 1980 7, 1990 26, 2000 26, 2010 12
 
-Data as of 2026-11-27T09:34:49Z (the newest replay or funnel entry).
+Data as of 2026-11-27T09:40Z (the newest replay or funnel entry).
 
 ## The funnel
 
@@ -28,21 +28,21 @@ Every candidate is drawn from a named frame in a seeded order and none is skippe
 
 81 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
-**390 candidates considered from 4 of 4 frames: 79 attempted (20%), 0 unreachable, 311 rejected.**
+**392 candidates considered from 4 of 4 frames: 80 attempted (20%), 0 unreachable, 312 rejected.**
 
 | frame | size | drawn | considered | coverage | attempted | unreachable | rejected |
 |---|---|---|---|---|---|---|---|
 | cpc-library | 2767 | 40 | 20 | 50% | 0 | 0 | 20 |
 | netlib-liblist | 160 | 40 | 40 | 100% | 0 | 0 | 40 |
 | stat-co-2010-2015 | 1872 | 80 | 50 | 62% | 1 | 0 | 49 |
-| toms-calgo-index | 570 | 280 | 280 | 100% | 78 | 0 | 202 |
+| toms-calgo-index | 570 | 320 | 282 | 88% | 79 | 0 | 203 |
 
 | why a candidate was not attempted | candidates |
 |---|---|
 | paywalled | 68 |
 | figure-only | 19 |
 | no-numeric-claim | 64 |
-| claim-not-located | 91 |
+| claim-not-located | 92 |
 | no-method-description | 0 |
 | stochastic-no-seed | 19 |
 | no-code | 3 |
@@ -58,8 +58,8 @@ Survivorship: each stack's count (and share) among all candidates considered, an
 
 | stack | considered | attempted |
 |---|---|---|
-| C/C++ | 40 (10%) | 10 (13%) |
-| Fortran | 251 (64%) | 60 (76%) |
+| C/C++ | 41 (10%) | 11 (14%) |
+| Fortran | 252 (64%) | 60 (75%) |
 | Java | 2 (1%) | 1 (1%) |
 | MATLAB/Octave | 37 (9%) | 6 (8%) |
 | R | 7 (2%) | 1 (1%) |

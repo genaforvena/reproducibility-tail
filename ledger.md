@@ -5,28 +5,28 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-57 papers attempted.
+58 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
-| A | authors' code, run clean | 15 |
+| A | authors' code, run clean | 16 |
 | B | authors' code with build fixes | 29 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 11 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 46, other 3, statistics 5
-By stack: C/C++ 8, Fortran 38, Java 1, MATLAB/Octave 5, R 5
-By decade: 1960 2, 1970 2, 1980 3, 1990 18, 2000 22, 2010 10
+By field: astronomy 1, biology 1, ecology 1, numerics 47, other 3, statistics 5
+By stack: C/C++ 8, Fortran 39, Java 1, MATLAB/Octave 5, R 5
+By decade: 1960 2, 1970 3, 1980 3, 1990 18, 2000 22, 2010 10
 
-Data as of 2026-11-27T05:23Z (the newest replay or funnel entry).
+Data as of 2026-11-27T05:28:36Z (the newest replay or funnel entry).
 
 ## The funnel
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-57 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+58 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **309 candidates considered from 4 of 4 frames: 53 attempted (17%), 0 unreachable, 256 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 33 (did not run), not-possible 2 (no code exists to run), partial 5 (ran only through a workaround or for part of the claim), succeeded 17 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 33 (did not run), not-possible 2 (no code exists to run), partial 5 (ran only through a workaround or for part of the claim), succeeded 18 (ran as documented).
 
 ## Results
 
@@ -178,6 +178,18 @@ Authors' original artifact, among all attempted papers: failed 33 (did not run),
 | [peters1998-pcp2nurb-783](reports/peters1998-pcp2nurb-783/result.md) | numerics · 1998 · C/C++ | The first control point of the first NurbsSurface printed by driver1 with blend ratio 0.5 is (0.493056, 1.868056, 0.972222), as in the shipped reference output RES1 (first Coordinate3 block, point 1). Absolute tolerance 1e-5 per component. (driver1 0.5, first patch control point 1 x) [shipped reference output] | 0.493056 ± 1e-05 | 0.493056 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [peters1998-pcp2nurb-783](reports/peters1998-pcp2nurb-783/result.md) | numerics · 1998 · C/C++ | The first control point of the first NurbsSurface printed by driver1 with blend ratio 0.5 is (0.493056, 1.868056, 0.972222), as in the shipped reference output RES1 (first Coordinate3 block, point 1). Absolute tolerance 1e-5 per component. (driver1 0.5, first patch control point 1 y) [shipped reference output] | 1.86806 ± 1e-05 | 1.86806 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [peters1998-pcp2nurb-783](reports/peters1998-pcp2nurb-783/result.md) | numerics · 1998 · C/C++ | The first control point of the first NurbsSurface printed by driver1 with blend ratio 0.5 is (0.493056, 1.868056, 0.972222), as in the shipped reference output RES1 (first Coordinate3 block, point 1). Absolute tolerance 1e-5 per component. (driver1 0.5, first patch control point 1 z) [shipped reference output] | 0.972222 ± 1e-05 | 0.972222 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
+| [piessens1973-bromin-453](reports/piessens1973-bromin-453/result.md) | numerics · 1973 · Fortran | The shipped driver's TEST01 (N = 6, S = 0.00000) prints the 12 values in the shipped res file (XR, XI, WR, WI for three abscissas); the run must reproduce them to absolute tolerance 1e-3 (fixed in the queue entry). The claim is artifact-reference: the paper's own values were not located (paywalled), so this checks the shipped code against its shipped output. (TEST01 N=6 S=0 row 1 XR) [shipped reference output] | 6.48253 ± 0.001 | 6.48253 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
+| [piessens1973-bromin-453](reports/piessens1973-bromin-453/result.md) | numerics · 1973 · Fortran | The shipped driver's TEST01 (N = 6, S = 0.00000) prints the 12 values in the shipped res file (XR, XI, WR, WI for three abscissas); the run must reproduce them to absolute tolerance 1e-3 (fixed in the queue entry). The claim is artifact-reference: the paper's own values were not located (paywalled), so this checks the shipped code against its shipped output. (TEST01 N=6 S=0 row 1 XI) [shipped reference output] | 1.49931 ± 0.001 | 1.49931 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
+| [piessens1973-bromin-453](reports/piessens1973-bromin-453/result.md) | numerics · 1973 · Fortran | The shipped driver's TEST01 (N = 6, S = 0.00000) prints the 12 values in the shipped res file (XR, XI, WR, WI for three abscissas); the run must reproduce them to absolute tolerance 1e-3 (fixed in the queue entry). The claim is artifact-reference: the paper's own values were not located (paywalled), so this checks the shipped code against its shipped output. (TEST01 N=6 S=0 row 1 WR) [shipped reference output] | -27.8412 ± 0.001 | -27.8412 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
+| [piessens1973-bromin-453](reports/piessens1973-bromin-453/result.md) | numerics · 1973 · Fortran | The shipped driver's TEST01 (N = 6, S = 0.00000) prints the 12 values in the shipped res file (XR, XI, WR, WI for three abscissas); the run must reproduce them to absolute tolerance 1e-3 (fixed in the queue entry). The claim is artifact-reference: the paper's own values were not located (paywalled), so this checks the shipped code against its shipped output. (TEST01 N=6 S=0 row 1 WI) [shipped reference output] | 315.065 ± 0.001 | 315.065 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
+| [piessens1973-bromin-453](reports/piessens1973-bromin-453/result.md) | numerics · 1973 · Fortran | The shipped driver's TEST01 (N = 6, S = 0.00000) prints the 12 values in the shipped res file (XR, XI, WR, WI for three abscissas); the run must reproduce them to absolute tolerance 1e-3 (fixed in the queue entry). The claim is artifact-reference: the paper's own values were not located (paywalled), so this checks the shipped code against its shipped output. (TEST01 N=6 S=0 row 2 XR) [shipped reference output] | 5.46926 ± 0.001 | 5.46926 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
+| [piessens1973-bromin-453](reports/piessens1973-bromin-453/result.md) | numerics · 1973 · Fortran | The shipped driver's TEST01 (N = 6, S = 0.00000) prints the 12 values in the shipped res file (XR, XI, WR, WI for three abscissas); the run must reproduce them to absolute tolerance 1e-3 (fixed in the queue entry). The claim is artifact-reference: the paper's own values were not located (paywalled), so this checks the shipped code against its shipped output. (TEST01 N=6 S=0 row 2 XI) [shipped reference output] | 4.51993 ± 0.001 | 4.51993 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
+| [piessens1973-bromin-453](reports/piessens1973-bromin-453/result.md) | numerics · 1973 · Fortran | The shipped driver's TEST01 (N = 6, S = 0.00000) prints the 12 values in the shipped res file (XR, XI, WR, WI for three abscissas); the run must reproduce them to absolute tolerance 1e-3 (fixed in the queue entry). The claim is artifact-reference: the paper's own values were not located (paywalled), so this checks the shipped code against its shipped output. (TEST01 N=6 S=0 row 2 WR) [shipped reference output] | 37.157 ± 0.001 | 37.157 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
+| [piessens1973-bromin-453](reports/piessens1973-bromin-453/result.md) | numerics · 1973 · Fortran | The shipped driver's TEST01 (N = 6, S = 0.00000) prints the 12 values in the shipped res file (XR, XI, WR, WI for three abscissas); the run must reproduce them to absolute tolerance 1e-3 (fixed in the queue entry). The claim is artifact-reference: the paper's own values were not located (paywalled), so this checks the shipped code against its shipped output. (TEST01 N=6 S=0 row 2 WI) [shipped reference output] | -124.634 ± 0.001 | -124.634 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
+| [piessens1973-bromin-453](reports/piessens1973-bromin-453/result.md) | numerics · 1973 · Fortran | The shipped driver's TEST01 (N = 6, S = 0.00000) prints the 12 values in the shipped res file (XR, XI, WR, WI for three abscissas); the run must reproduce them to absolute tolerance 1e-3 (fixed in the queue entry). The claim is artifact-reference: the paper's own values were not located (paywalled), so this checks the shipped code against its shipped output. (TEST01 N=6 S=0 row 3 XR) [shipped reference output] | 3.04821 ± 0.001 | 3.04821 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
+| [piessens1973-bromin-453](reports/piessens1973-bromin-453/result.md) | numerics · 1973 · Fortran | The shipped driver's TEST01 (N = 6, S = 0.00000) prints the 12 values in the shipped res file (XR, XI, WR, WI for three abscissas); the run must reproduce them to absolute tolerance 1e-3 (fixed in the queue entry). The claim is artifact-reference: the paper's own values were not located (paywalled), so this checks the shipped code against its shipped output. (TEST01 N=6 S=0 row 3 XI) [shipped reference output] | 7.65179 ± 0.001 | 7.65179 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
+| [piessens1973-bromin-453](reports/piessens1973-bromin-453/result.md) | numerics · 1973 · Fortran | The shipped driver's TEST01 (N = 6, S = 0.00000) prints the 12 values in the shipped res file (XR, XI, WR, WI for three abscissas); the run must reproduce them to absolute tolerance 1e-3 (fixed in the queue entry). The claim is artifact-reference: the paper's own values were not located (paywalled), so this checks the shipped code against its shipped output. (TEST01 N=6 S=0 row 3 WR) [shipped reference output] | -9.31577 ± 0.001 | -9.31577 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
+| [piessens1973-bromin-453](reports/piessens1973-bromin-453/result.md) | numerics · 1973 · Fortran | The shipped driver's TEST01 (N = 6, S = 0.00000) prints the 12 values in the shipped res file (XR, XI, WR, WI for three abscissas); the run must reproduce them to absolute tolerance 1e-3 (fixed in the queue entry). The claim is artifact-reference: the paper's own values were not located (paywalled), so this checks the shipped code against its shipped output. (TEST01 N=6 S=0 row 3 WI) [shipped reference output] | 13.1079 ± 0.001 | 13.1079 | 0 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-27 ok |
 | [preusser1990-c1c2-684](reports/preusser1990-c1c2-684/result.md) | numerics · 1990 · Fortran | PROGRAM DFC1C2 (default REAL build) prints COMPUTED VALUE for Z(44,3) on the example's rectangular grid that agrees with the author's expected constant 3.035646151154, tolerance 1e-3 absolute, fixed in the queue entry. (Z(44,3) of DFC1C2 (default REAL build)) [shipped reference output] | 3.03565 ± 0.001 | 3.03551 | -0.000138949 | 14% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [punzo2016-wine-cnm-bic](reports/punzo2016-wine-cnm-bic/result.md) | statistics · 2016 · R | Section 7.3 (wine data), Table 11, CNMs row: BIC-selected (G, parsimonious structure) over G in {1,2,3,4} and the 14 structures, labels ignored, seed 1 (selected_G) | 3 ± 0 | 3 | 0 | exact | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [punzo2016-wine-cnm-bic](reports/punzo2016-wine-cnm-bic/result.md) | statistics · 2016 · R | Section 7.3 (wine data), Table 11, CNMs row: BIC-selected (G, parsimonious structure) over G in {1,2,3,4} and the 14 structures, labels ignored, seed 1 (selected_structure_index) | 7 ± 0 | 7 | 0 | exact | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |

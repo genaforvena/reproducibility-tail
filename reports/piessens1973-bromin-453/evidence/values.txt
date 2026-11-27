@@ -1,0 +1,14 @@
+run-O0.txt: all 12 values within tol_abs 1e-3 of the registered claim: True; max |diff| 0
+run-O2.txt: all 12 values within tol_abs 1e-3 of the registered claim: True; max |diff| 0
+VALUE TEST01 N=6 S=0 row 1 XR 6.48253
+VALUE TEST01 N=6 S=0 row 1 XI 1.49931
+VALUE TEST01 N=6 S=0 row 1 WR -27.8412
+VALUE TEST01 N=6 S=0 row 1 WI 315.065
+VALUE TEST01 N=6 S=0 row 2 XR 5.46926
+VALUE TEST01 N=6 S=0 row 2 XI 4.51993
+VALUE TEST01 N=6 S=0 row 2 WR 37.157
+VALUE TEST01 N=6 S=0 row 2 WI -124.634
+VALUE TEST01 N=6 S=0 row 3 XR 3.04821
+VALUE TEST01 N=6 S=0 row 3 XI 7.65179
+VALUE TEST01 N=6 S=0 row 3 WR -9.31577
+VALUE TEST01 N=6 S=0 row 3 WI 13.1079

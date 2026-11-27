@@ -1,0 +1,149 @@
+{
+  "paper": {
+    "short": "piessens1973-bromin-453",
+    "title": "Algorithm 453: Gaussian Quadrature Formulas for Bromwich's Integral",
+    "year": 1973,
+    "doi": null
+  },
+  "field": "numerics (quadrature for Laplace/Bromwich inversion)",
+  "field_class": "numerics",
+  "stack": "Fortran 77 (TOMS/CACM 453 archive 453.gz: plain shell archive with driver.f, Makefile, res, src.f)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "The shipped driver's TEST01 (N = 6, S = 0.00000) prints the 12 values in the shipped res file (XR, XI, WR, WI for three abscissas); the run must reproduce them to absolute tolerance 1e-3 (fixed in the queue entry). The claim is artifact-reference: the paper's own values were not located (paywalled), so this checks the shipped code against its shipped output.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/piessens1973-bromin-453/evidence/reference/res",
+      "sha256": "92f4edda22c651fb966c8ebbebcfedf1b49cf2af77054fa09a962e046b82dbd2",
+      "archive": "netlib.org/toms/453.gz sha256 57563056450e03c510b778971d7539577da3f3e962cf5ce1650507466121b9f7 (member Fortran/Sp/Drivers/res)"
+    },
+    "values": [
+      {
+        "name": "TEST01 N=6 S=0 row 1 XR",
+        "paper": 6.48253,
+        "tol_abs": 0.001,
+        "ours": 6.48253
+      },
+      {
+        "name": "TEST01 N=6 S=0 row 1 XI",
+        "paper": 1.49931,
+        "tol_abs": 0.001,
+        "ours": 1.49931
+      },
+      {
+        "name": "TEST01 N=6 S=0 row 1 WR",
+        "paper": -27.8412,
+        "tol_abs": 0.001,
+        "ours": -27.8412
+      },
+      {
+        "name": "TEST01 N=6 S=0 row 1 WI",
+        "paper": 315.065,
+        "tol_abs": 0.001,
+        "ours": 315.065
+      },
+      {
+        "name": "TEST01 N=6 S=0 row 2 XR",
+        "paper": 5.46926,
+        "tol_abs": 0.001,
+        "ours": 5.46926
+      },
+      {
+        "name": "TEST01 N=6 S=0 row 2 XI",
+        "paper": 4.51993,
+        "tol_abs": 0.001,
+        "ours": 4.51993
+      },
+      {
+        "name": "TEST01 N=6 S=0 row 2 WR",
+        "paper": 37.157,
+        "tol_abs": 0.001,
+        "ours": 37.157
+      },
+      {
+        "name": "TEST01 N=6 S=0 row 2 WI",
+        "paper": -124.634,
+        "tol_abs": 0.001,
+        "ours": -124.634
+      },
+      {
+        "name": "TEST01 N=6 S=0 row 3 XR",
+        "paper": 3.04821,
+        "tol_abs": 0.001,
+        "ours": 3.04821
+      },
+      {
+        "name": "TEST01 N=6 S=0 row 3 XI",
+        "paper": 7.65179,
+        "tol_abs": 0.001,
+        "ours": 7.65179
+      },
+      {
+        "name": "TEST01 N=6 S=0 row 3 WR",
+        "paper": -9.31577,
+        "tol_abs": 0.001,
+        "ours": -9.31577
+      },
+      {
+        "name": "TEST01 N=6 S=0 row 3 WI",
+        "paper": 13.1079,
+        "tol_abs": 0.001,
+        "ours": 13.1079
+      }
+    ]
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Reproduced. The authors' driver.f and src.f were unpacked from the netlib shell archive unedited and compiled with gfortran (-O0, and -O2 as a cross-check). Both runs exit 0 and their full stdout is byte-identical to the shipped res file, so the first TEST01 block (N = 6, S = 0) matches the registered values exactly (max difference 0 against tol_abs 1e-3). The gfortran warnings are only Fortran 2018 'deleted feature' notes for arithmetic IF. No patch and no build edit were made. Limits: the paper's own table was not read (paywalled), so this shows the shipped code reproduces its shipped output, not an independently published value. The G1 gate is met by the original run; no build patch was needed.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "Compiled as shipped with gfortran -O0 and -O2 (the Makefile's F77 role), ran to 'Normal end of execution' and printed output identical to res.",
+    "log": "reports/piessens1973-bromin-453/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/piessens1973-bromin-453/recipe.sh",
+  "queue_commit": "e91264044778cc3e54eff4893b71bde11e8d42a3",
+  "evidence": [
+    "reports/piessens1973-bromin-453/evidence/unpack.log",
+    "reports/piessens1973-bromin-453/evidence/original-attempt.log",
+    "reports/piessens1973-bromin-453/evidence/run-O0.txt",
+    "reports/piessens1973-bromin-453/evidence/run-O2.txt",
+    "reports/piessens1973-bromin-453/evidence/values.txt",
+    "reports/piessens1973-bromin-453/evidence/reference/res",
+    "reports/piessens1973-bromin-453/evidence/fetch.log",
+    "reports/piessens1973-bromin-453/evidence/recipe-run.log"
+  ],
+  "replayed": [
+    {
+      "utc": "2026-11-27T05:28:36Z",
+      "kind": "clean",
+      "values": {
+        "TEST01 N=6 S=0 row 1 XR": 6.48253,
+        "TEST01 N=6 S=0 row 1 XI": 1.49931,
+        "TEST01 N=6 S=0 row 1 WR": -27.8412,
+        "TEST01 N=6 S=0 row 1 WI": 315.065,
+        "TEST01 N=6 S=0 row 2 XR": 5.46926,
+        "TEST01 N=6 S=0 row 2 XI": 4.51993,
+        "TEST01 N=6 S=0 row 2 WR": 37.157,
+        "TEST01 N=6 S=0 row 2 WI": -124.634,
+        "TEST01 N=6 S=0 row 3 XR": 3.04821,
+        "TEST01 N=6 S=0 row 3 XI": 7.65179,
+        "TEST01 N=6 S=0 row 3 WR": -9.31577,
+        "TEST01 N=6 S=0 row 3 WI": 13.1079
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/piessens1973-bromin-453/evidence/replay-2026-11-27T052836Z.log",
+      "seconds": 52
+    }
+  ]
+}

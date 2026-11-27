@@ -1,0 +1,98 @@
+{
+  "patch": {
+    "kind": "source",
+    "archive_sha256": "86e9c5c9ae7abcee40dbc4afe303e559416a91dd9a0383d6c09edb9d8706a775",
+    "compared": 8,
+    "ours": {
+      "modified": [
+        "Fortran77/Src/Dp/d1mach.f"
+      ],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -O2 -std=legacy -c /work/tree/Fortran77/Src/Dp/d1mach.f -o d1mach.o",
+      "gfortran -O2 -std=legacy -c /work/tree/Fortran77/Src/Dp/lasys.f -o lasys.o",
+      "gfortran -O2 -std=legacy -c /work/tree/Fortran77/Src/Dp/rfft_pack.f -o rfft_pack.o",
+      "gfortran -O2 -std=legacy -c /work/tree/Fortran77/Src/Dp/neuman.f -o neuman.o",
+      "gfortran -O2 -std=legacy -c /work/tree/Fortran77/Drivers/Dp/driver1.f -o driver1.o",
+      "gfortran -O2 -o driver1 d1mach.o lasys.o rfft_pack.o neuman.o driver1.o"
+    ],
+    "manifests": {
+      "pre": "reports/atkinson1998-laplace-788/evidence/manifest.pre",
+      "mid": "reports/atkinson1998-laplace-788/evidence/manifest.mid",
+      "post": "reports/atkinson1998-laplace-788/evidence/manifest.post"
+    }
+  },
+  "field": "numerics (boundary integral equations, potential theory)",
+  "field_class": "numerics",
+  "stack": "Fortran",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "U(0.1112, 1.3695) from NEUMAN on data1 (boundary function 3, curve 1, EPS 1e-7, NTHETA 5, NR 10), as printed in the shipped RES1 (D format, 11 decimals). Registered tolerance abs 5e-12 (half unit of the printed 11th decimal).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "neuman_u_0p1112_1p3695",
+        "paper": -0.7765569367,
+        "tol_abs": 5e-12,
+        "ours": -0.77655687809
+      }
+    ],
+    "reference": {
+      "file": "reports/atkinson1998-laplace-788/evidence/shipped-RES1",
+      "sha256": "e360f3fdb51ec7efa5e029b0080fd7cb13ae8fa2c145dc251b6e31a4c98a1828",
+      "archive": "netlib.org/toms/788.gz sha256 86e9c5c9ae7abcee40dbc4afe303e559416a91dd9a0383d6c09edb9d8706a775 (member Fortran77/Drivers/Dp/RES1)"
+    }
+  },
+  "basis": "patched",
+  "verdict": "not-reproduced",
+  "cause": "numerical-discrepancy",
+  "attempt": "Original Makefile target neuman failed as shipped: FC=epcf90, not on this host (exit 2). Build with gfortran 16 from the authors' sources, the Makefile's neuman commands run directly, with one source patch to d1mach.f (see patch). Diagnostics: unpatched d1mach.f gives the same value; -O0 build and a bounds/NaN-initialised build give the same value.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "Doc/Makefile sets FC=epcf90 (a compiler not on the sandbox PATH); make stops at the first compile with 'epcf90: No such file or directory'.",
+    "log": "reports/atkinson1998-laplace-788/evidence/original-attempt-build.log"
+  },
+  "diagnostics": {
+    "unpatched_d1mach": {
+      "value": -0.77655687809,
+      "log": "reports/atkinson1998-laplace-788/evidence/diagnostic-unpatched-d1mach-run.txt"
+    },
+    "O0_and_checked_builds": {
+      "value": -0.77655687809,
+      "log": "reports/atkinson1998-laplace-788/evidence/diagnostic-O0-and-checks.txt"
+    },
+    "exact_test_function_at_point": {
+      "value": -0.776556878092,
+      "method": "python3 -I: x=R*cos(theta) etc from CURVE/driver formula, F=exp(x)*cos(y)-1 at the driver's own DPTS point (I=1,J=2 and its mirror)"
+    }
+  },
+  "second_pass": {
+    "description": "Different environment: -O0 build with no source patch to d1mach beyond the authors' documented block, and a bounds/NaN-init checked build (-fcheck=all -finit-real=snan). Same value to 11 digits, plus the analytic check above.",
+    "value": -0.77655687809
+  },
+  "queue_commit": "28eb8ad",
+  "recipe": "reports/atkinson1998-laplace-788/recipe.sh",
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "pass",
+    "cross_check": "na"
+  },
+  "environment": {
+    "compiler": "GNU Fortran (conda-forge gcc 16.2.0-7) 16.2.0",
+    "flags": "-O2 -std=legacy",
+    "host_compiler_shipped": "epcf90 (absent)",
+    "sandbox": "tools/sandbox.sh"
+  },
+  "cause_detail": "Not a build or tuning difference: the value disagrees with the analytic test function exp(x)cos(y)-1 (GVFCN NUMF=3) at the run's own point (x=0.111246117975, y=1.369521383465), which gives -0.776556878092. Our build agrees with that to 1e-11. The shipped RES1 is about 5.9e-8 away from that analytic value (within the requested EPS 1e-7) while its own ERROR column reports 7.8e-16, so the shipped reference output is internally inconsistent with its own test function. The cause of the shipped value (HP C200 build or run) is not established."
+}

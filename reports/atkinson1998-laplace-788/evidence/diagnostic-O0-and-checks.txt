@@ -1,0 +1,65 @@
+O0 run_exit=0
+  0     0.1112      1.3695   -7.7655687809D-01    5.55D-16    4.67D-14
+Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+/work/tree/Fortran77/Src/Dp/lasys.f:4211:17:
+
+--
+Warning: Possible change of value in conversion from REAL(8) to INTEGER(4) at (1) [-Wconversion]
+/work/tree/Fortran77/Src/Dp/lasys.f:3006:23:
+
+--
+Warning: Character length of actual argument longer than of dummy argument 'cmach' (12/1) at (1) [-Wcharacter-truncation]
+/work/tree/Fortran77/Src/Dp/lasys.f:3006:50:
+
+--
+Warning: Character length of actual argument longer than of dummy argument 'cmach' (9/1) at (1) [-Wcharacter-truncation]
+/work/tree/Fortran77/Src/Dp/lasys.f:2035:21:
+
+--
+Warning: Character length of actual argument longer than of dummy argument 'side' (4/1) at (1) [-Wcharacter-truncation]
+/work/tree/Fortran77/Src/Dp/lasys.f:2035:29:
+
+--
+Warning: Character length of actual argument longer than of dummy argument 'uplo' (5/1) at (1) [-Wcharacter-truncation]
+/work/tree/Fortran77/Src/Dp/lasys.f:2035:38:
+
+--
+Warning: Character length of actual argument longer than of dummy argument 'transa' (12/1) at (1) [-Wcharacter-truncation]
+/work/tree/Fortran77/Src/Dp/lasys.f:2035:54:
+
+--
+Warning: Character length of actual argument longer than of dummy argument 'diag' (4/1) at (1) [-Wcharacter-truncation]
+/work/tree/Fortran77/Src/Dp/lasys.f:2040:21:
+
+--
+Warning: Character length of actual argument longer than of dummy argument 'side' (4/1) at (1) [-Wcharacter-truncation]
+/work/tree/Fortran77/Src/Dp/lasys.f:2040:29:
+
+--
+Warning: Character length of actual argument longer than of dummy argument 'uplo' (5/1) at (1) [-Wcharacter-truncation]
+/work/tree/Fortran77/Src/Dp/lasys.f:2040:38:
+
+--
+Warning: Character length of actual argument longer than of dummy argument 'transa' (12/1) at (1) [-Wcharacter-truncation]
+/work/tree/Fortran77/Src/Dp/lasys.f:2040:54:
+
+--
+Warning: Character length of actual argument longer than of dummy argument 'diag' (8/1) at (1) [-Wcharacter-truncation]
+/work/tree/Fortran77/Src/Dp/lasys.f:2048:21:
+
+--
+Warning: Character length of actual argument longer than of dummy argument 'side' (4/1) at (1) [-Wcharacter-truncation]
+/work/tree/Fortran77/Src/Dp/lasys.f:2048:29:
+
+--
+Warning: Character length of actual argument longer than of dummy argument 'uplo' (5/1) at (1) [-Wcharacter-truncation]
+/work/tree/Fortran77/Src/Dp/lasys.f:2048:38:
+
+--
+Warning: Character length of actual argument longer than of dummy argument 'transa' (9/1) at (1) [-Wcharacter-truncation]
+/work/tree/Fortran77/Src/Dp/lasys.f:2048:51:
+
+--
+chk run_exit=0
+Note: The following floating-point exceptions are signalling: IEEE_UNDERFLOW_FLAG IEEE_DENORMAL
+  0     0.1112      1.3695   -7.7655687809D-01    5.55D-16    4.67D-14

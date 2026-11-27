@@ -13,7 +13,7 @@
  "code": {
   "url": "https://netlib.org/toms/907.zip",
   "commit": "netlib TOMS archive 907.zip (C sources in Matlab/KLU/Source and Include, with AMD, COLAMD, BTF and UFconfig in the same tree; the C demo kludemo in Matlab/KLU/Demo; matrices in Matlab/KLU/Matrix)",
-  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/907.zip (HTTP 200, 1023178 bytes, 234 files). Hash not recorded by scout.",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/907.zip (HTTP 200, 1023178 bytes, 234 files). sha256 d01a10366cc289ea803b119ea5f62dfa548867fe12460f9e2c593bab6489dc31 (scout re-downloaded netlib.org/toms/907.zip 2026-11-27, HTTP 200, 1023178 bytes, and matched this hash).",
   "note": "Build the C demo kludemo from Matlab/KLU/Demo (the archive's Makefile), then run it with the matrix Matlab/KLU/Matrix/w156.mtx on standard input, as the shipped kludemo.out does. The claim is the condest value printed for w156.mtx."
  },
  "field": "numerics (sparse direct linear solvers, circuit simulation)",

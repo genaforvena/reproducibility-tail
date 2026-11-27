@@ -1,0 +1,159 @@
+{
+  "paper": {
+    "short": "benner2016-shheig-961",
+    "title": "Fortran 77 Subroutines for the Solution of Skew-Hamiltonian/Hamiltonian Eigenproblems (Algorithm 961, SHHEIG)",
+    "authors": [
+      "Peter Benner",
+      "Vasile Sima",
+      "Matthias Voigt"
+    ],
+    "year": 2016,
+    "doi": null,
+    "venue": "ACM Transactions on Mathematical Software 42(3), Article 24 (2016), per the queue entry; article not fetched"
+  },
+  "field": "numerics (linear algebra: skew-Hamiltonian/Hamiltonian pencils, deflating subspaces)",
+  "field_class": "numerics",
+  "stack": "Fortran 77 (netlib CALGO 961.zip, SHHEIG release 1.0 sources, unedited; gfortran 16 from conda-forge, -fdefault-integer-8)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "The ALPHAR, ALPHAI and BETA vectors printed by the shipped DGHFDF example driver (TDGHFDF.f, input examples/DGHFDF.dat: real 8 by 8 skew-Hamiltonian/Hamiltonian pencil) agree elementwise with the shipped reference output examples/DGHFDF.res within absolute tolerance 1e-3 (registered before any run; the claim is the code's own reference output, not a value from the paper). Z, Q and U are not part of the claim.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "ALPHAR_1",
+        "paper": 0.7353,
+        "tol_abs": 0.001,
+        "ours": 0.7353
+      },
+      {
+        "name": "ALPHAR_2",
+        "paper": 0.0,
+        "tol_abs": 0.001,
+        "ours": 0.0
+      },
+      {
+        "name": "ALPHAR_3",
+        "paper": 0.5168,
+        "tol_abs": 0.001,
+        "ours": 0.5168
+      },
+      {
+        "name": "ALPHAR_4",
+        "paper": -0.5168,
+        "tol_abs": 0.001,
+        "ours": -0.5168
+      },
+      {
+        "name": "ALPHAI_1",
+        "paper": 0.0,
+        "tol_abs": 0.001,
+        "ours": 0.0
+      },
+      {
+        "name": "ALPHAI_2",
+        "paper": 0.719,
+        "tol_abs": 0.001,
+        "ours": 0.719
+      },
+      {
+        "name": "ALPHAI_3",
+        "paper": 0.561,
+        "tol_abs": 0.001,
+        "ours": 0.561
+      },
+      {
+        "name": "ALPHAI_4",
+        "paper": 0.561,
+        "tol_abs": 0.001,
+        "ours": 0.561
+      },
+      {
+        "name": "BETA_1",
+        "paper": 2.0,
+        "tol_abs": 0.001,
+        "ours": 2.0
+      },
+      {
+        "name": "BETA_2",
+        "paper": 2.8284,
+        "tol_abs": 0.001,
+        "ours": 2.8284
+      },
+      {
+        "name": "BETA_3",
+        "paper": 11.3137,
+        "tol_abs": 0.001,
+        "ours": 11.3137
+      },
+      {
+        "name": "BETA_4",
+        "paper": 11.3137,
+        "tol_abs": 0.001,
+        "ours": 11.3137
+      }
+    ],
+    "determinism": "deterministic (fixed input in DGHFDF.dat; no random numbers)",
+    "reference": {
+      "file": "reports/benner2016-shheig-961/evidence/DGHFDF.res.reference",
+      "archive": "netlib.org/toms/961.zip (sha256 aaaf3abf3a23dbf7fe63c1f0cf66cc76a5bd671599d11787184004d51de745c1)",
+      "sha256": "51635d32177bd1d2dd4f721938e9d44fd1014a7ac4f2e94ce1447bbf37d39df1"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "G1 original attempt: the authors' tree as shipped (make.inc unedited) builds the library (make lib exit 0) but the DGHFDF example fails to link: 'cannot find ../libs/blas64.a' (SLICOT, LAPACK, BLAS and lpkaux are not in the archive). Patch (build-only, no source file touched): SLICOT 5.9.1 built as libslicot64.a with cmake -DSLICOT_INTEGER8=ON against the Ubuntu noble ILP64 LAPACK/BLAS 3.12.0 (liblapack64/libblas64), and those libraries copied to Src/libs/ where make.inc looks. Rebuilt and run: the four ALPHAR, four ALPHAI and four BETA values agree with examples/DGHFDF.res within 1e-3 (every printed value matches the reference at its four printed decimals, so the largest difference is 0). The Z and deflating-subspace matrices differ in some signs, which the readme allows and which are outside the claim. G3: a second pass from a clean unpack (the same placed libraries and commands) gives a byte-identical DGHFDF.exa.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "the example does not link: the dependency libraries (SLICOT, LAPACK, BLAS, lpkaux) that make.inc names under ../libs are not in the archive",
+    "log": "reports/benner2016-shheig-961/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/benner2016-shheig-961/recipe.sh",
+  "queue_commit": "a91b3ed",
+  "replayed": [],
+  "evidence": [
+    "evidence/fetch.log",
+    "evidence/deps.log",
+    "evidence/original-attempt.log",
+    "evidence/build-lib.log",
+    "evidence/build-example.log",
+    "evidence/DGHFDF.exa",
+    "evidence/DGHFDF.res.reference",
+    "evidence/recipe-run.log",
+    "evidence/DGHFDF.pass2.exa",
+    "evidence/pass2.log"
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "aaaf3abf3a23dbf7fe63c1f0cf66cc76a5bd671599d11787184004d51de745c1",
+    "compared": 80,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "cd /work/pre/961/961/Src && make lib",
+      "cd /work/pre/961/961/Src/examples && make DGHFDF.exa"
+    ],
+    "manifests": {
+      "pre": "reports/benner2016-shheig-961/evidence/manifest.pre",
+      "mid": "reports/benner2016-shheig-961/evidence/manifest.mid",
+      "post": "reports/benner2016-shheig-961/evidence/manifest.post"
+    }
+  }
+}

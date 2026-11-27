@@ -43,13 +43,25 @@
     "G1": "pass",
     "G2": "na",
     "G3": "pass",
-    "G5": "na",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
   "recipe": "reports/pardalos1997-grasp-769/recipe.sh",
   "queue_commit": "0cdfc8e",
-  "replayed": [],
+  "replayed": [
+    {
+      "utc": "2026-11-27T10:29:21Z",
+      "kind": "clean",
+      "values": {
+        "best QAP cost (GRASP, seed 270001)": 4490.0
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/pardalos1997-grasp-769/evidence/replay-2026-11-27T102921Z.log",
+      "seconds": 57
+    }
+  ],
   "evidence": [
     "reports/pardalos1997-grasp-769/evidence/archive-sha256-check.txt",
     "reports/pardalos1997-grasp-769/evidence/gfortran-version.txt",

@@ -1,0 +1,48 @@
+{
+ "paper": {
+  "title": "Algorithm 773: SSRFPACK: Interpolation of scattered data on the surface of a sphere with a surface under tension",
+  "authors": [
+   "Robert J. Renka"
+  ],
+  "year": 1997,
+  "venue": "ACM TOMS 23(3), pp. 435-442 (Sep 1997); paper text not reachable (paywalled, no preprint found)",
+  "doi": "10.1145/275323.275330",
+  "url": "https://netlib.org/toms/773.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/773.gz",
+  "commit": "netlib TOMS archive 773.gz (scouted 2026-11-27, sha256 410dc35305f8f08c27f318bcf459e572c52daef78b8470ed4b8288ba85bd1807); shell archive with Doc/, Src/Sp/src.f (SSRFPACK), Drivers/Sp/driver.f (SSRFTEST), Drivers/Sp/data, Drivers/Sp/RES, Drivers/Sp/MSG, Drivers/Sp/SIG. Needs STRIPACK (Algorithm 772, netlib toms/772) to link."
+ },
+ "field": "numerics (scattered-data interpolation on the sphere)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Shipped driver Drivers/Sp/driver.f (SSRFTEST, MFLAG and VT flags set in its DATA statements) run on Drivers/Sp/data (33 nodes). It writes the NI x NJ = 32 x 32 grid of fitted values FF(K), K=(J-1)*NI+I, to ssrftest.out. The shipped reference output Drivers/Sp/RES records that grid; the claim is the entry I=16, J=16 (K=496), which is the 8th-digit value 0.44416130E+00 on line 562 of RES (lines 67-1090 hold FF; header lines 1-2 are NI and NJ, then 32 PLAT and 32 PLON lines).",
+  "reference": {
+   "file": "Drivers/Sp/RES (grid output FF at K=496) of the shipped SSRFTEST run",
+   "sha256": "410dc35305f8f08c27f318bcf459e572c52daef78b8470ed4b8288ba85bd1807 (archive 773.gz)"
+  },
+  "metric": "FF(I=16,J=16) of the SSRFTEST output grid, single-precision value as printed in RES (E15.8)",
+  "paper_value": "0.44416130E+00 (shipped reference output; the paper text was not reachable, so no printed table value was checked)",
+  "values": [
+   {
+    "name": "FF(16,16) of SSRFTEST grid",
+    "paper": 0.4441613,
+    "tol_abs": 1e-06
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1e-06,
+   "basis": "Fixed before any run. The reference is printed to 8 significant digits (half-unit 5e-9 at this value) by a REAL (single-precision) code, whose rounding over a 1024-point surface fit is of order 1e-7. 1e-6 absolute is about 200 times the print precision and an order of magnitude above single-precision noise, yet far below the difference a wrong tension or branch choice makes (the RES values span -0.33 to 1.0)."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute (one fit of 33 nodes and one 32x32 evaluation after compiling).",
+  "data_size": "About 1 KB of node data (shipped in Drivers/Sp/data).",
+  "data_licence": "Netlib TOMS code under the ACM licence of the archive; the rerun should record the licence it finds."
+ },
+ "why": "The shipped driver fits a surface under tension to 33 scattered nodes on the sphere and evaluates it on a grid; a rebuild must run the GRADL/INTRC1 fit with tension factors to reproduce the reference grid, so the single value cannot be obtained by reading the code.",
+ "registered": "2026-11-27T03:36Z"
+}

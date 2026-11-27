@@ -1,0 +1,93 @@
+{
+  "paper": {
+    "short": "boland1972-gauss-simpson-439",
+    "title": "Algorithm 439: Product Type Three-point Gauss-Legendre Simpson Integration",
+    "authors": [
+      "W. R. Boland"
+    ],
+    "year": 1972,
+    "doi": null
+  },
+  "field": "numerics (product-type quadrature)",
+  "field_class": "numerics",
+  "stack": "Fortran (netlib CALGO 439.gz: Fortran/Dp/Src/src.f, Fortran/Dp/Drivers/driver.f, Makefile and the reference output res)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "TEST01 (integral of F(X)*G(X) from -1 to 1, F=1, G=1/(1+x**2)), table row N = 10, VINT = 2.65082, as printed by the shipped reference output Fortran/Dp/Drivers/res. Registered by scout from the artifact's own output. Tolerance 1e-5 absolute, fixed before any run.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "TEST01_VINT_N10",
+        "paper": 2.65082,
+        "tol_abs": 1e-05,
+        "ours": 2.65082
+      }
+    ],
+    "determinism": "deterministic (fixed integrand, fixed N, no random numbers)",
+    "reference": {
+      "file": "reports/boland1972-gauss-simpson-439/evidence/res.shipped",
+      "archive": "netlib.org/toms/439.gz, sha256 81cfd10dead980d26565450b9f98bac46566f3d9da7b70552086feb4fd314407, member Fortran/Dp/Drivers/res",
+      "sha256": "023e7bbe564d3d79b8938650f8279516825e6f75eb53ab4b977f80ae1cae14d1"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "G1: the archive's own Makefile, unchanged, fails in the sandbox because no f77 exists (no Fortran compiler in the base sandbox). The compiler (gfortran 16.2.0, conda-forge) is installed in the sandbox during --fetch. The archive's Drivers Makefile still cannot build as shipped: it compiles `src.f` from Drivers, but the archive ships it in ../Src. The build uses VPATH=../Src (so make finds the prerequisite) and a build shim that maps the one compiler argument src.f to ../Src/src.f. The link needs the gfortran runtime and libm (SRCLIBS). No archive file is edited. The build then runs the archive's own driver. Its N=10 row matches the shipped res exactly. Two passes from a fresh unpack gave identical output.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make: f77: No such file or directory (the archive's Makefile names f77; the base sandbox has no Fortran compiler). Once a compiler is present, the archive still fails at the src.f prerequisite (no src.f in Drivers).",
+    "log": "reports/boland1972-gauss-simpson-439/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/boland1972-gauss-simpson-439/recipe.sh",
+  "queue_commit": "2ea162c",
+  "evidence": [
+    "reports/boland1972-gauss-simpson-439/evidence/fetch.log",
+    "reports/boland1972-gauss-simpson-439/evidence/env-pins.txt",
+    "reports/boland1972-gauss-simpson-439/evidence/original-attempt.log",
+    "reports/boland1972-gauss-simpson-439/evidence/build.log",
+    "reports/boland1972-gauss-simpson-439/evidence/driver-run.log",
+    "reports/boland1972-gauss-simpson-439/evidence/Res",
+    "reports/boland1972-gauss-simpson-439/evidence/Res.pass1",
+    "reports/boland1972-gauss-simpson-439/evidence/res.shipped",
+    "reports/boland1972-gauss-simpson-439/evidence/res.shipped.sha256",
+    "reports/boland1972-gauss-simpson-439/evidence/manifest.pre",
+    "reports/boland1972-gauss-simpson-439/evidence/manifest.mid",
+    "reports/boland1972-gauss-simpson-439/evidence/manifest.post",
+    "reports/boland1972-gauss-simpson-439/evidence/recipe-run-pass1.log",
+    "reports/boland1972-gauss-simpson-439/evidence/recipe-run-pass2.log"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "81cfd10dead980d26565450b9f98bac46566f3d9da7b70552086feb4fd314407",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "make F77=/work/bin/f77 VPATH=../Src SRCLIBS='-L/work/env/lib -lgfortran -lm' driver"
+    ],
+    "manifests": {
+      "pre": "reports/boland1972-gauss-simpson-439/evidence/manifest.pre",
+      "mid": "reports/boland1972-gauss-simpson-439/evidence/manifest.mid",
+      "post": "reports/boland1972-gauss-simpson-439/evidence/manifest.post"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+  gcc_linux-64              16.2.0   h0ab548f_4            conda-forge
+  gfortran_impl_linux-64    16.2.0   hf930d89_7            conda-forge
+  gfortran_linux-64         16.2.0   hf502a2e_4            conda-forge
+  libgfortran5              16.2.0   h6b99dfc_7            conda-forge

@@ -1,0 +1,4 @@
+make_exit=0
+/work/bin/f77  -c driver.f
+/work/bin/f77  -c src.f
+/work/bin/f77  -o driver driver.o src.o -L/work/env/lib -lgfortran -lm

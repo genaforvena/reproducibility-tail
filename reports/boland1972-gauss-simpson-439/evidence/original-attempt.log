@@ -1,0 +1,4 @@
+make_exit=2
+f77  -c driver.f
+make: f77: No such file or directory
+make: *** [Makefile:7: driver.o] Error 127

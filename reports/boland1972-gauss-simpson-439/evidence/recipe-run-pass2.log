@@ -1,0 +1,31 @@
+== fetch: 439.gz (sha256 checked), unpacked to /work/pre; gfortran 16.2.0 into /work/env
+/work/pre/Fortran/Dp/Drivers/Makefile
+/work/pre/Fortran/Dp/Drivers/driver.f
+/work/pre/Fortran/Dp/Drivers/res
+/work/pre/Fortran/Dp/Src/src.f
+  gcc_linux-64              16.2.0   h0ab548f_4            conda-forge
+  gfortran_impl_linux-64    16.2.0   hf930d89_7            conda-forge
+  gfortran_linux-64         16.2.0   hf502a2e_4            conda-forge
+  libgfortran5              16.2.0   h6b99dfc_7            conda-forge
+== manifest pre (right after unpack, before any patch or build)
+3
+== G1 original attempt: the archive Makefile, unchanged, default F77 (no shim on the PATH yet)
+make_exit=2
+f77  -c driver.f
+make: f77: No such file or directory
+make: *** [Makefile:7: driver.o] Error 127
+== build shim: copied to the scratch bin (maps the one argument src.f; edits no archive file)
+== manifest mid (immediately before the build)
+== build: the archive's Drivers Makefile, driver target
+make_exit=0
+/work/bin/f77  -c driver.f
+/work/bin/f77  -c src.f
+/work/bin/f77  -o driver driver.o src.o -L/work/env/lib -lgfortran -lm
+== manifest post (after the build)
+== run: the archive's driver (stdout to Res), and the shipped reference res
+driver_exit=0
+diff_exit=1
+46a47
+> 
+== values: the TEST01 table row N = 10 (the claim)
+VALUE TEST01_VINT_N10 2.65082

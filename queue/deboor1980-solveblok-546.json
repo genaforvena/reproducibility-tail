@@ -1,0 +1,45 @@
+{
+ "paper": {
+  "title": "Almost block diagonal linear systems (Algorithm 546, SOLVEBLOK)",
+  "authors": [
+   "C. de Boor",
+   "R. Weiss"
+  ],
+  "year": 1980,
+  "venue": "ACM Transactions on Mathematical Software 6, pp. 88-91 (1980), per the frame item and the shipped 546.gz source header; article not fetched",
+  "doi": null,
+  "url": "https://netlib.org/toms/546.gz (article not fetched; ACM page not used)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/546.gz",
+  "commit": "netlib CALGO archive 546.gz (single Fortran source file: SLVBLK, DTBLOK and the test program, SOLVEBLOK package)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/546.gz (HTTP 200, gzip, 6858 bytes, unpacked 23880 bytes). sha256 of 546.gz: dec187cff28bdce0de6c53439e6562fbf9748a86e3a379a66296456b357bb524 (scout download, 2026-11-27).",
+  "archive_sha256": "dec187cff28bdce0de6c53439e6562fbf9748a86e3a379a66296456b357bb524",
+  "note": "Gunzip the archive to a Fortran file (plain Fortran source, not a shar). Compile it with a Fortran compiler and run its test program (the main program at the end of the file, which calls SLVBLK and then DTBLOK and writes the DETERMINANT line). Compare the printed DETERMINANT with the constant 2.418821899E6 that the program itself uses."
+ },
+ "field": "numerics (linear algebra: almost block diagonal systems, PLU factorization, determinant)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "Shipped test program at the end of the source file 546.gz (the program's own reference constant): DATA sets an 11th-order almost block diagonal system (NBLOKS = 5, N = 11). The program calls SLVBLK, then DTBLOK for the determinant, prints DET, and checks ERROR = DET - 2.418821899E6.",
+  "reference": {
+   "file": "the Fortran source file 546 (inside 546.gz), the test program constant 2.418821899E6 and its check ERROR = DET - 2.418821899E6",
+   "sha256": "not computed for the member; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/546.gz"
+  },
+  "paper_value": "Value 2.418821899E6 in the shipped test program, as the determinant of the fixed 11 by 11 test matrix. The paper's text is not read; the claim is the code's own reference constant.",
+  "metric": "DET = DETSGN * EXP(DETLOG) computed by DTBLOK for the shipped test matrix, compared as an absolute number with 2.418821899E6",
+  "determinism": "deterministic (fixed DATA test matrix; no random numbers)",
+  "tolerance": {
+   "abs": 5.0,
+   "basis": "Fixed before any run. The code is single precision (REAL), and DTBLOK forms the determinant from a sum of logarithms followed by EXP. Each single-precision operation contributes about 6e-8 relative error; for a few dozen operations the expected drift is at most about 2e-6 relative, which is about 5 on 2.4e6. The printed DET has 9 significant digits, so print rounding is negligible. A wrong pivot order, a wrong block sign or a wrong block size changes the determinant by far more than 5. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute: one Fortran compile and one run of an 11 by 11 test.",
+  "data_size": "None (the test matrix is in the DATA statements).",
+  "data_licence": "Netlib CALGO archive; licence per the archive's own notices (the rerun should record it)."
+ },
+ "why": "The shipped test program computes the determinant of a fixed almost block diagonal system through DTBLOK and checks it against a constant the code carries itself, so the rerun has to execute the Fortran factorization to reproduce it.",
+ "registered": "2026-11-27T17:19:00Z"
+}

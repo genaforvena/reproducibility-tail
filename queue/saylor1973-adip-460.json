@@ -1,0 +1,45 @@
+{
+ "paper": {
+  "title": "Calculation of Optimum Parameters for Alternating Direction Implicit Procedures (Algorithm 460)",
+  "authors": [
+   "P. E. Saylor",
+   "D. Sebastian"
+  ],
+  "year": 1973,
+  "venue": "ACM Transactions on Mathematical Software 16(10), p. 633 (Oct 1973), per the frame item and the shipped 460.gz shar header (which cites Communications of the ACM 16(10) pp. 633-635)",
+  "doi": null,
+  "url": "https://netlib.org/toms/460.gz (article not fetched; ACM page not used). Frame item prints the second author as '. D. Sebastian'; the first name is not verified."
+ },
+ "code": {
+  "url": "https://netlib.org/toms/460.gz",
+  "commit": "netlib CALGO archive 460.gz (shell archive dated 2005-12-15 by its header; Fortran/Dp/Src/src.f, Fortran/Dp/Drivers/driver.f, Fortran/Dp/Drivers/res, Fortran/Dp/Drivers/Makefile)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/460.gz (HTTP 200, gzip, original size 8937 bytes). sha256 of 460.gz: 542ae8263c1d41ae98a2d100713e8dc62555d50ee88446d28c2b608002c8982d (scout download, 2026-11-27).",
+  "archive_sha256": "542ae8263c1d41ae98a2d100713e8dc62555d50ee88446d28c2b608002c8982d",
+  "note": "Gunzip the archive, then unpack the shell archive with /bin/sh in an empty directory (the shar begins at the #! /bin/sh line). Build Fortran/Dp/Src/src.f with Fortran/Dp/Drivers/driver.f (the Makefile does this), run the driver from Fortran/Dp/Drivers, and compare its output with the shipped Fortran/Dp/Drivers/res file."
+ },
+ "field": "numerics (alternating direction implicit iteration, optimal ADI acceleration parameters)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "Shipped reference output Fortran/Dp/Drivers/res (inside 460.gz), the first table 'Given ITNS, compute DMU', row ITNS = 1: DMU = 0.775958E-01 (ier = 0). The driver calls adip (iopt = 1) for ITNS = 1..5 with a = 0.5, b = 2.0, c = 0.25, d = 0.75, n = 10, and prints the computed DMU in g14.6 format.",
+  "reference": {
+   "file": "Fortran/Dp/Drivers/res (inside 460.gz), the line for ITNS = 1 in the first table",
+   "sha256": "not computed for the member; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/460.gz"
+  },
+  "paper_value": "Value 0.0775958 (printed 0.775958E-01) at the ITNS = 1 row of the shipped res file, as printed by the shipped driver (6 significant digits). The paper's table is not read; the claim is the code's own printed output.",
+  "metric": "The DMU printed by driver.f for ITNS = 1 in the 'Given ITNS, compute DMU' block, compared as an absolute number with 0.0775958",
+  "determinism": "deterministic (adip is a closed computation on fixed a, b, c, d and n; no random numbers)",
+  "tolerance": {
+   "abs": 1e-07,
+   "basis": "Fixed before any run. The shipped value is printed with 6 significant digits, so the print rounding alone is at most 5e-8 in absolute terms at this magnitude; 1e-7 covers that and nothing more. A changed ADI parameter formula or iteration count moves DMU by far more than 1e-7 (the next row is 0.150983E-02 for ITNS = 2). Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute: one Fortran compile and one driver run of a few dozen calls to adip with n = 10.",
+  "data_size": "None (inputs are constants in driver.f).",
+  "data_licence": "Netlib CALGO archive; licence per the archive's own notices (the rerun should record it)."
+ },
+ "why": "The shipped driver computes the optimal ADI parameter DMU for a given iteration count by running the adip routine, and its printed value is the code's own output, so the rerun has to execute the Fortran method to reproduce it.",
+ "registered": "2026-11-27T17:12:17Z"
+}

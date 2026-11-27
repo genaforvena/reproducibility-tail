@@ -1,0 +1,61 @@
+{
+  "paper": {
+    "short": "smith1991-fmpack-693",
+    "title": "Algorithm 693: A FORTRAN package for floating-point multiple-precision arithmetic (ACM TOMS 17(2), 1991)",
+    "year": 1991,
+    "doi": null
+  },
+  "field": "numerics (multiple-precision arithmetic, elementary functions)",
+  "field_class": "numerics",
+  "stack": "Fortran 77 (TOMS 693 archive 693.gz: one text file of 9743 lines, the FM package and two PROGRAM units: PROGRAM ROOTS at line 9357 and PROGRAM TEST at line 9534)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "SQRT(3) to 40 decimal places, as printed by the authors' PROGRAM TEST (FPSET(40), FPI2M(3), FPSQRT, FPPRNT with JFORM2=40), registered as the exact string 1.7320508075688772935274463415058723669428 with tol_abs 5e-41. Registered by scout in the queue entry (claim commit 67bfb41); the exact-string rule is the owner-approved narrow one (commit 2e57688).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "SQRT(3) to 40 decimal places",
+        "paper": "1.7320508075688772935274463415058723669428",
+        "tol_abs": 5e-41,
+        "ours": null
+      }
+    ],
+    "reference": {
+      "file": "reports/smith1991-fmpack-693/evidence/shipped-reference.txt",
+      "archive": "netlib.org/toms/693.gz, sha256 6491be48d95f425740778e99895cd31f8b2b6728c4b0b78b84f949b516fad1ba, lines 9534-9600 (PROGRAM TEST header comment and RESULT strings)",
+      "sha256": "5fc55df59c4a21eae94cf896a7cb9bea63fe017f5074102661fd024dbf501b3e"
+    }
+  },
+  "basis": "patched",
+  "verdict": "blocked",
+  "cause": null,
+  "attempt": "Original attempt (G1): the archive as shipped does not compile. gfortran 16 -O2 reports 'Two main PROGRAMs at (1) and (2)' (PROGRAM ROOTS at line 9357, PROGRAM TEST at line 9534). Experiment, not a record: deleting lines 9357-9533 (the ROOTS driver) and compiling the rest with -std=legacy -fallow-argument-mismatch -w gives a program whose SQRT(3) line equals the claim character for character at -O0 (TEST COMPLETED. NO ERRORS.) and at -O2, where SIN(1) is wrong (.9999999807278948647127421829626971114327, 1 ERROR). That removal is a source patch (two ranges kept, not one verbatim extraction), so G2 needs the paper's own text, which the ACM site refuses from this sandbox (403). The queue entry also has no sha256 for code.archive, so the archive hash gate cannot pass for any patch record yet. Blocked: the record is not written as reproduced or not-reproduced until G2 and the archive hash are available.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The archive as shipped is one file with two main programs; gfortran refuses to compile it. No build file ships with the archive.",
+    "log": "reports/smith1991-fmpack-693/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "na",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "blocked_on": {
+    "gate": "G2",
+    "missing": "(a) the paper's own text, to check the removal-only source patch under G2 (the ACM article returns 403 from this sandbox); (b) the archive sha256 in queue/smith1991-fmpack-693.json code.archive (scout's file; the value 6491be48d95f425740778e99895cd31f8b2b6728c4b0b78b84f949b516fad1ba was sent to scout by DM 216). Resolver: operator for (a), scout for (b). Bounded action: operator to supply a non-ACM copy of the article text or say the claim stays blocked; scout to register the sha. Disposition: next rerun wake after either reply, else defer to the signal queue-owed."
+  },
+  "recipe": "reports/smith1991-fmpack-693/recipe.sh (not yet written: the build is not yet a recorded record)",
+  "queue_commit": "67bfb41",
+  "evidence": [
+    "reports/smith1991-fmpack-693/evidence/original-attempt.log",
+    "reports/smith1991-fmpack-693/evidence/experiment-drop-roots.log",
+    "reports/smith1991-fmpack-693/evidence/TEST-O0.OUT",
+    "reports/smith1991-fmpack-693/evidence/TEST-O2.OUT",
+    "reports/smith1991-fmpack-693/evidence/shipped-reference.txt"
+  ],
+  "replayed": []
+}

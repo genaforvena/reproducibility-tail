@@ -1,0 +1,95 @@
+{
+  "paper": {
+    "short": "lozanoduran2016-genus-964",
+    "title": "An efficient algorithm to compute the genus of discrete surfaces and applications to turbulent flows (Algorithm 964)",
+    "year": 2016,
+    "doi": "10.1145/2845076",
+    "venue": "ACM Transactions on Mathematical Software 42(4), 2016, article 34; claim read from arXiv:1709.00822 Table III (the published TOMS version may differ; this record compares against the arXiv text)"
+  },
+  "field": "numerics (computational topology of voxel surfaces; turbulent-flow applications)",
+  "stack": "Fortran 90 (TOMS 964 Fortran90/Src/fortran_serial: mainMod.f90, genusMod.f90, Makefile)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Genus of the Random2 case (128 x 128 x 128 voxel array, shipped as Fortran90/data/random.128.dat), paper Table III value 87325, absolute tolerance 0 (integer count).",
+    "source": "paper-text",
+    "reference": {
+      "file": "arXiv:1709.00822 PDF, Table III (read copy, pdftotext -layout)",
+      "sha256": "d35f1d5b1202467e699e8d7476e53e85ea40d496d7f15b927e0d97ffd2a9c23b",
+      "archive": "netlib TOMS 964.zip, sha256 eb7b9a946d9b87a49972ed1740a0a38d9669ae281efd645240abe1c7c5cec496"
+    },
+    "values": [
+      {
+        "name": "genus, Random2",
+        "paper": 87325,
+        "tol_abs": 0,
+        "ours": 87325
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Built the unmodified authors' sources with make genus F90=gfortran. The Makefile sets F90 = nagfor and no nagfor or ifort exists in the sandbox; the command-line override names gfortran and the authors' own rules and flags (-c -O3, link -O3) build the program. Manifests pre, mid and post are identical (no source file or Makefile changed), so this is build-only. Ran ./genus ../../data/random.128.dat: Faces 2744830, Edges 5489660, Vertices 2570182, Genus 87325. The paper's Table III row Random2 gives the same size, faces, edges and vertices, and genus 87325. Faces, edges and vertices are observed extras, not claimed values.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make genus as the Makefile documents it stops at the first compile: '/bin/sh: 1: nagfor: not found' (make exit 2). The sandbox has no nagfor or ifort. Kept in the log.",
+    "log": "reports/lozanoduran2016-genus-964/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/lozanoduran2016-genus-964/recipe.sh",
+  "queue_commit": "14192c5",
+  "evidence": [
+    "reports/lozanoduran2016-genus-964/evidence/original-attempt.log",
+    "reports/lozanoduran2016-genus-964/evidence/build.log",
+    "reports/lozanoduran2016-genus-964/evidence/recipe-run.log",
+    "reports/lozanoduran2016-genus-964/evidence/run.txt",
+    "reports/lozanoduran2016-genus-964/evidence/manifests/manifest.pre",
+    "reports/lozanoduran2016-genus-964/evidence/manifests/manifest.mid",
+    "reports/lozanoduran2016-genus-964/evidence/manifests/manifest.post"
+  ],
+  "replayed": [
+    {
+      "utc": "2026-11-27T06:36:28Z",
+      "kind": "clean",
+      "values": {
+        "genus, Random2": 87325.0
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/lozanoduran2016-genus-964/evidence/replay-2026-11-27T063628Z.log",
+      "seconds": 64
+    }
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "eb7b9a946d9b87a49972ed1740a0a38d9669ae281efd645240abe1c7c5cec496",
+    "compared": 7,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "make genus F90=gfortran"
+    ],
+    "manifests": {
+      "pre": "reports/lozanoduran2016-genus-964/evidence/manifest.pre",
+      "mid": "reports/lozanoduran2016-genus-964/evidence/manifest.mid",
+      "post": "reports/lozanoduran2016-genus-964/evidence/manifest.post"
+    }
+  }
+}

@@ -5,28 +5,28 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-68 papers attempted.
+69 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 17 |
-| B | authors' code with build fixes | 35 |
+| B | authors' code with build fixes | 36 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 14 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 55, other 4, statistics 6
-By stack: C/C++ 9, Fortran 47, Java 1, MATLAB/Octave 6, R 5
-By decade: 1960 3, 1970 4, 1980 6, 1990 21, 2000 24, 2010 10
+By field: astronomy 1, biology 1, ecology 1, numerics 56, other 4, statistics 6
+By stack: C/C++ 9, Fortran 48, Java 1, MATLAB/Octave 6, R 5
+By decade: 1960 3, 1970 4, 1980 6, 1990 21, 2000 24, 2010 11
 
-Data as of 2026-11-27T06:32Z (the newest replay or funnel entry).
+Data as of 2026-11-27T06:36:28Z (the newest replay or funnel entry).
 
 ## The funnel
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-68 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+69 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **338 candidates considered from 4 of 4 frames: 63 attempted (19%), 0 unreachable, 275 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 40 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 41 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
 
 ## Results
 
@@ -199,6 +199,7 @@ Authors' original artifact, among all attempted papers: failed 40 (did not run),
 | [lewis1982-gps-582](reports/lewis1982-gps-582/result.md) | numerics · 1982 · Fortran | GPSKCA on the BCSPWR01 power-network matrix (order 39): BANDWIDTH 6, PROFILE 100, GPSKCA ERROR CODE 0, from the shipped sample output (artifact-reference). Integers, exact tolerance. (PROFILE) [shipped reference output] | 100 ± 0 | 100 | 0 | exact | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [lewis1982-gps-582](reports/lewis1982-gps-582/result.md) | numerics · 1982 · Fortran | GPSKCA on the BCSPWR01 power-network matrix (order 39): BANDWIDTH 6, PROFILE 100, GPSKCA ERROR CODE 0, from the shipped sample output (artifact-reference). Integers, exact tolerance. (GPSKCA ERROR CODE) [shipped reference output] | 0 ± 0 | 0 | 0 | exact | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [linhart2008-lnnorm-885](reports/linhart2008-lnnorm-885/result.md) | numerics · 2008 · C/C++ | -lnnorm(-5.0) computed by the authors' C/lnnorm.c, against the Sheppard (1939) Table IV row x = 5.0 in the shipped C/sheppard.txt: 15.0649983939887257, absolute tolerance 1.5e-8 (-lnnorm(-5.0) against Sheppard Table IV row 5.0) | 15.065 ± 1.5e-08 | 15.065 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
+| [lozanoduran2016-genus-964](reports/lozanoduran2016-genus-964/result.md) | numerics · 2016 · Fortran | Genus of the Random2 case (128 x 128 x 128 voxel array, shipped as Fortran90/data/random.128.dat), paper Table III value 87325, absolute tolerance 0 (integer count). (genus, Random2) | 87325 ± 0 | 87325 | 0 | exact | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDM0P5(-4)) [shipped reference output] | 0.0180819 ± 1.80819e-07 | 0.0180819 | -2.9914e-09 | 2% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDM0P5(3)) [shipped reference output] | 1.85349 ± 1.85349e-05 | 1.85349 | -8.86015e-08 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDP0P5(-4)) [shipped reference output] | 0.0181982 ± 1.81982e-07 | 0.0181982 | -3.50837e-09 | 2% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |

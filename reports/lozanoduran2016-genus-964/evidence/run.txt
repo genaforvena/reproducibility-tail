@@ -1,0 +1,10 @@
+!----------------------------------!
+!       WELCOME TO GENUSLAND!      !
+!----------------------------------!
+  reading: ../../data/random.128.dat
+  nx = 128 ny = 128 nz = 128
+  Faces:       2744830
+  Edges:       5489660
+  Vertices:    2570182
+  Genus:         87325
+run_exit=0

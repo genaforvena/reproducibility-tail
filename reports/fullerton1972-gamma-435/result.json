@@ -1,0 +1,93 @@
+{
+  "paper": {
+    "short": "fullerton1972-gamma-435",
+    "title": "Algorithm 435: Modified Incomplete Gamma Function",
+    "authors": [
+      "W. Fullerton"
+    ],
+    "year": 1972,
+    "doi": null
+  },
+  "field": "numerics (special functions)",
+  "field_class": "numerics",
+  "stack": "Fortran (netlib CALGO 435.gz: shell archive with Fortran/Sp/Src/src.f, Fortran/Sp/Drivers/driver.f, Makefile and reference output res)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "Shipped driver table, row A = 11.0000, X = 16.0000, column 'Computed / Gamma(A)' = 0.92250806, absolute tolerance 1e-6, registered by scout from the artifact's own reference output (Fortran/Sp/Drivers/res). The claim is the code's computed value, not the exact value 0.92260396.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "computed_A11_X16",
+        "paper": 0.92250806,
+        "tol_abs": 1e-06,
+        "ours": 0.92250806
+      }
+    ],
+    "determinism": "deterministic (fixed arguments, single precision, no random numbers)",
+    "reference": {
+      "file": "reports/fullerton1972-gamma-435/evidence/res.shipped",
+      "archive": "netlib.org/toms/435.gz, sha256 07b19a251af345c24a92e380bf7831375dd6e65340353350e25f8836d1894a8d, member Fortran/Sp/Drivers/res",
+      "sha256": "18508e74cd1ec45ac828cacc1134e8eefacbb1428cba3ca5f579ac933ca0e3d2"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "G1: the archive's Makefile, unchanged, stops in the sandbox because f77 is absent (Error 127 at driver.o). Build: the Makefile's object list (driver.o, src.o, link to driver) compiled with the sandbox gfortran 16.2.0 (conda-forge), the same compiler flags as the Makefile (none), and the link line the Makefile gives. The Makefile expects src.f beside it (src.o: src.f) but the archive ships it in Fortran/Sp/Src/, so src.f is compiled from ../Src/ with no copy. No archive file is edited. Output: the Computed value at A = 11, X = 16 is 0.92250806, identical to the shipped res. Limit: the other rows differ from the shipped res by about 1e-7 in the last printed digit (the reference was produced on other hardware), and row A = 41, X = 45 gives NaN where the shipped table has 1.0000000, with IEEE invalid and overflow flags signalled. Those cells are not claimed.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "make Res: f77 does not exist in the sandbox (Error 127 at driver.o). The authors' Makefile also expects src.f in Drivers/ while the archive ships it in Src/ (the make build stops with 'No rule to make target src.f' once a compiler is supplied).",
+    "log": "reports/fullerton1972-gamma-435/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/fullerton1972-gamma-435/recipe.sh",
+  "queue_commit": "45bfe12",
+  "evidence": [
+    "reports/fullerton1972-gamma-435/evidence/fetch.log",
+    "reports/fullerton1972-gamma-435/evidence/env-pins.txt",
+    "reports/fullerton1972-gamma-435/evidence/original-attempt.log",
+    "reports/fullerton1972-gamma-435/evidence/build.log",
+    "reports/fullerton1972-gamma-435/evidence/driver-run.log",
+    "reports/fullerton1972-gamma-435/evidence/Res",
+    "reports/fullerton1972-gamma-435/evidence/res.shipped",
+    "reports/fullerton1972-gamma-435/evidence/res.shipped.sha256",
+    "reports/fullerton1972-gamma-435/evidence/manifest.pre",
+    "reports/fullerton1972-gamma-435/evidence/manifest.mid",
+    "reports/fullerton1972-gamma-435/evidence/manifest.post",
+    "reports/fullerton1972-gamma-435/evidence/recipe-run.log"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "07b19a251af345c24a92e380bf7831375dd6e65340353350e25f8836d1894a8d",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "/work/env/bin/x86_64-conda-linux-gnu-gfortran -c ../Src/src.f -o src.o",
+      "/work/env/bin/x86_64-conda-linux-gnu-gfortran -c driver.f -o driver.o",
+      "/work/env/bin/x86_64-conda-linux-gnu-gfortran -o driver driver.o src.o"
+    ],
+    "manifests": {
+      "pre": "reports/fullerton1972-gamma-435/evidence/manifest.pre",
+      "mid": "reports/fullerton1972-gamma-435/evidence/manifest.mid",
+      "post": "reports/fullerton1972-gamma-435/evidence/manifest.post"
+    }
+  }
+}

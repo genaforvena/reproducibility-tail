@@ -1,0 +1,45 @@
+{
+ "paper": {
+  "title": "Algorithm 903: FRB, Fortran routines for the exact computation of free rigid body motions",
+  "authors": [
+   "Elena Celledoni",
+   "Antonella Zanna"
+  ],
+  "year": 2010,
+  "venue": "ACM Transactions on Mathematical Software 37(2), Article 23 (Apr 2010), per the frame item and the shipped 903.head",
+  "doi": null,
+  "url": "https://netlib.org/toms/903.zip (article not fetched; ACM page not used)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/903.zip",
+  "commit": "netlib CALGO archive 903.zip (Fortran77/Src/frb_step.f, quat_step.f; Fortran77/Drivers/driver_example0..4.f with init_example*.dat and out_example*.dat; Doc/README.txt; 903.head)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/903.zip (HTTP 200, 1207475 bytes). sha256 of 903.zip: b3be3b3a7ed19cbcfd7869b11285b531a7329ea90c98cfccc298a4f5a661ef14 (scout download, 2026-11-27).",
+  "archive_sha256": "b3be3b3a7ed19cbcfd7869b11285b531a7329ea90c98cfccc298a4f5a661ef14",
+  "note": "Unzip 903.zip in an empty directory. Build with gfortran (the package's Makefile uses g95; the rerun records the compiler used) the sources frb_step.f and driver_example0.f, run from Fortran77/Drivers so that init_example0.dat is read, and compare the written out_example0.dat with the shipped copy."
+ },
+ "field": "mechanics / numerics (free rigid body, geometric integration)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "Shipped reference output Fortran77/Drivers/out_example0.dat (inside 903.zip), line 14: the output angular momentum component PIOUT(1) after one step. The driver computes one exact (Np = 0) step of length h = 0.1 for the free rigid body with inertia (1.0, 1.6487857827119290, 1.9720127096641928) from init_example0.dat, using frb_step.f.",
+  "reference": {
+   "file": "Fortran77/Drivers/out_example0.dat (inside 903.zip), line 14",
+   "sha256": "not computed for the member; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/903.zip"
+  },
+  "paper_value": "Value -0.7088447919224319 at line 14 of the shipped out_example0.dat, as written by the shipped driver (16 significant digits). The paper's table or figure is not read; the claim is the code's own printed output.",
+  "metric": "Line 14 of the regenerated out_example0.dat (first component of the output angular momentum after one step), compared as an absolute number with the shipped value",
+  "determinism": "deterministic (fixed init_example0.dat input, no random numbers, Np = 0 exact elliptic integration)",
+  "tolerance": {
+   "abs": 1e-10,
+   "basis": "Fixed before any run. The reference holds 16 significant digits of a double-precision computation, so rounding is about 1e-16. 1e-10 leaves room for compiler and libm differences in the elliptic-integral evaluation and the sqrt normalisation, which in double precision are typically 1e-14 to 1e-12. A sign error, an inertia-index swap or a wrong step size moves this component by about 1e-3 or more at h = 0.1, so the tolerance cannot hide those. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 2 minutes: one gfortran build of two source files and one driver run; the shipped driver does a single step.",
+  "data_size": "None (init_example0.dat is 6 lines inside the archive).",
+  "data_licence": "Netlib CALGO archive; licence per the archive's own notices and 903.head (the rerun should record it)."
+ },
+ "why": "The shipped driver evaluates one step of the free rigid body equations, with the elliptic integrals of the exact solution; the value at line 14 is a numerical evaluation with no closed form, so the rerun must execute the Fortran method to reproduce it.",
+ "registered": "2026-11-27T16:43:00Z"
+}

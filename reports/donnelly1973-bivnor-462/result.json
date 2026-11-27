@@ -1,0 +1,93 @@
+{
+  "paper": {
+    "short": "donnelly1973-bivnor-462",
+    "title": "Algorithm 462: Bivariate normal distribution (BIVNOR)",
+    "authors": [
+      "T. G. Donnelly"
+    ],
+    "year": 1973,
+    "venue": "Communications of the ACM 16(10), 1973, p. 638; collected as TOMS Algorithm 462",
+    "doi": null
+  },
+  "field": "numerics (statistics, bivariate normal cumulative distribution)",
+  "field_class": "numerics",
+  "stack": "Fortran",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "BIVNOR(h=0.8, k=-1.5, r=-0.9), the standard bivariate normal CDF, as the shipped reference output (archive file Fortran/Dp/Drivers/res) prints it in its first row: 0.147355, printed with g14.6 (six significant digits).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "BIVNOR(0.8, -1.5, -0.9)",
+        "paper": 0.147355,
+        "tol_abs": 5e-07,
+        "ours": 0.147355
+      }
+    ],
+    "reference": {
+      "file": "reports/donnelly1973-bivnor-462/evidence/shipped-res.txt",
+      "sha256": "a08c53a97cb108ba78b0a56a558e389252fe51b6e8782dc21d4267a72126c47a",
+      "archive": "netlib.org/toms/462.gz sha256 547505dbaaa2b140deffa1ed3f90c133d637b70502e468b0dc8a26c09ad88aa0 (member Fortran/Dp/Drivers/res, extracted by the recipe; row 1 BIVNOR 0.147355)"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "The archive's Makefile as shipped does not build: it expects src.f and erf.f in the Drivers directory, but the shar puts them in Src/ (make: No rule to make target 'src.f'). Build-only workaround: a directory of symlinks to the unedited archive files (Makefile, driver.f, src.f, erf.f), then the Makefile's own target 'make F77=gfortran F77OPTS=-O2 -std=legacy Res'. No source byte is edited (manifests pre == mid == post for sources). Produced row 1: BIVNOR 0.147355, identical to the shipped res row 1.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "Makefile as shipped: 'make: *** No rule to make target src.f, needed by src.o. Stop.' driver.f compiled; src.f not found in Drivers/.",
+    "log": "reports/donnelly1973-bivnor-462/evidence/original-attempt-build.log"
+  },
+  "diagnostics": {
+    "precision": "The printed value has 6 significant digits; the comparison is at that printed precision, so the tolerance 5e-7 is the rounding half-unit of the printed value. The computed value is not compared to more digits here."
+  },
+  "second_pass": null,
+  "queue_commit": "7a92c35dc85672ff09cf8bfa1a6f0ec887450b5a",
+  "recipe": "reports/donnelly1973-bivnor-462/recipe.sh",
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "pass",
+    "cross_check": "na"
+  },
+  "environment": {
+    "compiler": "GNU Fortran (conda-forge gcc 16.2.0-7) 16.2.0",
+    "flags": "-O2 -std=legacy",
+    "sandbox": "tools/sandbox.sh"
+  },
+  "evidence": {
+    "run_output": "reports/donnelly1973-bivnor-462/evidence/run-pass1.txt",
+    "build_log": "reports/donnelly1973-bivnor-462/evidence/build-run.log",
+    "original_attempt_log": "reports/donnelly1973-bivnor-462/evidence/original-attempt-build.log",
+    "archive_check": "reports/donnelly1973-bivnor-462/evidence/archive-sha256-check.txt",
+    "manifests": "reports/donnelly1973-bivnor-462/evidence/manifests/",
+    "shipped_reference": "reports/donnelly1973-bivnor-462/evidence/shipped-res.txt"
+  },
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "547505dbaaa2b140deffa1ed3f90c133d637b70502e468b0dc8a26c09ad88aa0",
+    "compared": 4,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "cd /work/build && export PATH=/work/env16/bin:$PATH && timeout 600 make F77=gfortran \"F77OPTS=-O2 -std=legacy\" Res; echo \"make exit=$?\""
+    ],
+    "manifests": {
+      "pre": "reports/donnelly1973-bivnor-462/evidence/manifest.pre",
+      "mid": "reports/donnelly1973-bivnor-462/evidence/manifest.mid",
+      "post": "reports/donnelly1973-bivnor-462/evidence/manifest.post"
+    }
+  }
+}

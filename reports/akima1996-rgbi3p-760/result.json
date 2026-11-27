@@ -1,0 +1,64 @@
+{
+  "paper": {
+    "short": "akima1996-rgbi3p-760",
+    "title": "Algorithm 760: Rectangular-grid-data surface fitting that has the accuracy of a bicubic polynomial",
+    "year": 1996,
+    "venue": "ACM Transactions on Mathematical Software 22(3), 357-361 (1996); collected as ACM TOMS Algorithm 760",
+    "doi": null,
+    "note": "The article is not read. The archive is netlib TOMS 760.gz, fetched inside the sandbox, sha256 3f9058c0...b018. The RGBI3P check block of the shipped RES is the oracle."
+  },
+  "field": "numerics (surface fitting on rectangular grids)",
+  "field_class": "numerics",
+  "stack": "Fortran (netlib 760.gz driver.f and src.f, unpacked verbatim; no Makefile or build instructions shipped); built with GNU Fortran 16.2.0 (conda-forge) in the sandbox",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "ZI(XI=3.50, YI=5.00), the RGBI3P interpolated value at an off-grid point, as printed in the RGBI3P 'Calculated ZI Values' block of the shipped reference output RES. Registered tolerance: abs 0.01.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/akima1996-rgbi3p-760/evidence/shipped-res.txt",
+      "sha256": "37e58bd57e42efd12b1f56bd51a79d43322cf6bc80501f4f88777a3bbed09839",
+      "archive": "netlib.org/toms/760.gz sha256 3f9058c03127be9d25940886425eb7fb5518356143078c2cb2c2fef32239b018"
+    },
+    "values": [
+      {
+        "name": "ZI(3.5, 5.0) (RGBI3P)",
+        "paper": 1.7,
+        "tol_abs": 0.01,
+        "ours": 1.7
+      }
+    ],
+    "determinism": "deterministic"
+  },
+  "basis": "original",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Ran the authors' driver.f and src.f unmodified, compiled with plain gfortran (default flags, no edit; the archive ships no Makefile or build instructions). Two passes, each in a fresh run directory: the driver writes its tables to file WFRG3P (it reopens unit 6). The RGBI3P row YI = 5.00, column XI = 3.50 prints 1.70 in both passes, against the registered 1.70 with tol 0.01. The RGSF3P block prints the same 1.70 but is not the claim. The manifest record shows no source file changed between unpack and build.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "succeeded",
+    "reason": "The shipped driver.f and src.f compiled with plain gfortran (build_exit=0) and ran to completion (run_exit=0), writing the full table set.",
+    "log": "reports/akima1996-rgbi3p-760/evidence/original-attempt-build.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/akima1996-rgbi3p-760/recipe.sh",
+  "queue_commit": "8de001e",
+  "replayed": [],
+  "evidence": [
+    "reports/akima1996-rgbi3p-760/evidence/archive-sha256-check.txt",
+    "reports/akima1996-rgbi3p-760/evidence/gfortran-version.txt",
+    "reports/akima1996-rgbi3p-760/evidence/unpack-listing.txt",
+    "reports/akima1996-rgbi3p-760/evidence/shipped-res.txt",
+    "reports/akima1996-rgbi3p-760/evidence/original-attempt-build.log",
+    "reports/akima1996-rgbi3p-760/evidence/build.log",
+    "reports/akima1996-rgbi3p-760/evidence/run-pass1.txt",
+    "reports/akima1996-rgbi3p-760/evidence/run-pass2.txt",
+    "reports/akima1996-rgbi3p-760/evidence/recipe-run.log"
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "paper": {
+    "short": "goldstein1973-chisqd-451",
+    "title": "Algorithm 451: Chi-square quantiles",
+    "year": 1973,
+    "venue": "Communications of the ACM 16(8), 483-485 (1973); collected as ACM TOMS Algorithm 451",
+    "doi": null,
+    "note": "ACM article not read; the authors' Fortran (netlib TOMS 451.gz, sha256 checked) was run."
+  },
+  "field": "numerics (special functions: chi-square quantile)",
+  "field_class": "numerics",
+  "stack": "Fortran 77-style single precision (REAL) sources from netlib TOMS 451; built with GNU Fortran 16.2.0 (conda-forge) in the sandbox",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "CHISQD(P, N) at P = 0.5, N = 10 (Chi-square quantile, single precision), as printed by the authors' driver. Registered tolerance: abs 1e-5.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/goldstein1973-chisqd-451/evidence/shipped-res.txt",
+      "sha256": "12fc2bf25c409c118c77356432df6378fbe4b3b80d4c72a969e0c8c5fcbb8f48",
+      "archive": "netlib.org/toms/451.gz sha256 5bb6f1b1fe499f96d326188e5502977a1b190e2dcc40ed29a3b18fcb53c55a88"
+    },
+    "values": [
+      {
+        "name": "CHISQD(0.5, 10)",
+        "paper": 9.341794,
+        "tol_abs": 1e-05,
+        "ours": 9.341793
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Ran the authors' Fortran/Sp/Drivers/driver.f and src.f (unpacked verbatim from the archive, no source edit) with gfortran -O2 in the sandbox. Two passes, each in a fresh run directory with the same binary, print 9.341793 for the computed CHISQD(0.5,10). Difference from the claim 9.341794: 1e-6, inside tol 1e-5.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The authors' Drivers/Makefile calls f77, which is not installed in the sandbox (make: f77: No such file or directory). A retry with the same Makefile and F77=gfortran (compiler name only, no source or flag change) builds and runs; that retry is recorded as the build above, so the basis is patched.",
+    "log": "reports/goldstein1973-chisqd-451/evidence/original-attempt-make.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/goldstein1973-chisqd-451/recipe.sh",
+  "queue_commit": "94c2b47",
+  "evidence": [
+    "reports/goldstein1973-chisqd-451/evidence/archive-sha256-check.txt",
+    "reports/goldstein1973-chisqd-451/evidence/gfortran-version.txt",
+    "reports/goldstein1973-chisqd-451/evidence/unpack-listing.txt",
+    "reports/goldstein1973-chisqd-451/evidence/shipped-res.txt",
+    "reports/goldstein1973-chisqd-451/evidence/original-attempt-make.log",
+    "reports/goldstein1973-chisqd-451/evidence/retry-make-f77-gfortran.log",
+    "reports/goldstein1973-chisqd-451/evidence/manifests/manifest.pre",
+    "reports/goldstein1973-chisqd-451/evidence/build.log",
+    "reports/goldstein1973-chisqd-451/evidence/run-pass1.txt",
+    "reports/goldstein1973-chisqd-451/evidence/run-pass2.txt",
+    "reports/goldstein1973-chisqd-451/evidence/recipe-run.log"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "5bb6f1b1fe499f96d326188e5502977a1b190e2dcc40ed29a3b18fcb53c55a88",
+    "compared": 3,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -O2 -c /work/tree/Fortran/Sp/Src/src.f -o src.o",
+      "gfortran -O2 -c /work/tree/Fortran/Sp/Drivers/driver.f -o driver.o",
+      "gfortran -O2 driver.o src.o -o driver"
+    ],
+    "manifests": {
+      "pre": "reports/goldstein1973-chisqd-451/evidence/manifest.pre",
+      "mid": "reports/goldstein1973-chisqd-451/evidence/manifest.mid",
+      "post": "reports/goldstein1973-chisqd-451/evidence/manifest.post"
+    }
+  }
+}

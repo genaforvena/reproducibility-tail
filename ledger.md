@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-75 papers attempted.
+76 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 17 |
-| B | authors' code with build fixes | 40 |
+| B | authors' code with build fixes | 42 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
-| - | blocked or not yet run | 16 |
+| - | blocked or not yet run | 15 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 62, other 4, statistics 6
-By stack: C/C++ 9, Fortran 54, Java 1, MATLAB/Octave 6, R 5
-By decade: 1960 3, 1970 5, 1980 7, 1990 24, 2000 25, 2010 11
+By field: astronomy 1, biology 1, ecology 1, numerics 63, other 4, statistics 6
+By stack: C/C++ 9, Fortran 54, Java 1, MATLAB/Octave 7, R 5
+By decade: 1960 3, 1970 5, 1980 7, 1990 24, 2000 26, 2010 11
 
 Data as of 2026-11-27T08:44:00Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T08:44:00Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-75 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+76 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **366 candidates considered from 4 of 4 frames: 74 attempted (20%), 0 unreachable, 292 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 47 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 48 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
 
 ## Results
 
@@ -100,7 +100,7 @@ Authors' original artifact, among all attempted papers: failed 47 (did not run),
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Number of cycles in S7.cy) | 4 ± 0 | 4 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [amestoy2004-amd-837](reports/amestoy2004-amd-837/result.md) | numerics · 2004 · C/C++ | The shipped demo output Demo/amd_demo.out, can_24 section, prints LDL' flop count for real A: 647 (exact integer equality) (LDL' flop count for real A, can_24 demo (amd_demo.out)) | 647 ± 0 | 647 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [armstrong1984-lav-615](reports/armstrong1984-lav-615/result.md) | numerics · 1984 · Fortran | SUM OF ABSOLUTE VALUES for the LAV subset of size 3 (DL1BL3, BLISS vol II p.294) as printed by the authors' SUBL1 run on its shipped TAPE5 data, registered 3.877 (tol 1e-3). Registered by scout in the queue entry (claim commit eda92af). (SUM_ABS_SIZE3) [shipped reference output] | 3.877 ± 0.001 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
-| [bai1997-srrit-776](reports/bai1997-srrit-776/result.md) | numerics · 1997 · Fortran | WR, first converged real eigenvalue, of the seeded problem printed by the authors' double-precision driver, registered as -1235.506919564 (tol_abs 1e-6), located by the scout in the shipped reference Doc DRES as the 'RWK' block of a 496 by 496 matrix. The located value is NOT in the RWK block; see result.md. Registered by scout in the queue entry (fcdf386). (WR_first_converged_RWK_496) [shipped reference output] | -1235.51 ± 1e-06 | – | – | – | patched (build-only) | ✓ · · · | - | blocked | never clean |
+| [bai1997-srrit-776](reports/bai1997-srrit-776/result.md) | numerics · 1997 · Fortran | WR, first converged real eigenvalue, of the BWM problem (test matrix size 200, after 2000 SRRIT iterations) printed by the authors' double-precision driver, registered as -1235.506919564 (tol_abs 1e-6). Revised by scout in 9e8879b from the earlier RWK 496 location, which prints 1.0 first; the value is in the BWM block. (WR, first converged eigenvalue, BWM 200x200 (double precision)) [shipped reference output] | -1235.51 ± 1e-06 | -1235.51 | 0 | 0% | patched (build-only) | ✓ · ✓ · | B | reproduced | never clean |
 | [benson2008-dsdp5-875](reports/benson2008-dsdp5-875/result.md) | numerics · 2008 · C/C++ | theta graph1 (Lovasz theta SDP of the 6-node, 8-edge graph shipped as bin/graph1): the DD Objective of the last iteration, as a magnitude, is 3.00000012 (shipped reference log bin/output.theta, iteration 4). Absolute tolerance 1e-5. (theta graph1 final DD objective (magnitude)) [shipped reference output] | 3 ± 1e-05 | 3 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [berntsen1991-dcuhre-698](reports/berntsen1991-dcuhre-698/result.md) | numerics · 1991 · Fortran | Live sample PROGRAM DTEST1 (5-dimensional integral over the unit cube of exp(-sum n z_n^2/2), ABSREQ=0, RELREQ=1E-3, MINCLS=0, MAXCLS=10000, KEY=0, NW=5000) prints the integral components 1 to 6 as 0.13850818, 0.06369469, 0.05861748, 0.05407034, 0.05005614, 0.04654608, FTEST CALLS = 3549 and IFAIL = 0 (printed output, Sun 3/50). Registered by scout (artifact-reference). (integral 1) [shipped reference output] | 0.138508 ± 1e-07 | 0.138508 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [berntsen1991-dcuhre-698](reports/berntsen1991-dcuhre-698/result.md) | numerics · 1991 · Fortran | Live sample PROGRAM DTEST1 (5-dimensional integral over the unit cube of exp(-sum n z_n^2/2), ABSREQ=0, RELREQ=1E-3, MINCLS=0, MAXCLS=10000, KEY=0, NW=5000) prints the integral components 1 to 6 as 0.13850818, 0.06369469, 0.05861748, 0.05407034, 0.05005614, 0.04654608, FTEST CALLS = 3549 and IFAIL = 0 (printed output, Sun 3/50). Registered by scout (artifact-reference). (integral 2) [shipped reference output] | 0.0636947 ± 1e-07 | 0.0636947 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
@@ -274,6 +274,14 @@ Authors' original artifact, among all attempted papers: failed 47 (did not run),
 | [west1983-qap-608](reports/west1983-qap-608/result.md) | other · 1983 · Fortran | HGW on the 4x4 instance hard-coded in the shipped test PROGRAM MAIN returns OBJ = 406 (driver comment), assignment 4,1,3,2, absolute tolerance 0.005 (fixed in the queue entry). The paper was not read (paywalled). (HGW objective on the driver instance (driver comment OBJ=406; assignment 4,1,3,2)) [shipped reference output] | 406 ± 0.005 | – | – | – |  | ✗ ? · · | - | blocked | never clean |
 | [wieder1999-hankel-794](reports/wieder1999-hankel-794/result.md) | numerics · 1999 · Fortran | HT(XI=5.0, NU=1.0) printed by the authors' HANKEL driver into its result file, the shipped reference value 0.208245531E-01 (artifact-reference), absolute tolerance 1e-9 (fixed in the queue entry before any run). (HT_XI5_NU1) [shipped reference output] | 0.0208246 ± 1e-09 | 0.0208246 | 0 | 0% | patched (build-only) | ✓ · ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [wise2000-polsys-plp-801](reports/wise2000-polsys-plp-801/result.md) | numerics · 2000 · Fortran | TWO QUADRICS real finite solution (first INPUT.DAT problem, TRACKTOL 1e-4, FINALTOL 1e-14, seed 32749): Re X(2) = -0.788344824094120 as printed in the shipped OUTPUT.DAT, absolute tolerance 1e-6. (TWO QUADRICS real finite solution, Re X(2)) [shipped reference output] | -0.788345 ± 1e-06 | -0.788345 | -1.89848e-14 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
+| [zeng2004-multroot-835](reports/zeng2004-multroot-835/result.md) | numerics · 2004 · MATLAB/Octave | multroot(f) on the readme's worked example f = poly([ones(1,20),2*ones(1,20),3*ones(1,10),4*ones(1,5)]) returns multiplicities 5, 10, 20, 20 for roots 4, 3, 2, 1 (exact), and the roots within 1e-9 absolute of the printed values. The registered claim's values are split per root here: same numbers and tolerances, one numeric value per root so the gates can judge them. (mult_root_4) [shipped reference output] | 5 ± 0 | 5 | 0 | exact | patched | ✓ ✓ ✓ · | B | reproduced | never clean |
+| [zeng2004-multroot-835](reports/zeng2004-multroot-835/result.md) | numerics · 2004 · MATLAB/Octave | multroot(f) on the readme's worked example f = poly([ones(1,20),2*ones(1,20),3*ones(1,10),4*ones(1,5)]) returns multiplicities 5, 10, 20, 20 for roots 4, 3, 2, 1 (exact), and the roots within 1e-9 absolute of the printed values. The registered claim's values are split per root here: same numbers and tolerances, one numeric value per root so the gates can judge them. (mult_root_3) [shipped reference output] | 10 ± 0 | 10 | 0 | exact | patched | ✓ ✓ ✓ · | B | reproduced | never clean |
+| [zeng2004-multroot-835](reports/zeng2004-multroot-835/result.md) | numerics · 2004 · MATLAB/Octave | multroot(f) on the readme's worked example f = poly([ones(1,20),2*ones(1,20),3*ones(1,10),4*ones(1,5)]) returns multiplicities 5, 10, 20, 20 for roots 4, 3, 2, 1 (exact), and the roots within 1e-9 absolute of the printed values. The registered claim's values are split per root here: same numbers and tolerances, one numeric value per root so the gates can judge them. (mult_root_2) [shipped reference output] | 20 ± 0 | 20 | 0 | exact | patched | ✓ ✓ ✓ · | B | reproduced | never clean |
+| [zeng2004-multroot-835](reports/zeng2004-multroot-835/result.md) | numerics · 2004 · MATLAB/Octave | multroot(f) on the readme's worked example f = poly([ones(1,20),2*ones(1,20),3*ones(1,10),4*ones(1,5)]) returns multiplicities 5, 10, 20, 20 for roots 4, 3, 2, 1 (exact), and the roots within 1e-9 absolute of the printed values. The registered claim's values are split per root here: same numbers and tolerances, one numeric value per root so the gates can judge them. (mult_root_1) [shipped reference output] | 20 ± 0 | 20 | 0 | exact | patched | ✓ ✓ ✓ · | B | reproduced | never clean |
+| [zeng2004-multroot-835](reports/zeng2004-multroot-835/result.md) | numerics · 2004 · MATLAB/Octave | multroot(f) on the readme's worked example f = poly([ones(1,20),2*ones(1,20),3*ones(1,10),4*ones(1,5)]) returns multiplicities 5, 10, 20, 20 for roots 4, 3, 2, 1 (exact), and the roots within 1e-9 absolute of the printed values. The registered claim's values are split per root here: same numbers and tolerances, one numeric value per root so the gates can judge them. (root_4) [shipped reference output] | 4 ± 1e-09 | 4 | -2.17604e-14 | 0% | patched | ✓ ✓ ✓ · | B | reproduced | never clean |
+| [zeng2004-multroot-835](reports/zeng2004-multroot-835/result.md) | numerics · 2004 · MATLAB/Octave | multroot(f) on the readme's worked example f = poly([ones(1,20),2*ones(1,20),3*ones(1,10),4*ones(1,5)]) returns multiplicities 5, 10, 20, 20 for roots 4, 3, 2, 1 (exact), and the roots within 1e-9 absolute of the printed values. The registered claim's values are split per root here: same numbers and tolerances, one numeric value per root so the gates can judge them. (root_3) [shipped reference output] | 3 ± 1e-09 | 3 | 1.11022e-14 | 0% | patched | ✓ ✓ ✓ · | B | reproduced | never clean |
+| [zeng2004-multroot-835](reports/zeng2004-multroot-835/result.md) | numerics · 2004 · MATLAB/Octave | multroot(f) on the readme's worked example f = poly([ones(1,20),2*ones(1,20),3*ones(1,10),4*ones(1,5)]) returns multiplicities 5, 10, 20, 20 for roots 4, 3, 2, 1 (exact), and the roots within 1e-9 absolute of the printed values. The registered claim's values are split per root here: same numbers and tolerances, one numeric value per root so the gates can judge them. (root_2) [shipped reference output] | 2 ± 1e-09 | 2 | 0 | 0% | patched | ✓ ✓ ✓ · | B | reproduced | never clean |
+| [zeng2004-multroot-835](reports/zeng2004-multroot-835/result.md) | numerics · 2004 · MATLAB/Octave | multroot(f) on the readme's worked example f = poly([ones(1,20),2*ones(1,20),3*ones(1,10),4*ones(1,5)]) returns multiplicities 5, 10, 20, 20 for roots 4, 3, 2, 1 (exact), and the roots within 1e-9 absolute of the printed values. The registered claim's values are split per root here: same numbers and tolerances, one numeric value per root so the gates can judge them. (root_1) [shipped reference output] | 1 ± 1e-09 | 1 | 0 | 0% | patched | ✓ ✓ ✓ · | B | reproduced | never clean |
 
 Margin is |our value − paper value| as a share of the tolerance registered before the run; ⚠ marks 80% or more, a result that a different environment could flip.
 

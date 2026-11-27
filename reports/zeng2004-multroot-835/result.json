@@ -1,0 +1,108 @@
+{
+  "paper": {
+    "short": "zeng2004-multroot-835",
+    "title": "Algorithm 835: MultRoot - A Matlab package for computing polynomial roots and multiplicities",
+    "year": 2004,
+    "doi": null,
+    "venue": "ACM Transactions on Mathematical Software 30(2), 218-236 (June 2004); Collected Algorithms from ACM, Algorithm 835. ACM article not read (dl.acm.org 403 from this host); code and readme from the netlib archive."
+  },
+  "field": "numerics (polynomial roots and multiplicities)",
+  "field_class": "numerics",
+  "stack": "MATLAB/Octave (TOMS 835 Matlab/Src multroot.m, run under GNU Octave 10.3.0 from conda-forge; MATLAB is proprietary and was not used)",
+  "stack_class": "MATLAB/Octave",
+  "claim": {
+    "text": "multroot(f) on the readme's worked example f = poly([ones(1,20),2*ones(1,20),3*ones(1,10),4*ones(1,5)]) returns multiplicities 5, 10, 20, 20 for roots 4, 3, 2, 1 (exact), and the roots within 1e-9 absolute of the printed values. The registered claim's values are split per root here: same numbers and tolerances, one numeric value per root so the gates can judge them.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/zeng2004-multroot-835/evidence/readme.txt",
+      "sha256": "2e7b75d1111b187106338aadb27c2338131cf654ace2bd97408970cd1de25f39",
+      "archive": "netlib.org/toms/835.gz, sha256 ce26ae432aeb7009b30e066a4da73092baaacc7fc2525668646fd307adfdb8ff (fetched 2026-11-27); the file is the archive's Doc/readme.txt, section 3 holds the printed table"
+    },
+    "values": [
+      {
+        "name": "mult_root_4",
+        "paper": 5,
+        "tol_abs": 0,
+        "ours": 5.0
+      },
+      {
+        "name": "mult_root_3",
+        "paper": 10,
+        "tol_abs": 0,
+        "ours": 10.0
+      },
+      {
+        "name": "mult_root_2",
+        "paper": 20,
+        "tol_abs": 0,
+        "ours": 20.0
+      },
+      {
+        "name": "mult_root_1",
+        "paper": 20,
+        "tol_abs": 0,
+        "ours": 20.0
+      },
+      {
+        "name": "root_4",
+        "paper": 4.000000000000002,
+        "tol_abs": 1e-09,
+        "ours": 3.99999999999998
+      },
+      {
+        "name": "root_3",
+        "paper": 2.999999999999999,
+        "tol_abs": 1e-09,
+        "ours": 3.00000000000001
+      },
+      {
+        "name": "root_2",
+        "paper": 2.0,
+        "tol_abs": 1e-09,
+        "ours": 2.0
+      },
+      {
+        "name": "root_1",
+        "paper": 1.0,
+        "tol_abs": 1e-09,
+        "ours": 1.0
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Ran the authors' Matlab/Src/multroot.m as shipped (no source edit), on the readme's worked example, under Octave 10.3.0. Octave's own m-library is not on the default load path of this conda build, so the first run (no path step) stops at 'poly' undefined: that is the original attempt, kept in evidence/original-attempt-octave-nopath.log. The harness impl/run_example.m adds Octave's m-library and the authors' directories with addpath, then calls multroot exactly as the readme does. Three recipe passes: multiplicities 5,10,20,20 in all of them; roots differ by at most 4e-14 between passes because multroot's helpers uminsv.m and zminsv.m draw an unseeded rand() start vector (authors' code; not seeded here). Largest deviation from the printed roots across passes: 6e-14 (root 4), far inside 1e-9. The readme's own condition number 73.6821 also reproduced (not a registered value).",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "octave-cli 10.3.0 with the authors' directories on the path but without the step that loads Octave's own m-library: 'poly' undefined. The authors' code was never reached; the fault is the conda build's load path, not the artifact. The harness addpath is the workaround.",
+    "log": "reports/zeng2004-multroot-835/evidence/original-attempt-octave-nopath.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/zeng2004-multroot-835/recipe.sh",
+  "queue_commit": "88873de",
+  "evidence": [
+    "reports/zeng2004-multroot-835/evidence/original-attempt-octave-nopath.log",
+    "reports/zeng2004-multroot-835/evidence/probe-run2.log",
+    "reports/zeng2004-multroot-835/evidence/fetch-octave.log",
+    "reports/zeng2004-multroot-835/evidence/unpack-listing.txt",
+    "reports/zeng2004-multroot-835/evidence/recipe-run.log",
+    "reports/zeng2004-multroot-835/evidence/recipe-run-raw.log",
+    "reports/zeng2004-multroot-835/evidence/values-pass2.txt",
+    "reports/zeng2004-multroot-835/evidence/values-pass3.txt",
+    "reports/zeng2004-multroot-835/evidence/readme.txt",
+    "reports/zeng2004-multroot-835/evidence/multroot.m",
+    "reports/zeng2004-multroot-835/evidence/octave-version.txt",
+    "reports/zeng2004-multroot-835/impl/run_example.m",
+    "reports/zeng2004-multroot-835/extract-tree.awk"
+  ],
+  "replayed": []
+}

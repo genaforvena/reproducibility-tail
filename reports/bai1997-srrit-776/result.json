@@ -10,14 +10,14 @@
   "stack": "Fortran 77 (netlib TOMS 776.gz: shell archive with Doc/, Drivers/Dp, Drivers/Sp, Src/Dp, Src/Sp; the double-precision driver and routines are Drivers/Dp/driver.f and Src/Dp/dsrrit.f, dblas.f, dlapack.f)",
   "stack_class": "Fortran",
   "claim": {
-    "text": "WR, first converged real eigenvalue, of the seeded problem printed by the authors' double-precision driver, registered as -1235.506919564 (tol_abs 1e-6), located by the scout in the shipped reference Doc DRES as the 'RWK' block of a 496 by 496 matrix. The located value is NOT in the RWK block; see result.md. Registered by scout in the queue entry (fcdf386).",
+    "text": "WR, first converged real eigenvalue, of the BWM problem (test matrix size 200, after 2000 SRRIT iterations) printed by the authors' double-precision driver, registered as -1235.506919564 (tol_abs 1e-6). Revised by scout in 9e8879b from the earlier RWK 496 location, which prints 1.0 first; the value is in the BWM block.",
     "source": "artifact-reference",
     "values": [
       {
-        "name": "WR_first_converged_RWK_496",
+        "name": "WR, first converged eigenvalue, BWM 200x200 (double precision)",
         "paper": -1235.506919564,
         "tol_abs": 1e-06,
-        "ours": null
+        "ours": -1235.506919564
       }
     ],
     "reference": {
@@ -27,9 +27,9 @@
     }
   },
   "basis": "patched",
-  "verdict": "blocked",
+  "verdict": "reproduced",
   "cause": null,
-  "attempt": "Original attempt (G1): the authors' documented build (Doc/Makefile, epcf90 -sloppy -C -d1 -g) fails because epcf90 is not installed in the sandbox (make exit 2). Patch (compiler substitution only): the authors' double-precision driver and routines Drivers/Dp/driver.f, Src/Dp/dsrrit.f, dblas.f, dlapack.f are compiled unmodified with gfortran 16 -O2 and linked (build-only: manifests pre and mid are identical). The run prints a converged eigenvalue for each problem block. The run's BWM block (test matrix size 200, seeded by the driver) gives WR = -1.235506919564D+03 at the same digits as the shipped DRES line 260, and the RWK block (test matrix size 496) gives first WR = 1.000000000000D+00. The registered claim names the RWK 496 by 496 problem, so the claim as written does not match the value it points to. Verdict blocked: the claim is mis-specified (location and problem identity). The claim and tolerance are not edited here; see note-to-scout.md.",
+  "attempt": "Original attempt (G1): the authors' documented build (Doc/Makefile, epcf90) fails because epcf90 is not installed (make exit 2). Build-only patch (compiler substitution, no source edit): the authors' double-precision driver and routines are compiled unmodified with gfortran 16 -O2 and linked; tools/verify_sources.py records 9 files compared, none modified, no added files. The run prints WR = -1.235506919564D+03 as the first converged eigenvalue of the BWM block (test matrix size 200), which equals the registered -1235.506919564 at every printed digit (|diff| below 1e-12). The RWK block (size 496) prints 1.000000000000D+00 first, as the earlier note said. Two passes gave the same BWM value: the 08:40Z wake and this wake (08:47Z). Build-only, so no paper check (G2 na).",
   "original_attempt": {
     "tried": true,
     "outcome": "failed",
@@ -39,17 +39,13 @@
   "gates": {
     "G1": "pass",
     "G2": "na",
-    "G3": "na",
+    "G3": "pass",
     "G5": "na",
     "G6": "na",
     "cross_check": "na"
   },
-  "blocked_on": {
-    "gate": "claim",
-    "missing": "a claim whose registered location matches the value: -1235.506919564 is printed by the BWM block (test matrix size 200), while the registered metric says RWK 496 by 496 (RWK prints WR 1.000000000000D+00 first). Resolver: scout (queue entry revision in a new commit, or withdrawal). Bounded action: scout checks reports/bai1997-srrit-776/result.md and note-to-scout.md, then revises the claim's metric and location, or withdraws it. Disposition: when the scout's revision commit appears, rerun reruns against it on the next wake."
-  },
   "recipe": "reports/bai1997-srrit-776/recipe.sh",
-  "queue_commit": "fcdf386",
+  "queue_commit": "9e8879b",
   "evidence": [
     "reports/bai1997-srrit-776/evidence/original-attempt-make.log",
     "reports/bai1997-srrit-776/evidence/unpack-listing.txt",

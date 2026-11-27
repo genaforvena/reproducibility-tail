@@ -1,36 +1,34 @@
-# bai1997-srrit-776: blocked (the registered claim does not match its value)
+# bai1997-srrit-776: reproduced (basis: patched, build-only)
 
 Paper: Bai and Stewart, Algorithm 776, SRRIT, ACM TOMS 23(4), 1997 (netlib TOMS 776.gz).
 
-## Claim (as registered, not edited)
+## Claim (as registered, revised by scout)
 
-- Value: WR = -1235.506919564, tol_abs 1e-6 (queue commit fcdf386).
-- Registered location: the RWK block of a 496 by 496 matrix in the shipped reference output.
+- Value: WR = -1235.506919564, tol_abs 1e-6, in the BWM problem (test matrix size 200, after 2000 SRRIT iterations) of the shipped double-precision reference output.
+- Queue commit 9e8879b. The scout revised the claim from the earlier RWK 496 location, which prints WR 1.0 first, to the BWM block, where the value is printed. The number, tolerance and claim text are not edited here.
+- History: the first verdict (blocked, 5cd2b23) was against fcdf386, the RWK version. Note to scout: `note-to-scout.md`.
 
-## What the artifact shows
+## Result
 
-- The shipped `Drivers/Dp/DRES` prints `WR = -1.235506919564D+03` in the **BWM** block (test matrix size 200), not the RWK block (size 496). Its first converged RWK WR is `1.0`.
-- Our run of the authors' double-precision driver, built with gfortran 16 -O2 and no source edit, prints the same BWM value to all twelve printed digits, and RWK first WR `1.0`.
-
-## Verdict
-
-`blocked`. The number is reproduced by the authors' code, but the claim names the wrong problem, so it is not compared as written. The claim and tolerance are not edited here. The mis-specification goes to the scout (`note-to-scout.md`).
+- The authors' double-precision driver, built unmodified with gfortran 16 -O2, prints `WR = -1.235506919564D+03` as the first converged eigenvalue of the BWM block (test matrix size 200). That is -1235.506919564 at every printed digit, so |ours - paper| is below 1e-12 against tol_abs 1e-6.
+- The RWK block (test matrix size 496) prints `WR = 1.000000000000D+00` first, as the earlier note said.
+- Two passes gave the same BWM value: the 08:40Z wake (5cd2b23) and this wake (08:47Z).
 
 ## Basis and original attempt
 
-- Original (G1): the documented `make double` (epcf90) fails, epcf90 is not installed (`evidence/original-attempt-make.log`).
-- Patched (build-only): gfortran substituted for epcf90, authors' sources unchanged (manifests pre and mid identical). Build log `evidence/build.log`.
+- Original attempt (G1, failed): the authors' documented `make double` (Doc/Makefile, epcf90) stops because epcf90 is not installed (`make: epcf90: No such file or directory`, exit 2). Log: `evidence/original-attempt-make.log`.
+- Build-only patch: gfortran is the compiler; the authors' sources are not edited. `tools/verify_sources.py record` compared 9 files, none modified, none added. Build log: `evidence/build.log`. Because the patch is build-only, the paper check of G2 is not needed (`na`).
 
 ## Exact command and pins
 
-- `bash reports/bai1997-srrit-776/recipe.sh`. The fetch checks `776.gz` against sha256 `11341f82...6e2c1d34`. The archive is unpacked into its directory tree with `extract-tree.awk` (no shell archive is executed).
-- gfortran: `evidence/gfortran-version.txt` (GNU Fortran conda-forge gcc 16.2.0-7).
-- Run: `timeout 300`, the input is `Drivers/Dp/data`, and the driver writes `doutput` (`evidence/run-doutput.txt`).
+- `bash reports/bai1997-srrit-776/recipe.sh`. The fetch checks `776.gz` against sha256 `11341f825b8c12bb7f51bf58affe513255d14206fa8147310284249c2e6d1d34`. The archive is unpacked with `extract-tree.awk`; no shell archive is executed.
+- gfortran: GNU Fortran (conda-forge gcc 16.2.0-7), `evidence/gfortran-version.txt`.
+- Run: `timeout 300`, input `Drivers/Dp/data`, output in `doutput` (`evidence/run-doutput.txt`).
 
 ## Evidence
 
-- `evidence/unpack-listing.txt`, `evidence/original-attempt-make.log`, `evidence/build.log`, `evidence/run-doutput.txt`, `evidence/run.log`, `evidence/recipe-run.log`.
+- `evidence/original-attempt-make.log`, `evidence/unpack-listing.txt`, `evidence/build.log`, `evidence/run-doutput.txt`, `evidence/run.log`, `evidence/recipe-run.log`, `evidence/gfortran-version.txt`, `evidence/manifest.{pre,mid,post}`, `evidence/shipped-DRES-double.txt`.
 
 ## Replay and recurrence
 
-Not replayed yet. No clean replay exists because the verdict is blocked.
+Not replayed yet (G5 na). Next scheduled replay follows the ledger's replay-due duty.

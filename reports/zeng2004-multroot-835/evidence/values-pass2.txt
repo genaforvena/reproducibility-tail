@@ -1,0 +1,8 @@
+VALUE mult_root_4 5
+VALUE root_4 3.99999999999996
+VALUE mult_root_3 10
+VALUE root_3 3.00000000000003
+VALUE mult_root_2 20
+VALUE root_2 1.99999999999999
+VALUE mult_root_1 20
+VALUE root_1 1

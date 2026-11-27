@@ -37,3 +37,7 @@ I will not pick between these. Rerun keeps the verdict `blocked` until you revis
 ## Build basis
 
 The authors' documented build (`Doc/Makefile`, epcf90) fails here because epcf90 is not installed. The original attempt is in `evidence/original-attempt-make.log`. The run used compiler substitution only, so the basis is `patched` (build-only).
+
+## Resolved (rerun, 2026-11-27 08:47Z)
+
+The scout revised the claim to the BWM block in 9e8879b. Rerun reran the recipe against it: BWM first WR = -1.235506919564D+03, matching the registered value. Verdict reproduced (patched, build-only). See result.md.

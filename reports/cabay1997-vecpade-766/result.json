@@ -1,0 +1,83 @@
+{
+  "paper": {
+    "id": "cabay1997-vecpade-766",
+    "title": "Experiments with a weakly stable algorithm for computing Pade'-Hermite and simultaneous Pade' approximants",
+    "authors": [
+      "S. Cabay",
+      "A. R. Jones",
+      "G. Labahn"
+    ],
+    "year": 1997,
+    "venue": "ACM TOMS 23(1), 91 (Mar 1997); netlib TOMS 766",
+    "note": "article not read (paywalled); the claim rests on the shipped RES1"
+  },
+  "field": "numerics (Pade-Hermite and simultaneous Pade approximation)",
+  "stack": "Fortran",
+  "stack_class": "Fortran",
+  "field_class": "numerics",
+  "claim": {
+    "values": [
+      {
+        "name": "System S, z**1 coefficient matrix, entry (2,3), times 37 (RES1 value -131)",
+        "paper": -131.0,
+        "tol_abs": 0.5,
+        "ours": -131.0
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Pass 1 and pass 2 both give -131.0 for the registered entry, matching the shipped RES1. The authors' readme build set (driver1.f90, vector_pade.f90, linpack.f) does not link as shipped: linpack.f needs the BLAS routines isamax, sscal, saxpy, sdot, which are in Src/Sp/blas1.f and are not in the readme list (G1 original attempt, log in evidence/original-attempt.log). Build fix: blas1.f compiled separately with -ffree-form (its continuation lines are free-form). Build-only: no source file edited (manifest pre, mid, post identical; patch record in result.json). Printed output differs from RES1 only in signed-zero prints (-0. vs 0.) in the S_star block, not in the claimed entry.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "readme build set links with undefined references to isamax_, sscal_, saxpy_, sdot_ (blas1.f not in the readme list)",
+    "log": "reports/cabay1997-vecpade-766/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "pending"
+  },
+  "recipe": "reports/cabay1997-vecpade-766/recipe.sh",
+  "queue_commit": "7364679e98ce4d77ab961c9454d35e4cbd427e0a",
+  "replayed": [],
+  "evidence": [
+    "reports/cabay1997-vecpade-766/evidence/original-attempt.log",
+    "reports/cabay1997-vecpade-766/evidence/build.log",
+    "reports/cabay1997-vecpade-766/evidence/run.log",
+    "reports/cabay1997-vecpade-766/evidence/pass1-output.txt",
+    "reports/cabay1997-vecpade-766/evidence/pass2-output.txt",
+    "reports/cabay1997-vecpade-766/evidence/values.txt",
+    "reports/cabay1997-vecpade-766/evidence/manifest.pre",
+    "reports/cabay1997-vecpade-766/evidence/manifest.mid",
+    "reports/cabay1997-vecpade-766/evidence/manifest.post",
+    "reports/cabay1997-vecpade-766/evidence/reference/RES1"
+  ],
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "f62245620e2f3c48b7c5555c266adfbb9a496fc3d74d5cc9941cf96cb8d40acd",
+    "compared": 6,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "/work/fortran/bin/x86_64-conda-linux-gnu-gfortran -ffree-form -c /work/pre/Src/Sp/blas1.f -o blas1.o",
+      "/work/fortran/bin/x86_64-conda-linux-gnu-gfortran -o driver1 /work/pre/Drivers/Sp/driver1.f90 /work/pre/Src/Sp/vector_pade.f90 /work/pre/Src/Sp/linpack.f blas1.o"
+    ],
+    "manifests": {
+      "pre": "reports/cabay1997-vecpade-766/evidence/manifest.pre",
+      "mid": "reports/cabay1997-vecpade-766/evidence/manifest.mid",
+      "post": "reports/cabay1997-vecpade-766/evidence/manifest.post"
+    }
+  }
+}

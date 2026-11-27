@@ -5,20 +5,20 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-43 papers attempted.
+44 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 14 |
-| B | authors' code with build fixes | 19 |
+| B | authors' code with build fixes | 20 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 8 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 32, other 3, statistics 5
-By stack: C/C++ 7, Fortran 26, Java 1, MATLAB/Octave 3, R 5, not-stated 1
-By decade: 1960 1, 1970 1, 1980 3, 1990 13, 2000 17, 2010 8
+By field: astronomy 1, biology 1, ecology 1, numerics 33, other 3, statistics 5
+By stack: C/C++ 7, Fortran 27, Java 1, MATLAB/Octave 3, R 5, not-stated 1
+By decade: 1960 1, 1970 1, 1980 3, 1990 14, 2000 17, 2010 8
 
 Data as of 2026-11-27T01:26:16Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T01:26:16Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-43 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+44 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **280 candidates considered from 4 of 4 frames: 39 attempted (14%), 0 unreachable, 241 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 24 (did not run), not-possible 3 (no code exists to run), partial 2 (ran only through a workaround or for part of the claim), succeeded 14 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 25 (did not run), not-possible 3 (no code exists to run), partial 2 (ran only through a workaround or for part of the claim), succeeded 14 (ran as documented).
 
 ## Results
 
@@ -104,6 +104,7 @@ Authors' original artifact, among all attempted papers: failed 24 (did not run),
 | [buckley1994-minimize-734](reports/buckley1994-minimize-734/result.md) | numerics · 1994 · Fortran | Shipped reference run Drivers/Sp/res2 of driver2.f90 (Rosenbrock, from (-1.2, 1), acc 0.001): least function value 0.20053597E-08, 59 function evaluations, 36 iterations (function evaluation count (FEvals)) | 59 ± 0 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [buckley1994-minimize-734](reports/buckley1994-minimize-734/result.md) | numerics · 1994 · Fortran | Shipped reference run Drivers/Sp/res2 of driver2.f90 (Rosenbrock, from (-1.2, 1), acc 0.001): least function value 0.20053597E-08, 59 function evaluations, 36 iterations (iteration count (it)) | 36 ± 0 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [buckley1994-minimize-734](reports/buckley1994-minimize-734/result.md) | numerics · 1994 · Fortran | Shipped reference run Drivers/Sp/res2 of driver2.f90 (Rosenbrock, from (-1.2, 1), acc 0.001): least function value 0.20053597E-08, 59 function evaluations, 36 iterations (least function value) | 2.00536e-09 ± 1e-08 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
+| [cabay1997-vecpade-766](reports/cabay1997-vecpade-766/result.md) | numerics · 1997 · Fortran | ? (System S, z**1 coefficient matrix, entry (2,3), times 37 (RES1 value -131)) | -131 ± 0.5 | -131 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ? | B | reproduced | never clean |
 | [fay2010-interval-npmle-example1](reports/fay2010-interval-npmle-example1/result.md) | statistics · 2010 · R | summary(icfit(L, R), digits = 12): NPMLE probability of (2,3] for example1, JSS p. 29 (P((2,3])) | 0.285714 ± 1e-06 | 0.285714 | -2.85716e-13 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [gaviano2003-gkls-829](reports/gaviano2003-gkls-829/result.md) | numerics · 2003 · C/C++ | Shipped reference test001.txt: global minimizer of D-type function number 1, dimension 2, f = -1, at (-0.136, 0.824), tol 1e-3 absolute (D-type function 1, dim 2, global minimizer x1) | -0.136 ± 0.001 | -0.136 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [gaviano2003-gkls-829](reports/gaviano2003-gkls-829/result.md) | numerics · 2003 · C/C++ | Shipped reference test001.txt: global minimizer of D-type function number 1, dimension 2, f = -1, at (-0.136, 0.824), tol 1e-3 absolute (D-type function 1, dim 2, global minimizer x2) | 0.824 ± 0.001 | 0.824 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |

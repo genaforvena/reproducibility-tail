@@ -1,0 +1,15 @@
+ I            WHERE A = EXP(-T/20)  AND  B = EXP((S-T)/20)                     I
+ -------------------------------------------------------------------------------
+-PASS: 1
+ REQTOL= .10E-03, DEFOPT=21
+-COLVI2 SUMMARY:
+ IERROR =   0
+ AVERAGE STEP   = 1.0000000            VARIANCE       = 0.
+ MIN. STEP      = 1.0000000            MAX. STEP      = 1.0000000
+ # SUCC. STEPS  =        50            # FAILURES     =         0
+ # KEV.         =    126232            # CORRECTOR IT.=       588
+ # CP SECONDS   =        12            LAST T-VALUE   =  .500E+02
+-GLOB.ERR.EST.=  -.5782217549E-07    GLOB.ERR.=  -.1165398569E-06    SD =  6.93
+                 -.8110902172E-08                 .3514563218E-07          7.45
+-  T           Y(T)                UH(T)             Y(T)-UH(T)
+  25.00    0.                   .5107873224E-01      -.511E-01

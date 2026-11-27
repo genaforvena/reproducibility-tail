@@ -1,0 +1,88 @@
+{
+  "paper": {
+    "short": "toms1991-colvi2-689",
+    "title": "Algorithm 689: COLVI2, nonlinear Volterra integral equations of the second kind",
+    "year": 1991,
+    "doi": null
+  },
+  "field": "numerics (nonlinear Volterra integral equations)",
+  "field_class": "numerics",
+  "stack": "Fortran 77 (netlib TOMS/ACM 689.gz: one text file, FILE_1..FILE_12 in its header, driver PASS 1-12)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "PASS 1 of the shipped test program (DEFOPT=21, REQTOL=1e-3, fixed step 1.0 on the 50-step problem): GLOB.ERR. for the first component at t = 50, as printed by the driver: -.1165398569E-06. Tolerance 1e-9 absolute, fixed before any run (queue entry). Claim is the GLOB.ERR. value only; the count fields are not claimed.",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "GLOB_ERR_PASS1",
+        "paper": -1.165398569e-07,
+        "tol_abs": 1e-09,
+        "ours": null
+      }
+    ],
+    "reference": {
+      "file": "reports/toms1991-colvi2-689/evidence/shipped-reference.txt",
+      "archive": "netlib.org/toms/689.gz, sha256 beaa7e6b4954ae0eb92c8ab58f2e606975cbc1e1ebe06910271f1d73b5a085df, file 689.txt (lines 9486..9500)",
+      "sha256": "a7d04a3573db8ade47e0c368f0922a1d0e95f8a146b235e95828178f2fd11d97",
+      "note": "sha256 of the extracted shipped PASS 1 block (evidence/shipped-reference.txt). The queue entry's 048cd1e... is the sha of the decompressed text, 689.txt."
+    }
+  },
+  "basis": "patched",
+  "verdict": "blocked",
+  "cause": null,
+  "attempt": "Original attempt (G1): the archive as shipped is one text file with no build file. gfortran 16.2.0 refuses to compile it (header text, duplicate DECLUF/SOLLUF/ZERPOL in FILE_7 and FILE_8, two NCPJOB versions, two DRIVER programs). Then the selected file (689.txt minus header, CYBER NCPJOB, IMSL block and drivers 2-12; no other line changed) with MACHAR as shipped: gfortran reports 'passed REAL(4) to INTEGER(4)' for EPS, EPSNEG, XMIN, XMAX, because MACHAR's REAL declaration is on a CS-marked line that the archive says to change. Log: evidence/g1-unmodified-machar-attempt.log. Patches (all before the build, none in the build step): (1) CS marker blanked and CD lines commented in MACHAR, the archive's own instruction; (2) impl/etime_shim.f, written for this rerun, supplies the external ETIME (CPU-time limit only) from CPU_TIME; (3) for the second pass only, -fdefault-real-8. Pass 1 (default REAL = 4 bytes, the build's default): GLOB.ERR. = -1.147389412e-06, which is 9.8e-07 from the claim, outside the 1e-9 tolerance. Pass 2 (-fdefault-real-8): GLOB.ERR. = -1.165395988e-07, 2.6e-13 from the claim, inside. Pass 2 was chosen after pass 1 missed, so it is not a registered pass; see the blocked cause.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The archive as shipped is one file with no build file, and gfortran refuses to compile it (see the attempt text).",
+    "log": "reports/toms1991-colvi2-689/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "na",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/toms1991-colvi2-689/recipe.sh",
+  "queue_commit": "59a5ced",
+  "evidence": [
+    "reports/toms1991-colvi2-689/evidence/original-attempt.log",
+    "reports/toms1991-colvi2-689/evidence/g1-unmodified-machar-attempt.log",
+    "reports/toms1991-colvi2-689/evidence/OUTPUT",
+    "reports/toms1991-colvi2-689/evidence/OUTPUT-real8",
+    "reports/toms1991-colvi2-689/evidence/fetch.log",
+    "reports/toms1991-colvi2-689/evidence/recipe-run.log",
+    "reports/toms1991-colvi2-689/evidence/shipped-reference.txt",
+    "reports/toms1991-colvi2-689/impl/etime_shim.f"
+  ],
+  "patch": {
+    "kind": "source",
+    "archive_sha256": "beaa7e6b4954ae0eb92c8ab58f2e606975cbc1e1ebe06910271f1d73b5a085df",
+    "compared": 0,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": [
+        "src/colvi2.f"
+      ]
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -c -o colvi2.o ../pre/src/colvi2.f",
+      "gfortran -c -o etime_shim.o etime_shim.f",
+      "gfortran -o driver colvi2.o etime_shim.o",
+      "./driver > run.stdout 2>&1"
+    ],
+    "manifests": {
+      "pre": "reports/toms1991-colvi2-689/evidence/manifest.pre",
+      "mid": "reports/toms1991-colvi2-689/evidence/manifest.mid",
+      "post": "reports/toms1991-colvi2-689/evidence/manifest.post"
+    }
+  }
+}

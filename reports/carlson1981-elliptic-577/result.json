@@ -1,0 +1,91 @@
+{
+  "patch": {
+    "kind": "build-only",
+    "archive_sha256": "61ac0a82555128503bb1c0e7ad1b1911534377e0d1bb407a794579c4d2272c0e",
+    "compared": 1,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "sed -n 27,128p /work/tree/577.f > /work/build/rc_rj_lib.txt",
+      "sed -n 392,536p /work/tree/577.f >> /work/build/rc_rj_lib.txt",
+      "sed -n 805,844p /work/tree/577.f > /work/build/rj_driver.txt",
+      "sed -n 846,887p /work/tree/577.f > /work/build/data_rj",
+      "gfortran -x f77 -O2 -std=legacy -c /work/build/rc_rj_lib.txt -o /work/build/rc_rj_lib.o",
+      "gfortran -O2 -std=legacy -x f77 /work/build/rj_driver.txt -x none -o /work/build/rj_driver /work/build/rc_rj_lib.o"
+    ],
+    "manifests": {
+      "pre": "reports/carlson1981-elliptic-577/evidence/manifest.pre",
+      "mid": "reports/carlson1981-elliptic-577/evidence/manifest.mid",
+      "post": "reports/carlson1981-elliptic-577/evidence/manifest.post"
+    }
+  },
+  "paper": {
+    "short": "carlson1981-elliptic-577",
+    "title": "Algorithms for incomplete elliptic integrals (ACM TOMS Algorithm 577: RC, RF, RD, RJ; symmetric incomplete elliptic integrals)",
+    "year": 1981,
+    "doi": null
+  },
+  "field": "numerics (special functions, elliptic integrals)",
+  "field_class": "numerics",
+  "stack": "Fortran",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "RJ(2,3,4,5) from the Algorithm 577 subroutine RJ, called with ERRTOL = 1.D-3 by the RJ test driver (check value in the driver comment: 0.14297 57966 71567 53833 23308). Registered tol_abs 1.4297579667156755e-4 (ERRTOL 1e-3 times the value).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "rj_2345",
+        "paper": 0.14297579667156754,
+        "tol_abs": 0.00014297579667156755,
+        "ours": 0.1429757966715675
+      }
+    ],
+    "reference": {
+      "file": "reports/carlson1981-elliptic-577/evidence/shipped-rj-driver-comment.txt",
+      "sha256": "332044e11711cee21fdc70963f7f6f5759dd15ec0b027ec58fbbe0ee3aa3a97c",
+      "archive": "netlib.org/toms/577.gz sha256 61ac0a82555128503bb1c0e7ad1b1911534377e0d1bb407a794579c4d2272c0e (lines 805-844: RJ driver with the check-value comment; set 22 at archive line 867)"
+    }
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Original as shipped: one gfortran compile of the single archive file fails (two unnamed main programs, 'Error: Two main PROGRAMs'). Workaround with no tree edit: verbatim line ranges copied into the build directory: RC (27-128), RJ (392-536) as a library; the RJ test driver (805-844) as the program; its 42 input sets (846-887) on stdin. Output row for set 22 (X,Y,Z,P = 2,3,4,5) gives RJ = 0.1429757966715675.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The archive's single file holds six unnamed main programs (four subroutines then six test drivers, as its own header states); gfortran reports 'Two main PROGRAMs' at link/compile, so no single executable exists as shipped.",
+    "log": "reports/carlson1981-elliptic-577/evidence/original-attempt-build.log"
+  },
+  "diagnostics": {},
+  "second_pass": null,
+  "queue_commit": "42cf91ea377a6dee45392159e699f39cab622bde",
+  "recipe": "reports/carlson1981-elliptic-577/recipe.sh",
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "na",
+    "G6": "pass",
+    "cross_check": "na"
+  },
+  "environment": {
+    "compiler": "GNU Fortran (conda-forge gcc 16.2.0-7) 16.2.0",
+    "flags": "-O2 -std=legacy (-x f77 for the extracted .txt units)",
+    "sandbox": "tools/sandbox.sh"
+  },
+  "evidence": {
+    "run_output": "reports/carlson1981-elliptic-577/evidence/run-pass1.txt",
+    "build_log": "reports/carlson1981-elliptic-577/evidence/build.log",
+    "archive_check": "reports/carlson1981-elliptic-577/evidence/archive-sha256-check.txt",
+    "manifests": "reports/carlson1981-elliptic-577/evidence/manifests/"
+  },
+  "replayed": []
+}

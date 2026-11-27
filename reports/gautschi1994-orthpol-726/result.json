@@ -76,6 +76,17 @@
       "why": "agrees with the record",
       "log": "reports/gautschi1994-orthpol-726/evidence/replay-2026-11-27T163713Z.log",
       "seconds": 73
+    },
+    {
+      "utc": "2026-11-27T17:27:11Z",
+      "kind": "clean",
+      "values": {
+        "DBETA1_OM2_0p1": 0.5065840806382684
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/gautschi1994-orthpol-726/evidence/replay-2026-11-27T172711Z.log",
+      "seconds": 64
     }
   ],
   "patch": {

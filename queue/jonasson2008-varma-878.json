@@ -1,0 +1,95 @@
+{
+ "paper": {
+  "title": "Evaluating exact VARMA likelihood and its gradient when data are incomplete",
+  "authors": [
+   "Kristjan Jonasson",
+   "Sebastian E. Ferrando"
+  ],
+  "year": 2008,
+  "venue": "ACM Transactions on Mathematical Software 35(1), 2008, article 6 (Algorithm 878; the archive header 878.head says TOMS vol. 35 no. 1 2008 article 6)",
+  "doi": null,
+  "url": "https://netlib.org/toms/878.zip"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/878.zip",
+  "commit": "netlib TOMS archive 878.zip (scouted 2026-11-27, sha256 cbf6aec91cef72ae3c71af66c31274d4c76ac5c88f68acd2fef69a1001afd337). Contains Matlab/Src (varma_llc.m and private functions), Matlab/Tests/test/compare (comparison.txt, as311.c, jam197.for, compare_with_as311.m) and Doc/ (manuscript method.pdf, demorunoutput.pdf)."
+ },
+ "field": "time series / statistics (exact VARMA likelihood)",
+ "stack": "MATLAB/Octave",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Shipped reference file Matlab/Tests/test/compare/comparison.txt (inside 878.zip). Its table 'COMPARING VARMA_LLC WITH ALGORITHM AS-311', column varma_llc: the value of the complete-data VARMA log-likelihood that Matlab/Src/varma_llc.m returns for each of ten test cases (tinyAR ... mediumARMA2). The paper itself does not print these numbers: its numerical results are timings in Tables I and II (machine-dependent, not claimed) and it says the Matlab numerical results are in a companion paper.",
+  "reference": {
+   "file": "Matlab/Tests/test/compare/comparison.txt (shipped in 878.zip)",
+   "sha256": "34f60a83059b47189b46052ef747edcf4ff77e99201b59313f9f75e036406d7c",
+   "archive": "878.zip, sha256 cbf6aec91cef72ae3c71af66c31274d4c76ac5c88f68acd2fef69a1001afd337"
+  },
+  "metric": "varma_llc log-likelihood value for each of the ten named test cases in compare_with_as311.m (the varma_llc column of comparison.txt), with the test problems as defined in test_varma_llc.m.",
+  "paper_value": "Not in the paper; the shipped comparison.txt is the only value to check.",
+  "values": [
+   {
+    "name": "varma_llc tinyAR log-likelihood",
+    "paper": -12.621279429,
+    "tol_abs": 1e-06
+   },
+   {
+    "name": "varma_llc tinyMA log-likelihood",
+    "paper": -13.531820317,
+    "tol_abs": 1e-06
+   },
+   {
+    "name": "varma_llc tinyARMA log-likelihood",
+    "paper": -12.767279761,
+    "tol_abs": 1e-06
+   },
+   {
+    "name": "varma_llc smallAR log-likelihood",
+    "paper": -37.692684654,
+    "tol_abs": 1e-06
+   },
+   {
+    "name": "varma_llc smallMA log-likelihood",
+    "paper": -29.386512158,
+    "tol_abs": 1e-06
+   },
+   {
+    "name": "varma_llc smallARMA1 log-likelihood",
+    "paper": -35.221617495,
+    "tol_abs": 1e-06
+   },
+   {
+    "name": "varma_llc smallARMA2 log-likelihood",
+    "paper": -31.778782744,
+    "tol_abs": 1e-06
+   },
+   {
+    "name": "varma_llc mediumAR log-likelihood",
+    "paper": -45.067120936,
+    "tol_abs": 1e-06
+   },
+   {
+    "name": "varma_llc mediumARMA1 log-likelihood",
+    "paper": -52.084019573,
+    "tol_abs": 1e-06
+   },
+   {
+    "name": "varma_llc mediumARMA2 log-likelihood",
+    "paper": -53.761861,
+    "tol_abs": 1e-06
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1e-06,
+   "basis": "Fixed before any run. The reference prints 9 decimal places, so its rounding unit is 1e-9. The as311 agreement recorded in the same file is 2e-15 relative. A tolerance of 1e-6 absolute (about 2e-8 relative at magnitude 50) allows for floating-point differences between the Matlab/Octave runtimes, but is far below the 9-decimal rounding of the printed values' differences between test cases."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 5 minutes: ten varma_llc evaluations on small problems (n up to a few hundred). Needs MATLAB, or Octave with a mex-compatible build of as311.c and jam197.for only if the rerun also reproduces the comparison column; the varma_llc column alone needs only the Matlab/Src files and the test data in Matlab/Tests/test.",
+  "data_size": "Archive 328 KB-class zip, test data generated in code (no external data beyond temperature.dat for demorun, not used by this claim).",
+  "data_licence": "Not stated in the archive; a Collected Algorithms (ACM TOMS) program."
+ },
+ "why": "varma_llc is the complete-data exact VARMA likelihood the paper describes (Cholesky plus Sherman-Morrison-Woodbury in the paper's method); the archive's comparison with the published AS 311 program gives ten independent log-likelihood values that the code has to compute, so the claim tests the code, not a closed form.",
+ "registered": "2026-11-27T05:36Z"
+}

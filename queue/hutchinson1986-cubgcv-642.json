@@ -1,0 +1,90 @@
+{
+ "paper": {
+  "title": "Algorithm 642: O(n) computation of a cubic smoothing spline fitted to n noisy data",
+  "authors": [
+   "M. F. Hutchinson"
+  ],
+  "year": 1986,
+  "venue": "ACM Transactions on Mathematical Software 12(2), June 1986, pp. 150-153 (the archive header says ACM TRANS. MATH. SOFTWARE, VOL. 12, NO. 2, JUN. 1986, P. 150)",
+  "doi": null,
+  "url": "https://netlib.org/toms/642.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/642.gz",
+  "commit": "netlib TOMS archive 642.gz (scouted 2026-11-27, gz sha256 fea2d2ad84a7883c2a45f04844cfb56b6112992cda5e485d6c47e01c0ae58f19). One Fortran file: CUBGCV and subroutines SPINT1, SPFIT1, SPCOF1, SPERR1, GGRAND, the test driver CUBGCV TEST DRIVER, and the shipped printed output 'CUBGCV TEST DRIVER RESULTS:' with the 'FOR CHECKING PURPOSES' block."
+ },
+ "field": "numerics (smoothing splines, statistics)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "stochastic",
+  "seed": "DSEED = 1.2345D4 in the test driver (GGRAND is a multiplicative congruential generator, 7^5 mod (2^31-1), so the input data are fully determined by this seed)",
+  "location": "Shipped printed output of the CUBGCV test driver, inside 642.gz (the text after the driver's END statement, headed 'CUBGCV TEST DRIVER RESULTS:'): the summary VAR, GCV and mean square residual, and the fitted values Y and standard errors SE at points I = 1, 21 and 41 from the 'FOR CHECKING PURPOSES' block. The driver fits a cubic smoothing spline with JOB=1 to 50 points y = sin(3 pi x / 2) plus uniform noise in [-0.3, 0.3].",
+  "reference": {
+   "file": "CUBGCV TEST DRIVER RESULTS block in 642.gz (the driver source and its printed output are in the same file)",
+   "sha256": "7d3029107f127b56570c65401194b3c7d556dbaacf10453b5d455fd3643b7c25",
+   "archive": "642.gz, sha256 fea2d2ad84a7883c2a45f04844cfb56b6112992cda5e485d6c47e01c0ae58f19"
+  },
+  "metric": "Nine printed values from the driver output: VAR, GENERALIZED CROSS VALIDATION, MEAN SQUARE RESIDUAL, and Y and SE at I = 1, 21 and 41 (the reference's 'FOR CHECKING PURPOSES' values).",
+  "paper_value": "Not located in the paper text (paywalled); the shipped printed output is the only value to check.",
+  "values": [
+   {
+    "name": "TEST driver CUBGCV VAR (error variance estimate)",
+    "paper": 0.0279,
+    "tol_abs": 0.0001
+   },
+   {
+    "name": "TEST driver CUBGCV GENERALIZED CROSS VALIDATION",
+    "paper": 0.0318,
+    "tol_abs": 0.0001
+   },
+   {
+    "name": "TEST driver CUBGCV MEAN SQUARE RESIDUAL",
+    "paper": 0.0246,
+    "tol_abs": 0.0001
+   },
+   {
+    "name": "TEST driver CUBGCV Y(1)",
+    "paper": 0.0342,
+    "tol_abs": 0.0001
+   },
+   {
+    "name": "TEST driver CUBGCV SE(1)",
+    "paper": 0.1004,
+    "tol_abs": 0.0001
+   },
+   {
+    "name": "TEST driver CUBGCV Y(21)",
+    "paper": 0.9069,
+    "tol_abs": 0.0001
+   },
+   {
+    "name": "TEST driver CUBGCV SE(21)",
+    "paper": 0.0525,
+    "tol_abs": 0.0001
+   },
+   {
+    "name": "TEST driver CUBGCV Y(41)",
+    "paper": -0.6242,
+    "tol_abs": 0.0001
+   },
+   {
+    "name": "TEST driver CUBGCV SE(41)",
+    "paper": 0.0541,
+    "tol_abs": 0.0001
+   }
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 0.0001,
+   "basis": "Fixed before any run. The reference prints 4 decimal places (F8.4, F7.4), so its rounding unit is 1e-4 and the half-unit is 5e-5. A tolerance of 1e-4 allows one unit in the last printed place, and no more. The driver's seeded generator is deterministic, so the printed values should reproduce exactly on a correct build; the tolerance covers only the print rounding. Not loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute: one fit of 50 points.",
+  "data_size": "Archive a few KB (912 lines).",
+  "data_licence": "Not stated in the archive; a CACM/ACM TOMS Collected Algorithm. The rerun should record the licence it finds."
+ },
+ "why": "The shipped driver generates its own noisy data from a fixed seed and calls CUBGCV to compute a smoothing spline with GCV and error variance; the printed fit values depend on the O(n) factorisation and the GCV minimisation, which the paper describes but which cannot be read off the paper alone.",
+ "registered": "2026-11-27T05:37Z"
+}

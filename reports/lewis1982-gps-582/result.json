@@ -1,0 +1,118 @@
+{
+  "paper": {
+    "short": "lewis1982-gps-582",
+    "title": "Algorithm 582: GPS and GK algorithms for bandwidth and profile reduction of sparse symmetric matrices (GPSKCA and related routines)",
+    "year": 1982,
+    "doi": null,
+    "venue": "ACM Transactions on Mathematical Software 8(2), June 1982, pp. 190-194 (archive header: ALGORITHM 582, ACM-TRANS. MATH. SOFTWARE, VOL. 8, NO. 2, JUN. 1982, P. 190); paper text not checked (artifact-reference claim)"
+  },
+  "field": "numerics (sparse matrix reordering)",
+  "stack": "Fortran 77 (TOMS 582 GPSKCA and driver, one listing; sample input and output shipped in the same file)",
+  "field_class": "numerics",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "GPSKCA on the BCSPWR01 power-network matrix (order 39): BANDWIDTH 6, PROFILE 100, GPSKCA ERROR CODE 0, from the shipped sample output (artifact-reference). Integers, exact tolerance.",
+    "source": "artifact-reference",
+    "reference": {
+      "file": "reports/lewis1982-gps-582/evidence/shipped-output-block.txt",
+      "sha256": "11767c97b414c385fd46877ebaafb4dc5bab1f3e61f725f21ec3a681bef08ea4",
+      "archive": "netlib TOMS 582.gz, sha256 6b71e42fd18c836c260133ae293d6cf00f5a7df6e3b64af1641aaf5319e48d1b, sample output after the 'END OF SAMPLE PROBLEMS' card"
+    },
+    "values": [
+      {
+        "name": "BANDWIDTH",
+        "paper": 6,
+        "tol_abs": 0,
+        "ours": 6
+      },
+      {
+        "name": "PROFILE",
+        "paper": 100,
+        "tol_abs": 0,
+        "ours": 100
+      },
+      {
+        "name": "GPSKCA ERROR CODE",
+        "paper": 0,
+        "tol_abs": 0,
+        "ours": 0
+      }
+    ]
+  },
+  "basis": "patched",
+  "verdict": "reproduced",
+  "cause": null,
+  "attempt": "Built the authors' listing without editing a line: lines 1-3762 (algorithms and driver) copied from the archive to gps.f (extraction; recipe cuts it on every run). The sample input (lines 3764-3947) is piped to the driver's standard input. Built with gfortran 16 -std=legacy; manifests pre, mid and post recorded. Output BANDWIDTH 6, PROFILE 100, GPSKCA ERROR CODE 0 match the shipped block exactly.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "the listing as delivered does not compile: gfortran -x f77 stops with 'Error: Two main PROGRAMs' (the sample output section is in the file). Kept in the log.",
+    "log": "reports/lewis1982-gps-582/evidence/original-attempt.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "pass",
+    "G3": "pass",
+    "G5": "pass",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "recipe": "reports/lewis1982-gps-582/recipe.sh",
+  "queue_commit": "2d8b8f5",
+  "evidence": [
+    "reports/lewis1982-gps-582/evidence/fetch.log",
+    "reports/lewis1982-gps-582/evidence/original-attempt.log",
+    "reports/lewis1982-gps-582/evidence/build.log",
+    "reports/lewis1982-gps-582/evidence/recipe-run.log",
+    "reports/lewis1982-gps-582/evidence/run.txt"
+  ],
+  "replayed": [
+    {
+      "utc": "2026-11-27T06:20:56Z",
+      "kind": "clean",
+      "values": {
+        "BANDWIDTH": 6.0,
+        "PROFILE": 100.0,
+        "GPSKCA ERROR CODE": 0.0
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/lewis1982-gps-582/evidence/replay-2026-11-27T062056Z.log",
+      "seconds": 65
+    }
+  ],
+  "patch": {
+    "kind": "extraction",
+    "archive_sha256": "6b71e42fd18c836c260133ae293d6cf00f5a7df6e3b64af1641aaf5319e48d1b",
+    "compared": 0,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": [
+        "gps.f"
+      ]
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -std=legacy -c gps.f",
+      "gfortran gps.o -o driver"
+    ],
+    "manifests": {
+      "pre": "reports/lewis1982-gps-582/evidence/manifest.pre",
+      "mid": "reports/lewis1982-gps-582/evidence/manifest.mid",
+      "post": "reports/lewis1982-gps-582/evidence/manifest.post"
+    },
+    "extraction": {
+      "file_sha256": "26636fec445416813061228cde8f5b562b94ba45548a1f7d0cc4bb44ce9dae84",
+      "file": "582.txt",
+      "start": 1,
+      "end": 3762,
+      "extracted": "gps.f",
+      "range_sha256": "2008add3404471cc68d382b045975218ca4b6e8c2cb387ee0e924565898f8c4f"
+    }
+  }
+}

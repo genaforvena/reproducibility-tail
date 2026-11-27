@@ -5,28 +5,28 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-66 papers attempted.
+67 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
 | A | authors' code, run clean | 17 |
-| B | authors' code with build fixes | 33 |
+| B | authors' code with build fixes | 34 |
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
 | - | blocked or not yet run | 14 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 53, other 4, statistics 6
-By stack: C/C++ 9, Fortran 45, Java 1, MATLAB/Octave 6, R 5
-By decade: 1960 3, 1970 3, 1980 5, 1990 21, 2000 24, 2010 10
+By field: astronomy 1, biology 1, ecology 1, numerics 54, other 4, statistics 6
+By stack: C/C++ 9, Fortran 46, Java 1, MATLAB/Octave 6, R 5
+By decade: 1960 3, 1970 3, 1980 6, 1990 21, 2000 24, 2010 10
 
-Data as of 2026-11-27T06:17:46Z (the newest replay or funnel entry).
+Data as of 2026-11-27T06:20:56Z (the newest replay or funnel entry).
 
 ## The funnel
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-66 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+67 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **327 candidates considered from 4 of 4 frames: 62 attempted (19%), 0 unreachable, 265 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 38 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 39 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
 
 ## Results
 
@@ -195,6 +195,9 @@ Authors' original artifact, among all attempted papers: failed 38 (did not run),
 | [kraft1994-tomp-733](reports/kraft1994-tomp-733/result.md) | numerics · 1994 · Fortran | Final cost of the constrained brachistochrone test driver, iteration 27, 1.7952392, tol_abs 1e-5 (shipped TOMP.OUT block, 733.f lines 77-109) (value) | 1.79524 ± 1e-05 | 1.79524 | 0 | 0% | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [leis1988-odessa-658](reports/leis1988-odessa-658/result.md) | numerics · 1988 · Fortran | Y(1) at T = 4.0 of the demo's first output block (METH 1, MITER 0) is 0.905516, as printed in the source comments. Absolute tolerance 1e-5. (chemical kinetics demo, Y(1) at T=4.0, METH 1 MITER 0) [shipped reference output] | 0.905516 ± 1e-05 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [levine1969-student-t-344](reports/levine1969-student-t-344/result.md) | statistics · 1969 · Fortran | The computed CDF printed by TOMS344_PRB for DF=1, X=0.3250 (row 1, computed column) is 0.7999537587165833, as in the shipped reference output res. Absolute tolerance 1e-6. (TTEST, DF=1, X=0.3250, two-tailed CDF transform (computed column)) [shipped reference output] | 0.799954 ± 1e-06 | 0.799954 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
+| [lewis1982-gps-582](reports/lewis1982-gps-582/result.md) | numerics · 1982 · Fortran | GPSKCA on the BCSPWR01 power-network matrix (order 39): BANDWIDTH 6, PROFILE 100, GPSKCA ERROR CODE 0, from the shipped sample output (artifact-reference). Integers, exact tolerance. (BANDWIDTH) [shipped reference output] | 6 ± 0 | 6 | 0 | exact | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [lewis1982-gps-582](reports/lewis1982-gps-582/result.md) | numerics · 1982 · Fortran | GPSKCA on the BCSPWR01 power-network matrix (order 39): BANDWIDTH 6, PROFILE 100, GPSKCA ERROR CODE 0, from the shipped sample output (artifact-reference). Integers, exact tolerance. (PROFILE) [shipped reference output] | 100 ± 0 | 100 | 0 | exact | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
+| [lewis1982-gps-582](reports/lewis1982-gps-582/result.md) | numerics · 1982 · Fortran | GPSKCA on the BCSPWR01 power-network matrix (order 39): BANDWIDTH 6, PROFILE 100, GPSKCA ERROR CODE 0, from the shipped sample output (artifact-reference). Integers, exact tolerance. (GPSKCA ERROR CODE) [shipped reference output] | 0 ± 0 | 0 | 0 | exact | patched | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [linhart2008-lnnorm-885](reports/linhart2008-lnnorm-885/result.md) | numerics · 2008 · C/C++ | -lnnorm(-5.0) computed by the authors' C/lnnorm.c, against the Sheppard (1939) Table IV row x = 5.0 in the shipped C/sheppard.txt: 15.0649983939887257, absolute tolerance 1.5e-8 (-lnnorm(-5.0) against Sheppard Table IV row 5.0) | 15.065 ± 1.5e-08 | 15.065 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDM0P5(-4)) [shipped reference output] | 0.0180819 ± 1.80819e-07 | 0.0180819 | -2.9914e-09 | 2% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
 | [macleod1998-fermi-dirac-779](reports/macleod1998-fermi-dirac-779/result.md) | numerics · 1998 · Fortran | COMP. VALUE printed by the authors' DP driver fdtestdp.f for the 8th registered argument of FDM0P5, FDP0P5, FDP1P5, FDP2P5 (x = -4 and x = 3), against the EXACT VALUE table in the driver (FDM0P5(3)) [shipped reference output] | 1.85349 ± 1.85349e-05 | 1.85349 | -8.86015e-08 | 0% | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |

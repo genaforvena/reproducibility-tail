@@ -1,0 +1,45 @@
+{
+ "paper": {
+  "title": "Algorithm 816: r2d2lri: an algorithm for automatic two-dimensional cubature",
+  "authors": [
+   "I. Robinson",
+   "M. Hill"
+  ],
+  "year": 2002,
+  "venue": "ACM Transactions on Mathematical Software 28(1), Mar 2002, p. 75-100 (per the shipped 816 shar header and the frame item). The ACM article was not fetched.",
+  "doi": null,
+  "url": "https://netlib.org/toms/816.gz (article not fetched; ACM page not used)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/816.gz",
+  "commit": "netlib CALGO archive 816.gz (shell archive; C++/Dp/Src/r2d2lri.h and r2d2lri.cpp; C++/Dp/Drivers/r2d2lri_sample.cpp and res; Doc/Readme.txt)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/816.gz (66691 bytes). Unpacked with /bin/sh in an empty directory /tmp/scout-414-bOZh/x; no build or run by scout.",
+  "archive_sha256": "not computed by scout",
+  "note": "Unpack 816.gz with gunzip, then run the shar with /bin/sh in an empty directory. Build C++/Dp/Src/r2d2lri.cpp with C++/Dp/Drivers/r2d2lri_sample.cpp using any C++ compiler (record it). Run the sample and compare the block 'Requested accuracy = 6 significant figures' with the shipped res file. The rerun must not change the requested accuracy or the integrand. The 'I1' block and the 2-, 4- and 10-figure blocks are not part of the claim."
+ },
+ "field": "numerics (two-dimensional adaptive cubature for an improper integral)",
+ "stack": "C/C++",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "C++/Dp/Drivers/res inside 816.gz: block 'COMPUTATION OF I30 TO 2, 4, 6 AND 10 FIGURES', the block for 'Requested accuracy = 6 significant figures': 'The computed value of I30 is 3.14159259152384e+00'. The integrand is the one in the header of that block, I30 = integral over [0,inf) of dy dx / (sqrt(-xy) (y-x+1)^2) as printed by r2d2lri_sample.cpp.",
+  "reference": {
+   "file": "C++/Dp/Drivers/res inside 816.gz (netlib.org/toms/816.gz)",
+   "sha256": "not computed for the member; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/816.gz"
+  },
+  "paper_value": "The ACM article was not read; the claim is the code's own shipped reference output, not a value located in the paper.",
+  "metric": "The computed value of I30 printed for requested accuracy 6 significant figures, compared as an absolute number with the value the rerun prints in the same block.",
+  "determinism": "deterministic (adaptive quadrature with fixed inputs and no random numbers)",
+  "tolerance": {
+   "abs": 1e-08,
+   "basis": "Fixed before any run. The shipped value is printed with 15 digits, so print rounding is negligible. The shipped value itself is 2.0e-8 relative from pi, and the requested accuracy is 1e-6 relative. A rerun of the same algorithm may differ by floating-point rounding, which should be well under 1e-8. A different adaptive path that stops early changes the value by more than 1e-8. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 2 minutes: compile two C++ files and run the sample (about 32000 integrand evaluations in total across the four accuracy levels).",
+  "data_size": "none (integrand is in code)",
+  "data_licence": "Netlib CALGO archive (ACM TOMS collected algorithm); the rerun should record the archive's licence notice."
+ },
+ "why": "The sample runs the automatic adaptive cubature on a singular improper two-dimensional integral and reports a value whose exact path depends on the implemented error estimator; the number is not a closed form that could be checked on paper.",
+ "registered": "2026-11-27T18:40:13Z"
+}

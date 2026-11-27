@@ -1,0 +1,45 @@
+{
+ "paper": {
+  "title": "Algorithm 934: Fortran 90 subroutines to compute Mathieu functions for complex values of the parameter",
+  "authors": [
+   "Danilo Erricolo",
+   "Giuseppe Carluccio"
+  ],
+  "year": 2013,
+  "venue": "ACM Transactions on Mathematical Software 40(1), Oct 2013, Article 8 (per the frame item and the shipped 934.head). The ACM article was not fetched.",
+  "doi": null,
+  "url": "https://netlib.org/toms/934.zip (article not fetched; ACM page not used)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/934.zip",
+  "commit": "netlib CALGO archive 934.zip (F90/Src: port-90.f90, constants.f90, bessel.f90, feigen.f90, Blanch_Complex.f90; F90/Drivers: Driver.f90, RES)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/934.zip (zip, 379364 bytes uncompressed in 15 files). Unzipped into /tmp/scout-934-F55F; no build or run by scout.",
+  "archive_sha256": "not computed by scout for the zip member list; the reference is quoted from the extracted RES file",
+  "note": "Unpack 934.zip into an empty directory. The shipped Makefiles call nagfor; the rerun should compile F90/Src and F90/Drivers/Driver.f90 with gfortran (record the compiler and flags) and run the Driver. The claim uses only the first printed block of Driver's output (the angular function). The Wronskian_Table_I_Linux_Cluster.dat file and the radial function block are not part of the claim."
+ },
+ "field": "numerics (special functions: Mathieu functions for complex parameter q)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "F90/Drivers/RES inside 934.zip, first block: 'The value of the Mathieu angular function of even parity of order n= 1 for q= (-0.9,0.9) and argument x= 1.0 is (0.3779270959195549,0.1091782782532712)'. Driver.f90 computes this with hard-coded parity=0, der=0, n=1, q=-0.9D0+j*0.9D0, x=1.0D0, choice=1 (MathieuAngular, Blanch_Complex).",
+  "reference": {
+   "file": "F90/Drivers/RES inside 934.zip (netlib.org/toms/934.zip)",
+   "sha256": "not computed for the member; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/934.zip"
+  },
+  "paper_value": "The ACM article was not read; the claim is the code's own shipped reference output, not a value located in the paper.",
+  "metric": "The real and imaginary parts of the complex angular Mathieu function Se printed by Driver for n=1, q=(-0.9,0.9), x=1.0, even parity. Compared componentwise with the two numbers in RES.",
+  "determinism": "deterministic (fixed inputs hard-coded in Driver.f90; no random numbers)",
+  "tolerance": {
+   "abs": 1e-10,
+   "basis": "Fixed before any run. RES prints 16 significant digits, so differences in the last digits are print rounding. Double-precision reordering across compilers and the Blanch continued-fraction convergence test can move the result by about 1e-13 to 1e-12 relative; 1e-10 absolute allows that. A wrong parity, order, q, or algorithm changes the value by orders of magnitude. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 5 minutes: compile about 5 Fortran files and run one evaluation.",
+  "data_size": "none (inputs are hard-coded; the Wronskian table is not used by the claim)",
+  "data_licence": "Netlib CALGO archive; use under the ACM/TOMS redistribution terms of the archive. The rerun should record it."
+ },
+ "why": "The driver evaluates one complex-parameter Mathieu angular function by a continued-fraction algorithm (Blanch) and prints the value; the number depends on the implemented algorithm and is not a closed form checkable on paper.",
+ "registered": "2026-11-27T18:39:37Z"
+}

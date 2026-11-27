@@ -154,7 +154,7 @@
     "G1": "pass",
     "G2": "pass",
     "G3": "pass",
-    "G5": "not-run",
+    "G5": "pass",
     "G6": "na",
     "cross_check": "na"
   },
@@ -191,5 +191,37 @@
       "mid": "reports/hurst1972-rnvr-425/evidence/manifest.mid",
       "post": "reports/hurst1972-rnvr-425/evidence/manifest.post"
     }
-  }
+  },
+  "replayed": [
+    {
+      "utc": "2026-11-27T05:19:35Z",
+      "kind": "clean",
+      "values": {
+        "TEST02 sample 1 component 1": 1.24296,
+        "TEST02 sample 1 component 2": 0.594892,
+        "TEST02 sample 2 component 1": -0.134458,
+        "TEST02 sample 2 component 2": -0.697435,
+        "TEST02 sample 3 component 1": -0.307862,
+        "TEST02 sample 3 component 2": -0.564875,
+        "TEST02 sample 4 component 1": -0.430708,
+        "TEST02 sample 4 component 2": -0.00855063,
+        "TEST02 sample 5 component 1": -0.702977,
+        "TEST02 sample 5 component 2": -0.288103,
+        "TEST02 sample 6 component 1": -0.561967,
+        "TEST02 sample 6 component 2": 1.21474,
+        "TEST02 sample 7 component 1": 0.757011,
+        "TEST02 sample 7 component 2": -0.0440338,
+        "TEST02 sample 8 component 1": 0.143903,
+        "TEST02 sample 8 component 2": 0.173469,
+        "TEST02 sample 9 component 1": -0.217714,
+        "TEST02 sample 9 component 2": 0.292083,
+        "TEST02 sample 10 component 1": -0.811921,
+        "TEST02 sample 10 component 2": -0.54103
+      },
+      "ok": true,
+      "why": "agrees with the record",
+      "log": "reports/hurst1972-rnvr-425/evidence/replay-2026-11-27T051935Z.log",
+      "seconds": 135
+    }
+  ]
 }

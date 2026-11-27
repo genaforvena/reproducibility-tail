@@ -31,7 +31,7 @@ exec > >(tee "$LOG") 2>&1
 rm -rf "$W"/pre "$W"/build "$W"/orig "$W"/run1 "$W"/run2; mkdir -p "$W"
 
 echo "== fetch: archive 425.gz (sha256 checked), micromamba, gfortran (conda-forge); skipped when /work/env16 already has gfortran"
-tools/sandbox.sh --fetch "$ID" -- sh -c "test -x /work/env16/bin/gfortran || { curl -fsSL -o /work/425.gz https://netlib.org/toms/425.gz && echo '$GZ_SHA  /work/425.gz' | sha256sum -c - && mkdir -p /work/bin && curl -fsSL -o /work/mm.tar.bz2 '$MM' && tar -xjf /work/mm.tar.bz2 -C /work bin/micromamba && /work/bin/micromamba create -y -r /work/mamba -p /work/env16 -c conda-forge --override-channels gfortran_linux-64 make; }; test -x /work/env16/bin/gfortran" || { echo "FETCH-FAILED"; exit 1; }
+tools/sandbox.sh --fetch "$ID" -- sh -c "test -x /work/env16/bin/gfortran || { curl -fsSL -o /work/425.gz https://netlib.org/toms/425.gz && echo '$GZ_SHA  /work/425.gz' | sha256sum -c - && mkdir -p /work/bin && curl -fsSL -o /work/mm.tar.bz2 '$MM' && tar -xjf /work/mm.tar.bz2 -C /work bin/micromamba && /work/bin/micromamba create -y -r /work/mamba -p /work/env16 -c conda-forge --override-channels gfortran_linux-64 make && ln -sf x86_64-conda-linux-gnu-gfortran /work/env16/bin/gfortran; }; test -x /work/env16/bin/gfortran" || { echo "FETCH-FAILED"; exit 1; }
 tools/sandbox.sh "$ID" -- sh -c "echo '$GZ_SHA  /work/425.gz' | sha256sum -c -" || { echo "SHA-FAILED"; exit 1; }
 
 echo "== original attempt (G1): authors' Makefile as shipped, no compiler named"

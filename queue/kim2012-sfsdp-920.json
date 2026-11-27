@@ -24,7 +24,7 @@
   "claim": {
     "source": "artifact-reference",
     "determinism": "deterministic",
-    "location": "Doc/SFSDPmanual/UserManual.tex, section 'SFSDPplus.m' (the 3-sensor, 4-anchor example with pars.noisyFac = 0, data in Matlab/Drivers/examples/example1.mat). The transcript printed after the SDP solve reads 'rmsd = 6.21e-02'. This is the SDP-stage RMSD, not the gradient-stage value 4.67e-02 that follows it in the transcript. The article was not read; no article page is cited.",
+    "location": "Doc/SFSDPmanual/UserManual.tex, section 'SFSDPplus.m' (the 3-sensor, 4-anchor example). The inputs are the ones printed in the manual: distanceMatrix0 and xMatrix0 as typed there, with pars.eps = 1e-7, minDegree 4, objSW 1, free 0. They are NOT the shipped Matlab/Drivers/examples/example1.mat: that file with pars.noisyFac = 0 gives rmsd 2.13e-05 (rerun, 708a19d). The transcript printed after the SDP solve reads 'rmsd = 6.21e-02'. This is the SDP-stage RMSD, not the gradient-stage value 4.67e-02 that follows it in the transcript. The article was not read; no article page is cited.",
     "reference": {
       "file": "920.zip member Doc/SFSDPmanual/UserManual.tex, SFSDPplus.m transcript",
       "sha256": null,

@@ -1,0 +1,36 @@
+{
+ "paper": {
+  "title": "Fortran 77 subroutines for computing the eigenvalues of Hamiltonian matrices II (HAPACK, Algorithm 854)",
+  "authors": [
+   "Peter Benner",
+   "Daniel Kressner"
+  ],
+  "year": 2006,
+  "venue": "ACM TOMS 32(2), 2006, 352",
+  "doi": null,
+  "url": "https://netlib.org/toms/854.zip"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/854.zip",
+  "commit": "netlib TOMS archive 854.zip (fetched 2026-11-27, sha256 dc9ab3fb0bc12bd5c7d5b8ea8b5805bb7a8b6c38b0926f519632be4cdb580c66)",
+  "note": "Fortran 77 HAPACK release 1.1 (03-Sep-2005) in Fortran77/Dp; the driver tdhaesu.f reads dhaesu.dat and prints the results that are shipped as dhaesu.res. Needs LAPACK and BLAS."
+ },
+ "field": "numerics (linear algebra)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "location": "Shipped reference file Fortran77/Dp/Drivers/dhaesu.res, section 'The stable eigenvalues', row i=1: WR(1) = -3.1941, WI(1) = 0.0000. Produced by tdhaesu.f from the input dhaesu.dat (N=5, balancing and job flags in the file). The paper's own table could not be read (ACM returns 403), so the paper location is not verified.",
+  "value": "-3.1941 (real part of the first stable eigenvalue of the DHAESU example)",
+  "metric": "real part WR(1) of the first stable eigenvalue, as printed to 4 decimals",
+  "tolerance": "1e-4 absolute",
+  "tolerance_reason": "The reference is printed to 4 decimals, so the rounding half-unit is 5e-5; 1e-4 allows rounding of the last digit and nothing looser, and a different LAPACK or BLAS changes results far less than that."
+ },
+ "cost": {
+  "cpu_minutes_estimate": 1,
+  "data_size": "under 1 MB",
+  "data_licence": "ACM TOMS software distributed via netlib; the archive's own terms were not read in full"
+ },
+ "why": "A deterministic eigenvalue of a fixed example matrix, computed by the Fortran code's own driver and recorded in a shipped reference file, so the method must run to reproduce it.",
+ "registered": "2026-11-27T12:18Z"
+}

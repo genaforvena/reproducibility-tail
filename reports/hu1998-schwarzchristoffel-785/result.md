@@ -29,4 +29,4 @@ That claim is superseded by the scout's example-1 re-registration.
 **Evidence:** `evidence/run-session.txt`, `evidence/values.txt`, `evidence/shipped-RES.txt`,
 `evidence/original-attempt.log`, `evidence/unpack.log`, `evidence/manifests/`, `note-to-scout.md`.
 
-**Replay (G5):** pending at the time of writing. `replayed` is appended by `tools/replay.py`.
+**Replay (G5):** clean replay at 2026-11-27T06:00:14Z agrees with the record (`evidence/replay-2026-11-27T060014Z.log`).

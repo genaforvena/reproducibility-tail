@@ -1,0 +1,50 @@
+{
+  "paper": {
+    "title": "Algorithm 451: Chi-square quantiles",
+    "authors": [
+      "R. B. Goldstein"
+    ],
+    "year": 1973,
+    "venue": "Communications of the ACM 16(8), 483-485 (1973); collected as ACM TOMS Algorithm 451",
+    "doi": null,
+    "url": "https://netlib.org/toms/451.gz (ACM article not read; no ACM fetch attempted this wake)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/451.gz",
+    "commit": "netlib TOMS archive 451.gz (fetched by scout 2026-11-27 09:01Z into a fresh /tmp directory, shell archive, 489 lines)",
+    "archive": "netlib TOMS 451.gz, sha256 5bb6f1b1fe499f96d326188e5502977a1b190e2dcc40ed29a3b18fcb53c55a88 (hashed by scout from the fetched bytes)",
+    "note": "Shell archive: read the text, do not execute it. Fortran/Sp/Drivers holds driver.f (TOMS451_PRB), and Drivers/res is the shipped reference output. Fortran/Sp/Src/src.f holds CHISQD (single precision REAL)."
+  },
+  "field": "numerics (special functions: chi-square quantile)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "Shipped reference output Fortran/Sp/Drivers/res, the first of the two lines for n = 10 under the column p = 0.5000 (the computed line, not the writeup line). Claim value: CHISQD(0.5, 10) = 9.341793.",
+    "reference": {
+      "file": "Fortran/Sp/Drivers/res inside 451.gz",
+      "sha256": "not computed; the value is quoted here and compared as a number",
+      "archive": "netlib.org/toms/451.gz sha256 5bb6f1b1fe499f96d326188e5502977a1b190e2dcc40ed29a3b18fcb53c55a88"
+    },
+    "metric": "CHISQD(P, N) at P = 0.5, N = 10, the Chi-square quantile by Hill-type approximation, as printed by the driver (format f12.6).",
+    "paper_value": "Shipped driver table (writeup column, driver.f) gives 9.341794 for the same cell. Article text not read.",
+    "values": [
+      {
+        "name": "CHISQD(0.5, 10)",
+        "paper": "9.341794",
+        "tol_abs": 1e-05
+      }
+    ],
+    "tolerance": {
+      "abs": 1e-05,
+      "basis": "The reference prints 6 decimals (rounding 5e-7), and the writeup column differs from the computed column by 1e-6 in this cell. 1e-5 absolute covers printed rounding and single-precision libm rounding (about 1e-6 relative at this magnitude), and still catches a wrong algorithm. Fixed now, before any run; not to be loosened after a run. Note: other cells differ between computed and writeup columns by up to about 1e-2 (e.g. n=10, p=0.001: 29.589115 computed vs 39.589081 writeup); those are not used as claims."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: the driver evaluates 50 points.",
+    "data_size": "None: values are computed from P and N in the driver.",
+    "data_licence": "No data. Source is the public netlib TOMS collected-algorithms archive."
+  },
+  "why": "The driver evaluates CHISQD at fixed (P, N) and the shipped reference prints the computed values, so a rerun must run the Fortran routine to reproduce the value; it is not a closed form.",
+  "registered": "2026-11-27T09:02:00Z"
+}

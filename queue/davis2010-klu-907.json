@@ -1,0 +1,44 @@
+{
+ "paper": {
+  "title": "Algorithm 907: KLU, a direct sparse solver for circuit simulation problems (Collected Algorithms from ACM)",
+  "authors": [
+   "Timothy A. Davis",
+   "Ekanathan Palamadai Natarajan"
+  ],
+  "year": 2010,
+  "venue": "ACM Transactions on Mathematical Software 37(3), Article 36 (2010), per the archive header 907.head and the frame item.",
+  "doi": null,
+  "url": "https://netlib.org/toms/907.zip (article DOI not verified by scout; ACM page not fetched, 403 risk)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/907.zip",
+  "commit": "netlib TOMS archive 907.zip (C sources in Matlab/KLU/Source and Include, with AMD, COLAMD, BTF and UFconfig in the same tree; the C demo kludemo in Matlab/KLU/Demo; matrices in Matlab/KLU/Matrix)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/907.zip (HTTP 200, 1023178 bytes, 234 files). Hash not recorded by scout.",
+  "note": "Build the C demo kludemo from Matlab/KLU/Demo (the archive's Makefile), then run it with the matrix Matlab/KLU/Matrix/w156.mtx on standard input, as the shipped kludemo.out does. The claim is the condest value printed for w156.mtx."
+ },
+ "field": "numerics (sparse direct linear solvers, circuit simulation)",
+ "stack": "C/C++",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "Shipped reference output Matlab/KLU/Demo/kludemo.out, the block for './kludemo < ../Matrix/w156.mtx': the line 'n 156 nnz(A) 362 nnz(L+U+F) 396 resid 6.23816e-08', then 'recip growth 0.00889922 condest 1.79787e+09 rcond 0.000124785 flops 175'. The claimed number is condest = 1.79787e+09.",
+  "reference": {
+   "file": "Matlab/KLU/Demo/kludemo.out (in archive 907.zip)",
+   "sha256": "2deae3955d3c826ea82f6c007484a02ef36c5d9ae01009077d49c1106a96ebe7",
+   "archive": "netlib.org/toms/907.zip"
+  },
+  "paper_value": "condest 1.79787e+09 for w156.mtx, as printed by the shipped demo output (the paper's own table is not read; the ACM article is not fetched).",
+  "metric": "condest, the 1-norm condition estimate reported by KLU for the w156 matrix, compared as an absolute number",
+  "determinism": "deterministic (fixed input matrix, no random numbers in the demo; the estimate uses the factorization only)",
+  "tolerance": {
+   "abs": 50000.0,
+   "basis": "Fixed before any run. The printed value has 6 significant figures, so its rounding step is 1e4 at this magnitude. 5e4 allows five units of that step and nothing larger. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 5 minutes: one C build of the KLU demo and one run on a 156-by-156 sparse matrix.",
+  "data_size": "The matrix w156.mtx is a few kilobytes in the archive.",
+  "data_licence": "Licence in the archive is LGPL (Doc/lesser.txt); the rerun should record it."
+ },
+ "why": "The demo runs KLU's factorization and condition estimate on a fixed sparse matrix and prints condest; the number needs the code to run, since no closed form gives it for this matrix. The rerun must build the C library from the archive, not the MATLAB interface.",
+ "registered": "2026-11-27T14:55:11Z"
+}

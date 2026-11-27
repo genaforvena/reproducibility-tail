@@ -1,0 +1,52 @@
+{
+  "paper": {
+    "title": "Fortran code for automatic differentiation (ADM: symbolic and generated derivatives, Dobmann, Liepelt and Schittkowski)",
+    "authors": [
+      "M. Dobmann",
+      "M. Liepelt",
+      "K. Schittkowski"
+    ],
+    "year": 1995,
+    "venue": "ACM Transactions on Mathematical Software 21(3), Sep 1995, p. 233; collected as TOMS Algorithm 746",
+    "doi": null,
+    "url": "https://netlib.org/toms/746.gz (ACM article not read; ACM pages are not fetched here)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/746.gz",
+    "commit": "netlib TOMS archive 746.gz, sha256 c68a4dffe06114a5d59f4feff663a734adcaa930d6513d88c3efae22188b5749 (fetched by scout 2026-11-27 into a fresh /tmp dir; read as text, not executed).",
+    "archive": "netlib TOMS 746.gz, sha256 c68a4dffe06114a5d59f4feff663a734adcaa930d6513d88c3efae22188b5749",
+    "note": "Shell archive. Member Fortran77/Dp/Drivers/Results/tp1.res is shipped; its generating recipe is the Makefile target tp1 (cp Examples/tp1.inp ADM.INP; cp Examples/tp1.fun ADM.FUN; admfor; compile adm.o adm_gen.f src.o; run adm; cp ADM.RES Results/tp1.res). Inputs Examples/tp1.inp and tp1.fun are shipped and read by scout."
+  },
+  "field": "numerics (automatic differentiation)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "Shipped reference output Fortran77/Dp/Drivers/Results/tp1.res inside 746.gz. Claim row: 'Generated derivative error' for TP1 (Rosenbrock, F=100*(X2-X1**2)**2+(1-X1)**2) at X=(-2.0, 1.0), MAXFUN=10000 function repeats, printed 0.451D-03. The symbolic-derivative error line in the same file prints the same 0.451D-03.",
+    "reference": {
+      "file": "Fortran77/Dp/Drivers/Results/tp1.res inside 746.gz",
+      "sha256": "not the member's own hash: scout's extracted text of the member has sha256 3d7dbfd658cf74b50b02c7def6469a52b41b58727d55811936779087b60bf73e (line-split from the shar; rerun should compare the member, not this)",
+      "archive": "netlib.org/toms/746.gz (sha256 c68a4dffe06114a5d59f4feff663a734adcaa930d6513d88c3efae22188b5749)"
+    },
+    "metric": "Generated derivative error, as printed by the driver (D format, three significant digits), for TP1 at the starting point given in tp1.inp.",
+    "paper_value": "The ACM article is not read here. The value is the shipped reference output Results/tp1.res; the function value 909 at that point is printed alongside and is a check that the test ran, not the claim.",
+    "values": [
+      {
+        "name": "TP1 generated derivative error",
+        "paper": "0.451D-03",
+        "tol_abs": 5e-06
+      }
+    ],
+    "tolerance": {
+      "abs": 5e-06,
+      "basis": "The printed value has three significant digits, so its rounding half-unit is 5e-6 on 0.451e-3. Tolerance is set to that half-unit, before any run, and is not to be loosened after a run. A different derivative code path moves this error by much more than rounding would."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute for TP1 at 10000 repeats; the build needs a Fortran compiler and the admfor generator.",
+    "data_size": "None; the function is in tp1.fun.",
+    "data_licence": "No data. Source is the public netlib TOMS archive."
+  },
+  "why": "The driver generates Fortran derivative code and times the run, so the printed derivative error is an output of the method and not a closed form; the function value 909 alone would be derivable by hand, which is why the claim is the derivative error.",
+  "registered": "2026-11-27T10:22Z"
+}

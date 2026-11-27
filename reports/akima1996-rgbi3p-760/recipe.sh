@@ -81,4 +81,4 @@ tail -1 "$E/run-pass2.log"
 val() { LC_ALL=C awk '/Program Check for RGBI3P/ && /Calculated/ {f=1; next} f && $1 ~ /^-?0?\.50$/ && $9=="3.50" {h=1; next} f && h && $1=="5.00" {print $10; exit}' "$1"; }
 echo "OBSERVED pass1 ZI(3.50,5.00) $(val "$E/run-pass1.txt")"
 echo "OBSERVED pass2 ZI(3.50,5.00) $(val "$E/run-pass2.txt")"
-echo "VALUE ZI(3.5,5.0) (RGBI3P) $(val "$E/run-pass1.txt")"
+echo "VALUE ZI(3.5, 5.0) (RGBI3P) $(val "$E/run-pass1.txt")"

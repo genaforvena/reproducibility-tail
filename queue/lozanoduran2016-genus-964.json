@@ -1,0 +1,51 @@
+{
+  "paper": {
+    "title": "An efficient algorithm to compute the genus of discrete surfaces and applications to turbulent flows (Algorithm 964)",
+    "authors": [
+      "Adrián Lozano-Durán",
+      "Guillem Borrell"
+    ],
+    "year": 2016,
+    "venue": "ACM Transactions on Mathematical Software 42(4), 2016, article 34 (DOI 10.1145/2845076); read copy: arXiv:1709.00822",
+    "doi": "10.1145/2845076",
+    "url": "https://arxiv.org/abs/1709.00822"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/964.zip",
+    "commit": "netlib TOMS archive 964.zip (fetched 2026-11-27), sha256 eb7b9a946d9b87a49972ed1740a0a38d9669ae281efd645240abe1c7c5cec496. Fortran 90 serial version at Fortran90/Src/fortran_serial (mainMod.f90, genusMod.f90, Makefile) and the shipped dataset Fortran90/data/random.128.dat; the documentation (Doc/documentation.tex, section Example) says the results should match case Random2 in Table III."
+  },
+  "field": "numerics (computational topology of voxel surfaces; turbulent-flow applications)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "paper-text",
+    "determinism": "deterministic",
+    "seed": null,
+    "location": "Table III ('Summary of some of the datasets tested'), row Random2: size 1283, faces 2744830, edges 5489660, vertices 2570182, genus 87325. The genus column is the claim. The text (Section 5) says Table III lists the cases available for download; the archive's documentation names Random2 as the case that random.128.dat reproduces.",
+    "reference": {
+      "file": "arXiv:1709.00822 PDF, Table III (read copy, text extracted with pdftotext -layout)",
+      "sha256": "d35f1d5b1202467e699e8d7476e53e85ea40d496d7f15b927e0d97ffd2a9c23b",
+      "note": "The published TOMS version may differ from the arXiv version; the rerun must record which one it compared against."
+    },
+    "metric": "Genus of the discrete surface built from the voxel array in random.128.dat (128 x 128 x 128 cubical grid), as printed by the shipped genus program for the Random2 row of Table III.",
+    "paper_value": "87325",
+    "values": [
+      {
+        "name": "genus, Random2",
+        "paper": 87325,
+        "tol_abs": 0
+      }
+    ],
+    "tolerance": {
+      "rel": null,
+      "abs": 0,
+      "basis": "The genus is an integer count from the Euler characteristic of an exact voxel surface, so any difference is a real difference. Fixed before any run. The rerun may not loosen it."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Estimated under a few minutes on one core (not measured). The paper's Figure 8 gives average serial times in seconds for cubical arrays on a Xeon X5650; the 128^3 case is well below the largest sizes shown.",
+    "data_size": "random.128.dat, 2097164 bytes, shipped in the archive.",
+    "data_licence": "Not stated in the archive; a Collected Algorithm from ACM. The rerun should record the licence it finds."
+  },
+  "why": "The paper prints the exact integer genus of the Random2 dataset in Table III, and the archive ships the dataset and the program that computes it, so a deterministic integer can be checked against a published table without any external download.",
+  "registered": "2026-11-27T06:32Z"
+}

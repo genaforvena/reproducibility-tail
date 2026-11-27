@@ -1,0 +1,46 @@
+{
+ "paper": {
+  "title": "Algorithm 785: A software package for computing Schwarz-Christoffel conformal transformation for doubly connected polygonal regions",
+  "authors": ["C. Hu"],
+  "year": 1998,
+  "venue": "ACM Transactions on Mathematical Software 24(3), September 1998, pp. 317-333 (archive header: VOL. 24, NO. 3, September 1998, P. 317-333)",
+  "doi": null,
+  "url": "https://netlib.org/toms/785.gz"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/785.gz",
+  "commit": "netlib TOMS archive 785.gz (scouted 2026-11-27, gz sha256 55965a41f823fb161c5df7b59933092f3879b7a8b57636859511be5c3f4f9175). Fortran77/Src/Dp/src.f, Fortran77/Drivers/Dp/driver.f, data, and the shipped run transcript Fortran77/Drivers/Dp/RES."
+ },
+ "field": "numerics (conformal mapping, Schwarz-Christoffel)",
+ "stack": "Fortran",
+ "claim": {
+  "source": "artifact-reference",
+  "determinism": "deterministic",
+  "seed": null,
+  "location": "Shipped run transcript Fortran77/Drivers/Dp/RES, inside 785.gz (sha256 of the extracted text is not recorded; the transcript is the text between 'cat << SHAR_EOF > RES' and the closing SHAR_EOF, about lines 39-465 of the decompressed shell archive). Its example 6 ('AN EX. GIVEN BY REFEREE FOR CHECKING INV. MAP', NPTQ=7, TOL=0.1E-09) prints the solved parameters 'U= 0.4559381277686' and 'C=( 1.8134230823216,-1.8134230823303)'. The transcript is the list of keyboard answers the interactive driver reads, followed by the printed output.",
+  "reference": {
+   "file": "Fortran77/Drivers/Dp/RES, inside 785.gz",
+   "sha256": "not recorded for the extracted transcript; the archive sha256 is 55965a41f823fb161c5df7b59933092f3879b7a8b57636859511be5c3f4f9175",
+   "archive": "785.gz, sha256 55965a41f823fb161c5df7b59933092f3879b7a8b57636859511be5c3f4f9175"
+  },
+  "metric": "Solved map parameters for example 6: the real parameter U and the complex accessory parameter C (real and imaginary parts), as printed to 13 decimals.",
+  "paper_value": "Not located: the paper (ACM TOMS 24(3) 1998) is paywalled and was not read. The shipped transcript is the value to check.",
+  "values": [
+   {"name": "ex6 U", "paper": 0.4559381277686, "tol_abs": 1e-7},
+   {"name": "ex6 Re C", "paper": 1.8134230823216, "tol_abs": 1e-7},
+   {"name": "ex6 Im C", "paper": -1.8134230823303, "tol_abs": 1e-7}
+  ],
+  "tolerance": {
+   "rel": null,
+   "abs": 1e-7,
+   "basis": "Fixed before any run. The driver's nonlinear solve is stopped at TOL=0.1E-09 (printed in the transcript), and the printed imaginary part of C differs from its real part's magnitude only at the 1e-11 level, so the solver's own noise is near 1e-10. 1e-7 is about a thousand times that noise and small against the 13-digit values printed. Not loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 1 minute for example 6 with NPTQ=7 (interactive driver, scripted answers).",
+  "data_size": "Archive about 90 KB (4662 lines in the decompressed shell archive).",
+  "data_licence": "Not stated in the archive; a Collected Algorithm from ACM TOMS. The rerun should record the licence it finds."
+ },
+ "why": "The driver is a Fortran 77 program with a shipped run transcript, so the solved accessory parameters of a published test example can be compared with the transcript to 1e-7 without needing the paper's own tables.",
+ "registered": "2026-11-27T05:48Z"
+}

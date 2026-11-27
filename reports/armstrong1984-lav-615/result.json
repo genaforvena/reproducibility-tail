@@ -1,0 +1,91 @@
+{
+  "paper": {
+    "short": "armstrong1984-lav-615",
+    "title": "Algorithm 615: SUBL1, best-subset least absolute value regression (ACM TOMS, 1984)",
+    "year": 1984,
+    "doi": null
+  },
+  "field": "numerics (L1 regression, best subset)",
+  "field_class": "numerics",
+  "stack": "Fortran 77 (TOMS 615 archive 615.gz: the program SUBL1 and subroutines in lines 1-1701, the BLISS p.294 data block as TAPE5 in lines 1702-1781, the shipped sample output in lines 1782-1817)",
+  "stack_class": "Fortran",
+  "claim": {
+    "text": "SUM OF ABSOLUTE VALUES for the LAV subset of size 3 (DL1BL3, BLISS vol II p.294) as printed by the authors' SUBL1 run on its shipped TAPE5 data, registered 3.877 (tol 1e-3). Registered by scout in the queue entry (claim commit eda92af).",
+    "source": "artifact-reference",
+    "values": [
+      {
+        "name": "SUM_ABS_SIZE3",
+        "paper": 3.877,
+        "tol_abs": 0.001,
+        "ours": null
+      }
+    ],
+    "reference": {
+      "file": "reports/armstrong1984-lav-615/evidence/shipped-sample-output.txt",
+      "archive": "615.gz, sha256 96a1bdcc048a50dd6043028fef594c19f7dcf350559ef77c1e49b0018a7ff832",
+      "sha256": "2b28fb1f767647ac24967eb6def9df23be1ae1df2c43d6ed8042a8f6c84c35ec"
+    }
+  },
+  "basis": "patched",
+  "verdict": "blocked",
+  "cause": null,
+  "attempt": "Original attempt (G1): the archive as delivered is not Fortran; gfortran rejects it (Invalid character in name; Non-numeric character in statement label), evidence/original-attempt-compile.log. Patch: lines 1-1701 copied verbatim to subl1.f (one range: extraction) and built with the authors' statements unmodified, gfortran 16 -O2 -fdefault-real-8 -fdefault-double-8 (the two flags are needed because the caller at line 316 types D1MACH implicitly REAL while the program's own DOUBLE PRECISION FUNCTION D1MACH returns double; the file's header says it is the DOUBLE PRECISION version). The build succeeds. Running it on the authors' own TAPE5 data (lines 1702-1781) does not terminate: the process reads the whole data block to EOF and then spins in L1NORM (gdb interrupt, stack l1norm_ <- kbest_ <- MAIN__). The same hang occurs at -O0 -g (build0, 30 s bounded run, rc=124). No value is printed, so there is no comparison with 3.877 and no reproduced or not-reproduced verdict. Blocked: the cause is the authors' program looping on its own input under this build. A single-precision variant (the archive's own C++ alternates) was started as a diagnostic and not finished; it is not the verdict build and is not recorded here as a result.",
+  "original_attempt": {
+    "tried": true,
+    "outcome": "failed",
+    "reason": "The archive as delivered is the program, data and sample output in one text file; it does not compile as Fortran (Invalid character in name; Non-numeric character in statement label). No build file ships with the archive.",
+    "log": "reports/armstrong1984-lav-615/evidence/original-attempt-compile.log"
+  },
+  "gates": {
+    "G1": "pass",
+    "G2": "na",
+    "G3": "na",
+    "G5": "na",
+    "G6": "na",
+    "cross_check": "na"
+  },
+  "blocked_on": {
+    "gate": "run",
+    "missing": "a terminating run of the authors' SUBL1 on its own TAPE5 input under a build that uses only the documented flags; the DP build loops in L1NORM (ITER has no cap). Resolver: rerun, next wake. Bounded action: finish the single-precision variant from the archive's C++ alternates as a diagnostic build, and record whether it terminates and what value it gives."
+  },
+  "recipe": "reports/armstrong1984-lav-615/recipe.sh",
+  "queue_commit": "eda92af",
+  "evidence": [
+    "reports/armstrong1984-lav-615/evidence/original-attempt-compile.log",
+    "reports/armstrong1984-lav-615/evidence/archive-615.txt",
+    "reports/armstrong1984-lav-615/evidence/pass1-build.log",
+    "reports/armstrong1984-lav-615/evidence/pass1-run.log",
+    "reports/armstrong1984-lav-615/evidence/pass1-stdout.txt",
+    "reports/armstrong1984-lav-615/evidence/pass2-run.log",
+    "reports/armstrong1984-lav-615/evidence/recipe-run.log",
+    "reports/armstrong1984-lav-615/evidence/shipped-sample-output.txt",
+    "reports/armstrong1984-lav-615/evidence/gfortran-version.txt"
+  ],
+  "replayed": [],
+  "patch": {
+    "kind": "source",
+    "archive_sha256": "96a1bdcc048a50dd6043028fef594c19f7dcf350559ef77c1e49b0018a7ff832",
+    "compared": 0,
+    "ours": {
+      "modified": [],
+      "removed": [],
+      "added": [
+        "subl1.f"
+      ]
+    },
+    "tool": {
+      "modified": [],
+      "removed": [],
+      "added": []
+    },
+    "build_commands": [
+      "gfortran -O2 -fdefault-real-8 -fdefault-double-8 -c /work/tree/subl1.f -o subl1.o",
+      "gfortran -O2 subl1.o -o subl1"
+    ],
+    "manifests": {
+      "pre": "reports/armstrong1984-lav-615/evidence/manifest.pre",
+      "mid": "reports/armstrong1984-lav-615/evidence/manifest.mid",
+      "post": "reports/armstrong1984-lav-615/evidence/manifest.post"
+    }
+  }
+}

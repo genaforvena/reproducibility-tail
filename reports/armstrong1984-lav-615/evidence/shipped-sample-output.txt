@@ -1,0 +1,36 @@
+    3   DL1BL3= BLISS VOL II P.294... ALL DATA
+        PROBLEM TITLE   DL1BL3= BLISS VOL II P.294... ALL DATA
+    NUMBER OF OBSERVATION=   60
+    NUMBER OF PARAMETERS=    3
+    MINIMUM NUMBER OF PARAMETERS CONSIDERED=    1
+    PERCENTAGE DEVIATION FROM OPTIMALITY ALLOWED=  5.00
+        **BEST SUBSET LAV PROGRAM
+ IFAULT=  0
+ 
+ 
+   BEST RESULTS FOR LAV SUBSET OF SIZE=  1
+    **************SUM OF ABSOLUTE VALUES=          7.659
+ 
+ BETA(  2)           .550
+ 
+ 
+   BEST RESULTS FOR LAV SUBSET OF SIZE=  2
+    **************SUM OF ABSOLUTE VALUES=          5.407
+ 
+ BETA(  2)           .818
+ 
+ BETA(  3)          -.782
+ 
+ 
+   BEST RESULTS FOR LAV SUBSET OF SIZE=  3
+    **************SUM OF ABSOLUTE VALUES=          3.877
+ 
+ BETA(  3)         -1.116
+ 
+ BETA(  2)           .628
+ 
+ BETA(  1)           .235
+ 
+ 
+     ITERATION COUNT=    106
+    0

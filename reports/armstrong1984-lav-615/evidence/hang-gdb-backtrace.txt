@@ -1,0 +1,20 @@
+Transcript of one observation (rerun wake, 08:27:48Z), not a re-run of the recipe.
+
+Command (inside tools/sandbox.sh, SANDBOX_WALL_SECONDS=60):
+  cd /work/run1 && timeout -s INT 12 gdb -batch -ex "run < /work/run1/data > /work/run1/g.out 2>&1" -ex "bt 12" -ex "info registers rip" /work/build1/subl1
+
+Output (grep-free, trimmed of the libthread_db banner):
+  Program received signal SIGINT, Interrupt.
+  0x00005555555572be in l1norm_ ()
+  #0  0x00005555555572be in l1norm_ ()
+  #1  0x0000555555557aed in kbest_ ()
+  #2  0x0000555555558fa0 in MAIN__ ()
+  rip            0x5555555572be      0x5555555572be <l1norm_+1358>
+
+strace of the same binary (sandbox, timeout 15), last syscalls:
+  read(0, "    3   DL1BL3= BLISS VOL II P.2"..., 8192) = 1503
+  read(0, "", 8192)                       = 0
+  --- SIGTERM ---
+  (no syscalls between EOF and SIGTERM)
+
+Reading: the input is consumed to EOF; the process then runs CPU-bound inside L1NORM. Source: archive lines ~792-990 (L1NORM), ITER is incremented at the end of the main loop and control returns to label 70 with no cap.

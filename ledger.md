@@ -5,7 +5,7 @@ Method and gates: [docs/method.md](docs/method.md).
 
 ## Scoreboard
 
-73 papers attempted.
+74 papers attempted.
 
 | grade | meaning | papers |
 |---|---|---|
@@ -14,11 +14,11 @@ Method and gates: [docs/method.md](docs/method.md).
 | C | reimplemented, with an independent cross-check | 1 |
 | D | reimplemented only | 0 |
 | X | not reproduced, cause diagnosed | 1 |
-| - | blocked or not yet run | 14 |
+| - | blocked or not yet run | 15 |
 
-By field: astronomy 1, biology 1, ecology 1, numerics 60, other 4, statistics 6
-By stack: C/C++ 9, Fortran 52, Java 1, MATLAB/Octave 6, R 5
-By decade: 1960 3, 1970 5, 1980 6, 1990 23, 2000 25, 2010 11
+By field: astronomy 1, biology 1, ecology 1, numerics 61, other 4, statistics 6
+By stack: C/C++ 9, Fortran 53, Java 1, MATLAB/Octave 6, R 5
+By decade: 1960 3, 1970 5, 1980 7, 1990 23, 2000 25, 2010 11
 
 Data as of 2026-11-27T08:25Z (the newest replay or funnel entry).
 
@@ -26,7 +26,7 @@ Data as of 2026-11-27T08:25Z (the newest replay or funnel entry).
 
 Every candidate is drawn from a named frame in a seeded order and none is skipped, so the denominator is the frame, not what looked tractable (docs/method.md).
 
-73 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
+74 papers have been attempted in total. 6 of them were chosen before frames existed (fay2010-interval-npmle-example1, grun2012-gasoline-loglik, purcell2011-fig5-hopf, rbg08-pds-table1-counts, varadhan2009-bb-hdp-multistart, wang2011-species-butterfly-ace), so they are not in the numbers below, which count only frame-drawn candidates.
 
 **362 candidates considered from 4 of 4 frames: 72 attempted (20%), 0 unreachable, 290 rejected.**
 
@@ -74,7 +74,7 @@ The artifact cannot be obtained, and the method is not described well enough to 
 |---|---|---|---|---|
 | none yet | | | | |
 
-Authors' original artifact, among all attempted papers: failed 45 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
+Authors' original artifact, among all attempted papers: failed 46 (did not run), not-possible 2 (no code exists to run), partial 7 (ran only through a workaround or for part of the claim), succeeded 19 (ran as documented).
 
 ## Results
 
@@ -99,6 +99,7 @@ Authors' original artifact, among all attempted papers: failed 45 (did not run),
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Differential potential) | 0.015625 ± 1e-09 | 0.015625 | 0 | 0% | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [alvarez2016-vbf-s7-959](reports/alvarez2016-vbf-s7-959/result.md) | other · 2016 · C/C++ | ./ex.exe S7 7 measures and the cycle count in S7.cy for the 7-bit S-box shipped in CPP/Drivers/Res/S7 (Number of cycles in S7.cy) | 4 ± 0 | 4 | 0 | exact | patched (build-only; the build tool rewrote 8 files) | ✓ ? ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [amestoy2004-amd-837](reports/amestoy2004-amd-837/result.md) | numerics · 2004 · C/C++ | The shipped demo output Demo/amd_demo.out, can_24 section, prints LDL' flop count for real A: 647 (exact integer equality) (LDL' flop count for real A, can_24 demo (amd_demo.out)) | 647 ± 0 | 647 | 0 | exact | original | ✓ · ✓ ✓ | A | reproduced | 2026-11-26 ok |
+| [armstrong1984-lav-615](reports/armstrong1984-lav-615/result.md) | numerics · 1984 · Fortran | SUM OF ABSOLUTE VALUES for the LAV subset of size 3 (DL1BL3, BLISS vol II p.294) as printed by the authors' SUBL1 run on its shipped TAPE5 data, registered 3.877 (tol 1e-3). Registered by scout in the queue entry (claim commit eda92af). (SUM_ABS_SIZE3) [shipped reference output] | 3.877 ± 0.001 | – | – | – | patched | ✓ · · · | - | blocked | never clean |
 | [benson2008-dsdp5-875](reports/benson2008-dsdp5-875/result.md) | numerics · 2008 · C/C++ | theta graph1 (Lovasz theta SDP of the 6-node, 8-edge graph shipped as bin/graph1): the DD Objective of the last iteration, as a magnitude, is 3.00000012 (shipped reference log bin/output.theta, iteration 4). Absolute tolerance 1e-5. (theta graph1 final DD objective (magnitude)) [shipped reference output] | 3 ± 1e-05 | 3 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-26 ok |
 | [berntsen1991-dcuhre-698](reports/berntsen1991-dcuhre-698/result.md) | numerics · 1991 · Fortran | Live sample PROGRAM DTEST1 (5-dimensional integral over the unit cube of exp(-sum n z_n^2/2), ABSREQ=0, RELREQ=1E-3, MINCLS=0, MAXCLS=10000, KEY=0, NW=5000) prints the integral components 1 to 6 as 0.13850818, 0.06369469, 0.05861748, 0.05407034, 0.05005614, 0.04654608, FTEST CALLS = 3549 and IFAIL = 0 (printed output, Sun 3/50). Registered by scout (artifact-reference). (integral 1) [shipped reference output] | 0.138508 ± 1e-07 | 0.138508 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |
 | [berntsen1991-dcuhre-698](reports/berntsen1991-dcuhre-698/result.md) | numerics · 1991 · Fortran | Live sample PROGRAM DTEST1 (5-dimensional integral over the unit cube of exp(-sum n z_n^2/2), ABSREQ=0, RELREQ=1E-3, MINCLS=0, MAXCLS=10000, KEY=0, NW=5000) prints the integral components 1 to 6 as 0.13850818, 0.06369469, 0.05861748, 0.05407034, 0.05005614, 0.04654608, FTEST CALLS = 3549 and IFAIL = 0 (printed output, Sun 3/50). Registered by scout (artifact-reference). (integral 2) [shipped reference output] | 0.0636947 ± 1e-07 | 0.0636947 | 0 | 0% | patched (build-only) | ✓ ✓ ✓ ✓ | B | reproduced | 2026-11-27 ok |

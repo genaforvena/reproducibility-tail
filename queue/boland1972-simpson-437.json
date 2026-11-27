@@ -1,0 +1,50 @@
+{
+  "paper": {
+    "title": "Product Type {Simpson}'s Integration",
+    "authors": [
+      "W. R. Boland"
+    ],
+    "year": 1972,
+    "venue": "ACM Transactions on Mathematical Software 15(12), Dec 1972, p. 1070; collected as TOMS Algorithm 437",
+    "doi": null,
+    "url": "https://netlib.org/toms/437.gz (ACM article not read; ACM pages return 403 from this host)"
+  },
+  "code": {
+    "url": "https://netlib.org/toms/437.gz",
+    "commit": "netlib TOMS archive 437.gz (fetched by scout 2026-11-27 into a fresh /tmp directory; decompressed and read as text, not executed). sha256 3d5d67394e0a50131e5eaf60cdfff518c41e7e70b86e01f27e9eeaf65090f3ce",
+    "archive": "netlib TOMS 437.gz, sha256 3d5d67394e0a50131e5eaf60cdfff518c41e7e70b86e01f27e9eeaf65090f3ce",
+    "note": "Shell archive containing Fortran/Dp/Drivers (Makefile, driver.f, res) and Fortran/Dp/Src/src.f (the product Simpson routine). The driver test01 and test02 loop over N=1..10 and print VINT with format g14.6; res is the shipped reference output of that driver."
+  },
+  "field": "numerics (product integration, Simpson's rule)",
+  "stack": "Fortran",
+  "claim": {
+    "source": "artifact-reference",
+    "determinism": "deterministic",
+    "location": "Shipped reference output res (member Fortran/Dp/Drivers/res inside 437.gz). Claim row: TEST02 (integral of exp(-x)*cos(x) from 0 to pi, product Simpson), N = 10, VINT = 0.521610.",
+    "reference": {
+      "file": "Fortran/Dp/Drivers/res inside 437.gz",
+      "sha256": "not computed for the member; the value is quoted here and compared as a number",
+      "archive": "netlib.org/toms/437.gz (sha256 3d5d67394e0a50131e5eaf60cdfff518c41e7e70b86e01f27e9eeaf65090f3ce)"
+    },
+    "metric": "VINT for TEST02 at N=10, as printed by the driver (g14.6, six significant digits).",
+    "paper_value": "The paper's table is not read (ACM 403). The value is the shipped reference output res, written by the authors' driver; the exact integral printed there is 0.521607.",
+    "values": [
+      {
+        "name": "TEST02 product Simpson, N=10",
+        "paper": "0.521610",
+        "tol_abs": 1e-06
+      }
+    ],
+    "tolerance": {
+      "abs": 1e-06,
+      "basis": "The reference is printed to six significant digits, so its rounding half-unit is 5e-7. 1e-6 absolute covers that rounding and any compiler ordering difference in double precision; a wrong weight or node in the product rule moves VINT by far more. Fixed now, before any run; not to be loosened after a run."
+    }
+  },
+  "cost": {
+    "cpu_minutes_estimate": "Under 1 minute: a few hundred function evaluations.",
+    "data_size": "None; the integrand is in the driver.",
+    "data_licence": "No data. Source is the public netlib TOMS collected-algorithms archive."
+  },
+  "why": "The driver runs the product Simpson rule on a non-trivial oscillatory-exponential integrand over a range of N, so a rerun must compile the Fortran and reproduce the table; the value is not a closed form at N=10.",
+  "registered": "2026-11-27T09:47Z"
+}

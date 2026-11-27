@@ -1,0 +1,44 @@
+{
+ "paper": {
+  "title": "Algorithm 832: UMFPACK V4.3 -- an unsymmetric-pattern multifrontal method",
+  "authors": [
+   "T. A. Davis"
+  ],
+  "year": 2004,
+  "venue": "ACM Transactions on Mathematical Software 30(2), June 2004, p. 196 (per the frame item). The ACM article was not fetched.",
+  "doi": null,
+  "url": "https://netlib.org/toms/832.zip (article not fetched; ACM page not used)"
+ },
+ "code": {
+  "url": "https://netlib.org/toms/832.zip",
+  "commit": "netlib CALGO archive 832.zip (UMFPACK V4.3 with AMD V1.1; directories 832/UMFPACK and 832/AMD)",
+  "archive": "downloaded by scout 2026-11-27 from netlib.org/toms/832.zip (HTTP 200, 763266 bytes). sha256 of 832.zip: c0149f87f95678435f0363c84689975cad5814ac3a6912bdb4c6894dbb74debd. Extracted with the zip library into /tmp/scout-452-wrk; no build or run was done by scout.",
+  "archive_sha256": "c0149f87f95678435f0363c84689975cad5814ac3a6912bdb4c6894dbb74debd",
+  "note": "The archive is a zip. Unpack it into an empty directory and build UMFPACK and AMD with the archive's own Make/Make.linux and the Makefiles (the UMFPACK/Demo Makefile target 'hb' produces the file umf4.out). The claim uses only the input HB/west0067.rua (in UMFPACK/Demo/HB) and the shipped reference UMFPACK/Demo/umf4.out. The rerun should build with BLAS disabled (CONFIG = -DNBLAS in the Make include file) because no BLAS is in the archive; if the flop count changes with NBLAS, the claim is mis-specified and must be revised in a new commit, not tolerance-loosened. The MATLAB and FORTRAN wrappers and the timing lines of umf4.out are not part of the claim."
+ },
+ "field": "numerics (sparse LU factorization, multifrontal method, fill-reducing ordering)",
+ "stack": "C/C++",
+ "claim": {
+  "source": "artifact-reference",
+  "location": "UMFPACK/Demo/umf4.out inside 832.zip, the block that starts after the line './readhb_nozeros < HB/west0067.rua > tmp/A' and the line 'triplet-form matrix, n_row = 67, n_col = 67 nz = 294. OK' (shar text lines 327-537 of the extracted umf4.out). Within it the line 'numeric factorization flops          1.41920e+04' (umf4.out line 379) is the flop count of the numeric factorization of the 67-by-67 matrix west0067 under UMFPACK defaults, as produced by the Demo Makefile's 'hb' target, which runs './umf4' with default arguments after readhb_nozeros on west0067.rua.",
+  "reference": {
+   "file": "UMFPACK/Demo/umf4.out inside 832.zip (netlib.org/toms/832.zip), line 379 of the extracted file",
+   "sha256": "not computed for the member; the value is quoted here and compared as a number",
+   "archive": "netlib.org/toms/832.zip"
+  },
+  "paper_value": "The ACM article was not read; the claim is the code's own shipped reference output, not a value located in the paper.",
+  "metric": "The numeric factorization flop count (the 'numeric factorization flops' value, first occurrence in that block, printed as 1.41920e+04) for the west0067 matrix. Compared as an absolute number with the value the rerun prints in the same block of its own umf4.out. The timing lines and the solve residuals are not part of the claim.",
+  "determinism": "deterministic (fixed input HB/west0067.rua; the ordering is produced by AMD and COLAMD with fixed defaults, no random numbers)",
+  "tolerance": {
+   "abs": 0.05,
+   "basis": "Fixed before any run. The reference prints six significant digits, so 1.41920e+04 is the integer count 14192 up to print rounding of +/-0.05. The tolerance is that print rounding and nothing more; a different ordering or a different flop-counting rule changes the count by far more. Not to be loosened after any run."
+  }
+ },
+ "cost": {
+  "cpu_minutes_estimate": "Under 5 minutes: build UMFPACK and AMD from source, compile the readhb helpers, and run the west0067 case (67 by 67, 294 entries).",
+  "data_size": "HB/west0067.rua is 9315 bytes in the archive.",
+  "data_licence": "Netlib CALGO archive; UMFPACK licence in UMFPACK/README and the copyright notice in umf4.out (use or copy permitted with copyright and availability notice retained). The rerun should record it."
+ },
+ "why": "The shipped demo runs UMFPACK's symbolic and numeric LU factorization with its default fill-reducing ordering on a fixed sparse matrix and reports the resulting flop count, a value that depends on the ordering and factorization rules the code implements, not a closed form that can be checked on paper.",
+ "registered": "2026-11-27T18:17:25Z"
+}
